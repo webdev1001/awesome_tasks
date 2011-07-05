@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "knjtasks"
   gem.homepage = "http://github.com/kaspernj/knjtasks"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A task system for managing various projects, timelogs and much more.}
+  gem.description = %Q{A longer description will come...}
   gem.email = "k@spernj.org"
   gem.authors = ["Kasper Johansen"]
   # dependencies defined in Gemfile

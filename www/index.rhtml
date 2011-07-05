@@ -1,0 +1,42 @@
+<%
+  $site.load_request
+  
+  show = _get["show"]
+  show = "frontpage" if !show
+  showp = "../pages/#{show}.rhtml"
+%>
+<html>
+<head>
+  <title>knjTasks</title>
+  
+  <link rel="stylesheet" type="text/css" href="css/default.css" />
+  
+  <script type="text/javascript" src="js/default.js"></script>
+</head>
+<body>
+  <table class="main_table">
+    <tr>
+      <td class="main_logo">
+      
+      </td>
+    </tr>
+    <tr>
+      <td class="main_menu">
+      
+      </td>
+    </tr>
+    <tr>
+      <td class="main_content">
+        <%
+          _kas.import(showp)
+        %>
+      </td>
+    </tr>
+    <tr>
+      <td class="main_bottom">
+      
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
