@@ -1,0 +1,68 @@
+<%
+  if _get["choice"] == "dosave"
+    save_hash = {
+      :name => _post["texname"],
+      :descr => _post["texdescr"]
+    }
+  end
+  
+  if _get["task_id"].to_i > 0
+    task = _ob.get(:Task, _get["task_id"])
+    title = sprintf(_("Edit task: %s."), task.name.html)
+    
+    if _get["choice"] == "dosave"
+      task.update(save_hash)
+      _kas.redirect("?show=task_edit&task_id=#{task.id}")
+    end
+    
+    if _get["choice"] == "dodelete"
+      _ob.delete(task)
+      _kas.redirect("?show=task_search")
+    end
+  else
+    title = _("Add new task")
+    
+    if _get["choice"] == "dosave"
+      task = _ob.add(:Task, save_hash)
+      _kas.redirect("?show=task_edit&task_id=#{task.id}")
+    end
+  end
+  
+  print _site.header(title)
+%>
+
+<form method="post" action="?show=task_edit&amp;choice=dosave<%if task; print "&amp;task_id=#{task.id}"; end%>">
+
+<%=_site.boxt(_("Enter details"), "700px")%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Name"),
+        :name => :texname,
+        :value => [task, :name],
+        :descr => _("The name of the task as it should appear in this system.")
+      },{
+        :title => _("Description"),
+        :name => :texdescr,
+        :value => [task, :descr],
+        :descr => _("The description as it should appear for the users."),
+        :type => :fckeditor,
+        :height => 500
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <%if task%>
+          <input type="button" value="<%=_("Delete")%>" onclick="if (confirm('<%=_("Do you want to delete this task?")%>')){location.href='?show=task_edit&amp;task_id=<%=task.id%>&amp;choice=dodelete';}" />
+        <%end%>
+        <input type="submit" value="<%=_("Save")%>" />
+      </td>
+    </tr>
+  </table>
+<%=_site.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  $("#texname").focus();
+</script>

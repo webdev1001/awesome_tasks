@@ -1,5 +1,5 @@
 <%
-  $site.load_request
+  _site.load_request
   
   show = _get["show"]
   show = "frontpage" if !show
@@ -11,18 +11,42 @@
   
   <link rel="stylesheet" type="text/css" href="css/default.css" />
   
+  <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/jquery.js"></script>
+  <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/jquery.md5.js"></script>
+  
   <script type="text/javascript" src="js/default.js"></script>
 </head>
 <body>
-  <table class="main_table">
+  <center>
+  <table class="main_table" cellspacing="0" cellpadding="0">
     <tr>
       <td class="main_logo">
-      
+        knjTasks
       </td>
     </tr>
     <tr>
       <td class="main_menu">
-      
+        <%
+          if _site.user
+            menu = [
+              {:name => _("Frontpage"), :link => "?show=frontpage"},
+              {:name => _("Projects"), :link => "?show=project_search"},
+              {:name => _("Tasks"), :link => "?show=task_search"},
+              {:name => _("Users"), :link => "?show=user_search"},
+              {:name => _("Log out"), :link => "?show=user_login&choice=dologout"}
+            ]
+          else
+            menu = [
+              {:name => _("Log in"), :link => "?show=user_login"}
+            ]
+          end
+          
+          menu.each do |mi|
+            %>
+              <a href="<%=mi[:link]%>"><%=mi[:name]%></a>&nbsp;&nbsp;&nbsp;
+            <%
+          end
+        %>
       </td>
     </tr>
     <tr>
@@ -34,9 +58,10 @@
     </tr>
     <tr>
       <td class="main_bottom">
-      
+        <%=sprintf(_("Made by %s"), "<a href=\"mailto:k@spernj.org\">Kasper Johansen</a>")%>
       </td>
     </tr>
   </table>
+  </center>
 </body>
 </html>

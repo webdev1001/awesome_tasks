@@ -1,0 +1,80 @@
+<%
+  print _site.header(_("Search for tasks"))
+%>
+
+<form method="get">
+<%=Knj::Web.hiddens([{:name => :show, :value => :task_search}, {:name => :choice, :value => :dosearch}])%>
+
+<%=_site.boxt(_("Enter criteria"), "350px")%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Name"),
+        :name => :texname,
+        :value => _get["texname"],
+        :descr => _("A part of the name of the task you are looking for.")
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="button" value="<%=_("Add new")%>" onclick="location.href='?show=task_edit';" />
+        <input type="submit" value="<%=_("Search")%>" />
+      </td>
+    </tr>
+  </table>
+<%=_site.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  $("#texname").focus();
+</script>
+
+<%
+  if _get["choice"] == "dosearch"
+    args = {"orderby" => "name"}
+    
+    if _get["texname"].to_s.length > 0
+      args["name_search"] = _get["texname"]
+    end
+    
+    tasks = _ob.list(:Task, args)
+    
+    %>
+      <br />
+
+      <%=_site.boxt(_("Results"), "500px")%>
+        <table class="list">
+          <thead>
+            <tr>
+              <th><%=_("Name")%></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              tasks.each do |task|
+                %>
+                  <tr>
+                    <td>
+                      <%=task.html%>
+                    </td>
+                  </tr>
+                <%
+              end
+              
+              if tasks.empty?
+                %>
+                  <tr>
+                    <td colspan="1" class="error">
+                      <%=_("No tasks were found.")%>
+                    </td>
+                  </tr>
+                <%
+              end
+            %>
+          </tbody>
+        </table>
+      <%=_site.boxb%>
+    <%
+  end
+%>

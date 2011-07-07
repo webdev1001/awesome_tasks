@@ -1,0 +1,64 @@
+<%
+  if _get["choice"] == "dosave"
+    save_hash = {
+      :name => _post["name"]
+    }
+    
+    if _post["passwd_md5"].to_s.length > 0
+      save_hash[:passwd] = _post["passwd_md5"]
+    end
+  end
+  
+  if _get["user_id"].to_i > 0
+    user = _ob.get(:User, _get["user_id"])
+    title = sprintf(_("Edit user: %s."), user.name.html)
+    
+    if _get["choice"] == "dosave"
+      user.update(save_hash)
+      _kas.redirect("?show=user_edit&user_id=#{user.id}")
+    end
+    
+    if _get["choice"] == "dodelete"
+      _ob.delete(user)
+      _kas.redirect("?show=user_search")
+    end
+  else
+    title = _("Add new user")
+    
+    if _get["choice"] == "dosave"
+      user = _ob.add(:User, save_hash)
+      _kas.redirect("?show=user_edit&user_id=#{user.id}")
+    end
+  end
+  
+  print _site.header(title)
+%>
+
+<form method="post" action="?show=user_edit&amp;choice=dosave<%if user; print "&amp;user_id=#{user.id}"; end%>">
+
+<%=_site.boxt(_("Enter details"), "350px")%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Username"),
+        :name => :texusername,
+        :value => [user, :username],
+        :descr => _("The username that this user should use to log in.")
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <%
+          if user
+            %>
+              <input type="button" value="<%=_("Delete")%>" onclick="if (confirm('<%=_("Do you want to delete this user?")%>')){location.href='?show=user_edit&amp;user_id=<%=user.id%>&amp;choice=dodelete';}" />
+            <%
+          end
+        %>
+        <input type="submit" value="<%=_("Save")%>" />
+      </td>
+    </tr>
+  </table>
+<%=_site.boxb%>
+
+</form>

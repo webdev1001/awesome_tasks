@@ -1,4 +1,6 @@
 class Knjtasks
+  attr_reader :knjappserver, :ob, :db, :args
+  
   def initialize(args = {})
     require "rubygems"
     require "knjappserver"
@@ -7,6 +9,14 @@ class Knjtasks
     require "knj/objects"
     
     @args = args
+    @db = @args[:db]
+    
+    @ob = Knj::Objects.new(
+      :datarow => true,
+      :db => @db,
+      :class_path => "#{File.dirname(__FILE__)}/../models",
+      :module => Knjtasks
+    )
     
     @erbhandler = Knjappserver::ERBHandler.new
     @knjappserver = Knjappserver.new(
@@ -43,15 +53,17 @@ class Knjtasks
           :file_ext => "rhtml",
           :callback => @erbhandler.method(:erb_handler)
       ],
-      :db => @args[:db],
+      :db => @db,
       :smtp_args => @args[:smtp_args],
       :httpsession_db_args => @args[:db_args]
     )
     @knjappserver.update_db
+    @knjappserver.define_magic_var(:_site, self)
+    @knjappserver.define_magic_var(:_ob, @ob)
   end
   
   def join
-    #@knjappserver.join
+    @knjappserver.join
   end
   
   def start
@@ -60,5 +72,31 @@ class Knjtasks
   
   def load_request
     
+  end
+  
+  def header(title)
+    return "<h1>#{title}</h1>"
+  end
+  
+  def boxt(title, width = "100%")
+    html = ""
+    html += "<table class=\"box\" style=\"width: #{width};\">"
+    html += "<tr><td class=\"box_header\">#{title}</td></tr>"
+    html += "<tr><td class=\"box_content\">"
+    return html
+  end
+  
+  def boxb
+    return "</td></tr></table>"
+  end
+  
+  def user
+    begin
+      return @ob.get(:User, _session[:user_id]) if _session[:user_id].to_i > 0
+    rescue
+      return false
+    end
+    
+    return false
   end
 end
