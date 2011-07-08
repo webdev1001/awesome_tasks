@@ -18,7 +18,23 @@
 
 <div style="padding-bottom: 15px;">
   <%=_site.boxt(_("Comments"), "600px")%>
+    <div style="padding-bottom: 15px;">
+      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_("Add new comment")%>', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=task.id%>'});" />
+    </div>
     
+    <%
+      comments.each do |comment|
+        raise "stub!"
+      end
+      
+      if comments.empty?
+        %>
+          <div class="error">
+            <%=_("No comments were found for this task.")%>
+          </div>
+        <%
+      end
+    %>
   <%=_site.boxb%>
 </div>
 

@@ -1,0 +1,69 @@
+<%
+  if _get["choice"] == "dosave"
+    save_hash = {
+      :comment => _post["texcomment"]
+    }
+  end
+  
+  if _get["comment_id"].to_i > 0
+    comment = _ob.get(:Comment, _get["comment_id"])
+    
+    if _get["choice"] == "dosave"
+      comment.update(save_hash)
+      exit
+    end
+    
+    if _get["choice"] == "dodelete"
+      _ob.delete(comment)
+      exit
+    end
+  else
+    if _get["choice"] == "dosave"
+      comment = _ob.add(:Comment, save_hash)
+      exit
+    end
+  end
+%>
+
+<form method="get" onsubmit="return do_save_comment();">
+
+<%=_site.boxt(_("Enter details"))%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Comment"),
+        :name => :texcomment,
+        :value => [comment, :comment],
+        :type => :fckeditor,
+        :height => 380
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="submit" value="<%=_("Save")%>" />
+      </td>
+    </tr>
+  </table>
+<%=_site.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  function do_save_comment(){
+    $.ajax({
+      type: "POST",
+      url: "clean.rhtml?show=comment_edit&choice=dosave<%if comment; print "&amp;comment_id=#{comment.id}"; end%>",
+      data: {
+        "comment" => $("#texcomment").val()
+      },
+      complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }else{
+          modal_close();
+        }
+      }
+    });
+    return false;
+  }
+</script>

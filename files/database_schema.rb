@@ -1,5 +1,19 @@
 $schema = {
   "tables" => {
+    "Comment" => {
+      "columns" => [
+        {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "object_class", "type" => "varchar"},
+        {"name" => "object_id", "type" => "int"},
+        {"name" => "user_id", "type" => "int"},
+        {"name" => "date_saved", "type" => "datetime"},
+        {"name" => "comment", "type" => "text"}
+      ],
+      "indexes" => [
+        {"name" => "object_lookup", "columns" => ["object_class", "object_id"]},
+        {"name" => "user_id", "columns" => ["user_id"]}
+      ]
+    },
     "Project" => {
       "columns" => [
         {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},

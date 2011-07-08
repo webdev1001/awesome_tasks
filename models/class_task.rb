@@ -31,4 +31,8 @@ class Knjtasks::Task < Knj::Datarow
   def timelogs(args = {})
     return _ob.list(:Timelog, {"task" => self}.merge(args))
   end
+  
+  def comments(args = {})
+    return _ob.list(:Comment, {"object_lookup" => self}.merge(args))
+  end
 end
