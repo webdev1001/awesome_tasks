@@ -4,6 +4,8 @@
   show = _get["show"]
   show = "frontpage" if !show
   showp = "../pages/#{show}.rhtml"
+  
+  showp = "../pages/user_login.rhtml" if !_site.user
 %>
 <html>
 <head>
@@ -13,6 +15,7 @@
   
   <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/jquery.js"></script>
   <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/jquery.md5.js"></script>
+  <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/modal.js"></script>
   
   <script type="text/javascript" src="js/default.js"></script>
 </head>

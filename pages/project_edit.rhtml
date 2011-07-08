@@ -1,12 +1,18 @@
 <%
   if _get["choice"] == "dosave"
     save_hash = {
-      :name => _post["texname"]
+      :name => _post["texname"],
+      :descr => _post["texdescr"]
     }
   end
   
   if _get["project_id"].to_i > 0
-    project = _ob.get(:Project, _get["project_id"])
+    begin
+      project = _ob.get(:Project, _get["project_id"])
+    rescue Knj::Errors::NotFound
+      _kas.alert(_("That project could not be found in the database.")).back
+    end
+    
     title = sprintf(_("Edit project: %s."), project.name.html)
     
     if _get["choice"] == "dosave"
@@ -36,7 +42,7 @@
 
 <form method="post" action="?show=project_edit&amp;choice=dosave<%if project; print "&amp;project_id=#{project.id}"; end%>">
 
-<%=_site.boxt(_("Enter details"), "350px")%>
+<%=_site.boxt(_("Enter details"), "500px")%>
   <table class="form">
     <%
       print Knj::Web.inputs([{
@@ -45,10 +51,35 @@
         :value => [project, :name],
         :descr => _("The name of the project as it should appear in this system.")
       }])
+      
+      if project
+        if project.added_user
+          project_user_html = project.added_user.html
+        else
+          project_user_html = "[#{_("no user")}]"
+        end
+        
+        print Knj::Web.inputs([{
+          :title => _("Added by"),
+          :type => :info,
+          :value => project_user_html,
+          :descr => _("The user that added this project.")
+        }])
+      end
+      
+      print Knj::Web.inputs([{
+        :title => _("Description"),
+        :name => :texdescr,
+        :value => [project, :descr],
+        :type => :fckeditor,
+        :height => 400,
+        :descr => _("A description of the project to tell what it is about.")
+      }])
     %>
     <tr>
       <td colspan="2" class="buttons">
         <%if project%>
+          <input type="button" value="<%=_("Add task")%>" onclick="location.href='?show=task_edit&amp;project_id=<%=project.id%>';" />
           <input type="button" value="<%=_("Delete")%>" onclick="if (confirm('<%=_("Do you want to delete this project?")%>')){location.href='?show=project_edit&amp;project_id=<%=project.id%>&amp;choice=dodelete';}" />
         <%end%>
         <input type="submit" value="<%=_("Save")%>" />

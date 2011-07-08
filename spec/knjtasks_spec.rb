@@ -22,12 +22,13 @@ describe "Knjtasks" do
     require "knjdbrevision"
     
     db_path = "#{File.dirname(__FILE__)}/../files/database_sample.sqlite3"
-    File.unlink(db_path) if File.exists?(db_path)
+    #File.unlink(db_path) if File.exists?(db_path)
     
     db = Knj::Db.new(
       :type => "sqlite3",
       :path => db_path,
-      :return_keys => "symbols"
+      :return_keys => "symbols",
+      :index_append_table_name => true
     )
     
     require "#{File.dirname(__FILE__)}/../files/database_schema.rb"

@@ -4,4 +4,16 @@
   print _site.header(sprintf(_("Show project: %s."), project.name.html))
 %>
 
-Nothing here yet.
+<%=_site.boxt(_("Information"), "350px")%>
+  <table class="form">
+    <%
+      if project.added_user
+        print Knj::Web.input(
+          :title => _("Added by"),
+          :type => :info,
+          :value => project.added_user.html
+        )
+      end
+    %>
+  </table>
+<%=_site.boxb%>

@@ -14,7 +14,21 @@ class Knjtasks::Task < Knj::Datarow
     return d.ob.list_bysql(:Task, sql)
   end
   
+  def self.add(d)
+    raise _("No project-ID was given.") if d.data[:project_id].to_i <= 0
+    
+    begin
+      task = d.ob.get(:Project, d.data[:project_id])
+    rescue Knj::Errors::NotFound
+      raise sprintf(_("A project with the given project-ID could not be found: '%s'."), d.data[:project_id])
+    end
+  end
+  
   def html
     return "<a href=\"?show=task_show&amp;task_id=#{id}\">#{name.html}</a>"
+  end
+  
+  def timelogs(args = {})
+    return _ob.list(:Timelog, {"task" => self}.merge(args))
   end
 end

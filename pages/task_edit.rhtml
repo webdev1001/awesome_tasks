@@ -2,13 +2,15 @@
   if _get["choice"] == "dosave"
     save_hash = {
       :name => _post["texname"],
-      :descr => _post["texdescr"]
+      :descr => _post["texdescr"],
+      :project_id => _post["selproject"]
     }
   end
   
   if _get["task_id"].to_i > 0
     task = _ob.get(:Task, _get["task_id"])
     title = sprintf(_("Edit task: %s."), task.name.html)
+    project_id = task[:project_id]
     
     if _get["choice"] == "dosave"
       task.update(save_hash)
@@ -21,11 +23,17 @@
     end
   else
     title = _("Add new task")
+    project_id = _get["project_id"] if _get["project_id"].to_i > 0
     
     if _get["choice"] == "dosave"
       task = _ob.add(:Task, save_hash)
       _kas.redirect("?show=task_edit&task_id=#{task.id}")
     end
+  end
+  
+  project_opts = _ob.list_optshash(:Project)
+  if project_opts.empty?
+    _kas.alert(_("No projects has been added to this installation yet - please do that first.")).back
   end
   
   print _site.header(title)
@@ -42,6 +50,12 @@
         :value => [task, :name],
         :descr => _("The name of the task as it should appear in this system.")
       },{
+        :title => _("Project"),
+        :name => :selproject,
+        :value => project_id,
+        :opts => _ob.list_optshash(:Project, {:none => true}),
+        :descr => _("The project that this task belongs under.")
+      },{
         :title => _("Description"),
         :name => :texdescr,
         :value => [task, :descr],
@@ -53,6 +67,7 @@
     <tr>
       <td colspan="2" class="buttons">
         <%if task%>
+          <input type="button" value="<%=_("Show")%>" onclick="location.href='?show=task_show&amp;task_id=<%=task.id%>';" />
           <input type="button" value="<%=_("Delete")%>" onclick="if (confirm('<%=_("Do you want to delete this task?")%>')){location.href='?show=task_edit&amp;task_id=<%=task.id%>&amp;choice=dodelete';}" />
         <%end%>
         <input type="submit" value="<%=_("Save")%>" />
