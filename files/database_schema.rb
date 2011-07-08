@@ -35,7 +35,10 @@ $schema = {
       "columns" => [
         {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
         {"name" => "task_id", "type" => "int"},
-        {"name" => "user_id", "type" => "int"}
+        {"name" => "user_id", "type" => "int"},
+        {"name" => "date", "type" => "date"},
+        {"name" => "time", "type" => "time"},
+        {"name" => "comment", "type" => "text"}
       ],
       "indexes" => [
         {"name" => "task_id", "columns" => ["task_id"]},

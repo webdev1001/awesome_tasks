@@ -6,7 +6,7 @@ source "http://rubygems.org"
 gem "knjrbfw"
 gem "knjappserver", ">= 0.0.2"
 gem "erubis"
-gem "knjdbrevision"
+gem "knjdbrevision", ">= 0.0.1"
 gem "sqlite3"
 
 # Add dependencies to develop your gem here.

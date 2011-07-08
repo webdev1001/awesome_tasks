@@ -9,7 +9,8 @@ GEM
       git (>= 1.2.5)
       rake
     knjappserver (0.0.2)
-    knjdbrevision ()
+    knjdbrevision (0.0.1)
+      knjrbfw
     knjrbfw (0.0.1)
     rake (0.9.2)
     rcov (0.9.9)
@@ -31,7 +32,7 @@ DEPENDENCIES
   erubis
   jeweler (~> 1.6.3)
   knjappserver (>= 0.0.2)
-  knjdbrevision
+  knjdbrevision (>= 0.0.1)
   knjrbfw
   rcov
   rspec (~> 2.3.0)

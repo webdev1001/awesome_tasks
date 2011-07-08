@@ -1,20 +1,40 @@
 <%
   task = _ob.get(:Task, _get["task_id"])
   tlogs = task.timelogs
+  comments = task.comments
   
   print _site.header(sprintf(_("Show task: %s."), task.name.html))
-  print task[:descr]
 %>
 
-<%=_site.boxt(_("Timelogs"), "350px")%>
+<div style="padding-bottom: 15px;">
+  <input type="button" value="<%=_("Edit task")%>" onclick="location.href='?show=task_edit&amp;task_id=<%=task.id%>';" />
+</div>
+
+<div style="padding-bottom: 15px;">
+<%
+  print task[:descr]
+%>
+</div>
+
+<div style="padding-bottom: 15px;">
+  <%=_site.boxt(_("Comments"), "600px")%>
+    
+  <%=_site.boxb%>
+</div>
+
+<%=_site.boxt(_("Timelogs"), "600px")%>
   <div style="padding-bottom: 15px;">
-    <input type="button" value="<%=_("Add new")%>" onclick="alert('stub!');" />
+    <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_("Add timelog")%>', url: 'clean.rhtml?show=timelog_edit&amp;task_id=<%=task.id%>'});" />
   </div>
   
   <table class="list">
     <thead>
       <tr>
         <th><%=_("ID")%></th>
+        <th><%=_("Time")%></th>
+        <th><%=_("Date")%></th>
+        <th><%=_("User")%></th>
+        <th><%=_("Comment")%></th>
       </tr>
     </thead>
     <tbody>
@@ -22,8 +42,20 @@
         tlogs.each do |tlog|
           %>
             <tr>
-              <td>
+              <td style="width: 30px;">
                 <%=tlog.id%>
+              </td>
+              <td style="width: 60px;">
+                <%=tlog[:time]%>
+              </td>
+              <td style="width: 70px;">
+                <%=Knj::Datet.in(tlog[:date]).out(:time => false)%>
+              </td>
+              <td style="width: 80px;">
+                <%=tlog.user_html%>
+              </td>
+              <td>
+                <%=tlog[:comment].html%>
               </td>
             </tr>
           <%

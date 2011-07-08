@@ -1,0 +1,11 @@
+<%
+  _site.load_request
+  
+  show = _get["show"]
+  show = "frontpage" if !show
+  showp = "../pages/#{show}.rhtml"
+  
+  showp = "../pages/user_login.rhtml" if !_site.user
+  
+  _kas.import(showp)
+%>

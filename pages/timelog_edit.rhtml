@@ -1,0 +1,99 @@
+<%
+  task_id = _get["task_id"] if _get["task_id"].to_i > 0
+  
+  if _get["choice"] == "dosave"
+    save_hash = {
+      :time => _post["textime"],
+      :date => Knj::Datet.in(_post["texdate"]),
+      :comment => _post["texcomment"],
+      :task_id => _post["seltask"]
+    }
+  end
+  
+  if _get["timelog_id"].to_i > 0
+    timelog = _ob.get(:Timelog, _get["timelog_id"])
+    task_id = timelog.task.id
+    
+    if _get["choice"] == "dosave"
+      timelog.update(save_hash)
+      exit
+    end
+    
+    if _get["choice"] == "dodelete"
+      _ob.delete(timelog)
+      exit
+    end
+  else
+    if _get["choice"] == "dosave"
+      timelog = _ob.add(:Timelog, save_hash)
+      exit
+    end
+  end
+%>
+
+<form method="get" onsubmit="return do_save_timelog();">
+
+<%=_site.boxt(_("Enter details"), "350px")%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Task"),
+        :name => :seltask,
+        :value => task_id,
+        :opts => _ob.list_optshash(:Task),
+        :descr => _("On which task should this timelog be saved?")
+      },{
+        :title => _("Time"),
+        :name => :textime,
+        :value => "00:00:00",
+        :descr => _("How much time should be logged?")
+      },{
+        :title => _("Date"),
+        :name => :texdate,
+        :value => Knj::Datet.new.out(:time => false),
+        :descr => _("On which date was the time used?")
+      },{
+        :title => _("Comment"),
+        :name => :texcomment,
+        :descr => _("What whas done using the time.")
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="submit" value="<%=_("Save")%>" />
+      </td>
+    </tr>
+  </table>
+<%=_site.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  modal_on_opened(function(){
+    $("#textime").focus();
+  });
+  
+  function do_save_timelog(){
+    urlstr = "clean.rhtml?show=timelog_edit&choice=dosave";
+    
+    $.ajax({
+      type: "POST",
+      url: urlstr,
+      data: {
+        "textime": $("#textime").val(),
+        "texdate": $("#texdate").val(),
+        "texcomment": $("#texcomment").val(),
+        "seltask": $("#seltask").val()
+      },
+      complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }else{
+          modal_close();
+        }
+      }
+    });
+    
+    return false;
+  }
+</script>

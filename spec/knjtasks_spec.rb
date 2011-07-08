@@ -41,6 +41,7 @@ describe "Knjtasks" do
       :db => db,
       :knjjs_url => "http://www.kaspernj.org/js"
     )
+    
     tasks.start
     tasks.join
   end
