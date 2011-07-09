@@ -28,34 +28,65 @@ a:active, a:hover{
 table.main_table{
   height: 100%;
   width: 1000px;
-  border: 1px solid black;
   border-top: none;
   border-bottom: none;
-  background-color: #ffffff;
 }
 
 td.main_logo{
   font-size: 24px;
-  padding: 12px;
+  padding: 15px;
+  padding-left: 28px;
+  height: 40px;
 }
 
-td.main_menu{
-  border: 1px solid black;
-  border-left: none;
-  border-right: none;
-  padding: 5px;
+div.main_menu_outer{
+  position: relative;
+  height: 19px;
 }
 
-td.main_content{
-  height: 100%;
-  vertical-align: top;
-  padding: 12px;
+div.main_menu_inner{
+  position: absolute;
+  top: -15px;
+  font-size: 16px;
 }
 
 td.main_bottom{
-  border-top: 1px solid black;
   text-align: center;
   padding: 4px;
+  background-color: #ffffff;
+  height: 25px;
+}
+
+td.main_corner_top_left{
+  width: 41px;
+  height: 41px;
+  background: url("/gfx/main_box_top_left.png") 0 0 no-repeat;
+}
+
+td.main_corner_top_right{
+  width: 41px;
+  height: 41px;
+  background: url("/gfx/main_box_top_right.png") 0 0 no-repeat;
+}
+
+td.main_side_top{
+  height: 41px;
+  background: url("/gfx/main_box_top.png") 0 0 repeat-x;
+}
+
+td.main_side_left{
+  width: 41px;
+  background: url("/gfx/main_box_left.png") 0 0 repeat-y;
+}
+
+td.main_side_right{
+  width: 41px;
+  background: url("/gfx/main_box_right.png") 0 0 repeat-y;
+}
+
+td.main_body{
+  background-color: #ffffff;
+  vertical-align: top;
 }
 
 table.box{

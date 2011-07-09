@@ -54,46 +54,64 @@
   <center>
   <table class="main_table" cellspacing="0" cellpadding="0">
     <tr>
-      <td class="main_logo">
+      <td colspan="3" class="main_logo">
         knjTasks
       </td>
     </tr>
     <tr>
-      <td class="main_menu">
-        <%
-          if _site.user
-            menu = [
-              {:name => _("Frontpage"), :link => "?show=frontpage"},
-              {:name => _("Projects"), :link => "?show=project_search"},
-              {:name => _("Tasks"), :link => "?show=task_search"},
-              {:name => _("Users"), :link => "?show=user_search"},
-              {:name => _("Log out"), :link => "?show=user_login&choice=dologout"}
-            ]
-          else
-            menu = [
-              {:name => _("Log in"), :link => "?show=user_login"}
-            ]
-          end
-          
-          menu.each do |mi|
-            %>
-              <a href="<%=mi[:link]%>"><%=mi[:name]%></a>&nbsp;&nbsp;&nbsp;
-            <%
-          end
-        %>
-      </td>
+      <td class="main_corner_top_left"></td>
+      <td class="main_side_top"></td>
+      <td class="main_corner_top_right"></td>
     </tr>
     <tr>
-      <td class="main_content">
-        <%
-          _kas.import(showp)
-        %>
+      <td class="main_side_left"></td>
+      <td class="main_body">
+        <div class="main_menu_outer">
+          <div class="main_menu_inner">
+          <%
+            if _site.user
+              menu = [
+                {:name => _("Frontpage"), :link => "?show=frontpage"},
+                {:name => _("Projects"), :link => "?show=project_search"},
+                {:name => _("Tasks"), :link => "?show=task_search"},
+                {:name => _("Users"), :link => "?show=user_search"},
+                {:name => _("Log out"), :link => "?show=user_login&choice=dologout"}
+              ]
+            else
+              menu = [
+                {:name => _("Log in"), :link => "?show=user_login"}
+              ]
+            end
+            
+            menu.each do |mi|
+              %>
+                <a href="<%=mi[:link]%>"><%=mi[:name]%></a>&nbsp;&nbsp;&nbsp;
+              <%
+            end
+          %>
+          </div>
+        </div>
+        <div class="main_content">
+          <%
+            _kas.import(showp)
+          %>
+        </div>
       </td>
+      <td class="main_side_right"></td>
     </tr>
     <tr>
+      <td class="main_side_left"></td>
       <td class="main_bottom">
+        <div style="padding-bottom: 15px;">
+          Language:
+          <select style="width: 100px;" onchange="location.href='<%=_meta["REQUEST_URI"]%>&amp;l=' + this.value;">
+            <%=Knj::Web.opts(_kas.gettext.lang_opts, _session[:locale])%>
+          </select>
+        </div>
+        
         <%=sprintf(_("Made by %s"), "<a href=\"mailto:k@spernj.org\">Kasper Johansen</a>")%>
       </td>
+      <td class="main_side_right"></td>
     </tr>
   </table>
   </center>

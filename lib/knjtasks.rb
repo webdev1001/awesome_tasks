@@ -84,7 +84,12 @@ class Knjtasks
   end
   
   def load_request
+    Knj::Php.header("Content-Type: text/html; charset=utf-8")
     
+    if _get.has_key?("l")
+      _session[:locale] = _get["l"]
+      _kas.redirect(_meta["REQUEST_URI"].gsub(/&l=([A-z_]+)/, ""))
+    end
   end
   
   def header(title)
