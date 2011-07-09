@@ -1,5 +1,6 @@
 <%
   project = _ob.get(:Project, _get["project_id"])
+  tasks = project.tasks
   
   print _site.header(sprintf(_("Show project: %s."), project.name.html))
 %>
@@ -15,5 +16,44 @@
         )
       end
     %>
+  </table>
+<%=_site.boxb%>
+
+<br />
+
+<%=_site.boxt(_("Tasks"), "350px")%>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%=_("Task")%></th>
+        <th><%=_("Author")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        tasks.each do |task|
+          %>
+            <tr>
+              <td>
+                <%=task.html%>
+              </td>
+              <td>
+                <%=task.user_html%>
+              </td>
+            </tr>
+          <%
+        end
+        
+        if tasks.empty?
+          %>
+            <tr>
+              <td colspan="2" class="error">
+                <%=_("No tasks were found.")%>
+              </td>
+            </tr>
+          <%
+        end
+      %>
+    </tbody>
   </table>
 <%=_site.boxb%>

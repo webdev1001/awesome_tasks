@@ -1,5 +1,6 @@
+var events = new Events();
+
 $(document).ready(function(){
-  //NOTE: THIS IS NOT DONE!!
   modal_setup({
     url: js_settings["knjjs_url"],
     css: {
@@ -21,3 +22,13 @@ $(document).ready(function(){
     }
   });
 });
+
+function comment_delete(comment_id){
+  $.ajax({type: "GET", url: "clean.rhtml?show=comment_edit&choice=dodelete&comment_id=" + comment_id, cache: false, async: true, complete: function(data){
+    if (data.responseText.length > 0){
+      alert(data.responseText);
+    }
+    
+    events.call("do_comments_update");
+  }});
+}

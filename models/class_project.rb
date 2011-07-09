@@ -1,4 +1,9 @@
 class Knjtasks::Project < Knj::Datarow
+  has_one [
+    {:classname => :User, :colname => :added_user_id, :methodname => :added_user, :required => true}
+  ]
+  has_many [[:Task, :project_id]]
+  
   def self.list(d)
     sql = "SELECT * FROM Project WHERE 1=1"
     
@@ -17,20 +22,11 @@ class Knjtasks::Project < Knj::Datarow
   def self.add(d)
     raise _("Invalid name given.") if d.data[:name].to_s.strip.length <= 0
     
-    if !d.data[:added_user_id] and _site.user
-      d.data[:added_user_id] = _site.user.id
-    end
-    
-    if !d.data[:added_date]
-      d.data[:added_date] = Time.new
-    end
+    d.data[:added_user_id] = _site.user.id if !d.data[:added_user_id] and _site.user
+    d.data[:added_date] = Time.new if !d.data[:added_date]
   end
   
   def html
     return "<a href=\"?show=project_show&amp;project_id=#{id}\">#{name.html}</a>"
-  end
-  
-  def added_user
-    return _ob.get_try(self, :added_user_id, :User)
   end
 end

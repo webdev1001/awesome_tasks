@@ -7,6 +7,7 @@
   
   if _get["comment_id"].to_i > 0
     comment = _ob.get(:Comment, _get["comment_id"])
+    url = "&comment_id=#{comment.id}"
     
     if _get["choice"] == "dosave"
       comment.update(save_hash)
@@ -18,7 +19,11 @@
       exit
     end
   else
+    url = "&object_class=#{_get["object_class"]}&object_id=#{_get["object_id"]}"
+    
     if _get["choice"] == "dosave"
+      save_hash[:object_class] = _get["object_class"]
+      save_hash[:object_id] = _get["object_id"]
       comment = _ob.add(:Comment, save_hash)
       exit
     end
@@ -50,16 +55,24 @@
 
 <script type="text/javascript">
   function do_save_comment(){
+    comment_val = FCKeditorAPI.GetInstance("texcomment").GetHTML();
+    if (comment_val.length <= 0){
+      alert("<%=_('Please write a comment before saving.')%>");
+      return false;
+    }
+    
     $.ajax({
       type: "POST",
-      url: "clean.rhtml?show=comment_edit&choice=dosave<%if comment; print "&amp;comment_id=#{comment.id}"; end%>",
+      url: "clean.rhtml?show=comment_edit&choice=dosave<%=url%>",
       data: {
-        "comment" => $("#texcomment").val()
+        "texcomment": comment_val
       },
       complete: function(data){
         if (data.responseText.length > 0){
           alert(data.responseText);
         }else{
+          events.call("on_comment_added");
+          events.call("do_comments_update");
           modal_close();
         }
       }

@@ -1,4 +1,12 @@
 class Knjtasks::Task < Knj::Datarow
+  has_many [
+    [:Timelog, :task_id]
+  ]
+  has_one [
+    {:classname => :Project, :required => true},
+    :User
+  ]
+  
   def self.list(d)
     sql = "SELECT * FROM Task WHERE 1=1"
     
@@ -26,10 +34,6 @@ class Knjtasks::Task < Knj::Datarow
   
   def html
     return "<a href=\"?show=task_show&amp;task_id=#{id}\">#{name.html}</a>"
-  end
-  
-  def timelogs(args = {})
-    return _ob.list(:Timelog, {"task" => self}.merge(args))
   end
   
   def comments(args = {})

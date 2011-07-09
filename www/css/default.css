@@ -88,6 +88,12 @@ td.error{
   text-align: center;
 }
 
+input, select, textarea{
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  color: #000000;
+}
+
 input.input_text, input.input_password, select.input_select{
   width: 100%;
 }

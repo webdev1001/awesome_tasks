@@ -27,11 +27,14 @@ $schema = {
       "columns" => [
         {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
         {"name" => "project_id", "type" => "int"},
+        {"name" => "user_id", "type" => "int"},
+        {"name" => "date_added", "type" => "datetime"},
         {"name" => "name", "type" => "varchar"},
         {"name" => "descr", "type" => "text"}
       ],
       "indexes" => [
-        {"name" => "project_id", "columns" => ["project_id"]}
+        {"name" => "project_id", "columns" => ["project_id"]},
+        {"name" => "user_id", "columns" => ["user_id"]}
       ]
     },
     "Task_assigned_user" => {

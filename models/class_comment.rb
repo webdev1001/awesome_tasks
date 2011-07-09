@@ -1,4 +1,8 @@
 class Knjtasks::Comment < Knj::Datarow
+  has_one [
+    {:classname => :User, :required => true}
+  ]
+  
   def self.list(d)
     sql = "SELECT * FROM Comment WHERE 1=1"
     
@@ -20,9 +24,11 @@ class Knjtasks::Comment < Knj::Datarow
   end
   
   def self.add(d)
-    if !d.data[:user_id] and _site.user
-      d.data[:user_id ] = _site.user.id
-    end
+    d.data[:user_id ] = _site.user.id if !d.data[:user_id] and _site.user
+    d.data[:date_saved] = Time.new if !d.data[:date_saved]
+    
+    raise "No 'object_class' was given." if !d.data[:object_class]
+    raise "No 'object_id' was given." if !d.data[:object_id]
     
     obj = d.ob.get(d.data[:object_class], d.data[:object_id])
     user = d.ob.get(:User, d.data[:user_id])

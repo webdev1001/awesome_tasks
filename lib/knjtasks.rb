@@ -17,6 +17,13 @@ class Knjtasks
       :class_path => "#{File.dirname(__FILE__)}/../models",
       :module => Knjtasks
     )
+    @ob.events.connect(:no_html) do |event, classname|
+      class_trans = @class_translations[classname]
+      class_trans = classname.to_s.downcase if !class_trans
+      
+      msg = "[#{sprintf(_("no %s"), class_trans)}]"
+      msg
+    end
     
     @erbhandler = Knjappserver::ERBHandler.new
     @knjappserver = Knjappserver.new(
@@ -60,6 +67,12 @@ class Knjtasks
     @knjappserver.update_db
     @knjappserver.define_magic_var(:_site, self)
     @knjappserver.define_magic_var(:_ob, @ob)
+    
+    @class_translations = {
+      :User => _("user"),
+      :Project => _("project"),
+      :Task => _("task")
+    }
   end
   
   def join
