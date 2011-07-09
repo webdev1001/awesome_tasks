@@ -1,4 +1,8 @@
 class Knjtasks::User < Knj::Datarow
+  has_many [
+    [:Task, :user_id]
+  ]
+  
   def self.list(d)
     sql = "SELECT * FROM User WHERE 1=1"
     
@@ -26,5 +30,9 @@ class Knjtasks::User < Knj::Datarow
   
   def html
     return "<a href=\"?show=user_show&amp;user_id=#{id}\">#{name.html}</a>"
+  end
+  
+  def name
+    return self[:username].to_s
   end
 end

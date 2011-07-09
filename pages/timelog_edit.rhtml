@@ -13,6 +13,9 @@
   if _get["timelog_id"].to_i > 0
     timelog = _ob.get(:Timelog, _get["timelog_id"])
     task_id = timelog.task.id
+    date_val = Knj::Datet.in(timelog[:date]).out(:time => false)
+    time_val = timelog[:time]
+    url = "&timelog_id=#{timelog.id}"
     
     if _get["choice"] == "dosave"
       timelog.update(save_hash)
@@ -24,8 +27,16 @@
       exit
     end
   else
+    date_val = Knj::Datet.new.out(:time => false)
+    time_val = "00:00:00"
+    
     if _get["choice"] == "dosave"
-      timelog = _ob.add(:Timelog, save_hash)
+      begin
+        timelog = _ob.add(:Timelog, save_hash)
+      rescue RuntimeError => e
+        puts e.message
+      end
+      
       exit
     end
   end
@@ -45,16 +56,17 @@
       },{
         :title => _("Time"),
         :name => :textime,
-        :value => "00:00:00",
+        :value => time_val,
         :descr => _("How much time should be logged?")
       },{
         :title => _("Date"),
         :name => :texdate,
-        :value => Knj::Datet.new.out(:time => false),
+        :value => date_val,
         :descr => _("On which date was the time used?")
       },{
         :title => _("Comment"),
         :name => :texcomment,
+        :value => [timelog, :comment],
         :descr => _("What whas done using the time.")
       }])
     %>
@@ -74,7 +86,7 @@
   });
   
   function do_save_timelog(){
-    urlstr = "clean.rhtml?show=timelog_edit&choice=dosave";
+    urlstr = "clean.rhtml?show=timelog_edit&choice=dosave<%=url%>";
     
     $.ajax({
       type: "POST",
@@ -90,6 +102,8 @@
           alert(data.responseText);
         }else{
           modal_close();
+          events.call("on_timelog_added");
+          events.call("do_timelogs_update");
         }
       }
     });

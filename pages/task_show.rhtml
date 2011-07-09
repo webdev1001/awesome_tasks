@@ -1,6 +1,6 @@
 <%
   task = _ob.get(:Task, _get["task_id"])
-  tlogs = task.timelogs
+  tlogs = task.timelogs("orderby" => "date")
   
   if _get["choice"] == "getcomments"
     comments = task.comments
@@ -39,6 +39,63 @@
     exit
   end
   
+  if _get["choice"] == "gettimelogs"
+    %>
+      <table class="list">
+        <thead>
+          <tr>
+            <th><%=_("ID")%></th>
+            <th><%=_("Time")%></th>
+            <th><%=_("Date")%></th>
+            <th><%=_("User")%></th>
+            <th><%=_("Comment")%></th>
+            <th><%=_("Actions")%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%
+            tlogs.each do |tlog|
+              %>
+                <tr>
+                  <td style="width: 30px;">
+                    <%=tlog.id%>
+                  </td>
+                  <td style="width: 60px;">
+                    <%=tlog[:time]%>
+                  </td>
+                  <td style="width: 70px;">
+                    <%=Knj::Datet.in(tlog[:date]).out(:time => false)%>
+                  </td>
+                  <td style="width: 80px;">
+                    <%=tlog.user_html%>
+                  </td>
+                  <td>
+                    <%=tlog[:comment].html%>
+                  </td>
+                  <td style="width: 70px;">
+                    (<a href="javascript: timelog_edit('<%=tlog.id%>');"><%=_("edit")%></a>, <a href="javascript: if (confirm('<%=_("Do you want to delete this timelog?")%>')){timelog_delete('<%=tlog.id%>');}"><%=_("delete")%></a>)
+                  </td>
+                </tr>
+              <%
+            end
+            
+            if tlogs.empty?
+              %>
+                <tr>
+                  <td colspan="6" class="error">
+                    <%=_("No timelogs were found.")%>
+                  </td>
+                </tr>
+              <%
+            end
+          %>
+        </tbody>
+      </table>
+    <%
+    
+    exit
+  end
+  
   print _site.header(sprintf(_("Show task: %s."), task.name.html))
 %>
 
@@ -51,7 +108,7 @@
 </div>
 
 <div style="padding-bottom: 15px;">
-  <%=_site.boxt(_("Comments"), "600px")%>
+  <%=_site.boxt(_("Comments"), "800px")%>
     <div style="padding-bottom: 15px;">
       <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_("Add new comment")%>', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=task.id%>'});" />
     </div>
@@ -65,62 +122,23 @@
   <%=_site.boxb%>
 </div>
 
-<%=_site.boxt(_("Timelogs"), "600px")%>
+<%=_site.boxt(_("Timelogs"), "800px")%>
   <div style="padding-bottom: 15px;">
     <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_("Add timelog")%>', url: 'clean.rhtml?show=timelog_edit&amp;task_id=<%=task.id%>'});" />
   </div>
   
-  <table class="list">
-    <thead>
-      <tr>
-        <th><%=_("ID")%></th>
-        <th><%=_("Time")%></th>
-        <th><%=_("Date")%></th>
-        <th><%=_("User")%></th>
-        <th><%=_("Comment")%></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%
-        tlogs.each do |tlog|
-          %>
-            <tr>
-              <td style="width: 30px;">
-                <%=tlog.id%>
-              </td>
-              <td style="width: 60px;">
-                <%=tlog[:time]%>
-              </td>
-              <td style="width: 70px;">
-                <%=Knj::Datet.in(tlog[:date]).out(:time => false)%>
-              </td>
-              <td style="width: 80px;">
-                <%=tlog.user_html%>
-              </td>
-              <td>
-                <%=tlog[:comment].html%>
-              </td>
-            </tr>
-          <%
-        end
-        
-        if tlogs.empty?
-          %>
-            <tr>
-              <td colspan="1" class="error">
-                <%=_("No timelogs were found.")%>
-              </td>
-            </tr>
-          <%
-        end
-      %>
-    </tbody>
-  </table>
+  <div id="divtimelogs">
+    <div class="error"><%=_("Loading - please wait...")%></div>
+  </div>
 <%=_site.boxb%>
 
 <script type="text/javascript">
   events.connect("do_comments_update", function(){
     task_show_comments_update();
+  });
+  
+  events.connect("do_timelogs_update", function(){
+    task_show_timelogs_update();
   });
   
   function task_show_comments_update(){
@@ -132,7 +150,17 @@
     }});
   }
   
+  function task_show_timelogs_update(){
+    $.ajax({type: "GET", url: "clean.rhtml?show=task_show&task_id=<%=task.id%>&choice=gettimelogs", async: true, cache: false, complete: function(data){
+      $("#divtimelogs").slideUp("fast", function(){
+        $("#divtimelogs").html(data.responseText);
+        $("#divtimelogs").slideDown("fast");
+      });
+    }});
+  }
+  
   $(document).ready(function(){
     task_show_comments_update();
+    task_show_timelogs_update();
   });
 </script>

@@ -15,10 +15,8 @@ class Knjtasks::Timelog < Knj::Datarow
   end
   
   def self.add(d)
-    if !d.data[:user_id] and _site.user
-      d.data[:user_id] = _site.user.id
-    end
-    
+    d.data[:user_id] = _site.user.id if !d.data[:user_id] and _site.user
+    raise _("No comment has been written.") if d.data[:comment].to_s.length <= 0
     task = d.ob.get(:Task, d.data[:task_id])
   end
   

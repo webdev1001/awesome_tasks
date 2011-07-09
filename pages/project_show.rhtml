@@ -15,6 +15,12 @@
           :value => project.added_user.html
         )
       end
+      
+      print Knj::Web.input(
+        :title => _("Date"),
+        :type => :info,
+        :value => Knj::Datet.in(project[:added_date]).out(:time => false)
+      )
     %>
   </table>
 <%=_site.boxb%>

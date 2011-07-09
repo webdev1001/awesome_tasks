@@ -4,4 +4,47 @@
   print _site.header(sprintf(_("Show user: %s."), user.name.html))
 %>
 
-Nothing here yet.
+<%=_site.boxt(_("Actions"), "350px")%>
+  <input type="button" value="<%=_("Edit")%>" onclick="location.href='?show=user_edit&amp;user_id=<%=user.id%>';" />
+<%=_site.boxb%>
+
+<br />
+
+<%=_site.boxt(_("Tasks"), "350px")%>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%=_("Task")%></th>
+        <th><%=_("Date")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        tasks = user.tasks
+        
+        tasks.each do |task|
+          %>
+            <tr>
+              <td>
+                <%=task.html%>
+              </td>
+              <td>
+                <%=Knj::Datet.in(task[:date_saved]).out(:time => false)%>
+              </td>
+            </tr>
+          <%
+        end
+        
+        if tasks.empty?
+          %>
+            <tr>
+              <td colspan="2" class="error">
+                <%=_("No tasks were found for this user.")%>
+              </td>
+            </tr>
+          <%
+        end
+      %>
+    </tbody>
+  </table>
+<%=_site.boxb%>
