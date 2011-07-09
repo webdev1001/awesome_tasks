@@ -93,9 +93,9 @@ class Knjtasks
   
   def boxt(title, width = "100%")
     html = ""
-    html += "<table class=\"box\" style=\"width: #{width};\">"
-    html += "<tr><td class=\"box_header\">#{title}</td></tr>"
-    html += "<tr><td class=\"box_content\">"
+    html += "<table class=\"box\" style=\"width: #{width};\" cellspacing=\"0\" cellpadding=\"0\">"
+    html += "<tr><td class=\"box_header_spacer\">&nbsp;</td><td class=\"box_header\">#{title}</td></tr>"
+    html += "<tr><td colspan=\"2\" class=\"box_content\">"
     return html
   end
   

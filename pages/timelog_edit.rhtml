@@ -44,7 +44,7 @@
 
 <form method="get" onsubmit="return do_save_timelog();">
 
-<%=_site.boxt(_("Enter details"), "350px")%>
+<%=_site.boxt(_("Enter details"))%>
   <table class="form">
     <%
       print Knj::Web.inputs([{
@@ -67,7 +67,9 @@
         :title => _("Comment"),
         :name => :texcomment,
         :value => [timelog, :comment],
-        :descr => _("What whas done using the time.")
+        :type => :textarea,
+        :descr => _("What whas done using the time."),
+        :height => 200
       }])
     %>
     <tr>

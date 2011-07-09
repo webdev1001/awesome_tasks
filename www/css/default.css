@@ -1,6 +1,6 @@
 html, body, input, textarea, select, td{
-  font-family: tahoma, verdana, arial;
-  font-size: 10px;
+  font-family: verdana, tahoma, arial;
+  font-size: 12px;
   color: black;
 }
 
@@ -11,12 +11,27 @@ html, body{
   padding: 0px;
 }
 
+body{
+  background: url("/gfx/body_bg.jpg") 0 0 repeat;
+}
+
+a:link, a:visited{
+  color: #698295;
+  text-decoration: underline;
+}
+
+a:active, a:hover{
+  color: #272727;
+  text-decoration: underline;
+}
+
 table.main_table{
   height: 100%;
   width: 1000px;
   border: 1px solid black;
   border-top: none;
   border-bottom: none;
+  background-color: #ffffff;
 }
 
 td.main_logo{
@@ -44,12 +59,25 @@ td.main_bottom{
 }
 
 table.box{
-  border: 1px solid black;
+  border: none;
 }
 
 td.box_header{
   font-weight: bold;
   white-space: nowrap;
+  text-align: right;
+  background-color: #666666;
+  padding: 5px;
+  color: #d9d9d9;
+}
+
+td.box_header_spacer{
+  width: 27%;
+}
+
+td.box_content{
+  border: 1px solid #666666;
+  padding: 7px;
 }
 
 .buttons{
@@ -61,7 +89,7 @@ table.form, table.list{
 }
 
 thead > tr > th{
-  font-size: 10px;
+  font-size: 12px;
   text-align: left;
 }
 
@@ -89,11 +117,21 @@ td.error{
 }
 
 input, select, textarea{
-  border: 1px solid #000000;
+  border: 1px solid #bbbbbb;
   background-color: #ffffff;
   color: #000000;
+  padding: 4px;
 }
 
-input.input_text, input.input_password, select.input_select{
+input[type=button], input[type=submit]{
+  border: 1px solid #989898;
+  background: url("/gfx/button_bg.png") 0 0 repeat-x;
+  height: 20px;
+  font-size: 12px;
+  padding: 0px 9px 0px 9px;
+  margin: 0px 0px 0px 0px;
+}
+
+input.input_text, input.input_password, select.input_select, textarea.input_textarea{
   width: 100%;
 }
