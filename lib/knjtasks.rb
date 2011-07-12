@@ -11,6 +11,18 @@ class Knjtasks
     @args = args
     @db = @args[:db]
     
+    
+    check_args = [:db, :knjjs_url, :host, :port, :email_admin, :email_robot, :smtp_args, :db_args, :title]
+    check_args.each do |key|
+      raise "No '#{key}' given in arguments." if !@args.has_key?(key)
+    end
+    
+    
+    require "knjdbrevision"
+    require "#{File.dirname(__FILE__)}/../files/database_schema.rb"
+    dbrev = Knjdbrevision.new
+    dbrev.init_db($schema, @db)
+    
     @ob = Knj::Objects.new(
       :datarow => true,
       :db => @db,
@@ -25,13 +37,14 @@ class Knjtasks
       msg
     end
     
+    
     @erbhandler = Knjappserver::ERBHandler.new
     @knjappserver = Knjappserver.new(
       :debug => false,
       :autorestart => false,
       :autoload => false,
       :verbose => false,
-      :title => "knjTasks",
+      :title => @args[:title],
       :port => @args[:port],
       :host => @args[:host],
       :default_page => "index.rhtml",
@@ -45,20 +58,26 @@ class Knjtasks
       :locales_gettext_funcs => true,
       :locale_default => "da_DK",
       :max_requests_working => 5,
+      :error_emails_time => 5,
       :filetypes => {
-          :jpg => "image/jpeg",
-          :gif => "image/gif",
-          :png => "image/png",
-          :html => "text/html",
-          :htm => "text/html",
-          :rhtml => "text/html",
-          :css => "text/css",
-          :xml => "text/xml",
-          :js => "text/javascript"
+        :jpg => "image/jpeg",
+        :gif => "image/gif",
+        :png => "image/png",
+        :html => "text/html",
+        :htm => "text/html",
+        :rhtml => "text/html",
+        :css => "text/css",
+        :xml => "text/xml",
+        :js => "text/javascript"
       },
       :handlers => [
+        {
           :file_ext => "rhtml",
           :callback => @erbhandler.method(:erb_handler)
+        },{
+          :path => "/fckeditor",
+          :mount => "/usr/share/fckeditor"
+        }
       ],
       :db => @db,
       :smtp_args => @args[:smtp_args],

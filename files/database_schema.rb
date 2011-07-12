@@ -55,6 +55,8 @@ $schema = {
         {"name" => "user_id", "type" => "int"},
         {"name" => "date", "type" => "date"},
         {"name" => "time", "type" => "time"},
+        {"name" => "time_transport", "type" => "time"},
+        {"name" => "transport_length", "type" => "int"},
         {"name" => "comment", "type" => "text"}
       ],
       "indexes" => [

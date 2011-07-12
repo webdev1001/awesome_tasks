@@ -30,16 +30,19 @@ describe "Knjtasks" do
       :return_keys => "symbols",
       :index_append_table_name => true
     )
-    
-    require "#{File.dirname(__FILE__)}/../files/database_schema.rb"
-    dbrev = Knjdbrevision.new
-    dbrev.init_db($schema, db)
-    
     tasks = Knjtasks.new(
+      :title => "rake_rspec",
       :host => "0.0.0.0",
       :port => 1515,
       :db => db,
-      :knjjs_url => "http://www.kaspernj.org/js"
+      :knjjs_url => "http://www.kaspernj.org/js",
+      :email_admin => "k@spernj.org",
+      :email_robot => "k@spernj.org",
+      :smtp_args => {
+        "smtp_host" => "localhost",
+        "smtp_port" => 25
+      },
+      :db_args => false
     )
     
     tasks.start

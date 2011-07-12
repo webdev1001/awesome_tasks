@@ -1,6 +1,7 @@
 class Knjtasks::User < Knj::Datarow
   has_many [
-    [:Task, :user_id]
+    [:Task, :user_id],
+    [:Task_assigned_user, :user_id, :assigned_to_tasks]
   ]
   
   def self.list(d)

@@ -4,6 +4,8 @@
   if _get["choice"] == "dosave"
     save_hash = {
       :time => _post["textime"],
+      :time_transport => _post["textimetransport"],
+      :transport_length => _post["textransportlength"],
       :date => Knj::Datet.in(_post["texdate"]),
       :comment => _post["texcomment"],
       :task_id => _post["seltask"]
@@ -15,6 +17,7 @@
     task_id = timelog.task.id
     date_val = Knj::Datet.in(timelog[:date]).out(:time => false)
     time_val = timelog[:time]
+    time_transport_val = timelog[:time_transport]
     url = "&timelog_id=#{timelog.id}"
     
     if _get["choice"] == "dosave"
@@ -29,6 +32,7 @@
   else
     date_val = Knj::Datet.new.out(:time => false)
     time_val = "00:00:00"
+    time_transport_val = "00:00:00"
     
     if _get["choice"] == "dosave"
       begin
@@ -45,7 +49,7 @@
 <form method="get" onsubmit="return do_save_timelog();">
 
 <%=_site.boxt(_("Enter details"))%>
-  <table class="form">
+  <table class="form" id="formtimelogedit">
     <%
       print Knj::Web.inputs([{
         :title => _("Task"),
@@ -58,6 +62,16 @@
         :name => :textime,
         :value => time_val,
         :descr => _("How much time should be logged?")
+      },{
+        :title => _("Time transportation"),
+        :name => :textimetransport,
+        :value => time_transport_val,
+        :descr => _("How much time was used on transportation?")
+      },{
+        :title => _("Transportation length"),
+        :name => :textransportlength,
+        :value => [timelog, :transport_length],
+        :descr => _("How many km was used on transportation?")
       },{
         :title => _("Date"),
         :name => :texdate,
@@ -89,16 +103,12 @@
   
   function do_save_timelog(){
     urlstr = "clean.rhtml?show=timelog_edit&choice=dosave<%=url%>";
+    formdata = forms_inputs_read($("#formtimelogedit"));
     
     $.ajax({
       type: "POST",
       url: urlstr,
-      data: {
-        "textime": $("#textime").val(),
-        "texdate": $("#texdate").val(),
-        "texcomment": $("#texcomment").val(),
-        "seltask": $("#seltask").val()
-      },
+      data: formdata,
       complete: function(data){
         if (data.responseText.length > 0){
           alert(data.responseText);

@@ -8,6 +8,7 @@ gem "knjappserver", ">= 0.0.2"
 gem "erubis"
 gem "knjdbrevision", ">= 0.0.2"
 gem "sqlite3"
+gem "mail"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

@@ -1,4 +1,10 @@
 <%
+  if _get["choice"] == "removeassigned"
+    link = _ob.get(:Task_assigned_user, _get["link_id"])
+    _ob.delete(link)
+    exit
+  end
+  
   task = _ob.get(:Task, _get["task_id"])
   tlogs = task.timelogs("orderby" => "date")
   
@@ -72,7 +78,7 @@
                   <td>
                     <%=tlog[:comment].html%>
                   </td>
-                  <td style="width: 70px;">
+                  <td style="width: 10%;">
                     (<a href="javascript: timelog_edit('<%=tlog.id%>');"><%=_("edit")%></a>, <a href="javascript: if (confirm('<%=_("Do you want to delete this timelog?")%>')){timelog_delete('<%=tlog.id%>');}"><%=_("delete")%></a>)
                   </td>
                 </tr>
@@ -96,6 +102,61 @@
     exit
   end
   
+  if _get["choice"] == "getusers"
+    users = task.assigned_users
+    
+    %>
+      <table class="list">
+        <thead>
+          <tr>
+            <th><%=_("User")%></th>
+            <th><%=_("Actions")%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%
+            users.each do |link|
+              %>
+                <tr>
+                  <td>
+                    <%=link.user.html%>
+                  </td>
+                  <td>
+                    (<a href="javascript: if (confirm('<%=_("Do you want to remove this user from this task?")%>')){task_removed_assigned('<%=link.id%>');}"><%=_("remove")%></a>)
+                  </td>
+                </tr>
+              <%
+            end
+            
+            if users.empty?
+              %>
+                <tr>
+                  <td colspan="2" class="error">
+                    <%=_("No users has been assigned to this task.")%>
+                  </td>
+                </tr>
+              <%
+            end
+          %>
+        </tbody>
+      </table>
+    <%
+    exit
+  end
+  
+  if _get["choice"] == "assignuser"
+    begin
+      link = _ob.add(:Task_assigned_user, {
+        :task_id => task.id,
+        :user_id => _get["user_id"]
+      })
+    rescue RuntimeError => e
+      puts e.message
+    end
+    
+    exit
+  end
+  
   print _site.header(sprintf(_("Show task: %s."), task.name.html))
 %>
 
@@ -104,11 +165,32 @@
 </div>
 
 <div style="padding-bottom: 15px;">
-  <%=task[:descr]%>
+  <table style="width: 100%;" cellspacing="0" cellpadding="0">
+    <tr>
+      <td style="vertical-align: top; width: 60%;">
+        <%=_site.boxt(_("Description"))%>
+          <%=task[:descr]%>
+        <%=_site.boxb%>
+      </td>
+      <td style="vertical-align: top; padding-left: 15px;">
+        <%=_site.boxt(_("Assigned users"))%>
+          <div style="padding-bottom: 10px;">
+            <input type="button" value="<%=_("Assign a user")%>" onclick="modal({title: '<%=_("Assign user to task")%>', url: 'clean.rhtml?show=user_search&amp;ajaxsearch=true&amp;not_in_task_id=<%=task.id%>&amp;jscallback=task_show_assign_user_choose'});" />
+          </div>
+          
+          <div id="divusers">
+            <div class="error"><%=_("Loading - please wait...")%></div>
+          </div>
+        <%=_site.boxb%>
+      </td>
+    </tr>
+  </table>
+  
+  <div style="clear: both;"></div>
 </div>
 
 <div style="padding-bottom: 15px;">
-  <%=_site.boxt(_("Comments"), "800px")%>
+  <%=_site.boxt(_("Comments"))%>
     <div style="padding-bottom: 15px;">
       <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_("Add new comment")%>', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=task.id%>'});" />
     </div>
@@ -116,15 +198,12 @@
     <div id="divcomments">
       <div class="error"><%=_("Loading - please wait...")%></div>
     </div>
-    <%
-      
-    %>
   <%=_site.boxb%>
 </div>
 
-<%=_site.boxt(_("Timelogs"), "800px")%>
+<%=_site.boxt(_("Timelogs"))%>
   <div style="padding-bottom: 15px;">
-    <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_("Add timelog")%>', url: 'clean.rhtml?show=timelog_edit&amp;task_id=<%=task.id%>'});" />
+    <input type="button" value="<%=_("Add new")%>" onclick="timelog_edit(0);" />
   </div>
   
   <div id="divtimelogs">
@@ -139,6 +218,10 @@
   
   events.connect("do_timelogs_update", function(){
     task_show_timelogs_update();
+  });
+  
+  events.connect("do_task_assigned_users_update", function(){
+    task_show_users_update();
   });
   
   function task_show_comments_update(){
@@ -159,8 +242,29 @@
     }});
   }
   
+  function task_show_users_update(){
+    $.ajax({type: "GET", url: "clean.rhtml?show=task_show&task_id=<%=task.id%>&choice=getusers", async: true, cache: false, complete: function(data){
+      $("#divusers").slideUp("fast", function(){
+        $("#divusers").html(data.responseText);
+        $("#divusers").slideDown("fast");
+      });
+    }});
+  }
+  
+  function task_show_assign_user_choose(user_id){
+    $.ajax({type: "GET", url: "clean.rhtml?show=task_show&task_id=<%=task.id%>&choice=assignuser&user_id=" + user_id, async: true, cache: false, complete: function(data){
+      if (data.responseText.length > 0){
+        alert(data.responseText);
+      }
+      
+      task_show_users_update();
+      modal_close();
+    }});
+  }
+  
   $(document).ready(function(){
     task_show_comments_update();
     task_show_timelogs_update();
+    task_show_users_update();
   });
 </script>

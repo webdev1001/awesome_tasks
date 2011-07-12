@@ -109,6 +109,7 @@ td.box_header_spacer{
 td.box_content{
   border: 1px solid #666666;
   padding: 7px;
+  background-color: #ffffff;
 }
 
 .buttons{

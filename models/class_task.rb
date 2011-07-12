@@ -1,6 +1,7 @@
 class Knjtasks::Task < Knj::Datarow
   has_many [
-    [:Timelog, :task_id]
+    [:Timelog, :task_id],
+    [:Task_assigned_user, :task_id, :assigned_users]
   ]
   has_one [
     {:classname => :Project, :required => true},
