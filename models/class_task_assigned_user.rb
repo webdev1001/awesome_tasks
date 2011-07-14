@@ -5,7 +5,22 @@ class Knjtasks::Task_assigned_user < Knj::Datarow
   ]
   
   def self.list(d)
-    sql = "SELECT * FROM #{table} WHERE 1=1"
+    sql = "SELECT #{table}.* FROM #{table}"
+    
+    if d.args["orderby"] == "project_task_names"
+      orderby = "project_task_names"
+      d.args.delete("orderby")
+      
+      sql += "
+        LEFT JOIN Task ON
+          Task.id = #{table}.task_id
+        
+        LEFT JOIN Project ON
+          Project.id = Task.project_id
+      "
+    end
+    
+    sql += " WHERE 1=1"
     
     ret = list_helper(d)
     d.args.each do |key, val|
@@ -13,7 +28,13 @@ class Knjtasks::Task_assigned_user < Knj::Datarow
     end
     
     sql += ret[:sql_where]
-    sql += ret[:sql_order]
+    
+    if orderby == "task_name"
+      sql += " ORDER BY Project.name, Task.name"
+    else
+      sql += ret[:sql_order]
+    end
+    
     sql += ret[:sql_limit]
     
     return d.ob.list_bysql(table, sql)

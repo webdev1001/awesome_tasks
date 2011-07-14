@@ -4,7 +4,7 @@ html, body, input, textarea, select, td{
   color: black;
 }
 
-html, body{
+html, body, html > body > center{
   width: 100%;
   height: 100%;
   margin: 0px;
@@ -30,6 +30,7 @@ table.main_table{
   width: 1000px;
   border-top: none;
   border-bottom: none;
+  text-align: left;
 }
 
 td.main_logo{
@@ -155,7 +156,7 @@ input, select, textarea{
   padding: 4px;
 }
 
-input[type=button], input[type=submit]{
+input[type=button], input[type=submit], input.button{
   border: 1px solid #989898;
   background: url("/gfx/button_bg.png") 0 0 repeat-x;
   height: 20px;

@@ -1,1 +1,52 @@
-Test
+<%
+  print _site.header(_("Frontpage"))
+  
+  tasks_assigned_links = _ob.list(:Task_assigned_user)
+  
+  tasks = []
+  
+  tasks_assigned_links.each do |assigned_link|
+    tasks << assigned_link.task
+  end
+  
+  tasks_owner = _ob.list(:Task, {"user" => _site.user}) do |task|
+    tasks << task
+  end
+  
+  tasks.sort do |a, b|
+    a.name <=> b.name
+  end
+%>
+
+<%=_site.boxt(_("Tasks"), "350px")%>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%=_("Task")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        tasks.each do |task|
+          %>
+            <tr>
+              <td>
+                <%=task.html%>
+              </td>
+            </tr>
+          <%
+        end
+        
+        if tasks.empty?
+          %>
+            <tr>
+              <td colspan="2" class="error">
+                <%=_("No tasks were found.")%>
+              </td>
+            </tr>
+          <%
+        end
+      %>
+    </tbody>
+  </table>
+<%=_site.boxb%>
