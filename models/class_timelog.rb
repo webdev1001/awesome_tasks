@@ -1,6 +1,25 @@
 class Knjtasks::Timelog < Knj::Datarow
+  has_one [
+    :Task,
+    :User
+  ]
+  
   def self.list(d)
-    sql = "SELECT * FROM Timelog WHERE 1=1"
+    sql = "SELECT"
+    
+    if d.args[:count]
+      count = true
+      d.args.delete(:count)
+      sql += "
+        SUM(TIME_TO_SEC(Timelog.time)) AS sum_time,
+        SUM(TIME_TO_SEC(Timelog.time_transport)) AS sum_time_transport,
+        SUM(Timelog.transport_length) AS sum_transport_length
+      "
+    else
+      sql += "*"
+    end
+    
+    sql += " FROM Timelog WHERE 1=1"
     
     ret = list_helper(d)
     d.args.each do |key, val|
@@ -9,6 +28,11 @@ class Knjtasks::Timelog < Knj::Datarow
     
     sql += ret[:sql_where]
     sql += ret[:sql_order]
+    
+    if count
+      return d.db.query(sql).fetch
+    end
+    
     sql += ret[:sql_limit]
     
     return d.ob.list_bysql(:Timelog, sql)
@@ -21,19 +45,6 @@ class Knjtasks::Timelog < Knj::Datarow
   end
   
   def html
-    return "?show=timelog_edit&amp;timelog_id=#{id}\">#{sprintf(_("Timelog %s"), id)}</a>"
-  end
-  
-  def task
-    return ob.get_try(self, :task_id, :Task)
-  end
-  
-  def user
-    return ob.get_try(self, :user_id, :User)
-  end
-  
-  def user_html
-    return user.html if user
-    return "[#{_("no user")}]"
+    return "<a href=\"?show=timelog_edit&amp;timelog_id=#{id}\">#{sprintf(_("Timelog %s"), id)}</a>"
   end
 end

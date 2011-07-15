@@ -2,14 +2,15 @@ class Knjtasks
   attr_reader :knjappserver, :ob, :db, :args
   
   def initialize(args = {})
-    require "rubygems"
-    require "knjappserver"
-    require "knjrbfw"
-    require "knj/autoload"
-    require "knj/objects"
-    
     @args = args
     @db = @args[:db]
+    
+    require "rubygems"
+    require "#{@args[:knjappserver_path]}knjappserver"
+    require "#{@args[:knjrbfw_path]}knjrbfw"
+    
+    require "knj/autoload"
+    require "knj/objects"
     
     
     check_args = [:db, :knjjs_url, :host, :port, :email_admin, :email_robot, :smtp_args, :db_args, :title]
@@ -59,6 +60,8 @@ class Knjtasks
       :locale_default => "da_DK",
       :max_requests_working => 5,
       :error_emails_time => 5,
+      :knjrbfw_path => @args[:knjrbfw_path],
+      :knjappserver_path => @args[:knjappserver_path],
       :filetypes => {
         :jpg => "image/jpeg",
         :gif => "image/gif",
@@ -107,6 +110,7 @@ class Knjtasks
     
     if _get.has_key?("l")
       _session[:locale] = _get["l"]
+      _site.user[:locale] = _get["l"] if _site.user
       _kas.redirect(_meta["REQUEST_URI"].gsub(/&l=([A-z_]+)/, ""))
     end
   end

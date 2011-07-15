@@ -1,0 +1,161 @@
+<%
+  if _get["choice"] == "dosearch"
+    begin
+      date_from = Knj::Datet.in(_get["texdatefrom"])
+    rescue
+      _kas.alert(_("Invalid date-from.")).back
+    end
+    
+    begin
+      date_to = Knj::Datet.in(_get["texdateto"])
+    rescue
+      _kas.alert(_("Invalid date-to.")).back
+    end
+  else
+    date_from = Knj::Datet.new
+    date_from.date = 1
+    
+    date_to = Knj::Datet.new
+    date_to.date = date_to.days_in_month
+  end
+  
+  print _site.header(_("Timelogs"))
+%>
+
+<form method="get" onsubmit="return do_submit_criterias();">
+<%=Knj::Web.hiddens([{:name => :show, :value => :timelog_search}, {:name => :choice, :value => :dosearch}, {:name => :users, :value => ""}])%>
+
+<%=_site.boxt(_("Enter criteria"), "400px")%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Date from"),
+        :name => :texdatefrom,
+        :value => date_from.out(:time => false),
+        :descr => _("If you only want timelogs from a specific date and up.")
+      },{
+        :title => _("Date to"),
+        :name => :texdateto,
+        :value => date_to.out(:time => false),
+        :descr => _("If you only want timelogs up to a specific date.")
+      },{
+        :title => _("Comment"),
+        :name => :texcomment,
+        :value => _get["texcomment"],
+        :descr => _("A part of the comment in the timelog you are looking for.")
+      },{
+        :title => _("User"),
+        :name => :seluser,
+        :opts => _ob.list_optshash(:User),
+        :multiple => true,
+        :size => 5,
+        :values => _get["users"].to_s.split(";"),
+        :descr => _("If you want to find timelogs from specific users.")
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="submit" value="<%=_("Search")%>" />
+      </td>
+    </tr>
+  </table>
+<%=_site.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  $("#texdatefrom").focus();
+  
+  function do_submit_criterias(){
+    $("input[name=users]").val(select_values({sel: $("#seluser"), selected: true, expl: ";"}));
+    $("#seluser").val(false);
+    return true;
+  }
+</script>
+
+<%
+  if _get["choice"] == "dosearch"
+    args = {}
+    
+    if _get["texdatefrom"].to_s.length > 0
+      args["date_from"] = date_from
+    end
+    
+    if _get["texdateto"].to_s.length > 0
+      args["date_to"] = date_to
+    end
+    
+    if _get["texcomment"].to_s.length > 0
+      args["comment_search"] = _get["texcomment"]
+    end
+    
+    if _get["users"].to_s.length > 0
+      args["user_id"] = _get["users"].to_s.split(";")
+    end
+    
+    tlogs = _ob.list(:Timelog, args)
+    
+    %>
+      <br />
+      
+      <%=_site.boxt(_("Results"))%>
+        <table class="form">
+          <thead>
+            <tr>
+              <th><%=_("Timelog")%></th>
+              <th><%=_("User")%></th>
+              <th><%=_("Date")%></th>
+              <th><%=_("Task")%></th>
+              <th><%=_("Time")%> / <%=_("Transport")%></th>
+              <th><%=_("Transport length")%></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              tlogs.each do |tlog|
+                %>
+                  <tr>
+                    <td>
+                      <%=tlog.html%>
+                    </td>
+                    <td>
+                      <%=tlog.user_html%>
+                    </td>
+                    <td>
+                      <%
+                        if Knj::Datet.is_nullstamp?(tlog[:date])
+                          print "[#{_("no date")}]"
+                        else
+                          print Knj::Datet.in(tlog[:date]).out(:time => false)
+                        end
+                      %>
+                    </td>
+                    <td>
+                      <%=tlog.task_html%>
+                    </td>
+                    <td>
+                      <%=tlog[:time]%> / <%=tlog[:time_transport]%>
+                    </td>
+                    <td>
+                      <%=Knj::Locales.number_out(tlog[:transport_length], 0)%>
+                    </td>
+                  </tr>
+                <%
+              end
+              
+              if tlogs.empty?
+                %>
+                  <tr>
+                    <td colspan="1" class="error">
+                      <%=_("No timelogs were found.")%>
+                    </td>
+                  </tr>
+                <%
+              end
+            %>
+          </tbody>
+        </table>
+      <%=_site.boxb%>
+    <%
+  end
+%>

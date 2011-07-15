@@ -37,6 +37,7 @@
   <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/modal.js"></script>
   <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/events.js"></script>
   <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/forms.js"></script>
+  <script type="text/javascript" src="<%=_site.args[:knjjs_url]%>/select.js"></script>
   
   <script type="text/javascript" src="js/default.js"></script>
 </head>
@@ -77,6 +78,7 @@
                 {:name => _("Projects"), :link => "?show=project_search"},
                 {:name => _("Tasks"), :link => "?show=task_search"},
                 {:name => _("Users"), :link => "?show=user_search"},
+                {:name => _("Timelogs"), :link => "?show=timelog_search"},
                 {:name => _("Log out"), :link => "?show=user_login&choice=dologout"}
               ]
             else

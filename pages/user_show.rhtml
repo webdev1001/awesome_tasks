@@ -10,6 +10,26 @@
 
 <br />
 
+<%=_site.boxt(_("Information"), "350px")%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Name"),
+        :type => :info,
+        :value => user.name.html,
+        :descr => _("The real name of the user.")
+      },{
+        :title => _("Email"),
+        :type => :info,
+        :value => "<a href=\"mailto:#{user[:email]}\">#{user[:email]}</a>",
+        :descr => _("The email of the user.")
+      }])
+    %>
+  </table>
+<%=_site.boxb%>
+
+<br />
+
 <%=_site.boxt(_("Tasks"), "350px")%>
   <table class="list">
     <thead>

@@ -30,7 +30,9 @@ $schema = {
         {"name" => "user_id", "type" => "int"},
         {"name" => "date_added", "type" => "datetime"},
         {"name" => "name", "type" => "varchar"},
-        {"name" => "descr", "type" => "text"}
+        {"name" => "descr", "type" => "text"},
+        {"name" => "type", "type" => "enum", "maxlength" => "'feature','bug','question'"},
+        {"name" => "status", "type" => "enum", "maxlength" => "'open','confirmed','waiting','closed'"}
       ],
       "indexes" => [
         {"name" => "project_id", "columns" => ["project_id"]},
@@ -70,7 +72,8 @@ $schema = {
         {"name" => "name", "type" => "varchar"},
         {"name" => "username", "type" => "varchar"},
         {"name" => "passwd", "type" => "varchar"},
-        {"name" => "email", "type" => "varchar"}
+        {"name" => "email", "type" => "varchar"},
+        {"name" => "locale", "type" => "varchar", "maxlength" => 5, "default" => "en_GB", "comment" => "The current locale of the user which should be used for the stuff sent to him."}
       ],
       "on_create_after" => proc{|data|
         data["db"].insert(:User, {"username" => "admin", "passwd" => Knj::Php.md5("admin")})

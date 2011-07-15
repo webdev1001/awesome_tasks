@@ -3,7 +3,9 @@
     save_hash = {
       :name => _post["texname"],
       :descr => _post["texdescr"],
-      :project_id => _post["selproject"]
+      :project_id => _post["selproject"],
+      :type => _post["seltype"],
+      :status => _post["selstatus"]
     }
   end
   
@@ -26,8 +28,12 @@
     project_id = _get["project_id"] if _get["project_id"].to_i > 0
     
     if _get["choice"] == "dosave"
-      task = _ob.add(:Task, save_hash)
-      _kas.redirect("?show=task_edit&task_id=#{task.id}")
+      begin
+        task = _ob.add(:Task, save_hash)
+        _kas.redirect("?show=task_edit&task_id=#{task.id}")
+      rescue => e
+        _kas.alert(e.message).back
+      end
     end
   end
   
@@ -55,6 +61,18 @@
         :value => project_id,
         :opts => _ob.list_optshash(:Project, {:none => true}),
         :descr => _("The project that this task belongs under.")
+      },{
+        :title => _("Type"),
+        :name => :seltype,
+        :value => [task, :type],
+        :descr => _("The type of the task."),
+        :opts => _ob.static(:Task, :type_opts)
+      },{
+        :title => _("Status"),
+        :name => :selstatus,
+        :value => [task, :status],
+        :descr => _("The status of the task."),
+        :opts => _ob.static(:Task, :status_opts)
       },{
         :title => _("Description"),
         :name => :texdescr,

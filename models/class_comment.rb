@@ -33,4 +33,12 @@ class Knjtasks::Comment < Knj::Datarow
     obj = d.ob.get(d.data[:object_class], d.data[:object_id])
     user = d.ob.get(:User, d.data[:user_id])
   end
+  
+  def object
+    return ob.get_try(self, :object_id, self[:object_class])
+  end
+  
+  def add_after(d)
+    object.send_notify_new_comment(self) if object.class.name == "Knjtasks::Task"
+  end
 end

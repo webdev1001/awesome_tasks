@@ -5,6 +5,13 @@
   print _site.header(sprintf(_("Show project: %s."), project.name.html))
 %>
 
+<%=_site.boxt(_("Actions"), "350px")%>
+  <input type="button" value="<%=_("Edit project")%>" onclick="location.href='?show=project_edit&amp;project_id=<%=project.id%>';" />
+  <input type="button" value="<%=_("Add task")%>" onclick="location.href='?show=task_edit&amp;project_id=<%=project.id%>';" />
+<%=_site.boxb%>
+
+<br />
+
 <%=_site.boxt(_("Information"), "350px")%>
   <table class="form">
     <%

@@ -37,7 +37,7 @@
     if comments.empty?
       %>
         <div class="error">
-          <%=_("No comments were found for this task.")%>
+          <%=_"No comments were found for this task."%>
         </div>
       <%
     end
@@ -72,7 +72,7 @@
                   <td style="width: 70px;">
                     <%=Knj::Datet.in(tlog[:date]).out(:time => false)%>
                   </td>
-                  <td style="width: 80px;">
+                  <td style="width: 110px;">
                     <%=tlog.user_html%>
                   </td>
                   <td>
@@ -161,13 +161,51 @@
 %>
 
 <div style="padding-bottom: 15px;">
-  <input type="button" value="<%=_("Edit task")%>" onclick="location.href='?show=task_edit&amp;task_id=<%=task.id%>';" />
+  <input type="button" value="<%=_"Edit task"%>" onclick="location.href='?show=task_edit&amp;task_id=<%=task.id%>';" />
 </div>
 
 <div style="padding-bottom: 15px;">
   <table style="width: 100%;" cellspacing="0" cellpadding="0">
     <tr>
       <td style="vertical-align: top; width: 60%;">
+        <%=_site.boxt(_("Task"))%>
+          <table class="form">
+            <%
+              print Knj::Web.inputs([{
+                :title => _("Status"),
+                :type => :info,
+                :value => _ob.static(:Task, :status_opts)[task[:status].to_sym],
+                :descr => _("The current status of the task.")
+              },{
+                :title => _("Type"),
+                :type => :info,
+                :value => _ob.static(:Task, :type_opts)[task[:type].to_sym],
+                :descr => _("The type of task this is.")
+              }])
+              
+              if task.user
+                print Knj::Web.input(
+                  :title => _("Author"),
+                  :type => :info,
+                  :value => task.user_html,
+                  :descr => _("The user that created this task.")
+                )
+              end
+              
+              if !Knj::Datet.is_nullstamp?(task[:date_added])
+                print Knj::Web.input(
+                  :title => _("Date"),
+                  :type => :info,
+                  :value => Knj::Datet.in(task[:date_added]).out(:time => false),
+                  :descr => _("The date this task was added.")
+                )
+              end
+            %>
+          </table>
+        <%=_site.boxb%>
+        
+        <br />
+        
         <%=_site.boxt(_("Description"))%>
           <%=task[:descr]%>
         <%=_site.boxb%>
@@ -175,11 +213,11 @@
       <td style="vertical-align: top; padding-left: 15px;">
         <%=_site.boxt(_("Assigned users"))%>
           <div style="padding-bottom: 10px;">
-            <input type="button" value="<%=_("Assign a user")%>" onclick="modal({title: '<%=_("Assign user to task")%>', url: 'clean.rhtml?show=user_search&amp;ajaxsearch=true&amp;not_in_task_id=<%=task.id%>&amp;jscallback=task_show_assign_user_choose'});" />
+            <input type="button" value="<%=_("Assign a user")%>" onclick="modal({title: '<%=_"Assign user to task"%>', url: 'clean.rhtml?show=user_search&amp;ajaxsearch=true&amp;not_in_task_id=<%=task.id%>&amp;jscallback=task_show_assign_user_choose'});" />
           </div>
           
           <div id="divusers">
-            <div class="error"><%=_("Loading - please wait...")%></div>
+            <div class="error"><%=_"Loading - please wait..."%></div>
           </div>
         <%=_site.boxb%>
       </td>
@@ -192,11 +230,11 @@
 <div style="padding-bottom: 15px;">
   <%=_site.boxt(_("Comments"))%>
     <div style="padding-bottom: 15px;">
-      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_("Add new comment")%>', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=task.id%>'});" />
+      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_"Add new comment"%>', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=task.id%>'});" />
     </div>
     
     <div id="divcomments">
-      <div class="error"><%=_("Loading - please wait...")%></div>
+      <div class="error"><%=_"Loading - please wait..."%></div>
     </div>
   <%=_site.boxb%>
 </div>
@@ -207,7 +245,7 @@
   </div>
   
   <div id="divtimelogs">
-    <div class="error"><%=_("Loading - please wait...")%></div>
+    <div class="error"><%=_"Loading - please wait..."%></div>
   </div>
 <%=_site.boxb%>
 

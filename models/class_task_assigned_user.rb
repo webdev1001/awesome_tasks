@@ -47,4 +47,8 @@ class Knjtasks::Task_assigned_user < Knj::Datarow
     })
     raise _("That user is already assigned to that task.") if link
   end
+  
+  def add_after(d)
+    task.send_notify_assigned(user, _site.user)
+  end
 end

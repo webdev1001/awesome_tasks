@@ -18,20 +18,47 @@
   end
 %>
 
-<%=_site.boxt(_("Tasks"), "350px")%>
+<%=_site.boxt(_("Tasks"))%>
   <table class="list">
     <thead>
       <tr>
-        <th><%=_("Task")%></th>
+        <th><%=_"Task"%></th>
+        <th><%=_"Author"%></th>
+        <th><%=_"Date"%></th>
+        <th><%=_"Hours"%> / <%=_"Driving"%></th>
+        <th><%=_"Transport length"%></th>
       </tr>
     </thead>
     <tbody>
       <%
         tasks.each do |task|
+          count = task.timelogs(:count => true)
+          total_hours = count[:sum_time].to_f / 3600
+          total_hours_transport = count[:sum_time_transport].to_f / 3600
+          total_transport_length = count[:sum_transport_length].to_i
+          
           %>
             <tr>
               <td>
                 <%=task.html%>
+              </td>
+              <td>
+                <%=task.user_html%>
+              </td>
+              <td>
+                <%
+                  if Knj::Datet.is_nullstamp?(task[:date_added])
+                    print "[#{_"no date"}]"
+                  else
+                    print Knj::Datet.in(task[:date_added]).out(:time => false)
+                  end
+                %>
+              </td>
+              <td>
+                <%=Knj::Locales.number_out(total_hours, 2)%> / <%=Knj::Locales.number_out(total_hours_transport, 2)%>
+              </td>
+              <td>
+                <%=Knj::Locales.number_out(total_transport_length, 0)%>
               </td>
             </tr>
           <%
