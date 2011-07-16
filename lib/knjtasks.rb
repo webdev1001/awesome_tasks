@@ -9,8 +9,8 @@ class Knjtasks
     require "#{@args[:knjappserver_path]}knjappserver"
     require "#{@args[:knjrbfw_path]}knjrbfw"
     
-    require "knj/autoload"
-    require "knj/objects"
+    require "#{@args[:knjrbfw_path]}knj/autoload"
+    require "#{@args[:knjrbfw_path]}knj/objects"
     
     
     check_args = [:db, :knjjs_url, :host, :port, :email_admin, :email_robot, :smtp_args, :db_args, :title]

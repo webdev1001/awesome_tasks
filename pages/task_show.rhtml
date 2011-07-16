@@ -51,7 +51,7 @@
         <thead>
           <tr>
             <th><%=_("ID")%></th>
-            <th><%=_("Time")%></th>
+            <th><%=_("Hours")%></th>
             <th><%=_("Date")%></th>
             <th><%=_("User")%></th>
             <th><%=_("Comment")%></th>
@@ -61,13 +61,15 @@
         <tbody>
           <%
             tlogs.each do |tlog|
+              dbt = Knj::Db::Dbtime.new(tlog[:time])
+              
               %>
                 <tr>
                   <td style="width: 30px;">
-                    <%=tlog.id%>
+                    <%=tlog.html(:key => :id)%>
                   </td>
                   <td style="width: 60px;">
-                    <%=tlog[:time]%>
+                    <%=Knj::Locales.number_out(dbt.hours_total, 1)%>
                   </td>
                   <td style="width: 70px;">
                     <%=Knj::Datet.in(tlog[:date]).out(:time => false)%>

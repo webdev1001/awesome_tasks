@@ -71,7 +71,8 @@ $schema = {
         {"name" => "time", "type" => "time"},
         {"name" => "time_transport", "type" => "time"},
         {"name" => "transport_length", "type" => "int"},
-        {"name" => "comment", "type" => "text"}
+        {"name" => "comment", "type" => "text"},
+        {"name" => "invoiced", "type" => "enum", "maxlength" => "'0','1'", "default" => "0"}
       ],
       "indexes" => [
         {"name" => "task_id", "columns" => ["task_id"]},

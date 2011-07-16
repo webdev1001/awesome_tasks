@@ -7,6 +7,8 @@ class Knjtasks::Timelog < Knj::Datarow
   def self.list(d)
     sql = "SELECT"
     
+    join_tasks = true if d.args["project_id"]
+    
     if d.args[:count]
       count = true
       d.args.delete(:count)
@@ -16,14 +18,32 @@ class Knjtasks::Timelog < Knj::Datarow
         SUM(Timelog.transport_length) AS sum_transport_length
       "
     else
-      sql += "*"
+      sql += " Timelog.*"
     end
     
-    sql += " FROM Timelog WHERE 1=1"
+    sql += " FROM Timelog"
+    
+    if join_tasks
+      sql += "
+        LEFT JOIN Task ON
+          Task.id = Timelog.task_id
+      "
+    end
+    
+    sql += " WHERE 1=1"
     
     ret = list_helper(d)
     d.args.each do |key, val|
-      raise sprintf(_("Invalid key: %s."), key)
+      case key
+        when "project_id"
+          if val.is_a?(Array)
+            sql += " AND Task.project_id IN (" + Knj::ArrayExt.join(:arr => val, :sep => ",", :surr => "'", :callback => proc{|data| d.db.esc(data)}) + ")"
+          else
+            sql += " AND Task.project_id = '#{d.db.esc(val)}'"
+          end
+        else
+          raise sprintf(_("Invalid key: %s."), key)
+      end
     end
     
     sql += ret[:sql_where]
@@ -44,7 +64,13 @@ class Knjtasks::Timelog < Knj::Datarow
     task = d.ob.get(:Task, d.data[:task_id])
   end
   
-  def html
-    return "<a href=\"?show=timelog_edit&amp;timelog_id=#{id}\">#{sprintf(_("Timelog %s"), id)}</a>"
+  def html(args = {})
+    if args[:key]
+      name = self[args[:key]].html
+    else
+      name = sprintf(_("Timelog %s"), Knj::Locales.number_out(id, 0))
+    end
+    
+    return "<a href=\"javascript: timelog_edit('#{id}');\">#{name}</a>"
   end
 end

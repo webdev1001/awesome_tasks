@@ -15,18 +15,18 @@
     end
     
     if _get["choice"] == "dodelete"
-      _ob.delete(customer)
-      _kas.redirect("?show=customer_search")
+      _kas.on_error_go_back do
+        _ob.delete(customer)
+        _kas.redirect("?show=customer_search")
+      end
     end
   else
     title = _("Add new customer")
     
     if _get["choice"] == "dosave"
-      begin
+      _kas.on_error_go_back do
         customer = _ob.add(:Customer, save_hash)
         _kas.redirect("?show=customer_edit&customer_id=#{customer.id}")
-      rescue => e
-        _kas.alert(e.message).back
       end
     end
   end

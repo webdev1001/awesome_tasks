@@ -1,7 +1,7 @@
 class Knjtasks::User < Knj::Datarow
   has_many [
-    [:Task, :user_id],
-    [:Task_assigned_user, :user_id, :assigned_to_tasks]
+    {:classname => :Task, :colname => :user_id, :depends => true},
+    {:classname => :Task_assigned_user, :colname => :user_id, :methodname => :assigned_to_tasks, :depends => true}
   ]
   
   def self.list(d)
@@ -17,6 +17,10 @@ class Knjtasks::User < Knj::Datarow
     sql += ret[:sql_limit]
     
     return d.ob.list_bysql(:User, sql)
+  end
+  
+  def delete
+    
   end
   
   def name

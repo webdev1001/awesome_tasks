@@ -23,7 +23,7 @@
 %>
 
 <form method="get" onsubmit="return do_submit_criterias();">
-<%=Knj::Web.hiddens([{:name => :show, :value => :timelog_search}, {:name => :choice, :value => :dosearch}, {:name => :users, :value => ""}])%>
+<%=Knj::Web.hiddens([{:name => :show, :value => :timelog_search}, {:name => :choice, :value => :dosearch}, {:name => :users, :value => ""}, {:name => :projects, :value => ""}])%>
 
 <%=_site.boxt(_("Enter criteria"), "400px")%>
   <table class="form">
@@ -44,13 +44,21 @@
         :value => _get["texcomment"],
         :descr => _("A part of the comment in the timelog you are looking for.")
       },{
-        :title => _("User"),
+        :title => _("Users"),
         :name => :seluser,
         :opts => _ob.list_optshash(:User),
         :multiple => true,
         :size => 5,
         :values => _get["users"].to_s.split(";"),
         :descr => _("If you want to find timelogs from specific users.")
+      },{
+        :title => _("Projects"),
+        :name => :selproject,
+        :opts => _ob.list_optshash(:Project),
+        :multiple => true,
+        :size => 5,
+        :values => _get["projects"].to_s.split(";"),
+        :descr => _("If you want to find timelogs from specific projects.")
       }])
     %>
     <tr>
@@ -68,6 +76,7 @@
   
   function do_submit_criterias(){
     $("input[name=users]").val(select_values({sel: $("#seluser"), selected: true, expl: ";"}));
+    $("input[name=projects]").val(select_values({sel: $("#selproject"), selected: true, expl: ";"}));
     $("#seluser").val(false);
     return true;
   }
@@ -93,9 +102,34 @@
       args["user_id"] = _get["users"].to_s.split(";")
     end
     
+    if _get["projects"].to_s.length > 0
+      args["project_id"] = _get["projects"].to_s.split(";")
+    end
+    
     tlogs = _ob.list(:Timelog, args)
+    tlogs_count = _ob.list(:Timelog, args.merge(:count => true))
     
     %>
+      <br />
+      
+      <%=_site.boxt(_("Sum"), "350px")%>
+        <table class="form">
+          <%
+            print Knj::Web.inputs([{
+              :title => _("Total hours"),
+              :type => :info,
+              :value => Knj::Locales.number_out(tlogs_count[:sum_time].to_f / 3600, 1) + " /" + Knj::Locales.number_out(tlogs_count[:sum_time_transport].to_f / 3600, 1),
+              :descr => _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")
+            },{
+              :title => _("Total transport"),
+              :type => :info,
+              :value => Knj::Locales.number_out(tlogs_count[:sum_transport_length], 1),
+              :descr => _("Total km's of transport used in all the timelogs found.")
+            }])
+          %>
+        </table>
+      <%=_site.boxb%>
+      
       <br />
       
       <%=_site.boxt(_("Results"))%>
@@ -113,6 +147,9 @@
           <tbody>
             <%
               tlogs.each do |tlog|
+                dbt = Knj::Db::Dbtime.new(tlog[:time])
+                dbt_transport = Knj::Db::Dbtime.new(tlog[:time_transport])
+                
                 %>
                   <tr>
                     <td>
@@ -134,7 +171,7 @@
                       <%=tlog.task_html%>
                     </td>
                     <td>
-                      <%=tlog[:time]%> / <%=tlog[:time_transport]%>
+                      <%=Knj::Locales.number_out(dbt.hours_total, 1)%> / <%=Knj::Locales.number_out(dbt_transport.hours_total, 1)%>
                     </td>
                     <td>
                       <%=Knj::Locales.number_out(tlog[:transport_length], 0)%>

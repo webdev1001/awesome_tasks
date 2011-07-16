@@ -126,7 +126,7 @@ thead > tr > th{
   text-align: left;
 }
 
-td.tdt{
+td.tdt, td.tdcheck{
   font-weight: bold;
   white-space: nowrap;
 }
