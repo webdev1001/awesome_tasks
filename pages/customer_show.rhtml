@@ -5,7 +5,7 @@
     _kas.alert(_("That customer do not exist.")).back
   end
   
-  print _site.header(_("Show customer: %s"), customer.name.html)
+  print _site.header(sprintf(_("Show customer: %s"), customer.name.html))
 %>
 
 <%=_site.boxt(_("Actions"), "350px")%>

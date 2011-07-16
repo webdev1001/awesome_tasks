@@ -3,6 +3,7 @@
 %>
 
 <form method="get">
+<%=Knj::Web.hiddens([{:name => :show, :value => :customer_search}, {:name => :choice, :value => :dosearch}])%>
 
 <%=_site.boxt(_("Enter criteria"), "350px")%>
   <table class="form">
