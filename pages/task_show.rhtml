@@ -207,7 +207,20 @@
         <br />
         
         <%=_site.boxt(_("Description"))%>
-          <%=task[:descr]%>
+          <%
+            descr = task[:descr]
+            require "/usr/share/fckeditor/fckeditor.rb"
+            
+            if FCKeditor.is_null?(descr)
+              %>
+                <div class="error">
+                  <%=_("No description has been written for this task.")%>
+                </div>
+              <%
+            else
+              print descr
+            end
+          %>
         <%=_site.boxb%>
       </td>
       <td style="vertical-align: top; padding-left: 15px;">

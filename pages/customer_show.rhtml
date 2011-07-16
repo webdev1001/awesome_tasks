@@ -1,0 +1,50 @@
+<%
+  begin
+    customer = _ob.get(:Customer, _get["customer_id"])
+  rescue
+    _kas.alert(_("That customer do not exist.")).back
+  end
+  
+  print _site.header(_("Show customer: %s"), customer.name.html)
+%>
+
+<%=_site.boxt(_("Actions"), "350px")%>
+  <input type="button" value="<%=_("Edit customer")%>" onclick="location.href='?show=customer_edit&amp;customer_id=<%=customer.id%>';" />
+<%=_site.boxb%>
+
+<br />
+
+<%=_site.boxt(_("Projects"), "350px")%>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%=_("Project")%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        projects = customer.projects
+        
+        projects.each do |project|
+          %>
+            <tr>
+              <td>
+                <%=project.html%>
+              </td>
+            </tr>
+          <%
+        end
+        
+        if projects.empty?
+          %>
+            <tr>
+              <td colspan="1" class="error">
+                <%=_("No projects has been added for this customer.")%>
+              </td>
+            </tr>
+          <%
+        end
+      %>
+    </tbody>
+  </table>
+<%=_site.boxb%>

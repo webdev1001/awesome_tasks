@@ -1,5 +1,12 @@
 $schema = {
   "tables" => {
+    "Customer" => {
+      "columns" => [
+        {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "name", "type" => "varchar"},
+        {"name" => "date_added", "type" => "datetime"}
+      ]
+    },
     "Comment" => {
       "columns" => [
         {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
@@ -17,10 +24,15 @@ $schema = {
     "Project" => {
       "columns" => [
         {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "customer_id", "type" => "int"},
         {"name" => "name", "type" => "varchar"},
         {"name" => "descr", "type" => "text"},
         {"name" => "added_date", "type" => "datetime"},
         {"name" => "added_user_id", "type" => "int"}
+      ],
+      "indexes" => [
+        {"name" => "customer_id", "columns" => ["customer_id"]},
+        {"name" => "added_user_id", "columns" => ["added_user_id"]}
       ]
     },
     "Task" => {
