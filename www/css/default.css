@@ -135,7 +135,7 @@ td.tdc{
   width: 100%;
 }
 
-td.tdd{
+td.tdd, div.tdd{
   color: grey;
   padding-top: 0px;
   padding-bottom: 7px;

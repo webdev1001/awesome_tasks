@@ -1,7 +1,7 @@
 class Knjtasks::Task_assigned_user < Knj::Datarow
   has_one [
-    {:classname => :User, :required => true},
-    {:classname => :Task, :required => true}
+    {:class => :User, :required => true},
+    {:class => :Task, :required => true}
   ]
   
   def self.list(d)

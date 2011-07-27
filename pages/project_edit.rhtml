@@ -53,13 +53,15 @@
         :descr => _("The name of the project as it should appear in this system.")
       }])
       
-      print Knj::Web.inputs([{
-        :title => _("Customer"),
-        :name => :selcustomer,
-        :value => [project, :customer_id],
-        :descr => _("The customer that this project belongs under."),
-        :opts => _ob.list_optshash(:Customer, {:none => true})
-      }])
+      if _site.args[:customers]
+        print Knj::Web.inputs([{
+          :title => _("Customer"),
+          :name => :selcustomer,
+          :value => [project, :customer_id],
+          :descr => _("The customer that this project belongs under."),
+          :opts => _ob.list_optshash(:Customer, {:none => true})
+        }])
+      end
       
       if project
         if project.added_user

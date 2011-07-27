@@ -1,7 +1,7 @@
 class Knjtasks::User < Knj::Datarow
   has_many [
-    {:classname => :Task, :colname => :user_id, :depends => true},
-    {:classname => :Task_assigned_user, :colname => :user_id, :methodname => :assigned_to_tasks, :depends => true}
+    {:class => :Task, :col => :user_id, :depends => true},
+    {:class => :Task_assigned_user, :col => :user_id, :method => :assigned_to_tasks, :depends => true}
   ]
   
   def self.list(d)

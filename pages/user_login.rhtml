@@ -9,7 +9,12 @@
       _kas.alert(_("A user with that username and/or password was found.")).back
     else
       _session[:user_id] = user.id
-      _kas.redirect("?show=user_login")
+      
+      if _get["backurl"].to_s.strip.length > 0
+        _kas.redirect(_get["backurl"])
+      else
+        _kas.redirect("?show=user_login")
+      end
     end
   end
   
@@ -24,7 +29,7 @@
     print sprintf(_("You are logged in as %s."), _site.user.html)
   else
     %>
-      <form method="post" action="?show=user_login&amp;choice=dologin" onsubmit="return do_login();">
+      <form method="post" action="?show=user_login&amp;choice=dologin&amp;backurl=<%=Knj::Php.urlencode(_get["backurl"])%>" onsubmit="return do_login();">
       <%=Knj::Web.hiddens([{:name => :texpass_md5, :value => ""}])%>
       
       <%=_site.boxt(_("Enter details"), "350px")%>

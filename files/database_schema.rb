@@ -51,6 +51,20 @@ $schema = {
         {"name" => "user_id", "columns" => ["user_id"]}
       ]
     },
+    "Task_check" => {
+      "columns" => [
+        {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "task_id", "type" => "int"},
+        {"name" => "added_user_id", "type" => "int"},
+        {"name" => "date_added", "type" => "datetime"},
+        {"name" => "name", "type" => "varchar"},
+        {"name" => "descr", "type" => "text"},
+        {"name" => "checked", "type" => "enum", "maxlength" => "'0','1'", "default" => 0},
+      ],
+      "indexes" => [
+        {"name" => "task_id", "columns" => ["task_id"]}
+      ]
+    },
     "Task_assigned_user" => {
       "columns" => [
         {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},

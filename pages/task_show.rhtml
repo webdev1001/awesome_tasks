@@ -159,6 +159,39 @@
     exit
   end
   
+  if _get["choice"] == "getchecks"
+    checks = task.checks("orderby" => ["name", "id"])
+    
+    checks.each do |check|
+      %>
+        <div>
+          <input type="checkbox" id="checheck_<%=check.id%>" name="checheck[<%=check.id%>]"<%if check[:checked].to_i == 1%> checked="checked"<%end%> onchange="task_check_set('<%=check.id%>', this.value);" />
+          <label for="checheck_<%=check.id%>"><%=check.name.html%></label>
+          
+          (<a href="javascript: task_check_edit('<%=check.id%>');"><%=_("edit")%></a>, <a href="javascript: if (confirm('<%=_("Do you want to delete this check?")%>')){task_check_delete('<%=check.id%>');}"><%=_"delete"%></a>)
+        </div>
+      <%
+      
+      if check[:descr].to_s.length > 0
+        %>
+          <div class="tdd">
+            <%=Knj::Php.nl2br(check[:descr].html)%>
+          </div>
+        <%
+      end
+    end
+    
+    if checks.empty?
+      %>
+        <div class="error">
+          <%=_("No checks has been added for this task.")%>
+        </div>
+      <%
+    end
+    
+    exit
+  end
+  
   print _site.header(sprintf(_("Show task: %s."), task.name.html))
 %>
 
@@ -235,6 +268,18 @@
             <div class="error"><%=_"Loading - please wait..."%></div>
           </div>
         <%=_site.boxb%>
+        
+        <br />
+        
+        <%=_site.boxt(_("Checklist"))%>
+          <div style="padding-bottom: 15px;">
+            <input type="button" value="<%=_("Add new check")%>" onclick="modal({title: '<%=_"Add new check"%>', url: 'clean.rhtml?show=task_check_edit&amp;task_id=<%=task.id%>'});" />
+          </div>
+          
+          <div id="divchecks">
+            <div class="error"><%=_("Loading - please wait...")%></div>
+          </div>
+        <%=_site.boxb%>
       </td>
     </tr>
   </table>
@@ -277,6 +322,10 @@
     task_show_users_update();
   });
   
+  events.connect("do_task_check_update", function(){
+    task_show_checks_update();
+  });
+  
   function task_show_comments_update(){
     $.ajax({type: "GET", url: "clean.rhtml?show=task_show&task_id=<%=task.id%>&choice=getcomments", async: true, cache: false, complete: function(data){
       $("#divcomments").slideUp("fast", function(){
@@ -315,9 +364,19 @@
     }});
   }
   
+  function task_show_checks_update(){
+    $.ajax({type: "GET", url: "clean.rhtml?show=task_show&task_id=<%=task.id%>&choice=getchecks", async: true, cache: false, complete: function(data){
+      $("#divchecks").slideUp("fast", function(){
+        $("#divchecks").html(data.responseText);
+        $("#divchecks").slideDown("fast");
+      });
+    }});
+  }
+  
   $(document).ready(function(){
     task_show_comments_update();
     task_show_timelogs_update();
     task_show_users_update();
+    task_show_checks_update();
   });
 </script>

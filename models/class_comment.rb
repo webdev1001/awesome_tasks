@@ -1,6 +1,6 @@
 class Knjtasks::Comment < Knj::Datarow
   has_one [
-    {:classname => :User, :required => true}
+    {:class => :User, :required => true}
   ]
   
   def self.list(d)

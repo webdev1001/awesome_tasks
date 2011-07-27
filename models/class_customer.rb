@@ -1,6 +1,6 @@
 class Knjtasks::Customer < Knj::Datarow
   has_many [
-    {:classname => :Project, :colname => :customer_id, :depends => true}
+    {:class => :Project, :col => :customer_id, :depends => true}
   ]
   
   def self.list(d)
