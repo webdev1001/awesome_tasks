@@ -6,11 +6,11 @@
   tasks = []
   
   tasks_assigned_links.each do |assigned_link|
-    tasks << assigned_link.task
+    tasks << assigned_link.task if tasks.index(assigned_link.task) == nil
   end
   
   tasks_owner = _ob.list(:Task, {"user" => _site.user}) do |task|
-    tasks << task
+    tasks << task if tasks.index(task) == nil
   end
   
   tasks.sort do |a, b|

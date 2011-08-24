@@ -33,11 +33,12 @@ class Knjtasks::User < Knj::Datarow
     raise "Could not figure out a name?"
   end
   
-  def html
-    return "<a href=\"?show=user_show&amp;user_id=#{id}\">#{name.html}</a>"
+  def locale
+    return self[:locale] if self[:locale].to_s.length > 0
+    return "en_GB"
   end
   
-  def name
-    return self[:username].to_s
+  def html
+    return "<a href=\"?show=user_show&amp;user_id=#{id}\">#{name.html}</a>"
   end
 end

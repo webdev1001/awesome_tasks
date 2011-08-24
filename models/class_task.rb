@@ -58,26 +58,26 @@ class Knjtasks::Task < Knj::Datarow
   #Sends a notification about a newly added comment to a task.
   def send_notify_new_comment(comment)
     notify_emails.each do |data|
-      subj = sprintf(_kas.gettext.gettext("New comment to: %s", data[:user][:locale]), self.name)
+      subj = sprintf(_kas.gettext.gettext("New comment to: %s", data[:user].locale), self.name)
       
       if !self.user
-        user_html = "[#{_kas.gettext.gettext("no user", data[:user][:locale])}]"
+        user_html = "[#{_kas.gettext.gettext("no user", data[:user].locale)}]"
       else
         user_html = self.user.name.html
       end
       
       html = ""
       
-      html += _kas.gettext.gettext("A new comment has been written to the task '%s'.", data[:user][:locale])
+      html += _kas.gettext.gettext("A new comment has been written to the task '%s'.", data[:user].locale)
       html += "<br /><br />"
       
-      html += "<b>#{_kas.gettext.gettext("Author", data[:user][:locale])}:</b><br />"
+      html += "<b>#{_kas.gettext.gettext("Author", data[:user].locale)}:</b><br />"
       html += "#{user_html}<br /><br />"
       
-      html += "<b>#{_kas.gettext.gettext("Task", data[:user][:locale])}:</b><br />"
+      html += "<b>#{_kas.gettext.gettext("Task", data[:user].locale)}:</b><br />"
       html += "<a href=\"#{url}\">#{url}</a><br /><br />"
       
-      html += "<b>#{_kas.gettext.gettext("Comment", data[:user][:locale])}</b><br />"
+      html += "<b>#{_kas.gettext.gettext("Comment", data[:user].locale)}</b><br />"
       html += comment[:comment]
       
       _kas.mail(:to => data[:email], :subject => subj, :html => html)
@@ -88,17 +88,17 @@ class Knjtasks::Task < Knj::Datarow
   def send_notify_assigned(user_assigned, user_by)
     return false if user_assigned[:email].to_s.strip.length <= 0
     
-    subj = sprintf(_kas.gettext.gettext("You have been assigned to: %s", user_assigned[:locale]), self.name)
+    subj = sprintf(_kas.gettext.gettext("You have been assigned to: %s", user_assigned.locale), self.name)
     
     html = ""
     
-    html += "<b>#{_kas.gettext.gettext("Assigned by", user_assigned[:locale])}:</b><br />"
+    html += "<b>#{_kas.gettext.gettext("Assigned by", user_assigned.locale)}:</b><br />"
     html += "#{user_by.name}<br /><br />"
     
-    html += "<b>#{_kas.gettext.gettext("Task", user_assigned[:locale])}:</b><br />"
+    html += "<b>#{_kas.gettext.gettext("Task", user_assigned.locale)}:</b><br />"
     html += "<a href=\"#{url}\">#{url}</a><br /><br />"
     
-    html += "<b>#{_kas.gettext.gettext("Description", user_assigned[:locale])}</b><br />"
+    html += "<b>#{_kas.gettext.gettext("Description", user_assigned.locale)}</b><br />"
     html += self[:descr]
     
     _kas.mail(:to => user_assigned[:email], :subject => subj, :html => html)

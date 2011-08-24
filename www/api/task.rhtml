@@ -1,0 +1,9 @@
+<%
+  arr = []
+  
+  _ob.list(:Task) do |task|
+    arr << task.data
+  end
+  
+  print JSON.generate(arr)
+%>
