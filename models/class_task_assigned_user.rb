@@ -7,7 +7,10 @@ class Knjtasks::Task_assigned_user < Knj::Datarow
   def self.list(d)
     sql = "SELECT #{table}.* FROM #{table}"
     
-    if d.args["orderby"] == "project_task_names"
+    join_task = true if d.args["orderby"] == "project_task_names"
+    join_task = true if d.args["task_status_not"]
+    
+    if join_task
       orderby = "project_task_names"
       d.args.delete("orderby")
       
@@ -24,7 +27,12 @@ class Knjtasks::Task_assigned_user < Knj::Datarow
     
     ret = list_helper(d)
     d.args.each do |key, val|
-      raise sprintf(_("Invalid key: %s."), key)
+      case key
+        when "task_status_not"
+          sql += " AND Task.status != '#{d.db.esc(val)}'"
+        else
+          raise sprintf(_("Invalid key: %s."), key)
+      end
     end
     
     sql += ret[:sql_where]

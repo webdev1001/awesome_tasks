@@ -13,13 +13,17 @@ class Knjtasks
     require "#{@args[:knjrbfw_path]}knj/objects"
     
     
-    check_args = [:db, :knjjs_url, :host, :port, :email_admin, :email_robot, :smtp_args, :db_args, :title]
+    check_args = [:db, :knjjs_url, :port, :email_admin, :email_robot, :smtp_args, :db_args, :title]
     check_args.each do |key|
       raise "No '#{key}' given in arguments." if !@args.has_key?(key)
     end
     
+    if @args[:knjdbrevision_path]
+      require "#{@args[:knjdbrevision_path]}/knjdbrevision.rb"
+    else
+      require "knjdbrevision"
+    end
     
-    require "knjdbrevision"
     require "#{File.dirname(__FILE__)}/../files/database_schema.rb"
     dbrev = Knjdbrevision.new
     dbrev.init_db($schema, @db)
@@ -38,8 +42,6 @@ class Knjtasks
       msg
     end
     
-    
-    @erbhandler = Knjappserver::ERBHandler.new
     @knjappserver = Knjappserver.new(
       :debug => false,
       :autorestart => false,
@@ -62,26 +64,7 @@ class Knjtasks
       :error_emails_time => 5,
       :knjrbfw_path => @args[:knjrbfw_path],
       :knjappserver_path => @args[:knjappserver_path],
-      :filetypes => {
-        :jpg => "image/jpeg",
-        :gif => "image/gif",
-        :png => "image/png",
-        :html => "text/html",
-        :htm => "text/html",
-        :rhtml => "text/html",
-        :css => "text/css",
-        :xml => "text/xml",
-        :js => "text/javascript"
-      },
-      :handlers => [
-        {
-          :file_ext => "rhtml",
-          :callback => @erbhandler.method(:erb_handler)
-        },{
-          :path => "/fckeditor",
-          :mount => "/usr/share/fckeditor"
-        }
-      ],
+      :knjdbrevision_path => @args[:knjdbrevision_path],
       :db => @db,
       :smtp_args => @args[:smtp_args],
       :httpsession_db_args => @args[:db_args]

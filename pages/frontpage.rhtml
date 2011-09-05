@@ -1,7 +1,7 @@
 <%
   print _site.header(_("Frontpage"))
   
-  tasks_assigned_links = _ob.list(:Task_assigned_user)
+  tasks_assigned_links = _ob.list(:Task_assigned_user, {"task_status_not" => "closed"})
   
   tasks = []
   
@@ -9,7 +9,7 @@
     tasks << assigned_link.task if tasks.index(assigned_link.task) == nil
   end
   
-  tasks_owner = _ob.list(:Task, {"user" => _site.user}) do |task|
+  tasks_owner = _ob.list(:Task, {"user" => _site.user, "status_not" => "closed"}) do |task|
     tasks << task if tasks.index(task) == nil
   end
   
@@ -25,6 +25,7 @@
         <th><%=_"Task"%></th>
         <th><%=_"Author"%></th>
         <th><%=_"Date"%></th>
+        <th><%=_"Status"%></th>
         <th><%=_"Hours"%> / <%=_"Driving"%></th>
         <th><%=_"Transport length"%></th>
       </tr>
@@ -42,22 +43,19 @@
               <td>
                 <%=task.html%>
               </td>
-              <td>
+              <td class="nowrap">
                 <%=task.user_html%>
               </td>
-              <td>
-                <%
-                  if Knj::Datet.is_nullstamp?(task[:date_added])
-                    print "[#{_"no date"}]"
-                  else
-                    print Knj::Datet.in(task[:date_added]).out(:time => false)
-                  end
-                %>
+              <td class="nowrap">
+                <%=task.date_added_str(:time => false)%>
               </td>
               <td>
+                <%=_ob.static(:Task, :status_opts)[task[:status].to_sym]%>
+              </td>
+              <td class="nowrap">
                 <%=Knj::Locales.number_out(total_hours, 2)%> / <%=Knj::Locales.number_out(total_hours_transport, 2)%>
               </td>
-              <td>
+              <td class="nowrap">
                 <%=Knj::Locales.number_out(total_transport_length, 0)%>
               </td>
             </tr>

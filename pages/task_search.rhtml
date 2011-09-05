@@ -5,7 +5,7 @@
 <form method="get">
 <%=Knj::Web.hiddens([{:name => :show, :value => :task_search}, {:name => :choice, :value => :dosearch}])%>
 
-<%=_site.boxt(_("Enter criteria"), "350px")%>
+<%=_site.boxt(_("Enter criteria"), 350)%>
   <table class="form">
     <%
       print Knj::Web.inputs([{
@@ -13,12 +13,24 @@
         :name => :texname,
         :value => _get["texname"],
         :descr => _("A part of the name of the task you are looking for.")
+      },{
+        :title => _("Status"),
+        :name => :selstatus,
+        :opts => {"" => _("All")}.merge(_ob.static(:Task, :status_opts)),
+        :descr => _("If you only want to find tasks with a specific status."),
+        :value => _get["selstatus"]
+      },{
+        :title => _("Type"),
+        :name => :seltype,
+        :opts => {"" => _("All")}.merge(_ob.static(:Task, :type_opts)),
+        :descr => _("If you only want to find tasks of a specific type."),
+        :value => _get["seltype"]
       }])
     %>
     <tr>
       <td colspan="2" class="buttons">
-        <input type="button" value="<%=_("Add new")%>" onclick="location.href='?show=task_edit';" />
-        <input type="submit" value="<%=_("Search")%>" />
+        <input type="button" value="<%=_"Add new"%>" onclick="location.href='?show=task_edit';" />
+        <input type="submit" value="<%=_"Search"%>" />
       </td>
     </tr>
   </table>
@@ -38,17 +50,25 @@
       args["name_search"] = _get["texname"]
     end
     
+    if _get["selstatus"].to_s.length > 0
+      args["status"] = _get["selstatus"]
+    end
+    
+    if _get["seltype"].to_s.length > 0
+      args["type"] = _get["seltype"]
+    end
+    
     tasks = _ob.list(:Task, args)
     
     %>
       <br />
 
-      <%=_site.boxt(_("Results"), "500px")%>
+      <%=_site.boxt(_("Results"), 700)%>
         <table class="list">
           <thead>
             <tr>
-              <th><%=_("Name")%></th>
-              <th><%=_("Author")%></th>
+              <th><%=_"Name"%></th>
+              <th><%=_"Author"%></th>
             </tr>
           </thead>
           <tbody>

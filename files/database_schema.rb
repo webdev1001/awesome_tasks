@@ -43,7 +43,7 @@ $schema = {
         {"name" => "date_added", "type" => "datetime"},
         {"name" => "name", "type" => "varchar"},
         {"name" => "descr", "type" => "text"},
-        {"name" => "type", "type" => "enum", "maxlength" => "'feature','bug','question'"},
+        {"name" => "type", "type" => "enum", "maxlength" => "'feature','bug','question','other'"},
         {"name" => "status", "type" => "enum", "maxlength" => "'open','confirmed','waiting','closed'"}
       ],
       "indexes" => [
@@ -86,7 +86,9 @@ $schema = {
         {"name" => "time_transport", "type" => "time"},
         {"name" => "transport_length", "type" => "int"},
         {"name" => "comment", "type" => "text"},
-        {"name" => "invoiced", "type" => "enum", "maxlength" => "'0','1'", "default" => "0"}
+        {"name" => "invoiced", "type" => "enum", "maxlength" => "'0','1'", "default" => "0"},
+        {"name" => "invoiced_date", "type" => "datetime"},
+        {"name" => "invoiced_user_id", "type" => "int"}
       ],
       "indexes" => [
         {"name" => "task_id", "columns" => ["task_id"]},
@@ -105,6 +107,17 @@ $schema = {
       "on_create_after" => proc{|data|
         data["db"].insert(:User, {"username" => "admin", "passwd" => Knj::Php.md5("admin")})
       }
+    },
+    "User_project_link" => {
+      "columns" => [
+        {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "user_id", "type" => "int"},
+        {"name" => "project_id", "type" => "int"}
+      ],
+      "indexes" => [
+        {"name" => "user_id", "columns" => ["user_id"]},
+        {"name" => "project_id", "columns" => ["project_id"]}
+      ]
     }
   }
 }

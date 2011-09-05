@@ -27,7 +27,7 @@ a:active, a:hover{
 
 table.main_table{
   height: 100%;
-  width: 1000px;
+  width: 1200px;
   border-top: none;
   border-bottom: none;
   text-align: left;
@@ -124,6 +124,7 @@ table.form, table.list{
 thead > tr > th{
   font-size: 12px;
   text-align: left;
+  white-space: nowrap;
 }
 
 td.tdt, td.tdcheck{
@@ -168,4 +169,8 @@ input[type=button], input[type=submit], input.button{
 
 input.input_text, input.input_password, select.input_select, textarea.input_textarea{
   width: 100%;
+}
+
+.nowrap{
+  white-space: nowrap;
 }
