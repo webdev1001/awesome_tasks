@@ -138,4 +138,11 @@ class Knjtasks::Task < Knj::Datarow
   def comments(args = {})
     return _ob.list(:Comment, {"object_lookup" => self}.merge(args))
   end
+  
+  def has_access?(user)
+    return false if !user
+    return true if user.has_rank?("admin")
+    return true if self[:user_id].to_s == user.id.to_s
+    return false
+  end
 end

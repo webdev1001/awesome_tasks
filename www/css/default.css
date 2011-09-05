@@ -17,12 +17,12 @@ body{
 
 a:link, a:visited{
   color: #698295;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:active, a:hover{
   color: #272727;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 table.main_table{

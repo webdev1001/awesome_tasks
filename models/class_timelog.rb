@@ -65,7 +65,9 @@ class Knjtasks::Timelog < Knj::Datarow
   end
   
   def html(args = {})
-    if args[:key]
+    if args[:key] == :id_localized
+      name = Knj::Locales.number_out(id, 0)
+    elsif args[:key]
       name = self[args[:key]].html
     else
       name = sprintf(_("Timelog %s"), Knj::Locales.number_out(id, 0))

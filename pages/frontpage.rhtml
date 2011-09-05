@@ -13,8 +13,13 @@
     tasks << task if tasks.index(task) == nil
   end
   
-  tasks.sort do |a, b|
-    a.name <=> b.name
+  tasks.sort! do |a, b|
+    res = a.project.name <=> b.project.name if a.project and b.project
+    if res == nil or res == 0
+      res = a.name <=> b.name
+    end
+    
+    res
   end
 %>
 
@@ -23,6 +28,7 @@
     <thead>
       <tr>
         <th><%=_"Task"%></th>
+        <th><%=_"Project"%></th>
         <th><%=_"Author"%></th>
         <th><%=_"Date"%></th>
         <th><%=_"Status"%></th>
@@ -42,6 +48,9 @@
             <tr>
               <td>
                 <%=task.html%>
+              </td>
+              <td class="nowrap">
+                <%=task.project_html%>
               </td>
               <td class="nowrap">
                 <%=task.user_html%>

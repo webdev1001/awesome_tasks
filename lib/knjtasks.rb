@@ -34,12 +34,18 @@ class Knjtasks
       :class_path => "#{File.dirname(__FILE__)}/../models",
       :module => Knjtasks
     )
+    
     @ob.events.connect(:no_html) do |event, classname|
       class_trans = @class_translations[classname]
       class_trans = classname.to_s.downcase if !class_trans
       
       msg = "[#{sprintf(_("no %s"), class_trans)}]"
       msg
+    end
+    
+    @ob.events.connect(:no_date) do |date|
+      str = "[#{_("no date")}]"
+      str
     end
     
     @knjappserver = Knjappserver.new(
@@ -103,6 +109,8 @@ class Knjtasks
   end
   
   def boxt(title, width = "100%")
+    width = "#{width}px" if width.is_a?(Fixnum) or width.is_a?(Integer)
+    
     html = ""
     html += "<table class=\"box\" style=\"width: #{width};\" cellspacing=\"0\" cellpadding=\"0\">"
     html += "<tr><td class=\"box_header_spacer\">&nbsp;</td><td class=\"box_header\">#{title}</td></tr>"
@@ -122,5 +130,22 @@ class Knjtasks
     end
     
     return false
+  end
+  
+  def has_rank?(rank_str)
+    return false if !self.user
+    
+    rank = @ob.get_by(:User_rank, {
+      "id_str" => rank_str
+    })
+    return false if !rank
+    
+    rank_link = @ob.get_by(:User_rank_link, {
+      "user" => user,
+      "rank" => rank
+    })
+    return false if !rank_link
+    
+    return true
   end
 end

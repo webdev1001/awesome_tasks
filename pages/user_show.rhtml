@@ -4,13 +4,13 @@
   print _site.header(sprintf(_("Show user: %s."), user.name.html))
 %>
 
-<%=_site.boxt(_("Actions"), "350px")%>
+<%=_site.boxt(_("Actions"), 450)%>
   <input type="button" value="<%=_("Edit")%>" onclick="location.href='?show=user_edit&amp;user_id=<%=user.id%>';" />
 <%=_site.boxb%>
 
 <br />
 
-<%=_site.boxt(_("Information"), "350px")%>
+<%=_site.boxt(_("Information"), 450)%>
   <table class="form">
     <%
       print Knj::Web.inputs([{
@@ -21,7 +21,7 @@
       },{
         :title => _("Email"),
         :type => :info,
-        :value => "<a href=\"mailto:#{user[:email]}\">#{user[:email]}</a>",
+        :value => "<a href=\"mailto:#{user[:email].html}\">#{user[:email].html}</a>",
         :descr => _("The email of the user.")
       }])
     %>
@@ -30,7 +30,7 @@
 
 <br />
 
-<%=_site.boxt(_("Tasks"), "350px")%>
+<%=_site.boxt(_("Tasks"), 600)%>
   <table class="list">
     <thead>
       <tr>
@@ -40,7 +40,7 @@
     </thead>
     <tbody>
       <%
-        tasks = user.tasks
+        tasks = user.tasks("orderby" => [["id", "desc"]])
         
         tasks.each do |task|
           %>
@@ -48,8 +48,8 @@
               <td>
                 <%=task.html%>
               </td>
-              <td>
-                <%=Knj::Datet.in(task[:date_added]).out(:time => false)%>
+              <td class="nowrap">
+                <%=task.date_added_str(:time => false)%>
               </td>
             </tr>
           <%

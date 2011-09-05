@@ -118,6 +118,36 @@ $schema = {
         {"name" => "user_id", "columns" => ["user_id"]},
         {"name" => "project_id", "columns" => ["project_id"]}
       ]
+    },
+    "User_rank" => {
+      "columns" => [
+        {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "id_str", "type" => "varchar"},
+        {"name" => "name", "type" => "varchar"}
+      ],
+      "indexes" => [
+        {"name" => "id_str", "columns" => ["name"]}
+      ],
+      "rows" => [
+        {
+          "find_by" => {"id" => 1},
+          "data" => {"id" => 1, "id_str" => "admin", "name" => "Administrator"}
+        }
+      ]
+    },
+    "User_rank_link" => {
+      "columns" => [
+        {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "user_id", "type" => "int"},
+        {"name" => "rank_id", "type" => "int"}
+      ],
+      "indexes" => [
+        {"name" => "user_id", "columns" => ["user_id"]},
+        {"name" => "rank_id", "columns" => ["rank_id"]}
+      ],
+      "on_create_after" => proc{|data|
+        data["db"].insert(:User_rank_link, {:user_id => 1, :rank_id => 1})
+      }
     }
   }
 }

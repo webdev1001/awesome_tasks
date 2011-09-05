@@ -1,4 +1,8 @@
 <%
+  if !_site.has_rank?("admin")
+    _kas.alert(_("You are not an administrator and cannot view this page.")).back
+  end
+  
   if _get["choice"] == "dosave"
     save_hash = {
       :name => _post["texname"],
@@ -37,13 +41,73 @@
     end
   end
   
+  if _get["choice"] == "getranks"
+    ranks = user.ranks
+    
+    %>
+      <table class="list">
+        <thead>
+          <tr>
+            <th><%=_"Rank"%></th>
+            <th><%=_"Actions"%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%
+            ranks.each do |link|
+              %>
+                <tr>
+                  <td><%=link.rank.name.html%></td>
+                  <td>
+                    (<a href="javascript: if (confirm('<%=_"Do you want to remove this rank?"%>')){rank_remove('<%=link.id%>');}"><%=_"remove"%></a>)
+                  </td>
+                </tr>
+              <%
+            end
+            
+            if ranks.empty?
+              %>
+                <tr>
+                  <td colspan="1" class="error">
+                    <%=_"No ranks has been added to this user."%>
+                  </td>
+                </tr>
+              <%
+            end
+          %>
+        </tbody>
+      </table>
+    <%
+    
+    exit
+  end
+  
+  if _get["choice"] == "doremoverank"
+    link = _ob.get(:User_rank_link, _get["link_id"])
+    _ob.delete(link)
+    exit
+  end
+  
+  if _get["choice"] == "doaddrank"
+    begin
+      link = _ob.add(:User_rank_link, {
+        :user_id => user.id,
+        :rank_id => _get["rank_id"]
+      })
+    rescue => e
+      print e.message
+    end
+    
+    exit
+  end
+  
   print _site.header(title)
 %>
 
 <form autocomplete="off" method="post" action="?show=user_edit&amp;choice=dosave<%if user; print "&amp;user_id=#{user.id}"; end%>" onsubmit="return do_save_user();">
 <%=Knj::Web.hiddens([{:name => :texpasswd_md5, :value => ""}])%>
 
-<%=_site.boxt(_("Enter details"), "350px")%>
+<%=_site.boxt(_("Enter details"), 350)%>
   <table class="form">
     <%
       print Knj::Web.inputs([{
@@ -83,6 +147,20 @@
 
 </form>
 
+<br />
+
+<%=_site.boxt(_("Permissions"), 350)%>
+  <div style="padding-bottom: 15px;">
+    <input type="button" value="<%=_"Add rank"%>" onclick="modal({title: '<%=_"Add rank"%>', url: '/clean.rhtml?show=user_rank_search&amp;jsfunc=rank_add'});" />
+  </div>
+  
+  <div id="divpermissions">
+    <div class="error">
+      <%=_"Loading - please wait..."%>
+    </div>
+  </div>
+<%=_site.boxb%>
+
 <script type="text/javascript">
   $("#texusername").focus();
   
@@ -91,4 +169,39 @@
     $("#texpasswd").val("");
     return true;
   }
+  
+  function ranks_reload(){
+    $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&user_id=<%=user.id%>&choice=getranks", async: true, cache: false, complete: function(data){
+      $("#divpermissions").slideUp("fast", function(){
+        $("#divpermissions").html(data.responseText);
+        $("#divpermissions").slideDown("fast");
+      });
+    }});
+  }
+  
+  function rank_remove(link_id){
+    $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doremoverank&user_id=<%=user.id%>&link_id=" + link_id, async: true, cache: false, complete: function(data){
+      if (data.responseText.length > 0){
+        alert(data.responseText);
+      }
+      
+      ranks_reload();
+    }});
+  }
+  
+  function rank_add(rank_id){
+    modal_close();
+    
+    $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doaddrank&user_id=<%=user.id%>&rank_id=" + rank_id, async: true, cache: false, complete: function(data){
+      if (data.responseText.length > 0){
+        alert(data.responseText);
+      }
+      
+      ranks_reload();
+    }});
+  }
+  
+  $(document).ready(function(){
+    ranks_reload();
+  });
 </script>
