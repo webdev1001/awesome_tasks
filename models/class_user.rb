@@ -21,7 +21,7 @@ class Knjtasks::User < Knj::Datarow
   end
   
   def delete
-    
+    raise _("Cannot delete user because that user has created tasks.") if ob.get_by(:Task, {"user" => self})
   end
   
   def name
@@ -37,6 +37,21 @@ class Knjtasks::User < Knj::Datarow
   def locale
     return self[:locale] if self[:locale].to_s.length > 0
     return "en_GB"
+  end
+  
+  def has_rank?(rank_str)
+    rank = @ob.get_by(:User_rank, {
+      "id_str" => rank_str
+    })
+    return false if !rank
+    
+    rank_link = @ob.get_by(:User_rank_link, {
+      "user" => self,
+      "rank" => rank
+    })
+    return false if !rank_link
+    
+    return true
   end
   
   def html

@@ -134,18 +134,6 @@ class Knjtasks
   
   def has_rank?(rank_str)
     return false if !self.user
-    
-    rank = @ob.get_by(:User_rank, {
-      "id_str" => rank_str
-    })
-    return false if !rank
-    
-    rank_link = @ob.get_by(:User_rank_link, {
-      "user" => user,
-      "rank" => rank
-    })
-    return false if !rank_link
-    
-    return true
+    return self.user.has_rank?(rank_str)
   end
 end

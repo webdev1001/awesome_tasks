@@ -145,4 +145,23 @@ class Knjtasks::Task < Knj::Datarow
     return true if self[:user_id].to_s == user.id.to_s
     return false
   end
+  
+  def has_view_access?(user)
+    return false if !user
+    return true if self.has_access?(user)
+    
+    task_link = ob.get_by(:Task_assigned_user, {
+      "user" => user,
+      "task" => self
+    })
+    return true if task_link
+    
+    project_link = ob.get_by(:User_project_link, {
+      "user" => user,
+      "project" => self.project
+    })
+    return true if project_link
+    
+    return false
+  end
 end

@@ -1,4 +1,8 @@
 <%
+  if !_site.has_rank?("admin")
+    _kas.alert(_("You are not an administrator and cannot view this page.")).back
+  end
+  
   if _get["choice"] == "dosave"
     save_hash = {
       :name => _post["texname"],
