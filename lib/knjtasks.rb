@@ -97,6 +97,9 @@ class Knjtasks
   def load_request
     Knj::Php.header("Content-Type: text/html; charset=utf-8")
     
+    #This will make the new Ruby-tasks-system compatible with mails sent from the old PHP-tasks-system.
+    _get["show"] = "task_show" if _get["show"] == "tasks_show"
+    
     if _get.has_key?("l")
       _session[:locale] = _get["l"]
       _site.user[:locale] = _get["l"] if _site.user

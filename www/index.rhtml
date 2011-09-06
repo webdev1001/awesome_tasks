@@ -78,14 +78,18 @@
                 {:name => _("Frontpage"), :link => "?show=frontpage"}
               ]
               
-              if !_site.args.has_key?(:customers) or _site.args[:customers]
+              if _site.has_rank?("admin") and (!_site.args.has_key?(:customers) or _site.args[:customers])
                 menu << {:name => _("Customers"), :link => "?show=customer_search"}
+                menu << {:name => _("Projects"), :link => "?show=project_search"}
               end
               
-              menu << {:name => _("Projects"), :link => "?show=project_search"}
               menu << {:name => _("Tasks"), :link => "?show=task_search"}
               menu << {:name => _("Users"), :link => "?show=user_search"}
-              menu << {:name => _("Timelogs"), :link => "?show=timelog_search"}
+              
+              if _site.has_rank?("admin")
+                menu << {:name => _("Timelogs"), :link => "?show=timelog_search"}
+              end
+              
               menu << {:name => _("Log out"), :link => "?show=user_login&choice=dologout"}
             else
               menu = [

@@ -1,4 +1,6 @@
 <%
+  _kas.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
+  
   if _get["choice"] == "dosearch"
     begin
       date_from = Knj::Datet.in(_get["texdatefrom"])

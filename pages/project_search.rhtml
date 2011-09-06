@@ -1,4 +1,6 @@
 <%
+  _kas.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
+  
   print _site.header(_("Search for project"))
 %>
 

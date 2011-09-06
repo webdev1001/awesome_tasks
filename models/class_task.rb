@@ -146,6 +146,10 @@ class Knjtasks::Task < Knj::Datarow
     return false
   end
   
+  def status_str
+    return ob.static(:Task, :status_opts)[self[:status].to_sym]
+  end
+  
   def has_view_access?(user)
     return false if !user
     return true if self.has_access?(user)

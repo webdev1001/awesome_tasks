@@ -1,14 +1,19 @@
 <%
   user = _ob.get(:User, _get["user_id"])
+  _kas.alert(_("You do not have access to view this user.")) if !user.has_view_access?(_site.user)
   
   print _site.header(sprintf(_("Show user: %s."), user.name.html))
+  
+  if _site.has_rank?("admin")
+    %>
+      <%=_site.boxt(_("Actions"), 450)%>
+        <input type="button" value="<%=_("Edit")%>" onclick="location.href='?show=user_edit&amp;user_id=<%=user.id%>';" />
+      <%=_site.boxb%>
+
+      <br />
+    <%
+  end
 %>
-
-<%=_site.boxt(_("Actions"), 450)%>
-  <input type="button" value="<%=_("Edit")%>" onclick="location.href='?show=user_edit&amp;user_id=<%=user.id%>';" />
-<%=_site.boxb%>
-
-<br />
 
 <%=_site.boxt(_("Information"), 450)%>
   <table class="form">
@@ -30,32 +35,44 @@
 
 <br />
 
-<%=_site.boxt(_("Tasks"), 600)%>
+<%=_site.boxt(_("Tasks"), 800)%>
   <table class="list">
     <thead>
       <tr>
-        <th><%=_("Task")%></th>
-        <th><%=_("Date")%></th>
+        <th><%=_"Task"%></th>
+        <th><%=_"Status"%></th>
+        <th><%=_"Date"%></th>
+        <th><%=_"Project"%></th>
       </tr>
     </thead>
     <tbody>
       <%
-        tasks = user.tasks("orderby" => [["id", "desc"]])
+        tasks = user.tasks("orderby" => [["date_added", "desc"], ["id", "desc"]])
         
+        count = 0
         tasks.each do |task|
+          next if !task.has_view_access?(_site.user)
+          count += 1
+          
           %>
             <tr>
               <td>
                 <%=task.html%>
               </td>
-              <td class="nowrap">
+              <td>
+                <%=task.status_str.html%>
+              </td>
+              <td class="nowrap" style="width: 100px;">
                 <%=task.date_added_str(:time => false)%>
+              </td>
+              <td>
+                <%=task.project_html%>
               </td>
             </tr>
           <%
         end
         
-        if tasks.empty?
+        if count <= 0
           %>
             <tr>
               <td colspan="2" class="error">

@@ -24,7 +24,9 @@
           %>
           <tr>
             <td colspan="2" class="buttons">
-              <input type="button" value="<%=_("Add new")%>" onclick="location.href='?show=user_edit';" />
+              <%if _site.has_rank?("admin")%>
+                <input type="button" value="<%=_("Add new")%>" onclick="location.href='?show=user_edit';" />
+              <%end%>
               <input type="submit" value="<%=_("Search")%>" />
             </td>
           </tr>
@@ -74,7 +76,7 @@
   end
   
   if _get["choice"] == "dosearch"
-    args = {"orderby" => "name"}
+    args = {"orderby" => ["name", "username"]}
     
     if _get["texname"].to_s.length > 0
       args["name_search"] = _get["texname"]
@@ -94,7 +96,11 @@
           </thead>
           <tbody>
             <%
+              count = 0
               users.each do |user|
+                next if !user.has_view_access?(_site.user)
+                count += 1
+                
                 %>
                   <tr>
                     <td>
@@ -112,7 +118,7 @@
                 <%
               end
               
-              if users.empty?
+              if count <= 0
                 %>
                   <tr>
                     <td colspan="1" class="error">

@@ -1,45 +1,43 @@
 <%
   project = _ob.get(:Project, _get["project_id"])
-  tasks = project.tasks
+  tasks = project.tasks("orderby" => [["date_added", "desc"], "name"])
   
   print _site.header(sprintf(_("Show project: %s."), project.name.html))
 %>
 
-<%=_site.boxt(_("Actions"), "350px")%>
+<%=_site.boxt(_("Actions"), 350)%>
   <input type="button" value="<%=_("Edit project")%>" onclick="location.href='?show=project_edit&amp;project_id=<%=project.id%>';" />
   <input type="button" value="<%=_("Add task")%>" onclick="location.href='?show=task_edit&amp;project_id=<%=project.id%>';" />
 <%=_site.boxb%>
 
 <br />
 
-<%=_site.boxt(_("Information"), "350px")%>
+<%=_site.boxt(_("Information"), 350)%>
   <table class="form">
     <%
-      if project.added_user
-        print Knj::Web.input(
-          :title => _("Added by"),
-          :type => :info,
-          :value => project.added_user.html
-        )
-      end
-      
-      print Knj::Web.input(
+      print Knj::Web.inputs([{
+        :title => _("Added by"),
+        :type => :info,
+        :value => project.added_user_html
+      },{
         :title => _("Date"),
         :type => :info,
-        :value => Knj::Datet.in(project[:added_date]).out(:time => false)
-      )
+        :value => project.added_date_str(:time => false)
+      }])
     %>
   </table>
 <%=_site.boxb%>
 
 <br />
 
-<%=_site.boxt(_("Tasks"), "350px")%>
+<%=_site.boxt(_("Tasks"), 700)%>
   <table class="list">
     <thead>
       <tr>
-        <th><%=_("Task")%></th>
-        <th><%=_("Author")%></th>
+        <th><%=_"Task"%></th>
+        <th><%=_"Author"%></th>
+        <th><%=_"Status"%></th>
+        <th><%=_"Date"%></th>
       </tr>
     </thead>
     <tbody>
@@ -52,6 +50,12 @@
               </td>
               <td>
                 <%=task.user_html%>
+              </td>
+              <td>
+                <%=_ob.static(:Task, :status_opts)[task[:status].to_sym].html%>
+              </td>
+              <td>
+                <%=task.date_added_str(:time => false)%>
               </td>
             </tr>
           <%
