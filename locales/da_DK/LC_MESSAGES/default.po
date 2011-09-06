@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knjTasks\n"
-"POT-Creation-Date: 2011-07-12 15:34+0100\n"
-"PO-Revision-Date: 2011-07-12 15:35+0100\n"
+"POT-Creation-Date: 2011-09-06 23:04+0100\n"
+"PO-Revision-Date: 2011-09-06 23:13+0100\n"
 "Last-Translator: Kasper Johansen <k@spernj.org>\n"
 "Language-Team: Kasper Johansen <k@spernj.org>\n"
 "Language: \n"
@@ -18,278 +18,417 @@ msgstr ""
 "X-Poedit-SearchPath-1: pages\n"
 "X-Poedit-SearchPath-2: models\n"
 
-#: models/class_user.rb:12
+#: models/class_user.rb:14
 #: models/class_comment.rb:15
 #: models/class_project.rb:12
-#: models/class_task.rb:16
-#: models/class_timelog.rb:7
-#: models/class_task_assigned_user.rb:12
+#: models/class_task.rb:17
+#: models/class_timelog.rb:45
+#: models/class_task_assigned_user.rb:34
+#: models/class_task_check.rb:12
+#: models/class_customer.rb:11
 msgid "Invalid key: %s."
 msgstr "Ugyldig nøgle: %s."
+
+#: models/class_user.rb:25
+msgid "Cannot delete user because that user has created tasks."
+msgstr "Kan ikke slette bruger fordi den bruger har oprettet opgaver."
 
 #: models/class_project.rb:23
 msgid "Invalid name given."
 msgstr "Ugyldigt navn givet."
 
-#: models/class_task.rb:27
+#: models/class_task.rb:28
 msgid "No project-ID was given."
 msgstr "Intet projekt-ID blev givet."
 
-#: models/class_task.rb:32
+#: models/class_task.rb:29
+msgid "Invalid name was given."
+msgstr "Ugyldigt navn blev givet."
+
+#: models/class_task.rb:37
 msgid "A project with the given project-ID could not be found: '%s'."
 msgstr "Et projekt med det givne projekt-ID kunne ikke findes: '%s'."
 
-#: models/class_timelog.rb:19
+#: models/class_task.rb:43
+msgid "Feature"
+msgstr "Funktion"
+
+#: models/class_task.rb:44
+msgid "Bug report"
+msgstr "Fejl rapport"
+
+#: models/class_task.rb:45
+msgid "Question"
+msgstr "Spørgsmål"
+
+#: models/class_task.rb:51
+msgid "Open"
+msgstr "Åben"
+
+#: models/class_task.rb:52
+msgid "Confirmed"
+msgstr "Bekræftet"
+
+#: models/class_task.rb:53
+msgid "Waiting"
+msgstr "Venter"
+
+#: models/class_task.rb:54
+msgid "Closed"
+msgstr "Lukket"
+
+#: models/class_task.rb:61
+msgid "New comment to: %s"
+msgstr "Ny kommentar til: %s"
+
+#: models/class_task.rb:71
+msgid "A new comment has been written to the task '%s'."
+msgstr "En kommentar er blevet skrevet til opgaven '%s'."
+
+#: models/class_task.rb:91
+msgid "You have been assigned to: %s"
+msgstr "Du er blevet tildelt til: %s"
+
+#: models/class_timelog.rb:63
 msgid "No comment has been written."
 msgstr "Der er ikke skrevet en kommentar."
 
-#: models/class_task_assigned_user.rb:27
+#: models/class_timelog.rb:73
+msgid "Timelog %s"
+msgstr "Tidslog %s"
+
+#: models/class_task_assigned_user.rb:56
 msgid "That user is already assigned to that task."
 msgstr "Den bruger er allerede blevet tildelt til den opgave."
 
-#: www/index.rhtml:15
+#: models/class_user_rank_link.rb:15
+msgid "That user already have that rank."
+msgstr "Den bruger har allerede den tilladelse."
+
+#: www/index.rhtml:16
 msgid "That task could not be found."
 msgstr "Den opgave kunne ikke findes."
 
-#: www/index.rhtml:22
+#: www/index.rhtml:23
 msgid "That project could not be found."
 msgstr "Projektet kunne ikke findes."
 
-#: www/index.rhtml:49
+#: www/index.rhtml:51
 msgid "Close"
 msgstr "Luk"
 
-#: www/index.rhtml:50
+#: www/index.rhtml:52
 msgid "Edit comment"
 msgstr "Rediger kommentar"
 
-#: www/index.rhtml:51
+#: www/index.rhtml:53
 msgid "Edit timelog"
 msgstr "Rediger tidslog"
 
-#: www/index.rhtml:75
+#: www/index.rhtml:54
+msgid "Edit task-check"
+msgstr "Rediger opgave-check"
+
+#: www/index.rhtml:78
 msgid "Frontpage"
 msgstr "Forside"
 
-#: www/index.rhtml:76
+#: www/index.rhtml:82
+msgid "Customers"
+msgstr "Kunder"
+
+#: www/index.rhtml:83
 msgid "Projects"
 msgstr "Projekter"
 
-#: www/index.rhtml:77
-#: pages/project_show.rhtml:30
+#: www/index.rhtml:86
 msgid "Tasks"
 msgstr "Opgaver"
 
-#: www/index.rhtml:78
+#: www/index.rhtml:87
 msgid "Users"
 msgstr "Brugere"
 
-#: www/index.rhtml:79
+#: www/index.rhtml:90
+msgid "Timelogs"
+msgstr "Tidslogs"
+
+#: www/index.rhtml:93
 msgid "Log out"
 msgstr "Log ud"
 
-#: www/index.rhtml:83
-#: pages/user_login.rhtml:21
-#: pages/user_login.rhtml:48
+#: www/index.rhtml:96
 msgid "Log in"
 msgstr "Log ind"
 
-#: www/index.rhtml:113
+#: www/index.rhtml:126
 msgid "Made by %s"
 msgstr "Lavet af %s"
 
-#: pages/timelog_edit.rhtml:51
-#: pages/user_login.rhtml:30
-#: pages/task_edit.rhtml:44
-#: pages/comment_edit.rhtml:35
-#: pages/user_edit.rhtml:42
+#: pages/timelog_edit.rhtml:52
 msgid "Enter details"
 msgstr "Indtast detaljer"
 
-#: pages/timelog_edit.rhtml:55
-#: pages/project_show.rhtml:34
+#: pages/timelog_edit.rhtml:56
 msgid "Task"
 msgstr "Opgave"
 
-#: pages/timelog_edit.rhtml:59
+#: pages/timelog_edit.rhtml:60
 msgid "On which task should this timelog be saved?"
 msgstr "På hvilken opgave skal tidsloggen gemmes?"
 
-#: pages/timelog_edit.rhtml:61
-#: pages/task_show.rhtml:54
+#: pages/timelog_edit.rhtml:62
 msgid "Time"
 msgstr "Tid"
 
-#: pages/timelog_edit.rhtml:64
+#: pages/timelog_edit.rhtml:65
 msgid "How much time should be logged?"
 msgstr "Hvor meget tid skal der logges?"
 
-#: pages/timelog_edit.rhtml:66
+#: pages/timelog_edit.rhtml:67
 msgid "Time transportation"
 msgstr "Transport-tid"
 
-#: pages/timelog_edit.rhtml:69
+#: pages/timelog_edit.rhtml:70
 msgid "How much time was used on transportation?"
 msgstr "Hvor meget tid blev brugt på transport?"
 
-#: pages/timelog_edit.rhtml:71
+#: pages/timelog_edit.rhtml:72
 msgid "Transportation length"
 msgstr "Transport-længde"
 
-#: pages/timelog_edit.rhtml:74
+#: pages/timelog_edit.rhtml:75
 msgid "How many km was used on transportation?"
 msgstr "Hvor mange km blev brugt på transport?"
 
-#: pages/timelog_edit.rhtml:76
-#: pages/task_show.rhtml:55
-#: pages/project_show.rhtml:20
+#: pages/timelog_edit.rhtml:77
 msgid "Date"
 msgstr "Dato"
 
-#: pages/timelog_edit.rhtml:79
+#: pages/timelog_edit.rhtml:80
 msgid "On which date was the time used?"
 msgstr "På hvilken dato skal tiden logges?"
 
-#: pages/timelog_edit.rhtml:81
-#: pages/task_show.rhtml:57
-#: pages/comment_edit.rhtml:39
+#: pages/timelog_edit.rhtml:82
+msgid "Invoiced"
+msgstr "Faktureret"
+
+#: pages/timelog_edit.rhtml:85
+msgid "If this timelog has been invoiced or not."
+msgstr "Om tidsloggen er faktureret eller ej."
+
+#: pages/timelog_edit.rhtml:87
 msgid "Comment"
 msgstr "Kommentar"
 
-#: pages/timelog_edit.rhtml:85
+#: pages/timelog_edit.rhtml:91
 msgid "What whas done using the time."
 msgstr "Hvad der er blevet lavet med den brugte tid."
 
-#: pages/timelog_edit.rhtml:91
-#: pages/task_edit.rhtml:73
-#: pages/comment_edit.rhtml:48
-#: pages/user_edit.rhtml:77
+#: pages/timelog_edit.rhtml:97
 msgid "Save"
 msgstr "Gem"
 
-#: pages/task_show.rhtml:23
-#: pages/task_show.rhtml:82
+#: pages/task_show.rhtml:5
+msgid "You do not have access to that task and cannot view this page."
+msgstr "Du har ikke adgang til den opgave og kan ikke se denne side."
+
+#: pages/task_show.rhtml:29
+#: pages/task_show.rhtml:104
+#: pages/task_show.rhtml:194
 msgid "edit"
 msgstr "rediger"
 
-#: pages/task_show.rhtml:23
+#: pages/task_show.rhtml:29
 msgid "Do you want to delete this comment?"
 msgstr "Vil du slette denne kommentar?"
 
-#: pages/task_show.rhtml:23
-#: pages/task_show.rhtml:82
+#: pages/task_show.rhtml:29
+#: pages/task_show.rhtml:104
+#: pages/task_show.rhtml:194
 msgid "delete"
 msgstr "slet"
 
-#: pages/task_show.rhtml:40
+#: pages/task_show.rhtml:48
 msgid "No comments were found for this task."
 msgstr "Der blev ikke fundet nogle kommentarer for denne opgave."
 
-#: pages/task_show.rhtml:53
+#: pages/task_show.rhtml:61
 msgid "ID"
 msgstr "ID"
 
-#: pages/task_show.rhtml:56
-#: pages/task_show.rhtml:112
+#: pages/task_show.rhtml:62
+#: pages/frontpage.rhtml:35
+msgid "Hours"
+msgstr "Timer"
+
+#: pages/task_show.rhtml:64
+#: pages/task_show.rhtml:135
 msgid "User"
 msgstr "Bruger"
 
-#: pages/task_show.rhtml:58
-#: pages/task_show.rhtml:113
+#: pages/task_show.rhtml:66
+#: pages/task_show.rhtml:136
+#: pages/project_show.rhtml:8
+#: pages/user_edit.rhtml:52
+#: pages/customer_show.rhtml:11
+#: pages/user_show.rhtml:9
 msgid "Actions"
 msgstr "Muligheder"
 
-#: pages/task_show.rhtml:82
+#: pages/task_show.rhtml:104
 msgid "Do you want to delete this timelog?"
 msgstr "Vil du slette denne tidslog?"
 
-#: pages/task_show.rhtml:92
+#: pages/task_show.rhtml:115
 msgid "No timelogs were found."
 msgstr "Der blev ikke fundet nogle tidslogs."
 
-#: pages/task_show.rhtml:125
+#: pages/task_show.rhtml:149
 msgid "Do you want to remove this user from this task?"
 msgstr "Vil du fjerne denne bruger fra opgaven?"
 
-#: pages/task_show.rhtml:125
+#: pages/task_show.rhtml:149
+#: pages/user_edit.rhtml:62
 msgid "remove"
 msgstr "fjern"
 
-#: pages/task_show.rhtml:135
+#: pages/task_show.rhtml:160
 msgid "No users has been assigned to this task."
 msgstr "Der er ikke blevet tildelt nogle brugere til denne opgave."
 
-#: pages/task_show.rhtml:160
+#: pages/task_show.rhtml:194
+msgid "Do you want to delete this check?"
+msgstr "Vil du slette dette check?"
+
+#: pages/task_show.rhtml:210
+msgid "No checks has been added for this task."
+msgstr "Der er ikke blevet tilføjet nogle checks for denne opgave."
+
+#: pages/task_show.rhtml:218
 msgid "Show task: %s."
 msgstr "Vis opgave: %s."
 
-#: pages/task_show.rhtml:164
+#: pages/task_show.rhtml:222
 msgid "Edit task"
 msgstr "Rediger opgave"
 
-#: pages/task_show.rhtml:171
-#: pages/task_edit.rhtml:59
+#: pages/task_show.rhtml:233
+#: pages/project_show.rhtml:39
+#: pages/task_edit.rhtml:71
+#: pages/frontpage.rhtml:34
+#: pages/task_search.rhtml:17
+#: pages/task_search.rhtml:71
+#: pages/user_show.rhtml:43
+msgid "Status"
+msgstr "Status"
+
+#: pages/task_show.rhtml:236
+msgid "The current status of the task."
+msgstr "Den nuværende status på opgaven."
+
+#: pages/task_show.rhtml:238
+#: pages/task_edit.rhtml:65
+#: pages/task_search.rhtml:23
+msgid "Type"
+msgstr "Type"
+
+#: pages/task_show.rhtml:241
+msgid "The type of task this is."
+msgstr "Hvad for en type opgaven er."
+
+#: pages/task_show.rhtml:246
+msgid "The date this task was added."
+msgstr "Datoen denne opgave blev tilføjet."
+
+#: pages/task_show.rhtml:248
+#: pages/project_show.rhtml:38
+#: pages/frontpage.rhtml:32
+#: pages/task_search.rhtml:73
+msgid "Author"
+msgstr "Forfatter"
+
+#: pages/task_show.rhtml:251
+msgid "The user that created this task."
+msgstr "Brugeren der oprettede denne opgave."
+
+#: pages/task_show.rhtml:259
+#: pages/task_edit.rhtml:77
+#: pages/project_edit.rhtml:86
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: pages/task_show.rhtml:176
+#: pages/task_show.rhtml:267
+msgid "No description has been written for this task."
+msgstr "Der er ikke blevet skrevet en beskrivelse til denne opgave."
+
+#: pages/task_show.rhtml:277
 msgid "Assigned users"
 msgstr "Tildelte brugere"
 
-#: pages/task_show.rhtml:178
+#: pages/task_show.rhtml:279
 msgid "Assign a user"
 msgstr "Tildel bruger"
 
-#: pages/task_show.rhtml:178
+#: pages/task_show.rhtml:279
 msgid "Assign user to task"
 msgstr "Tildel bruger til opgave"
 
-#: pages/task_show.rhtml:182
-#: pages/task_show.rhtml:199
-#: pages/task_show.rhtml:210
+#: pages/task_show.rhtml:283
+#: pages/task_show.rhtml:295
+#: pages/task_show.rhtml:312
+#: pages/task_show.rhtml:323
+#: pages/user_edit.rhtml:159
 msgid "Loading - please wait..."
 msgstr "Indlæser - vent venligst..."
 
-#: pages/task_show.rhtml:193
+#: pages/task_show.rhtml:289
+msgid "Checklist"
+msgstr "Checkliste"
+
+#: pages/task_show.rhtml:291
+msgid "Add new check"
+msgstr "Tilføj nyt check"
+
+#: pages/task_show.rhtml:306
 msgid "Comments"
 msgstr "Kommentarer"
 
-#: pages/task_show.rhtml:195
-#: pages/task_show.rhtml:206
+#: pages/task_show.rhtml:308
+#: pages/task_show.rhtml:319
+#: pages/project_search.rhtml:22
+#: pages/task_search.rhtml:32
+#: pages/user_search.rhtml:28
 msgid "Add new"
 msgstr "Tilføj ny"
 
-#: pages/task_show.rhtml:195
+#: pages/task_show.rhtml:308
 msgid "Add new comment"
 msgstr "Tilføj ny kommentar"
-
-#: pages/task_show.rhtml:204
-msgid "Timelogs"
-msgstr "Tidslogs"
 
 #: pages/user_login.rhtml:9
 msgid "A user with that username and/or password was found."
 msgstr "En bruger med det brugernavn og/eller adgangskode kunne ikke findes."
 
-#: pages/user_login.rhtml:24
+#: pages/user_login.rhtml:29
 msgid "You are logged in as %s."
 msgstr "Du er logget ind som %s."
 
-#: pages/user_login.rhtml:34
-#: pages/user_edit.rhtml:46
+#: pages/user_login.rhtml:39
+#: pages/user_edit.rhtml:114
 msgid "Username"
 msgstr "Brugernavn"
 
-#: pages/user_login.rhtml:37
+#: pages/user_login.rhtml:42
 msgid "The username you want to log in as."
 msgstr "Brugernavnet du vil logges ind som."
 
-#: pages/user_login.rhtml:39
-#: pages/user_edit.rhtml:51
+#: pages/user_login.rhtml:44
+#: pages/user_edit.rhtml:119
 msgid "Password"
 msgstr "Adgangskode"
 
-#: pages/user_login.rhtml:43
+#: pages/user_login.rhtml:48
 msgid "The password associated with the entered username."
 msgstr "Adgangskoden der er sat for det indtastede brugernavn."
 
@@ -297,125 +436,225 @@ msgstr "Adgangskoden der er sat for det indtastede brugernavn."
 msgid "Show project: %s."
 msgstr "Vis projekt: %s."
 
-#: pages/project_show.rhtml:8
+#: pages/project_show.rhtml:9
+msgid "Edit project"
+msgstr "Rediger projekt"
+
+#: pages/project_show.rhtml:10
+#: pages/project_edit.rhtml:97
+msgid "Add task"
+msgstr "Tilføj opgave"
+
+#: pages/project_show.rhtml:15
+#: pages/user_show.rhtml:18
 msgid "Information"
 msgstr "Information"
 
-#: pages/project_show.rhtml:13
+#: pages/project_show.rhtml:19
+#: pages/project_edit.rhtml:78
 msgid "Added by"
 msgstr "Tilføjet af"
 
-#: pages/project_show.rhtml:35
-msgid "Author"
-msgstr "Forfatter"
-
-#: pages/project_show.rhtml:57
+#: pages/project_show.rhtml:68
+#: pages/frontpage.rhtml:78
+#: pages/task_search.rhtml:105
 msgid "No tasks were found."
 msgstr "Der blev ikke fundet nogle opgaver."
 
-#: pages/task_edit.rhtml:12
+#: pages/task_edit.rhtml:14
 msgid "Edit task: %s."
 msgstr "Rediger opgave: %s."
 
-#: pages/task_edit.rhtml:25
+#: pages/task_edit.rhtml:27
 msgid "Add new task"
 msgstr "Tilføj ny opgave"
 
-#: pages/task_edit.rhtml:36
+#: pages/task_edit.rhtml:42
 msgid "No projects has been added to this installation yet - please do that first."
 msgstr "Der er ikke blevet tilføjet nogle projekter på denne installation endnu - gør venligst dette først."
 
-#: pages/task_edit.rhtml:48
-#: pages/user_edit.rhtml:57
+#: pages/task_edit.rhtml:54
+#: pages/user_rank_search.rhtml:53
+#: pages/user_edit.rhtml:125
+#: pages/project_search.rhtml:14
+#: pages/project_search.rhtml:52
+#: pages/task_search.rhtml:12
+#: pages/task_search.rhtml:70
+#: pages/customer_edit.rhtml:47
+#: pages/project_edit.rhtml:54
+#: pages/user_search.rhtml:19
+#: pages/user_search.rhtml:94
+#: pages/user_show.rhtml:22
+#: pages/customer_search.rhtml:12
 msgid "Name"
 msgstr "Navn"
 
-#: pages/task_edit.rhtml:51
+#: pages/task_edit.rhtml:57
 msgid "The name of the task as it should appear in this system."
 msgstr "Navnet på opgaven som det skal vises i dette system."
 
-#: pages/task_edit.rhtml:53
+#: pages/task_edit.rhtml:59
+#: pages/frontpage.rhtml:31
+#: pages/task_search.rhtml:72
+#: pages/customer_show.rhtml:21
+#: pages/user_show.rhtml:45
 msgid "Project"
 msgstr "Projekt"
 
-#: pages/task_edit.rhtml:57
+#: pages/task_edit.rhtml:63
 msgid "The project that this task belongs under."
 msgstr "Projektet som denne opgave hører under."
 
-#: pages/task_edit.rhtml:62
+#: pages/task_edit.rhtml:68
+msgid "The type of the task."
+msgstr "Typen af opgaven."
+
+#: pages/task_edit.rhtml:74
+msgid "The status of the task."
+msgstr "Status på opgaven."
+
+#: pages/task_edit.rhtml:80
 msgid "The description as it should appear for the users."
 msgstr "Beskrivelsen som den skal se ud for brugerne."
 
-#: pages/task_edit.rhtml:70
+#: pages/task_edit.rhtml:88
+#: pages/user_edit.rhtml:139
+#: pages/customer_edit.rhtml:56
 msgid "Show"
 msgstr "Vis"
 
-#: pages/task_edit.rhtml:71
-#: pages/user_edit.rhtml:73
+#: pages/task_edit.rhtml:89
+#: pages/user_edit.rhtml:140
+#: pages/customer_edit.rhtml:57
+#: pages/project_edit.rhtml:98
 msgid "Delete"
 msgstr "Slet"
 
-#: pages/task_edit.rhtml:71
+#: pages/task_edit.rhtml:89
 msgid "Do you want to delete this task?"
 msgstr "Vil du slette denne opgave?"
+
+#: pages/user_rank_search.rhtml:9
+#: pages/task_search.rhtml:66
+#: pages/user_search.rhtml:90
+#: pages/customer_search.rhtml:46
+msgid "Results"
+msgstr "Resultater"
+
+#: pages/user_rank_search.rhtml:13
+#: pages/user_edit.rhtml:51
+msgid "Rank"
+msgstr "Rang"
+
+#: pages/user_rank_search.rhtml:32
+msgid "No ranks were found."
+msgstr "Der blev ikke fundet nogle rettigheder."
+
+#: pages/user_rank_search.rhtml:49
+#: pages/project_search.rhtml:10
+#: pages/task_search.rhtml:8
+#: pages/user_search.rhtml:15
+#: pages/customer_search.rhtml:8
+msgid "Enter criteria"
+msgstr "Indtast kriterier"
+
+#: pages/user_rank_search.rhtml:56
+msgid "Enter a part of the name of the permission you are searching for."
+msgstr "Indtast en del af navnet på den tilladelse du leder efter."
+
+#: pages/user_rank_search.rhtml:61
+#: pages/project_search.rhtml:23
+#: pages/task_search.rhtml:33
+#: pages/user_search.rhtml:30
+#: pages/customer_search.rhtml:21
+msgid "Search"
+msgstr "Søg"
+
+#: pages/user_rank_search.rhtml:73
+msgid "Please enter criteria and search..."
+msgstr "Indtast venligst kriterier og søg..."
 
 #: pages/comment_edit.rhtml:60
 msgid "Please write a comment before saving."
 msgstr "Skriv venligst en kommentar før du gemmer."
 
-#: pages/user_edit.rhtml:16
+#: pages/frontpage.rhtml:35
+msgid "Driving"
+msgstr "Kørsel"
+
+#: pages/frontpage.rhtml:36
+msgid "Transport length"
+msgstr "Transport længde"
+
+#: pages/user_edit.rhtml:3
+#: pages/customer_edit.rhtml:3
+#: pages/project_edit.rhtml:3
+msgid "You are not an administrator and cannot view this page."
+msgstr "Du er ikke en administrator og kan ikke se denne side."
+
+#: pages/user_edit.rhtml:20
 msgid "Edit user: %s."
 msgstr "Rediger bruger: %s."
 
-#: pages/user_edit.rhtml:28
+#: pages/user_edit.rhtml:36
 msgid "Add new user"
 msgstr "Tilføj ny bruger"
 
-#: pages/user_edit.rhtml:49
+#: pages/user_edit.rhtml:62
+msgid "Do you want to remove this rank?"
+msgstr "Vil du fjerne denne tilladelse?"
+
+#: pages/user_edit.rhtml:72
+msgid "No ranks has been added to this user."
+msgstr "Der er ikke blevet tilføjet nogle tilladelser til denne bruger."
+
+#: pages/user_edit.rhtml:117
 msgid "The username that this user should use to log in."
 msgstr "Brugernavnet som denne bruger skal bruge til at logge ind."
 
-#: pages/user_edit.rhtml:55
+#: pages/user_edit.rhtml:123
 msgid "Only write a password here if you whish to change it."
 msgstr "Skriv kun en adgangskoden her hvis du ønsker at ændre den."
 
-#: pages/user_edit.rhtml:60
+#: pages/user_edit.rhtml:128
+#: pages/user_show.rhtml:25
 msgid "The real name of the user."
 msgstr "Brugerens rigtige navn."
 
-#: pages/user_edit.rhtml:62
+#: pages/user_edit.rhtml:130
+#: pages/user_show.rhtml:27
 msgid "Email"
 msgstr "Email"
 
-#: pages/user_edit.rhtml:65
+#: pages/user_edit.rhtml:133
 msgid "The email of the user which will be used for notifications and other stuff as well."
 msgstr "Brugerens email som vil blive brugt til notifikationer og andre ting."
 
-#: pages/user_edit.rhtml:73
+#: pages/user_edit.rhtml:140
 msgid "Do you want to delete this user?"
 msgstr "Vil du slette denne bruger?"
 
+#: pages/user_edit.rhtml:152
+msgid "Permissions"
+msgstr "Tilladelser"
+
+#: pages/user_edit.rhtml:154
+msgid "Add rank"
+msgstr "Tilføj tilladelse"
+
 #: pages/project_search.rhtml:2
+msgid "You do not have permission to view this page."
+msgstr "Du har ikke tilladelse til at se denne side."
+
+#: pages/project_search.rhtml:4
 msgid "Search for project"
 msgstr "Søg efter projekter"
 
-#: pages/project_search.rhtml:8
-#: pages/task_search.rhtml:8
-#: pages/user_search.rhtml:15
-msgid "Enter criteria"
-msgstr "Indtast kriterier"
-
-#: pages/project_search.rhtml:15
+#: pages/project_search.rhtml:17
 msgid "A part of the name of the project you are looking for."
 msgstr "En del af navnet på det projekt du leder efter."
 
-#: pages/project_search.rhtml:21
-#: pages/task_search.rhtml:21
-#: pages/user_search.rhtml:28
-msgid "Search"
-msgstr "Søg"
-
-#: pages/project_search.rhtml:69
+#: pages/project_search.rhtml:71
 msgid "No projects were found."
 msgstr "Der blev ikke fundet nogle projekter."
 
@@ -427,40 +666,70 @@ msgstr "Søg efter opgaver"
 msgid "A part of the name of the task you are looking for."
 msgstr "En del af navnet på opgaven du leder efter."
 
-#: pages/task_search.rhtml:46
-#: pages/user_search.rhtml:88
-msgid "Results"
-msgstr "Resultater"
+#: pages/task_search.rhtml:19
+#: pages/task_search.rhtml:25
+msgid "All"
+msgstr "Alle"
 
-#: pages/project_edit.rhtml:13
+#: pages/task_search.rhtml:20
+msgid "If you only want to find tasks with a specific status."
+msgstr "Hvis du kun vil finde opgaver med en specifik status."
+
+#: pages/task_search.rhtml:26
+msgid "If you only want to find tasks of a specific type."
+msgstr "Hvis du kun vil finde opgaver af en specifik type."
+
+#: pages/customer_edit.rhtml:14
+msgid "Edit customer: %s"
+msgstr "Rediger kunde: %s"
+
+#: pages/customer_edit.rhtml:28
+#: pages/customer_search.rhtml:20
+msgid "Add new customer"
+msgstr "Tilføj ny kunde"
+
+#: pages/customer_edit.rhtml:50
+msgid "The name of the customer as it should appear in the system."
+msgstr "Navnet på kunden som det skal se ud i systemet."
+
+#: pages/customer_edit.rhtml:57
+msgid "Do you want to delete this customer?"
+msgstr "Vil du slette denne kunde?"
+
+#: pages/project_edit.rhtml:18
 msgid "That project could not be found in the database."
 msgstr "Projektet kunne ikke findes i databasen."
 
-#: pages/project_edit.rhtml:16
+#: pages/project_edit.rhtml:21
 msgid "Edit project: %s."
 msgstr "Rediger projekt: %s."
 
-#: pages/project_edit.rhtml:28
+#: pages/project_edit.rhtml:33
 msgid "Add new project"
 msgstr "Tilføj nyt projekt"
 
-#: pages/project_edit.rhtml:52
+#: pages/project_edit.rhtml:57
 msgid "The name of the project as it should appear in this system."
 msgstr "Navnet på projektet som det skal se ud i systemet."
 
-#: pages/project_edit.rhtml:66
+#: pages/project_edit.rhtml:62
+#: pages/customer_search.rhtml:50
+msgid "Customer"
+msgstr "Kunde"
+
+#: pages/project_edit.rhtml:65
+msgid "The customer that this project belongs under."
+msgstr "Kunden som dette projekt hører under."
+
+#: pages/project_edit.rhtml:81
 msgid "The user that added this project."
 msgstr "Brugeren der tilføjede dette projekt."
 
-#: pages/project_edit.rhtml:76
+#: pages/project_edit.rhtml:91
 msgid "A description of the project to tell what it is about."
 msgstr "En beskrivelse af projektet som fortæller hvad det handler om."
 
-#: pages/project_edit.rhtml:82
-msgid "Add task"
-msgstr "Tilføj opgave"
-
-#: pages/project_edit.rhtml:83
+#: pages/project_edit.rhtml:98
 msgid "Do you want to delete this project?"
 msgstr "Vil du slette dette projekt?"
 
@@ -472,25 +741,133 @@ msgstr "Søg efter brugere"
 msgid "Enter a part of the name of the user you are looking for."
 msgstr "En del af navnet på brugeren du leder efter."
 
-#: pages/user_search.rhtml:42
+#: pages/user_search.rhtml:44
 msgid "Please search..."
 msgstr "Søg venligst..."
 
-#: pages/user_search.rhtml:119
+#: pages/user_search.rhtml:125
 msgid "No users were found."
 msgstr "Der blev ikke fundet nogle brugere."
 
-#: pages/user_show.rhtml:4
+#: pages/customer_show.rhtml:5
+msgid "That customer do not exist."
+msgstr "Den kunde eksisterer ikke."
+
+#: pages/customer_show.rhtml:8
+msgid "Show customer: %s"
+msgstr "Vis kunde: %s"
+
+#: pages/customer_show.rhtml:12
+msgid "Edit customer"
+msgstr "Rediger kunde"
+
+#: pages/customer_show.rhtml:42
+msgid "No projects has been added for this customer."
+msgstr "Der er ikke blevet tilføjet nogle projekter for denne kunde."
+
+#: pages/user_show.rhtml:3
+msgid "You do not have access to view this user."
+msgstr "Du har ikke adgang til at se denne bruger."
+
+#: pages/user_show.rhtml:5
 msgid "Show user: %s."
 msgstr "Vis bruger: %s."
 
-#: pages/user_show.rhtml:8
+#: pages/user_show.rhtml:10
 msgid "Edit"
 msgstr "Rediger"
 
-#: pages/user_show.rhtml:42
+#: pages/user_show.rhtml:30
+msgid "The email of the user."
+msgstr "Brugerens email."
+
+#: pages/user_show.rhtml:79
 msgid "No tasks were found for this user."
 msgstr "Der er ingen opgaver for denne bruger."
+
+#: pages/customer_search.rhtml:2
+msgid "Search for customers"
+msgstr "Søg efter kunder"
+
+#: pages/customer_search.rhtml:15
+msgid "A part of the customers name which you are looking for."
+msgstr "En del af den kundes navn du leder efter."
+
+#: pages/customer_search.rhtml:69
+msgid "No customers were found."
+msgstr "Der blev ikke fundet nogle kunder."
+
+#: pages/task_check_edit.rhtml:48
+msgid "The name of the check as it should appear for the other users."
+msgstr "Navnet på checket som det skal se ud i systemet."
+
+#: pages/task_check_edit.rhtml:55
+msgid "A description that describes what should be done before marking this check."
+msgstr "En beskrivelse der beskriver hvad der skal være gjort før man markerer dette check."
+
+#: pages/timelog_search.rhtml:8
+msgid "Invalid date-from."
+msgstr "Ugyldig dato-fra."
+
+#: pages/timelog_search.rhtml:14
+msgid "Invalid date-to."
+msgstr "Ugyldig dato-til."
+
+#: pages/timelog_search.rhtml:34
+msgid "Date from"
+msgstr "Dato fra"
+
+#: pages/timelog_search.rhtml:37
+msgid "If you only want timelogs from a specific date and up."
+msgstr "Hvis du kun vil se tidslogs fra en specifik dato og op."
+
+#: pages/timelog_search.rhtml:39
+msgid "Date to"
+msgstr "Dato til"
+
+#: pages/timelog_search.rhtml:42
+msgid "If you only want timelogs up to a specific date."
+msgstr "Hvis du kun vil se tidslogs fra en specifik dato."
+
+#: pages/timelog_search.rhtml:47
+msgid "A part of the comment in the timelog you are looking for."
+msgstr "En del af kommentaren på den tidslog du leder efter."
+
+#: pages/timelog_search.rhtml:55
+msgid "If you want to find timelogs from specific users."
+msgstr "Hvis du kun vil finde tidslogs fra specifikke brugere."
+
+#: pages/timelog_search.rhtml:63
+msgid "If you want to find timelogs from specific projects."
+msgstr "Hvis du kun vil finde tidslogs fra specifikke projekter."
+
+#: pages/timelog_search.rhtml:117
+msgid "Sum"
+msgstr "Sum"
+
+#: pages/timelog_search.rhtml:121
+msgid "Total hours"
+msgstr "Total timer"
+
+#: pages/timelog_search.rhtml:124
+msgid "The total amount of hours of all the found time-logs (first hours used then time used on transport)."
+msgstr "Det totale antal timer af alle fundne tidslogs (først timer brug og derefter tid brugt på transport)."
+
+#: pages/timelog_search.rhtml:126
+msgid "Total transport"
+msgstr "Total transport"
+
+#: pages/timelog_search.rhtml:129
+msgid "Total km's of transport used in all the timelogs found."
+msgstr "Total km'er af transport brugt i alle fundne tidslogs."
+
+#: pages/timelog_search.rhtml:141
+msgid "Timelog"
+msgstr "Tidslog"
+
+#: pages/timelog_search.rhtml:145
+msgid "Transport"
+msgstr "Transport"
 
 #~ msgid "Add timelog"
 #~ msgstr "Tilføj tidslog"
