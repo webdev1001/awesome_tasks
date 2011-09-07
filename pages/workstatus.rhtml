@@ -68,9 +68,10 @@
     stats[:date_logs][dy][dm][dj][:earned_transport] += earned_transport
     stats[:date_logs][dy][dm][dj][:earned_total] += earned_transport
     
-    stats[:projects][data[:project_id]] = {:time => 0, :time_transport => 0} if !stats[:projects].has_key?(data[:project_id])
+    stats[:projects][data[:project_id]] = {:time => 0, :time_transport => 0, :earned_total => 0} if !stats[:projects].has_key?(data[:project_id])
     stats[:projects][data[:project_id]][:time] += data[:time].to_i
     stats[:projects][data[:project_id]][:time_transport] += data[:time_transport].to_i
+    stats[:projects][data[:project_id]][:earned_total] += earned_total
     
     stats[:totals][:earned] += earned_total
     stats[:totals][:earned_time] += earned_time
@@ -78,7 +79,7 @@
     stats[:totals][:transport_length] += data[:transport_length].to_i
   end
   
-  stats[:projects].sort do |a, b|
+  stats[:projects] = stats[:projects].sort do |a, b|
     ap = _ob.get(:Project, a[0])
     bp = _ob.get(:Project, b[0])
     
@@ -203,12 +204,22 @@
 
 <br />
 
-<%=_site.boxt(_("Overfiew"), 350)%>
+<%=_site.boxt(_("Overview"), 450)%>
   <table class="form">
     <%
       tax_40 = stats[:totals][:earned] * 0.4
       
       print Knj::Web.inputs([{
+        :title => _("Hours"),
+        :type => :info,
+        :align => :right,
+        :value => Knj::Locales.number_out(stats[:totals][:earned_time], 2)
+      },{
+        :title => _("Transport"),
+        :type => :info,
+        :align => :right,
+        :value => Knj::Locales.number_out(stats[:totals][:earned_transport], 2)
+      },{
         :title => _("Total earned"),
         :type => :info,
         :align => :right,
@@ -219,16 +230,50 @@
         :align => :right,
         :value => Knj::Locales.number_out(tax_40, 2)
       },{
-        :title => _("Total transport"),
-        :type => :info,
-        :align => :right,
-        :value => Knj::Locales.number_out(stats[:totals][:earned_transport], 2)
-      },{
         :title => _("Total after tax"),
         :type => :info,
         :align => :right,
         :value => Knj::Locales.number_out(stats[:totals][:earned].to_f - tax_40.to_f, 2)
       }])
     %>
+  </table>
+<%=_site.boxb%>
+
+<br />
+
+<%=_site.boxt(_("Projects"), 450)%>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%=_"Project"%></th>
+        <th class="tdr"><%=_"Hours"%></th>
+        <th class="tdr"><%=_"Transport"%></th>
+        <th class="tdr"><%=_"Earned"%></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%
+      stats[:projects].each do |project_id, project_data|
+        project = _ob.get(:Project, project_id)
+        
+        %>
+          <tr>
+            <td>
+              <%=project.html%>
+            </td>
+            <td class="tdr">
+              <%=Knj::Locales.number_out(project_data[:time].to_f / 3600, 2)%>
+            </td>
+            <td class="tdr">
+              <%=Knj::Locales.number_out(project_data[:earned_transport].to_f, 2)%>
+            </td>
+            <td class="tdr">
+              <%=Knj::Locales.number_out(project_data[:earned_total], 2)%>
+            </td>
+          </tr>
+        <%
+      end
+    %>
+    </tbody>
   </table>
 <%=_site.boxb%>

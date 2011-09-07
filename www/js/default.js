@@ -37,6 +37,26 @@ function comment_edit(comment_id){
   modal({title: locale_strings["comment_edit_title"], url: "clean.rhtml?show=comment_edit&comment_id=" + comment_id});
 }
 
+function project_remove_assigned_user(link_id){
+  $.ajax({type: "GET", url: "clean.rhtml?show=project_show&choice=doremoveassigneduser&link_id=" + link_id, cache: false, async: true, complete: function(data){
+    if (data.responseText.length > 0){
+      alert(data.responseText);
+    }
+    
+    events.call("do_project_assigned_users_update");
+  }});
+}
+
+function project_assign_user(project_id, user_id){
+  $.ajax({type: "GET", url: "clean.rhtml?show=project_show&choice=doassignuser&project_id=" + project_id + "&user_id=" + user_id, cache: false, async: true, complete: function(data){
+    if (data.responseText.length > 0){
+      alert(data.responseText);
+    }
+    
+    events.call("do_project_assigned_users_update");
+  }});
+}
+
 function timelog_delete(tlog_id){
   $.ajax({type: "GET", url: "clean.rhtml?show=timelog_edit&choice=dodelete&timelog_id=" + tlog_id, cache: false, async: true, complete: function(data){
     if (data.responseText.length > 0){
@@ -55,7 +75,7 @@ function timelog_add(task_id){
   modal({title: locale_strings["timelog_edit_title"], height: 600, url: "clean.rhtml?show=timelog_edit&task_id=" + task_id});
 }
 
-function task_removed_assigned(link_id){
+function task_remove_assigned(link_id){
   $.ajax({type: "GET", url: "clean.rhtml?show=task_show&choice=removeassigned&link_id=" + link_id, cache: false, async: true, complete: function(data){
     if (data.responseText.length > 0){
       alert(data.responseText);

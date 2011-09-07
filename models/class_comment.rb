@@ -39,6 +39,6 @@ class Knjtasks::Comment < Knj::Datarow
   end
   
   def add_after(d)
-    object.send_notify_new_comment(self) if object.class.name == "Knjtasks::Task"
+    self.object.send_notify_new_comment(self) if self.object.class.name == "Knjtasks::Task"
   end
 end

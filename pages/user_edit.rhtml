@@ -10,7 +10,7 @@
       :email => _post["texemail"]
     }
     
-    if _post["texpasswd_md5"].to_s.length > 0
+    if _post["texpasswd_md5"].to_s.length > 0 and _post["texpasswd_md5"] != Knj::Php.md5("")
       save_hash[:passwd] = _post["texpasswd_md5"]
     end
   end

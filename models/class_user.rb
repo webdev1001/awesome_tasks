@@ -55,6 +55,10 @@ class Knjtasks::User < Knj::Datarow
     return true
   end
   
+  def has_email?
+    return Knj::Strings.is_email?(self[:email])
+  end
+  
   def html
     name_str = self[:name]
     if name_str.to_s.strip.length <= 0

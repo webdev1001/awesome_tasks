@@ -88,6 +88,7 @@
               
               if _site.has_rank?("admin")
                 menu << {:name => _("Timelogs"), :link => "?show=timelog_search"}
+                menu << {:name => _("Work-status"), :link => "?show=workstatus"}
               end
               
               menu << {:name => _("Log out"), :link => "?show=user_login&choice=dologout"}

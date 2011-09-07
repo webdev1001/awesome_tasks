@@ -22,6 +22,15 @@
     url = "&object_class=#{_get["object_class"]}&object_id=#{_get["object_id"]}"
     
     if _get["choice"] == "dosave"
+      if _post.has_key?("seltaskstatus")
+        task = _ob.get(:Task, _get["object_id"])
+        
+        if task[:status] != _post["seltaskstatus"]
+          task[:status] = _post["seltaskstatus"]
+          save_hash[:comment] = "#{_post["texcomment"]}<div style=\"padding-top: 15px;\">#{sprintf(_("Changed the task-status to '%s'."), task.status_str)}</div>"
+        end
+      end
+      
       save_hash[:object_class] = _get["object_class"]
       save_hash[:object_id] = _get["object_id"]
       comment = _ob.add(:Comment, save_hash)
@@ -30,7 +39,7 @@
   end
 %>
 
-<form method="get" onsubmit="return do_save_comment();">
+<form id="form_comment" method="get" onsubmit="return do_save_comment();">
 
 <%=_site.boxt(_("Enter details"))%>
   <table class="form">
@@ -42,6 +51,18 @@
         :type => :fckeditor,
         :height => 380
       }])
+      
+      if _get["object_class"] == "Task"
+        task = _ob.get(:Task, _get["object_id"])
+        
+        print Knj::Web.inputs([{
+          :title => _("Task status"),
+          :name => :seltaskstatus,
+          :value => task[:status],
+          :opts => _ob.static(:Task, :status_opts),
+          :descr => _("If you want to change the status of the task as well, then you should choose the new status here.")
+        }])
+      end
     %>
     <tr>
       <td colspan="2" class="buttons">
@@ -64,9 +85,7 @@
     $.ajax({
       type: "POST",
       url: "clean.rhtml?show=comment_edit&choice=dosave<%=url%>",
-      data: {
-        "texcomment": comment_val
-      },
+      data: forms_inputs_read($("#form_comment")),
       complete: function(data){
         if (data.responseText.length > 0){
           alert(data.responseText);

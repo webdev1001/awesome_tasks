@@ -1,7 +1,7 @@
 <%
   print _site.header(_("Frontpage"))
   
-  tasks_assigned_links = _ob.list(:Task_assigned_user, {"task_status_not" => "closed"})
+  tasks_assigned_links = _ob.list(:Task_assigned_user, {"user" => _site.user, "task_status_not" => "closed"})
   
   tasks = []
   
@@ -38,8 +38,12 @@
     </thead>
     <tbody>
       <%
+        tasks_count = 0
         tasks.each do |task|
+          next if !task.has_view_access?(_site.user)
           count = task.timelogs(:count => true)
+          tasks_count += 1
+          
           total_hours = count[:sum_time].to_f / 3600
           total_hours_transport = count[:sum_time_transport].to_f / 3600
           total_transport_length = count[:sum_transport_length].to_i
@@ -71,7 +75,7 @@
           <%
         end
         
-        if tasks.empty?
+        if tasks_count <= 0
           %>
             <tr>
               <td colspan="2" class="error">

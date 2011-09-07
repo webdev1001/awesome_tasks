@@ -1,15 +1,14 @@
 <%
-  task = _ob.get(:Task, _get["task_id"])
-  
-  if !task.has_view_access?(_site.user)
-    _kas.alert(_("You do not have access to that task and cannot view this page.")).back
-  end
-  
   if _get["choice"] == "removeassigned"
     link = _ob.get(:Task_assigned_user, _get["link_id"])
+    task = link.task
+    _kas.alert(_("You do not have access to that task and cannot view this page.")).back if !task.has_view_access?(_site.user)
     _ob.delete(link)
     exit
   end
+  
+  task = _ob.get(:Task, _get["task_id"])
+  _kas.alert(_("You do not have access to that task and cannot view this page.")).back if !task.has_view_access?(_site.user)
   
   tlogs = task.timelogs("orderby" => [["date", "desc"]])
   
@@ -146,11 +145,9 @@
                   <td>
                     <%=link.user.html%>
                   </td>
-                  <%if task.has_access?(_site.user)%>
-                    <td>
-                      (<a href="javascript: if (confirm('<%=_("Do you want to remove this user from this task?")%>')){task_removed_assigned('<%=link.id%>');}"><%=_("remove")%></a>)
-                    </td>
-                  <%end%>
+                  <td>
+                    (<a href="javascript: if (confirm('<%=_("Do you want to remove this user from this task?")%>')){task_remove_assigned('<%=link.id%>');}"><%=_("remove")%></a>)
+                  </td>
                 </tr>
               <%
             end
@@ -307,7 +304,7 @@
 <div style="padding-bottom: 15px;">
   <%=_site.boxt(_("Comments"))%>
     <div style="padding-bottom: 15px;">
-      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_"Add new comment"%>', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=task.id%>'});" />
+      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_"Add new comment"%>', height: '540px', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=task.id%>'});" />
     </div>
     
     <div id="divcomments">

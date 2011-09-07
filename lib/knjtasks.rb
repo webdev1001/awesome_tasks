@@ -13,7 +13,7 @@ class Knjtasks
     require "#{@args[:knjrbfw_path]}knj/objects"
     
     
-    check_args = [:db, :knjjs_url, :port, :email_admin, :email_robot, :smtp_args, :db_args, :title]
+    check_args = [:db, :knjjs_url, :port, :email_admin, :email_robot, :db_args, :title]
     check_args.each do |key|
       raise "No '#{key}' given in arguments." if !@args.has_key?(key)
     end
@@ -49,7 +49,7 @@ class Knjtasks
     end
     
     @knjappserver = Knjappserver.new(
-      :debug => false,
+      :debug => @args[:debug],
       :autorestart => false,
       :autoload => false,
       :verbose => false,
