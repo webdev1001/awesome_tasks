@@ -58,17 +58,17 @@ class Knjtasks::Task < Knj::Datarow
   #Sends a notification about a newly added comment to a task.
   def send_notify_new_comment(comment)
     self.notify_emails.each do |data|
-      subj = sprintf(_kas.gettext.gettext("New comment to: %s", data[:user].locale), self.name)
+      subj = "#{sprintf(_kas.gettext.gettext("Task #%1$s: %2$s", data[:user].locale), self.id, self.name)} - #{sprintf(_kas.gettext.gettext("New comment from: %s", data[:user].locale), comment.user.name)}"
       
       if !self.user
         user_html = "[#{_kas.gettext.gettext("no user", data[:user].locale)}]"
       else
-        user_html = self.user.name.html
+        user_html = comment.user.name.html
       end
       
       html = ""
       
-      html += _kas.gettext.gettext("A new comment has been written to the task '%s'.", data[:user].locale)
+      html += sprintf(_kas.gettext.gettext("A new comment has been written to the task '%s'.", data[:user].locale), self.name)
       html += "<br /><br />"
       
       html += "<b>#{_kas.gettext.gettext("Author", data[:user].locale)}:</b><br />"

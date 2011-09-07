@@ -147,19 +147,21 @@
 
 </form>
 
-<br />
+<%if user%>
+  <br />
 
-<%=_site.boxt(_("Permissions"), 350)%>
-  <div style="padding-bottom: 15px;">
-    <input type="button" value="<%=_"Add rank"%>" onclick="modal({title: '<%=_"Add rank"%>', url: '/clean.rhtml?show=user_rank_search&amp;jsfunc=rank_add'});" />
-  </div>
-  
-  <div id="divpermissions">
-    <div class="error">
-      <%=_"Loading - please wait..."%>
+  <%=_site.boxt(_("Permissions"), 350)%>
+    <div style="padding-bottom: 15px;">
+      <input type="button" value="<%=_"Add rank"%>" onclick="modal({title: '<%=_"Add rank"%>', url: '/clean.rhtml?show=user_rank_search&amp;jsfunc=rank_add'});" />
     </div>
-  </div>
-<%=_site.boxb%>
+    
+    <div id="divpermissions">
+      <div class="error">
+        <%=_"Loading - please wait..."%>
+      </div>
+    </div>
+  <%=_site.boxb%>
+<%end%>
 
 <script type="text/javascript">
   $("#texusername").focus();
@@ -170,38 +172,40 @@
     return true;
   }
   
-  function ranks_reload(){
-    $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&user_id=<%=user.id%>&choice=getranks", async: true, cache: false, complete: function(data){
-      $("#divpermissions").slideUp("fast", function(){
-        $("#divpermissions").html(data.responseText);
-        $("#divpermissions").slideDown("fast");
-      });
-    }});
-  }
-  
-  function rank_remove(link_id){
-    $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doremoverank&user_id=<%=user.id%>&link_id=" + link_id, async: true, cache: false, complete: function(data){
-      if (data.responseText.length > 0){
-        alert(data.responseText);
-      }
-      
-      ranks_reload();
-    }});
-  }
-  
-  function rank_add(rank_id){
-    modal_close();
+  <%if user%>
+    function ranks_reload(){
+      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&user_id=<%=user.id%>&choice=getranks", async: true, cache: false, complete: function(data){
+        $("#divpermissions").slideUp("fast", function(){
+          $("#divpermissions").html(data.responseText);
+          $("#divpermissions").slideDown("fast");
+        });
+      }});
+    }
     
-    $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doaddrank&user_id=<%=user.id%>&rank_id=" + rank_id, async: true, cache: false, complete: function(data){
-      if (data.responseText.length > 0){
-        alert(data.responseText);
-      }
+    function rank_remove(link_id){
+      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doremoverank&user_id=<%=user.id%>&link_id=" + link_id, async: true, cache: false, complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }
+        
+        ranks_reload();
+      }});
+    }
+    
+    function rank_add(rank_id){
+      modal_close();
       
+      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doaddrank&user_id=<%=user.id%>&rank_id=" + rank_id, async: true, cache: false, complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }
+        
+        ranks_reload();
+      }});
+    }
+    
+    $(document).ready(function(){
       ranks_reload();
-    }});
-  }
-  
-  $(document).ready(function(){
-    ranks_reload();
-  });
+    });
+  <%end%>
 </script>

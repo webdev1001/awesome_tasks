@@ -79,6 +79,26 @@ class Knjtasks
     @knjappserver.define_magic_var(:_site, self)
     @knjappserver.define_magic_var(:_ob, @ob)
     
+    if @args.has_key?(:mail_args)
+      require "#{File.dirname(__FILE__)}/../threads/thread_mail_task_comments.rb"
+      @thread_mail_task_comments = Knjtasks::Thread_mail_task_comments.new(
+        :knjtasks => self,
+        :ob => @ob,
+        :appsrv => @knjappserver,
+        :args => @args
+      )
+      
+      if @args[:debug]
+        time = 5
+      else
+        time = 60
+      end
+      
+      @knjappserver.timeout(:time => time) do
+        @thread_mail_task_comments.run
+      end
+    end
+    
     @class_translations = {
       :User => _("user"),
       :Project => _("project"),

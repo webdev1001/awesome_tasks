@@ -21,6 +21,15 @@ $schema = {
         {"name" => "user_id", "columns" => ["user_id"]}
       ]
     },
+    "Email_check" => {
+      "columns" => [
+        {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "email_id_str", "type" => "varchar"}
+      ],
+      "indexes" => [
+        {"name" => "email_id_str", "columns" => ["email_id_str"]}
+      ]
+    },
     "Project" => {
       "columns" => [
         {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},

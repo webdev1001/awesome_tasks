@@ -244,6 +244,11 @@
                 :value => task.date_added_str(:time => false),
                 :descr => _("The date this task was added.")
               },{
+                :title => _("Project"),
+                :type => :info,
+                :value => task.project_html,
+                :descr => _("The project this task is created under.")
+              },{
                 :title => _("Author"),
                 :type => :info,
                 :value => task.user_html,
