@@ -11,7 +11,7 @@
     exit
   end
   
-  tlogs = task.timelogs("orderby" => "date")
+  tlogs = task.timelogs("orderby" => [["date", "desc"]])
   
   if _get["choice"] == "getcomments"
     comments = task.comments
@@ -26,7 +26,7 @@
               </td>
               <td style="width: 260px; text-align: right; font-weight: bold;">
                 <%if task.has_access?(_site.user)%>
-                  (<a href="javascript: comment_edit('<%=comment.id%>');"><%=_("edit")%></a>, <a href="javascript: if (confirm('<%=_("Do you want to delete this comment?")%>')){comment_delete('<%=comment.id%>');}"><%=_("delete")%></a>)
+                  (<a href="javascript: comment_edit('<%=comment.id%>');"><%=_"edit"%></a>, <a href="javascript: if (confirm('<%=_"Do you want to delete this comment?"%>')){comment_delete('<%=comment.id%>');}"><%=_"delete"%></a>)
                   &nbsp;&nbsp;&nbsp;&nbsp;
                 <%end%>
                 <%=comment.date_saved_str%>
@@ -58,12 +58,14 @@
       <table class="list">
         <thead>
           <tr>
-            <th><%=_("ID")%></th>
-            <th><%=_("Hours")%></th>
-            <th><%=_("Date")%></th>
-            <th><%=_("User")%></th>
-            <th><%=_("Comment")%></th>
-            <th><%=_("Actions")%></th>
+            <th><%=_"ID"%></th>
+            <th><%=_"Hours"%></th>
+            <th><%=_"Date"%></th>
+            <th><%=_"User"%></th>
+            <th><%=_"Comment"%></th>
+            <%if _site.has_rank?("admin") and task.has_access?(_site.user)%>
+              <th><%=_"Delete"%></th>
+            <%end%>
           </tr>
         </thead>
         <tbody>
@@ -99,9 +101,9 @@
                   <td>
                     <%=tlog[:comment].html%>
                   </td>
-                  <%if task.has_access?(_site.user)%>
+                  <%if _site.has_rank?("admin") and task.has_access?(_site.user)%>
                     <td style="width: 10%;">
-                      (<a href="javascript: timelog_edit('<%=tlog.id%>');"><%=_("edit")%></a>, <a href="javascript: if (confirm('<%=_("Do you want to delete this timelog?")%>')){timelog_delete('<%=tlog.id%>');}"><%=_"delete"%></a>)
+                      (<a href="javascript: if (confirm('<%=_("Do you want to delete this timelog?")%>')){timelog_delete('<%=tlog.id%>');}"><%=_"delete"%></a>)
                     </td>
                   <%end%>
                 </tr>
@@ -316,7 +318,7 @@
 
 <%=_site.boxt(_("Timelogs"))%>
   <div style="padding-bottom: 15px;">
-    <input type="button" value="<%=_("Add new")%>" onclick="timelog_edit(0);" />
+    <input type="button" value="<%=_("Add new")%>" onclick="timelog_add('<%=task.id%>');" />
   </div>
   
   <div id="divtimelogs">

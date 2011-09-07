@@ -143,6 +143,10 @@ td.tdd, div.tdd{
   font-size: 10px;
 }
 
+td.tdr, th.tdr{
+  text-align: right;
+}
+
 .error{
   font-style: italic;
 }

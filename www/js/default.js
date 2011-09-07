@@ -51,6 +51,10 @@ function timelog_edit(tlog_id){
   modal({title: locale_strings["timelog_edit_title"], height: 600, url: "clean.rhtml?show=timelog_edit&timelog_id=" + tlog_id});
 }
 
+function timelog_add(task_id){
+  modal({title: locale_strings["timelog_edit_title"], height: 600, url: "clean.rhtml?show=timelog_edit&task_id=" + task_id});
+}
+
 function task_removed_assigned(link_id){
   $.ajax({type: "GET", url: "clean.rhtml?show=task_show&choice=removeassigned&link_id=" + link_id, cache: false, async: true, complete: function(data){
     if (data.responseText.length > 0){
