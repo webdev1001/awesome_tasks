@@ -14,9 +14,9 @@
   end
   
   tasks.sort! do |a, b|
-    res = a.project.name <=> b.project.name if a.project and b.project
+    res = a.project.name.downcase <=> b.project.name.downcase if a.project and b.project
     if res == nil or res == 0
-      res = a.name <=> b.name
+      res = a.name.downcase <=> b.name.downcase
     end
     
     res
