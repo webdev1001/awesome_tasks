@@ -98,4 +98,11 @@
     });
     return false;
   }
+  
+  modal_on_opened(function(){
+    setTimeout(function(){
+      oFCKeditor = FCKeditorAPI.GetInstance("texcomment");
+      oFCKeditor.Focus();
+    }, 100);
+  });
 </script>
