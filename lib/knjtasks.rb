@@ -119,6 +119,7 @@ class Knjtasks
     
     #This will make the new Ruby-tasks-system compatible with mails sent from the old PHP-tasks-system.
     _get["show"] = "task_show" if _get["show"] == "tasks_show"
+    _get["show"] = "user_login" if _get["show"] == "users_login"
     
     if _get.has_key?("l")
       _session[:locale] = _get["l"]
