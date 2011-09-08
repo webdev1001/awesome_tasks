@@ -36,7 +36,14 @@
       Project.id = Task.project_id AND
       Timelog.date >= '#{_db.date_out(date_from, {:time => false})}' AND
       Timelog.date <= '#{_db.date_out(date_to, {:time => false})}'
-    
+  "
+  
+  if _get["projects"].to_s.length > 0
+    project_ids = _get["projects"].to_s.split(";")
+    sql += " AND Task.project_id IN (#{Knj::ArrayExt.join(:arr => project_ids, :sep => ",", :surr => "'", :callback => [_db, :esc])})"
+  end
+  
+  sql += "
     GROUP BY
       Timelog.id
     
@@ -89,8 +96,8 @@
   print _site.header(_("Work-status"))
 %>
 
-<form method="get">
-<%=Knj::Web.hiddens([{:name => :show, :value => :workstatus},{:name => :choice, :value => :dofilter}])%>
+<form method="get" onsubmit="return do_filter();">
+<%=Knj::Web.hiddens([{:name => :show, :value => :workstatus},{:name => :choice, :value => :dofilter},{:name => :projects}])%>
 
 <%=_site.boxt(_("Enter criteria"), 350)%>
   <table class="form">
@@ -103,6 +110,14 @@
         :title => _("Date to"),
         :name => :texdateto,
         :value => date_to.out(:time => false)
+      },{
+        :title => _("Project"),
+        :name => :selprojects,
+        :value => nil,
+        :opts => _ob.list_optshash(:Project, {:list_args => {"orderby" => "name"}}),
+        :multiple => true,
+        :size => 15,
+        :values => _get["projects"].to_s.split(";")
       }])
     %>
     <tr>
@@ -114,6 +129,13 @@
 <%=_site.boxb%>
 
 </form>
+
+<script type="text/javascript">
+  function do_filter(){
+    $("input[name=projects]").val(select_values({sel: $("#selprojects"), selected: true, expl: ";"}));
+    return true;
+  }
+</script>
 
 <br />
 
@@ -254,12 +276,22 @@
     <tbody>
     <%
       stats[:projects].each do |project_id, project_data|
-        project = _ob.get(:Project, project_id)
+        if project_id.to_i > 0
+          project = _ob.get(:Project, project_id)
+        else
+          project = nil
+        end
         
         %>
           <tr>
             <td>
-              <%=project.html%>
+              <%
+                if project
+                  print project.html
+                else
+                  print "[#{_("no project")}]"
+                end
+              %>
             </td>
             <td class="tdr">
               <%=Knj::Locales.number_out(project_data[:time].to_f / 3600, 2)%>
