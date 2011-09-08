@@ -48,7 +48,7 @@
       },{
         :title => _("Users"),
         :name => :seluser,
-        :opts => _ob.list_optshash(:User),
+        :opts => _ob.list_optshash(:User, :list_args => {"orderby" => "name"}),
         :multiple => true,
         :size => 5,
         :values => _get["users"].to_s.split(";"),
@@ -56,7 +56,7 @@
       },{
         :title => _("Projects"),
         :name => :selproject,
-        :opts => _ob.list_optshash(:Project),
+        :opts => _ob.list_optshash(:Project, :list_args => {"orderby" => "name"}),
         :multiple => true,
         :size => 5,
         :values => _get["projects"].to_s.split(";"),
@@ -148,9 +148,12 @@
           </thead>
           <tbody>
             <%
+              tlogs_sorted = {}
               tlogs.each do |tlog|
                 dbt = Knj::Db::Dbtime.new(tlog[:time])
                 dbt_transport = Knj::Db::Dbtime.new(tlog[:time_transport])
+                tlogs_sorted[tlog[:task_id]] = [] if !tlogs_sorted.has_key?(tlog[:task_id])
+                tlogs_sorted[tlog[:task_id]] << tlog
                 
                 %>
                   <tr>
@@ -161,13 +164,7 @@
                       <%=tlog.user_html%>
                     </td>
                     <td>
-                      <%
-                        if Knj::Datet.is_nullstamp?(tlog[:date])
-                          print "[#{_("no date")}]"
-                        else
-                          print Knj::Datet.in(tlog[:date]).out(:time => false)
-                        end
-                      %>
+                      <%=tlog.date_str(:time => false)%>
                     </td>
                     <td>
                       <%=tlog.task_html%>
@@ -190,6 +187,52 @@
                     </td>
                   </tr>
                 <%
+              end
+            %>
+          </tbody>
+        </table>
+      <%=_site.boxb%>
+      
+      <br />
+      
+      <%=_site.boxt(_("Customer message"))%>
+        <table class="list">
+          <thead>
+            <tr>
+              <th><%=_"Date"%>/<%=_"Hours"%></th>
+              <th><%=_"User"%></th>
+              <th><%=_"Description"%></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              tlogs_sorted.each do |task_id, tlogs_arr|
+                task = _ob.get(:Task, task_id)
+                
+                %>
+                  <tr>
+                    <td colspan="3" class="tdt" style="padding-top: 10px;">
+                      <%=task.name.html%>
+                    </td>
+                  </tr>
+                <%
+                
+                tlogs_arr.each do |tlog|
+                  %>
+                    <tr>
+                      <td style="text-align: center;">
+                        <%=tlog.date_str(:time => false)%><br />
+                        <%=Knj::Locales.number_out(tlog.time_dbt.hours_total, 2)%> / <%=Knj::Locales.number_out(tlog.time_transport_dbt.hours_total, 2)%>
+                      </td>
+                      <td class="nowrap">
+                        <%=tlog.user.name.html%>
+                      </td>
+                      <td>
+                        <%=tlog[:comment]%>
+                      </td>
+                    </tr>
+                  <%
+                end
               end
             %>
           </tbody>
