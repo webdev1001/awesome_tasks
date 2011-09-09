@@ -32,8 +32,10 @@
         <th><%=_"Author"%></th>
         <th><%=_"Date"%></th>
         <th><%=_"Status"%></th>
-        <th><%=_"Hours"%> / <%=_"Driving"%></th>
-        <th><%=_"Transport length"%></th>
+        <%if _site.has_rank?("admin")%>
+          <th><%=_"Hours"%> / <%=_"Driving"%></th>
+          <th><%=_"Transport length"%></th>
+        <%end%>
       </tr>
     </thead>
     <tbody>
@@ -65,12 +67,14 @@
               <td>
                 <%=_ob.static(:Task, :status_opts)[task[:status].to_sym]%>
               </td>
-              <td class="nowrap">
-                <%=Knj::Locales.number_out(total_hours, 2)%> / <%=Knj::Locales.number_out(total_hours_transport, 2)%>
-              </td>
-              <td class="nowrap">
-                <%=Knj::Locales.number_out(total_transport_length, 0)%>
-              </td>
+              <%if _site.has_rank?("admin")%>
+                <td class="nowrap">
+                  <%=Knj::Locales.number_out(total_hours, 2)%> / <%=Knj::Locales.number_out(total_hours_transport, 2)%>
+                </td>
+                <td class="nowrap">
+                  <%=Knj::Locales.number_out(total_transport_length, 0)%>
+                </td>
+              <%end%>
             </tr>
           <%
         end
