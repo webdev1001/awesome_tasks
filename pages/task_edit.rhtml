@@ -16,7 +16,7 @@
     
     if _get["choice"] == "dosave"
       task.update(save_hash)
-      _kas.redirect("?show=task_edit&task_id=#{task.id}")
+      _kas.redirect("?show=task_show&task_id=#{task.id}")
     end
     
     if _get["choice"] == "dodelete"
