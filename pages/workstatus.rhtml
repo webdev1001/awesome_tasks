@@ -1,6 +1,8 @@
 <%
   _kas.alert(_("You need to be logged in to view this page.")).back if !_site.user
   
+  cur_date = Knj::Datet.new
+  
   if _get["choice"] == "dofilter"
     date_from = Knj::Datet.in(_get["texdatefrom"])
     date_to = Knj::Datet.in(_get["texdateto"])
@@ -194,8 +196,10 @@
               transport_length = 0
             end
             
+            cur_date_is = (cur_date.date.to_i == date.to_i and cur_date.year.to_i == year.to_i and cur_date.month.to_i == month.to_i)
+            
             %>
-              <tr>
+              <tr<%if cur_date_is; print " style=\"font-weight: bold;\""; end%>>
                 <td>
                   <%=date%>
                 </td>
