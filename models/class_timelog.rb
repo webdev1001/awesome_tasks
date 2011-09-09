@@ -75,4 +75,8 @@ class Knjtasks::Timelog < Knj::Datarow
     
     return "<a href=\"javascript: timelog_edit('#{id}');\">#{name}</a>"
   end
+  
+  def comment_html
+    return Knj::Php.nl2br(Knj::Web.html(self[:comment]))
+  end
 end

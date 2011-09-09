@@ -21,6 +21,15 @@
     date_to.date = date_to.days_in_month
   end
   
+  if _get["choice"] == "domarktimelogsasinvoiced"
+    _post["tlog_ids"].split(";").each do |tlog_id|
+      tlog = _ob.get(:Timelog, tlog_id)
+      tlog[:invoiced] = 1 if !tlog.invoiced?
+    end
+    
+    exit
+  end
+  
   print _site.header(_("Timelogs"))
 %>
 
@@ -82,6 +91,29 @@
     $("#seluser").val(false);
     return true;
   }
+  
+  function do_mark_invoiced(){
+    tlog_ids = []
+    $("input[type=hidden]", $("#table_customer_message")).each(function(){
+      id = $(this).attr("name").substring(9);
+      tlog_ids.push(id);
+    });
+    
+    $.ajax({
+      type: "POST",
+      url: "/clean.rhtml?show=timelog_search&choice=domarktimelogsasinvoiced",
+      data: {tlog_ids: tlog_ids.join(";")},
+      async: true,
+      cache: false,
+      complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }else{
+          alert("<%=_'All timelogs was marked as invoiced.'%>");
+        }
+      }
+    });
+  }
 </script>
 
 <%
@@ -138,12 +170,13 @@
         <table class="form">
           <thead>
             <tr>
-              <th><%=_("Timelog")%></th>
-              <th><%=_("User")%></th>
-              <th><%=_("Date")%></th>
-              <th><%=_("Task")%></th>
-              <th><%=_("Time")%> / <%=_("Transport")%></th>
-              <th><%=_("Transport length")%></th>
+              <th><%=_"Timelog"%></th>
+              <th><%=_"User"%></th>
+              <th><%=_"Date"%></th>
+              <th><%=_"Task"%></th>
+              <th><%=_"Invoiced"%></th>
+              <th><%=_"Time"%> / <%=_"Transport"%></th>
+              <th><%=_"Transport length"%></th>
             </tr>
           </thead>
           <tbody>
@@ -168,6 +201,9 @@
                     </td>
                     <td>
                       <%=tlog.task_html%>
+                    </td>
+                    <td>
+                      <%=Knj::Strings.yn_str(tlog.invoiced?, _("Yes"), _("No"))%>
                     </td>
                     <td>
                       <%=Knj::Locales.number_out(dbt.hours_total, 1)%> / <%=Knj::Locales.number_out(dbt_transport.hours_total, 1)%>
@@ -196,7 +232,7 @@
       <br />
       
       <%=_site.boxt(_("Customer message"))%>
-        <table class="list">
+        <table class="list" id="table_customer_message">
           <thead>
             <tr>
               <th><%=_"Date"%>/<%=_"Hours"%></th>
@@ -217,10 +253,23 @@
                   </tr>
                 <%
                 
+                first = true
                 tlogs_arr.each do |tlog|
+                  if !first
+                    %>
+                      <tr>
+                        <td colspan="3"><hr size="1" color="#cfcfcf" /></td>
+                      </tr>
+                    <%
+                  end
+                  
+                  first = false if first
+                  
                   %>
                     <tr>
                       <td style="text-align: center;">
+                        <input type="hidden" name="timelogs_<%=tlog.id%>" value="1" />
+                        
                         <%=tlog.date_str(:time => false)%><br />
                         <%=Knj::Locales.number_out(tlog.time_dbt.hours_total, 2)%> / <%=Knj::Locales.number_out(tlog.time_transport_dbt.hours_total, 2)%>
                       </td>
@@ -228,11 +277,21 @@
                         <%=tlog.user.name.html%>
                       </td>
                       <td>
-                        <%=tlog[:comment]%>
+                        <%=tlog.comment_html%>
                       </td>
                     </tr>
                   <%
                 end
+              end
+              
+              if !tlogs_sorted.empty?
+                %>
+                  <tr>
+                    <td colspan="3" style="padding-top: 15px; text-align: right;">
+                      <input type="button" value="<%=_"Mark timelogs as invoiced"%>" onclick="if (confirm('<%=_"Are you sure you want to mark all the found timelogs as invoiced?"%>')){do_mark_invoiced();}" />
+                    </td>
+                  </tr>
+                <%
               end
             %>
           </tbody>

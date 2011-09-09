@@ -32,7 +32,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2" style="border-top: 1px solid grey; border-bottom: 1px solid grey;">
+              <td colspan="2" style="border-top: 1px solid #cfcfcf; border-bottom: 1px solid #cfcfcf;">
                 <%=comment[:comment]%>
               </td>
             </tr>
@@ -76,7 +76,7 @@
               if !first
                 %>
                   <tr>
-                    <td colspan="6">&nbsp;</td>
+                    <td colspan="6"><hr size="1" color="#cfcfcf" /><td>
                   </tr>
                 <%
               end
@@ -98,7 +98,7 @@
                     <%=tlog.user_html%>
                   </td>
                   <td>
-                    <%=tlog[:comment].html%>
+                    <%=tlog.comment_html%>
                   </td>
                   <%if _site.has_rank?("admin") and task.has_access?(_site.user)%>
                     <td style="width: 10%;">
