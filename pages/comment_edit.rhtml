@@ -24,6 +24,13 @@
     if _get["choice"] == "dosave"
       if _post.has_key?("seltaskstatus")
         task = _ob.get(:Task, _get["object_id"])
+        last_comment = task.comments("orderby" => [["date_saved", "desc"]], "limit" => 1)
+        
+        if last_comment.empty?
+          save_hash[:id_per_obj] = 1
+        else
+          save_hash[:id_per_obj] = last_comment.first[:id_per_obj].to_i + 1
+        end
         
         if task[:status] != _post["seltaskstatus"]
           task[:status] = _post["seltaskstatus"]

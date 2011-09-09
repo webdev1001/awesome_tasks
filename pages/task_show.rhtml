@@ -13,13 +13,16 @@
   tlogs = task.timelogs("orderby" => [["date", "desc"]])
   
   if _get["choice"] == "getcomments"
-    comments = task.comments
+    comments = task.comments("orderby" => ["date_saved", "id"])
     
     comments.each do |comment|
       %>
         <div class="comment_<%=comment.id%>" style="padding-bottom: 25px;">
           <table style="width: 100%;">
             <tr>
+              <td style="white-space: nowrap; width: 25px;">
+                #<%=Knj::Locales.number_out(comment[:id_per_obj], 0)%>
+              </td>
               <td style="font-weight: bold;">
                 <%=comment.user_html%>
               </td>
@@ -32,7 +35,7 @@
               </td>
             </tr>
             <tr>
-              <td colspan="2" style="border-top: 1px solid #cfcfcf; border-bottom: 1px solid #cfcfcf;">
+              <td colspan="3" style="border-top: 1px solid #cfcfcf; border-bottom: 1px solid #cfcfcf;">
                 <%=comment[:comment]%>
               </td>
             </tr>

@@ -1,0 +1,41 @@
+<%
+  _kas.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
+  
+  if _get["choice"] == "doupdate"
+    objs = {}
+    _db.q("SELECT * FROM Comment WHERE id_per_obj = 0") do |comment_data|
+      objs[comment_data[:object_class]] = {} if !objs.has_key?(comment_data[:object_class])
+      objs[comment_data[:object_class]][comment_data[:object_id]] = true if !objs[comment_data[:object_class]].has_key?(comment_data[:object_id])
+    end
+    
+    objs.each do |class_name, class_ids|
+      class_ids.each do |class_id, temp_val|
+        _db.q("SELECT * FROM Task") do |task_data|
+          count = 0
+          _db.q("SELECT * FROM Comment WHERE object_class = 'Task' AND object_id = '#{task_data[:id]}' ORDER BY date_saved") do |comment_data|
+            count += 1
+            count = comment_data[:id_per_obj].to_i if comment_data[:id_per_obj].to_i > count
+            _db.update(:Comment, {:id_per_obj => count}, {:id => comment_data[:id]}) if comment_data[:id_per_obj].to_i == 0
+          end
+        end
+      end
+    end
+    
+    _kas.alert(_("Done")).redirect("?show=comment_update_id_per_obj")
+  end
+  
+  print _site.header(_("Update comment IDs"))
+%>
+
+<%=_site.boxt(_("Actions"), 350)%>
+  <table class="form">
+    <%
+      
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="button" value="<%=_"Update"%>" onclick="location.href='?show=comment_update_id_per_obj&amp;choice=doupdate';" />
+      </td>
+    </tr>
+  </table>
+<%=_site.boxb%>

@@ -6,9 +6,21 @@
   show = "frontpage" if !show
   showp = "../pages/#{show}.rhtml"
   
-  head_title = "knjTasks"
+  head_title = ""
+  head_titles = {
+    "frontpage" => _("Frontpage"),
+    "customer_search" => _("Customers"),
+    "project_search" => _("Projects"),
+    "task_search" => _("Tasks"),
+    "user_search" => _("Users"),
+    "timelog_search" => _("Timelogs"),
+    "workstatus" => _("Work-status"),
+    "admin" => _("Administration")
+  }
   
-  if _get["show"] == "task_show" or (_get["show"] == "task_edit" and _get["task_id"])
+  if head_titles.has_key?(_get["show"])
+    head_title = head_titles[_get["show"]]
+  elsif _get["show"] == "task_show" or (_get["show"] == "task_edit" and _get["task_id"])
     begin
       task = _ob.get(:Task, _get["task_id"])
       head_title = task.name
@@ -22,6 +34,12 @@
     rescue Knj::Errors::NotFound
       _kas.alert(_("That project could not be found.")).back
     end
+  end
+  
+  if head_title.length == 0
+    head_title = "knjTasks"
+  else
+    head_title = "#{head_title} - knjTasks"
   end
   
   _kas.redirect("?show=user_login&backurl=#{Knj::Php.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login"
@@ -89,6 +107,7 @@
               if _site.has_rank?("admin")
                 menu << {:name => _("Timelogs"), :link => "?show=timelog_search"}
                 menu << {:name => _("Work-status"), :link => "?show=workstatus"}
+                menu << {:name => _("Administration"), :link => "?show=admin"}
               end
               
               menu << {:name => _("Log out"), :link => "?show=user_login&choice=dologout"}

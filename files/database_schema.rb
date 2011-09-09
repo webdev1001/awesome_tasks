@@ -10,6 +10,7 @@ $schema = {
     "Comment" => {
       "columns" => [
         {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "id_per_obj", "type" => "int"},
         {"name" => "object_class", "type" => "varchar"},
         {"name" => "object_id", "type" => "int"},
         {"name" => "user_id", "type" => "int"},
