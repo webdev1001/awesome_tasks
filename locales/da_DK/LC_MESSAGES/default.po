@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: knjTasks\n"
-"POT-Creation-Date: 2011-09-08 19:46+0100\n"
-"PO-Revision-Date: 2011-09-08 19:48+0100\n"
+"POT-Creation-Date: 2011-09-09 19:49+0100\n"
+"PO-Revision-Date: 2011-09-09 19:51+0100\n"
 "Last-Translator: Kasper Johansen <k@spernj.org>\n"
 "Language-Team: Kasper Johansen <k@spernj.org>\n"
 "Language: \n"
@@ -232,7 +232,7 @@ msgstr "Hvor mange km blev brugt på transport?"
 #: pages/project_show.rhtml:98
 #: pages/project_show.rhtml:131
 #: pages/frontpage.rhtml:33
-#: pages/workstatus.rhtml:124
+#: pages/workstatus.rhtml:148
 msgid "Date"
 msgstr "Dato"
 
@@ -297,9 +297,9 @@ msgstr "ID"
 
 #: pages/task_show.rhtml:61
 #: pages/frontpage.rhtml:35
-#: pages/workstatus.rhtml:125
-#: pages/workstatus.rhtml:213
-#: pages/workstatus.rhtml:249
+#: pages/workstatus.rhtml:149
+#: pages/workstatus.rhtml:239
+#: pages/workstatus.rhtml:275
 msgid "Hours"
 msgstr "Timer"
 
@@ -394,7 +394,8 @@ msgstr "Datoen denne opgave blev tilføjet."
 #: pages/task_edit.rhtml:59
 #: pages/frontpage.rhtml:31
 #: pages/task_search.rhtml:72
-#: pages/workstatus.rhtml:248
+#: pages/workstatus.rhtml:116
+#: pages/workstatus.rhtml:274
 #: pages/customer_show.rhtml:21
 msgid "Project"
 msgstr "Projekt"
@@ -600,7 +601,7 @@ msgstr "Vil du slette denne opgave?"
 
 #: pages/user_rank_search.rhtml:9
 #: pages/task_search.rhtml:66
-#: pages/workstatus.rhtml:120
+#: pages/workstatus.rhtml:144
 #: pages/user_search.rhtml:90
 msgid "Results"
 msgstr "Resultater"
@@ -617,7 +618,7 @@ msgstr "Der blev ikke fundet nogle rettigheder."
 #: pages/user_rank_search.rhtml:49
 #: pages/project_search.rhtml:10
 #: pages/task_search.rhtml:8
-#: pages/workstatus.rhtml:95
+#: pages/workstatus.rhtml:104
 #: pages/user_search.rhtml:15
 msgid "Enter criteria"
 msgstr "Indtast kriterier"
@@ -752,53 +753,53 @@ msgstr "Hvis du kun vil finde opgaver af en specifik type."
 msgid "You need to be logged in to view this page."
 msgstr "Du skal være logget ind for at se denne side."
 
-#: pages/workstatus.rhtml:99
+#: pages/workstatus.rhtml:108
 msgid "Date from"
 msgstr "Dato fra"
 
-#: pages/workstatus.rhtml:103
+#: pages/workstatus.rhtml:112
 msgid "Date to"
 msgstr "Dato til"
 
-#: pages/workstatus.rhtml:110
+#: pages/workstatus.rhtml:127
 msgid "Filter"
 msgstr "Filter"
 
-#: pages/workstatus.rhtml:126
+#: pages/workstatus.rhtml:150
 msgid "Hours driving"
 msgstr "Timer kørt"
 
-#: pages/workstatus.rhtml:127
-#: pages/workstatus.rhtml:251
+#: pages/workstatus.rhtml:151
+#: pages/workstatus.rhtml:277
 msgid "Earned"
 msgstr "Tjent"
 
-#: pages/workstatus.rhtml:128
+#: pages/workstatus.rhtml:152
 msgid "Driving earned"
 msgstr "Tjent på kørsel"
 
-#: pages/workstatus.rhtml:129
+#: pages/workstatus.rhtml:153
 msgid "Driving length"
 msgstr "Kørsel længde"
 
-#: pages/workstatus.rhtml:207
+#: pages/workstatus.rhtml:233
 msgid "Overview"
 msgstr "Overblik"
 
-#: pages/workstatus.rhtml:218
-#: pages/workstatus.rhtml:250
+#: pages/workstatus.rhtml:244
+#: pages/workstatus.rhtml:276
 msgid "Transport"
 msgstr "Transport"
 
-#: pages/workstatus.rhtml:223
+#: pages/workstatus.rhtml:249
 msgid "Total earned"
 msgstr "Total tjent"
 
-#: pages/workstatus.rhtml:228
+#: pages/workstatus.rhtml:254
 msgid "Tax"
 msgstr "Skat"
 
-#: pages/workstatus.rhtml:233
+#: pages/workstatus.rhtml:259
 msgid "Total after tax"
 msgstr "Total efter skat"
 
@@ -930,49 +931,73 @@ msgstr "Ugyldig dato-fra."
 msgid "Invalid date-to."
 msgstr "Ugyldig dato-til."
 
-#: pages/timelog_search.rhtml:37
+#: pages/timelog_search.rhtml:46
 msgid "If you only want timelogs from a specific date and up."
 msgstr "Hvis du kun vil se tidslogs fra en specifik dato og op."
 
-#: pages/timelog_search.rhtml:42
+#: pages/timelog_search.rhtml:51
 msgid "If you only want timelogs up to a specific date."
 msgstr "Hvis du kun vil se tidslogs fra en specifik dato."
 
-#: pages/timelog_search.rhtml:47
+#: pages/timelog_search.rhtml:56
 msgid "A part of the comment in the timelog you are looking for."
 msgstr "En del af kommentaren på den tidslog du leder efter."
 
-#: pages/timelog_search.rhtml:55
+#: pages/timelog_search.rhtml:64
 msgid "If you want to find timelogs from specific users."
 msgstr "Hvis du kun vil finde tidslogs fra specifikke brugere."
 
-#: pages/timelog_search.rhtml:63
+#: pages/timelog_search.rhtml:72
 msgid "If you want to find timelogs from specific projects."
 msgstr "Hvis du kun vil finde tidslogs fra specifikke projekter."
 
-#: pages/timelog_search.rhtml:117
+#: pages/timelog_search.rhtml:112
+msgid "All timelogs was marked as invoiced."
+msgstr "Alle tidslogs blev markeret som faktureret."
+
+#: pages/timelog_search.rhtml:149
 msgid "Sum"
 msgstr "Sum"
 
-#: pages/timelog_search.rhtml:121
+#: pages/timelog_search.rhtml:153
 msgid "Total hours"
 msgstr "Total timer"
 
-#: pages/timelog_search.rhtml:124
+#: pages/timelog_search.rhtml:156
 msgid "The total amount of hours of all the found time-logs (first hours used then time used on transport)."
 msgstr "Det totale antal timer af alle fundne tidslogs (først timer brug og derefter tid brugt på transport)."
 
-#: pages/timelog_search.rhtml:126
+#: pages/timelog_search.rhtml:158
 msgid "Total transport"
 msgstr "Total transport"
 
-#: pages/timelog_search.rhtml:129
+#: pages/timelog_search.rhtml:161
 msgid "Total km's of transport used in all the timelogs found."
 msgstr "Total km'er af transport brugt i alle fundne tidslogs."
 
-#: pages/timelog_search.rhtml:141
+#: pages/timelog_search.rhtml:173
 msgid "Timelog"
 msgstr "Tidslog"
+
+#: pages/timelog_search.rhtml:206
+msgid "Yes"
+msgstr "Ja"
+
+#: pages/timelog_search.rhtml:206
+msgid "No"
+msgstr "Nej"
+
+#: pages/timelog_search.rhtml:234
+msgid "Customer message"
+msgstr "Kunde besked"
+
+#: pages/timelog_search.rhtml:291
+msgid "Mark timelogs as invoiced"
+msgstr "Marker tidslogs som faktureret."
+
+#: pages/timelog_search.rhtml:291
+msgid "Are you sure you want to mark all the found timelogs as invoiced?"
+msgstr "Er du sikker på du vil markere alle fundne tidslogs som faktureret?"
 
 #~ msgid "New comment to: %s"
 #~ msgstr "Ny kommentar til: %s"
