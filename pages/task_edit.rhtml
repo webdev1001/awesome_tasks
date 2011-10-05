@@ -30,7 +30,7 @@
     if _get["choice"] == "dosave"
       begin
         task = _ob.add(:Task, save_hash)
-        _kas.redirect("?show=task_edit&task_id=#{task.id}")
+        _kas.redirect("?show=task_show&task_id=#{task.id}")
       rescue => e
         _kas.alert(e.message).back
       end
@@ -47,7 +47,7 @@
 
 <form method="post" action="?show=task_edit&amp;choice=dosave<%if task; print "&amp;task_id=#{task.id}"; end%>">
 
-<%=_site.boxt(_("Enter details"), "700px")%>
+<%=_site.boxt(_("Enter details"), 700)%>
   <table class="form">
     <%
       print Knj::Web.inputs([{
