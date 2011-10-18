@@ -50,7 +50,7 @@
 <%=_site.boxt(_("Enter details"), 700)%>
   <table class="form">
     <%
-      print Knj::Web.inputs([{
+      print _kas.inputs({
         :title => _("Name"),
         :name => :texname,
         :value => [task, :name],
@@ -59,7 +59,7 @@
         :title => _("Project"),
         :name => :selproject,
         :value => project_id,
-        :opts => _ob.list_optshash(:Project, {:none => true}),
+        :opts => _ob.list_optshash(:Project, {:none => true, :list_args => {"orderby" => "name"}}),
         :descr => _("The project that this task belongs under.")
       },{
         :title => _("Type"),
@@ -80,7 +80,7 @@
         :descr => _("The description as it should appear for the users."),
         :type => :fckeditor,
         :height => 500
-      }])
+      })
     %>
     <tr>
       <td colspan="2" class="buttons">

@@ -39,7 +39,7 @@
 <%=_site.boxt(_("Enter criteria"), "400px")%>
   <table class="form">
     <%
-      print Knj::Web.inputs([{
+      print _kas.inputs({
         :title => _("Date from"),
         :name => :texdatefrom,
         :value => date_from.out(:time => false),
@@ -70,7 +70,17 @@
         :size => 5,
         :values => _get["projects"].to_s.split(";"),
         :descr => _("If you want to find timelogs from specific projects.")
-      }])
+      },{
+        :title => _("Invoiced"),
+        :name => :selinvoiced,
+        :value => _get["selinvoiced"],
+        :descr => _("If you only want to view invoiced, uninvoiced or all timelogs."),
+        :opts => {
+          "" => _("All"),
+          "1" => _("Only invoiced"),
+          "0" => _("Only un-invoiced")
+        }
+      })
     %>
     <tr>
       <td colspan="2" class="buttons">
@@ -118,7 +128,7 @@
 
 <%
   if _get["choice"] == "dosearch"
-    args = {}
+    args = {"orderby" => "date"}
     
     if _get["texdatefrom"].to_s.length > 0
       args["date_from"] = date_from
@@ -140,8 +150,14 @@
       args["project_id"] = _get["projects"].to_s.split(";")
     end
     
+    if _get["selinvoiced"].to_s == "1" or _get["selinvoiced"].to_s == "0"
+      args["invoiced"] = _get["selinvoiced"].to_s
+    end
+    
+    args_count = args.merge(:count => true)
+    
     tlogs = _ob.list(:Timelog, args)
-    tlogs_count = _ob.list(:Timelog, args.merge(:count => true))
+    tlogs_count = _ob.list(:Timelog, args_count)
     
     %>
       <br />
@@ -149,17 +165,17 @@
       <%=_site.boxt(_("Sum"), "350px")%>
         <table class="form">
           <%
-            print Knj::Web.inputs([{
+            print _kas.inputs({
               :title => _("Total hours"),
               :type => :info,
-              :value => Knj::Locales.number_out(tlogs_count[:sum_time].to_f / 3600, 1) + " /" + Knj::Locales.number_out(tlogs_count[:sum_time_transport].to_f / 3600, 1),
+              :value => Knj::Locales.number_out(tlogs_count[:sum_time].to_f / 3600, 1) + " / " + Knj::Locales.number_out(tlogs_count[:sum_time_transport].to_f / 3600, 1),
               :descr => _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")
             },{
               :title => _("Total transport"),
               :type => :info,
               :value => Knj::Locales.number_out(tlogs_count[:sum_transport_length], 1),
               :descr => _("Total km's of transport used in all the timelogs found.")
-            }])
+            })
           %>
         </table>
       <%=_site.boxb%>

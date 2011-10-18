@@ -325,6 +325,10 @@
     <div id="divcomments">
       <div class="error"><%=_"Loading - please wait..."%></div>
     </div>
+    
+    <div>
+      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_"Add new comment"%>', height: '540px', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=task.id%>'});" />
+    </div>
   <%=_site.boxb%>
 </div>
 

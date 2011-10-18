@@ -10,6 +10,10 @@
     else
       _session[:user_id] = user.id
       
+      if _post["cheremember"] == "on"
+        _kas.session_remember
+      end
+      
       if _get["backurl"].to_s.strip.length > 0
         _kas.redirect(_get["backurl"])
       else
@@ -35,7 +39,7 @@
       <%=_site.boxt(_("Enter details"), "350px")%>
         <table class="form">
           <%
-            print Knj::Web.inputs([{
+            print _kas.inputs({
               :title => _("Username"),
               :name => :texuser,
               :value => "",
@@ -46,7 +50,11 @@
               :value => "",
               :type => :password,
               :descr => _("The password associated with the entered username.")
-            }])
+            },{
+              :title => _("Remember me on this computer"),
+              :name => :cheremember,
+              :descr => _("If you do not want to log in again on this computer then check this box.")
+            })
           %>
           <tr>
             <td colspan="2" class="buttons">

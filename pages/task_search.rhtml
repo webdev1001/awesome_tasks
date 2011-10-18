@@ -8,11 +8,16 @@
 <%=_site.boxt(_("Enter criteria"), 350)%>
   <table class="form">
     <%
-      print Knj::Web.inputs([{
+      print _kas.inputs({
         :title => _("Name"),
         :name => :texname,
         :value => _get["texname"],
         :descr => _("A part of the name of the task you are looking for.")
+      },{
+        :title => _("Description"),
+        :name => :texdescr,
+        :value => _get["texdescr"],
+        :descr => _("A part of the description of the task you are looking for.")
       },{
         :title => _("Status"),
         :name => :selstatus,
@@ -25,7 +30,7 @@
         :opts => {"" => _("All")}.merge(_ob.static(:Task, :type_opts)),
         :descr => _("If you only want to find tasks of a specific type."),
         :value => _get["seltype"]
-      }])
+      })
     %>
     <tr>
       <td colspan="2" class="buttons">
@@ -45,18 +50,10 @@
 <%
   if _get["choice"] == "dosearch"
     args = {"orderby" => "name"}
-    
-    if _get["texname"].to_s.length > 0
-      args["name_search"] = _get["texname"]
-    end
-    
-    if _get["selstatus"].to_s.length > 0
-      args["status"] = _get["selstatus"]
-    end
-    
-    if _get["seltype"].to_s.length > 0
-      args["type"] = _get["seltype"]
-    end
+    args["name_search"] = _get["texname"] if _get["texname"].to_s.length > 0
+    args["descr_search"] = _get["texdescr"] if _get["texdescr"].to_s.length > 0
+    args["status"] = _get["selstatus"] if _get["selstatus"].to_s.length > 0
+    args["type"] = _get["seltype"] if _get["seltype"].to_s.length > 0
     
     tasks = _ob.list(:Task, args)
     
