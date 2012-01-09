@@ -112,7 +112,8 @@ $schema = {
         {"name" => "username", "type" => "varchar"},
         {"name" => "passwd", "type" => "varchar"},
         {"name" => "email", "type" => "varchar"},
-        {"name" => "locale", "type" => "varchar", "maxlength" => 5, "default" => "en_GB", "comment" => "The current locale of the user which should be used for the stuff sent to him."}
+        {"name" => "locale", "type" => "varchar", "maxlength" => 5, "default" => "en_GB", "comment" => "The current locale of the user which should be used for the stuff sent to him."},
+        {"name" => "active", "type" => "enum", "maxlength" => "'0','1'", "default" => 1, "comment" => "If the user is active or not. This can prevent the user from logging in."}
       ],
       "on_create_after" => proc{|data|
         data["db"].insert(:User, {"username" => "admin", "passwd" => Knj::Php.md5("admin")})

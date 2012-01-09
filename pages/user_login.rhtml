@@ -7,6 +7,8 @@
     
     if !user
       _kas.alert(_("A user with that username and/or password was found.")).back
+    elsif !user.active?
+      _kas.alert(_("That user is not active any more and cant be used.")).back
     else
       _session[:user_id] = user.id
       

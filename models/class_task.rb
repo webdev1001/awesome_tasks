@@ -9,21 +9,6 @@ class Knjtasks::Task < Knj::Datarow
     :User
   ]
   
-  def self.list(d)
-    sql = "SELECT * FROM Task WHERE 1=1"
-    
-    ret = list_helper(d)
-    d.args.each do |key, val|
-      raise sprintf(_("Invalid key: %s."), key)
-    end
-    
-    sql += ret[:sql_where]
-    sql += ret[:sql_order]
-    sql += ret[:sql_limit]
-    
-    return d.ob.list_bysql(:Task, sql)
-  end
-  
   def self.add(d)
     raise _("No project-ID was given.") if d.data[:project_id].to_i <= 0
     raise _("Invalid name was given.") if d.data[:name].to_s.strip.length <= 0

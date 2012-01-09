@@ -32,7 +32,8 @@ class Knjtasks
       :datarow => true,
       :db => @db,
       :class_path => "#{File.dirname(__FILE__)}/../models",
-      :module => Knjtasks
+      :module => Knjtasks,
+      :require_all => true
     )
     
     @ob.events.connect(:no_html) do |event, classname|
@@ -71,7 +72,6 @@ class Knjtasks
       :smtp_args => @args[:smtp_args],
       :httpsession_db_args => @args[:db_args]
     )
-    @knjappserver.update_db
     @knjappserver.define_magic_var(:_site, self)
     @knjappserver.define_magic_var(:_ob, @ob)
     
@@ -144,7 +144,15 @@ class Knjtasks
   
   def user
     begin
-      return @ob.get(:User, _session[:user_id]) if _session[:user_id].to_i > 0
+      if _session[:user_id].to_i > 0
+        user = @ob.get(:User, _session[:user_id])
+        if !user.active?
+          _session.delete(:user_id)
+          return false
+        end
+        
+        return user
+      end
     rescue
       return false
     end

@@ -2,6 +2,7 @@ class Knjtasks::Project < Knj::Datarow
   has_one [
     {:class => :User, :col => :added_user_id, :method => :added_user, :required => true}
   ]
+  
   has_many [
     [:Task, :project_id],
     {:class => :User_project_link, :col => :project_id, :method => :users}

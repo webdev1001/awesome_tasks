@@ -52,11 +52,14 @@
 <%=_site.boxt(_("Enter details"))%>
   <table class="form" id="formtimelogedit">
     <%
-      print Knj::Web.inputs([{
+      opts = _ob.list_optshash(:Task)
+      raise "Empty opts?" if opts.empty?
+      
+      print _kas.inputs({
         :title => _("Task"),
         :name => :seltask,
         :value => task_id,
-        :opts => _ob.list_optshash(:Task),
+        :opts => opts,
         :descr => _("On which task should this timelog be saved?")
       },{
         :title => _("Time"),
@@ -90,7 +93,7 @@
         :type => :textarea,
         :descr => _("What whas done using the time."),
         :height => 200
-      }])
+      })
     %>
     <tr>
       <td colspan="2" class="buttons">

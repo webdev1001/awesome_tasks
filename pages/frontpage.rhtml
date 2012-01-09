@@ -1,6 +1,40 @@
 <%
   print _site.header(_("Frontpage"))
   
+  headlines = [
+    {
+      "sort" => "name",
+      "sortval" => "name",
+      "title" => _("Task")
+    },{
+      "sort" => "project",
+      "sortval" => {:table => :Project, :col => :name},
+      "title" => _("Project")
+    },{
+      "sort" => "author",
+      "sortval" => {:table => :User, :col => :name},
+      "title" => _("Author")
+    },{
+      "sort" => "date",
+      "sortval" => "date_added",
+      "title" => _("Date")
+    },{
+      "sort" => "status",
+      "sortval" => "status",
+      "title" => _("Status")
+    }
+  ]
+  
+  if _site.has_rank?("admin")
+    headlines += [
+      {
+        "title" => "#{_("Hours")} / #{_("Driving")}"
+      },{
+        "title" => _("Transport length")
+      }
+    ]
+  end
+  
   tasks_assigned_links = _ob.list(:Task_assigned_user, {"user" => _site.user, "task_status_not" => "closed"})
   
   tasks = []
@@ -13,10 +47,43 @@
     tasks << task if tasks.index(task) == nil
   end
   
+  task_status_hash = _ob.static(:Task, :status_opts)
+  
   tasks.sort! do |a, b|
-    res = a.project.name.downcase <=> b.project.name.downcase if a.project and b.project
-    if res == nil or res == 0
+    res = nil
+    
+    if _get["sort"] == "project" or _get["sort"].to_s.length <= 0
+      res = a.project.name.downcase <=> b.project.name.downcase if a.project and b.project
+      if res == nil or res == 0
+        res = a.name.downcase <=> b.name.downcase
+      end
+    elsif _get["sort"] == "name"
       res = a.name.downcase <=> b.name.downcase
+    elsif _get["sort"] == "date"
+      adate = a.date_added
+      bdate = b.date_added
+      
+      if !adate
+        res = -1
+      elsif !bdate
+        res = 1
+      else
+        res = a.date_added <=> b.date_added
+      end
+    elsif _get["sort"] == "author"
+      res = a.user.name <=> b.user.name
+    elsif _get["sort"] == "status"
+      res = task_status_hash[a[:status].to_sym] <=> task_status_hash[b[:status].to_sym]
+    else
+      raise "Dont know how to sort the tasks."
+    end
+    
+    if _get["sortmode"] == "desc"
+      if res == 1
+        res = -1
+      elsif res == -1
+        res = 1
+      end
     end
     
     res
@@ -31,15 +98,31 @@
   <table class="list">
     <thead>
       <tr>
-        <th><%=_"Task"%></th>
-        <th><%=_"Project"%></th>
-        <th><%=_"Author"%></th>
-        <th><%=_"Date"%></th>
-        <th><%=_"Status"%></th>
-        <%if _site.has_rank?("admin")%>
-          <th><%=_"Hours"%> / <%=_"Driving"%></th>
-          <th><%=_"Transport length"%></th>
-        <%end%>
+        <%
+          headlines.each do |headline|
+            html = "<th>"
+            
+            if headline["sort"]
+              html << "<a href=\"/?show=frontpage&amp;sort=#{headline["sort"]}"
+              
+              if _get["sort"] == headline["sort"] and _get["sortmode"] != "desc"
+                html << "&amp;sortmode=desc"
+              end
+              
+              html << "\">"
+            end
+            
+            html << headline["title"]
+            
+            if headline["sort"]
+              html << "</a>"
+            end
+            
+            html << "</th>"
+            
+            print html
+          end
+        %>
       </tr>
     </thead>
     <tbody>

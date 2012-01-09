@@ -51,24 +51,24 @@
 <%=_site.boxt(_("Enter details"))%>
   <table class="form">
     <%
-      print Knj::Web.inputs([{
+      print _kas.inputs({
         :title => _("Comment"),
         :name => :texcomment,
         :value => [comment, :comment],
         :type => :fckeditor,
         :height => 380
-      }])
+      })
       
       if _get["object_class"] == "Task"
         task = _ob.get(:Task, _get["object_id"])
         
-        print Knj::Web.inputs([{
+        print _kas.inputs({
           :title => _("Task status"),
           :name => :seltaskstatus,
           :value => task[:status],
           :opts => _ob.static(:Task, :status_opts),
           :descr => _("If you want to change the status of the task as well, then you should choose the new status here.")
-        }])
+        })
       end
     %>
     <tr>
@@ -107,9 +107,15 @@
   }
   
   modal_on_opened(function(){
-    setTimeout(function(){
-      oFCKeditor = FCKeditorAPI.GetInstance("texcomment");
-      oFCKeditor.Focus();
-    }, 100);
+    try{
+      fckeditor_set_focus();
+    }catch(err){
+      setTimeout("fckeditor_set_focus", 100);
+    }
   });
+  
+  function fckeditor_set_focus(){
+    oFCKeditor = FCKeditorAPI.GetInstance("texcomment");
+    oFCKeditor.Focus();
+  }
 </script>

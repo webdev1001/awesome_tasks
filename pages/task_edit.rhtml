@@ -42,6 +42,39 @@
     _kas.alert(_("No projects has been added to this installation yet - please do that first.")).back
   end
   
+  
+  #Generate user-projects for the select-box.
+  projects_opts = {"" => _("None")}
+  
+  if _site.has_rank?("admin")
+    _ob.list(:Project) do |project|
+      projects_opts[project.id] = project.name
+    end
+  else
+    _site.user.projects.each do |link|
+      projects_opts[link[:project_id]] = link.project.name
+    end
+  end
+  
+  sorted = projects_opts.sort do |a, b|
+    if a[0] == ""
+      ret = -1
+    elsif b[0] == ""
+      ret = 1
+    else
+      ret = a[1].downcase <=> b[1].downcase
+    end
+    
+    ret
+  end
+  
+  projects_opts = {}
+  sorted.each do |sort|
+    projects_opts[sort[0]] = sort[1]
+  end
+  
+  
+  #Write page title.
   print _site.header(title)
 %>
 
@@ -59,7 +92,7 @@
         :title => _("Project"),
         :name => :selproject,
         :value => project_id,
-        :opts => _ob.list_optshash(:Project, {:none => true, :list_args => {"orderby" => "name"}}),
+        :opts => projects_opts,
         :descr => _("The project that this task belongs under.")
       },{
         :title => _("Type"),

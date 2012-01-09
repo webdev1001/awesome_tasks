@@ -30,6 +30,12 @@
         :opts => {"" => _("All")}.merge(_ob.static(:Task, :type_opts)),
         :descr => _("If you only want to find tasks of a specific type."),
         :value => _get["seltype"]
+      },{
+        :title => _("User"),
+        :name => :seluser,
+        :opts => _ob.list_optshash(:User, {:all => true, :list_args => {"orderby" => "username"}}),
+        :value => _get["seluser"],
+        :descr => _("If you only want to see tasks from a specific user.")
       })
     %>
     <tr>
@@ -54,8 +60,7 @@
     args["descr_search"] = _get["texdescr"] if _get["texdescr"].to_s.length > 0
     args["status"] = _get["selstatus"] if _get["selstatus"].to_s.length > 0
     args["type"] = _get["seltype"] if _get["seltype"].to_s.length > 0
-    
-    tasks = _ob.list(:Task, args)
+    args["user_id"] = _get["seluser"] if _get["seluser"].to_i > 0
     
     %>
       <br />
@@ -73,7 +78,7 @@
           <tbody>
             <%
               count = 0
-              tasks.each do |task|
+              _ob.list(:Task, args) do |task|
                 next if !task.has_view_access?(_site.user)
                 count += 1
                 

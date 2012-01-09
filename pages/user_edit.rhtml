@@ -7,7 +7,8 @@
     save_hash = {
       :name => _post["texname"],
       :username => _post["texusername"],
-      :email => _post["texemail"]
+      :email => _post["texemail"],
+      :active => Knj::Web.checkval(_post["cheactive"], 1, 0)
     }
     
     if _post["texpasswd_md5"].to_s.length > 0 and _post["texpasswd_md5"] != Knj::Php.md5("")
@@ -110,7 +111,7 @@
 <%=_site.boxt(_("Enter details"), 350)%>
   <table class="form">
     <%
-      print Knj::Web.inputs([{
+      print _kas.inputs({
         :title => _("Username"),
         :name => :texusername,
         :value => [user, :username],
@@ -131,15 +132,20 @@
         :name => :texemail,
         :value => [user, :email],
         :descr => _("The email of the user which will be used for notifications and other stuff as well.")
-      }])
+      },{
+        :title => _("Active"),
+        :name => :cheactive,
+        :value => [user, :active],
+        :descr => _("If the user is active or not. In-active users cant log in.")
+      })
     %>
     <tr>
       <td colspan="2" class="buttons">
         <%if user%>
-          <input type="button" value="<%=_("Show")%>" onclick="location.href='?show=user_show&amp;user_id=<%=user.id%>';" />
-          <input type="button" value="<%=_("Delete")%>" onclick="if (confirm('<%=_("Do you want to delete this user?")%>')){location.href='?show=user_edit&amp;user_id=<%=user.id%>&amp;choice=dodelete';}" />
+          <input type="button" value="<%=_"Show"%>" onclick="location.href='?show=user_show&amp;user_id=<%=user.id%>';" />
+          <input type="button" value="<%=_"Delete"%>" onclick="if (confirm('<%=_("Do you want to delete this user?")%>')){location.href='?show=user_edit&amp;user_id=<%=user.id%>&amp;choice=dodelete';}" />
         <%end%>
-        <input type="submit" value="<%=_("Save")%>" />
+        <input type="submit" value="<%=_"Save"%>" />
       </td>
     </tr>
   </table>
