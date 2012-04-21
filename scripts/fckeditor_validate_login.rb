@@ -13,11 +13,11 @@ http.cookies["KnjappserverSession"] = $validate_login["_COOKIE"]["KnjappserverSe
 data = http.get("/?show=users_login")
 
 if data["data"].to_s.index("<form method=\"post\" action=\"?show=user_login") == nil
-  print Knj::Php.json_encode(
+  print JSON.generate(
     "Enabled" => true
   )
 else
-  print Knj::Php.json_encode(
+  print JSON.generate(
     "Enabled" => false
   )
 end

@@ -52,7 +52,7 @@
 <%=_site.boxt(_("Enter details"))%>
   <table class="form" id="formtimelogedit">
     <%
-      opts = _ob.list_optshash(:Task)
+      opts = _ob.list_optshash(:Task, {:debug => false})
       raise "Empty opts?" if opts.empty?
       
       print _kas.inputs({

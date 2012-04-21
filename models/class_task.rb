@@ -2,7 +2,8 @@ class Knjtasks::Task < Knj::Datarow
   has_many [
     [:Timelog, :task_id],
     [:Task_assigned_user, :task_id, :assigned_users],
-    [:Task_check, :task_id, :checks]
+    [:Task_check, :task_id, :checks],
+    [:User_task_list_link, :task_id, :user_lists]
   ]
   has_one [
     {:class => :Project, :required => true},
@@ -124,7 +125,7 @@ class Knjtasks::Task < Knj::Datarow
     return _ob.list(:Comment, {"object_lookup" => self}.merge(args))
   end
   
-  def has_access?(user)
+  def has_access?(user = _site.user)
     return false if !user
     return true if user.has_rank?("admin")
     return true if self[:user_id].to_s == user.id.to_s

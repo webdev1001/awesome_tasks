@@ -159,6 +159,14 @@ $schema = {
       "on_create_after" => proc{|data|
         data["db"].insert(:User_rank_link, {:user_id => 1, :rank_id => 1})
       }
+    },
+    "User_task_list_link" => {
+      "columns" => [
+        {"name" => "id", "type" => "int", "autoincr" => true, "primarykey" => true},
+        {"name" => "user_id", "type" => "int"},
+        {"name" => "task_id", "type" => "int"}
+      ],
+      "indexes" => ["user_id", "task_id"]
     }
   }
 }

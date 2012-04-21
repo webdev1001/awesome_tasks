@@ -42,7 +42,7 @@
     head_title = "#{head_title} - knjTasks"
   end
   
-  _kas.redirect("?show=user_login&backurl=#{Knj::Php.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login"
+  _kas.redirect("?show=user_login&backurl=#{Knj::Php.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login" and _get["show"] != "test_browser"
 %>
 <html>
 <head>
@@ -110,6 +110,7 @@
                 menu << {:name => _("Administration"), :link => "?show=admin"}
               end
               
+              menu << {:name => _("Your profile"), :link => "?show=user_profile"}
               menu << {:name => _("Log out"), :link => "?show=user_login&choice=dologout"}
             else
               menu = [

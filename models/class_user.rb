@@ -3,23 +3,9 @@ class Knjtasks::User < Knj::Datarow
     {:class => :Task, :col => :user_id, :depends => true},
     {:class => :Task_assigned_user, :col => :user_id, :method => :assigned_to_tasks, :depends => true},
     {:class => :User_rank_link, :col => :user_id, :method => :ranks, :depends => true},
-    {:class => :User_project_link, :col => :user_id, :method => :projects, :depends => true}
+    {:class => :User_project_link, :col => :user_id, :method => :projects, :depends => true},
+    [:User_task_list_link, :user_id, :user_lists]
   ]
-  
-  def self.list(d)
-    sql = "SELECT * FROM User WHERE 1=1"
-    
-    ret = list_helper(d)
-    d.args.each do |key, val|
-      raise sprintf(_("Invalid key: %s."), key)
-    end
-    
-    sql += ret[:sql_where]
-    sql += ret[:sql_order]
-    sql += ret[:sql_limit]
-    
-    return d.ob.list_bysql(:User, sql)
-  end
   
   def delete
     raise _("Cannot delete user because that user has created tasks.") if ob.get_by(:Task, {"user" => self})

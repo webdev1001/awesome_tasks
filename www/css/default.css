@@ -172,6 +172,11 @@ input[type=button], input[type=submit], input.button{
   margin: 0px 0px 0px 0px;
 }
 
+input[type=checkbox]{
+  border: none;
+  background-color: transparent;
+}
+
 input.input_text, input.input_password, select.input_select, textarea.input_textarea{
   width: 100%;
 }

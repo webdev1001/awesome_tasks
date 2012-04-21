@@ -224,11 +224,45 @@
     exit
   end
   
+  if _get["choice"] == "addtolist"
+    _ob.add(:User_task_list_link, {
+      :task_id => task.id,
+      :user_id => _site.user.id
+    })
+    _kas.redirect("/?show=task_show&task_id=#{task.id}")
+  elsif _get["choice"] == "removefromlist"
+    _ob.list(:User_task_list_link, {
+      "task" => task,
+      "user" => _site.user
+    }) do |link|
+      _ob.delete(link)
+    end
+    
+    _kas.redirect("/?show=task_show&task_id=#{task.id}")
+  end
+  
   print _site.header(sprintf(_("Show task: %s."), task.name.html))
 %>
 
 <div style="padding-bottom: 15px;">
   <input type="button" value="<%=_"Edit task"%>" onclick="location.href='?show=task_edit&amp;task_id=<%=task.id%>';" />
+  
+  <%
+    task_link = _ob.get_by(:User_task_list_link, {
+      "user" => _site.user,
+      "task" => task
+    })
+    
+    if task_link
+      %>
+        <input type="button" value="<%=_"Remove from list"%>" onclick="location.href='/?show=task_show&amp;task_id=<%=task.id%>&amp;choice=removefromlist';" />
+      <%
+    else
+      %>
+        <input type="button" value="<%=_"Add to list"%>" onclick="location.href='/?show=task_show&amp;task_id=<%=task.id%>&amp;choice=addtolist';" />
+      <%
+    end
+  %>
 </div>
 
 <div style="padding-bottom: 15px;">

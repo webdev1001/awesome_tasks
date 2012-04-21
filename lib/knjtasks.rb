@@ -18,15 +18,9 @@ class Knjtasks
       raise "No '#{key}' given in arguments." if !@args.has_key?(key)
     end
     
-    if @args[:knjdbrevision_path]
-      require "#{@args[:knjdbrevision_path]}/knjdbrevision.rb"
-    else
-      require "knjdbrevision"
-    end
-    
     require "#{File.dirname(__FILE__)}/../files/database_schema.rb"
-    dbrev = Knjdbrevision.new
-    dbrev.init_db($schema, @db)
+    dbrev = Knj::Db::Revision.new
+    dbrev.init_db("schema" => $schema, "db" => @db)
     
     @ob = Knj::Objects.new(
       :datarow => true,
