@@ -1,16 +1,16 @@
 <%
   _kas.alert(_("You need to be logged in to view this page.")).back if !_site.user
   
-  cur_date = Knj::Datet.new
+  cur_date = Datet.new
   
   if _get["choice"] == "dofilter"
-    date_from = Knj::Datet.in(_get["texdatefrom"])
-    date_to = Knj::Datet.in(_get["texdateto"])
+    date_from = Datet.in(_get["texdatefrom"])
+    date_to = Datet.in(_get["texdateto"])
   else
-    date_from = Knj::Datet.new
+    date_from = Datet.new
     date_from.date = 1
     
-    date_to = Knj::Datet.new
+    date_to = Datet.new
     date_to.date = date_to.days_in_month
   end
   
@@ -55,7 +55,7 @@
   "
   
   _db.q(sql) do |data|
-    date = Knj::Datet.in(data[:date])
+    date = Datet.in(data[:date])
     dj = date.date.to_i
     dm = date.month.to_i
     dy = date.year.to_i
@@ -167,7 +167,7 @@
         end
         
         year_data.each do |month, month_data|
-          month_date = Knj::Datet.in("#{year}-#{month}-1")
+          month_date = Datet.in("#{year}-#{month}-1")
           
           if date_from.year != date_to.year or date_from.month != date_to.month
             %>
