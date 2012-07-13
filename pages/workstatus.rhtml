@@ -63,8 +63,8 @@
     hours = data[:time].to_f / 3600
     hours_transport = data[:time_transport].to_f / 3600
     
-    earned_time = hours * 300
-    earned_transport = hours_transport * 300
+    earned_time = hours * 200
+    earned_transport = hours_transport * 200
     earned_total = earned_time + earned_transport
     
     stats[:date_logs][dy] = {} if !stats[:date_logs].has_key?(dy)
@@ -260,6 +260,11 @@
         :type => :info,
         :align => :right,
         :value => Knj::Locales.number_out(stats[:totals][:earned].to_f - tax_40.to_f, 2)
+      },{
+        :title => _("Total transport"),
+        :type => :info,
+        :align => :right,
+        :value => _kas.num(stats[:totals][:transport_length], 2)
       }])
     %>
   </table>

@@ -1,27 +1,13 @@
 class Knjtasks::Project < Knj::Datarow
   has_one [
-    {:class => :User, :col => :added_user_id, :method => :added_user, :required => true}
+    {:class => :User, :col => :added_user_id, :method => :added_user, :required => true},
+    {:class => :Customer, :col => :customer_id, :method => :customer, :required => true}
   ]
   
   has_many [
-    [:Task, :project_id],
-    {:class => :User_project_link, :col => :project_id, :method => :users}
+    {:class => :Task, :col => :project_id, :depends => true},
+    {:class => :User_project_link, :col => :project_id, :method => :users, :autodelete => true, :depends => true}
   ]
-  
-  def self.list(d)
-    sql = "SELECT * FROM Project WHERE 1=1"
-    
-    ret = list_helper(d)
-    d.args.each do |key, val|
-      raise sprintf(_("Invalid key: %s."), key)
-    end
-    
-    sql += ret[:sql_where]
-    sql += ret[:sql_order]
-    sql += ret[:sql_limit]
-    
-    return d.ob.list_bysql(:Project, sql)
-  end
   
   def self.add(d)
     raise _("Invalid name given.") if d.data[:name].to_s.strip.length <= 0

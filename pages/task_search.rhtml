@@ -8,6 +8,19 @@
 <%=_site.boxt(_("Enter criteria"), 350)%>
   <table class="form">
     <%
+      if _site.has_rank?(:admin)
+        users = _ob.list(:User)
+      else
+        users = _site.user.users_list
+      end
+      
+      users_opts = {"" => _("All")}
+      users.each do |user|
+        users_opts[user.id] = user.name
+      end
+      
+      users = nil
+      
       print _kas.inputs({
         :title => _("Name"),
         :name => :texname,
@@ -33,7 +46,7 @@
       },{
         :title => _("User"),
         :name => :seluser,
-        :opts => _ob.list_optshash(:User, {:all => true, :list_args => {"orderby" => "username"}}),
+        :opts => users_opts,
         :value => _get["seluser"],
         :descr => _("If you only want to see tasks from a specific user.")
       })
@@ -50,7 +63,7 @@
 </form>
 
 <script type="text/javascript">
-  $("#texname").focus();
+  $("#texname").focus()
 </script>
 
 <%

@@ -60,7 +60,7 @@
         :opts => _ob.list_optshash(:User, :list_args => {"orderby" => "name"}),
         :multiple => true,
         :size => 5,
-        :values => _get["users"].to_s.split(";"),
+        :values => _get["users"].to_s.split(";").map{|ele| ele.to_i},
         :descr => _("If you want to find timelogs from specific users.")
       },{
         :title => _("Projects"),
@@ -68,7 +68,7 @@
         :opts => _ob.list_optshash(:Project, :list_args => {"orderby" => "name"}),
         :multiple => true,
         :size => 5,
-        :values => _get["projects"].to_s.split(";"),
+        :values => _get["projects"].to_s.split(";").map{|ele| ele.to_i},
         :descr => _("If you want to find timelogs from specific projects.")
       },{
         :title => _("Invoiced"),

@@ -82,4 +82,44 @@ class Knjtasks::User < Knj::Datarow
     
     return false
   end
+  
+  def customers
+    customers = {}
+    self.ob.list(:Project, {
+      [:User_project_link, "user_id"] => self.id
+    }) do |project|
+      customer = project.customer
+      next if !customer or customers.key?(customer.id)
+      customers[customer.id] = customer
+    end
+    
+    customers = customers.values
+    customers.sort do |cust1, cust2|
+      cast1.name.downcase <=> cust2.name.downcase
+    end
+    
+    return customers
+  end
+  
+  #A list of all relevant users for this user (from the same customer).
+  def users_list
+    users = {}
+    
+    self.customers.each do |customer|
+      customer.projects do |project|
+        self.ob.list(:User, {
+          [:User_project_link, "project_id"] => project.id
+        }) do |user|
+          users[user.id] = user
+        end
+      end
+    end
+    
+    users = users.values
+    users.sort do |user1, user2|
+      user1.name.downcase <=> user2.name.downcase
+    end
+    
+    return users
+  end
 end
