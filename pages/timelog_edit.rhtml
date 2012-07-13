@@ -6,7 +6,7 @@
       :time => _post["textime"],
       :time_transport => _post["textimetransport"],
       :transport_length => _post["textransportlength"],
-      :date => Knj::Datet.in(_post["texdate"]),
+      :date => Datet.in(_post["texdate"]),
       :comment => _post["texcomment"],
       :task_id => _post["seltask"],
       :invoiced => Knj::Web.checkval(_post["cheinvoiced"], 1, 0)
@@ -16,7 +16,7 @@
   if _get["timelog_id"].to_i > 0
     timelog = _ob.get(:Timelog, _get["timelog_id"])
     task_id = timelog.task.id
-    date_val = Knj::Datet.in(timelog[:date]).out(:time => false)
+    date_val = Datet.in(timelog[:date]).out(:time => false)
     time_val = timelog[:time]
     time_transport_val = timelog[:time_transport]
     url = "&timelog_id=#{timelog.id}"
@@ -31,7 +31,7 @@
       exit
     end
   else
-    date_val = Knj::Datet.new.out(:time => false)
+    date_val = Datet.new.out(:time => false)
     time_val = "00:00:00"
     time_transport_val = "00:00:00"
     
