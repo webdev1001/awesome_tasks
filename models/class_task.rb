@@ -19,7 +19,7 @@ class Knjtasks::Task < Knj::Datarow
     
     begin
       task = d.ob.get(:Project, d.data[:project_id])
-    rescue Knj::Errors::NotFound
+    rescue Errno::ENOENT
       raise sprintf(_("A project with the given project-ID could not be found: '%s'."), d.data[:project_id])
     end
   end

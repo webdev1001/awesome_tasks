@@ -61,7 +61,7 @@
         :project_id => project.id,
         :user_id => _get["user_id"]
       })
-    rescue Knj::Errors::Exists => e
+    rescue Errno::EEXIST => e
       print e.message
       exit
     end

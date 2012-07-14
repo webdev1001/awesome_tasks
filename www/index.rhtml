@@ -24,14 +24,14 @@
     begin
       task = _ob.get(:Task, _get["task_id"])
       head_title = task.name
-    rescue Knj::Errors::NotFound
+    rescue Errno::ENOENT
       _kas.alert(_("That task could not be found.")).back
     end
   elsif _get["show"] == "project_show" or (_get["show"] == "project_edit" and _get["project_id"])
     begin
       project = _ob.get(:Project, _get["project_id"])
       head_title = project.name
-    rescue Knj::Errors::NotFound
+    rescue Errno::ENOENT
       _kas.alert(_("That project could not be found.")).back
     end
   end

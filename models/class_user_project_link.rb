@@ -50,7 +50,7 @@ class Knjtasks::User_project_link < Knj::Datarow
       "user" => user,
       "project" => project
     })
-    raise Knj::Errors::Exists, _("That user is already assigned to that project.") if exists
+    raise Errno::EEXIST, _("That user is already assigned to that project.") if exists
   end
   
   def add_after(d)
