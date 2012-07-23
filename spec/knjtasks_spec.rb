@@ -18,7 +18,7 @@ describe "Knjtasks" do
   it "should be able to generate a sample database and start a test-environment." do
     require "rubygems"
     require "knjtasks"
-    require "knjdbrevision"
+    require "sqlite3"
     
     db_path = "#{File.dirname(__FILE__)}/../files/database_sample.sqlite3"
     #File.unlink(db_path) if File.exists?(db_path)
