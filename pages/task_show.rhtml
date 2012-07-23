@@ -78,7 +78,7 @@
             
             tlogs.each do |tlog|
               tlog_date = tlog.date
-              next if !_site.has_rank?("admin") and tlog_date.date == cur_date.date and tlog_date.month == cur_date.month and tlog_date.year == cur_date.year
+              next if !_site.has_rank?("admin") and tlog_date.day = = cur_date.day and tlog_date.month == cur_date.month and tlog_date.year == cur_date.year
               
               dbt = Knj::Db::Dbtime.new(tlog[:time])
               count_shown += 1

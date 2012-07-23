@@ -4,7 +4,6 @@ describe "Knjtasks" do
   it "should be able to require the needed frameworks and gems" do
     require "rubygems"
     require "knjrbfw"
-    require "knj/autoload"
   end
   
   it "should be able to require all the model-framework-files." do

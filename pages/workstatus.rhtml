@@ -8,10 +8,10 @@
     date_to = Datet.in(_get["texdateto"])
   else
     date_from = Datet.new
-    date_from.date = 1
+    date_from.day = 1
     
     date_to = Datet.new
-    date_to.date = date_to.days_in_month
+    date_to.day = date_to.days_in_month
   end
   
   stats = {
