@@ -56,7 +56,7 @@
   
   _db.q(sql) do |data|
     date = Datet.in(data[:date])
-    dj = date.date.to_i
+    dj = date.day.to_i
     dm = date.month.to_i
     dy = date.year.to_i
     
@@ -196,7 +196,7 @@
               transport_length = 0
             end
             
-            cur_date_is = (cur_date.date.to_i == date.to_i and cur_date.year.to_i == year.to_i and cur_date.month.to_i == month.to_i)
+            cur_date_is = (cur_date.day.to_i == date.to_i and cur_date.year.to_i == year.to_i and cur_date.month.to_i == month.to_i)
             
             %>
               <tr<%if cur_date_is; print " style=\"font-weight: bold;\""; end%>>
