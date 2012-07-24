@@ -27,12 +27,12 @@ class Knjtasks::User < Knj::Datarow
   end
   
   def has_rank?(rank_str)
-    rank = @ob.get_by(:User_rank, {
+    rank = self.ob.get_by(:User_rank, {
       "id_str" => rank_str
     })
     return false if !rank
     
-    rank_link = @ob.get_by(:User_rank_link, {
+    rank_link = self.ob.get_by(:User_rank_link, {
       "user" => self,
       "rank" => rank
     })

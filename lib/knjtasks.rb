@@ -30,18 +30,8 @@ class Knjtasks
       :require_all => true
     )
     
-    @ob.events.connect(:no_html) do |event, classname|
-      class_trans = @class_translations[classname]
-      class_trans = classname.to_s.downcase if !class_trans
-      
-      msg = "[#{sprintf(_("no %s"), class_trans)}]"
-      msg
-    end
-    
-    @ob.events.connect(:no_date) do |date|
-      str = "[#{_("no date")}]"
-      str
-    end
+    @ob.events.connect(:no_html, &self.method(:no_html))
+    @ob.events.connect(:no_date, &self.method(:no_date))
     
     @knjappserver = Knjappserver.new(
       :debug => @args[:debug],
@@ -61,7 +51,6 @@ class Knjtasks
       :locale_default => "da_DK",
       :knjrbfw_path => @args[:knjrbfw_path],
       :knjappserver_path => @args[:knjappserver_path],
-      :knjdbrevision_path => @args[:knjdbrevision_path],
       :db => @db,
       :smtp_args => @args[:smtp_args],
       :httpsession_db_args => @args[:db_args]
@@ -84,9 +73,9 @@ class Knjtasks
         time = 60
       end
       
-      @knjappserver.timeout(:time => time) do
-        @thread_mail_task_comments.run
-      end
+      time = 5
+      
+      @knjappserver.timeout(:time => time, &self.method(:mail_task_comments_run))
     end
     
     @class_translations = {
@@ -94,6 +83,20 @@ class Knjtasks
       :Project => _("project"),
       :Task => _("task")
     }
+  end
+  
+  def no_html(event, classname)
+    class_trans = @class_translations[classname]
+    class_trans = classname.to_s.downcase if !class_trans
+    return "[#{sprintf(_("no %s"), class_trans)}]"
+  end
+  
+  def no_date(event, date)
+    return "[#{_("no date")}]"
+  end
+  
+  def mail_task_comments_run
+    @thread_mail_task_comments.run
   end
   
   def join
@@ -105,7 +108,7 @@ class Knjtasks
   end
   
   def load_request
-    Knj::Php.header("Content-Type: text/html; charset=utf-8")
+    @knjappserver.header("Content-Type", "text/html; charset=utf-8")
     
     #This will make the new Ruby-tasks-system compatible with mails sent from the old PHP-tasks-system.
     _get["show"] = "task_show" if _get["show"] == "tasks_show"
