@@ -116,7 +116,7 @@ $schema = {
         {"name" => "active", "type" => "enum", "maxlength" => "'0','1'", "default" => 1, "comment" => "If the user is active or not. This can prevent the user from logging in."}
       ],
       "on_create_after" => proc{|data|
-        data["db"].insert(:User, {"username" => "admin", "passwd" => Knj::Php.md5("admin")})
+        data["db"].insert(:User, {"username" => "admin", "passwd" => Php4r.md5("admin")})
       }
     },
     "User_project_link" => {

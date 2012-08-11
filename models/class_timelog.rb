@@ -77,6 +77,6 @@ class Knjtasks::Timelog < Knj::Datarow
   end
   
   def comment_html
-    return Knj::Php.nl2br(Knj::Web.html(self[:comment]))
+    return Php4r.nl2br(Knj::Web.html(self[:comment]))
   end
 end

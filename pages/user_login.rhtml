@@ -35,7 +35,7 @@
     print sprintf(_("You are logged in as %s."), _site.user.html)
   else
     %>
-      <form method="post" action="?show=user_login&amp;choice=dologin&amp;backurl=<%=Knj::Php.urlencode(_get["backurl"])%>" onsubmit="return do_login();">
+      <form method="post" action="?show=user_login&amp;choice=dologin&amp;backurl=<%=Php4r.urlencode(_get["backurl"])%>" onsubmit="return do_login();">
       <%=Knj::Web.hiddens([{:name => :texpass_md5, :value => ""}])%>
       
       <%=_site.boxt(_("Enter details"), "350px")%>

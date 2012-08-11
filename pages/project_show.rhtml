@@ -47,14 +47,14 @@
   end
   
   if _get["choice"] == "doremoveassigneduser"
-    Knj::Php.die(_("You do not have access to this project.")) if !_site.has_rank?("admin")
+    Php4r.die(_("You do not have access to this project.")) if !_site.has_rank?("admin")
     link = _ob.get(:User_project_link, _get["link_id"])
     _ob.delete(link)
     exit
   end
   
   if _get["choice"] == "doassignuser"
-    Knj::Php.die(_("You do not have access to this project.")) if !_site.has_rank?("admin")
+    Php4r.die(_("You do not have access to this project.")) if !_site.has_rank?("admin")
     
     begin
       link = _ob.add(:User_project_link, {
