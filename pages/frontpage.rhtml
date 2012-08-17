@@ -140,7 +140,15 @@
           %>
             <tr>
               <td>
+                <%if task[:status].to_s == "open"%>
+                  <b>
+                <%end%>
+                
                 <%=task.html%>
+                
+                <%if task[:status].to_s == "open"%>
+                  </b>
+                <%end%>
               </td>
               <td class="nowrap">
                 <%=task.project_html%>
