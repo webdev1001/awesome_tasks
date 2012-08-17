@@ -2,7 +2,7 @@
   begin
     customer = _ob.get(:Customer, _get["customer_id"])
   rescue
-    _kas.alert(_("That customer do not exist.")).back
+    _hb.alert(_("That customer do not exist.")).back
   end
   
   print _site.header(sprintf(_("Show customer: %s"), customer.name.html))

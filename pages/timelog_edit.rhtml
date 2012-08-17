@@ -55,7 +55,7 @@
       opts = _ob.list_optshash(:Task, {:debug => false})
       raise "Empty opts?" if opts.empty?
       
-      print _kas.inputs({
+      print _hb.inputs({
         :title => _("Task"),
         :name => :seltask,
         :value => task_id,

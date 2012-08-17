@@ -51,7 +51,7 @@
 <%=_site.boxt(_("Enter details"))%>
   <table class="form">
     <%
-      print _kas.inputs({
+      print _hb.inputs({
         :title => _("Comment"),
         :name => :texcomment,
         :value => [comment, :comment],
@@ -62,7 +62,7 @@
       if _get["object_class"] == "Task"
         task = _ob.get(:Task, _get["object_id"])
         
-        print _kas.inputs({
+        print _hb.inputs({
           :title => _("Task status"),
           :name => :seltaskstatus,
           :value => task[:status],

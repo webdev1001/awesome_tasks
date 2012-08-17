@@ -1,6 +1,6 @@
 <%
   if !_site.has_rank?("admin")
-    _kas.alert(_("You are not an administrator and cannot view this page.")).back
+    _hb.alert(_("You are not an administrator and cannot view this page.")).back
   end
   
   if _get["choice"] == "dosave"
@@ -15,22 +15,22 @@
     
     if _get["choice"] == "dosave"
       customer.update(save_hash)
-      _kas.redirect("?show=customer_edit&customer_id#{customer.id}")
+      _hb.redirect("?show=customer_edit&customer_id#{customer.id}")
     end
     
     if _get["choice"] == "dodelete"
-      _kas.on_error_go_back do
+      _hb.on_error_go_back do
         _ob.delete(customer)
-        _kas.redirect("?show=customer_search")
+        _hb.redirect("?show=customer_search")
       end
     end
   else
     title = _("Add new customer")
     
     if _get["choice"] == "dosave"
-      _kas.on_error_go_back do
+      _hb.on_error_go_back do
         customer = _ob.add(:Customer, save_hash)
-        _kas.redirect("?show=customer_edit&customer_id=#{customer.id}")
+        _hb.redirect("?show=customer_edit&customer_id=#{customer.id}")
       end
     end
   end

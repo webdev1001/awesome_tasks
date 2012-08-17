@@ -44,29 +44,29 @@ class Knjtasks::Task < Knj::Datarow
   #Sends a notification about a newly added comment to a task.
   def send_notify_new_comment(comment)
     self.notify_emails.each do |data|
-      subj = "#{sprintf(_kas.gettext.gettext("Task #%1$s: %2$s", data[:user].locale), self.id, self.name)} - #{sprintf(_kas.gettext.gettext("New comment from: %s", data[:user].locale), comment.user.name)}"
+      subj = "#{sprintf(_hb.gettext.gettext("Task #%1$s: %2$s", data[:user].locale), self.id, self.name)} - #{sprintf(_hb.gettext.gettext("New comment from: %s", data[:user].locale), comment.user.name)}"
       
       if !self.user
-        user_html = "[#{_kas.gettext.gettext("no user", data[:user].locale)}]"
+        user_html = "[#{_hb.gettext.gettext("no user", data[:user].locale)}]"
       else
         user_html = comment.user.name.html
       end
       
       html = ""
       
-      html += sprintf(_kas.gettext.gettext("A new comment has been written to the task '%s'.", data[:user].locale), self.name)
+      html += sprintf(_hb.gettext.gettext("A new comment has been written to the task '%s'.", data[:user].locale), self.name)
       html += "<br /><br />"
       
-      html += "<b>#{_kas.gettext.gettext("Author", data[:user].locale)}:</b><br />"
+      html += "<b>#{_hb.gettext.gettext("Author", data[:user].locale)}:</b><br />"
       html += "#{user_html}<br /><br />"
       
-      html += "<b>#{_kas.gettext.gettext("Task", data[:user].locale)}:</b><br />"
+      html += "<b>#{_hb.gettext.gettext("Task", data[:user].locale)}:</b><br />"
       html += "<a href=\"#{url}\">#{url}</a><br /><br />"
       
-      html += "<b>#{_kas.gettext.gettext("Comment", data[:user].locale)}</b><br />"
+      html += "<b>#{_hb.gettext.gettext("Comment", data[:user].locale)}</b><br />"
       html += comment[:comment]
       
-      _kas.mail(:to => data[:email], :subject => subj, :html => html)
+      _hb.mail(:to => data[:email], :subject => subj, :html => html)
     end
   end
   
@@ -74,20 +74,20 @@ class Knjtasks::Task < Knj::Datarow
   def send_notify_assigned(user_assigned, user_by)
     return false if user_assigned[:email].to_s.strip.length <= 0
     
-    subj = sprintf(_kas.gettext.gettext("You have been assigned to: %s", user_assigned.locale), self.name)
+    subj = sprintf(_hb.gettext.gettext("You have been assigned to: %s", user_assigned.locale), self.name)
     
     html = ""
     
-    html += "<b>#{_kas.gettext.gettext("Assigned by", user_assigned.locale)}:</b><br />"
+    html += "<b>#{_hb.gettext.gettext("Assigned by", user_assigned.locale)}:</b><br />"
     html += "#{user_by.name}<br /><br />"
     
-    html += "<b>#{_kas.gettext.gettext("Task", user_assigned.locale)}:</b><br />"
+    html += "<b>#{_hb.gettext.gettext("Task", user_assigned.locale)}:</b><br />"
     html += "<a href=\"#{url}\">#{url}</a><br /><br />"
     
-    html += "<b>#{_kas.gettext.gettext("Description", user_assigned.locale)}</b><br />"
+    html += "<b>#{_hb.gettext.gettext("Description", user_assigned.locale)}</b><br />"
     html += self[:descr]
     
-    _kas.mail(:to => user_assigned[:email], :subject => subj, :html => html)
+    _hb.mail(:to => user_assigned[:email], :subject => subj, :html => html)
   end
   
   #Returns the emails of the assigned users and the owner as an array.

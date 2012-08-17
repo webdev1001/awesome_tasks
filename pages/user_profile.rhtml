@@ -3,7 +3,7 @@
     _site.user.update(
       :passwd => _post["passwd_md5"]
     )
-    _kas.redirect("/?show=user_profile")
+    _hb.redirect("/?show=user_profile")
   end
   
   print _site.header(_("Your profile"))
@@ -15,7 +15,7 @@
 <%=_site.boxt(_("Enter details"), 350)%>
   <table class="form">
     <%
-      print _kas.inputs({
+      print _hb.inputs({
         :title => _("Password"),
         :name => "texpasswd",
         :type => :password,

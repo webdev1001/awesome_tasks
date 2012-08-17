@@ -1,12 +1,12 @@
 class Knjtasks
-  attr_reader :knjappserver, :ob, :db, :args
+  attr_reader :hayabusa, :ob, :db, :args
   
   def initialize(args = {})
     @args = args
     @db = @args[:db]
     
     require "rubygems"
-    require "#{@args[:knjappserver_path]}knjappserver"
+    require "#{@args[:hayabusa_path]}hayabusa"
     require "#{@args[:knjrbfw_path]}knjrbfw"
     
     require "#{@args[:knjrbfw_path]}knj/autoload"
@@ -33,7 +33,7 @@ class Knjtasks
     @ob.events.connect(:no_html, &self.method(:no_html))
     @ob.events.connect(:no_date, &self.method(:no_date))
     
-    @knjappserver = Knjappserver.new(
+    @hayabusa = Knjappserver.new(
       :debug => @args[:debug],
       :autorestart => false,
       :autoload => false,
@@ -50,20 +50,20 @@ class Knjtasks
       :locales_gettext_funcs => true,
       :locale_default => "da_DK",
       :knjrbfw_path => @args[:knjrbfw_path],
-      :knjappserver_path => @args[:knjappserver_path],
+      :hayabusa_path => @args[:hayabusa_path],
       :db => @db,
       :smtp_args => @args[:smtp_args],
       :httpsession_db_args => @args[:db_args]
     )
-    @knjappserver.define_magic_var(:_site, self)
-    @knjappserver.define_magic_var(:_ob, @ob)
+    @hayabusa.define_magic_var(:_site, self)
+    @hayabusa.define_magic_var(:_ob, @ob)
     
     if @args.has_key?(:mail_args)
       require "#{File.dirname(__FILE__)}/../threads/thread_mail_task_comments.rb"
       @thread_mail_task_comments = Knjtasks::Thread_mail_task_comments.new(
         :knjtasks => self,
         :ob => @ob,
-        :appsrv => @knjappserver,
+        :appsrv => @hayabusa,
         :args => @args
       )
       
@@ -75,7 +75,7 @@ class Knjtasks
       
       time = 5
       
-      @knjappserver.timeout(:time => time, &self.method(:mail_task_comments_run))
+      @hayabusa.timeout(:time => time, &self.method(:mail_task_comments_run))
     end
     
     @class_translations = {
@@ -100,15 +100,15 @@ class Knjtasks
   end
   
   def join
-    @knjappserver.join
+    @hayabusa.join
   end
   
   def start
-    @knjappserver.start
+    @hayabusa.start
   end
   
   def load_request
-    @knjappserver.header("Content-Type", "text/html; charset=utf-8")
+    @hayabusa.header("Content-Type", "text/html; charset=utf-8")
     
     #This will make the new Ruby-tasks-system compatible with mails sent from the old PHP-tasks-system.
     _get["show"] = "task_show" if _get["show"] == "tasks_show"
@@ -117,7 +117,7 @@ class Knjtasks
     if _get.has_key?("l")
       _session[:locale] = _get["l"]
       _site.user[:locale] = _get["l"] if _site.user
-      _kas.redirect(_meta["REQUEST_URI"].gsub(/&l=([A-z_]+)/, ""))
+      _hb.redirect(_meta["REQUEST_URI"].gsub(/&l=([A-z_]+)/, ""))
     end
   end
   

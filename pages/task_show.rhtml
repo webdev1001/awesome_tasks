@@ -2,13 +2,13 @@
   if _get["choice"] == "removeassigned"
     link = _ob.get(:Task_assigned_user, _get["link_id"])
     task = link.task
-    _kas.alert(_("You do not have access to that task and cannot view this page.")).back if !task.has_view_access?(_site.user)
+    _hb.alert(_("You do not have access to that task and cannot view this page.")).back if !task.has_view_access?(_site.user)
     _ob.delete(link)
     exit
   end
   
   task = _ob.get(:Task, _get["task_id"])
-  _kas.alert(_("You do not have access to that task and cannot view this page.")).back if !task.has_view_access?(_site.user)
+  _hb.alert(_("You do not have access to that task and cannot view this page.")).back if !task.has_view_access?(_site.user)
   
   tlogs = task.timelogs("orderby" => [["date", "desc"]])
   
@@ -229,7 +229,7 @@
       :task_id => task.id,
       :user_id => _site.user.id
     })
-    _kas.redirect("/?show=task_show&task_id=#{task.id}")
+    _hb.redirect("/?show=task_show&task_id=#{task.id}")
   elsif _get["choice"] == "removefromlist"
     _ob.list(:User_task_list_link, {
       "task" => task,
@@ -238,7 +238,7 @@
       _ob.delete(link)
     end
     
-    _kas.redirect("/?show=task_show&task_id=#{task.id}")
+    _hb.redirect("/?show=task_show&task_id=#{task.id}")
   end
   
   print _site.header(sprintf(_("Show task: %s."), task.name.html))

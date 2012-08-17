@@ -1,17 +1,17 @@
 <%
-  _kas.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
+  _hb.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
   
   if _get["choice"] == "dosearch"
     begin
       date_from = Datet.in(_get["texdatefrom"])
     rescue
-      _kas.alert(_("Invalid date-from.")).back
+      _hb.alert(_("Invalid date-from.")).back
     end
     
     begin
       date_to = Datet.in(_get["texdateto"])
     rescue
-      _kas.alert(_("Invalid date-to.")).back
+      _hb.alert(_("Invalid date-to.")).back
     end
   else
     date_from = Datet.new
@@ -39,7 +39,7 @@
 <%=_site.boxt(_("Enter criteria"), "400px")%>
   <table class="form">
     <%
-      print _kas.inputs({
+      print _hb.inputs({
         :title => _("Date from"),
         :name => :texdatefrom,
         :value => date_from.out(:time => false),
@@ -165,7 +165,7 @@
       <%=_site.boxt(_("Sum"), "350px")%>
         <table class="form">
           <%
-            print _kas.inputs({
+            print _hb.inputs({
               :title => _("Total hours"),
               :type => :info,
               :value => Knj::Locales.number_out(tlogs_count[:sum_time].to_f / 3600, 1) + " / " + Knj::Locales.number_out(tlogs_count[:sum_time_transport].to_f / 3600, 1),

@@ -6,27 +6,27 @@
     })
     
     if !user
-      _kas.alert(_("A user with that username and/or password was found.")).back
+      _hb.alert(_("A user with that username and/or password was found.")).back
     elsif !user.active?
-      _kas.alert(_("That user is not active any more and cant be used.")).back
+      _hb.alert(_("That user is not active any more and cant be used.")).back
     else
       _session[:user_id] = user.id
       
       if _post["cheremember"] == "on"
-        _kas.session_remember
+        _hb.session_remember
       end
       
       if _get["backurl"].to_s.strip.length > 0
-        _kas.redirect(_get["backurl"])
+        _hb.redirect(_get["backurl"])
       else
-        _kas.redirect("?show=user_login")
+        _hb.redirect("?show=user_login")
       end
     end
   end
   
   if _get["choice"] == "dologout"
     _session.delete(:user_id)
-    _kas.redirect("?show=user_login")
+    _hb.redirect("?show=user_login")
   end
   
   print _site.header(_("Log in"))
@@ -41,7 +41,7 @@
       <%=_site.boxt(_("Enter details"), "350px")%>
         <table class="form">
           <%
-            print _kas.inputs({
+            print _hb.inputs({
               :title => _("Username"),
               :name => :texuser,
               :value => "",

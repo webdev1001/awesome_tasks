@@ -1,6 +1,6 @@
 <%
   if !_site.has_rank?("admin")
-    _kas.alert(_("You are not an administrator and cannot view this page.")).back
+    _hb.alert(_("You are not an administrator and cannot view this page.")).back
   end
   
   if _get["choice"] == "dosave"
@@ -22,15 +22,15 @@
     
     if _get["choice"] == "dosave"
       user.update(save_hash)
-      _kas.redirect("?show=user_edit&user_id=#{user.id}")
+      _hb.redirect("?show=user_edit&user_id=#{user.id}")
     end
     
     if _get["choice"] == "dodelete"
       begin
         _ob.delete(user)
-        _kas.redirect("?show=user_search")
+        _hb.redirect("?show=user_search")
       rescue => e
-        _kas.alert(e.message).back
+        _hb.alert(e.message).back
       end
     end
   else
@@ -38,7 +38,7 @@
     
     if _get["choice"] == "dosave"
       user = _ob.add(:User, save_hash)
-      _kas.redirect("?show=user_edit&user_id=#{user.id}")
+      _hb.redirect("?show=user_edit&user_id=#{user.id}")
     end
   end
   
@@ -111,7 +111,7 @@
 <%=_site.boxt(_("Enter details"), 350)%>
   <table class="form">
     <%
-      print _kas.inputs({
+      print _hb.inputs({
         :title => _("Username"),
         :name => :texusername,
         :value => [user, :username],

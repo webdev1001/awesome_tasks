@@ -1,5 +1,5 @@
 <%
-  _kas.alert(_("You need to be logged in to view this page.")).back if !_site.user
+  _hb.alert(_("You need to be logged in to view this page.")).back if !_site.user
   
   cur_date = Datet.new
   
@@ -264,7 +264,7 @@
         :title => _("Total transport"),
         :type => :info,
         :align => :right,
-        :value => _kas.num(stats[:totals][:transport_length], 2)
+        :value => _hb.num(stats[:totals][:transport_length], 2)
       }])
     %>
   </table>

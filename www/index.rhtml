@@ -25,14 +25,14 @@
       task = _ob.get(:Task, _get["task_id"])
       head_title = task.name
     rescue Errno::ENOENT
-      _kas.alert(_("That task could not be found.")).back
+      _hb.alert(_("That task could not be found.")).back
     end
   elsif _get["show"] == "project_show" or (_get["show"] == "project_edit" and _get["project_id"])
     begin
       project = _ob.get(:Project, _get["project_id"])
       head_title = project.name
     rescue Errno::ENOENT
-      _kas.alert(_("That project could not be found.")).back
+      _hb.alert(_("That project could not be found.")).back
     end
   end
   
@@ -42,7 +42,7 @@
     head_title = "#{head_title} - knjTasks"
   end
   
-  _kas.redirect("?show=user_login&backurl=#{Php4r.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login" and _get["show"] != "test_browser"
+  _hb.redirect("?show=user_login&backurl=#{Php4r.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login" and _get["show"] != "test_browser"
 %>
 <html>
 <head>
@@ -128,7 +128,7 @@
         </div>
         <div class="main_content">
           <%
-            _kas.import(showp)
+            _hb.import(showp)
           %>
         </div>
       </td>
@@ -140,7 +140,7 @@
         <div style="padding-bottom: 15px;">
           Language:
           <select style="width: 100px;" onchange="location.href='<%=_meta["REQUEST_URI"]%>&amp;l=' + this.value;">
-            <%=Knj::Web.opts(_kas.gettext.lang_opts, _session[:locale])%>
+            <%=Knj::Web.opts(_hb.gettext.lang_opts, _session[:locale])%>
           </select>
         </div>
         

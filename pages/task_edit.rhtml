@@ -16,12 +16,12 @@
     
     if _get["choice"] == "dosave"
       task.update(save_hash)
-      _kas.redirect("?show=task_show&task_id=#{task.id}")
+      _hb.redirect("?show=task_show&task_id=#{task.id}")
     end
     
     if _get["choice"] == "dodelete"
       _ob.delete(task)
-      _kas.redirect("?show=task_search")
+      _hb.redirect("?show=task_search")
     end
   else
     title = _("Add new task")
@@ -30,16 +30,16 @@
     if _get["choice"] == "dosave"
       begin
         task = _ob.add(:Task, save_hash)
-        _kas.redirect("?show=task_show&task_id=#{task.id}")
+        _hb.redirect("?show=task_show&task_id=#{task.id}")
       rescue => e
-        _kas.alert(e.message).back
+        _hb.alert(e.message).back
       end
     end
   end
   
   project_opts = _ob.list_optshash(:Project)
   if project_opts.empty?
-    _kas.alert(_("No projects has been added to this installation yet - please do that first.")).back
+    _hb.alert(_("No projects has been added to this installation yet - please do that first.")).back
   end
   
   
@@ -83,7 +83,7 @@
 <%=_site.boxt(_("Enter details"), 700)%>
   <table class="form">
     <%
-      print _kas.inputs({
+      print _hb.inputs({
         :title => _("Name"),
         :name => :texname,
         :value => [task, :name],

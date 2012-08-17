@@ -55,12 +55,12 @@ class Knjtasks::User_project_link < Knj::Datarow
   
   def add_after(d)
     if self.user.has_email?
-      subj = sprintf(_kas.gettext.gettext("Assigned to project: %s", self.user.locale), self.project.name)
+      subj = sprintf(_hb.gettext.gettext("Assigned to project: %s", self.user.locale), self.project.name)
       
       html = ""
-      html += sprintf(_kas.gettext.gettext("You have been assigned to the project: '%s'.", self.user.locale), self.project.name)
+      html += sprintf(_hb.gettext.gettext("You have been assigned to the project: '%s'.", self.user.locale), self.project.name)
       
-      _kas.mail(:to => self.user[:email], :subject => subj, :html => html)
+      _hb.mail(:to => self.user[:email], :subject => subj, :html => html)
     end
   end
 end
