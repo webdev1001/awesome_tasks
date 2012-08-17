@@ -10,7 +10,6 @@ class Knjtasks
     require "#{@args[:knjrbfw_path]}knjrbfw"
     
     require "#{@args[:knjrbfw_path]}knj/autoload"
-    require "#{@args[:knjrbfw_path]}knj/objects"
     
     
     check_args = [:db, :knjjs_url, :port, :email_admin, :email_robot, :db_args, :title]
@@ -72,8 +71,6 @@ class Knjtasks
       else
         time = 60
       end
-      
-      time = 5
       
       @hayabusa.timeout(:time => time, &self.method(:mail_task_comments_run))
     end
