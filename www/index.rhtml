@@ -42,7 +42,7 @@
     head_title = "#{head_title} - knjTasks"
   end
   
-  _hb.redirect("?show=user_login&backurl=#{Php4r.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login" and _get["show"] != "test_browser"
+  _hb.redirect("?show=user_login&backurl=#{Php4r.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login" and _get["show"] != "test_browser" and _get["show"] != "test"
 %>
 <html>
 <head>

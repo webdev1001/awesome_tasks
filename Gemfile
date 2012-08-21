@@ -5,7 +5,7 @@ source "http://rubygems.org"
 
 gem "knjrbfw"
 gem "datet"
-gem "knjappserver"
+gem "hayabusa"
 gem "sqlite3"
 
 # Add dependencies to develop your gem here.

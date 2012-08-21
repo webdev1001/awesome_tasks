@@ -3,7 +3,14 @@ class Knjtasks
   
   def initialize(args = {})
     @args = args
-    @db = @args[:db]
+    
+    if @args[:hayabusa]
+      @db = @args[:hayabusa].db
+    elsif @args[:db]
+      @db = @args[:db]
+    else
+      raise "Could not figure out database."
+    end
     
     require "rubygems"
     require "#{@args[:hayabusa_path]}hayabusa"
@@ -12,14 +19,13 @@ class Knjtasks
     require "#{@args[:knjrbfw_path]}knj/autoload"
     
     
-    check_args = [:db, :knjjs_url, :port, :email_admin, :email_robot, :db_args, :title]
+    check_args = [:knjjs_url, :email_admin, :email_robot]
     check_args.each do |key|
       raise "No '#{key}' given in arguments." if !@args.has_key?(key)
     end
     
     require "#{File.dirname(__FILE__)}/../files/database_schema.rb"
-    dbrev = Knj::Db::Revision.new
-    dbrev.init_db("schema" => $schema, "db" => @db)
+    Knj::Db::Revision.new.init_db("schema" => $schema, "db" => @db)
     
     @ob = Knj::Objects.new(
       :datarow => true,
@@ -32,30 +38,35 @@ class Knjtasks
     @ob.events.connect(:no_html, &self.method(:no_html))
     @ob.events.connect(:no_date, &self.method(:no_date))
     
-    @hayabusa = Knjappserver.new(
-      :debug => @args[:debug],
-      :autorestart => false,
-      :autoload => false,
-      :verbose => false,
-      :title => @args[:title],
-      :port => @args[:port],
-      :host => @args[:host],
-      :default_page => "index.rhtml",
-      :doc_root => "#{File.dirname(__FILE__)}/../www",
-      :hostname => false,
-      :error_report_emails => [@args[:email_admin]],
-      :error_report_from => @args[:email_robot],
-      :locales_root => "#{File.dirname(__FILE__)}/../locales",
-      :locales_gettext_funcs => true,
-      :locale_default => "da_DK",
-      :knjrbfw_path => @args[:knjrbfw_path],
-      :hayabusa_path => @args[:hayabusa_path],
-      :db => @db,
-      :smtp_args => @args[:smtp_args],
-      :httpsession_db_args => @args[:db_args]
-    )
+    if @args[:hayabusa]
+      @hayabusa = @args[:hayabusa]
+    else
+      @hayabusa = Hayabusa.new(
+        :debug => @args[:debug],
+        :autorestart => false,
+        :autoload => false,
+        :verbose => false,
+        :title => @args[:title],
+        :port => @args[:port],
+        :host => @args[:host],
+        :default_page => "index.rhtml",
+        :doc_root => "#{File.dirname(__FILE__)}/../www",
+        :hostname => false,
+        :error_report_emails => [@args[:email_admin]],
+        :error_report_from => @args[:email_robot],
+        :locales_root => "#{File.dirname(__FILE__)}/../locales",
+        :locales_gettext_funcs => true,
+        :locale_default => "da_DK",
+        :knjrbfw_path => @args[:knjrbfw_path],
+        :db => @db,
+        :smtp_args => @args[:smtp_args],
+        :httpsession_db_args => @args[:db_args]
+      )
+    end
+    
     @hayabusa.define_magic_var(:_site, self)
     @hayabusa.define_magic_var(:_ob, @ob)
+    @hayabusa.thread_init
     
     if @args.has_key?(:mail_args)
       require "#{File.dirname(__FILE__)}/../threads/thread_mail_task_comments.rb"
