@@ -5,7 +5,8 @@
       :descr => _post["texdescr"],
       :project_id => _post["selproject"],
       :type => _post["seltype"],
-      :status => _post["selstatus"]
+      :status => _post["selstatus"],
+      :priority => _post["selpriority"]
     }
   end
   
@@ -83,6 +84,11 @@
 <%=_site.boxt(_("Enter details"), 700)%>
   <table class="form">
     <%
+      priority_opts = {}
+      1.upto(10) do |count|
+        priority_opts[count] = count
+      end
+      
       print _hb.inputs({
         :title => _("Name"),
         :name => :texname,
@@ -106,6 +112,12 @@
         :value => [task, :status],
         :descr => _("The status of the task."),
         :opts => _ob.static(:Task, :status_opts)
+      },{
+        :title => _("Priority"),
+        :name => :selpriority,
+        :value => [task, :priority],
+        :opts => priority_opts,
+        :descr => _("10 for most important and 1 for least important.")
       },{
         :title => _("Description"),
         :name => :texdescr,

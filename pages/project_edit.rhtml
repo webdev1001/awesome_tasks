@@ -4,12 +4,21 @@
   end
   
   if _get["choice"] == "dosave"
+    if _post["texdeadline"] != ""
+      date_deadline = Datet.in(_post["texdeadline"])
+    else
+      date_deadline = nil
+    end
+    
     save_hash = {
       :name => _post["texname"],
       :descr => _post["texdescr"],
-      :customer_id => _post["selcustomer"]
+      :customer_id => _post["selcustomer"],
+      :date_deadline => date_deadline
     }
   end
+  
+  date_deadline_str = ""
   
   if _get["project_id"].to_i > 0
     begin
@@ -19,6 +28,10 @@
     end
     
     title = sprintf(_("Edit project: %s."), project.name.html)
+    
+    if project.date_deadline
+      date_deadline_str = project.date_deadline_str(:time => false)
+    end
     
     if _get["choice"] == "dosave"
       project.update(save_hash)
@@ -55,6 +68,11 @@
         :name => :texname,
         :value => [project, :name],
         :descr => _("The name of the project as it should appear in this system.")
+      },{
+        :title => _("Deadline"),
+        :name => :texdeadline,
+        :value => date_deadline_str,
+        :descr => _("The deadline of the project.")
       }])
       
       if _site.args[:customers]
@@ -94,6 +112,7 @@
     <tr>
       <td colspan="2" class="buttons">
         <%if project%>
+          <input type="button" value="<%=_("Show")%>" onclick="location.href='<%=project.url%>';" />
           <input type="button" value="<%=_("Add task")%>" onclick="location.href='?show=task_edit&amp;project_id=<%=project.id%>';" />
           <input type="button" value="<%=_("Delete")%>" onclick="if (confirm('<%=_("Do you want to delete this project?")%>')){location.href='?show=project_edit&amp;project_id=<%=project.id%>&amp;choice=dodelete';}" />
         <%end%>

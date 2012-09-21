@@ -14,6 +14,8 @@
       
       if _post["cheremember"] == "on"
         _hb.session_remember
+      else
+        _hb.session_dont_remember
       end
       
       if _get["backurl"].to_s.strip.length > 0

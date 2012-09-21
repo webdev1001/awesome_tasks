@@ -38,7 +38,8 @@ $schema = {
         {"name" => "name", "type" => "varchar"},
         {"name" => "descr", "type" => "text"},
         {"name" => "added_date", "type" => "datetime"},
-        {"name" => "added_user_id", "type" => "int"}
+        {"name" => "added_user_id", "type" => "int"},
+        {"name" => "date_deadline", "type" => "date"}
       ],
       "indexes" => [
         {"name" => "customer_id", "columns" => ["customer_id"]},
@@ -54,7 +55,8 @@ $schema = {
         {"name" => "name", "type" => "varchar"},
         {"name" => "descr", "type" => "text"},
         {"name" => "type", "type" => "enum", "maxlength" => "'feature','bug','question','other'"},
-        {"name" => "status", "type" => "enum", "maxlength" => "'open','confirmed','waiting','closed'"}
+        {"name" => "status", "type" => "enum", "maxlength" => "'open','confirmed','waiting','closed'"},
+        {"name" => "priority", "type" => "int", "default" => 1}
       ],
       "indexes" => [
         {"name" => "project_id", "columns" => ["project_id"]},

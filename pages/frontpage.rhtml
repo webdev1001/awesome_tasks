@@ -11,6 +11,10 @@
       "sortval" => {:table => :Project, :col => :name},
       "title" => _("Project")
     },{
+      "sort" => "priority",
+      "sortval" => "priority",
+      "title" => _("Priority")
+    },{
       "sort" => "author",
       "sortval" => {:table => :User, :col => :name},
       "title" => _("Author")
@@ -74,6 +78,8 @@
       res = a.user.name <=> b.user.name
     elsif _get["sort"] == "status"
       res = task_status_hash[a[:status].to_sym] <=> task_status_hash[b[:status].to_sym]
+    elsif _get["sort"] == "priority"
+      res = a[:priority].to_i <=> b[:priority].to_i
     else
       raise "Dont know how to sort the tasks."
     end
@@ -152,6 +158,9 @@
               </td>
               <td class="nowrap">
                 <%=task.project_html%>
+              </td>
+              <td class="nowrap">
+                <%=_hb.num(task[:priority], 0)%>
               </td>
               <td class="nowrap">
                 <%=task.user_html%>

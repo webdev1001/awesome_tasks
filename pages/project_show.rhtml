@@ -99,6 +99,14 @@
               :type => :info,
               :value => project.added_date_str(:time => false)
             }])
+            
+            if project.date_deadline
+              print _hb.inputs({
+                :title => _("Deadline"),
+                :type => :info,
+                :value => project.date_deadline_str(:time => false)
+              })
+            end
           %>
         </table>
       <%=_site.boxb%>

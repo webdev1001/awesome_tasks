@@ -297,6 +297,11 @@
                 :type => :info,
                 :value => task.user_html,
                 :descr => _("The user that created this task.")
+              },{
+                :title => _("Priority"),
+                :type => :info,
+                :value => _hb.num(task[:priority], 0),
+                :descr => _("The priority of the task. 10 as most important and 1 as least important.")
               }])
             %>
           </table>

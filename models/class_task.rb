@@ -10,12 +10,18 @@ class Knjtasks::Task < Knj::Datarow
     :User
   ]
   
+  def initialize(*args, &blk)
+    super(*args, &blk)
+    self[:priority] = 1 if self[:priority].to_i <= 0 or self[:priority].to_i > 10
+  end
+  
   def self.add(d)
     raise _("No project-ID was given.") if d.data[:project_id].to_i <= 0
     raise _("Invalid name was given.") if d.data[:name].to_s.strip.length <= 0
     
     d.data[:user_id] = _site.user.id if _site.user
     d.data[:date_added] = Time.now if !d.data[:date_added]
+    d.data[:priority] = 1 if d.data[:priority].to_i <= 0 or d.data[:priority].to_i > 10
     
     begin
       task = d.ob.get(:Project, d.data[:project_id])
