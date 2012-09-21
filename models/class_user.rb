@@ -93,9 +93,9 @@ class Knjtasks::User < Knj::Datarow
       customers[customer.id] = customer
     end
     
-    customers = customers.values
+    customers = customers.values.to_a
     customers.sort do |cust1, cust2|
-      cast1.name.downcase <=> cust2.name.downcase
+      cust1.name.downcase <=> cust2.name.downcase
     end
     
     return customers
