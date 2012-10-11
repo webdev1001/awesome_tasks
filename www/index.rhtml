@@ -2,7 +2,7 @@
 <%
   _site.load_request
   
-  show = _get["show"]
+  show = _get["show"] if !_get["show"].to_s.empty?
   show = "frontpage" if !show
   showp = "../pages/#{show}.rhtml"
   

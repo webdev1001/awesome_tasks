@@ -5,7 +5,10 @@
   show = "frontpage" if !show
   showp = "../pages/#{show}.rhtml"
   
-  showp = "../pages/user_login.rhtml" if !_site.user
+  if !_site.user
+    print _("You are not logged in. Log in and try to view this page again.")
+    exit
+  end
   
   _hb.import(showp)
 %>

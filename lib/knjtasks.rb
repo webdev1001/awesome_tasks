@@ -56,7 +56,7 @@ class Knjtasks
         :error_report_from => @args[:email_robot],
         :locales_root => "#{File.dirname(__FILE__)}/../locales",
         :locales_gettext_funcs => true,
-        :locale_default => "da_DK",
+        :locale_default => "en_GB",
         :knjrbfw_path => @args[:knjrbfw_path],
         :db => @db,
         :smtp_args => @args[:smtp_args],
