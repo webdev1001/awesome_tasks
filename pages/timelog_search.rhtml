@@ -1,17 +1,17 @@
 <%
-  _hb.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
+  Knj::Web.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
   
   if _get["choice"] == "dosearch"
     begin
       date_from = Datet.in(_get["texdatefrom"])
     rescue
-      _hb.alert(_("Invalid date-from.")).back
+      Knj::Web.alert(_("Invalid date-from.")).back
     end
     
     begin
       date_to = Datet.in(_get["texdateto"])
     rescue
-      _hb.alert(_("Invalid date-to.")).back
+      Knj::Web.alert(_("Invalid date-to.")).back
     end
   else
     date_from = Datet.new

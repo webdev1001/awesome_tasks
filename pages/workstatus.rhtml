@@ -1,5 +1,5 @@
 <%
-  _hb.alert(_("You need to be logged in to view this page.")).back if !_site.user
+  Knj::Web.alert(_("You need to be logged in to view this page.")).back if !_site.user
   
   cur_date = Datet.new
   

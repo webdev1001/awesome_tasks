@@ -125,7 +125,7 @@ class Knjtasks
     if _get.has_key?("l")
       _session[:locale] = _get["l"]
       _site.user[:locale] = _get["l"] if _site.user
-      _hb.redirect(_meta["REQUEST_URI"].gsub(/&l=([A-z_]+)/, ""))
+      Knj::Web.redirect(_meta["REQUEST_URI"].gsub(/&l=([A-z_]+)/, ""))
     end
   end
   

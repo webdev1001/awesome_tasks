@@ -1,6 +1,6 @@
 <%
   user = _ob.get(:User, _get["user_id"])
-  _hb.alert(_("You do not have access to view this user.")) if !user.has_view_access?(_site.user)
+  Knj::Web.alert(_("You do not have access to view this user.")) if !user.has_view_access?(_site.user)
   
   print _site.header(sprintf(_("Show user: %s."), user.name.html))
   

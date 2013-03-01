@@ -3,7 +3,7 @@
     _site.user.update(
       :passwd => _post["passwd_md5"]
     )
-    _hb.redirect("/?show=user_profile")
+    Knj::Web.redirect("/?show=user_profile")
   end
   
   print _site.header(_("Your profile"))

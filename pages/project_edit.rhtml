@@ -1,6 +1,6 @@
 <%
   if !_site.has_rank?("admin")
-    _hb.alert(_("You are not an administrator and cannot view this page.")).back
+    Knj::Web.alert(_("You are not an administrator and cannot view this page.")).back
   end
   
   if _get["choice"] == "dosave"
@@ -24,7 +24,7 @@
     begin
       project = _ob.get(:Project, _get["project_id"])
     rescue Errno::ENOENT
-      _hb.alert(_("That project could not be found in the database.")).back
+      Knj::Web.alert(_("That project could not be found in the database.")).back
     end
     
     title = sprintf(_("Edit project: %s."), project.name.html)
@@ -35,12 +35,12 @@
     
     if _get["choice"] == "dosave"
       project.update(save_hash)
-      _hb.redirect("?show=project_edit&project_id=#{project.id}")
+      Knj::Web.redirect("?show=project_edit&project_id=#{project.id}")
     end
     
     if _get["choice"] == "dodelete"
       _ob.delete(project)
-      _hb.redirect("?show=project_search")
+      Knj::Web.redirect("?show=project_search")
     end
   else
     title = _("Add new project")
@@ -48,9 +48,9 @@
     if _get["choice"] == "dosave"
       begin
         project = _ob.add(:Project, save_hash)
-        _hb.redirect("?show=project_edit&project_id=#{project.id}")
+        Knj::Web.redirect("?show=project_edit&project_id=#{project.id}")
       rescue => e
-        _hb.alert(e.message).back
+        Knj::Web.alert(e.message).back
       end
     end
   end

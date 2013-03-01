@@ -1,5 +1,5 @@
 <%
-  _hb.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
+  Knj::Web.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
   
   if _get["choice"] == "doupdate"
     objs = {}
@@ -21,7 +21,7 @@
       end
     end
     
-    _hb.alert(_("Done")).redirect("?show=comment_update_id_per_obj")
+    Knj::Web.alert(_("Done")).redirect("?show=comment_update_id_per_obj")
   end
   
   print _site.header(_("Update comment IDs"))

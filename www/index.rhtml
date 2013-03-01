@@ -25,14 +25,14 @@
       task = _ob.get(:Task, _get["task_id"])
       head_title = task.name
     rescue Errno::ENOENT
-      _hb.alert(_("That task could not be found.")).back
+      Knj::Web.alert(_("That task could not be found.")).back
     end
   elsif _get["show"] == "project_show" or (_get["show"] == "project_edit" and _get["project_id"])
     begin
       project = _ob.get(:Project, _get["project_id"])
       head_title = project.name
     rescue Errno::ENOENT
-      _hb.alert(_("That project could not be found.")).back
+      Knj::Web.alert(_("That project could not be found.")).back
     end
   end
   
@@ -42,7 +42,7 @@
     head_title = "#{head_title} - knjTasks"
   end
   
-  _hb.redirect("?show=user_login&backurl=#{Php4r.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login" and _get["show"] != "test_browser" and _get["show"] != "test"
+  Knj::Web.redirect("?show=user_login&backurl=#{Php4r.urlencode(_meta["REQUEST_URI"])}") if !_site.user and _get["show"] != "user_login" and _get["show"] != "test_browser" and _get["show"] != "test"
 %>
 <html>
 <head>

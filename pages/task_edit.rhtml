@@ -17,12 +17,12 @@
     
     if _get["choice"] == "dosave"
       task.update(save_hash)
-      _hb.redirect("?show=task_show&task_id=#{task.id}")
+      Knj::Web.redirect("?show=task_show&task_id=#{task.id}")
     end
     
     if _get["choice"] == "dodelete"
       _ob.delete(task)
-      _hb.redirect("?show=task_search")
+      Knj::Web.redirect("?show=task_search")
     end
   else
     title = _("Add new task")
@@ -31,16 +31,16 @@
     if _get["choice"] == "dosave"
       begin
         task = _ob.add(:Task, save_hash)
-        _hb.redirect("?show=task_show&task_id=#{task.id}")
+        Knj::Web.redirect("?show=task_show&task_id=#{task.id}")
       rescue => e
-        _hb.alert(e.message).back
+        Knj::Web.alert(e.message).back
       end
     end
   end
   
   project_opts = _ob.list_optshash(:Project)
   if project_opts.empty?
-    _hb.alert(_("No projects has been added to this installation yet - please do that first.")).back
+    Knj::Web.alert(_("No projects has been added to this installation yet - please do that first.")).back
   end
   
   

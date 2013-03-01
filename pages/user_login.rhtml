@@ -6,9 +6,9 @@
     })
     
     if !user
-      _hb.alert(_("A user with that username and/or password was found.")).back
+      Knj::Web.alert(_("A user with that username and/or password was found.")).back
     elsif !user.active?
-      _hb.alert(_("That user is not active any more and cant be used.")).back
+      Knj::Web.alert(_("That user is not active any more and cant be used.")).back
     else
       _session[:user_id] = user.id
       
@@ -19,16 +19,16 @@
       end
       
       if _get["backurl"].to_s.strip.length > 0
-        _hb.redirect(_get["backurl"])
+        Knj::Web.redirect(_get["backurl"])
       else
-        _hb.redirect("?show=user_login")
+        Knj::Web.redirect("?show=user_login")
       end
     end
   end
   
   if _get["choice"] == "dologout"
     _session.delete(:user_id)
-    _hb.redirect("?show=user_login")
+    Knj::Web.redirect("?show=user_login")
   end
   
   print _site.header(_("Log in"))

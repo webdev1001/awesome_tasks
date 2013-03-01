@@ -1,6 +1,6 @@
 <%
   if !_site.has_rank?("admin")
-    _hb.alert(_("You are not an administrator and cannot view this page.")).back
+    Knj::Web.alert(_("You are not an administrator and cannot view this page.")).back
   end
   
   if _get["choice"] == "dosave"
@@ -22,28 +22,28 @@
     
     if _get["choice"] == "dosave"
       user.update(save_hash)
-      _hb.redirect("?show=user_edit&user_id=#{user.id}")
+      Knj::Web.redirect("?show=user_edit&user_id=#{user.id}")
     end
     
     if _get["choice"] == "dodelete"
       begin
         _ob.delete(user)
-        _hb.redirect("?show=user_search")
+        Knj::Web.redirect("?show=user_search")
       rescue => e
-        _hb.alert(e.message).back
+        Knj::Web.alert(e.message).back
       end
     end
     
     if _get["choice"] == "dologinas"
       _session[:user_id] = user.id
-      _hb.redirect("?show=user_login")
+      Knj::Web.redirect("?show=user_login")
     end
   else
     title = _("Add new user")
     
     if _get["choice"] == "dosave"
       user = _ob.add(:User, save_hash)
-      _hb.redirect("?show=user_edit&user_id=#{user.id}")
+      Knj::Web.redirect("?show=user_edit&user_id=#{user.id}")
     end
   end
   
