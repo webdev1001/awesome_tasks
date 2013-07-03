@@ -1,21 +1,31 @@
 <%
   if _get["choice"] == "dosave"
-    _site.user.update(
-      :passwd => _post["passwd_md5"]
-    )
+    if Digest::MD5.hexdigest("") != _post["passwd_md5"]
+      _site.user.update(
+        :passwd => _post["passwd_md5"]
+      )
+    end
+    
+    _site.user.update(:email => _post["texemail"])
+    
     Knj::Web.redirect("/?show=user_profile")
   end
   
   print _site.header(_("Your profile"))
 %>
 
-<form method="post" action="/?show=user_profile&amp;choice=dosave" onsubmit="return on_profile_save()">
+<form autocomplete="off" method="post" action="/?show=user_profile&amp;choice=dosave" onsubmit="return on_profile_save()">
 <%=Knj::Web.hiddens([["passwd_md5", nil]])%>
 
 <%=_site.boxt(_("Enter details"), 350)%>
   <table class="form">
     <%
       print _hb.inputs({
+        :title => _("Email"),
+        :name => "texemail",
+        :descr => _("The email that you want notifications and stuff sent to."),
+        :value => _site.user[:email]
+      },{
         :title => _("Password"),
         :name => "texpasswd",
         :type => :password,
