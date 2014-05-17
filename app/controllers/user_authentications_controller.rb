@@ -18,13 +18,13 @@ class UserAuthenticationsController < ApplicationController
       if params[:backurl].to_s.strip.length > 0
         redirect_to params[:backurl]
       else
-        redirect_to frontpage_index_path
+        redirect_to root_path
       end
     end
   end
   
-  def destroy
-    sign_out
-    redirect_to("?show=user_login")
+  def logout
+    sign_out current_user
+    redirect_to new_user_authentication_path
   end
 end

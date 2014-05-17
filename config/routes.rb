@@ -16,7 +16,10 @@ AwesomeTasks::Application.routes.draw do
   
   resources :customers
   resources :projects
-  resources :user_authentications
+  resources :user_authentications do
+    delete :logout, :on => :collection
+  end
+  resources :timelogs
   
   devise_for :users
   
