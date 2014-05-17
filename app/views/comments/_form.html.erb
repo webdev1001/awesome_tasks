@@ -1,0 +1,121 @@
+<%
+  if params["choice"] == "dosave"
+    save_hash = {
+      :comment => params["texcomment"]
+    }
+  end
+  
+  if params["comment_id"].to_i > 0
+    comment = _ob.get(:Comment, params["comment_id"])
+    url = "&comment_id=#{comment.id}"
+    
+    if params["choice"] == "dosave"
+      comment.update(save_hash)
+      exit
+    end
+    
+    if params["choice"] == "dodelete"
+      _ob.delete(comment)
+      exit
+    end
+  else
+    url = "&object_class=#{params["object_class"]}&object_id=#{params["object_id"]}"
+    
+    if params["choice"] == "dosave"
+      if _post.has_key?("seltaskstatus")
+        task = _ob.get(:Task, params["object_id"])
+        last_comment = task.comments("orderby" => [["date_saved", "desc"]], "limit" => 1)
+        
+        if last_comment.empty?
+          save_hash[:id_per_obj] = 1
+        else
+          save_hash[:id_per_obj] = last_comment.first[:id_per_obj].to_i + 1
+        end
+        
+        if task[:status] != params["seltaskstatus"]
+          task[:status] = params["seltaskstatus"]
+          save_hash[:comment] = "#{params["texcomment"]}<div style=\"padding-top: 15px;\">#{sprintf(_("Changed the task-status to '%s'."), task.status_str)}</div>"
+        end
+      end
+      
+      save_hash[:object_class] = params["object_class"]
+      save_hash[:object_id] = params["object_id"]
+      comment = _ob.add(:Comment, save_hash)
+      exit
+    end
+  end
+%>
+
+<form id="form_comment" method="get" onsubmit="return do_save_comment();">
+
+<%=DesignBox.boxt(_("Enter details"))%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Comment"),
+        :name => :texcomment,
+        :value => [comment, :comment],
+        :type => :fckeditor,
+        :height => 380
+      }])
+      
+      if params["object_class"] == "Task"
+        task = _ob.get(:Task, params["object_id"])
+        
+        print Knj::Web.inputs([{
+          :title => _("Task status"),
+          :name => :seltaskstatus,
+          :value => task[:status],
+          :opts => _ob.static(:Task, :status_opts),
+          :descr => _("If you want to change the status of the task as well, then you should choose the new status here.")
+        }])
+      end
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="submit" value="<%=_("Save")%>" />
+      </td>
+    </tr>
+  </table>
+<%=DesignBox.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  function do_save_comment(){
+    comment_val = FCKeditorAPI.GetInstance("texcomment").GetHTML();
+    if (comment_val.length <= 0){
+      alert("<%=_('Please write a comment before saving.')%>");
+      return false;
+    }
+    
+    $.ajax({
+      type: "POST",
+      url: "clean.rhtml?show=comment_edit&choice=dosave<%=url%>",
+      data: forms_inputs_read($("#form_comment")),
+      complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }else{
+          events.call("on_comment_added");
+          events.call("do_comments_update");
+          modal_close();
+        }
+      }
+    });
+    return false;
+  }
+  
+  modal_on_opened(function(){
+    try{
+      fckeditor_set_focus();
+    }catch(err){
+      setTimeout("fckeditor_set_focus", 100);
+    }
+  });
+  
+  function fckeditor_set_focus(){
+    oFCKeditor = FCKeditorAPI.GetInstance("texcomment");
+    oFCKeditor.Focus();
+  }
+</script>

@@ -1,0 +1,87 @@
+<%
+  user = _ob.get(:User, params["user_id"])
+  flash[:warning] = (_("You do not have access to view this user.")) if !user.has_view_access?(current_user)
+  
+  print _site.header(sprintf(_("Show user: %s."), user.name.html))
+  
+  if can?(:admin, :admin)
+    %>
+      <%=DesignBox.boxt(_("Actions"), 450)%>
+        <input type="button" value="<%=_("Edit")%>" onclick="location.href='?show=user_edit&amp;user_id=<%=user.id%>';" />
+      <%=DesignBox.boxb%>
+
+      <br />
+    <%
+  end
+%>
+
+<%=DesignBox.boxt(_("Information"), 450)%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Name"),
+        :type => :info,
+        :value => user.name.html,
+        :descr => _("The real name of the user.")
+      },{
+        :title => _("Email"),
+        :type => :info,
+        :value => "<a href=\"mailto:#{user[:email].html}\">#{user[:email].html}</a>",
+        :descr => _("The email of the user.")
+      }])
+    %>
+  </table>
+<%=DesignBox.boxb%>
+
+<br />
+
+<%=DesignBox.boxt(_("Tasks"), 800)%>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%=_"Task"%></th>
+        <th><%=_"Status"%></th>
+        <th><%=_"Date"%></th>
+        <th><%=_"Project"%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        tasks = user.tasks("orderby" => [["date_added", "desc"], ["id", "desc"]])
+        
+        count = 0
+        tasks.each do |task|
+          next if !can?(:show, task)
+          count += 1
+          
+          %>
+            <tr>
+              <td>
+                <%=task.html%>
+              </td>
+              <td>
+                <%=task.status_str.html%>
+              </td>
+              <td class="nowrap" style="width: 100px;">
+                <%=task.date_added_str(:time => false)%>
+              </td>
+              <td>
+                <%=task.project_html%>
+              </td>
+            </tr>
+          <%
+        end
+        
+        if count <= 0
+          %>
+            <tr>
+              <td colspan="2" class="error">
+                <%=_("No tasks were found for this user.")%>
+              </td>
+            </tr>
+          <%
+        end
+      %>
+    </tbody>
+  </table>
+<%=DesignBox.boxb%>

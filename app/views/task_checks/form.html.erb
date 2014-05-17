@@ -1,0 +1,98 @@
+<%
+  if params["choice"] == "dosave"
+    save_hash = {
+      :name => params["texname"],
+      :descr => params["texdescr"]
+    }
+  end
+  
+  if params["check_id"].to_i > 0
+    check = _ob.get(:Task_check, params["check_id"])
+    url = "&check_id=#{check.id}"
+    
+    if params["choice"] == "dosave"
+      check.update(save_hash)
+      exit
+    end
+    
+    if params["choice"] == "dodelete"
+      _ob.delete(check)
+      exit
+    end
+    
+    if params["choice"] == "setcheck"
+      check.update(:checked => params["checkval"].to_i)
+      exit
+    end
+  else
+    task = _ob.get(:Task, params["task_id"])
+    url = "&task_id=#{task.id}"
+    
+    if params["choice"] == "dosave"
+      save_hash[:task_id] = task.id
+      check = _ob.add(:Task_check, save_hash)
+      exit
+    end
+  end
+%>
+
+<form id="formtaskcheck" method="get" onsubmit="return do_task_check_save();">
+
+<%=DesignBox.boxt(_("Enter details"), "450px")%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Name"),
+        :name => :texname,
+        :value => [check, :name],
+        :descr => _("The name of the check as it should appear for the other users.")
+      },{
+        :title => _("Description"),
+        :name => :texdescr,
+        :value => [check, :descr],
+        :type => :textarea,
+        :height => 100,
+        :descr => _("A description that describes what should be done before marking this check.")
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <%if check%>
+          <input type="button" value="<%=_"Delete"%>" onclick="if (confirm('<%=_("Do you want to delete this check?")%>')){}" />
+        <%end%>
+        <input type="submit" value="<%=_("Save")%>" />
+      </td>
+    </tr>
+  </table>
+<%=DesignBox.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  modal_on_opened(function(){
+    $("#texname").focus();
+  });
+  
+  function do_task_check_save(){
+    $.ajax({
+      type: "POST",
+      url: "clean.rhtml?show=task_check_edit&choice=dosave<%=url%>",
+      data: forms_inputs_read($("#formtaskcheck")),
+      cache: false,
+      async: false,
+      complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }
+        
+        <%if !check%>
+          events.call("on_task_check_added");
+        <%end%>
+        
+        events.call("do_task_check_update");
+        modal_close();
+      }
+    });
+    return false;
+  }
+</script>

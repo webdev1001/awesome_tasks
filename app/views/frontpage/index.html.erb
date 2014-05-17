@@ -1,0 +1,188 @@
+<%
+  content_for(:header_title){ _("Frontpage") }
+  
+  headlines = [
+    {
+      "sort" => "name",
+      "sortval" => "name",
+      "title" => _("Task")
+    },{
+      "sort" => "project",
+      "sortval" => {:table => :Project, :col => :name},
+      "title" => _("Project")
+    },{
+      "sort" => "priority",
+      "sortval" => "priority",
+      "title" => _("Priority")
+    },{
+      "sort" => "author",
+      "sortval" => {:table => :User, :col => :name},
+      "title" => _("Author")
+    },{
+      "sort" => "date",
+      "sortval" => "date_added",
+      "title" => _("Date")
+    },{
+      "sort" => "status",
+      "sortval" => "status",
+      "title" => _("Status")
+    }
+  ]
+  
+  if can?(:admin, :admin)
+    headlines += [
+      {
+        "title" => "#{_("Hours")} / #{_("Driving")}"
+      },{
+        "title" => _("Transport length")
+      }
+    ]
+  end
+  
+  task_status_hash = Task.translated_states
+  
+  @tasks.sort! do |a, b|
+    res = nil
+    
+    if params["sort"] == "project" or params["sort"].to_s.length <= 0
+      res = a.project.name.downcase <=> b.project.name.downcase if a.project and b.project
+      if res == nil or res == 0
+        res = a.name.downcase <=> b.name.downcase
+      end
+    elsif params["sort"] == "name"
+      res = a.name.downcase <=> b.name.downcase
+    elsif params["sort"] == "date"
+      adate = a.date_added
+      bdate = b.date_added
+      
+      if !adate
+        res = -1
+      elsif !bdate
+        res = 1
+      else
+        res = a.date_added <=> b.date_added
+      end
+    elsif params["sort"] == "author"
+      res = a.user.name <=> b.user.name
+    elsif params["sort"] == "status"
+      res = task_status_hash[a[:status].to_sym] <=> task_status_hash[b[:status].to_sym]
+    elsif params["sort"] == "priority"
+      res = a[:priority].to_i <=> b[:priority].to_i
+    else
+      raise "Dont know how to sort the tasks."
+    end
+    
+    if params["sortmode"] == "desc"
+      if res == 1
+        res = -1
+      elsif res == -1
+        res = 1
+      end
+    end
+    
+    res
+  end
+%>
+
+<%=DesignBox.boxt(_("Tasks"))%>
+  <div style="padding-bottom: 15px;">
+    <input type="button" value="<%=_"Add new"%>" onclick="location.href='?show=task_edit';" />
+  </div>
+  
+  <table class="list">
+    <thead>
+      <tr>
+        <%
+          headlines.each do |headline|
+            html = "<th>"
+            
+            if headline["sort"]
+              html << "<a href=\"/?show=frontpage&amp;sort=#{headline["sort"]}"
+              
+              if params["sort"] == headline["sort"] and params["sortmode"] != "desc"
+                html << "&amp;sortmode=desc"
+              end
+              
+              html << "\">"
+            end
+            
+            html << headline["title"]
+            
+            if headline["sort"]
+              html << "</a>"
+            end
+            
+            html << "</th>"
+            
+            %><%= html.html_safe %><%
+          end
+        %>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        tasks_count = 0
+        @tasks.each do |task|
+          next if !can?(:show, task)
+          sum_timelogs = task.timelogs.sum(:time)
+          sum_timelogs_transport = task.timelogs.sum(:time_transport)
+          sum_timelogs_transport_length = task.timelogs.sum(:transport_length)
+          tasks_count += 1
+          
+          total_hours = sum_timelogs.to_f / 3600
+          total_hours_transport = sum_timelogs_transport.to_f / 3600
+          total_transport_length = sum_timelogs_transport_length
+          
+          %>
+            <tr>
+              <td>
+                <%if task.state == "open"%>
+                  <b>
+                <%end%>
+                
+                <%= link_to_task task %>
+                
+                <%if task.state == "open"%>
+                  </b>
+                <%end%>
+              </td>
+              <td class="nowrap">
+                <%= link_to_project task.project %>
+              </td>
+              <td class="nowrap">
+                <%= task.priority %>
+              </td>
+              <td class="nowrap">
+                <%= link_to_user task.user %>
+              </td>
+              <td class="nowrap">
+                <%= l(task.created_at.to_date)%>
+              </td>
+              <td>
+                <%= task.translated_state %>
+              </td>
+              <%if can?(:admin, :admin)%>
+                <td class="nowrap">
+                  <%=Knj::Locales.number_out(total_hours, 2)%> / <%=Knj::Locales.number_out(total_hours_transport, 2)%>
+                </td>
+                <td class="nowrap">
+                  <%=Knj::Locales.number_out(total_transport_length, 0)%>
+                </td>
+              <%end%>
+            </tr>
+          <%
+        end
+        
+        if tasks_count <= 0
+          %>
+            <tr>
+              <td colspan="<%=headlines.length%>" class="error">
+                <%=_("No tasks were found.")%>
+              </td>
+            </tr>
+          <%
+        end
+      %>
+    </tbody>
+  </table>
+<%=DesignBox.boxb%>

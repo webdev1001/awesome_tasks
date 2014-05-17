@@ -1,0 +1,28 @@
+<table class="list">
+  <thead>
+    <tr>
+      <th><%=_("User")%></th>
+      <th><%=_("Actions")%></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |link| %>
+      <tr>
+        <td>
+          <%= link_to_user link.user%>
+        </td>
+        <td>
+          (<a href="javascript: if (confirm('<%=_("Do you want to remove this user from this task?")%>')){task_remove_assigned('<%=link.id%>');}"><%=_("remove")%></a>)
+        </td>
+      </tr>
+    <% end %>
+      
+    <% if @users.empty? %>
+      <tr>
+        <td colspan="2" class="error">
+          <%=_("No users has been assigned to this task.")%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,78 @@
+<% content_for(:header_title){ _("Search for customers") } %>
+
+<form method="get">
+<%=Knj::Web.hiddens([{:name => :show, :value => :customer_search}, {:name => :choice, :value => :dosearch}])%>
+
+<%=DesignBox.boxt(_("Enter criteria"), "350px")%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Name"),
+        :name => :texname,
+        :value => params["texname"],
+        :descr => _("A part of the customers name which you are looking for.")
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="button" value="<%=_("Add new customer")%>" onclick="location.href='?show=customer_edit';" />
+        <input type="submit" value="<%=_("Search")%>" />
+      </td>
+    </tr>
+  </table>
+<%=DesignBox.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  $("#texname").focus();
+</script>
+
+<%
+  if params["choice"] == "dosearch"
+    args = {"orderby" => "name"}
+    
+    if params["texname"].to_s.length > 0
+      args["name_search"] = params["texname"]
+    end
+    
+    customers = _ob.list(:Customer, args)
+    
+    %>
+      <br />
+      
+      <%=DesignBox.boxt(_("Results"), "350px")%>
+        <table class="list">
+          <thead>
+            <tr>
+              <th><%=_("Customer")%></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              customers.each do |customer|
+                %>
+                  <tr>
+                    <td>
+                      <%=customer.html%>
+                    </td>
+                  </tr>
+                <%
+              end
+              
+              if customers.empty?
+                %>
+                  <tr>
+                    <td colspan="1" class="error">
+                      <%=_("No customers were found.")%>
+                    </td>
+                  </tr>
+                <%
+              end
+            %>
+          </tbody>
+        </table>
+      <%=DesignBox.boxb%>
+    <%
+  end
+%>

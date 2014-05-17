@@ -1,0 +1,45 @@
+<% content_for(:header_title){ _("Log in") } %>
+
+<% if signed_in? %>
+  <%= _("You are logged in as %{user_link}.", :user_link => link_to_user(current_user)).html_safe %>
+<% else %>
+  <%= simple_form_for :user_authentication, :url => user_authentications_path(:backurl => params[:backurl]), :html => {:onsubmit => "return do_login();"} do |f| %>
+  <%= Knj::Web.hiddens([{:name => :texpass_md5, :value => ""}]).html_safe %>
+  
+  <%=DesignBox.boxt(_("Enter details"), "350px")%>
+    <table class="form">
+      <%= Knj::Web.inputs([{
+        :title => _("Username"),
+        :name => :texuser,
+        :value => "",
+        :descr => _("The username you want to log in as.")
+      },{
+        :title => _("Password"),
+        :name => :texpass,
+        :value => "",
+        :type => :password,
+        :descr => _("The password associated with the entered username.")
+      },{
+        :title => _("Remember me on this computer"),
+        :name => :cheremember,
+        :descr => _("If you do not want to log in again on this computer then check this box.")
+      }]).html_safe %>
+      <tr>
+        <td colspan="2" class="buttons">
+          <input type="submit" value="<%=_("Log in")%>" />
+        </td>
+      </tr>
+    </table>
+  <%=DesignBox.boxb%>
+  <% end %>
+  
+  <script type="text/javascript">
+    $("#texuser").focus();
+    
+    function do_login(){
+      $("input[name=texpass_md5]").val($.md5($("#texpass").val()));
+      $("#texpass").val("");
+      return true;
+    }
+  </script>
+<% end %>

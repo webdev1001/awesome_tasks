@@ -1,0 +1,225 @@
+<%
+  if !can?(:admin, :admin)
+    flash[:warning] = (_("You are not an administrator and cannot view this page."))
+    redirect_to :back
+  end
+  
+  if params["choice"] == "dosave"
+    save_hash = {
+      :name => params["texname"],
+      :username => params["texusername"],
+      :email => params["texemail"],
+      :active => Knj::Web.checkval(params["cheactive"], 1, 0)
+    }
+    
+    if params["texpasswd_md5"].to_s.length > 0 and params["texpasswd_md5"] != Php4r.md5("")
+      save_hash[:passwd] = params["texpasswd_md5"]
+    end
+  end
+  
+  if params["user_id"].to_i > 0
+    user = _ob.get(:User, params["user_id"])
+    title = sprintf(_("Edit user: %s."), user.name.html)
+    
+    if params["choice"] == "dosave"
+      user.update(save_hash)
+      redirect_to("?show=user_edit&user_id=#{user.id}")
+    end
+    
+    if params["choice"] == "dodelete"
+      begin
+        _ob.delete(user)
+        redirect_to("?show=user_search")
+      rescue => e
+        flash[:warning] = (e.message)
+        redirect_to :back
+      end
+    end
+    
+    if params["choice"] == "dologinas"
+      _session[:user_id] = user.id
+      redirect_to("?show=user_login")
+    end
+  else
+    title = _("Add new user")
+    
+    if params["choice"] == "dosave"
+      user = _ob.add(:User, save_hash)
+      redirect_to("?show=user_edit&user_id=#{user.id}")
+    end
+  end
+  
+  if params["choice"] == "getranks"
+    ranks = user.ranks
+    
+    %>
+      <table class="list">
+        <thead>
+          <tr>
+            <th><%=_"Rank"%></th>
+            <th><%=_"Actions"%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%
+            ranks.each do |link|
+              %>
+                <tr>
+                  <td><%=link.rank.name.html%></td>
+                  <td>
+                    (<a href="javascript: if (confirm('<%=_"Do you want to remove this rank?"%>')){rank_remove('<%=link.id%>');}"><%=_"remove"%></a>)
+                  </td>
+                </tr>
+              <%
+            end
+            
+            if ranks.empty?
+              %>
+                <tr>
+                  <td colspan="1" class="error">
+                    <%=_"No ranks has been added to this user."%>
+                  </td>
+                </tr>
+              <%
+            end
+          %>
+        </tbody>
+      </table>
+    <%
+    
+    exit
+  end
+  
+  if params["choice"] == "doremoverank"
+    link = _ob.get(:User_rank_link, params["link_id"])
+    _ob.delete(link)
+    exit
+  end
+  
+  if params["choice"] == "doaddrank"
+    begin
+      link = _ob.add(:User_rank_link, {
+        :user_id => user.id,
+        :rank_id => params["rank_id"]
+      })
+    rescue => e
+      print e.message
+    end
+    
+    exit
+  end
+  
+  print _site.header(title)
+%>
+
+<form autocomplete="off" method="post" action="?show=user_edit&amp;choice=dosave<%if user; print "&amp;user_id=#{user.id}"; end%>" onsubmit="return do_save_user();">
+<%=Knj::Web.hiddens([{:name => :texpasswd_md5, :value => ""}])%>
+
+<%=DesignBox.boxt(_("Enter details"), 350)%>
+  <table class="form">
+    <%
+      print Knj::Web.inputs([{
+        :title => _("Username"),
+        :name => :texusername,
+        :value => [user, :username],
+        :descr => _("The username that this user should use to log in.")
+      },{
+        :title => _("Password"),
+        :name => :texpasswd,
+        :value => "",
+        :type => :password,
+        :descr => _("Only write a password here if you whish to change it.")
+      },{
+        :title => _("Name"),
+        :name => :texname,
+        :value => [user, :name],
+        :descr => _("The real name of the user.")
+      },{
+        :title => _("Email"),
+        :name => :texemail,
+        :value => [user, :email],
+        :descr => _("The email of the user which will be used for notifications and other stuff as well.")
+      },{
+        :title => _("Active"),
+        :name => :cheactive,
+        :value => [user, :active],
+        :descr => _("If the user is active or not. In-active users cant log in.")
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <%if user%>
+          <input type="button" value="<%=_"Log in as"%>" onclick="location.href='?show=user_edit&amp;user_id=<%=user.id%>&amp;choice=dologinas';" />
+          <input type="button" value="<%=_"Show"%>" onclick="location.href='?show=user_show&amp;user_id=<%=user.id%>';" />
+          <input type="button" value="<%=_"Delete"%>" onclick="if (confirm('<%=_("Do you want to delete this user?")%>')){location.href='?show=user_edit&amp;user_id=<%=user.id%>&amp;choice=dodelete';}" />
+        <%end%>
+        <input type="submit" value="<%=_"Save"%>" />
+      </td>
+    </tr>
+  </table>
+<%=DesignBox.boxb%>
+
+</form>
+
+<%if user%>
+  <br />
+
+  <%=DesignBox.boxt(_("Permissions"), 350)%>
+    <div style="padding-bottom: 15px;">
+      <input type="button" value="<%=_"Add rank"%>" onclick="modal({title: '<%=_"Add rank"%>', url: '/clean.rhtml?show=user_rank_search&amp;jsfunc=rank_add'});" />
+    </div>
+    
+    <div id="divpermissions">
+      <div class="error">
+        <%=_"Loading - please wait..."%>
+      </div>
+    </div>
+  <%=DesignBox.boxb%>
+<%end%>
+
+<script type="text/javascript">
+  $("#texusername").focus();
+  
+  function do_save_user(){
+    $("input[name=texpasswd_md5]").val($.md5($("#texpasswd").val()));
+    $("#texpasswd").val("");
+    return true;
+  }
+  
+  <%if user%>
+    function ranks_reload(){
+      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&user_id=<%=user.id%>&choice=getranks", async: true, cache: false, complete: function(data){
+        $("#divpermissions").slideUp("fast", function(){
+          $("#divpermissions").html(data.responseText);
+          $("#divpermissions").slideDown("fast");
+        });
+      }});
+    }
+    
+    function rank_remove(link_id){
+      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doremoverank&user_id=<%=user.id%>&link_id=" + link_id, async: true, cache: false, complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }
+        
+        ranks_reload();
+      }});
+    }
+    
+    function rank_add(rank_id){
+      modal_close();
+      
+      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doaddrank&user_id=<%=user.id%>&rank_id=" + rank_id, async: true, cache: false, complete: function(data){
+        if (data.responseText.length > 0){
+          alert(data.responseText);
+        }
+        
+        ranks_reload();
+      }});
+    }
+    
+    $(document).ready(function(){
+      ranks_reload();
+    });
+  <%end%>
+</script>

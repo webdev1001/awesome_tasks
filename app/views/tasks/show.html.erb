@@ -1,0 +1,223 @@
+<%
+  if params["choice"] == "removeassigned"
+    link = _ob.get(:Task_assigned_user, params["link_id"])
+    task = link.task
+    
+    if !can?(:show, task)
+      flash[:warning] = (_("You do not have access to that task and cannot view this page."))
+      redirect_to :back
+    end
+    
+    _ob.delete(link)
+    exit
+  end
+  
+  if params["choice"] == "addtolist"
+    _ob.add(:User_task_list_link, {
+      :task_id => @task.id,
+      :user_id => current_user.id
+    })
+    redirect_to("/?show=task_show&task_id=#{task.id}")
+  elsif params["choice"] == "removefromlist"
+    _ob.list(:User_task_list_link, {
+      "task" => @task,
+      "user" => current_user
+    }) do |link|
+      _ob.delete(link)
+    end
+    
+    redirect_to("/?show=task_show&task_id=#{@task.id}")
+  end
+  
+  content_for(:header_title){ sprintf(_("Show task: %s."), @task.name) }
+%>
+
+<div style="padding-bottom: 15px;">
+  <input type="button" value="<%=_"Edit task"%>" onclick="location.href='?show=task_edit&amp;task_id=<%=@task.id%>';" />
+  
+  <%
+    if current_user.user_task_list_links.where(:task_id => @task).any?
+      %>
+        <input type="button" value="<%=_"Remove from list"%>" onclick="location.href='/?show=task_show&amp;task_id=<%=task.id%>&amp;choice=removefromlist';" />
+      <%
+    else
+      %>
+        <input type="button" value="<%=_"Add to list"%>" onclick="location.href='/?show=task_show&amp;task_id=<%=@task.id%>&amp;choice=addtolist';" />
+      <%
+    end
+  %>
+</div>
+
+<div style="padding-bottom: 15px;">
+  <table style="width: 100%;" cellspacing="0" cellpadding="0">
+    <tr>
+      <td style="vertical-align: top; width: 60%;">
+        <%=DesignBox.boxt(_("Task"))%>
+          <table class="form">
+            <%= Knj::Web.inputs([{
+              :title => _("Status"),
+              :type => :info,
+              :value => @task.translated_state,
+              :descr => _("The current status of the task.")
+            },{
+              :title => _("Type"),
+              :type => :info,
+              :value => @task.translated_task_type,
+              :descr => _("The type of task this is.")
+            },{
+              :title => _("Date"),
+              :type => :info,
+              :value => l(@task.created_at.to_date),
+              :descr => _("The date this task was added.")
+            },{
+              :title => _("Project"),
+              :type => :info,
+              :value => link_to_project(@task.project),
+              :descr => _("The project this task is created under.")
+            },{
+              :title => _("Author"),
+              :type => :info,
+              :value => link_to_user(@task.user),
+              :descr => _("The user that created this task.")
+            },{
+              :title => _("Priority"),
+              :type => :info,
+              :value => @task.priority,
+              :descr => _("The priority of the task. 10 as most important and 1 as least important.")
+            }]).html_safe %>
+          </table>
+        <%=DesignBox.boxb%>
+        
+        <br />
+        
+        <%=DesignBox.boxt(_("Description"))%>
+          <% if @task.description.blank? %>
+            <div class="error">
+              <%=_("No description has been written for this task.")%>
+            </div>
+          <% else %>
+            <%= @task.description %>
+          <% end %>
+        <%=DesignBox.boxb%>
+      </td>
+      <td style="vertical-align: top; padding-left: 15px;">
+        <%=DesignBox.boxt(_("Assigned users"))%>
+          <div style="padding-bottom: 10px;">
+            <input type="button" value="<%=_("Assign a user")%>" onclick="modal({title: '<%=_"Assign user to task"%>', url: '<%= search_users_path(task, :ajaxsearch => true, :not_in_task_id => @task.id, :jscallback => "task_show_assign_user_choose") %>'});" />
+          </div>
+          
+          <div id="divusers">
+            <%= render :partial => "users" %>
+          </div>
+        <%=DesignBox.boxb%>
+        
+        <br />
+        
+        <%=DesignBox.boxt(_("Checklist"))%>
+          <div style="padding-bottom: 15px;">
+            <input type="button" value="<%=_("Add new check")%>" onclick="modal({title: '<%=_"Add new check"%>', url: 'clean.rhtml?show=task_check_edit&amp;task_id=<%=@task.id%>'});" />
+          </div>
+          
+          <div id="divchecks">
+            <%= render :partial => "checks" %>
+          </div>
+        <%=DesignBox.boxb%>
+      </td>
+    </tr>
+  </table>
+  
+  <div style="clear: both;"></div>
+</div>
+
+<div style="padding-bottom: 15px;">
+  <%=DesignBox.boxt(_("Comments"))%>
+    <div style="padding-bottom: 15px;">
+      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_"Add new comment"%>', height: '540px', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=@task.id%>'});" />
+    </div>
+    
+    <div id="divcomments">
+      <%= render "comments" %>
+    </div>
+    
+    <div>
+      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_"Add new comment"%>', height: '540px', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=@task.id%>'});" />
+    </div>
+  <%=DesignBox.boxb%>
+</div>
+
+<%=DesignBox.boxt(_("Timelogs"))%>
+  <div style="padding-bottom: 15px;">
+    <input type="button" value="<%=_("Add new")%>" onclick="timelog_add('<%=@task.id%>');" />
+  </div>
+  
+  <div id="divtimelogs">
+    <%= render "timelogs" %>
+  </div>
+<%=DesignBox.boxb%>
+
+<script type="text/javascript">
+  function task_show_comments_update(){
+    $.ajax({type: "GET", url: "<%= comments_task_path(@task) %>", async: true, cache: false, complete: function(data){
+      $("#divcomments").slideUp("fast", function(){
+        $("#divcomments").html(data.responseText);
+        $("#divcomments").slideDown("fast");
+      });
+    }});
+  }
+  
+  function task_show_timelogs_update(){
+    $.ajax({type: "GET", url: "<%= timelogs_task_path(@task) %>", async: true, cache: false, complete: function(data){
+      $("#divtimelogs").slideUp("fast", function(){
+        $("#divtimelogs").html(data.responseText);
+        $("#divtimelogs").slideDown("fast");
+      });
+    }});
+  }
+  
+  function task_show_users_update(){
+    $.ajax({type: "GET", url: "<%= users_task_path(@task) %>", async: true, cache: false, complete: function(data){
+      $("#divusers").slideUp("fast", function(){
+        $("#divusers").html(data.responseText);
+        $("#divusers").slideDown("fast");
+      });
+    }});
+  }
+  
+  function task_show_assign_user_choose(user_id){
+    $.ajax({type: "POST", url: "<%= assign_user_task_path(@task) %>", data: {"user_id": user_id}, async: true, cache: false, complete: function(data){
+      if (data.responseText.length > 0){
+        alert(data.responseText);
+      }
+      
+      task_show_users_update();
+      modal_close();
+    }});
+  }
+  
+  function task_show_checks_update(){
+    $.ajax({type: "GET", url: "<%= checks_task_path(@task) %>", async: true, cache: false, complete: function(data){
+      $("#divchecks").slideUp("fast", function(){
+        $("#divchecks").html(data.responseText);
+        $("#divchecks").slideDown("fast");
+      });
+    }});
+  }
+  
+  $(document).ready(function(){
+    events.connect("do_comments_update", function(){
+      task_show_comments_update();
+    });
+    
+    events.connect("do_timelogs_update", function(){
+      task_show_timelogs_update();
+    });
+    
+    events.connect("do_task_assigned_users_update", function(){
+      task_show_users_update();
+    });
+    
+    events.connect("do_task_check_update", function(){
+      task_show_checks_update();
+    });
+  });
+</script>

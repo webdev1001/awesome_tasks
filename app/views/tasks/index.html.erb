@@ -1,0 +1,131 @@
+<%
+  print _site.header(_("Search for tasks"))
+%>
+
+<form method="get">
+<%=Knj::Web.hiddens([{:name => :show, :value => :task_search}, {:name => :choice, :value => :dosearch}])%>
+
+<%=DesignBox.boxt(_("Enter criteria"), 350)%>
+  <table class="form">
+    <%
+      if _site.has_rank?(:admin)
+        users = _ob.list(:User)
+      else
+        users = current_user.users_list
+      end
+      
+      users_opts = {"" => _("All")}
+      users.each do |user|
+        users_opts[user.id] = user.name
+      end
+      
+      users = nil
+      
+      print Knj::Web.inputs([{
+        :title => _("Name"),
+        :name => :texname,
+        :value => params["texname"],
+        :descr => _("A part of the name of the task you are looking for.")
+      },{
+        :title => _("Description"),
+        :name => :texdescr,
+        :value => params["texdescr"],
+        :descr => _("A part of the description of the task you are looking for.")
+      },{
+        :title => _("Status"),
+        :name => :selstatus,
+        :opts => {"" => _("All")}.merge(_ob.static(:Task, :status_opts)),
+        :descr => _("If you only want to find tasks with a specific status."),
+        :value => params["selstatus"]
+      },{
+        :title => _("Type"),
+        :name => :seltype,
+        :opts => {"" => _("All")}.merge(_ob.static(:Task, :type_opts)),
+        :descr => _("If you only want to find tasks of a specific type."),
+        :value => params["seltype"]
+      },{
+        :title => _("User"),
+        :name => :seluser,
+        :opts => users_opts,
+        :value => params["seluser"],
+        :descr => _("If you only want to see tasks from a specific user.")
+      }])
+    %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="button" value="<%=_"Add new"%>" onclick="location.href='?show=task_edit';" />
+        <input type="submit" value="<%=_"Search"%>" />
+      </td>
+    </tr>
+  </table>
+<%=DesignBox.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  $("#texname").focus()
+</script>
+
+<%
+  if params["choice"] == "dosearch"
+    args = {"orderby" => "name"}
+    args["name_search"] = params["texname"] if params["texname"].to_s.length > 0
+    args["descr_search"] = params["texdescr"] if params["texdescr"].to_s.length > 0
+    args["status"] = params["selstatus"] if params["selstatus"].to_s.length > 0
+    args["type"] = params["seltype"] if params["seltype"].to_s.length > 0
+    args["user_id"] = params["seluser"] if params["seluser"].to_i > 0
+    
+    %>
+      <br />
+
+      <%=DesignBox.boxt(_("Results"), 900)%>
+        <table class="list">
+          <thead>
+            <tr>
+              <th><%=_"Name"%></th>
+              <th><%=_"Status"%></th>
+              <th><%=_"Project"%></th>
+              <th><%=_"Author"%></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              count = 0
+              _ob.list(:Task, args) do |task|
+                next if !can?(:show, task)
+                count += 1
+                
+                %>
+                  <tr>
+                    <td>
+                      <%=task.html%>
+                    </td>
+                    <td>
+                      <%=task.status_str.html%>
+                    </td>
+                    <td>
+                      <%=task.project_html%>
+                    </td>
+                    <td>
+                      <%=task.user_html%>
+                    </td>
+                  </tr>
+                <%
+              end
+              
+              if count <= 0
+                %>
+                  <tr>
+                    <td colspan="1" class="error">
+                      <%=_("No tasks were found.")%>
+                    </td>
+                  </tr>
+                <%
+              end
+            %>
+          </tbody>
+        </table>
+      <%=DesignBox.boxb%>
+    <%
+  end
+%>
