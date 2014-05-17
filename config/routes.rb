@@ -15,10 +15,19 @@ AwesomeTasks::Application.routes.draw do
   resources :task_assigned_users
   
   resources :customers
-  resources :projects
+  
+  resources :projects do
+    get :assigned_users, :on => :member
+    get :assign_user_choose, :on => :member
+    post :assign_user, :on => :member
+  end
+  
   resources :user_authentications do
     delete :logout, :on => :collection
   end
+  
+  resources :user_project_links
+  
   resources :timelogs
   
   devise_for :users

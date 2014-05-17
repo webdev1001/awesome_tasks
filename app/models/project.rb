@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   
   has_many :tasks
   has_many :user_project_links
+  has_many :users, :through => :user_project_links
   
   def self.add(d)
     raise _("Invalid name given.") if d.data[:name].to_s.strip.length <= 0

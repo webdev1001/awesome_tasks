@@ -12,7 +12,7 @@ class Ability
         
         if task.task_assigned_users.where(:user_id => user.id).any?
           access = true
-        elsif user.user_project_links.where(:project_id => task.project.id).any?
+        elsif task.project && user.user_project_links.where(:project_id => task.project.id).any?
           access = true
         elsif task.user == user
           access = true
@@ -29,5 +29,6 @@ private
   
   def administrator
     can :admin, :admin
+    can :manage, Task
   end
 end

@@ -1,6 +1,22 @@
 class TasksController < ApplicationController
   before_filter :set_task
   
+  def new
+    @task = Task.new(params[:task].permit!)
+  end
+  
+  def create
+    @task = Task.new(task_params)
+    @task.user = current_user if signed_in?
+    
+    if @task.save
+      redirect_to task_path(@task)
+    else
+      flash[:error] = @task.errors.full_messages.join(". ")
+      render :new
+    end
+  end
+  
   def checks
     render :partial => "checks", :layout => false
   end
@@ -30,16 +46,22 @@ class TasksController < ApplicationController
 private
   
   def set_task
-    @task = Task.includes(:task_checks, :timelogs, :task_assigned_users => :user, :comments => :user).find(params[:id])
-    
-    if !can?(:show, @task)
-      flash[:warning] = (_("You do not have access to that task and cannot view this page."))
-      redirect_to :back
+    if params[:id]
+      @task = Task.includes(:task_checks, :timelogs, :task_assigned_users => :user, :comments => :user).find(params[:id])
+      
+      if !can?(:show, @task)
+        flash[:warning] = (_("You do not have access to that task and cannot view this page."))
+        redirect_to :back
+      end
+      
+      @checks = @task.task_checks.order(:name)
+      @users = @task.task_assigned_users
+      @comments = @task.comments.order(:created_at)
+      @timelogs = @task.timelogs.order(:created_at).reverse_order
     end
-    
-    @checks = @task.task_checks.order(:name)
-    @users = @task.task_assigned_users
-    @comments = @task.comments.order(:created_at)
-    @timelogs = @task.timelogs.order(:created_at).reverse_order
+  end
+  
+  def task_params
+    params.require(:task).permit(:name, :project_id, :task_type, :state, :priority, :description)
   end
 end

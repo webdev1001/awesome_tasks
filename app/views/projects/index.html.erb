@@ -4,25 +4,23 @@
     redirect_to :back
   end
   
-  print _site.header(_("Search for project"))
+  content_for(:header_title){ _("Search for project") }
 %>
 
 <form method="get">
-<%=Knj::Web.hiddens([{:name => :show, :value => :project_search}, {:name => :choice, :value => :dosearch}])%>
+<%= Knj::Web.hiddens([{:name => :choice, :value => :dosearch}]).html_safe %>
 
 <%=DesignBox.boxt(_("Enter criteria"), "350px")%>
   <table class="form">
-    <%
-      print Knj::Web.inputs([{
-        :title => _("Name"),
-        :name => :texname,
-        :value => params["texname"],
-        :descr => _("A part of the name of the project you are looking for.")
-      }])
-    %>
+    <%= Knj::Web.inputs([{
+      :title => _("Name"),
+      :name => :texname,
+      :value => params["texname"],
+      :descr => _("A part of the name of the project you are looking for.")
+    }]).html_safe %>
     <tr>
       <td colspan="2" class="buttons">
-        <input type="button" value="<%=_("Add new")%>" onclick="location.href='?show=project_edit';" />
+        <input type="button" value="<%=_("Add new")%>" onclick="location.href='<%= new_project_path %>';" />
         <input type="submit" value="<%=_("Search")%>" />
       </td>
     </tr>
@@ -37,13 +35,13 @@
 
 <%
   if params["choice"] == "dosearch"
-    args = {"orderby" => "name"}
+    args = {}
     
     if params["texname"].to_s.length > 0
-      args["name_search"] = params["texname"]
+      args["name_cont"] = params["texname"]
     end
     
-    projects = _ob.list(:Project, args)
+    projects = Project.ransack(args).result.order(:name)
     
     %>
       <br />
@@ -56,27 +54,21 @@
             </tr>
           </thead>
           <tbody>
-            <%
-              projects.each do |project|
-                %>
-                  <tr>
-                    <td>
-                      <%=project.html%>
-                    </td>
-                  </tr>
-                <%
-              end
-              
-              if projects.empty?
-                %>
-                  <tr>
-                    <td colspan="1" class="error">
-                      <%=_("No projects were found.")%>
-                    </td>
-                  </tr>
-                <%
-              end
-            %>
+            <% projects.each do |project| %>
+              <tr>
+                <td>
+                  <%= link_to_project project%>
+                </td>
+              </tr>
+            <% end %>
+            
+            <% if projects.empty? %>
+              <tr>
+                <td colspan="1" class="error">
+                  <%=_("No projects were found.")%>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       <%=DesignBox.boxb%>

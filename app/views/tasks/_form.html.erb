@@ -39,8 +39,7 @@
     end
   end
   
-  project_opts = _ob.list_optshash(:Project)
-  if project_opts.empty?
+  if Project.all.none?
     flash[:warning] = (_("No projects has been added to this installation yet - please do that first."))
     redirect_to :back
   end
@@ -50,7 +49,7 @@
   projects_opts = {"" => _("None")}
   
   if can?(:admin, :admin)
-    _ob.list(:Project) do |project|
+    Project.find_each do |project|
       projects_opts[project.id] = project.name
     end
   else
@@ -78,10 +77,10 @@
   
   
   #Write page title.
-  print _site.header(title)
+  content_for(:header_title){ title }
 %>
 
-<form method="post" action="?show=task_edit&amp;choice=dosave<%if task; print "&amp;task_id=#{task.id}"; end%>">
+<%= simple_form_for @task do |f| %>
 
 <%=DesignBox.boxt(_("Enter details"), 700)%>
   <table class="form">
@@ -90,45 +89,44 @@
       1.upto(10) do |count|
         priority_opts[count] = count
       end
-      
-      print Knj::Web.inputs([{
-        :title => _("Name"),
-        :name => :texname,
-        :value => [task, :name],
-        :descr => _("The name of the task as it should appear in this system.")
-      },{
-        :title => _("Project"),
-        :name => :selproject,
-        :value => project_id,
-        :opts => projects_opts,
-        :descr => _("The project that this task belongs under.")
-      },{
-        :title => _("Type"),
-        :name => :seltype,
-        :value => [task, :type],
-        :descr => _("The type of the task."),
-        :opts => _ob.static(:Task, :type_opts)
-      },{
-        :title => _("Status"),
-        :name => :selstatus,
-        :value => [task, :status],
-        :descr => _("The status of the task."),
-        :opts => _ob.static(:Task, :status_opts)
-      },{
-        :title => _("Priority"),
-        :name => :selpriority,
-        :value => [task, :priority],
-        :opts => priority_opts,
-        :descr => _("10 for most important and 1 for least important.")
-      },{
-        :title => _("Description"),
-        :name => :texdescr,
-        :value => [task, :descr],
-        :descr => _("The description as it should appear for the users."),
-        :type => :fckeditor,
-        :height => 500
-      }])
     %>
+    
+    <%= Knj::Web.inputs([{
+      :title => _("Name"),
+      :name => "task[name]",
+      :value => [task, :name],
+      :descr => _("The name of the task as it should appear in this system.")
+    },{
+      :title => _("Project"),
+      :name => "task[project_id]",
+      :value => project_id,
+      :opts => projects_opts,
+      :descr => _("The project that this task belongs under.")
+    },{
+      :title => _("Type"),
+      :name => "task[task_type]",
+      :value => [task, :type],
+      :descr => _("The type of the task."),
+      :opts => Task.translated_task_types
+    },{
+      :title => _("Status"),
+      :name => "task[state]",
+      :value => [task, :status],
+      :descr => _("The status of the task."),
+      :opts => Task.translated_states
+    },{
+      :title => _("Priority"),
+      :name => "task[priority]",
+      :value => [task, :priority],
+      :opts => priority_opts,
+      :descr => _("10 for most important and 1 for least important.")
+    },{
+      :title => _("Description"),
+      :name => "task[description]",
+      :value => [task, :descr],
+      :descr => _("The description as it should appear for the users."),
+      :height => 500
+    }]).html_safe %>
     <tr>
       <td colspan="2" class="buttons">
         <input type="button" value="<%=_"Insert browser and os"%>" onclick="insert_browser_and_os()" />
@@ -142,11 +140,7 @@
   </table>
 <%=DesignBox.boxb%>
 
-</form>
-
-<%
-  browser = Knj::Web.browser
-%>
+<% end %>
 
 <script type="text/javascript">
   $("#texname").focus()
@@ -163,8 +157,8 @@
     
     fck = FCKeditorAPI.GetInstance("texdescr")
     fck.InsertHtml("&nbsp;")
-    fck.InsertHtml("<b><%=_'Browser'%>:</b> <%=Knj::Web.html(browser['title'])%><br />")
+    fck.InsertHtml("<b><%=_'Browser'%>:</b> <%= "browser" %><br />")
     fck.InsertHtml("<b><%=_'Version'%>:</b> " + $.browser.version + "<br />")
-    fck.InsertHtml("<b><%=_'Operating system'%>:</b> <%=Knj::Web.html(Php4r.ucwords(browser['os']))%> <%=Knj::Web.html(browser['os_version'])%><br />")
+    fck.InsertHtml("<b><%=_'Operating system'%>:</b> <%= "os" %><br />")
   }
 </script>
