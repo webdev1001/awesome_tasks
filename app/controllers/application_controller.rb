@@ -15,6 +15,15 @@ class ApplicationController < ActionController::Base
     @knjjsfw_url = "https://www.kaspernj.org/js"
   end
   
+  before_filter :set_locale
+  def set_locale
+    if signed_in? && current_user.locale.present?
+      I18n.locale = current_user.locale
+    elsif session[:locale].present?
+      I18n.locale = session[:locale]
+    end
+  end
+  
   helper_method :available_locales
   def available_locales
     {

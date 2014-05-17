@@ -1,27 +1,29 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-    if user
-      user.user_roles.each do |role|
+  def initialize(current_user)
+    if current_user
+      current_user.user_roles.each do |role|
         __send__(role.role)
       end
       
       can :show, Task do |task|
         access = false
         
-        if task.task_assigned_users.where(:user_id => user.id).any?
+        if task.task_assigned_users.where(:user_id => current_user.id).any?
           access = true
-        elsif task.project && user.user_project_links.where(:project_id => task.project.id).any?
+        elsif task.project && current_user.user_project_links.where(:project_id => task.project.id).any?
           access = true
-        elsif task.user == user
+        elsif task.user == current_user
           access = true
         end
         
         access
       end
       
-      can :show, User
+      can :show, User do |user|
+        projects = user.projects
+      end
     end
   end
   
@@ -30,5 +32,6 @@ private
   def administrator
     can :admin, :admin
     can :manage, Task
+    can :manage, User
   end
 end

@@ -53,11 +53,11 @@
               
               if can?(:admin, :admin)
                 menu << link_to(_("Timelogs"), timelogs_path)
-                menu << link_to(_("Work-status"), "?show=workstatus")
+                menu << link_to(_("Work-status"), workstatus_index_path)
                 menu << link_to(_("Administration"), "?show=admin")
               end
               
-              menu << link_to(_("Your profile"), "?show=user_profile")
+              menu << link_to(_("Your profile"), profile_index_path)
               menu << link_to(_("Log out"), logout_user_authentications_path, :method => :delete)
             else
               menu = [
@@ -92,7 +92,7 @@
       <td class="main_bottom">
         <div style="padding-bottom: 15px;">
           Language:
-          <select style="width: 100px;" onchange="location.href='<%= request.original_url %>&amp;l=' + this.value;">
+          <select style="width: 100px;" onchange="locales_set(this.value);">
             <%= Knj::Web.opts(available_locales, I18n.locale.to_s).html_safe %>
           </select>
         </div>

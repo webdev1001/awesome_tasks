@@ -16,7 +16,7 @@
     <%= Knj::Web.inputs([{
       :title => _("Name"),
       :name => "project[name]",
-      :value => [@project, :name],
+      :value => @project.name,
       :descr => _("The name of the project as it should appear in this system.")
     },{
       :title => _("Deadline"),
@@ -26,17 +26,17 @@
     },{
       :title => _("Price per hour"),
       :name => "project[price_per_hour]",
-      :value => [@project, :price_per_hour]
+      :value => @project.price_per_hour
     },{
       :title => _("Price per hour transport"),
       :name => "project[price_per_hour_transport]",
-      :value => [@project, :price_per_hour_transport]
+      :value => @project.price_per_hour_transport
     },{
       :title => _("Customer"),
       :name => "project[customer_id]",
-      :value => [@project, :customer_id],
+      :value => @project.customer_id,
       :descr => _("The customer that this project belongs under."),
-      :opts => Customer.all
+      :opts => knjrbfw_opts(Customer.all)
     }]).html_safe %>
     
     <% unless @project.new_record? %>
@@ -51,7 +51,7 @@
     <%= Knj::Web.inputs([{
       :title => _("Description"),
       :name => "project[description]",
-      :value => [@project, :description],
+      :value => @project.description,
       :height => 400,
       :descr => _("A description of the project to tell what it is about.")
     }]).html_safe %>

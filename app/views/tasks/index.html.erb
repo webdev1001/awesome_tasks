@@ -1,56 +1,39 @@
-<%
-  print _site.header(_("Search for tasks"))
-%>
+<% content_for(:header_title){ _("Search for tasks") } %>
 
 <form method="get">
-<%=Knj::Web.hiddens([{:name => :show, :value => :task_search}, {:name => :choice, :value => :dosearch}])%>
+<%= Knj::Web.hiddens([{:name => :choice, :value => :dosearch}]).html_safe %>
 
 <%=DesignBox.boxt(_("Enter criteria"), 350)%>
   <table class="form">
-    <%
-      if _site.has_rank?(:admin)
-        users = _ob.list(:User)
-      else
-        users = current_user.users_list
-      end
-      
-      users_opts = {"" => _("All")}
-      users.each do |user|
-        users_opts[user.id] = user.name
-      end
-      
-      users = nil
-      
-      print Knj::Web.inputs([{
-        :title => _("Name"),
-        :name => :texname,
-        :value => params["texname"],
-        :descr => _("A part of the name of the task you are looking for.")
-      },{
-        :title => _("Description"),
-        :name => :texdescr,
-        :value => params["texdescr"],
-        :descr => _("A part of the description of the task you are looking for.")
-      },{
-        :title => _("Status"),
-        :name => :selstatus,
-        :opts => {"" => _("All")}.merge(_ob.static(:Task, :status_opts)),
-        :descr => _("If you only want to find tasks with a specific status."),
-        :value => params["selstatus"]
-      },{
-        :title => _("Type"),
-        :name => :seltype,
-        :opts => {"" => _("All")}.merge(_ob.static(:Task, :type_opts)),
-        :descr => _("If you only want to find tasks of a specific type."),
-        :value => params["seltype"]
-      },{
-        :title => _("User"),
-        :name => :seluser,
-        :opts => users_opts,
-        :value => params["seluser"],
-        :descr => _("If you only want to see tasks from a specific user.")
-      }])
-    %>
+    <%= Knj::Web.inputs([{
+      :title => Task.human_attribute_name(:name),
+      :name => "q[name_cont]",
+      :value => @values["name_cont"],
+      :descr => _("A part of the name of the task you are looking for.")
+    },{
+      :title => Task.human_attribute_name(:description),
+      :name => "q[description_cont]",
+      :value => @values["description_cont"],
+      :descr => _("A part of the description of the task you are looking for.")
+    },{
+      :title => Task.human_attribute_name(:state),
+      :name => "q[state_eq]",
+      :opts => {"" => _("All")}.merge(Task.translated_states),
+      :descr => _("If you only want to find tasks with a specific status."),
+      :value => @values["state_eq"]
+    },{
+      :title => _("Type"),
+      :name => "q[task_type_eq]",
+      :opts => {"" => _("All")}.merge(Task.translated_task_types),
+      :descr => _("If you only want to find tasks of a specific type."),
+      :value => @values["task_type_eq"]
+    },{
+      :title => _("User"),
+      :name => "q[user_id_eq]",
+      :opts => knjrbfw_opts(@users, :all => true),
+      :value => @values["user_id_eq"],
+      :descr => _("If you only want to see tasks from a specific user.")
+    }]).html_safe %>
     <tr>
       <td colspan="2" class="buttons">
         <input type="button" value="<%=_"Add new"%>" onclick="location.href='?show=task_edit';" />
@@ -68,12 +51,8 @@
 
 <%
   if params["choice"] == "dosearch"
-    args = {"orderby" => "name"}
-    args["name_search"] = params["texname"] if params["texname"].to_s.length > 0
-    args["descr_search"] = params["texdescr"] if params["texdescr"].to_s.length > 0
-    args["status"] = params["selstatus"] if params["selstatus"].to_s.length > 0
-    args["type"] = params["seltype"] if params["seltype"].to_s.length > 0
-    args["user_id"] = params["seluser"] if params["seluser"].to_i > 0
+    tasks = Task.ransack(@values).result.order(:name)
+    tasks = tasks.includes(:user, :project)
     
     %>
       <br />
@@ -82,32 +61,36 @@
         <table class="list">
           <thead>
             <tr>
-              <th><%=_"Name"%></th>
-              <th><%=_"Status"%></th>
-              <th><%=_"Project"%></th>
-              <th><%=_"Author"%></th>
+              <th><%= Task.human_attribute_name(:name) %></th>
+              <th><%= Task.human_attribute_name(:state) %></th>
+              <th><%= Task.human_attribute_name(:task_type) %></th>
+              <th><%= Project.model_name.human %></th>
+              <th><%= _"Author" %></th>
             </tr>
           </thead>
           <tbody>
             <%
               count = 0
-              _ob.list(:Task, args) do |task|
-                next if !can?(:show, task)
+              tasks.find_each do |task|
+                next unless can?(:show, task)
                 count += 1
                 
                 %>
                   <tr>
                     <td>
-                      <%=task.html%>
+                      <%= link_to_task task %>
                     </td>
                     <td>
-                      <%=task.status_str.html%>
+                      <%= task.translated_state %>
                     </td>
                     <td>
-                      <%=task.project_html%>
+                      <%= task.translated_task_type %>
                     </td>
                     <td>
-                      <%=task.user_html%>
+                      <%= link_to_project task.project %>
+                    </td>
+                    <td>
+                      <%= link_to_user task.user %>
                     </td>
                   </tr>
                 <%

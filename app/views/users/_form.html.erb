@@ -17,77 +17,9 @@
     end
   end
   
-  if params["user_id"].to_i > 0
-    user = _ob.get(:User, params["user_id"])
-    title = sprintf(_("Edit user: %s."), user.name.html)
-    
-    if params["choice"] == "dosave"
-      user.update(save_hash)
-      redirect_to("?show=user_edit&user_id=#{user.id}")
-    end
-    
-    if params["choice"] == "dodelete"
-      begin
-        _ob.delete(user)
-        redirect_to("?show=user_search")
-      rescue => e
-        flash[:warning] = (e.message)
-        redirect_to :back
-      end
-    end
-    
-    if params["choice"] == "dologinas"
-      _session[:user_id] = user.id
-      redirect_to("?show=user_login")
-    end
-  else
-    title = _("Add new user")
-    
-    if params["choice"] == "dosave"
-      user = _ob.add(:User, save_hash)
-      redirect_to("?show=user_edit&user_id=#{user.id}")
-    end
-  end
-  
-  if params["choice"] == "getranks"
-    ranks = user.ranks
-    
-    %>
-      <table class="list">
-        <thead>
-          <tr>
-            <th><%=_"Rank"%></th>
-            <th><%=_"Actions"%></th>
-          </tr>
-        </thead>
-        <tbody>
-          <%
-            ranks.each do |link|
-              %>
-                <tr>
-                  <td><%=link.rank.name.html%></td>
-                  <td>
-                    (<a href="javascript: if (confirm('<%=_"Do you want to remove this rank?"%>')){rank_remove('<%=link.id%>');}"><%=_"remove"%></a>)
-                  </td>
-                </tr>
-              <%
-            end
-            
-            if ranks.empty?
-              %>
-                <tr>
-                  <td colspan="1" class="error">
-                    <%=_"No ranks has been added to this user."%>
-                  </td>
-                </tr>
-              <%
-            end
-          %>
-        </tbody>
-      </table>
-    <%
-    
-    exit
+  if params["choice"] == "dologinas"
+    _session[:user_id] = user.id
+    redirect_to("?show=user_login")
   end
   
   if params["choice"] == "doremoverank"
@@ -108,50 +40,47 @@
     
     exit
   end
-  
-  print _site.header(title)
 %>
 
-<form autocomplete="off" method="post" action="?show=user_edit&amp;choice=dosave<%if user; print "&amp;user_id=#{user.id}"; end%>" onsubmit="return do_save_user();">
-<%=Knj::Web.hiddens([{:name => :texpasswd_md5, :value => ""}])%>
+<%= simple_form_for @user, :html => {:autocomplete => "off"} do |f| %>
+<%= Knj::Web.hiddens([{:name => :texpasswd_md5, :value => ""}]).html_safe %>
 
 <%=DesignBox.boxt(_("Enter details"), 350)%>
   <table class="form">
-    <%
-      print Knj::Web.inputs([{
-        :title => _("Username"),
-        :name => :texusername,
-        :value => [user, :username],
-        :descr => _("The username that this user should use to log in.")
-      },{
-        :title => _("Password"),
-        :name => :texpasswd,
-        :value => "",
-        :type => :password,
-        :descr => _("Only write a password here if you whish to change it.")
-      },{
-        :title => _("Name"),
-        :name => :texname,
-        :value => [user, :name],
-        :descr => _("The real name of the user.")
-      },{
-        :title => _("Email"),
-        :name => :texemail,
-        :value => [user, :email],
-        :descr => _("The email of the user which will be used for notifications and other stuff as well.")
-      },{
-        :title => _("Active"),
-        :name => :cheactive,
-        :value => [user, :active],
-        :descr => _("If the user is active or not. In-active users cant log in.")
-      }])
-    %>
+    <%= Knj::Web.inputs([{
+      :title => _("Username"),
+      :name => "user[username]",
+      :value => @user.username,
+      :descr => _("The username that this user should use to log in.")
+    },{
+      :title => _("Password"),
+      :name => "user[password]",
+      :value => "",
+      :type => :password,
+      :descr => _("Only write a password here if you whish to change it.")
+    },{
+      :title => _("Name"),
+      :name => "user[name]",
+      :value => @user.name,
+      :descr => _("The real name of the user.")
+    },{
+      :title => _("Email"),
+      :name => "user[email]",
+      :value => @user.email,
+      :descr => _("The email of the user which will be used for notifications and other stuff as well.")
+    },{
+      :title => _("Active"),
+      :type => :checkbox,
+      :name => "user[active]",
+      :value => @user.active?,
+      :descr => _("If the user is active or not. In-active users cant log in.")
+    }]).html_safe %>
     <tr>
       <td colspan="2" class="buttons">
-        <%if user%>
-          <input type="button" value="<%=_"Log in as"%>" onclick="location.href='?show=user_edit&amp;user_id=<%=user.id%>&amp;choice=dologinas';" />
-          <input type="button" value="<%=_"Show"%>" onclick="location.href='?show=user_show&amp;user_id=<%=user.id%>';" />
-          <input type="button" value="<%=_"Delete"%>" onclick="if (confirm('<%=_("Do you want to delete this user?")%>')){location.href='?show=user_edit&amp;user_id=<%=user.id%>&amp;choice=dodelete';}" />
+        <%if !@user.new_record?%>
+          <%= link_to _("Log in as"), log_in_as_user_path(@user), :method => :post, :data => {:confirm => _("Are you sure?")} %>
+          <input type="button" value="<%=_"Show"%>" onclick="location.href='<%= user_path(@user) %>';" />
+          <%= link_to _("Delete"), user_path(@user), :method => :delete, :class => "button", :data => {:confirm => _("Are you sure?")} %>
         <%end%>
         <input type="submit" value="<%=_"Save"%>" />
       </td>
@@ -159,9 +88,9 @@
   </table>
 <%=DesignBox.boxb%>
 
-</form>
+<% end %>
 
-<%if user%>
+<%if !@user.new_record?%>
   <br />
 
   <%=DesignBox.boxt(_("Permissions"), 350)%>
@@ -186,9 +115,9 @@
     return true;
   }
   
-  <%if user%>
+  <%if !@user.new_record?%>
     function ranks_reload(){
-      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&user_id=<%=user.id%>&choice=getranks", async: true, cache: false, complete: function(data){
+      $.ajax({type: "GET", url: "<%= roles_user_path(@user) %>", async: true, cache: false, complete: function(data){
         $("#divpermissions").slideUp("fast", function(){
           $("#divpermissions").html(data.responseText);
           $("#divpermissions").slideDown("fast");
@@ -197,8 +126,8 @@
     }
     
     function rank_remove(link_id){
-      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doremoverank&user_id=<%=user.id%>&link_id=" + link_id, async: true, cache: false, complete: function(data){
-        if (data.responseText.length > 0){
+      $.ajax({type: "DELETE", url: "/user_roles/" + link_id, async: true, cache: false, complete: function(data){
+        if ($.trim(data.responseText).length > 0){
           alert(data.responseText);
         }
         
@@ -209,7 +138,7 @@
     function rank_add(rank_id){
       modal_close();
       
-      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doaddrank&user_id=<%=user.id%>&rank_id=" + rank_id, async: true, cache: false, complete: function(data){
+      $.ajax({type: "GET", url: "/clean.rhtml?show=user_edit&choice=doaddrank&user_id=<%=@user.id%>&rank_id=" + rank_id, async: true, cache: false, complete: function(data){
         if (data.responseText.length > 0){
           alert(data.responseText);
         }

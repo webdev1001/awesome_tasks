@@ -1,6 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AwesomeTasks\n"
+"POT-Creation-Date: 2014-05-17 21:33+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kasper Johansen <k@spernj.org>\n"
+"Language-Team: \n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8,4 +12,2508 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../../../../\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#. Default value: Your account was successfully confirmed.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:4
+msgid "devise.confirmations.confirmed"
+msgstr ""
+
+#. Default value: You will receive an email with instructions about how to confirm your account in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:6
+msgid "devise.confirmations.send_instructions"
+msgstr ""
+
+#. Default value: If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:8
+msgid "devise.confirmations.send_paranoid_instructions"
+msgstr ""
+
+#. Default value: You are already signed in.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:10
+msgid "devise.failure.already_authenticated"
+msgstr ""
+
+#. Default value: Your account is not activated yet.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:12
+msgid "devise.failure.inactive"
+msgstr ""
+
+#. Default value: Invalid email or password.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:14
+msgid "devise.failure.invalid"
+msgstr ""
+
+#. Default value: Your account is locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:16
+msgid "devise.failure.locked"
+msgstr ""
+
+#. Default value: You have one more attempt before your account will be locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:18
+msgid "devise.failure.last_attempt"
+msgstr ""
+
+#. Default value: Invalid email or password.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:20
+msgid "devise.failure.not_found_in_database"
+msgstr ""
+
+#. Default value: Your session expired. Please sign in again to continue.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:22
+msgid "devise.failure.timeout"
+msgstr ""
+
+#. Default value: You need to sign in or sign up before continuing.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:24
+msgid "devise.failure.unauthenticated"
+msgstr ""
+
+#. Default value: You have to confirm your account before continuing.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:26
+msgid "devise.failure.unconfirmed"
+msgstr ""
+
+#. Default value: You are already signed in.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:28
+msgid "devise.failure.user.already_authenticated"
+msgstr ""
+
+#. Default value: Your account is not activated yet.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:30
+msgid "devise.failure.user.inactive"
+msgstr ""
+
+#. Default value: Invalid email or password.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:32
+msgid "devise.failure.user.invalid"
+msgstr ""
+
+#. Default value: Your account is locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:34
+msgid "devise.failure.user.locked"
+msgstr ""
+
+#. Default value: You have one more attempt before your account will be locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:36
+msgid "devise.failure.user.last_attempt"
+msgstr ""
+
+#. Default value: Invalid email or password.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:38
+msgid "devise.failure.user.not_found_in_database"
+msgstr ""
+
+#. Default value: Your session expired. Please sign in again to continue.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:40
+msgid "devise.failure.user.timeout"
+msgstr ""
+
+#. Default value: You need to sign in or sign up before continuing.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:42
+msgid "devise.failure.user.unauthenticated"
+msgstr ""
+
+#. Default value: You have to confirm your account before continuing.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:44
+msgid "devise.failure.user.unconfirmed"
+msgstr ""
+
+#. Default value: Confirmation instructions
+#: lib/gettext_simple_rails/devise_translator_translations.rb:46
+msgid "devise.mailer.confirmation_instructions.subject"
+msgstr ""
+
+#. Default value: Reset password instructions
+#: lib/gettext_simple_rails/devise_translator_translations.rb:48
+msgid "devise.mailer.reset_password_instructions.subject"
+msgstr ""
+
+#. Default value: Unlock Instructions
+#: lib/gettext_simple_rails/devise_translator_translations.rb:50
+msgid "devise.mailer.unlock_instructions.subject"
+msgstr ""
+
+#. Default value: Could not authenticate you from %{kind} because "%{reason}".
+#: lib/gettext_simple_rails/devise_translator_translations.rb:52
+msgid "devise.omniauth_callbacks.failure"
+msgstr ""
+
+#. Default value: Successfully authenticated from %{kind} account.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:54
+msgid "devise.omniauth_callbacks.success"
+msgstr ""
+
+#. Default value: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:56
+msgid "devise.passwords.no_token"
+msgstr ""
+
+#. Default value: You will receive an email with instructions on how to reset your password in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:58
+msgid "devise.passwords.send_instructions"
+msgstr ""
+
+#. Default value: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:60
+msgid "devise.passwords.send_paranoid_instructions"
+msgstr ""
+
+#. Default value: Your password was changed successfully. You are now signed in.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:62
+msgid "devise.passwords.updated"
+msgstr ""
+
+#. Default value: Your password was changed successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:64
+msgid "devise.passwords.updated_not_active"
+msgstr ""
+
+#. Default value: Bye! Your account was successfully cancelled. We hope to see you again soon.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:66
+msgid "devise.registrations.destroyed"
+msgstr ""
+
+#. Default value: Welcome! You have signed up successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:68
+msgid "devise.registrations.signed_up"
+msgstr ""
+
+#. Default value: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:70
+msgid "devise.registrations.signed_up_but_inactive"
+msgstr ""
+
+#. Default value: You have signed up successfully. However, we could not sign you in because your account is locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:72
+msgid "devise.registrations.signed_up_but_locked"
+msgstr ""
+
+#. Default value: A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:74
+msgid "devise.registrations.signed_up_but_unconfirmed"
+msgstr ""
+
+#. Default value: You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:76
+msgid "devise.registrations.update_needs_confirmation"
+msgstr ""
+
+#. Default value: You updated your account successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:78
+msgid "devise.registrations.updated"
+msgstr ""
+
+#. Default value: Signed in successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:80
+msgid "devise.sessions.signed_in"
+msgstr ""
+
+#. Default value: Signed out successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:82
+msgid "devise.sessions.signed_out"
+msgstr ""
+
+#. Default value: You will receive an email with instructions about how to unlock your account in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:84
+msgid "devise.unlocks.send_instructions"
+msgstr ""
+
+#. Default value: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:86
+msgid "devise.unlocks.send_paranoid_instructions"
+msgstr ""
+
+#. Default value: Your account has been unlocked successfully. Please sign in to continue.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:88
+msgid "devise.unlocks.unlocked"
+msgstr ""
+
+#. Default value: was already confirmed, please try signing in
+#: lib/gettext_simple_rails/devise_translator_translations.rb:90
+msgid "errors.messages.already_confirmed"
+msgstr ""
+
+#. Default value: needs to be confirmed within %{period}, please request a new one
+#: lib/gettext_simple_rails/devise_translator_translations.rb:92
+msgid "errors.messages.confirmation_period_expired"
+msgstr ""
+
+#. Default value: has expired, please request a new one
+#: lib/gettext_simple_rails/devise_translator_translations.rb:94
+msgid "errors.messages.expired"
+msgstr ""
+
+#. Default value: not found
+#: lib/gettext_simple_rails/devise_translator_translations.rb:96
+msgid "errors.messages.not_found"
+msgstr ""
+
+#. Default value: was not locked
+#: lib/gettext_simple_rails/devise_translator_translations.rb:98
+msgid "errors.messages.not_locked"
+msgstr ""
+
+#. Default value: 1 error prohibited this %{resource} from being saved:
+#: lib/gettext_simple_rails/devise_translator_translations.rb:100
+msgid "errors.messages.not_saved.one"
+msgstr ""
+
+#. Default value: %{count} errors prohibited this %{resource} from being saved:
+#: lib/gettext_simple_rails/devise_translator_translations.rb:102
+msgid "errors.messages.not_saved.other"
+msgstr ""
+
+#. Default value: %Y-%m-%d
+#: lib/gettext_simple_rails/date_translator_translations.rb:4
+msgid "date.formats.default"
+msgstr "%Y-%m-%d"
+
+#. Default value: %b %d
+#: lib/gettext_simple_rails/date_translator_translations.rb:6
+msgid "date.formats.short"
+msgstr "%b %d"
+
+#. Default value: %B %d, %Y
+#: lib/gettext_simple_rails/date_translator_translations.rb:8
+msgid "date.formats.long"
+msgstr "%B %d, %Y"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:9
+msgid "date.day_names.0"
+msgstr "Søndag"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:10
+msgid "date.day_names.1"
+msgstr "Mandag"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:11
+msgid "date.day_names.2"
+msgstr "Tirsdag"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:12
+msgid "date.day_names.3"
+msgstr "Onsdag"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:13
+msgid "date.day_names.4"
+msgstr "Torsdag"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:14
+msgid "date.day_names.5"
+msgstr "Fredag"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:15
+msgid "date.day_names.6"
+msgstr "Lørdag"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:16
+msgid "date.abbr_day_names.0"
+msgstr "Søn"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:17
+msgid "date.abbr_day_names.1"
+msgstr "Man"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:18
+msgid "date.abbr_day_names.2"
+msgstr "Tir"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:19
+msgid "date.abbr_day_names.3"
+msgstr "Ons"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:20
+msgid "date.abbr_day_names.4"
+msgstr "Tor"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:21
+msgid "date.abbr_day_names.5"
+msgstr "Fre"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:22
+msgid "date.abbr_day_names.6"
+msgstr "Lør"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:23
+msgid "date.month_names.0"
+msgstr "~"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:24
+msgid "date.month_names.1"
+msgstr "Januar"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:25
+msgid "date.month_names.2"
+msgstr "Februar"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:26
+msgid "date.month_names.3"
+msgstr "Marts"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:27
+msgid "date.month_names.4"
+msgstr "April"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:28
+msgid "date.month_names.5"
+msgstr "Maj"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:29
+msgid "date.month_names.6"
+msgstr "Juni"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:30
+msgid "date.month_names.7"
+msgstr "Juli"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:31
+msgid "date.month_names.8"
+msgstr "August"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:32
+msgid "date.month_names.9"
+msgstr "September"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:33
+msgid "date.month_names.10"
+msgstr "Oktober"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:34
+msgid "date.month_names.11"
+msgstr "November"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:35
+msgid "date.month_names.12"
+msgstr "December"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:36
+msgid "date.abbr_month_names.0"
+msgstr "~"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:37
+msgid "date.abbr_month_names.1"
+msgstr "Jan"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:38
+msgid "date.abbr_month_names.2"
+msgstr "Feb"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:39
+msgid "date.abbr_month_names.3"
+msgstr "Mar"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:40
+msgid "date.abbr_month_names.4"
+msgstr "Apr"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:41
+msgid "date.abbr_month_names.5"
+msgstr "Maj"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:42
+msgid "date.abbr_month_names.6"
+msgstr "Jun"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:43
+msgid "date.abbr_month_names.7"
+msgstr "Jul"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:44
+msgid "date.abbr_month_names.8"
+msgstr "Aug"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:45
+msgid "date.abbr_month_names.9"
+msgstr "Sep"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:46
+msgid "date.abbr_month_names.10"
+msgstr "Okt"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:47
+msgid "date.abbr_month_names.11"
+msgstr "Nov"
+
+#: lib/gettext_simple_rails/date_translator_translations.rb:48
+msgid "date.abbr_month_names.12"
+msgstr "Dec"
+
+#. Default value: %a, %d %b %Y %H:%M:%S %z
+#: lib/gettext_simple_rails/date_translator_translations.rb:50
+msgid "time.formats.default"
+msgstr "%a, %d %b %Y %H:%M:%S %z"
+
+#. Default value: %d %b %H:%M
+#: lib/gettext_simple_rails/date_translator_translations.rb:52
+msgid "time.formats.short"
+msgstr "%d %b %H:%M"
+
+#. Default value: %B %d, %Y %H:%M
+#: lib/gettext_simple_rails/date_translator_translations.rb:54
+msgid "time.formats.long"
+msgstr "%B %d, %Y %H:%M"
+
+#. Default value: am
+#: lib/gettext_simple_rails/date_translator_translations.rb:56
+msgid "time.am"
+msgstr ""
+
+#. Default value: pm
+#: lib/gettext_simple_rails/date_translator_translations.rb:58
+msgid "time.pm"
+msgstr ""
+
+#. Default value: Invalid record: %{errors}
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:4
+msgid "activerecord.errors.messages.record_invalid"
+msgstr "Ugyldig række: %{errors}"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:6
+msgid "activerecord.errors.models.user.attributes.email.blank"
+msgstr "må ikke være tom"
+
+#. Default value: has already been taken
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:8
+msgid "activerecord.errors.models.user.attributes.email.taken"
+msgstr "er allerede i brug"
+
+#. Default value: is invalid
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:10
+msgid "activerecord.errors.models.user.attributes.email.invalid"
+msgstr "er ikke gyldig"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:12
+msgid "activerecord.errors.models.user.attributes.password.blank"
+msgstr "må ikke være tom"
+
+#. Default value: is too short. The minimum is %{count}
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:14
+msgid "activerecord.errors.models.user.attributes.password.too_short"
+msgstr "er for kort. Minimum er %{count}"
+
+#. Default value: is too long. The maximum is %{count}
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:16
+msgid "activerecord.errors.models.user.attributes.password.too_long"
+msgstr "er for lang. Maksimum er %{count}"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:18
+msgid "activerecord.errors.models.task_assigned_user.attributes.task.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:20
+msgid "activerecord.errors.models.task_assigned_user.attributes.user.blank"
+msgstr "må ikke være tom"
+
+#. Default value: ,
+#: lib/gettext_simple_rails/number_translator_translations.rb:4
+msgid "number.currency.format.delimiter"
+msgstr ""
+
+#. Default value: %n %u
+#: lib/gettext_simple_rails/number_translator_translations.rb:6
+msgid "number.currency.format.format"
+msgstr ""
+
+#. Default value: .
+#: lib/gettext_simple_rails/number_translator_translations.rb:8
+msgid "number.currency.format.separator"
+msgstr ""
+
+#. Default value: $
+#: lib/gettext_simple_rails/number_translator_translations.rb:10
+msgid "number.currency.format.unit"
+msgstr ""
+
+#. Default value: ,
+#: lib/gettext_simple_rails/number_translator_translations.rb:12
+msgid "number.format.delimiter"
+msgstr ""
+
+#. Default value: .
+#: lib/gettext_simple_rails/number_translator_translations.rb:14
+msgid "number.format.separator"
+msgstr ""
+
+#. Default value: %n %u
+#: lib/gettext_simple_rails/number_translator_translations.rb:16
+msgid "number.human.decimal_units.format"
+msgstr ""
+
+#. Default value: Billion
+#: lib/gettext_simple_rails/number_translator_translations.rb:18
+msgid "number.human.decimal_units.units.billion"
+msgstr ""
+
+#. Default value: Million
+#: lib/gettext_simple_rails/number_translator_translations.rb:20
+msgid "number.human.decimal_units.units.million"
+msgstr ""
+
+#. Default value: Quadrillion
+#: lib/gettext_simple_rails/number_translator_translations.rb:22
+msgid "number.human.decimal_units.units.quadrillion"
+msgstr ""
+
+#. Default value: Thousand
+#: lib/gettext_simple_rails/number_translator_translations.rb:24
+msgid "number.human.decimal_units.units.thousand"
+msgstr ""
+
+#. Default value: Trillion
+#: lib/gettext_simple_rails/number_translator_translations.rb:26
+msgid "number.human.decimal_units.units.trillion"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/number_translator_translations.rb:28
+msgid "number.human.decimal_units.units.unit"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/number_translator_translations.rb:30
+msgid "number.human.format.delimiter"
+msgstr ""
+
+#. Default value: %n %u
+#: lib/gettext_simple_rails/number_translator_translations.rb:32
+msgid "number.human.storage_units.format"
+msgstr ""
+
+#. Default value: Byte
+#: lib/gettext_simple_rails/number_translator_translations.rb:34
+msgid "number.human.storage_units.units.byte.one"
+msgstr ""
+
+#. Default value: Bytes
+#: lib/gettext_simple_rails/number_translator_translations.rb:36
+msgid "number.human.storage_units.units.byte.other"
+msgstr ""
+
+#. Default value: GB
+#: lib/gettext_simple_rails/number_translator_translations.rb:38
+msgid "number.human.storage_units.units.gb"
+msgstr ""
+
+#. Default value: KB
+#: lib/gettext_simple_rails/number_translator_translations.rb:40
+msgid "number.human.storage_units.units.kb"
+msgstr ""
+
+#. Default value: MB
+#: lib/gettext_simple_rails/number_translator_translations.rb:42
+msgid "number.human.storage_units.units.mb"
+msgstr ""
+
+#. Default value: TB
+#: lib/gettext_simple_rails/number_translator_translations.rb:44
+msgid "number.human.storage_units.units.tb"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/number_translator_translations.rb:46
+msgid "number.percentage.format.delimiter"
+msgstr ""
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:4
+msgid "activerecord.attributes.user.id"
+msgstr "ID"
+
+#. Default value: name
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:6
+msgid "activerecord.attributes.user.name"
+msgstr "Navn"
+
+#. Default value: username
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:8
+msgid "activerecord.attributes.user.username"
+msgstr "Brugernavn"
+
+#. Default value: encrypted_password
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:10
+msgid "activerecord.attributes.user.encrypted_password"
+msgstr "Krypteret adgangskode"
+
+#. Default value: email
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:12
+msgid "activerecord.attributes.user.email"
+msgstr "Email"
+
+#. Default value: locale
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:14
+msgid "activerecord.attributes.user.locale"
+msgstr "Sprog"
+
+#. Default value: active
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:16
+msgid "activerecord.attributes.user.active"
+msgstr "Aktiv"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:18
+msgid "activerecord.attributes.user.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:20
+msgid "activerecord.attributes.user.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: first_name
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:22
+msgid "activerecord.attributes.user.first_name"
+msgstr "Fornavn"
+
+#. Default value: last_name
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:24
+msgid "activerecord.attributes.user.last_name"
+msgstr "Efternavn"
+
+#. Default value: reset_password_token
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:26
+msgid "activerecord.attributes.user.reset_password_token"
+msgstr ""
+
+#. Default value: reset_password_sent_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:28
+msgid "activerecord.attributes.user.reset_password_sent_at"
+msgstr ""
+
+#. Default value: remember_created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:30
+msgid "activerecord.attributes.user.remember_created_at"
+msgstr "Husk oprettet d."
+
+#. Default value: sign_in_count
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:32
+msgid "activerecord.attributes.user.sign_in_count"
+msgstr "Log ind antal"
+
+#. Default value: current_sign_in_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:34
+msgid "activerecord.attributes.user.current_sign_in_at"
+msgstr "Nuværende log ind d."
+
+#. Default value: last_sign_in_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:36
+msgid "activerecord.attributes.user.last_sign_in_at"
+msgstr "Sidste log ind d."
+
+#. Default value: current_sign_in_ip
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:38
+msgid "activerecord.attributes.user.current_sign_in_ip"
+msgstr "Nuværende log ind IP"
+
+#. Default value: last_sign_in_ip
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:40
+msgid "activerecord.attributes.user.last_sign_in_ip"
+msgstr "Sidste log ind IP"
+
+#. Default value: tasks
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:42
+msgid "activerecord.attributes.user.tasks"
+msgstr "Opgaver"
+
+#. Default value: task_assigned_users
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:44
+msgid "activerecord.attributes.user.task_assigned_users"
+msgstr "Opgave tildelte brugere"
+
+#. Default value: user_rank_links
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:46
+msgid "activerecord.attributes.user.user_rank_links"
+msgstr "Brugerroller links"
+
+#. Default value: user_project_links
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:48
+msgid "activerecord.attributes.user.user_project_links"
+msgstr "Bruger projektlinks"
+
+#. Default value: projects
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:50
+msgid "activerecord.attributes.user.projects"
+msgstr "Projekter"
+
+#. Default value: user_roles
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:52
+msgid "activerecord.attributes.user.user_roles"
+msgstr "Brugerroller"
+
+#. Default value: user_task_list_links
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:54
+msgid "activerecord.attributes.user.user_task_list_links"
+msgstr ""
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:56
+msgid "activerecord.attributes.comment.id"
+msgstr "ID"
+
+#. Default value: id_per_resource
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:58
+msgid "activerecord.attributes.comment.id_per_resource"
+msgstr "ID per ressource"
+
+#. Default value: resource_type
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:60
+msgid "activerecord.attributes.comment.resource_type"
+msgstr "Ressourcetype"
+
+#. Default value: resource_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:62
+msgid "activerecord.attributes.comment.resource_id"
+msgstr "Ressource ID"
+
+#. Default value: user_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:64
+msgid "activerecord.attributes.comment.user_id"
+msgstr "Bruger ID"
+
+#. Default value: comment
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:66
+msgid "activerecord.attributes.comment.comment"
+msgstr "Kommentar"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:68
+msgid "activerecord.attributes.comment.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:70
+msgid "activerecord.attributes.comment.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:72
+msgid "activerecord.attributes.comment.user"
+msgstr "Bruger"
+
+#. Default value: resource
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:74
+msgid "activerecord.attributes.comment.resource"
+msgstr "Ressource"
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:76
+msgid "activerecord.attributes.customer.id"
+msgstr "ID"
+
+#. Default value: name
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:78
+msgid "activerecord.attributes.customer.name"
+msgstr "Navn"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:80
+msgid "activerecord.attributes.customer.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:82
+msgid "activerecord.attributes.customer.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: projects
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:84
+msgid "activerecord.attributes.customer.projects"
+msgstr "Projekter"
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:86
+msgid "activerecord.attributes.project.id"
+msgstr "ID"
+
+#. Default value: customer_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:88
+msgid "activerecord.attributes.project.customer_id"
+msgstr "Kunde ID"
+
+#. Default value: user_added_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:90
+msgid "activerecord.attributes.project.user_added_id"
+msgstr "Bruger tilføjet ID"
+
+#. Default value: name
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:92
+msgid "activerecord.attributes.project.name"
+msgstr "Navn"
+
+#. Default value: description
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:94
+msgid "activerecord.attributes.project.description"
+msgstr "Beskrivelse"
+
+#. Default value: deadline_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:96
+msgid "activerecord.attributes.project.deadline_at"
+msgstr "Deadline d."
+
+#. Default value: price_per_hour
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:98
+msgid "activerecord.attributes.project.price_per_hour"
+msgstr "Pris per time"
+
+#. Default value: price_per_hour_transport
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:100
+msgid "activerecord.attributes.project.price_per_hour_transport"
+msgstr "Pris per time transport"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:102
+msgid "activerecord.attributes.project.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:104
+msgid "activerecord.attributes.project.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: added_user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:106
+msgid "activerecord.attributes.project.added_user"
+msgstr "Tilføjet bruger"
+
+#. Default value: customer
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:108
+msgid "activerecord.attributes.project.customer"
+msgstr "Kunde"
+
+#. Default value: tasks
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:110
+msgid "activerecord.attributes.project.tasks"
+msgstr "Opgaver"
+
+#. Default value: user_project_links
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:112
+msgid "activerecord.attributes.project.user_project_links"
+msgstr "Bruger projekt links"
+
+#. Default value: users
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:114
+msgid "activerecord.attributes.project.users"
+msgstr "Brugere"
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:116
+msgid "activerecord.attributes.task.id"
+msgstr "ID"
+
+#. Default value: project_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:118
+msgid "activerecord.attributes.task.project_id"
+msgstr "Projekt ID"
+
+#. Default value: user_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:120
+msgid "activerecord.attributes.task.user_id"
+msgstr "Bruger ID"
+
+#. Default value: name
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:122
+msgid "activerecord.attributes.task.name"
+msgstr "Navn"
+
+#. Default value: description
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:124
+msgid "activerecord.attributes.task.description"
+msgstr "Beskrivelse"
+
+#. Default value: task_type
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:126
+msgid "activerecord.attributes.task.task_type"
+msgstr "Opgavetype"
+
+#. Default value: state
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:128
+msgid "activerecord.attributes.task.state"
+msgstr "Status"
+
+#. Default value: priority
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:130
+msgid "activerecord.attributes.task.priority"
+msgstr "Prioritet"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:132
+msgid "activerecord.attributes.task.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:134
+msgid "activerecord.attributes.task.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: timelogs
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:136
+msgid "activerecord.attributes.task.timelogs"
+msgstr "Tidslogs"
+
+#. Default value: task_assigned_users
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:138
+msgid "activerecord.attributes.task.task_assigned_users"
+msgstr ""
+
+#. Default value: task_checks
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:140
+msgid "activerecord.attributes.task.task_checks"
+msgstr "Opgavechecks"
+
+#. Default value: user_task_list_links
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:142
+msgid "activerecord.attributes.task.user_task_list_links"
+msgstr ""
+
+#. Default value: comments
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:144
+msgid "activerecord.attributes.task.comments"
+msgstr "Kommentarer"
+
+#. Default value: project
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:146
+msgid "activerecord.attributes.task.project"
+msgstr "Projekt"
+
+#. Default value: user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:148
+msgid "activerecord.attributes.task.user"
+msgstr "Bruger"
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:150
+msgid "activerecord.attributes.task_assigned_user.id"
+msgstr "ID"
+
+#. Default value: task_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:152
+msgid "activerecord.attributes.task_assigned_user.task_id"
+msgstr "Opgave ID"
+
+#. Default value: user_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:154
+msgid "activerecord.attributes.task_assigned_user.user_id"
+msgstr "Bruger ID"
+
+#. Default value: user_assigned_by_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:156
+msgid "activerecord.attributes.task_assigned_user.user_assigned_by_id"
+msgstr ""
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:158
+msgid "activerecord.attributes.task_assigned_user.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:160
+msgid "activerecord.attributes.task_assigned_user.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: task
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:162
+msgid "activerecord.attributes.task_assigned_user.task"
+msgstr "Opgave"
+
+#. Default value: user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:164
+msgid "activerecord.attributes.task_assigned_user.user"
+msgstr "Bruger"
+
+#. Default value: user_assigned_by
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:166
+msgid "activerecord.attributes.task_assigned_user.user_assigned_by"
+msgstr ""
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:168
+msgid "activerecord.attributes.task_check.id"
+msgstr "ID"
+
+#. Default value: task_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:170
+msgid "activerecord.attributes.task_check.task_id"
+msgstr "Opgave ID"
+
+#. Default value: user_added_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:172
+msgid "activerecord.attributes.task_check.user_added_id"
+msgstr ""
+
+#. Default value: name
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:174
+msgid "activerecord.attributes.task_check.name"
+msgstr "Navn"
+
+#. Default value: description
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:176
+msgid "activerecord.attributes.task_check.description"
+msgstr "Beskrivelse"
+
+#. Default value: checked
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:178
+msgid "activerecord.attributes.task_check.checked"
+msgstr "Checket"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:180
+msgid "activerecord.attributes.task_check.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:182
+msgid "activerecord.attributes.task_check.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: task
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:184
+msgid "activerecord.attributes.task_check.task"
+msgstr "Opgave"
+
+#. Default value: added_user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:186
+msgid "activerecord.attributes.task_check.added_user"
+msgstr "Tilføjet bruger"
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:188
+msgid "activerecord.attributes.timelog.id"
+msgstr "ID"
+
+#. Default value: task_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:190
+msgid "activerecord.attributes.timelog.task_id"
+msgstr "Opgave ID"
+
+#. Default value: user_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:192
+msgid "activerecord.attributes.timelog.user_id"
+msgstr "Bruger ID"
+
+#. Default value: date
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:194
+msgid "activerecord.attributes.timelog.date"
+msgstr "Dato"
+
+#. Default value: time
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:196
+msgid "activerecord.attributes.timelog.time"
+msgstr "Tid"
+
+#. Default value: time_transport
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:198
+msgid "activerecord.attributes.timelog.time_transport"
+msgstr "Tid transport"
+
+#. Default value: transport_length
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:200
+msgid "activerecord.attributes.timelog.transport_length"
+msgstr "Transport længde"
+
+#. Default value: comment
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:202
+msgid "activerecord.attributes.timelog.comment"
+msgstr "Kommentar"
+
+#. Default value: invoiced
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:204
+msgid "activerecord.attributes.timelog.invoiced"
+msgstr "Faktureret"
+
+#. Default value: invoiced_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:206
+msgid "activerecord.attributes.timelog.invoiced_at"
+msgstr "Faktureret d."
+
+#. Default value: invoiced_by_user_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:208
+msgid "activerecord.attributes.timelog.invoiced_by_user_id"
+msgstr "Faktureret af bruger ID"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:210
+msgid "activerecord.attributes.timelog.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:212
+msgid "activerecord.attributes.timelog.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: task
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:214
+msgid "activerecord.attributes.timelog.task"
+msgstr "Opgave"
+
+#. Default value: user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:216
+msgid "activerecord.attributes.timelog.user"
+msgstr "Bruger"
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:218
+msgid "activerecord.attributes.user_project_link.id"
+msgstr "ID"
+
+#. Default value: user_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:220
+msgid "activerecord.attributes.user_project_link.user_id"
+msgstr "Bruger ID"
+
+#. Default value: project_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:222
+msgid "activerecord.attributes.user_project_link.project_id"
+msgstr "Projekt ID"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:224
+msgid "activerecord.attributes.user_project_link.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:226
+msgid "activerecord.attributes.user_project_link.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: project
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:228
+msgid "activerecord.attributes.user_project_link.project"
+msgstr "Projekt"
+
+#. Default value: user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:230
+msgid "activerecord.attributes.user_project_link.user"
+msgstr "Bruger"
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:232
+msgid "activerecord.attributes.user_role.id"
+msgstr "ID"
+
+#. Default value: user_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:234
+msgid "activerecord.attributes.user_role.user_id"
+msgstr "Bruger ID"
+
+#. Default value: role
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:236
+msgid "activerecord.attributes.user_role.role"
+msgstr "Rolle"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:238
+msgid "activerecord.attributes.user_role.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:240
+msgid "activerecord.attributes.user_role.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:242
+msgid "activerecord.attributes.user_role.user"
+msgstr "Bruger"
+
+#. Default value: id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:244
+msgid "activerecord.attributes.user_task_list_link.id"
+msgstr "ID"
+
+#. Default value: user_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:246
+msgid "activerecord.attributes.user_task_list_link.user_id"
+msgstr "Bruger ID"
+
+#. Default value: task_id
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:248
+msgid "activerecord.attributes.user_task_list_link.task_id"
+msgstr "Opgave ID"
+
+#. Default value: created_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:250
+msgid "activerecord.attributes.user_task_list_link.created_at"
+msgstr "Oprettet d."
+
+#. Default value: updated_at
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:252
+msgid "activerecord.attributes.user_task_list_link.updated_at"
+msgstr "Opdateret d."
+
+#. Default value: user
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:254
+msgid "activerecord.attributes.user_task_list_link.user"
+msgstr "Bruger"
+
+#. Default value: task
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:256
+msgid "activerecord.attributes.user_task_list_link.task"
+msgstr "Opgave"
+
+#. Default value: User
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:258
+msgid "activerecord.models.user.one"
+msgstr "Bruger"
+
+#. Default value: User
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:260
+msgid "activerecord.models.user.other"
+msgstr "Brugere"
+
+#. Default value: Comment
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:262
+msgid "activerecord.models.comment.one"
+msgstr "Kommentar"
+
+#. Default value: Comment
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:264
+msgid "activerecord.models.comment.other"
+msgstr "Kommentarer"
+
+#. Default value: Customer
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:266
+msgid "activerecord.models.customer.one"
+msgstr "Kunde"
+
+#. Default value: Customer
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:268
+msgid "activerecord.models.customer.other"
+msgstr "Kunder"
+
+#. Default value: Project
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:270
+msgid "activerecord.models.project.one"
+msgstr "Projekt"
+
+#. Default value: Project
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:272
+msgid "activerecord.models.project.other"
+msgstr "Projekter"
+
+#. Default value: Task
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:274
+msgid "activerecord.models.task.one"
+msgstr "Opgave"
+
+#. Default value: Task
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:276
+msgid "activerecord.models.task.other"
+msgstr "Opgaver"
+
+#. Default value: TaskAssignedUser
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:278
+msgid "activerecord.models.task_assigned_user.one"
+msgstr "Opgave tildelt bruger"
+
+#. Default value: TaskAssignedUser
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:280
+msgid "activerecord.models.task_assigned_user.other"
+msgstr "Opgave tildelte brugere"
+
+#. Default value: TaskCheck
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:282
+msgid "activerecord.models.task_check.one"
+msgstr "Opgavecheck"
+
+#. Default value: TaskCheck
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:284
+msgid "activerecord.models.task_check.other"
+msgstr "Opgavechecks"
+
+#. Default value: Timelog
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:286
+msgid "activerecord.models.timelog.one"
+msgstr "Tidslog"
+
+#. Default value: Timelog
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:288
+msgid "activerecord.models.timelog.other"
+msgstr "Tidslogs"
+
+#. Default value: UserProjectLink
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:290
+msgid "activerecord.models.user_project_link.one"
+msgstr "Bruger projektlink"
+
+#. Default value: UserProjectLink
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:292
+msgid "activerecord.models.user_project_link.other"
+msgstr "Bruger projektlinks"
+
+#. Default value: UserRole
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:294
+msgid "activerecord.models.user_role.one"
+msgstr "Brugerrolle"
+
+#. Default value: UserRole
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:296
+msgid "activerecord.models.user_role.other"
+msgstr "Brugerroller"
+
+#. Default value: UserTaskListLink
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:298
+msgid "activerecord.models.user_task_list_link.one"
+msgstr "Bruger opgavelistelink"
+
+#. Default value: UserTaskListLink
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:300
+msgid "activerecord.models.user_task_list_link.other"
+msgstr "Bruger opgavelistelinks"
+
+#: Ruby/knjtasks/models/class_task_check.rb:12
+#: Ruby/knjtasks/models/class_timelog.rb:47
+#: Ruby/knjtasks/models/class_task_assigned_user.rb:34
+#: Ruby/knjtasks/models/class_comment.rb:15
+msgid "Invalid key: %s."
+msgstr "Ugyldig nøgle: %s."
+
+#: Ruby/knjtasks/models/class_user_task_list_link.rb:15
+msgid "That user has already listed that task."
+msgstr "Den bruger har allerede listet den opgave."
+
+#: Ruby/knjtasks/models/class_user_rank_link.rb:15
+msgid "That user already have that rank."
+msgstr "Den bruger har allerede den rang."
+
+#: Ruby/knjtasks/models/class_user_project_link.rb:27
+msgid "Invalid key: '%s'."
+msgstr "Ugyldig nøgle: '%s'."
+
+#: Ruby/knjtasks/models/class_user_project_link.rb:53
+msgid "That user is already assigned to that project."
+msgstr "Den bruger er allerede tildelt det projekt."
+
+#: Ruby/knjtasks/models/class_project.rb:13 app/models/project.rb:10
+msgid "Invalid name given."
+msgstr "Ugyldigt navn givet."
+
+#: Ruby/knjtasks/models/class_timelog.rb:66
+msgid "No comment has been written."
+msgstr "Der blev ikke skrevet en kommentar."
+
+#: Ruby/knjtasks/models/class_timelog.rb:76
+msgid "Timelog %s"
+msgstr "Tidslog %s"
+
+#: Ruby/knjtasks/models/class_task_assigned_user.rb:56
+msgid "That user is already assigned to that task."
+msgstr "Den bruger er allerede tildelt den opgave."
+
+#: Ruby/knjtasks/models/class_task.rb:19 app/models/task.rb:15
+msgid "No project-ID was given."
+msgstr "Intet projekt-ID blev givet."
+
+#: Ruby/knjtasks/models/class_task.rb:20 app/models/task.rb:16
+msgid "Invalid name was given."
+msgstr "Ugyldigt navn blev givet."
+
+#: Ruby/knjtasks/models/class_task.rb:29 app/models/task.rb:25
+msgid "A project with the given project-ID could not be found: '%s'."
+msgstr "Et projekt med det givne projekt-ID kunne ikke findes: '%s'."
+
+#: Ruby/knjtasks/models/class_task.rb:35 app/models/task.rb:31
+msgid "Feature"
+msgstr "Feature"
+
+#: Ruby/knjtasks/models/class_task.rb:36 app/models/task.rb:32
+msgid "Bug report"
+msgstr "Fejlrapport"
+
+#: Ruby/knjtasks/models/class_task.rb:37 app/models/task.rb:33
+msgid "Question"
+msgstr "Spørgsmål"
+
+#: Ruby/knjtasks/models/class_task.rb:43 app/models/task.rb:47
+msgid "Open"
+msgstr "Åben"
+
+#: Ruby/knjtasks/models/class_task.rb:44 app/models/task.rb:48
+msgid "Confirmed"
+msgstr "Bekræftet"
+
+#: Ruby/knjtasks/models/class_task.rb:45 app/models/task.rb:49
+msgid "Waiting"
+msgstr "Venter"
+
+#: Ruby/knjtasks/models/class_task.rb:46 app/models/task.rb:50
+msgid "Closed"
+msgstr "Lukket"
+
+#: Ruby/knjtasks/models/class_user.rb:11 app/models/user.rb:13
+msgid "Cannot delete user because that user has created tasks."
+msgstr ""
+
+#: Ruby/knjtasks/models/class_user.rb:55 app/helpers/user_helper.rb:11
+msgid "no name"
+msgstr "intet navn"
+
+#: Ruby/knjtasks/lib/knjtasks.rb:90
+msgid "user"
+msgstr "bruger"
+
+#: Ruby/knjtasks/lib/knjtasks.rb:91
+msgid "project"
+msgstr "projekt"
+
+#: Ruby/knjtasks/lib/knjtasks.rb:92
+msgid "task"
+msgstr "opgave"
+
+#: Ruby/knjtasks/lib/knjtasks.rb:99
+msgid "no %s"
+msgstr ""
+
+#: Ruby/knjtasks/lib/knjtasks.rb:103
+msgid "no date"
+msgstr "ingen dato"
+
+#: app/helpers/application_helper.rb:4
+msgid "Choose:"
+msgstr "Vælg:"
+
+#: app/helpers/application_helper.rb:5 app/views/timelogs/index.html.erb:83
+#: app/views/tasks/index.html.erb:21 app/views/tasks/index.html.erb:27
+msgid "All"
+msgstr "Alle"
+
+#: app/helpers/project_helper.rb:3
+msgid "no project"
+msgstr "intet projekt"
+
+#: app/helpers/user_helper.rb:3
+msgid "no user"
+msgstr "ingen bruger"
+
+#: app/controllers/tasks_controller.rb:75 app/views/tasks/show.html.erb:7
+msgid "You do not have access to that task and cannot view this page."
+msgstr ""
+
+#: app/controllers/application_controller.rb:21
+msgid "Danish"
+msgstr "Dansk"
+
+#: app/controllers/application_controller.rb:22
+msgid "English"
+msgstr "Engelsk"
+
+#: app/controllers/application_controller.rb:30
+#: Ruby/knjtasks/www/index.rhtml:12 Ruby/knjtasks/www/index.rhtml:102
+#: app/views/layouts/application.html.erb:48
+msgid "Customers"
+msgstr "Kunder"
+
+#: app/controllers/application_controller.rb:31
+#: Ruby/knjtasks/www/index.rhtml:13 Ruby/knjtasks/www/index.rhtml:103
+#: app/views/workstatus/index.html.erb:190
+#: app/views/customers/show.html.erb:18
+#: app/views/layouts/application.html.erb:49
+#: app/views/timelogs/index.html.erb:70
+msgid "Projects"
+msgstr "Projekter"
+
+#: app/controllers/application_controller.rb:32
+#: Ruby/knjtasks/www/index.rhtml:14 Ruby/knjtasks/www/index.rhtml:106
+#: app/views/users/show.html.erb:33 app/views/frontpage/index.html.erb:87
+#: app/views/layouts/application.html.erb:51
+#: app/views/projects/show.html.erb:87
+msgid "Tasks"
+msgstr "Opgaver"
+
+#: app/controllers/application_controller.rb:33
+#: Ruby/knjtasks/www/index.rhtml:15 Ruby/knjtasks/www/index.rhtml:107
+#: app/views/layouts/application.html.erb:52
+#: app/views/timelogs/index.html.erb:62 app/views/projects/show.html.erb:72
+msgid "Users"
+msgstr "Brugere"
+
+#: app/controllers/application_controller.rb:34
+#: Ruby/knjtasks/www/index.rhtml:16 Ruby/knjtasks/www/index.rhtml:110
+#: app/views/layouts/application.html.erb:55
+#: app/views/timelogs/index.html.erb:38 app/views/tasks/show.html.erb:148
+msgid "Timelogs"
+msgstr "Tidslogs"
+
+#: app/controllers/application_controller.rb:35
+#: Ruby/knjtasks/www/index.rhtml:17 Ruby/knjtasks/www/index.rhtml:111
+#: app/views/workstatus/index.html.erb:13
+#: app/views/layouts/application.html.erb:56
+msgid "Work-status"
+msgstr "Arbejdsstatus"
+
+#: app/controllers/application_controller.rb:36
+#: Ruby/knjtasks/www/index.rhtml:18 Ruby/knjtasks/www/index.rhtml:112
+#: app/views/layouts/application.html.erb:57
+msgid "Administration"
+msgstr "Administration"
+
+#: app/controllers/application_controller.rb:46
+#: Ruby/knjtasks/www/index.rhtml:28
+msgid "That task could not be found."
+msgstr "Den opgave kunne ikke findes."
+
+#: app/controllers/application_controller.rb:54
+#: Ruby/knjtasks/www/index.rhtml:36
+msgid "That project could not be found."
+msgstr "Projektet kunne ikke findes."
+
+#: app/controllers/timelogs_controller.rb:24
+#: app/controllers/timelogs_controller.rb:36
+msgid "Could not save: %{errors}"
+msgstr "Kunne ikke gemme: %{errors}"
+
+#: app/controllers/user_authentications_controller.rb:9
+msgid "A user with that username and/or password was found."
+msgstr "En bruger med det brugernavn og/eller adgangskode blev ikke fundet."
+
+#: app/controllers/user_authentications_controller.rb:12
+msgid "That user is not active any more and cant be used."
+msgstr "Den bruger er ikke aktiv mere."
+
+#: app/mailers/task_assigned_user_mailer.rb:6
+msgid "You have been assigned to: %s"
+msgstr "Du er blevet tildelt til: %s"
+
+#: app/mailers/task_assigned_user_mailer.rb:10
+msgid "Assigned by"
+msgstr "Tildelt af"
+
+#: app/mailers/task_assigned_user_mailer.rb:13
+#: app/views/users/show.html.erb:37 app/views/profile/index.html.erb:48
+#: app/views/frontpage/index.html.erb:8 app/views/timelogs/index.html.erb:192
+#: app/views/timelogs/_form.html.erb:6 app/views/projects/show.html.erb:91
+#: app/views/tasks/show.html.erb:55
+msgid "Task"
+msgstr "Opgave"
+
+#: app/mailers/task_assigned_user_mailer.rb:16
+#: app/views/task_checks/form.html.erb:50
+#: app/views/timelogs/index.html.erb:256 app/views/projects/_form.html.erb:52
+#: app/views/tasks/show.html.erb:93 app/views/tasks/_form.html.erb:91
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: Ruby/knjtasks/www/index.rhtml:11 Ruby/knjtasks/www/index.rhtml:98
+#: app/views/frontpage/index.html.erb:2
+#: app/views/layouts/application.html.erb:44
+msgid "Frontpage"
+msgstr "Forside"
+
+#: Ruby/knjtasks/www/index.rhtml:71 app/views/layouts/application.html.erb:17
+msgid "Close"
+msgstr "Luk"
+
+#: Ruby/knjtasks/www/index.rhtml:72 app/views/layouts/application.html.erb:18
+msgid "Edit comment"
+msgstr "Rediger kommentar"
+
+#: Ruby/knjtasks/www/index.rhtml:73 app/views/layouts/application.html.erb:19
+msgid "Edit timelog"
+msgstr "Rediger tidslog"
+
+#: Ruby/knjtasks/www/index.rhtml:74 app/views/layouts/application.html.erb:20
+msgid "Edit task-check"
+msgstr "Rediger opgavecheck"
+
+#: Ruby/knjtasks/www/index.rhtml:115 app/views/profile/index.html.erb:1
+#: app/views/layouts/application.html.erb:60
+msgid "Your profile"
+msgstr "Din profil"
+
+#: Ruby/knjtasks/www/index.rhtml:116 app/views/layouts/application.html.erb:61
+msgid "Log out"
+msgstr "Log ud"
+
+#: Ruby/knjtasks/www/index.rhtml:119
+#: app/views/user_authentications/new.html.erb:1
+#: app/views/user_authentications/new.html.erb:29
+#: app/views/layouts/application.html.erb:64
+msgid "Log in"
+msgstr "Log ind"
+
+#: Ruby/knjtasks/www/index.rhtml:149
+#: app/views/layouts/application.html.erb:100
+msgid "Made by %s"
+msgstr "Lavet af %s"
+
+#: app/views/customers/update_id_per_obj.rhtml:3
+#: app/views/timelogs/index.html.erb:3 app/views/projects/index.html.erb:3
+msgid "You do not have permission to view this page."
+msgstr "Du har ikke adgang til at se den side."
+
+#: app/views/customers/update_id_per_obj.rhtml:27
+msgid "Done"
+msgstr "Færdig"
+
+#: app/views/customers/update_id_per_obj.rhtml:30
+msgid "Update comment IDs"
+msgstr "Opdateret kommentar IDer"
+
+#: app/views/customers/update_id_per_obj.rhtml:33
+#: app/views/users/_roles.html.erb:5 app/views/users/show.html.erb:6
+#: app/views/customers/show.html.erb:12 app/views/projects/show.html.erb:31
+#: app/views/projects/_assigned_users.html.erb:8
+#: app/views/tasks/_users.html.erb:5
+msgid "Actions"
+msgstr ""
+
+#: app/views/customers/update_id_per_obj.rhtml:40
+msgid "Update"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:3
+msgid "You need to be logged in to view this page."
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:19 app/views/users/index.html.erb:13
+#: app/views/user_ranks/_search.html.erb:49
+#: app/views/customers/index.html.erb:6 app/views/timelogs/index.html.erb:44
+#: app/views/projects/index.html.erb:13 app/views/tasks/index.html.erb:6
+msgid "Enter criteria"
+msgstr "Indtast kriterier"
+
+#: app/views/workstatus/index.html.erb:22 app/views/timelogs/index.html.erb:47
+msgid "Date from"
+msgstr "Date fra"
+
+#: app/views/workstatus/index.html.erb:26 app/views/timelogs/index.html.erb:52
+msgid "Date to"
+msgstr "Dato til"
+
+#: app/views/workstatus/index.html.erb:30
+#: app/views/workstatus/index.html.erb:194 app/views/users/show.html.erb:40
+#: app/views/frontpage/index.html.erb:12 app/views/customers/show.html.erb:22
+#: app/views/tasks/show.html.erb:73 app/views/tasks/_form.html.erb:67
+msgid "Project"
+msgstr "Projekt"
+
+#: app/views/workstatus/index.html.erb:40
+msgid "Filter"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:57 app/views/users/index.html.erb:82
+#: app/views/user_ranks/_search.html.erb:9
+#: app/views/customers/index.html.erb:44 app/views/timelogs/index.html.erb:185
+#: app/views/tasks/index.html.erb:60
+msgid "Results"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:61 app/views/users/show.html.erb:39
+#: app/views/frontpage/index.html.erb:24 app/views/timelogs/index.html.erb:191
+#: app/views/timelogs/index.html.erb:254 app/views/timelogs/_form.html.erb:27
+#: app/views/projects/show.html.erb:48 app/views/projects/show.html.erb:94
+#: app/views/tasks/show.html.erb:68 app/views/tasks/_timelogs.html.erb:6
+msgid "Date"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:62
+#: app/views/workstatus/index.html.erb:155
+#: app/views/workstatus/index.html.erb:195
+#: app/views/frontpage/index.html.erb:35 app/views/timelogs/index.html.erb:254
+#: app/views/tasks/_timelogs.html.erb:5
+msgid "Hours"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:63
+msgid "Hours driving"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:64
+#: app/views/workstatus/index.html.erb:197
+msgid "Earned"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:65
+msgid "Driving earned"
+msgstr "Kørsel tjent"
+
+#: app/views/workstatus/index.html.erb:66
+msgid "Driving length"
+msgstr "Kørselslængde"
+
+#: app/views/workstatus/index.html.erb:136
+msgid "Overview"
+msgstr "Oversigt"
+
+#: app/views/workstatus/index.html.erb:160
+#: app/views/workstatus/index.html.erb:196
+#: app/views/timelogs/index.html.erb:194
+msgid "Transport"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:165
+msgid "Total earned"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:170
+msgid "Tax"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:175
+msgid "Total after tax"
+msgstr ""
+
+#: app/views/workstatus/index.html.erb:180
+#: app/views/timelogs/index.html.erb:175
+msgid "Total transport"
+msgstr ""
+
+#: app/views/users/_roles.html.erb:4 app/views/user_ranks/_search.html.erb:13
+msgid "Rank"
+msgstr ""
+
+#: app/views/users/_roles.html.erb:13
+msgid "Do you want to remove this rank?"
+msgstr ""
+
+#: app/views/users/_roles.html.erb:13
+#: app/views/projects/_assigned_users.html.erb:21
+#: app/views/tasks/_users.html.erb:15
+msgid "remove"
+msgstr ""
+
+#: app/views/users/_roles.html.erb:21
+msgid "No ranks has been added to this user."
+msgstr ""
+
+#: app/views/users/index.html.erb:2
+msgid "Search for users"
+msgstr ""
+
+#: app/views/users/index.html.erb:16 app/views/users/index.html.erb:86
+#: app/views/users/show.html.erb:18 app/views/users/_form.html.erb:62
+#: app/views/task_checks/form.html.erb:45
+#: app/views/user_ranks/_search.html.erb:53
+#: app/views/customers/index.html.erb:10 app/views/customers/_form.html.erb:48
+#: app/views/projects/index.html.erb:16 app/views/projects/index.html.erb:53
+#: app/views/projects/_form.html.erb:17 app/views/tasks/_form.html.erb:62
+msgid "Name"
+msgstr ""
+
+#: app/views/users/index.html.erb:19
+msgid "Enter a part of the name of the user you are looking for."
+msgstr ""
+
+#: app/views/users/index.html.erb:24 app/views/frontpage/index.html.erb:89
+#: app/views/projects/index.html.erb:23 app/views/tasks/index.html.erb:39
+#: app/views/tasks/show.html.erb:135 app/views/tasks/show.html.erb:143
+#: app/views/tasks/show.html.erb:150
+msgid "Add new"
+msgstr "Tilføj ny"
+
+#: app/views/users/index.html.erb:26 app/views/user_ranks/_search.html.erb:61
+#: app/views/customers/index.html.erb:19 app/views/timelogs/index.html.erb:90
+#: app/views/projects/index.html.erb:24 app/views/tasks/index.html.erb:40
+msgid "Search"
+msgstr "Søg"
+
+#: app/views/users/index.html.erb:38
+msgid "Please search..."
+msgstr "Søg venligst"
+
+#: app/views/users/index.html.erb:117
+#: app/views/projects/_assigned_users.html.erb:31
+msgid "No users were found."
+msgstr "Der blev ikke fundet nogle brugere."
+
+#: app/views/users/show.html.erb:2
+msgid "Show user: %s."
+msgstr "Vis bruger: %s."
+
+#: app/views/users/show.html.erb:7
+msgid "Edit"
+msgstr "Rediger"
+
+#: app/views/users/show.html.erb:15 app/views/projects/show.html.erb:41
+msgid "Information"
+msgstr "Information"
+
+#: app/views/users/show.html.erb:21 app/views/users/_form.html.erb:65
+msgid "The real name of the user."
+msgstr "Brugerens rigtige navn"
+
+#: app/views/users/show.html.erb:23 app/views/users/_form.html.erb:67
+#: app/views/profile/index.html.erb:9
+msgid "Email"
+msgstr "Email"
+
+#: app/views/users/show.html.erb:26
+msgid "The email of the user."
+msgstr "Brugerens email."
+
+#: app/views/users/show.html.erb:38 app/views/frontpage/index.html.erb:28
+#: app/views/projects/show.html.erb:93 app/views/tasks/show.html.erb:58
+#: app/views/tasks/_form.html.erb:79
+msgid "Status"
+msgstr "Status"
+
+#: app/views/users/show.html.erb:74
+msgid "No tasks were found for this user."
+msgstr ""
+
+#: app/views/users/_form.html.erb:3 app/views/customers/_form.html.erb:3
+#: app/views/projects/_form.html.erb:3
+msgid "You are not an administrator and cannot view this page."
+msgstr ""
+
+#: app/views/users/_form.html.erb:48 app/views/task_checks/form.html.erb:41
+#: app/views/user_authentications/new.html.erb:9
+#: app/views/profile/index.html.erb:6 app/views/customers/_form.html.erb:44
+#: app/views/timelogs/_form.html.erb:3 app/views/comments/_form.html.erb:51
+#: app/views/projects/_form.html.erb:14 app/views/tasks/_form.html.erb:52
+msgid "Enter details"
+msgstr ""
+
+#: app/views/users/_form.html.erb:51
+#: app/views/user_authentications/new.html.erb:12
+msgid "Username"
+msgstr ""
+
+#: app/views/users/_form.html.erb:54
+msgid "The username that this user should use to log in."
+msgstr ""
+
+#: app/views/users/_form.html.erb:56
+#: app/views/user_authentications/new.html.erb:17
+#: app/views/profile/index.html.erb:14
+msgid "Password"
+msgstr ""
+
+#: app/views/users/_form.html.erb:60
+msgid "Only write a password here if you whish to change it."
+msgstr ""
+
+#: app/views/users/_form.html.erb:70
+msgid ""
+"The email of the user which will be used for notifications and other stuff "
+"as well."
+msgstr ""
+
+#: app/views/users/_form.html.erb:72
+msgid "Active"
+msgstr ""
+
+#: app/views/users/_form.html.erb:76
+msgid "If the user is active or not. In-active users cant log in."
+msgstr ""
+
+#: app/views/users/_form.html.erb:81
+msgid "Log in as"
+msgstr "Log ind som"
+
+#: app/views/users/_form.html.erb:81 app/views/users/_form.html.erb:83
+#: app/views/tasks/_form.html.erb:102
+msgid "Are you sure?"
+msgstr "Er du sikker?"
+
+#: app/views/users/_form.html.erb:82 app/views/customers/_form.html.erb:57
+#: app/views/projects/_form.html.erb:61 app/views/tasks/_form.html.erb:101
+msgid "Show"
+msgstr "Vis"
+
+#: app/views/users/_form.html.erb:83 app/views/task_checks/form.html.erb:61
+#: app/views/customers/_form.html.erb:58 app/views/projects/_form.html.erb:63
+#: app/views/tasks/_timelogs.html.erb:11 app/views/tasks/_form.html.erb:102
+msgid "Delete"
+msgstr "Slet"
+
+#: app/views/users/_form.html.erb:85 app/views/task_checks/form.html.erb:63
+#: app/views/profile/index.html.erb:21 app/views/customers/_form.html.erb:60
+#: app/views/timelogs/_form.html.erb:47 app/views/comments/_form.html.erb:76
+#: app/views/projects/_form.html.erb:65 app/views/tasks/_form.html.erb:104
+msgid "Save"
+msgstr "Gem"
+
+#: app/views/users/_form.html.erb:96
+msgid "Permissions"
+msgstr ""
+
+#: app/views/users/_form.html.erb:98
+msgid "Add rank"
+msgstr ""
+
+#: app/views/users/_form.html.erb:103
+msgid "Loading - please wait..."
+msgstr "Indlæser - vent venligst..."
+
+#: app/views/task_checks/form.html.erb:48
+msgid "The name of the check as it should appear for the other users."
+msgstr ""
+
+#: app/views/task_checks/form.html.erb:55
+msgid ""
+"A description that describes what should be done before marking this check."
+msgstr ""
+
+#: app/views/task_checks/form.html.erb:61 app/views/tasks/_checks.html.erb:6
+msgid "Do you want to delete this check?"
+msgstr ""
+
+#: app/views/user_authentications/new.html.erb:4
+msgid "You are logged in as %{user_link}."
+msgstr ""
+
+#: app/views/user_authentications/new.html.erb:15
+msgid "The username you want to log in as."
+msgstr ""
+
+#: app/views/user_authentications/new.html.erb:21
+msgid "The password associated with the entered username."
+msgstr ""
+
+#: app/views/user_authentications/new.html.erb:23
+msgid "Remember me on this computer"
+msgstr ""
+
+#: app/views/user_authentications/new.html.erb:25
+msgid ""
+"If you do not want to log in again on this computer then check this box."
+msgstr ""
+
+#: app/views/profile/index.html.erb:11
+msgid "The email that you want notifications and stuff sent to."
+msgstr ""
+
+#: app/views/profile/index.html.erb:17
+msgid "You can enter a new password to change it."
+msgstr ""
+
+#: app/views/profile/index.html.erb:44
+msgid "Task-list"
+msgstr ""
+
+#: app/views/profile/index.html.erb:72
+msgid "No tasks has been added to your list."
+msgstr ""
+
+#: app/views/frontpage/index.html.erb:16 app/views/tasks/show.html.erb:83
+#: app/views/tasks/_form.html.erb:85
+msgid "Priority"
+msgstr ""
+
+#: app/views/frontpage/index.html.erb:20 app/views/projects/show.html.erb:92
+#: app/views/tasks/index.html.erb:68 app/views/tasks/show.html.erb:78
+msgid "Author"
+msgstr ""
+
+#: app/views/frontpage/index.html.erb:35
+msgid "Driving"
+msgstr ""
+
+#: app/views/frontpage/index.html.erb:37 app/views/timelogs/index.html.erb:195
+msgid "Transport length"
+msgstr ""
+
+#: app/views/frontpage/index.html.erb:180 app/views/projects/show.html.erb:126
+#: app/views/tasks/index.html.erb:103
+msgid "No tasks were found."
+msgstr ""
+
+#: app/views/user_ranks/_search.html.erb:32
+msgid "No ranks were found."
+msgstr ""
+
+#: app/views/user_ranks/_search.html.erb:56
+msgid "Enter a part of the name of the permission you are searching for."
+msgstr ""
+
+#: app/views/user_ranks/_search.html.erb:73
+msgid "Please enter criteria and search..."
+msgstr ""
+
+#: app/views/customers/index.html.erb:1
+msgid "Search for customers"
+msgstr ""
+
+#: app/views/customers/index.html.erb:13
+msgid "A part of the customers name which you are looking for."
+msgstr ""
+
+#: app/views/customers/index.html.erb:18 app/views/customers/_form.html.erb:29
+msgid "Add new customer"
+msgstr ""
+
+#: app/views/customers/index.html.erb:48 app/views/projects/_form.html.erb:35
+msgid "Customer"
+msgstr ""
+
+#: app/views/customers/index.html.erb:67
+msgid "No customers were found."
+msgstr ""
+
+#: app/views/customers/show.html.erb:5
+msgid "That customer do not exist."
+msgstr ""
+
+#: app/views/customers/show.html.erb:9
+msgid "Show customer: %s"
+msgstr ""
+
+#: app/views/customers/show.html.erb:13
+msgid "Edit customer"
+msgstr ""
+
+#: app/views/customers/show.html.erb:43
+msgid "No projects has been added for this customer."
+msgstr ""
+
+#: app/views/customers/_form.html.erb:15
+msgid "Edit customer: %s"
+msgstr ""
+
+#: app/views/customers/_form.html.erb:51
+msgid "The name of the customer as it should appear in the system."
+msgstr ""
+
+#: app/views/customers/_form.html.erb:58
+msgid "Do you want to delete this customer?"
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:11
+msgid "Invalid date-from."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:18
+msgid "Invalid date-to."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:50
+msgid "If you only want timelogs from a specific date and up."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:55
+msgid "If you only want timelogs up to a specific date."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:57 app/views/timelogs/_form.html.erb:38
+#: app/views/comments/_form.html.erb:55 app/views/tasks/_timelogs.html.erb:8
+msgid "Comment"
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:60
+msgid "A part of the comment in the timelog you are looking for."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:68
+msgid "If you want to find timelogs from specific users."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:76
+msgid "If you want to find timelogs from specific projects."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:78 app/views/timelogs/index.html.erb:193
+#: app/views/timelogs/_form.html.erb:32
+msgid "Invoiced"
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:81
+msgid "If you only want to view invoiced, uninvoiced or all timelogs."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:84
+msgid "Only invoiced"
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:85
+msgid "Only un-invoiced"
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:125
+msgid "All timelogs was marked as invoiced."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:167
+msgid "Sum"
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:170
+msgid "Total hours"
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:173
+msgid ""
+"The total amount of hours of all the found time-logs (first hours used then "
+"time used on transport)."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:178
+msgid "Total km's of transport used in all the timelogs found."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:189
+msgid "Timelog"
+msgstr "Tidslog"
+
+#: app/views/timelogs/index.html.erb:190 app/views/timelogs/index.html.erb:255
+#: app/views/projects/_assigned_users.html.erb:6
+#: app/views/tasks/index.html.erb:31 app/views/tasks/_timelogs.html.erb:7
+#: app/views/tasks/_users.html.erb:4
+msgid "User"
+msgstr "Bruger"
+
+#: app/views/timelogs/index.html.erb:194 app/views/timelogs/_form.html.erb:12
+msgid "Time"
+msgstr "Tid"
+
+#: app/views/timelogs/index.html.erb:222
+msgid "Yes"
+msgstr "Ja"
+
+#: app/views/timelogs/index.html.erb:222
+msgid "No"
+msgstr "Nej"
+
+#: app/views/timelogs/index.html.erb:238 app/views/tasks/_timelogs.html.erb:71
+msgid "No timelogs were found."
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:250
+msgid "Customer message"
+msgstr "Kundebesked"
+
+#: app/views/timelogs/index.html.erb:307
+msgid "Mark timelogs as invoiced"
+msgstr ""
+
+#: app/views/timelogs/index.html.erb:307
+msgid "Are you sure you want to mark all the found timelogs as invoiced?"
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:10
+msgid "On which task should this timelog be saved?"
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:15
+msgid "How much time should be logged?"
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:17
+msgid "Time transportation"
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:20
+msgid "How much time was used on transportation?"
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:22
+msgid "Transportation length"
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:25
+msgid "How many km was used on transportation?"
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:30
+msgid "On which date was the time used?"
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:36
+msgid "If this timelog has been invoiced or not."
+msgstr ""
+
+#: app/views/timelogs/_form.html.erb:42
+msgid "What whas done using the time."
+msgstr ""
+
+#: app/views/comments/_form.html.erb:37
+msgid "Changed the task-status to '%s'."
+msgstr ""
+
+#: app/views/comments/_form.html.erb:66
+msgid "Task status"
+msgstr ""
+
+#: app/views/comments/_form.html.erb:70
+msgid ""
+"If you want to change the status of the task as well, then you should choose "
+"the new status here."
+msgstr ""
+
+#: app/views/comments/_form.html.erb:88
+msgid "Please write a comment before saving."
+msgstr ""
+
+#: app/views/projects/index.html.erb:7
+msgid "Search for project"
+msgstr ""
+
+#: app/views/projects/index.html.erb:19
+msgid "A part of the name of the project you are looking for."
+msgstr ""
+
+#: app/views/projects/index.html.erb:68
+msgid "No projects were found."
+msgstr ""
+
+#: app/views/projects/show.html.erb:3 app/views/projects/show.html.erb:10
+msgid "You do not have access to this project."
+msgstr ""
+
+#: app/views/projects/show.html.erb:25
+msgid "Show project: %s."
+msgstr ""
+
+#: app/views/projects/show.html.erb:33 app/views/projects/edit.html.haml:1
+msgid "Edit project"
+msgstr ""
+
+#: app/views/projects/show.html.erb:36 app/views/projects/_form.html.erb:62
+msgid "Add task"
+msgstr "Tilføj opgave"
+
+#: app/views/projects/show.html.erb:44 app/views/projects/_form.html.erb:44
+msgid "Added by"
+msgstr "Tilføjet af"
+
+#: app/views/projects/show.html.erb:63 app/views/projects/_form.html.erb:22
+msgid "Deadline"
+msgstr ""
+
+#: app/views/projects/show.html.erb:74
+msgid "Assign user"
+msgstr "Tildel bruger"
+
+#: app/views/projects/show.html.erb:74 app/views/tasks/show.html.erb:106
+msgid "Assign user to task"
+msgstr "Tildel bruger til opgave"
+
+#: app/views/projects/_assigned_users.html.erb:21
+msgid "Do you want to remove this user from the project?"
+msgstr ""
+
+#: app/views/projects/_form.html.erb:20
+msgid "The name of the project as it should appear in this system."
+msgstr ""
+
+#: app/views/projects/_form.html.erb:25
+msgid "The deadline of the project."
+msgstr ""
+
+#: app/views/projects/_form.html.erb:27
+msgid "Price per hour"
+msgstr ""
+
+#: app/views/projects/_form.html.erb:31
+msgid "Price per hour transport"
+msgstr ""
+
+#: app/views/projects/_form.html.erb:38
+msgid "The customer that this project belongs under."
+msgstr ""
+
+#: app/views/projects/_form.html.erb:47
+msgid "The user that added this project."
+msgstr ""
+
+#: app/views/projects/_form.html.erb:56
+msgid "A description of the project to tell what it is about."
+msgstr ""
+
+#: app/views/projects/_form.html.erb:63
+msgid "Do you want to delete this project?"
+msgstr ""
+
+#: app/views/tasks/index.html.erb:1
+msgid "Search for tasks"
+msgstr ""
+
+#: app/views/tasks/index.html.erb:12
+msgid "A part of the name of the task you are looking for."
+msgstr ""
+
+#: app/views/tasks/index.html.erb:17
+msgid "A part of the description of the task you are looking for."
+msgstr ""
+
+#: app/views/tasks/index.html.erb:22
+msgid "If you only want to find tasks with a specific status."
+msgstr ""
+
+#: app/views/tasks/index.html.erb:25 app/views/tasks/show.html.erb:63
+#: app/views/tasks/_form.html.erb:73
+msgid "Type"
+msgstr ""
+
+#: app/views/tasks/index.html.erb:28
+msgid "If you only want to find tasks of a specific type."
+msgstr ""
+
+#: app/views/tasks/index.html.erb:35
+msgid "If you only want to see tasks from a specific user."
+msgstr ""
+
+#: app/views/tasks/show.html.erb:32
+msgid "Show task: %s."
+msgstr "Vis opgave: %s."
+
+#: app/views/tasks/show.html.erb:36 app/views/tasks/edit.html.haml:1
+msgid "Edit task"
+msgstr "Rediger opgave"
+
+#: app/views/tasks/show.html.erb:41
+msgid "Remove from list"
+msgstr ""
+
+#: app/views/tasks/show.html.erb:45
+msgid "Add to list"
+msgstr "Tilføj til liste"
+
+#: app/views/tasks/show.html.erb:61
+msgid "The current status of the task."
+msgstr ""
+
+#: app/views/tasks/show.html.erb:66
+msgid "The type of task this is."
+msgstr ""
+
+#: app/views/tasks/show.html.erb:71
+msgid "The date this task was added."
+msgstr ""
+
+#: app/views/tasks/show.html.erb:76
+msgid "The project this task is created under."
+msgstr ""
+
+#: app/views/tasks/show.html.erb:81
+msgid "The user that created this task."
+msgstr ""
+
+#: app/views/tasks/show.html.erb:86
+msgid ""
+"The priority of the task. 10 as most important and 1 as least important."
+msgstr ""
+
+#: app/views/tasks/show.html.erb:96
+msgid "No description has been written for this task."
+msgstr ""
+
+#: app/views/tasks/show.html.erb:104
+msgid "Assigned users"
+msgstr ""
+
+#: app/views/tasks/show.html.erb:106
+msgid "Assign a user"
+msgstr ""
+
+#: app/views/tasks/show.html.erb:116
+msgid "Checklist"
+msgstr ""
+
+#: app/views/tasks/show.html.erb:118
+msgid "Add new check"
+msgstr ""
+
+#: app/views/tasks/show.html.erb:133
+msgid "Comments"
+msgstr ""
+
+#: app/views/tasks/show.html.erb:135 app/views/tasks/show.html.erb:143
+msgid "Add new comment"
+msgstr ""
+
+#: app/views/tasks/_timelogs.html.erb:4
+msgid "ID"
+msgstr ""
+
+#: app/views/tasks/_timelogs.html.erb:10
+msgid "Invoiced?"
+msgstr ""
+
+#: app/views/tasks/_timelogs.html.erb:60
+msgid "Do you want to delete this timelog?"
+msgstr ""
+
+#: app/views/tasks/_timelogs.html.erb:60 app/views/tasks/_checks.html.erb:6
+#: app/views/tasks/_comments.html.erb:13
+msgid "delete"
+msgstr ""
+
+#: app/views/tasks/_checks.html.erb:6 app/views/tasks/_comments.html.erb:13
+msgid "edit"
+msgstr ""
+
+#: app/views/tasks/_checks.html.erb:17
+msgid "No checks has been added for this task."
+msgstr ""
+
+#: app/views/tasks/_comments.html.erb:13
+msgid "Do you want to delete this comment?"
+msgstr ""
+
+#: app/views/tasks/_comments.html.erb:30
+msgid "No comments were found for this task."
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:14
+msgid ""
+"No projects has been added to this installation yet - please do that first."
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:20
+msgid "None"
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:65
+msgid "The name of the task as it should appear in this system."
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:71
+msgid "The project that this task belongs under."
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:76
+msgid "The type of the task."
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:82
+msgid "The status of the task."
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:89
+msgid "10 for most important and 1 for least important."
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:94
+msgid "The description as it should appear for the users."
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:99
+msgid "Insert browser and os"
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:127
+msgid "Browser"
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:128
+msgid "Version"
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:129
+msgid "Operating system"
+msgstr ""
+
+#: app/views/tasks/_users.html.erb:15
+msgid "Do you want to remove this user from this task?"
+msgstr ""
+
+#: app/views/tasks/_users.html.erb:23
+msgid "No users has been assigned to this task."
+msgstr ""
+
+#: app/views/users/edit.html.haml:1
+msgid "Edit user"
+msgstr ""
+
+#: app/views/users/new.html.haml:1
+msgid "New user"
+msgstr ""
+
+#: app/views/projects/new.html.haml:1
+msgid "New project"
+msgstr ""

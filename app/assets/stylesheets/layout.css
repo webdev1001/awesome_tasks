@@ -163,13 +163,13 @@ input, select, textarea{
   padding: 4px;
 }
 
-input[type=button], input[type=submit], input.button{
+input[type=button], input[type=submit], input.button, a.button {
   border: 1px solid #989898;
   background: url("/gfx/button_bg.png") 0 0 repeat-x;
-  height: 20px;
   font-size: 12px;
-  padding: 0px 9px 0px 9px;
+  padding: 2px 9px 2px 9px;
   margin: 0px 0px 0px 0px;
+  color: black;
 }
 
 input[type=checkbox]{

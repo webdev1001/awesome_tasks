@@ -28,3 +28,17 @@ task.assign_attributes(
   :project => project
 )
 task.save!
+
+timelog1 = task.timelogs.find_or_initialize_by(:date => "2014-06-17")
+timelog1.assign_attributes(
+  :time => "1:30:00",
+  :user => user_admin
+)
+timelog1.save!
+
+timelog2 = task.timelogs.find_or_initialize_by(:date => "2014-06-18")
+timelog2.assign_attributes(
+  :time => "0:30:00",
+  :user => user_admin
+)
+timelog2.save!

@@ -1,13 +1,10 @@
 <%
-  user = _ob.get(:User, params["user_id"])
-  flash[:warning] = (_("You do not have access to view this user.")) if !user.has_view_access?(current_user)
-  
-  print _site.header(sprintf(_("Show user: %s."), user.name.html))
+  content_for(:haeder_title){ sprintf(_("Show user: %s."), @user.name) }
   
   if can?(:admin, :admin)
     %>
       <%=DesignBox.boxt(_("Actions"), 450)%>
-        <input type="button" value="<%=_("Edit")%>" onclick="location.href='?show=user_edit&amp;user_id=<%=user.id%>';" />
+        <input type="button" value="<%=_("Edit")%>" onclick="location.href='<%= edit_user_path(@user) %>';" />
       <%=DesignBox.boxb%>
 
       <br />
@@ -17,19 +14,17 @@
 
 <%=DesignBox.boxt(_("Information"), 450)%>
   <table class="form">
-    <%
-      print Knj::Web.inputs([{
-        :title => _("Name"),
-        :type => :info,
-        :value => user.name.html,
-        :descr => _("The real name of the user.")
-      },{
-        :title => _("Email"),
-        :type => :info,
-        :value => "<a href=\"mailto:#{user[:email].html}\">#{user[:email].html}</a>",
-        :descr => _("The email of the user.")
-      }])
-    %>
+    <%= Knj::Web.inputs([{
+      :title => _("Name"),
+      :type => :info,
+      :value => @user.name,
+      :descr => _("The real name of the user.")
+    },{
+      :title => _("Email"),
+      :type => :info,
+      :value => mail_to(@user.email),
+      :descr => _("The email of the user.")
+    }]).html_safe %>
   </table>
 <%=DesignBox.boxb%>
 
@@ -47,7 +42,7 @@
     </thead>
     <tbody>
       <%
-        tasks = user.tasks("orderby" => [["date_added", "desc"], ["id", "desc"]])
+        tasks = @user.tasks.order(:created_at, :description)
         
         count = 0
         tasks.each do |task|
@@ -57,16 +52,16 @@
           %>
             <tr>
               <td>
-                <%=task.html%>
+                <%= link_to_task task %>
               </td>
               <td>
-                <%=task.status_str.html%>
+                <%= task.translated_state %>
               </td>
               <td class="nowrap" style="width: 100px;">
-                <%=task.date_added_str(:time => false)%>
+                <%= l(task.created_at, :format => :long) %>
               </td>
               <td>
-                <%=task.project_html%>
+                <%= link_to_project task.project %>
               </td>
             </tr>
           <%

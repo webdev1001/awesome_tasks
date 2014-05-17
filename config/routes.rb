@@ -1,7 +1,11 @@
 AwesomeTasks::Application.routes.draw do
   resources :users do
     get :search, :on => :collection
+    post :log_in_as, :on => :member
+    get :roles, :on => :member
   end
+  
+  resources :user_roles
   
   resources :tasks do
     get :comments, :on => :member
@@ -24,6 +28,19 @@ AwesomeTasks::Application.routes.draw do
   
   resources :user_authentications do
     delete :logout, :on => :collection
+  end
+  
+  namespace :profile do
+    get :index
+    post :update
+  end
+  
+  namespace :workstatus do
+    get :index
+  end
+  
+  namespace :locales do
+    post :set
   end
   
   resources :user_project_links

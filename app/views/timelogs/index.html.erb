@@ -35,58 +35,56 @@
     exit
   end
   
-  print _site.header(_("Timelogs"))
+  content_for(:header_title){ _("Timelogs") }
 %>
 
 <form method="get" onsubmit="return do_submit_criterias();">
-<%=Knj::Web.hiddens([{:name => :show, :value => :timelog_search}, {:name => :choice, :value => :dosearch}, {:name => :users, :value => ""}, {:name => :projects, :value => ""}])%>
+<%= Knj::Web.hiddens([{:name => :choice, :value => :dosearch}, {:name => :users, :value => ""}, {:name => :projects, :value => ""}]).html_safe %>
 
 <%=DesignBox.boxt(_("Enter criteria"), "400px")%>
   <table class="form">
-    <%
-      print Knj::Web.inputs([{
-        :title => _("Date from"),
-        :name => :texdatefrom,
-        :value => date_from.out(:time => false),
-        :descr => _("If you only want timelogs from a specific date and up.")
-      },{
-        :title => _("Date to"),
-        :name => :texdateto,
-        :value => date_to.out(:time => false),
-        :descr => _("If you only want timelogs up to a specific date.")
-      },{
-        :title => _("Comment"),
-        :name => :texcomment,
-        :value => params["texcomment"],
-        :descr => _("A part of the comment in the timelog you are looking for.")
-      },{
-        :title => _("Users"),
-        :name => :seluser,
-        :opts => _ob.list_optshash(:User, :list_args => {"orderby" => "name"}),
-        :multiple => true,
-        :size => 5,
-        :values => params["users"].to_s.split(";").map{|ele| ele.to_i},
-        :descr => _("If you want to find timelogs from specific users.")
-      },{
-        :title => _("Projects"),
-        :name => :selproject,
-        :opts => _ob.list_optshash(:Project, :list_args => {"orderby" => "name"}),
-        :multiple => true,
-        :size => 5,
-        :values => params["projects"].to_s.split(";").map{|ele| ele.to_i},
-        :descr => _("If you want to find timelogs from specific projects.")
-      },{
-        :title => _("Invoiced"),
-        :name => :selinvoiced,
-        :value => params["selinvoiced"],
-        :descr => _("If you only want to view invoiced, uninvoiced or all timelogs."),
-        :opts => {
-          "" => _("All"),
-          "1" => _("Only invoiced"),
-          "0" => _("Only un-invoiced")
-        }
-      }])
-    %>
+    <%= Knj::Web.inputs([{
+      :title => _("Date from"),
+      :name => :texdatefrom,
+      :value => date_from.out(:time => false),
+      :descr => _("If you only want timelogs from a specific date and up.")
+    },{
+      :title => _("Date to"),
+      :name => :texdateto,
+      :value => date_to.out(:time => false),
+      :descr => _("If you only want timelogs up to a specific date.")
+    },{
+      :title => _("Comment"),
+      :name => :texcomment,
+      :value => params["texcomment"],
+      :descr => _("A part of the comment in the timelog you are looking for.")
+    },{
+      :title => _("Users"),
+      :name => :seluser,
+      :opts => knjrbfw_opts(User.order(:name)),
+      :multiple => true,
+      :size => 5,
+      :values => params["users"].to_s.split(";").map{|ele| ele.to_i},
+      :descr => _("If you want to find timelogs from specific users.")
+    },{
+      :title => _("Projects"),
+      :name => :selproject,
+      :opts => knjrbfw_opts(Project.order(:name)),
+      :multiple => true,
+      :size => 5,
+      :values => params["projects"].to_s.split(";").map{|ele| ele.to_i},
+      :descr => _("If you want to find timelogs from specific projects.")
+    },{
+      :title => _("Invoiced"),
+      :name => :selinvoiced,
+      :value => params["selinvoiced"],
+      :descr => _("If you only want to view invoiced, uninvoiced or all timelogs."),
+      :opts => {
+        "" => _("All"),
+        "1" => _("Only invoiced"),
+        "0" => _("Only un-invoiced")
+      }
+    }]).html_safe %>
     <tr>
       <td colspan="2" class="buttons">
         <input type="submit" value="<%=_("Search")%>" />
@@ -133,61 +131,52 @@
 
 <%
   if params["choice"] == "dosearch"
-    args = {"orderby" => "date"}
+    args = {}
+    
+    tlogs = Timelog.order(:date)
     
     if params["texdatefrom"].to_s.length > 0
-      args["date_from"] = date_from
+      tlogs = tlogs.where("timelogs.date >= ?", date_from)
     end
     
     if params["texdateto"].to_s.length > 0
-      args["date_to"] = date_to
+      tlogs = tlogs.where("timelogs.date <= ?", date_to)
     end
     
     if params["texcomment"].to_s.length > 0
-      args["comment_search"] = params["texcomment"]
+      tlogs = tlogs.where("timelogs.comment LIKE ?", "%#{params["texcomment"]}%")
     end
     
     if params["users"].to_s.length > 0
-      args["user_id"] = params["users"].to_s.split(";")
+      tlogs = tlogs.where("timelogs.user_id IN (?)", params["users"].to_s.split(";"))
     end
     
     if params["projects"].to_s.length > 0
-      args["project_id"] = params["projects"].to_s.split(";")
+      tlogs = tlogs.where("timelogs.project_id IN (?)", params["projects"].to_s.split(";"))
     end
     
     if params["selinvoiced"].to_s == "1"
-      args["invoiced"] = 1
+      tlogs = tlogs.where("timelogs.invoiced = '1'")
     elsif params["selinvoiced"].to_s == "0"
-      args["invoiced_not"] = 1
+      tlogs = tlogs.where("timelogs.invoiced != '1'")
     end
-    
-    #puts "GET: #{_get}"
-    #puts "Args: #{args}"
-    #puts "SQL: #{_ob.list(:Timelog, args.merge("return_sql" => true))}"
-    
-    args_count = args.merge(:count => true)
-    
-    tlogs = _ob.list(:Timelog, args.clone)
-    tlogs_count = _ob.list(:Timelog, args_count.clone)
     
     %>
       <br />
       
       <%=DesignBox.boxt(_("Sum"), "350px")%>
         <table class="form">
-          <%
-            print Knj::Web.inputs([{
-              :title => _("Total hours"),
-              :type => :info,
-              :value => Knj::Locales.number_out(tlogs_count[:sum_time].to_f / 3600, 1) + " / " + Knj::Locales.number_out(tlogs_count[:sum_time_transport].to_f / 3600, 1),
-              :descr => _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")
-            },{
-              :title => _("Total transport"),
-              :type => :info,
-              :value => Knj::Locales.number_out(tlogs_count[:sum_transport_length], 1),
-              :descr => _("Total km's of transport used in all the timelogs found.")
-            })
-          %>
+          <%= Knj::Web.inputs([{
+            :title => _("Total hours"),
+            :type => :info,
+            :value => Knj::Locales.number_out(tlogs.sum(:time).to_f / 3600, 1) + " / " + Knj::Locales.number_out(tlogs.sum(:time_transport).to_f / 3600, 1),
+            :descr => _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")
+          },{
+            :title => _("Total transport"),
+            :type => :info,
+            :value => Knj::Locales.number_out(tlogs.sum(:transport_length), 1),
+            :descr => _("Total km's of transport used in all the timelogs found.")
+          }]).html_safe %>
         </table>
       <%=DesignBox.boxb%>
       
@@ -210,33 +199,33 @@
             <%
               tlogs_sorted = {}
               tlogs.each do |tlog|
-                dbt = Knj::Db::Dbtime.new(tlog[:time])
-                dbt_transport = Knj::Db::Dbtime.new(tlog[:time_transport])
-                tlogs_sorted[tlog[:task_id]] = [] if !tlogs_sorted.has_key?(tlog[:task_id])
-                tlogs_sorted[tlog[:task_id]] << tlog
+                dbt = Knj::Db::Dbtime.new(tlog.time)
+                dbt_transport = Knj::Db::Dbtime.new(tlog.time_transport)
+                tlogs_sorted[tlog.task_id] = [] if !tlogs_sorted.has_key?(tlog.task_id)
+                tlogs_sorted[tlog.task_id] << tlog
                 
                 %>
                   <tr>
                     <td>
-                      <%=tlog.html%>
+                      <%= tlog.html %>
                     </td>
                     <td>
-                      <%=tlog.user_html%>
+                      <%= link_to_user tlog.user %>
                     </td>
                     <td>
-                      <%=tlog.date_str(:time => false)%>
+                      <%= l(tlog.date) %>
                     </td>
                     <td>
-                      <%=tlog.task_html%>
+                      <%= link_to_task tlog.task %>
                     </td>
                     <td>
-                      <%=Knj::Strings.yn_str(tlog.invoiced?, _("Yes"), _("No"))%>
+                      <%= Knj::Strings.yn_str(tlog.invoiced?, _("Yes"), _("No")) %>
                     </td>
                     <td>
-                      <%=Knj::Locales.number_out(dbt.hours_total, 1)%> / <%=Knj::Locales.number_out(dbt_transport.hours_total, 1)%>
+                      <%= Knj::Locales.number_out(dbt.hours_total, 1)%> / <%=Knj::Locales.number_out(dbt_transport.hours_total, 1) %>
                     </td>
                     <td>
-                      <%=Knj::Locales.number_out(tlog[:transport_length], 0)%>
+                      <%= Knj::Locales.number_out(tlog[:transport_length], 0) %>
                     </td>
                   </tr>
                 <%
@@ -270,12 +259,12 @@
           <tbody>
             <%
               tlogs_sorted.each do |task_id, tlogs_arr|
-                task = _ob.get(:Task, task_id)
+                task = Task.find(task_id)
                 
                 %>
                   <tr>
                     <td colspan="3" class="tdt" style="padding-top: 10px;">
-                      <%=task.name.html%>
+                      <%= link_to_task task %>
                     </td>
                   </tr>
                 <%
@@ -297,14 +286,14 @@
                       <td style="text-align: center;">
                         <input type="hidden" name="timelogs_<%=tlog.id%>" value="1" />
                         
-                        <%=tlog.date_str(:time => false)%><br />
-                        <%=Knj::Locales.number_out(tlog.time_dbt.hours_total, 2)%> / <%=Knj::Locales.number_out(tlog.time_transport_dbt.hours_total, 2)%>
+                        <%= l(tlog.date) %><br />
+                        <%= Knj::Locales.number_out(tlog.time_dbt.hours_total, 2) %> / <%= Knj::Locales.number_out(tlog.time_transport_dbt.hours_total, 2) %>
                       </td>
                       <td class="nowrap">
-                        <%=tlog.user.name.html%>
+                        <%= link_to_user tlog.user %>
                       </td>
                       <td>
-                        <%=tlog.comment_html%>
+                        <%= tlog.comment_html %>
                       </td>
                     </tr>
                   <%

@@ -30,6 +30,13 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    array_enumerator (0.0.3)
+    baza (0.0.13)
+      array_enumerator
+      datet
+      knjrbfw
+      string-cases
+      wref
     bcrypt (3.1.7)
     builder (3.1.4)
     cancan (1.6.10)
@@ -180,6 +187,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-session_store
+  baza
   cancan
   ckeditor
   coffee-rails (~> 4.0.0)

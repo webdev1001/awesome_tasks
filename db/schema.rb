@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517113212) do
+ActiveRecord::Schema.define(version: 20140517162525) do
 
   create_table "comments", force: true do |t|
     t.integer  "id_per_resource"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20140517113212) do
   create_table "timelogs", force: true do |t|
     t.integer  "task_id"
     t.integer  "user_id"
+    t.date     "date"
     t.time     "time"
     t.time     "time_transport"
     t.integer  "transport_length"

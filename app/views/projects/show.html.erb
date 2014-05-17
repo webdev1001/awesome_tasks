@@ -48,6 +48,14 @@
             :title => _("Date"),
             :type => :info,
             :value => l(@project.created_at, :format => :long)
+          },{
+            :title => Project.human_attribute_name(:price_per_hour),
+            :type => :info,
+            :value => Knj::Locales.number_out(@project.price_per_hour, 2)
+          },{
+            :title => Project.human_attribute_name(:price_per_hour_transport),
+            :type => :info,
+            :value => Knj::Locales.number_out(@project.price_per_hour_transport, 2)
           }]).html_safe %>
           
           <% if @project.deadline_at %>
@@ -67,9 +75,7 @@
         </div>
         
         <div id="divassignedusers">
-          <div class="error">
-            <%=_"Loading - please wait..."%>
-          </div>
+          <%= render "assigned_users" %>
         </div>
       <%=DesignBox.boxb%>
     </td>
@@ -143,8 +149,6 @@
   }
   
   $(document).ready(function(){
-    load_assigned_users();
-    
     events.connect("do_project_assigned_users_update", function(){
       load_assigned_users();
     });

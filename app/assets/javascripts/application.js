@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-migrate-min
 //= require comments
+//= require locales
 //= require projects
 //= require tasks
 //= require timelogs

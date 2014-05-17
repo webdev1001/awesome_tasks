@@ -1,8 +1,22 @@
 class TasksController < ApplicationController
   before_filter :set_task
   
+  def index
+    if can? :manage, User
+      @users = User.all.to_a
+    else
+      @users = current_user.users_list
+    end
+    
+    @values = params[:q] || {}
+  end
+  
   def new
-    @task = Task.new(params[:task].permit!)
+    if params[:task]
+      @task = Task.new(params[:task].permit!)
+    else
+      @task = Task.new
+    end
   end
   
   def create
@@ -14,6 +28,18 @@ class TasksController < ApplicationController
     else
       flash[:error] = @task.errors.full_messages.join(". ")
       render :new
+    end
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @task.update_attributes(task_params)
+      redirect_to task_path(@task)
+    else
+      flash[:error] = @task.errors.full_messages.join(". ")
+      render :edit
     end
   end
   

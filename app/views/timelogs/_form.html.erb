@@ -1,0 +1,87 @@
+<%= simple_form_for @timelog, :html => {:onsubmit => "return do_save_timelog();"} do |f| %>
+
+<%=DesignBox.boxt(_("Enter details"))%>
+  <table class="form" id="formtimelogedit">
+    <%= Knj::Web.inputs([{
+      :title => _("Task"),
+      :name => "timelog[task_id]",
+      :value => @timelog.task_id,
+      :opts => knjrbfw_opts(Task.all, :choose => true),
+      :descr => _("On which task should this timelog be saved?")
+    },{
+      :title => _("Time"),
+      :name => "timelog[time]",
+      :value => time_as_string(@timelog.time),
+      :descr => _("How much time should be logged?")
+    },{
+      :title => _("Time transportation"),
+      :name => "timelog[time_transport]",
+      :value => time_as_string(@timelog.time_transport),
+      :descr => _("How much time was used on transportation?")
+    },{
+      :title => _("Transportation length"),
+      :name => "timelog[transport_length",
+      :value => @timelog.transport_length,
+      :descr => _("How many km was used on transportation?")
+    },{
+      :title => _("Date"),
+      :name => "timelog[date]",
+      :value => @timelog.date,
+      :descr => _("On which date was the time used?")
+    },{
+      :title => _("Invoiced"),
+      :type => :checkbox,
+      :name => "timelog[invoiced]",
+      :value => @timelog.invoiced,
+      :descr => _("If this timelog has been invoiced or not.")
+    },{
+      :title => _("Comment"),
+      :name => "timelog[comment]",
+      :value => @timelog.comment,
+      :type => :textarea,
+      :descr => _("What whas done using the time."),
+      :height => 200
+    }]).html_safe %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="submit" value="<%=_("Save")%>" />
+      </td>
+    </tr>
+  </table>
+<%=DesignBox.boxb%>
+
+<% end %>
+
+<script type="text/javascript">
+  modal_on_opened(function(){
+    $("#textime").focus()
+  })
+  
+  function do_save_timelog(){
+    form = $("form.edit_timelog, form.new_timelog")
+    formdata = forms_inputs_read($("#formtimelogedit"))
+    
+    <% if @timelog.new_record? %>
+      method = "POST"
+    <% else %>
+      method = "PATCH"
+    <% end %>
+    
+    $.ajax({
+      type: method,
+      url: form.attr("action"),
+      data: formdata,
+      complete: function(data){
+        if ($.trim(data.responseText).length > 0){
+          alert(data.responseText)
+        }else{
+          modal_close()
+          events.call("on_timelog_added")
+          events.call("do_timelogs_update")
+        }
+      }
+    })
+    
+    return false
+  }
+</script>

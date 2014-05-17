@@ -20,6 +20,7 @@ gem 'jquery-migrate-rails'
 gem 'datet'
 gem 'ransack'
 gem 'haml-rails'
+gem 'baza'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

@@ -1,6 +1,6 @@
 function timelog_delete(tlog_id){
-  $.ajax({type: "GET", url: "clean.rhtml?show=timelog_edit&choice=dodelete&timelog_id=" + tlog_id, cache: false, async: true, complete: function(data){
-    if (data.responseText.length > 0){
+  $.ajax({type: "DELETE", url: "/timelogs/" + tlog_id, cache: false, async: true, complete: function(data){
+    if ($.trim(data.responseText).length > 0){
       alert(data.responseText);
     }
     
@@ -9,9 +9,9 @@ function timelog_delete(tlog_id){
 }
 
 function timelog_edit(tlog_id){
-  modal({title: locale_strings["timelog_edit_title"], height: 600, url: "clean.rhtml?show=timelog_edit&timelog_id=" + tlog_id});
+  modal({title: locale_strings["timelog_edit_title"], height: 600, url: "/timelogs/" + tlog_id + "/edit"});
 }
 
 function timelog_add(task_id){
-  modal({title: locale_strings["timelog_edit_title"], height: 600, url: "clean.rhtml?show=timelog_edit&task_id=" + task_id});
+  modal({title: locale_strings["timelog_edit_title"], height: 600, url: "/timelogs/new/?timelog[task_id]=" + task_id});
 }

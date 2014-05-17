@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :task_assigned_users
   has_many :user_rank_links
   has_many :user_project_links
+  has_many :projects, :through => :user_project_links
   has_many :user_roles
   has_many :user_task_list_links
   
@@ -93,11 +94,9 @@ class User < ActiveRecord::Base
   def users_list
     users = {}
     
-    self.customers.each do |customer|
-      customer.projects do |project|
-        self.ob.list(:User, {
-          [:User_project_link, "project_id"] => project.id
-        }) do |user|
+    customers.each do |customer|
+      customer.projects.each do |project|
+        project.users do |user|
           users[user.id] = user
         end
       end

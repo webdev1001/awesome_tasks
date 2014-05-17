@@ -33,7 +33,7 @@
 %>
 
 <div style="padding-bottom: 15px;">
-  <input type="button" value="<%=_"Edit task"%>" onclick="location.href='?show=task_edit&amp;task_id=<%=@task.id%>';" />
+  <input type="button" value="<%=_"Edit task"%>" onclick="location.href='<%= edit_task_path(@task) %>';" />
   
   <%
     if current_user.user_task_list_links.where(:task_id => @task).any?
@@ -159,65 +159,65 @@
   function task_show_comments_update(){
     $.ajax({type: "GET", url: "<%= comments_task_path(@task) %>", async: true, cache: false, complete: function(data){
       $("#divcomments").slideUp("fast", function(){
-        $("#divcomments").html(data.responseText);
-        $("#divcomments").slideDown("fast");
-      });
-    }});
+        $("#divcomments").html(data.responseText)
+        $("#divcomments").slideDown("fast")
+      })
+    }})
   }
   
   function task_show_timelogs_update(){
     $.ajax({type: "GET", url: "<%= timelogs_task_path(@task) %>", async: true, cache: false, complete: function(data){
       $("#divtimelogs").slideUp("fast", function(){
-        $("#divtimelogs").html(data.responseText);
-        $("#divtimelogs").slideDown("fast");
-      });
-    }});
+        $("#divtimelogs").html(data.responseText)
+        $("#divtimelogs").slideDown("fast")
+      })
+    }})
   }
   
   function task_show_users_update(){
     $.ajax({type: "GET", url: "<%= users_task_path(@task) %>", async: true, cache: false, complete: function(data){
       $("#divusers").slideUp("fast", function(){
-        $("#divusers").html(data.responseText);
-        $("#divusers").slideDown("fast");
-      });
-    }});
+        $("#divusers").html(data.responseText)
+        $("#divusers").slideDown("fast")
+      })
+    }})
   }
   
   function task_show_assign_user_choose(user_id){
     $.ajax({type: "POST", url: "<%= assign_user_task_path(@task) %>", data: {"user_id": user_id}, async: true, cache: false, complete: function(data){
       if (data.responseText.length > 0){
-        alert(data.responseText);
+        alert(data.responseText)
       }
       
-      task_show_users_update();
-      modal_close();
-    }});
+      task_show_users_update()
+      modal_close()
+    }})
   }
   
   function task_show_checks_update(){
     $.ajax({type: "GET", url: "<%= checks_task_path(@task) %>", async: true, cache: false, complete: function(data){
       $("#divchecks").slideUp("fast", function(){
-        $("#divchecks").html(data.responseText);
-        $("#divchecks").slideDown("fast");
-      });
-    }});
+        $("#divchecks").html(data.responseText)
+        $("#divchecks").slideDown("fast")
+      })
+    }})
   }
   
   $(document).ready(function(){
     events.connect("do_comments_update", function(){
-      task_show_comments_update();
-    });
+      task_show_comments_update()
+    })
     
     events.connect("do_timelogs_update", function(){
-      task_show_timelogs_update();
-    });
+      task_show_timelogs_update()
+    })
     
     events.connect("do_task_assigned_users_update", function(){
-      task_show_users_update();
-    });
+      task_show_users_update()
+    })
     
     events.connect("do_task_check_update", function(){
-      task_show_checks_update();
-    });
-  });
+      task_show_checks_update()
+    })
+  })
 </script>
