@@ -30,7 +30,8 @@ class Task < ActiveRecord::Base
     return {
       :feature => _("Feature"),
       :bug => _("Bug report"),
-      :question => _("Question")
+      :question => _("Question"),
+      :other => _("Other")
     }
   end
   

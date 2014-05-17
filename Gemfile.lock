@@ -98,6 +98,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.10.0)
+    mysql (2.9.1)
     mysql2 (0.3.16)
     orm_adapter (0.5.0)
     php4r (0.0.4)
@@ -200,6 +201,7 @@ DEPENDENCIES
   jquery-migrate-rails
   jquery-rails
   knjrbfw
+  mysql
   mysql2
   php4r
   rails (= 4.0.5)

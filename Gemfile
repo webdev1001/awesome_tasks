@@ -22,6 +22,9 @@ gem 'ransack'
 gem 'haml-rails'
 gem 'baza'
 
+# Used for migrate script (the old database to Rails)
+gem 'mysql'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
