@@ -24,6 +24,7 @@ gem 'baza'
 
 # Used for migrate script (the old database to Rails)
 gem 'mysql'
+gem 'active-record-transactioner', '0.0.5'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

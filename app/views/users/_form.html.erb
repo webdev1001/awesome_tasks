@@ -4,19 +4,6 @@
     redirect_to :back
   end
   
-  if params["choice"] == "dosave"
-    save_hash = {
-      :name => params["texname"],
-      :username => params["texusername"],
-      :email => params["texemail"],
-      :active => Knj::Web.checkval(params["cheactive"], 1, 0)
-    }
-    
-    if params["texpasswd_md5"].to_s.length > 0 and params["texpasswd_md5"] != Php4r.md5("")
-      save_hash[:passwd] = params["texpasswd_md5"]
-    end
-  end
-  
   if params["choice"] == "dologinas"
     _session[:user_id] = user.id
     redirect_to("?show=user_login")
@@ -78,7 +65,7 @@
     <tr>
       <td colspan="2" class="buttons">
         <%if !@user.new_record?%>
-          <%= link_to _("Log in as"), log_in_as_user_path(@user), :method => :post, :data => {:confirm => _("Are you sure?")} %>
+          <%= link_to _("Log in as"), log_in_as_user_path(@user), :method => :post, :class => "button", :data => {:confirm => _("Are you sure?")} %>
           <input type="button" value="<%=_"Show"%>" onclick="location.href='<%= user_path(@user) %>';" />
           <%= link_to _("Delete"), user_path(@user), :method => :delete, :class => "button", :data => {:confirm => _("Are you sure?")} %>
         <%end%>

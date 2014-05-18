@@ -24,6 +24,11 @@ class Ability
       can :show, User do |user|
         projects = user.projects
       end
+      
+      can [:new, :create, :show], Comment
+      can [:edit, :update], Comment do |comment|
+        comment.user_id == current_user.id
+      end
     end
   end
   
@@ -31,6 +36,9 @@ private
   
   def administrator
     can :admin, :admin
+    can :manage, Comment
+    can :manage, Customer
+    can :manage, Project
     can :manage, Task
     can :manage, User
   end

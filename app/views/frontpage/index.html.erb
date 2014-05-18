@@ -40,48 +40,6 @@
   end
   
   task_status_hash = Task.translated_states
-  
-  @tasks.sort! do |a, b|
-    res = nil
-    
-    if params["sort"] == "project" or params["sort"].to_s.length <= 0
-      res = a.project.name.downcase <=> b.project.name.downcase if a.project and b.project
-      if res == nil or res == 0
-        res = a.name.downcase <=> b.name.downcase
-      end
-    elsif params["sort"] == "name"
-      res = a.name.downcase <=> b.name.downcase
-    elsif params["sort"] == "date"
-      adate = a.date_added
-      bdate = b.date_added
-      
-      if !adate
-        res = -1
-      elsif !bdate
-        res = 1
-      else
-        res = a.date_added <=> b.date_added
-      end
-    elsif params["sort"] == "author"
-      res = a.user.name <=> b.user.name
-    elsif params["sort"] == "status"
-      res = task_status_hash[a[:status].to_sym] <=> task_status_hash[b[:status].to_sym]
-    elsif params["sort"] == "priority"
-      res = a[:priority].to_i <=> b[:priority].to_i
-    else
-      raise "Dont know how to sort the tasks."
-    end
-    
-    if params["sortmode"] == "desc"
-      if res == 1
-        res = -1
-      elsif res == -1
-        res = 1
-      end
-    end
-    
-    res
-  end
 %>
 
 <%=DesignBox.boxt(_("Tasks"))%>
@@ -97,21 +55,17 @@
             html = "<th>"
             
             if headline["sort"]
-              html << "<a href=\"/?show=frontpage&amp;sort=#{headline["sort"]}"
+              query_args = {:sort => headline["sort"]}
               
               if params["sort"] == headline["sort"] and params["sortmode"] != "desc"
-                html << "&amp;sortmode=desc"
+                query_args[:sortmode] = "desc"
               end
               
-              html << "\">"
+              html << "<a href=\"#{root_path(query_args)}\">"
             end
             
             html << headline["title"]
-            
-            if headline["sort"]
-              html << "</a>"
-            end
-            
+            html << "</a>" if headline["sort"]
             html << "</th>"
             
             %><%= html.html_safe %><%
@@ -156,7 +110,7 @@
                 <%= link_to_user task.user %>
               </td>
               <td class="nowrap">
-                <%= l(task.created_at.to_date)%>
+                <%= l(task.created_at.to_date) if task.created_at%>
               </td>
               <td>
                 <%= task.translated_state %>

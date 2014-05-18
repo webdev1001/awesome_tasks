@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  before_filter :set_user
   
   def search
     render :index, :layout => false
@@ -25,7 +25,19 @@ class UsersController < ApplicationController
     end
   end
   
+  def log_in_as
+    sign_in @user
+    redirect_to user_path(@user)
+  end
+  
 private
+  
+  def set_user
+    if params[:id]
+      @user = User.find(params[:id])
+      authorize! action_name.to_sym, @user
+    end
+  end
   
   def user_params
     params.require(:user).permit(:username, :password, :name, :email,

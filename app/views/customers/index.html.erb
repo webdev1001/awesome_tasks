@@ -1,21 +1,19 @@
 <% content_for(:header_title){ _("Search for customers") } %>
 
 <form method="get">
-<%=Knj::Web.hiddens([{:name => :show, :value => :customer_search}, {:name => :choice, :value => :dosearch}])%>
+<%= Knj::Web.hiddens([{:name => :choice, :value => :dosearch}]).html_safe %>
 
 <%=DesignBox.boxt(_("Enter criteria"), "350px")%>
   <table class="form">
-    <%
-      print Knj::Web.inputs([{
-        :title => _("Name"),
-        :name => :texname,
-        :value => params["texname"],
-        :descr => _("A part of the customers name which you are looking for.")
-      }])
-    %>
+    <%= Knj::Web.inputs([{
+      :title => _("Name"),
+      :name => :texname,
+      :value => params["texname"],
+      :descr => _("A part of the customers name which you are looking for.")
+    }]).html_safe %>
     <tr>
       <td colspan="2" class="buttons">
-        <input type="button" value="<%=_("Add new customer")%>" onclick="location.href='?show=customer_edit';" />
+        <input type="button" value="<%=_("Add new customer")%>" onclick="location.href='<%= new_customer_path %>';" />
         <input type="submit" value="<%=_("Search")%>" />
       </td>
     </tr>
@@ -30,13 +28,13 @@
 
 <%
   if params["choice"] == "dosearch"
-    args = {"orderby" => "name"}
+    args = {}
     
     if params["texname"].to_s.length > 0
-      args["name_search"] = params["texname"]
+      args["name_cont"] = params["texname"]
     end
     
-    customers = _ob.list(:Customer, args)
+    customers = Customer.ransack(args).result.order(:name)
     
     %>
       <br />
@@ -49,27 +47,20 @@
             </tr>
           </thead>
           <tbody>
-            <%
-              customers.each do |customer|
-                %>
-                  <tr>
-                    <td>
-                      <%=customer.html%>
-                    </td>
-                  </tr>
-                <%
-              end
-              
-              if customers.empty?
-                %>
-                  <tr>
-                    <td colspan="1" class="error">
-                      <%=_("No customers were found.")%>
-                    </td>
-                  </tr>
-                <%
-              end
-            %>
+            <% customers.each do |customer| %>
+              <tr>
+                <td>
+                  <%= link_to_customer customer %>
+                </td>
+              </tr>
+            <% end %>
+            <% if customers.none? %>
+              <tr>
+                <td colspan="1" class="error">
+                  <%=_("No customers were found.")%>
+                </td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       <%=DesignBox.boxb%>

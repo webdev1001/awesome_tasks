@@ -1,13 +1,34 @@
 class FrontpageController < ApplicationController
   def index
-    @tasks = []
+    @tasks = Task.all
+      .joins(:project)
+      .joins("LEFT JOIN task_assigned_users ON task_assigned_users.task_id = tasks.id")
+      .where("tasks.user_id = ? || task_assigned_users.user_id = ?", current_user.id, current_user.id)
+      .group("tasks.id")
+      .where("tasks.state IN (?)", ["new", "open", "waiting"])
     
-    current_user.task_assigned_users.each do |task_assigned_users|
-      @tasks << task_assigned_users.task
+    sort_tasks
+  end
+  
+private
+  
+  def sort_tasks
+    if params["sort"] == "project" or params["sort"].to_s.length <= 0
+      @tasks = @tasks.order("projects.name, tasks.name")
+    elsif params["sort"] == "name"
+      @tasks = @tasks.order("tasks.name")
+    elsif params["sort"] == "date"
+      @tasks = @tasks.order("tasks.created_at")
+    elsif params["sort"] == "author"
+      @tasks = @tasks.joins(:user).order("users.name")
+    elsif params["sort"] == "status"
+      @tasks = @tasks.order("tasks.state")
+    elsif params["sort"] == "priority"
+      @tasks = @tasks.order("tasks.priority")
+    else
+      raise "Dont know how to sort the tasks."
     end
     
-    current_user.tasks.each do |task|
-      @tasks << task unless @tasks.map{ |task| task.id }.include?(task.id)
-    end
+    @tasks = @tasks.reverse_order if params["sortmode"] == "desc"
   end
 end

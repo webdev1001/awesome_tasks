@@ -96,7 +96,7 @@
               <%=_("No description has been written for this task.")%>
             </div>
           <% else %>
-            <%= @task.description %>
+            <%= @task.description.html_safe %>
           <% end %>
         <%=DesignBox.boxb%>
       </td>

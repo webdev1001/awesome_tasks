@@ -1,10 +1,10 @@
 <%
-  content_for(:haeder_title){ sprintf(_("Show user: %s."), @user.name) }
+  content_for(:header_title){ sprintf(_("Show user: %s."), @user.name) }
   
-  if can?(:admin, :admin)
+  if can?(:edit, @user)
     %>
       <%=DesignBox.boxt(_("Actions"), 450)%>
-        <input type="button" value="<%=_("Edit")%>" onclick="location.href='<%= edit_user_path(@user) %>';" />
+        <%= link_to _("Edit"), edit_user_path(@user), :class => "button" %>
       <%=DesignBox.boxb%>
 
       <br />

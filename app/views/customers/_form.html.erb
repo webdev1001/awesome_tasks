@@ -1,69 +1,27 @@
-<%
-  if !can?(:admin, :admin)
-    flash[:warning] = (_("You are not an administrator and cannot view this page."))
-    redirect_to :back
-  end
-  
-  if params["choice"] == "dosave"
-    save_hash = {
-      :name => params["texname"]
-    }
-  end
-  
-  if params["customer_id"].to_i > 0
-    customer = _ob.get(:Customer, params["customer_id"])
-    title = sprintf(_("Edit customer: %s"), customer.name.html)
-    
-    if params["choice"] == "dosave"
-      customer.update(save_hash)
-      redirect_to("?show=customer_edit&customer_id#{customer.id}")
-    end
-    
-    if params["choice"] == "dodelete"
-      _hb.on_error_go_back do
-        _ob.delete(customer)
-        redirect_to("?show=customer_search")
-      end
-    end
-  else
-    title = _("Add new customer")
-    
-    if params["choice"] == "dosave"
-      _hb.on_error_go_back do
-        customer = _ob.add(:Customer, save_hash)
-        redirect_to("?show=customer_edit&customer_id=#{customer.id}")
-      end
-    end
-  end
-  
-  print _site.header(title)
-%>
-
-<form method="post" action="?show=customer_edit&amp;choice=dosave<%if customer; print "&amp;customer_id=#{customer.id}"; end%>">
+<%= simple_form_for @customer do |f| %>
 
 <%=DesignBox.boxt(_("Enter details"), "350px")%>
   <table class="form">
-    <%
-      print Knj::Web.inputs([{
-        :title => _("Name"),
-        :name => :texname,
-        :value => [customer, :name],
-        :descr => _("The name of the customer as it should appear in the system.")
-      }])
-    %>
+    <%= Knj::Web.inputs([{
+      :title => _("Name"),
+      :name => "customer[name]",
+      :id => "texname",
+      :value => @customer.name,
+      :descr => _("The name of the customer as it should appear in the system.")
+    }]).html_safe %>
     <tr>
       <td colspan="2" class="buttons">
-        <%if customer%>
-          <input type="button" value="<%=_("Show")%>" onclick="location.href='?show=customer_show&amp;customer_id=<%=customer.id%>';" />
-          <input type="button" value="<%=_("Delete")%>" onclick="if (confirm('<%=_("Do you want to delete this customer?")%>')){location.href='?show=customer_edit&amp;customer_id=<%=customer.id%>&amp;choice=dodelete';}" />
-        <%end%>
+        <% unless @customer.new_record? %>
+          <%= link_to _("Show"), customer_path(@customer), :class => "button" %>
+          <%= link_to _("Delete"), customer_path(@customer), :class => "button", :method => :delete, :data => {:confirm => _("Are you sure?")} %>
+        <% end %>
         <input type="submit" value="<%=_("Save")%>" />
       </td>
     </tr>
   </table>
 <%=DesignBox.boxb%>
 
-</form>
+<% end %>
 
 <script type="text/javascript">
   $("#texname").focus();
