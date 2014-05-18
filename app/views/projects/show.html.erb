@@ -22,7 +22,7 @@
     exit
   end
   
-  content_for(:header_title){ sprintf(_("Show project: %s."), @project.name.html) }
+  content_for(:header_title){ sprintf(_("Show project: %s."), @project.name) }
 %>
 
 <table cellspacing="0" cellpadding="0">
@@ -47,7 +47,7 @@
           },{
             :title => _("Date"),
             :type => :info,
-            :value => l(@project.created_at, :format => :long)
+            :value => (@project.created_at ? l(@project.created_at, :format => :long) : "")
           },{
             :title => Project.human_attribute_name(:price_per_hour),
             :type => :info,
@@ -113,7 +113,7 @@
                 <%= task.translated_state%>
               </td>
               <td>
-                <%= l(task.created_at.to_date) %>
+                <%= l(task.created_at.to_date) if task.created_at %>
               </td>
             </tr>
           <%
@@ -137,20 +137,20 @@
   function load_assigned_users(){
     $.ajax({type: "GET", url: "<%= assigned_users_project_path(@project) %>", async: true, cache: false, complete: function(data){
       $("#divassignedusers").slideUp("fast", function(){
-        $("#divassignedusers").html(data.responseText);
-        $("#divassignedusers").slideDown("fast");
-      });
-    }});
+        $("#divassignedusers").html(data.responseText)
+        $("#divassignedusers").slideDown("fast")
+      })
+    }})
   }
   
   function project_show_assign_user_choose(user_id){
-    modal_close();
-    project_assign_user("<%= @project.id %>", user_id);
+    modal_close()
+    project_assign_user("<%= @project.id %>", user_id)
   }
   
   $(document).ready(function(){
     events.connect("do_project_assigned_users_update", function(){
-      load_assigned_users();
-    });
-  });
+      load_assigned_users()
+    })
+  })
 </script>

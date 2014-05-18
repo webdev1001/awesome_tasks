@@ -136,6 +136,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.task.timelogs')
     #. Default value: task_assigned_users
     _('activerecord.attributes.task.task_assigned_users')
+    #. Default value: assigned_users
+    _('activerecord.attributes.task.assigned_users')
     #. Default value: task_checks
     _('activerecord.attributes.task.task_checks')
     #. Default value: user_task_list_links

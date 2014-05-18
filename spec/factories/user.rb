@@ -5,6 +5,7 @@ FactoryGirl.define do
     email { Forgery(:internet).email_address }
     password { Forgery(:lorem_ipsum).words(4) }
     locale "en"
+    active true
   end
   
   factory :user_admin, :class => "User" do
@@ -13,6 +14,7 @@ FactoryGirl.define do
     email { Forgery(:internet).email_address }
     password { Forgery(:lorem_ipsum).words(4) }
     locale "en"
+    active true
     
     after(:create) do |user|
       user.user_roles.create(:role => "administrator")

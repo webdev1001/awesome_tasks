@@ -18,6 +18,7 @@
 //= require projects
 //= require tasks
 //= require task_functions
+//= require timelogs_functions
 //= require timelogs
 //= require user_task_list_links
 //= require knjjsfw/jquery.md5
@@ -54,5 +55,9 @@ $(document).ready(function(){
       "padding-top": "5px",
       "color": "#000000"
     }
-  });
-});
+  })
+  
+  $("select[name=bottom_locale]").change(function(){
+    locales_set($(this).val())
+  })
+})

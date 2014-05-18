@@ -109,4 +109,12 @@ class User < ActiveRecord::Base
     
     return users
   end
+  
+  def projects_with_access_to
+    if user_roles.where(:role => "administrator").any?
+      Project.all
+    else
+      projects
+    end
+  end
 end

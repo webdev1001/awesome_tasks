@@ -1,40 +1,20 @@
 <% content_for(:header_title){ _("Search for customers") } %>
 
-<form method="get">
-<%= Knj::Web.hiddens([{:name => :choice, :value => :dosearch}]).html_safe %>
-
 <%=DesignBox.boxt(_("Enter criteria"), "350px")%>
-  <table class="form">
-    <%= Knj::Web.inputs([{
-      :title => _("Name"),
-      :name => :texname,
-      :value => params["texname"],
-      :descr => _("A part of the customers name which you are looking for.")
-    }]).html_safe %>
-    <tr>
-      <td colspan="2" class="buttons">
-        <input type="button" value="<%=_("Add new customer")%>" onclick="location.href='<%= new_customer_path %>';" />
-        <input type="submit" value="<%=_("Search")%>" />
-      </td>
-    </tr>
-  </table>
+  <%= simple_search_form_for @ransack, @ransack_params do |f| %>
+    <%= f.input :name_cont %>
+    <%= link_to _("Add new customer"), new_customer_path, :class => "button" %>
+    <%= f.submit _("Search") %>
+  <% end %>
 <%=DesignBox.boxb%>
 
-</form>
-
 <script type="text/javascript">
-  $("#texname").focus();
+  $("#texname").focus()
 </script>
 
 <%
-  if params["choice"] == "dosearch"
-    args = {}
-    
-    if params["texname"].to_s.length > 0
-      args["name_cont"] = params["texname"]
-    end
-    
-    customers = Customer.ransack(args).result.order(:name)
+  if params[:q]
+    customers = Customer.ransack(@ransack_params).result.order(:name)
     
     %>
       <br />

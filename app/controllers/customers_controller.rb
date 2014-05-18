@@ -1,6 +1,12 @@
 class CustomersController < ApplicationController
   before_filter :set_customer
   
+  def index
+    @ransack_params = params[:q] || {}
+    @ransack = Customer.ransack(@ransack_params)
+    @customers = @ransack.result.order(:name)
+  end
+  
   def new
     @customer = Customer.new
   end

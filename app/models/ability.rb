@@ -52,5 +52,6 @@ private
     can :manage, Task
     can :manage, User
     can :manage, UserTaskListLink
+    can :manage, Timelog
   end
 end

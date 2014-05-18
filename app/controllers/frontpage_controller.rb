@@ -1,13 +1,47 @@
 class FrontpageController < ApplicationController
   def index
     @tasks = Task.all
-      .joins(:project)
+      .includes(:project, :user)
       .joins("LEFT JOIN task_assigned_users ON task_assigned_users.task_id = tasks.id")
       .where("tasks.user_id = ? || task_assigned_users.user_id = ?", current_user.id, current_user.id)
       .group("tasks.id")
       .where("tasks.state IN (?)", ["new", "open", "waiting"])
     
     sort_tasks
+    
+    @headlines = [{
+      "sort" => "name",
+      "sortval" => "name",
+      "title" => _("Task")
+    },{
+      "sort" => "project",
+      "sortval" => {:table => :Project, :col => :name},
+      "title" => _("Project")
+    },{
+      "sort" => "priority",
+      "sortval" => "priority",
+      "title" => _("Priority")
+    },{
+      "sort" => "author",
+      "sortval" => {:table => :User, :col => :name},
+      "title" => _("Author")
+    },{
+      "sort" => "date",
+      "sortval" => "date_added",
+      "title" => _("Date")
+    },{
+      "sort" => "status",
+      "sortval" => "status",
+      "title" => _("Status")
+    }]
+    
+    if can?(:admin, :admin)
+      @headlines += [{
+        "title" => "#{_("Hours")} / #{_("Driving")}"
+      },{
+        "title" => _("Transport length")
+      }]
+    end
   end
   
 private

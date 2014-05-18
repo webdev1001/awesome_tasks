@@ -1,132 +1,18 @@
-<%
-  if params["choice"] == "dosave"
-    save_hash = {
-      :name => params["texname"],
-      :descr => params["texdescr"],
-      :project_id => params["selproject"],
-      :type => params["seltype"],
-      :status => params["selstatus"],
-      :priority => params["selpriority"]
-    }
-  end
-  
-  if Project.all.none?
-    flash[:warning] = (_("No projects has been added to this installation yet - please do that first."))
-    redirect_to :back
-  end
-  
-  
-  #Generate user-projects for the select-box.
-  projects_opts = {"" => _("None")}
-  
-  if can?(:admin, :admin)
-    Project.find_each do |project|
-      projects_opts[project.id] = project.name
-    end
-  else
-    current_user.projects.each do |link|
-      projects_opts[link[:project_id]] = link.project.name
-    end
-  end
-  
-  sorted = projects_opts.sort do |a, b|
-    if a[0] == ""
-      ret = -1
-    elsif b[0] == ""
-      ret = 1
-    else
-      ret = a[1].downcase <=> b[1].downcase
-    end
-    
-    ret
-  end
-  
-  projects_opts = {}
-  sorted.each do |sort|
-    projects_opts[sort[0]] = sort[1]
-  end
-%>
-
-<%= simple_form_for @task do |f| %>
-
 <%=DesignBox.boxt(_("Enter details"), 700)%>
-  <table class="form">
-    <%
-      priority_opts = {}
-      1.upto(10) do |count|
-        priority_opts[count] = count
-      end
-    %>
+  <%= simple_form_for @task, :data => {:browser => _("Browser"), :version => _("Version"), :os => _("Operating system")} do |f| %>
+    <%= f.input :name %>
+    <%= f.input :project_id, :collection => current_user.projects_with_access_to %>
+    <%= f.input :task_type, :collection => Task.translated_task_types.invert %>
+    <%= f.input :state, :collection => Task.translated_states.invert %>
+    <%= f.input :priority, :collection => 1..10 %>
+    <%= f.cktext_area :description, :ckeditor => {:toolbar => "mini", :height => 240} %>
     
-    <%= Knj::Web.inputs([{
-      :title => _("Name"),
-      :name => "task[name]",
-      :id => "texname",
-      :value => @task.name,
-      :descr => _("The name of the task as it should appear in this system.")
-    },{
-      :title => _("Project"),
-      :name => "task[project_id]",
-      :value => @task.project_id,
-      :opts => projects_opts,
-      :descr => _("The project that this task belongs under.")
-    },{
-      :title => _("Type"),
-      :name => "task[task_type]",
-      :value => @task.task_type,
-      :descr => _("The type of the task."),
-      :opts => Task.translated_task_types
-    },{
-      :title => _("Status"),
-      :name => "task[state]",
-      :value => @task.state,
-      :descr => _("The status of the task."),
-      :opts => Task.translated_states
-    },{
-      :title => _("Priority"),
-      :name => "task[priority]",
-      :value => @task.priority,
-      :opts => priority_opts,
-      :descr => _("10 for most important and 1 for least important.")
-    },{
-      :title => _("Description"),
-      :name => "task[description]",
-      :value => @task.description,
-      :descr => _("The description as it should appear for the users."),
-      :height => 500
-    }]).html_safe %>
-    <tr>
-      <td colspan="2" class="buttons">
-        <input type="button" value="<%=_"Insert browser and os"%>" onclick="insert_browser_and_os()" />
-        <%if !@task.new_record?%>
-          <input type="button" value="<%=_("Show")%>" onclick="location.href='<%= task_path(@task) %>';" />
-          <%= link_to _("Delete"), task_path(@task), :method => :delete, :class => "button", :data => {:confirm => _("Are you sure?")} %>
-        <%end%>
-        <input type="submit" value="<%=_("Save")%>" />
-      </td>
-    </tr>
-  </table>
+    <%= link_to _("Insert browser and os"), "#", :class => "button", :onclick => "insert_browser_and_os()" %>
+    <% unless @task.new_record? %>
+      <%= link_to _("Show"), task_path(@task), :class => "button" %>
+      <%= link_to _("Delete"), task_path(@task), :method => :delete, :class => "button", :data => {:confirm => _("Are you sure?")} %>
+    <%end%>
+    
+    <%= f.submit _("Save") %>
+  <% end %>
 <%=DesignBox.boxb%>
-
-<% end %>
-
-<script type="text/javascript">
-  $("#texname").focus()
-  
-  var browser_and_os_inserted = false
-  $("#seltype").change(function(){
-    if (this.value == "bug" && !browser_and_os_inserted){
-      insert_browser_and_os()
-    }
-  })
-  
-  function insert_browser_and_os(){
-    browser_and_os_inserted = true
-    
-    fck = FCKeditorAPI.GetInstance("texdescr")
-    fck.InsertHtml("&nbsp;")
-    fck.InsertHtml("<b><%=_'Browser'%>:</b> <%= "browser" %><br />")
-    fck.InsertHtml("<b><%=_'Version'%>:</b> " + $.browser.version + "<br />")
-    fck.InsertHtml("<b><%=_'Operating system'%>:</b> <%= "os" %><br />")
-  }
-</script>

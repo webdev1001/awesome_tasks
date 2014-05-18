@@ -49,7 +49,9 @@ AwesomeTasks::Application.routes.draw do
   resources :user_project_links
   resources :user_task_list_links
   
-  resources :timelogs
+  resources :timelogs do
+    post :mark_invoiced, :on => :collection
+  end
   
   devise_for :users
   

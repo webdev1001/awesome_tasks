@@ -15,8 +15,18 @@ class GettextSimpleRails::MonthNames
     #. Default value: is too long. The maximum is %{count}
     _('activerecord.errors.models.user.attributes.password.too_long')
     #. Default value: cannot be blank
+    _('activerecord.errors.models.comment.attributes.resource.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.comment.attributes.comment.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.comment.attributes.user.blank')
+    #. Default value: cannot be blank
     _('activerecord.errors.models.task_assigned_user.attributes.task.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.task_assigned_user.attributes.user.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.user_task_list_link.attributes.user.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.user_task_list_link.attributes.task.blank')
   end
 end

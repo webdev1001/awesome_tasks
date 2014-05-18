@@ -9,7 +9,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise-encryptable'
 gem 'simple_form'
-gem 'gettext_simple_rails'
+gem 'simple_form_ransack', :path => "/home/kaspernj/Dev/Rails/simple_form_ransack"
+gem 'gettext_simple_rails', :path => "/home/kaspernj/Dev/Rails/gettext_simple_rails"
 gem 'php4r'
 gem 'knjrbfw'
 gem 'activerecord-session_store'
