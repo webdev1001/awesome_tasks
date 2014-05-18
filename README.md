@@ -1,8 +1,14 @@
-= knjtasks
+# Awesome Tasks
 
-Description goes here.
+A task system made for freelancer, making it easy to see all your tasks, log time, see how much money you have earned per day, week, month and year.
 
-== Contributing to knjtasks
+It also makes it easy writing documentation for invoices, showing all timelog descriptions and much more.
+
+Also supports customer access, so customers can write comments and feedback to various tasks.
+
+Written in Ruby og Rails.
+
+## Contributing to knjtasks
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -12,7 +18,7 @@ Description goes here.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2011 Kasper Johansen. See LICENSE.txt for
 further details.
