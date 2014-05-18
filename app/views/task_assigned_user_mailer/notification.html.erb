@@ -1,0 +1,16 @@
+<%= _("Hello %{user_name}", :user_name => @user.name) %>
+<br /><br />
+
+<b><%= _("Assigned by") %></b>
+<br />
+<%= @user_assigned_by.name %>
+<br /><br />
+      
+<b><%= Task.model_name.human %></b>
+<br />
+<a href="<%= @task_url %>"><%= @task_url %></a>
+<br /><br />
+      
+<b><%= Task.human_attribute_name(:description) %></b>
+<br />
+<%= @task.description.to_s.html_safe %>

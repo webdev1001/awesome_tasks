@@ -60,12 +60,18 @@ class TasksController < ApplicationController
   end
   
   def show
+    @comments = @task.comments
   end
   
   def assign_user
-    assigned_user = @task.task_assigned_users.find_or_initialize_by(:user_id => params[:id], :user_assigned_by_id => current_user.id)
+    assigned_user = @task.task_assigned_users.find_or_initialize_by(
+      :user_id => params[:user_id],
+      :user_assigned_by_id => current_user.id
+    )
+    
     assigned_user.save!
-    assigned_user.send_notify(:url => task_url(@task))
+    assigned_user.delay.send_notify(task_url(@task))
+    
     render :json => {:success => true}
   end
   

@@ -17,13 +17,18 @@
 //= require locales
 //= require projects
 //= require tasks
+//= require task_functions
 //= require timelogs
+//= require user_task_list_links
 //= require knjjsfw/jquery.md5
 //= require knjjsfw/events
 //= require knjjsfw/forms
 //= require knjjsfw/select
 //= require knjjsfw/modal
 //= require knjjsfw/includes/jquery.simplemodal-1.4.1.js
+//= require ckeditor/init
+//= require ckeditor_awesometasks_config
+//= require ckeditor/config
 
 var events = null
 

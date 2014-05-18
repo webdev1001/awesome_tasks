@@ -16,3 +16,5 @@
 /tmp
 
 /config/database.yml
+/config/smtp.yml
+public/ckeditor_assets/pictures/*

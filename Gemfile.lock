@@ -44,6 +44,10 @@ GEM
     ckeditor (4.0.11)
       mime-types
       orm_adapter (~> 0.5.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -51,7 +55,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    daemons (1.1.9)
     datet (0.0.25)
+    delayed_job (4.0.1)
+      activesupport (>= 3.0, < 4.2)
+    delayed_job_active_record (4.0.1)
+      activerecord (>= 3.0, < 4.2)
+      delayed_job (>= 3.0, < 4.1)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -63,6 +73,12 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
+    forgery (0.6.0)
     gettext_simple (0.0.9)
     gettext_simple_rails (0.0.10)
       gettext_simple (>= 0.0.9)
@@ -102,6 +118,11 @@ GEM
     mysql (2.9.1)
     mysql2 (0.3.16)
     orm_adapter (0.5.0)
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     php4r (0.0.4)
       datet
       http2
@@ -194,9 +215,13 @@ DEPENDENCIES
   cancan
   ckeditor
   coffee-rails (~> 4.0.0)
+  daemons
   datet
+  delayed_job_active_record
   devise
   devise-encryptable
+  factory_girl_rails
+  forgery
   gettext_simple_rails
   haml-rails
   jbuilder (~> 1.2)
@@ -205,6 +230,7 @@ DEPENDENCIES
   knjrbfw
   mysql
   mysql2
+  paperclip
   php4r
   rails (= 4.0.5)
   ransack

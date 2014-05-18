@@ -1,0 +1,14 @@
+<%= _("Hello %{user_name}", :user_name => @user.name) %>
+<br /><br />
+
+<%= sprintf(_("A new comment has been written to the task '%s'."), @task.name) %>
+<br /><br />
+
+<b><%= _("Author") %>:</b><br />
+<%= @author.name %><br /><br />
+
+<b><%= Task.model_name.human %></b><br />
+<a href="<%= @task_url %>"><%= @task_url %></a><br /><br />
+
+<b><%= Comment.model_name.human %></b><br />
+<%= @comment.comment.html_safe %>

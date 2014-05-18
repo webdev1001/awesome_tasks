@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
   has_many :timelogs
   has_many :task_assigned_users
+  has_many :assigned_users, :through => :task_assigned_users, :source => :user
   has_many :task_checks
   has_many :user_task_list_links
   has_many :comments, :as => :resource
@@ -61,31 +62,9 @@ class Task < ActiveRecord::Base
   end
   
   #Sends a notification about a newly added comment to a task.
-  def send_notify_new_comment(comment)
+  def send_notify_new_comment(comment, task_url)
     self.notify_emails.each do |data|
-      subj = "#{sprintf(_hb.gettext.gettext("Task #%1$s: %2$s", data[:user].locale), self.id, self.name)} - #{sprintf(_hb.gettext.gettext("New comment from: %s", data[:user].locale), comment.user.name)}"
-      
-      if !self.user
-        user_html = "[#{_hb.gettext.gettext("no user", data[:user].locale)}]"
-      else
-        user_html = comment.user.name.html
-      end
-      
-      html = ""
-      
-      html += sprintf(_hb.gettext.gettext("A new comment has been written to the task '%s'.", data[:user].locale), self.name)
-      html += "<br /><br />"
-      
-      html += "<b>#{_hb.gettext.gettext("Author", data[:user].locale)}:</b><br />"
-      html += "#{user_html}<br /><br />"
-      
-      html += "<b>#{_hb.gettext.gettext("Task", data[:user].locale)}:</b><br />"
-      html += "<a href=\"#{url}\">#{url}</a><br /><br />"
-      
-      html += "<b>#{_hb.gettext.gettext("Comment", data[:user].locale)}</b><br />"
-      html += comment[:comment]
-      
-      _hb.mail(:to => data[:email], :subject => subj, :html => html)
+      TaskAssignedUserMailer.new_comment_notification(comment, data[:user], task_url).deliver!
     end
   end
   
@@ -109,16 +88,14 @@ class Task < ActiveRecord::Base
     _hb.mail(:to => user_assigned[:email], :subject => subj, :html => html)
   end
   
-  #Returns the emails of the assigned users and the owner as an array.
+  # Returns the emails of the assigned users and the owner as an array.
   def notify_emails
     emails = {}
-    emails[self.user[:email]] = self.user if self.user and self.user[:email].to_s.strip.length > 0
+    emails[user.email] = user if user && user.email.present?
     
-    assigned_users.each do |link|
-      user = link.user
-      next if !user or user[:email].to_s.strip.length <= 0
-      
-      emails[user[:email]] = user
+    assigned_users.each do |assigned_user|
+      next if !assigned_user || assigned_user.email.present?
+      emails[assigned_user.email] = user
     end
     
     ret = []

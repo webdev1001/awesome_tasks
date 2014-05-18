@@ -1,4 +1,7 @@
 AwesomeTasks::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+  resources :comments
+  
   resources :users do
     get :search, :on => :collection
     post :log_in_as, :on => :member
@@ -44,6 +47,7 @@ AwesomeTasks::Application.routes.draw do
   end
   
   resources :user_project_links
+  resources :user_task_list_links
   
   resources :timelogs
   

@@ -35,17 +35,11 @@
 <div style="padding-bottom: 15px;">
   <input type="button" value="<%=_"Edit task"%>" onclick="location.href='<%= edit_task_path(@task) %>';" />
   
-  <%
-    if current_user.user_task_list_links.where(:task_id => @task).any?
-      %>
-        <input type="button" value="<%=_"Remove from list"%>" onclick="location.href='/?show=task_show&amp;task_id=<%=task.id%>&amp;choice=removefromlist';" />
-      <%
-    else
-      %>
-        <input type="button" value="<%=_"Add to list"%>" onclick="location.href='/?show=task_show&amp;task_id=<%=@task.id%>&amp;choice=addtolist';" />
-      <%
-    end
-  %>
+  <% if link = current_user.user_task_list_links.where(:task_id => @task).first %>
+    <%= link_to _("Remove from list"), "#", :class => ["button", "remove_from_list"], :data => {:link_id => link.id, :confirm_msg => _("Are you sure?")} %>
+  <% else %>
+    <%= link_to _("Add to list"), "#", :class => ["button", "add_to_list"], :data => {:task_id => @task.id} %>
+  <% end %>
 </div>
 
 <div style="padding-bottom: 15px;">
@@ -67,7 +61,7 @@
             },{
               :title => _("Date"),
               :type => :info,
-              :value => l(@task.created_at.to_date),
+              :value => (@task.created_at ? l(@task.created_at.to_date) : ""),
               :descr => _("The date this task was added.")
             },{
               :title => _("Project"),
@@ -132,7 +126,7 @@
 <div style="padding-bottom: 15px;">
   <%=DesignBox.boxt(_("Comments"))%>
     <div style="padding-bottom: 15px;">
-      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_"Add new comment"%>', height: '540px', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=@task.id%>'});" />
+      <input type="button" value="<%=_("Add new")%>" onclick="comment_new('Task', <%= @task.id %>)" />
     </div>
     
     <div id="divcomments">
@@ -140,7 +134,7 @@
     </div>
     
     <div>
-      <input type="button" value="<%=_("Add new")%>" onclick="modal({title: '<%=_"Add new comment"%>', height: '540px', url: 'clean.rhtml?show=comment_edit&amp;object_class=Task&amp;object_id=<%=@task.id%>'});" />
+      <input type="button" value="<%=_("Add new")%>" onclick="comment_new('Task', <%= @task.id %>)" />
     </div>
   <%=DesignBox.boxb%>
 </div>
