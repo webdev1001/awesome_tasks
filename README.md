@@ -8,7 +8,7 @@ Also supports customer access, so customers can write comments and feedback to v
 
 Written in Ruby og Rails.
 
-## Contributing to knjtasks
+## Contributing to Awesome Tasks
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
