@@ -102,7 +102,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    knjrbfw (0.0.109)
+    knjrbfw (0.0.110)
       datet
       http2
       php4r
@@ -229,7 +229,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-migrate-rails
   jquery-rails
-  knjrbfw
+  knjrbfw (>= 0.0.110)
   mysql
   mysql2
   paperclip
