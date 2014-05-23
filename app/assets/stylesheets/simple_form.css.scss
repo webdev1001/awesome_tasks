@@ -1,0 +1,23 @@
+form.simple_form {
+  label {
+    width: 18%;
+    display: inline-block;
+    font-weight: bold;
+  }
+  
+  input[type=text], input[type=number], select {
+    width: 78%;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 120px;
+  }
+  
+  span.hint {
+    color: grey;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+  }
+}

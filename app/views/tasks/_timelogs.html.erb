@@ -1,0 +1,78 @@
+<table class="list">
+  <thead>
+    <tr>
+      <th><%=_"ID"%></th>
+      <th><%=_"Hours"%></th>
+      <th><%=_"Date"%></th>
+      <th><%=_"User"%></th>
+      <th><%=_"Comment"%></th>
+      <%if can?(:admin, :admin) and @task.has_access?(current_user)%>
+        <th><%=_"Invoiced?"%></th>
+        <th><%=_"Delete"%></th>
+      <%end%>
+    </tr>
+  </thead>
+  <tbody>
+    <%
+      first = true
+      count_shown = 0
+      cur_date = Datet.new
+      
+      @timelogs.each do |tlog|
+        tlog_date = tlog.date
+        next if !can?(:admin, :admin) && tlog_date.day == cur_date.day && tlog_date.month == cur_date.month && tlog_date.year == cur_date.year
+        
+        dbt = Baza::Dbtime.new(time_as_string(tlog.time))
+        count_shown += 1
+        
+        if !first
+          %>
+            <tr>
+              <td colspan="7"><hr size="1" color="#cfcfcf" /><td>
+            </tr>
+          <%
+        end
+        
+        first = false if first
+        
+        %>
+          <tr>
+            <td style="width: 50px;">
+              <%= link_to_timelog tlog %>
+            </td>
+            <td style="width: 60px;">
+              <%= Knj::Locales.number_out(dbt.hours_total, 1) %>
+            </td>
+            <td class="nowrap" style="width: 90px;">
+              <%= l(tlog.date) %>
+            </td>
+            <td style="width: 130px;">
+              <%= link_to_user tlog.user %>
+            </td>
+            <td>
+              <%= tlog.comment %>
+            </td>
+            <% if can?(:admin, :admin) and @task.has_access?(current_user) %>
+              <td>
+                <%= Knj::Strings.yn_str(tlog.invoiced?) %>
+              </td>
+              <td style="width: 10%;">
+                (<a href="javascript: if (confirm('<%=_("Do you want to delete this timelog?")%>')){timelog_delete('<%=tlog.id%>');}"><%=_"delete"%></a>)
+              </td>
+            <% end %>
+          </tr>
+        <%
+      end
+      
+      if count_shown <= 0
+        %>
+          <tr>
+            <td colspan="7" class="error">
+              <%=_("No timelogs were found.")%>
+            </td>
+          </tr>
+        <%
+      end
+    %>
+  </tbody>
+</table>

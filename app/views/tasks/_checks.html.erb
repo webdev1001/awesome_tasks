@@ -1,0 +1,19 @@
+<% @checks.each do |check| %>
+  <div>
+    <input type="checkbox" id="checheck_<%=check.id%>" name="checheck[<%=check.id%>]"<%if check[:checked].to_i == 1%> checked="checked"<%end%> onchange="task_check_set('<%=check.id%>', this.value);" />
+    <label for="checheck_<%=check.id%>"><%=check.name.html%></label>
+    
+    (<a href="javascript: task_check_edit('<%=check.id%>');"><%=_("edit")%></a>, <a href="javascript: if (confirm('<%=_("Do you want to delete this check?")%>')){task_check_delete('<%=check.id%>');}"><%=_"delete"%></a>)
+  </div>
+  <% if check.description.empty? %>
+    <div class="tdd">
+      <%= Php4r.nl2br(check.description).html_safe %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @checks.none? %>
+  <div class="error">
+    <%=_("No checks has been added for this task.")%>
+  </div>
+<% end %>

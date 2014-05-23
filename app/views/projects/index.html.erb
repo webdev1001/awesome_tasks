@@ -1,0 +1,77 @@
+<%
+  if !can?(:admin, :admin)
+    flash[:warning] = (_("You do not have permission to view this page."))
+    redirect_to :back
+  end
+  
+  content_for(:header_title){ _("Search for project") }
+%>
+
+<form method="get">
+<%= Knj::Web.hiddens([{:name => :choice, :value => :dosearch}]).html_safe %>
+
+<%=DesignBox.boxt(_("Enter criteria"), "350px")%>
+  <table class="form">
+    <%= Knj::Web.inputs([{
+      :title => _("Name"),
+      :name => :texname,
+      :value => params["texname"],
+      :descr => _("A part of the name of the project you are looking for.")
+    }]).html_safe %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="button" value="<%=_("Add new")%>" onclick="location.href='<%= new_project_path %>';" />
+        <input type="submit" value="<%=_("Search")%>" />
+      </td>
+    </tr>
+  </table>
+<%=DesignBox.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  $("#texname").focus();
+</script>
+
+<%
+  if params["choice"] == "dosearch"
+    args = {}
+    
+    if params["texname"].to_s.length > 0
+      args["name_cont"] = params["texname"]
+    end
+    
+    projects = Project.ransack(args).result.order(:name)
+    
+    %>
+      <br />
+      
+      <%=DesignBox.boxt("Projects", "500px")%>
+        <table class="form">
+          <thead>
+            <tr>
+              <th><%=_("Name")%></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% projects.each do |project| %>
+              <tr>
+                <td>
+                  <%= link_to_project project%>
+                </td>
+              </tr>
+            <% end %>
+            
+            <% if projects.empty? %>
+              <tr>
+                <td colspan="1" class="error">
+                  <%=_("No projects were found.")%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <%=DesignBox.boxb%>
+    <%
+  end
+%>

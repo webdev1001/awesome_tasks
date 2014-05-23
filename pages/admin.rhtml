@@ -1,7 +1,0 @@
-<%
-  Knj::Web.alert(_("You do not have permission to view this page.")).back if !_site.has_rank?("admin")
-  
-  print _site.header(_("Administration"))
-%>
-
-<a href="?show=comment_update_id_per_obj"><%=_"Comments"%> - <%=_"Update ID per object"%></a><br />

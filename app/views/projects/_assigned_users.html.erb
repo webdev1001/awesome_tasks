@@ -1,0 +1,38 @@
+<% users = @project.users("orderby" => "user_name") %>
+
+<table class="list">
+  <thead>
+    <tr>
+      <th><%=_"User"%></th>
+      <%if can?(:admin, :admin)%>
+        <th><%=_"Actions"%></th>
+      <%end%>
+    </tr>
+  </thead>
+  <tbody>
+    <%
+      @project.user_project_links.each do |link|
+        %>
+          <tr>
+            <td>
+              <%= link_to_user link.user %>
+            </td>
+            <td>
+              (<a href="javascript: if (confirm('<%=_"Do you want to remove this user from the project?"%>')){project_remove_assigned_user('<%= link.id %>');}"><%=_"remove"%></a>)
+            </td>
+          </tr>
+        <%
+      end
+      
+      if @project.users.none?
+        %>
+          <tr>
+            <td colspan="1" class="error">
+              <%=_"No users were found."%>
+            </td>
+          </tr>
+        <%
+      end
+    %>
+  </tbody>
+</table>

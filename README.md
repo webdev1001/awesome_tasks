@@ -6,7 +6,7 @@ It also makes it easy writing documentation for invoices, showing all timelog de
 
 Also supports customer access, so customers can write comments and feedback to various tasks.
 
-Written in Ruby og Rails.
+Written in Ruby on Rails.
 
 ## Contributing to Awesome Tasks
  
@@ -20,6 +20,4 @@ Written in Ruby og Rails.
 
 ## Copyright
 
-Copyright (c) 2011 Kasper Johansen. See LICENSE.txt for
-further details.
-
+Copyright (c) 2011 Kasper Johansen. See LICENSE.txt for further details.

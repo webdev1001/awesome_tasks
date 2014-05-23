@@ -1,0 +1,156 @@
+<%
+  if params["choice"] == "doremoveassigneduser"
+    Php4r.die(_("You do not have access to this project.")) if !can?(:admin, :admin)
+    link = _ob.get(:User_project_link, params["link_id"])
+    _ob.delete(link)
+    exit
+  end
+  
+  if params["choice"] == "doassignuser"
+    Php4r.die(_("You do not have access to this project.")) if !can?(:admin, :admin)
+    
+    begin
+      link = _ob.add(:User_project_link, {
+        :project_id => project.id,
+        :user_id => params["user_id"]
+      })
+    rescue Errno::EEXIST => e
+      print e.message
+      exit
+    end
+    
+    exit
+  end
+  
+  content_for(:header_title){ sprintf(_("Show project: %s."), @project.name) }
+%>
+
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="vertical-align: top;">
+      <%=DesignBox.boxt(_("Actions"), 350)%>
+        <%if can?(:admin, :admin)%>
+          <input type="button" value="<%=_"Edit project"%>" onclick="location.href='<%= edit_project_path(@project) %>';" />
+        <%end%>
+        
+        <input type="button" value="<%=_"Add task"%>" onclick="location.href='<%= new_task_path(:task => {:project_id => @project.id}) %>';" />
+      <%=DesignBox.boxb%>
+
+      <br />
+
+      <%=DesignBox.boxt(_("Information"), 350)%>
+        <table class="form">
+          <%= Knj::Web.inputs([{
+            :title => _("Added by"),
+            :type => :info,
+            :value => link_to_user(@project.added_user)
+          },{
+            :title => _("Date"),
+            :type => :info,
+            :value => (@project.created_at ? l(@project.created_at, :format => :long) : "")
+          },{
+            :title => Project.human_attribute_name(:price_per_hour),
+            :type => :info,
+            :value => Knj::Locales.number_out(@project.price_per_hour, 2)
+          },{
+            :title => Project.human_attribute_name(:price_per_hour_transport),
+            :type => :info,
+            :value => Knj::Locales.number_out(@project.price_per_hour_transport, 2)
+          }]).html_safe %>
+          
+          <% if @project.deadline_at %>
+            <%= Knj::Web.inputs([{
+              :title => _("Deadline"),
+              :type => :info,
+              :value => l(@project.deadline_at.to_date)
+            }]).html_safe %>
+          <% end %>
+        </table>
+      <%=DesignBox.boxb%>
+    </td>
+    <td style="vertical-align: top; padding-left: 15px;">
+      <%=DesignBox.boxt(_("Users"), 350)%>
+        <div style="padding-bottom: 15px;">
+          <input type="button" value="<%=_"Assign user"%>" onclick="modal({title: '<%=_"Assign user to task"%>', url: '<%= search_users_path(:ajaxsearch => true, :jscallback => :project_show_assign_user_choose) %>'});" />
+        </div>
+        
+        <div id="divassignedusers">
+          <%= render "assigned_users" %>
+        </div>
+      <%=DesignBox.boxb%>
+    </td>
+  </tr>
+</table>
+
+<br />
+
+<%=DesignBox.boxt(_("Tasks"))%>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%=_"Task"%></th>
+        <th><%=_"Author"%></th>
+        <th><%=_"Status"%></th>
+        <th><%=_"Date"%></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        count = 0
+        @tasks.each do |task|
+          next if !can?(:show, task)
+          count += 1
+          
+          %>
+            <tr>
+              <td>
+                <%= link_to_task task %>
+              </td>
+              <td>
+                <%= link_to_user task.user %>
+              </td>
+              <td>
+                <%= task.translated_state%>
+              </td>
+              <td>
+                <%= l(task.created_at.to_date) if task.created_at %>
+              </td>
+            </tr>
+          <%
+        end
+        
+        if count <= 0
+          %>
+            <tr>
+              <td colspan="2" class="error">
+                <%=_("No tasks were found.")%>
+              </td>
+            </tr>
+          <%
+        end
+      %>
+    </tbody>
+  </table>
+<%=DesignBox.boxb%>
+
+<script type="text/javascript">
+  function load_assigned_users(){
+    $.ajax({type: "GET", url: "<%= assigned_users_project_path(@project) %>", async: true, cache: false, complete: function(data){
+      $("#divassignedusers").slideUp("fast", function(){
+        $("#divassignedusers").html(data.responseText)
+        $("#divassignedusers").slideDown("fast")
+      })
+    }})
+  }
+  
+  function project_show_assign_user_choose(user_id){
+    modal_close()
+    project_assign_user("<%= @project.id %>", user_id)
+  }
+  
+  $(document).ready(function(){
+    events.connect("do_project_assigned_users_update", function(){
+      load_assigned_users()
+    })
+  })
+</script>

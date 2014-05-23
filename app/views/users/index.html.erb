@@ -1,0 +1,128 @@
+<%
+  content_for(:header_title){ _("Search for users") }
+  
+  if !params["ajaxsearch"] || (params["ajaxsearch"] && params["choice"] != "dosearch")
+    %>
+      <form method="get" id="form_users" data-users-path="<%= search_users_path %>"<%if params["ajaxsearch"]%> onsubmit="return do_ajax_search();"<% end %>>
+      <%= Knj::Web.hiddens([{:name => :choice, :value => :dosearch}]).html_safe %>
+      
+      <% if params["not_in_task_id"] %>
+        <%= Knj::Web.hiddens([{:name => :not_in_task_id, :value => params["not_in_task_id"]}]).html_safe %>
+      <% end %>
+      
+      <%=DesignBox.boxt(_("Enter criteria"), "350px")%>
+        <table class="form" id="formusersearch">
+          <%= Knj::Web.inputs([{
+            :title => _("Name"),
+            :name => :texname,
+            :value => params["texname"],
+            :descr => _("Enter a part of the name of the user you are looking for.")
+          }]).html_safe %>
+          <tr>
+            <td colspan="2" class="buttons">
+              <%if can?(:admin, :admin)%>
+                <input type="button" value="<%=_("Add new")%>" onclick="location.href='<%= new_user_path %>;" />
+              <%end%>
+              <input type="submit" value="<%=_("Search")%>" />
+            </td>
+          </tr>
+        </table>
+      <%=DesignBox.boxb%>
+      
+      </form>
+      
+      <% if params["ajaxsearch"] %>
+        <br />
+        
+        <div id="divresults">
+          <div class="error"><%=_("Please search...")%></div>
+        </div>
+        
+        <script type="text/javascript">
+          modal_on_opened(function(){
+            $("#texname").focus();
+          });
+        </script>
+      <% end %>
+      
+      <script type="text/javascript">
+        $("#texname").focus();
+        
+        function do_ajax_search(){
+          formdata = forms_inputs_read($("#formusersearch"));
+          
+          urlstr = $("#form_users").data("users-path") + "?ajaxsearch=true&choice=dosearch&jscallback=<%=params['jscallback']%>&"
+          urlstr += $.param(formdata)
+          
+          $.ajax({type: "GET", url: urlstr, complete: function(data){
+            $("#divresults").slideUp("fast", function(){
+              $("#divresults").html(data.responseText);
+              $("#divresults").slideDown("fast");
+            });
+          }});
+          
+          return false;
+        }
+      </script>
+    <%
+  end
+  
+  if params["choice"] == "dosearch"
+    args = {}
+    
+    if params["texname"].to_s.length > 0
+      args["name_cont"] = params["texname"]
+    end
+    
+    users = User.ransack(args).result.order(:name, :username)
+    
+    %>
+      <br />
+      
+      <%=DesignBox.boxt(_("Results"), "350px")%>
+        <table class="list">
+          <thead>
+            <tr>
+              <th><%=_("Name")%></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              count = 0
+              users.each do |user|
+                next if !can?(:show, user)
+                count += 1
+                
+                %>
+                  <tr>
+                    <td>
+                      <%
+                        if params["jscallback"]
+                          %>
+                            <a href="javascript: <%= params["jscallback"] %>('<%=user.id%>');"><%= user.name %></a>
+                          <%
+                        else
+                          print user.html
+                        end
+                      %>
+                    </td>
+                  </tr>
+                <%
+              end
+              
+              if count <= 0
+                %>
+                  <tr>
+                    <td colspan="1" class="error">
+                      <%=_("No users were found.")%>
+                    </td>
+                  </tr>
+                <%
+              end
+            %>
+          </tbody>
+        </table>
+      <%=DesignBox.boxb%>
+    <%
+  end
+%>

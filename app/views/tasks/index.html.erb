@@ -1,0 +1,114 @@
+<% content_for(:header_title){ _("Search for tasks") } %>
+
+<form method="get">
+<%= Knj::Web.hiddens([{:name => :choice, :value => :dosearch}]).html_safe %>
+
+<%=DesignBox.boxt(_("Enter criteria"), 350)%>
+  <table class="form">
+    <%= Knj::Web.inputs([{
+      :title => Task.human_attribute_name(:name),
+      :name => "q[name_cont]",
+      :value => @values["name_cont"],
+      :descr => _("A part of the name of the task you are looking for.")
+    },{
+      :title => Task.human_attribute_name(:description),
+      :name => "q[description_cont]",
+      :value => @values["description_cont"],
+      :descr => _("A part of the description of the task you are looking for.")
+    },{
+      :title => Task.human_attribute_name(:state),
+      :name => "q[state_eq]",
+      :opts => {"" => _("All")}.merge(Task.translated_states),
+      :descr => _("If you only want to find tasks with a specific status."),
+      :value => @values["state_eq"]
+    },{
+      :title => _("Type"),
+      :name => "q[task_type_eq]",
+      :opts => {"" => _("All")}.merge(Task.translated_task_types),
+      :descr => _("If you only want to find tasks of a specific type."),
+      :value => @values["task_type_eq"]
+    },{
+      :title => _("User"),
+      :name => "q[user_id_eq]",
+      :opts => knjrbfw_opts(@users, :all => true),
+      :value => @values["user_id_eq"],
+      :descr => _("If you only want to see tasks from a specific user.")
+    }]).html_safe %>
+    <tr>
+      <td colspan="2" class="buttons">
+        <input type="button" value="<%=_"Add new"%>" onclick="location.href='?show=task_edit';" />
+        <input type="submit" value="<%=_"Search"%>" />
+      </td>
+    </tr>
+  </table>
+<%=DesignBox.boxb%>
+
+</form>
+
+<script type="text/javascript">
+  $("#texname").focus()
+</script>
+
+<%
+  if params["choice"] == "dosearch"
+    tasks = Task.ransack(@values).result.order(:name)
+    tasks = tasks.includes(:user, :project)
+    
+    %>
+      <br />
+
+      <%=DesignBox.boxt(_("Results"), 900)%>
+        <table class="list">
+          <thead>
+            <tr>
+              <th><%= Task.human_attribute_name(:name) %></th>
+              <th><%= Task.human_attribute_name(:state) %></th>
+              <th><%= Task.human_attribute_name(:task_type) %></th>
+              <th><%= Project.model_name.human %></th>
+              <th><%= _"Author" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%
+              count = 0
+              tasks.find_each do |task|
+                next unless can?(:show, task)
+                count += 1
+                
+                %>
+                  <tr>
+                    <td>
+                      <%= link_to_task task %>
+                    </td>
+                    <td>
+                      <%= task.translated_state %>
+                    </td>
+                    <td>
+                      <%= task.translated_task_type %>
+                    </td>
+                    <td>
+                      <%= link_to_project task.project %>
+                    </td>
+                    <td>
+                      <%= link_to_user task.user %>
+                    </td>
+                  </tr>
+                <%
+              end
+              
+              if count <= 0
+                %>
+                  <tr>
+                    <td colspan="1" class="error">
+                      <%=_("No tasks were found.")%>
+                    </td>
+                  </tr>
+                <%
+              end
+            %>
+          </tbody>
+        </table>
+      <%=DesignBox.boxb%>
+    <%
+  end
+%>

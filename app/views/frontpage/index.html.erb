@@ -1,0 +1,88 @@
+<% content_for(:header_title){ _("Frontpage") } %>
+
+<%=DesignBox.boxt(_("Tasks"))%>
+  <div style="padding-bottom: 15px;">
+    <%= link_to _("Add new"), new_task_path, :class => "button" %>
+  </div>
+  
+  <table class="list">
+    <thead>
+      <tr>
+        <% @headlines.each do |headline| %>
+          <th>
+            <% if headline["sort"] %>
+              <%= link_to headline["title"], root_path(:sort => headline["sort"], :sortmode => (params["sort"] == headline["sort"] && params["sortmode"] != "desc" ? "desc" : "asc")) %>
+            <% else %>
+              <%= headline["title"] %>
+            <% end %>
+          </th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        tasks_count = 0
+        @tasks.each do |task|
+          next if !can?(:show, task)
+          sum_timelogs = task.timelogs.sum(:time)
+          sum_timelogs_transport = task.timelogs.sum(:time_transport)
+          sum_timelogs_transport_length = task.timelogs.sum(:transport_length)
+          tasks_count += 1
+          
+          total_hours = sum_timelogs.to_f / 3600
+          total_hours_transport = sum_timelogs_transport.to_f / 3600
+          total_transport_length = sum_timelogs_transport_length
+          
+          %>
+            <tr>
+              <td>
+                <%if task.state == "open"%>
+                  <b>
+                <%end%>
+                
+                <%= link_to_task task %>
+                
+                <%if task.state == "open"%>
+                  </b>
+                <%end%>
+              </td>
+              <td class="nowrap">
+                <%= link_to_project task.project %>
+              </td>
+              <td class="nowrap">
+                <%= task.priority %>
+              </td>
+              <td class="nowrap">
+                <%= link_to_user task.user %>
+              </td>
+              <td class="nowrap">
+                <%= l(task.created_at.to_date) if task.created_at%>
+              </td>
+              <td>
+                <%= task.translated_state %>
+              </td>
+              <%if can?(:admin, :admin)%>
+                <td class="nowrap">
+                  <%=Knj::Locales.number_out(total_hours, 2)%> / <%=Knj::Locales.number_out(total_hours_transport, 2)%>
+                </td>
+                <td class="nowrap">
+                  <%=Knj::Locales.number_out(total_transport_length, 0)%>
+                </td>
+              <%end%>
+            </tr>
+          <%
+        end
+        
+        if tasks_count <= 0
+          %>
+            <tr>
+              <td colspan="<%= @headlines.length %>" class="error">
+                <%=_("No tasks were found.")%>
+              </td>
+            </tr>
+          <%
+        end
+      %>
+    </tbody>
+  </table>
+<%=DesignBox.boxb%>
