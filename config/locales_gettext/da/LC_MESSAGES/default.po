@@ -1424,7 +1424,7 @@ msgstr "Den email der skal bruges til notifikationer og kommunikation."
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:14
 msgid "simple_form.hints.user.locale"
-msgstr "Der sprog siden skal vises i for brugeren."
+msgstr "Det sprog siden skal vises i for brugeren."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:16
