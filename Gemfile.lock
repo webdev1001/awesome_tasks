@@ -114,7 +114,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
-    multi_json (1.10.0)
+    multi_json (1.10.1)
     mysql (2.9.1)
     mysql2 (0.3.16)
     orm_adapter (0.5.0)
@@ -182,7 +182,7 @@ GEM
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    simple_form_ransack (0.0.1)
+    simple_form_ransack (0.0.3)
       rails (~> 4.0.5)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -240,4 +240,4 @@ DEPENDENCIES
   sass-rails (~> 4.0.2)
   sdoc
   simple_form
-  simple_form_ransack (= 0.0.1)
+  simple_form_ransack (>= 0.0.3)
