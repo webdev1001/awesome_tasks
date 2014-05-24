@@ -16,6 +16,7 @@
 //= require comments
 //= require locales
 //= require projects
+//= require projects_functions
 //= require tasks
 //= require task_functions
 //= require timelogs_functions

@@ -46,6 +46,9 @@ class GettextSimpleRails::MonthNames
     _('date.abbr_month_names.10')
     _('date.abbr_month_names.11')
     _('date.abbr_month_names.12')
+    _('date.order.0')
+    _('date.order.1')
+    _('date.order.2')
     #. Default value: %a, %d %b %Y %H:%M:%S %z
     _('time.formats.default')
     #. Default value: %d %b %H:%M

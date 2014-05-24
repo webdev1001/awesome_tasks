@@ -1,29 +1,4 @@
-<%
-  if params["choice"] == "doremoveassigneduser"
-    Php4r.die(_("You do not have access to this project.")) if !can?(:admin, :admin)
-    link = _ob.get(:User_project_link, params["link_id"])
-    _ob.delete(link)
-    exit
-  end
-  
-  if params["choice"] == "doassignuser"
-    Php4r.die(_("You do not have access to this project.")) if !can?(:admin, :admin)
-    
-    begin
-      link = _ob.add(:User_project_link, {
-        :project_id => project.id,
-        :user_id => params["user_id"]
-      })
-    rescue Errno::EEXIST => e
-      print e.message
-      exit
-    end
-    
-    exit
-  end
-  
-  content_for(:header_title){ sprintf(_("Show project: %s."), @project.name) }
-%>
+<% content_for(:header_title){ sprintf(_("Show project: %s."), @project.name) } %>
 
 <table cellspacing="0" cellpadding="0">
   <tr>
@@ -98,7 +73,7 @@
       <%
         count = 0
         @tasks.each do |task|
-          next if !can?(:show, task)
+          next unless can?(:show, task)
           count += 1
           
           %>

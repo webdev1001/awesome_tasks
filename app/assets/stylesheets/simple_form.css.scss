@@ -9,6 +9,28 @@ form.simple_form {
     width: 78%;
   }
   
+  .input.datetime {
+    select[id*=_3i] {
+      width: 50px;
+    }
+    
+    select[id*=_2i] {
+      width: 110px;
+    }
+    
+    select[id*=_1i] {
+      width: 68px;
+    }
+    
+    select[id*=_4i] {
+      width: 50px;
+    }
+    
+    select[id*=_5i] {
+      width: 50px;
+    }
+  }
+  
   textarea {
     width: 100%;
     height: 120px;

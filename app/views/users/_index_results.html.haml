@@ -11,7 +11,7 @@
       %tr
         %td
           - if params[:jscallback].present?
-            = link_to user.name!, "javascript: #{params[:jscallback]}"
+            = link_to user.name!, "javascript: #{params[:jscallback]}(#{user.id})"
           - else
             = link_to_user user
     
