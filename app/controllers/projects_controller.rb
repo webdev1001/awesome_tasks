@@ -9,10 +9,12 @@ class ProjectsController < ApplicationController
   
   def new
     @project = Project.new
+    @project.user_added = current_user
   end
   
   def create
     @project = Project.new(project_params)
+    @project.user_added = current_user
     
     if @project.save
       redirect_to project_path(@project)

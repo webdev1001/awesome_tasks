@@ -12,7 +12,7 @@ class Task < ActiveRecord::Base
   before_save :set_priority
   before_save :set_state
   
-  validates_presence_of :task, :user, :project, :name
+  validates_presence_of :user, :project, :name
   
   def self.translated_task_types
     return {
