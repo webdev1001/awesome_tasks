@@ -1,0 +1,8 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: awesome-tasks-dev
+  pool: 10
+  username: awesome-tasks
+  password: password
+  socket: /var/run/mysqld/mysqld.sock

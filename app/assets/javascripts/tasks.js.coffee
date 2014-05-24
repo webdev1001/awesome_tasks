@@ -1,5 +1,5 @@
 $ ->
-  return unless $(".controller_tasks").length > 0
+  return unless $("body.controller_tasks").length > 0
   
   $(".add_to_list").click ->
     user_task_list_link_add($(this).data("task-id"))
@@ -9,7 +9,10 @@ $ ->
     if confirm($(this).data("confirm-msg"))
       user_task_list_link_remove($(this).data("link-id")); location.reload()
   
-  if $(".action_edit").length > 0 || $(".action_new").length > 0
+  if $("body.action_index").length > 0
+    $("#task_name").focus()
+  
+  if $("body.action_edit").length > 0 || $("body.action_new").length > 0
     $("#task_name").focus()
     
     insert_browser_and_os = ->

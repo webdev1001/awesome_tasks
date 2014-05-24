@@ -3,12 +3,14 @@ class TasksController < ApplicationController
   
   def index
     if can? :manage, User
-      @users = User.all.to_a
+      @users = User.all.order(:name)
     else
       @users = current_user.users_list
     end
     
-    @values = params[:q] || {}
+    @ransack_params = params[:q] || {}
+    @ransack = Task.ransack(@ransack_params)
+    @tasks = @ransack.result.includes(:user, :project).order(:name)
   end
   
   def new
