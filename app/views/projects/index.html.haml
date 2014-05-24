@@ -14,7 +14,7 @@
   %table.form
     %thead
       %tr
-        %th= _("Name")
+        %th= Project.human_attribute_name(:name)
     %tbody
       - @projects.each do |project|
         %tr

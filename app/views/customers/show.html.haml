@@ -1,0 +1,23 @@
+- content_for(:header_title){ sprintf(_("Show customer: %s"), @customer.name) }
+
+= DesignBox.boxt _("Actions"), 350
+= link_to _("Edit customer"), edit_customer_path(@customer), :class => "button"
+= DesignBox.boxb
+
+%br
+
+= DesignBox.boxt Project.model_name.human(:count => 2), 350
+%table.list
+  %thead
+    %tr
+      %th= Project.model_name.human
+  %tbody
+    - @customer.projects.each do |project|
+      %tr
+        %td
+          = link_to_project project
+    - if @customer.projects.none?
+      %tr
+        %td{:colspan => 1, :class => "error"}
+          = _("No projects has been added for this customer.")
+= DesignBox.boxb

@@ -1,0 +1,27 @@
+- content_for(:header_title){ _("Search for customers") }
+
+= DesignBox.boxt _("Enter criteria"), 350
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :name_cont
+  = link_to _("Add new customer"), new_customer_path, :class => "button"
+  = f.submit _("Search")
+= DesignBox.boxb
+
+- if params[:q]
+  %br
+  
+  = DesignBox.boxt _("Results"), 350
+  %table.list
+    %thead
+      %tr
+        %th=_("Customer")
+    %tbody
+      - @customers.each do |customer|
+        %tr
+          %td
+            = link_to_customer customer
+      - if @customers.none?
+        %tr
+          %td{:colspan => 1, :class => "error"}
+            = _("No customers were found.")
+  = DesignBox.boxb

@@ -1807,75 +1807,63 @@ msgstr "ID"
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:136
-#, fuzzy
 msgid "simple_form.hints.timelog.task_id"
-msgstr "Opgave ID"
+msgstr "Opgaven som tidsloggen er for."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:138
-#, fuzzy
 msgid "simple_form.hints.timelog.user_id"
-msgstr "Bruger ID"
+msgstr "Brugeren der brugte tiden."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:140
-#, fuzzy
 msgid "simple_form.hints.timelog.date"
-msgstr "Dato"
+msgstr "Datoen hvor tiden blev brugt."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:142
-#, fuzzy
 msgid "simple_form.hints.timelog.time"
-msgstr "Tid"
+msgstr "Mængden af tid der blev brugt."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:144
-#, fuzzy
 msgid "simple_form.hints.timelog.time_transport"
-msgstr "Tid transport"
+msgstr "Mængden af tid der blev brugt på transport."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:146
-#, fuzzy
 msgid "simple_form.hints.timelog.transport_length"
-msgstr "Transport længde"
+msgstr "Hvor langt der blev rejst."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:148
-#, fuzzy
 msgid "simple_form.hints.timelog.comment"
-msgstr "Kommentar"
+msgstr "En beskrivelse af hvad tiden blev brugt på."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:150
-#, fuzzy
 msgid "simple_form.hints.timelog.invoiced"
-msgstr "Faktureret"
+msgstr "Om tiden er faktureret eller ej."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:152
-#, fuzzy
 msgid "simple_form.hints.timelog.invoiced_at"
-msgstr "Faktureret d."
+msgstr "Datoen hvor tiden blev faktureret."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:154
-#, fuzzy
 msgid "simple_form.hints.timelog.invoiced_by_user_id"
-msgstr "Faktureret af bruger ID"
+msgstr "Brugeren der fakturerede tiden."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:156
-#, fuzzy
 msgid "simple_form.hints.timelog.created_at"
-msgstr "Oprettet d."
+msgstr "Dato hvor tidsloggen blev oprettet."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:158
-#, fuzzy
 msgid "simple_form.hints.timelog.updated_at"
-msgstr "Opdateret d."
+msgstr "Dato for sidste opdatering af tidsloggen."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:160

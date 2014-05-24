@@ -9,7 +9,7 @@ form.simple_form {
     width: 78%;
   }
   
-  .input.datetime {
+  .input.datetime, .input.date, .input.time {
     select[id*=_3i] {
       width: 50px;
     }
