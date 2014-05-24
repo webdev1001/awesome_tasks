@@ -72,17 +72,17 @@ class Task < ActiveRecord::Base
   def send_notify_assigned(user_assigned, user_by)
     return false if user_assigned[:email].to_s.strip.length <= 0
     
-    subj = sprintf(_hb.gettext.gettext("You have been assigned to: %s", user_assigned.locale), self.name)
+    subj = sprintf(_hb.gettext.gettext("You have been assigned to: %s", user_assigned.locale!), self.name)
     
     html = ""
     
-    html += "<b>#{_hb.gettext.gettext("Assigned by", user_assigned.locale)}:</b><br />"
+    html += "<b>#{_hb.gettext.gettext("Assigned by", user_assigned.locale!)}:</b><br />"
     html += "#{user_by.name}<br /><br />"
     
-    html += "<b>#{_hb.gettext.gettext("Task", user_assigned.locale)}:</b><br />"
+    html += "<b>#{_hb.gettext.gettext("Task", user_assigned.locale!)}:</b><br />"
     html += "<a href=\"#{url}\">#{url}</a><br /><br />"
     
-    html += "<b>#{_hb.gettext.gettext("Description", user_assigned.locale)}</b><br />"
+    html += "<b>#{_hb.gettext.gettext("Description", user_assigned.locale!)}</b><br />"
     html += self[:descr]
     
     _hb.mail(:to => user_assigned[:email], :subject => subj, :html => html)

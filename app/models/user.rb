@@ -1,31 +1,24 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   
-  has_many :tasks
-  has_many :task_assigned_users
-  has_many :user_rank_links
-  has_many :user_project_links
-  has_many :projects, :through => :user_project_links
-  has_many :user_roles
-  has_many :user_task_list_links
+  has_many :tasks, :dependent => :restrict_with_exception
+  has_many :task_assigned_users, :dependent => :destroy
+  has_many :user_rank_links, :dependent => :destroy
+  has_many :user_project_links, :dependent => :destroy
+  has_many :projects, :through => :user_project_links, :dependent => :destroy
+  has_many :user_roles, :dependent => :destroy
+  has_many :user_task_list_links, :dependent => :destroy
   
-  def delete
-    raise _("Cannot delete user because that user has created tasks.") if ob.get_by(:Task, {"user" => self})
+  def name!
+    return name if name.present?
+    return username if username.present?
+    return email if email.present?
+    return "#{User.model_name.human} #{id}"
   end
   
-  def name
-    if self[:name].to_s.length > 0
-      return self[:name]
-    elsif self[:username].to_s.length > 0
-      return self[:username]
-    end
-    
-    raise "Could not figure out a name?"
-  end
-  
-  def locale
-    return self[:locale] if self[:locale].to_s.length > 0
-    return "en_GB"
+  def locale!
+    return locale if locale.present?
+    return "en"
   end
   
   def has_rank?(rank_str)

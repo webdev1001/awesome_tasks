@@ -1,0 +1,12 @@
+- content_for(:header_title){ _("Search for users") }
+
+- if !params[:q] || params[:ajaxsearch] != "true"
+  = render "index_form", :ransack => @ransack, :ransack_params => @ransack_params
+
+- # This page can be loaded in modals and needs to be initialized.
+:javascript
+  users_index_init()
+
+- if params[:q]
+  %br
+  = render "index_results", :users => @users

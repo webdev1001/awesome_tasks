@@ -20,7 +20,9 @@
 //= require task_functions
 //= require timelogs_functions
 //= require timelogs
+//= require user_roles
 //= require user_task_list_links
+//= require users
 //= require knjjsfw/jquery.md5
 //= require knjjsfw/events
 //= require knjjsfw/forms

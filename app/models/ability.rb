@@ -53,5 +53,10 @@ private
     can :manage, User
     can :manage, UserTaskListLink
     can :manage, Timelog
+    can :manage, UserRole
+  end
+  
+  def customer_administrator
+    
   end
 end

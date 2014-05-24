@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_filter :set_user
   
   def search
+    @ransack_params = params[:q] || {}
+    @ransack = User.ransack(@ransack_params)
+    @users = @ransack.result.order(:name)
     render :index, :layout => false
   end
   
@@ -13,11 +16,38 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def edit
+    @form_data = {
+      :user_id => @user.id,
+      :roles_user_path => roles_user_path(@user),
+      :new_user_role_path => new_user_role_path(:user_id => @user.id),
+      :add_rank_text => _("Add rank"),
+      :new_role_path => new_user_role_path(:user_role => {:user_id => @user.id})
+    }
+  end
+  
+  def index
+    @ransack_params = params[:q] || {}
+    @ransack = User.ransack(@ransack_params)
+    @users = @ransack.result.order(:name)
+  end
+  
   def create
+    @user = User.new(user_params)
+    
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      flash[:error] = @user.errors.full_messages.join(". ")
+      render :new
+    end
   end
   
   def update
-    if @user.update_attributes(user_params)
+    params_save = user_params
+    params_save.delete(:password)
+    
+    if @user.update_attributes(params_save)
       redirect_to user_path(@user)
     else
       flash[:error] = @user.errors.full_messages.join(". ")
@@ -36,6 +66,8 @@ private
     if params[:id]
       @user = User.find(params[:id])
       authorize! action_name.to_sym, @user
+    else
+      authorize! action_name.to_sym, User
     end
   end
   
