@@ -12,20 +12,7 @@ class Task < ActiveRecord::Base
   before_save :set_priority
   before_save :set_state
   
-  def self.add(d)
-    raise _("No project-ID was given.") if d.data[:project_id].to_i <= 0
-    raise _("Invalid name was given.") if d.data[:name].to_s.strip.length <= 0
-    
-    d.data[:user_id] = current_user.id if current_user
-    d.data[:date_added] = Time.now if !d.data[:date_added]
-    d.data[:priority] = 1 if d.data[:priority].to_i <= 0 or d.data[:priority].to_i > 10
-    
-    begin
-      task = d.ob.get(:Project, d.data[:project_id])
-    rescue Errno::ENOENT
-      raise sprintf(_("A project with the given project-ID could not be found: '%s'."), d.data[:project_id])
-    end
-  end
+  validates_presence_of :task, :user, :project, :name
   
   def self.translated_task_types
     return {
@@ -68,26 +55,6 @@ class Task < ActiveRecord::Base
     end
   end
   
-  #Sends a 
-  def send_notify_assigned(user_assigned, user_by)
-    return false if user_assigned[:email].to_s.strip.length <= 0
-    
-    subj = sprintf(_hb.gettext.gettext("You have been assigned to: %s", user_assigned.locale!), self.name)
-    
-    html = ""
-    
-    html += "<b>#{_hb.gettext.gettext("Assigned by", user_assigned.locale!)}:</b><br />"
-    html += "#{user_by.name}<br /><br />"
-    
-    html += "<b>#{_hb.gettext.gettext("Task", user_assigned.locale!)}:</b><br />"
-    html += "<a href=\"#{url}\">#{url}</a><br /><br />"
-    
-    html += "<b>#{_hb.gettext.gettext("Description", user_assigned.locale!)}</b><br />"
-    html += self[:descr]
-    
-    _hb.mail(:to => user_assigned[:email], :subject => subj, :html => html)
-  end
-  
   # Returns the emails of the assigned users and the owner as an array.
   def notify_emails
     emails = {}
@@ -107,32 +74,6 @@ class Task < ActiveRecord::Base
     end
     
     return ret
-  end
-  
-  def has_access?(user)
-    return false if !user
-    return true if user.user_roles.where(:role => "administrator").any?
-    return true if self[:user_id].to_s == user.id.to_s
-    return false
-  end
-  
-  def has_view_access?(user)
-    return false if !user
-    return true if self.has_access?(user)
-    
-    task_link = ob.get_by(:Task_assigned_user, {
-      "user" => user,
-      "task" => self
-    })
-    return true if task_link
-    
-    project_link = ob.get_by(:User_project_link, {
-      "user" => user,
-      "project" => self.project
-    })
-    return true if project_link
-    
-    return false
   end
   
 private

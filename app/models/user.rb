@@ -40,31 +40,6 @@ class User < ActiveRecord::Base
     return Knj::Strings.is_email?(self[:email])
   end
   
-  def has_view_access?(user)
-    return false if !user
-    return true if user.has_rank?("admin")
-    
-    res = _db.query("
-      SELECT
-        *
-      
-      FROM
-        User_project_link AS user_link,
-        User_project_link AS my_link
-      
-      WHERE
-        user_link.user_id = '#{_db.esc(user.id)}' AND
-        my_link.user_id = '#{_db.esc(self.id)}' AND
-        user_link.project_id = my_link.project_id
-      
-      LIMIT
-        1
-    ").fetch
-    return true if res
-    
-    return false
-  end
-  
   def customers
     customers = {}
     self.ob.list(:Project, {
