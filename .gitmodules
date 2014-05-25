@@ -1,3 +1,3 @@
 [submodule "app/assets/javascripts/knjjsfw"]
 	path = app/assets/javascripts/knjjsfw
-	url = git@github.com:kaspernj/knjjsfw.git
+	url = https://github.com/kaspernj/knjjsfw.git

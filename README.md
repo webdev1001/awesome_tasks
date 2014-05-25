@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kaspernj/rails_imager.svg?branch=master)](https://travis-ci.org/kaspernj/rails_imager)
+
 # Awesome Tasks
 
 A task system made for freelancer, making it easy to see all your tasks, log time, see how much money you have earned per day, week, month and year.
