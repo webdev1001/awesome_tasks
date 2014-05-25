@@ -63,7 +63,7 @@ class Task < ActiveRecord::Base
   
   #Sends a notification about a newly added comment to a task.
   def send_notify_new_comment(comment, task_url)
-    self.notify_emails.each do |data|
+    notify_emails.each do |data|
       TaskAssignedUserMailer.new_comment_notification(comment, data[:user], task_url).deliver!
     end
   end
@@ -94,7 +94,7 @@ class Task < ActiveRecord::Base
     emails[user.email] = user if user && user.email.present?
     
     assigned_users.each do |assigned_user|
-      next if !assigned_user || assigned_user.email.present?
+      next if !assigned_user || !assigned_user.email.present?
       emails[assigned_user.email] = user
     end
     
