@@ -13,4 +13,8 @@ notifications:
 cache:
   - bundler
 
+before_script:
+  - mysql -e 'create database myapp_test;'
+  - cp config/database_travis.yml config/database.yml
+
 script: "bundle exec rspec --format progress"
