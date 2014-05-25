@@ -95,7 +95,7 @@ class Task < ActiveRecord::Base
     
     assigned_users.each do |assigned_user|
       next if !assigned_user || !assigned_user.email.present?
-      emails[assigned_user.email] = user
+      emails[assigned_user.email] = assigned_user
     end
     
     ret = []
