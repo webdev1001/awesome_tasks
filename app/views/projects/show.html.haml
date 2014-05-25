@@ -1,0 +1,89 @@
+- content_for(:header_title){ sprintf(_("Show project: %s."), @project.name) }
+
+%table{:cellpadding => "0", :cellspacing => "0"}
+  %tr
+    %td{:style => "vertical-align: top;"}
+      = DesignBox.boxt(_("Actions"), 350)
+      - if can?(:admin, :admin)
+        %input{:onclick => "location.href='#{edit_project_path(@project)}';", :type => "button", :value => _("Edit project")}
+      %input{:onclick => "location.href='#{new_task_path(:task => {:project_id => @project.id})}';", :type => "button", :value => _("Add task")}
+      = DesignBox.boxb
+      %br/
+      = DesignBox.boxt(_("Information"), 350)
+      %table.form
+        = Knj::Web.inputs([{                                                                |
+            :title => _("Added by"),                                                        |
+            :type => :info,                                                                 |
+            :value => link_to_user(@project.added_user)                                     |
+          },{                                                                               |
+            :title => _("Date"),                                                            |
+            :type => :info,                                                                 |
+            :value => (@project.created_at ? l(@project.created_at, :format => :long) : "") |
+          },{                                                                               |
+            :title => Project.human_attribute_name(:price_per_hour),                        |
+            :type => :info,                                                                 |
+            :value => Knj::Locales.number_out(@project.price_per_hour, 2)                   |
+          },{                                                                               |
+            :title => Project.human_attribute_name(:price_per_hour_transport),              |
+            :type => :info,                                                                 |
+            :value => Knj::Locales.number_out(@project.price_per_hour_transport, 2)         |
+          }]).html_safe                                                                     |
+        - if @project.deadline_at
+          = Knj::Web.inputs([{                          |
+              :title => _("Deadline"),                  |
+              :type => :info,                           |
+              :value => l(@project.deadline_at.to_date) |
+            }]).html_safe                               |
+      = DesignBox.boxb
+    %td{:style => "vertical-align: top; padding-left: 15px;"}
+      = DesignBox.boxt(_("Users"), 350)
+      %div{:style => "padding-bottom: 15px;"}
+        %input{:onclick => "modal({title: '#{_("Assign user to task")}', url: '#{search_users_path(:ajaxsearch => true, :jscallback => :project_show_assign_user_choose)}'});", :type => "button", :value => _("Assign user")}/
+      #divassignedusers
+        = render "assigned_users"
+      = DesignBox.boxb
+%br/
+= DesignBox.boxt(_("Tasks"))
+%table.list
+  %thead
+    %tr
+      %th= _"Task"
+      %th= _"Author"
+      %th= _"Status"
+      %th= _"Date"
+  %tbody
+    - count = 0
+    - @tasks.each do |task|
+    - next unless can?(:show, task)
+    - count += 1
+      %tr
+        %td= link_to_task task
+        %td= link_to_user task.user
+        %td= task.translated_state
+        %td= l(task.created_at.to_date) if task.created_at
+    - if count <= 0
+      %tr
+        %td.error{:colspan => "2"}
+          = _("No tasks were found.")
+= DesignBox.boxb
+
+:javascript
+  function load_assigned_users(){
+    $.ajax({type: "GET", url: " assigned_users_project_path(@project) ", async: true, cache: false, complete: function(data){
+      $("#divassignedusers").slideUp("fast", function(){
+        $("#divassignedusers").html(data.responseText)
+        $("#divassignedusers").slideDown("fast")
+      })
+    }})
+  }
+  
+  function project_show_assign_user_choose(user_id){
+    modal_close()
+    project_assign_user(" @project.id ", user_id)
+  }
+  
+  $(document).ready(function(){
+    events.connect("do_project_assigned_users_update", function(){
+      load_assigned_users()
+    })
+  })

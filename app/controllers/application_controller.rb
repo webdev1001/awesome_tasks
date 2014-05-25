@@ -36,11 +36,11 @@ class ApplicationController < ActionController::Base
   def head_title
     head_title = ""
     head_titles = {
-      "customer_search" => _("Customers"),
-      "project_search" => _("Projects"),
-      "task_search" => _("Tasks"),
-      "user_search" => _("Users"),
-      "timelog_search" => _("Timelogs"),
+      "customer_search" => Customer.model_name.human(:count => 2),
+      "project_search" => Project.model_name.human(:count => 2),
+      "task_search" => Task.model_name.human(:count => 2),
+      "user_search" => User.model_name.human(:count => 2),
+      "timelog_search" => Timelog.model_name.human(:count => 2),
       "workstatus" => _("Work-status"),
       "admin" => _("Administration")
     }

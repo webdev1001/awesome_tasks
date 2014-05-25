@@ -1,12 +1,20 @@
 class ProjectsController < ApplicationController
   before_filter :set_project
   
+  def index
+    @ransack_params = params[:q] || {}
+    @ransack = Project.ransack(@ransack_params)
+    @projects = @ransack.result.order(:name)
+  end
+  
   def new
     @project = Project.new
+    @project.user_added = current_user
   end
   
   def create
     @project = Project.new(project_params)
+    @project.user_added = current_user
     
     if @project.save
       redirect_to project_path(@project)
@@ -49,7 +57,12 @@ class ProjectsController < ApplicationController
 private
   
   def set_project
-    @project = Project.find(params[:id]) if params[:id]
+    if params[:id]
+      @project = Project.find(params[:id])
+      authorize! action_name.to_sym, @project
+    else
+      authorize! action_name.to_sym, Project
+    end
   end
   
   def project_params

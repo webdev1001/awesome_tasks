@@ -1,0 +1,27 @@
+= DesignBox.boxt(_("Enter details"), 480)
+= simple_form_for @user, :data => @form_data, :html => {:autocomplete => "off"} do |f|
+  = f.input :username
+  = f.input :encrypted_password, :as => :hidden
+  = f.input :password, :hint => _("Only write a password here if you whish to change it.")
+  = f.input :name
+  = f.input :email
+  = f.input :active
+  
+  - unless @user.new_record?
+    = link_to _("Log in as"), log_in_as_user_path(@user), :method => :post, :class => "button", :data => {:confirm => _("Are you sure?")}
+    = link_to _("Show"), user_path(@user), :class => "button"
+    = link_to _("Delete"), user_path(@user), :method => :delete, :class => "button", :data => {:confirm => _("Are you sure?")}
+  
+  = f.submit _("Save")
+= DesignBox.boxb
+
+- unless @user.new_record?
+  %br
+  
+  = DesignBox.boxt(_("Permissions"), 350)
+  %div{:style => "padding-bottom: 15px;"}
+    = link_to _("Add rank"), "#", :class => ["button", "add_rank_button"]
+  
+  #divpermissions
+    = render "roles"
+  = DesignBox.boxb

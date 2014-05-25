@@ -1,0 +1,10 @@
+= DesignBox.boxt _("Enter details"), 350
+= simple_form_for @customer do |f|
+  = f.input :name
+  
+  - unless @customer.new_record?
+    = link_to _("Show"), customer_path(@customer), :class => "button"
+    = link_to _("Delete"), customer_path(@customer), :class => "button", :method => :delete, :data => {:confirm => _("Are you sure?")}
+  
+  = f.submit _("Save")
+= DesignBox.boxb

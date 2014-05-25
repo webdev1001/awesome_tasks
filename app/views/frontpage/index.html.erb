@@ -1,6 +1,6 @@
 <% content_for(:header_title){ _("Frontpage") } %>
 
-<%=DesignBox.boxt(_("Tasks"))%>
+<%=DesignBox.boxt(Task.model_name.human(:count => 2))%>
   <div style="padding-bottom: 15px;">
     <%= link_to _("Add new"), new_task_path, :class => "button" %>
   </div>

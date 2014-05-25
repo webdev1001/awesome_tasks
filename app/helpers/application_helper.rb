@@ -24,10 +24,10 @@ module ApplicationHelper
         link_to(_("Frontpage"), root_path)
       ]
       
-      menu << link_to(_("Customers"), customers_path) if can?(:index, Customer)
-      menu << link_to(_("Projects"), projects_path) if can?(:index, Project)
-      menu << link_to(_("Tasks"), tasks_path) if can?(:index, Task)
-      menu << link_to(_("Users"), users_path) if can?(:index, User)
+      menu << link_to(Customer.model_name.human(:count => 2), customers_path) if can?(:index, Customer)
+      menu << link_to(Project.model_name.human(:count => 2), projects_path) if can?(:index, Project)
+      menu << link_to(Task.model_name.human(:count => 2), tasks_path) if can?(:index, Task)
+      menu << link_to(User.model_name.human(:count => 2), users_path) if can?(:index, User)
       menu << link_to(_("Timelogs"), timelogs_path) if can?(:manage, Timelog)
       menu << link_to(_("Work-status"), workstatus_index_path) if can?(:admin, :admin)
       menu << link_to(_("Administration"), "?show=admin") if can?(:admin, :admin)

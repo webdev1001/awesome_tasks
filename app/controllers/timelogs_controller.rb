@@ -33,6 +33,7 @@ class TimelogsController < ApplicationController
       :time => "00:00:00",
       :time_transport => "00:00:00"
     )
+    @timelog.user = current_user
     @timelog.assign_attributes(timelog_params) if params[:timelog]
     
     render :new, :layout => false
@@ -40,6 +41,7 @@ class TimelogsController < ApplicationController
   
   def create
     @timelog = Timelog.new(timelog_params)
+    @timelog.user = current_user
     
     if @timelog.save
       render :nothing => true
