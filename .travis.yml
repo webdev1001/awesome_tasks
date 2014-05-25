@@ -5,8 +5,6 @@ rvm:
 before_script:
   - RAILS_ENV=test
 
-bundler_args: --without='development production'
-
 notifications:
   email: false
 
