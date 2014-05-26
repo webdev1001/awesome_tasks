@@ -11,5 +11,6 @@
  *= require_self
  *= require layout
  *= require simple_form
+ *= require frontpage
  *= require projects
  */
