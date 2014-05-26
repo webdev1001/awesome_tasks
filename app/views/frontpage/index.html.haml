@@ -28,7 +28,8 @@
         - if can? :admin, :admin
           %td.nowrap
             = Knj::Locales.number_out(data[:total_hours], 2)
-            \/ #{Knj::Locales.number_out(data[:total_transport], 2)}
+            = " / "
+            = Knj::Locales.number_out(data[:total_transport], 2)
           %td.nowrap
             = Knj::Locales.number_out(data[:total_length], 0)
     - if no_tasks?
