@@ -1,12 +1,24 @@
 form.simple_form {
+  div.input {
+    margin-bottom: 12px;
+  }
+  
   label {
     width: 18%;
     display: inline-block;
     font-weight: bold;
   }
   
-  input[type=text], input[type=number], input[type=email], input[type=password], select {
+  input[type=text], input[type=number], input[type=email], input[type=password] {
     width: 78%;
+  }
+  
+  select {
+    width: 80%;
+  }
+  
+  select[multiple=multiple] {
+    width: 100%;
   }
   
   .input.datetime, .input.date, .input.time {
@@ -28,6 +40,20 @@ form.simple_form {
     
     select[id*=_5i] {
       width: 50px;
+    }
+  }
+  
+  .input.check_boxes {
+    max-height: 130px;
+    overflow-y: scroll;
+    
+    .checkbox {
+      display: block;
+      width: 100%;
+    }
+    
+    label.collection_check_boxes {
+      width: 80%;
     }
   }
   
