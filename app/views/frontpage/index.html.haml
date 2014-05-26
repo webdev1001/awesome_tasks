@@ -1,0 +1,38 @@
+- content_for(:header_title){ _("Frontpage") }
+
+= DesignBox.boxt Task.model_name.human(:count => 2)
+%div{style: "padding-bottom: 15px;"}
+  = link_to _("Add new"), new_task_path, :class => "button"
+
+%table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :name, Task.model_name.human
+      %th= sort_link @ransack, :project_name, Project.model_name.human
+      %th= sort_link @ransack, :priority
+      %th= sort_link @ransack, :user_name
+      %th= sort_link @ransack, :created_at
+      %th= sort_link @ransack, :state
+      - if can? :admin, :admin
+        %th= "#{Timelog.human_attribute_name(:time)} / #{Timelog.human_attribute_name(:transport)}"
+        %th= Task.human_attribute_name(:transport_length)
+  %tbody
+    - each_task do |data|
+      %tr
+        %td= link_to_task data[:task]
+        %td.nowrap= link_to_project data[:task].project
+        %td.nowrap= data[:task].priority
+        %td.nowrap= link_to_user data[:task].user
+        %td.nowrap= l(data[:task].created_at.to_date) if data[:task].created_at
+        %td= data[:task].translated_state
+        - if can? :admin, :admin
+          %td.nowrap
+            = number_with_precision(data[:hours], :precision => 2)
+            = " / "
+            = number_with_precision(data[:transport], :precision => 2)
+          %td.nowrap= number_with_precision(data[:length], :precision => 0)
+    - if no_tasks?
+      %tr
+        %td.error{:colspan => 8}
+          = _("No tasks were found.")
+= DesignBox.boxb
