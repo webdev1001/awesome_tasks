@@ -15,6 +15,9 @@ before_script:
   - mysql -e 'create database myapp_test;'
   - cp config/database_travis.yml config/database.yml
   - RAILS_ENV=test bundle exec rake db:migrate
-  - CODECLIMATE_REPO_TOKEN=3daede890e781c281bf96d996ed435a2f676b822f329198d2cb01fab9c44ebb1
+
+addons:
+  code_climate:
+    repo_token: 3daede890e781c281bf96d996ed435a2f676b822f329198d2cb01fab9c44ebb1
 
 script: "bundle exec rspec --format progress"
