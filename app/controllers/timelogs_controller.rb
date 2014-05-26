@@ -3,28 +3,16 @@ class TimelogsController < ApplicationController
   
   def index
     @ransack_params = params[:q] || {}
+    @ransack = Timelog.ransack(@ransack_params)
     
-    if params["choice"] == "dosearch"
-      begin
-        @date_from = Datet.in(params["texdatefrom"])
-      rescue
-        flash[:warning] = (_("Invalid date-from."))
-        redirect_to :back
-      end
-      
-      begin
-        @date_to = Datet.in(params["texdateto"])
-      rescue
-        flash[:warning] = (_("Invalid date-to."))
-        redirect_to :back
-      end
-    else
-      @date_from = Datet.new
-      @date_from.day = 1
-      
-      @date_to = Datet.new
-      @date_to.day = @date_to.days_in_month
-    end
+    @invoiced_collection = {
+      _("All") => "",
+      _("Only invoiced") => "only_invoiced",
+      _("Only un-invoiced") => "only_not_invoiced"
+    }
+    
+    set_dates
+    set_timelogs
   end
   
   def new
@@ -89,38 +77,43 @@ private
     end
   end
   
+  def set_dates
+    if @ransack_params.any?
+      begin
+        @date_from = Datet.in(@ransack_params[:date_gteq])
+      rescue
+        flash[:warning] = (_("Invalid date-from."))
+        redirect_to :back
+      end
+      
+      begin
+        @date_to = Datet.in(@ransack_params[:date_lteq])
+      rescue
+        flash[:warning] = (_("Invalid date-to."))
+        redirect_to :back
+      end
+    else
+      @date_from = Datet.new
+      @date_from.day = 1
+      
+      @date_to = Datet.new
+      @date_to.day = @date_to.days_in_month
+    end
+  end
+  
+  def set_timelogs
+    @timelogs = @ransack.result.order(:date)
+    
+    # Invoiced is given in a special way.
+    if params[:timelog].try(:[], :invoiced) == "only_invoiced"
+      @timelogs = @timelogs.where("timelogs.invoiced = '1'")
+    elsif params[:timelog].try(:[], :invoiced) == "only_not_invoiced"
+      @timelogs = @timelogs.where("timelogs.invoiced IS NULL")
+    end
+  end
+  
   def timelog_params
     params.require(:timelog).permit(:task_id, :time, :time_transport, :transport_length,
       :date, :invoiced, :comment)
-  end
-  
-  helper_method :timelogs_from_params
-  def timelogs_from_params
-    args = {}
-    tlogs = Timelog.ransack(@ransack_params).result.order(:date)
-    
-    if params["texdatefrom"].to_s.length > 0
-      tlogs = tlogs.where("timelogs.date >= ?", @date_from.to_time)
-    end
-    
-    if params["texdateto"].to_s.length > 0
-      tlogs = tlogs.where("timelogs.date <= ?", @date_to.to_time)
-    end
-    
-    if params["users"].to_s.length > 0
-      tlogs = tlogs.where("timelogs.user_id IN (?)", params["users"].to_s.split(";"))
-    end
-    
-    if params["projects"].to_s.length > 0
-      tlogs = tlogs.joins(:task).where("tasks.project_id IN (?)", params["projects"].to_s.split(";"))
-    end
-    
-    if params["selinvoiced"].to_s == "1"
-      tlogs = tlogs.where("timelogs.invoiced = '1'")
-    elsif params["selinvoiced"].to_s == "0"
-      tlogs = tlogs.where("timelogs.invoiced != '1'")
-    end
-    
-    return tlogs
   end
 end

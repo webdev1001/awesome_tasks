@@ -51,6 +51,10 @@ div.main_menu_inner{
   font-size: 16px;
 }
 
+.main_menu_inner a {
+  margin-right: 12px;
+}
+
 td.main_bottom{
   text-align: center;
   padding: 4px;
