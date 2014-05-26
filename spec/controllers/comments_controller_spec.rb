@@ -29,7 +29,12 @@ describe CommentsController do
         assigns(:comment).errors.to_a.should eq []
       }.to change { ActionMailer::Base.deliveries.count }.by(2)
       
-      mail_body = ActionMailer::Base.deliveries.first.body.to_s
+      mail = ActionMailer::Base.deliveries.select{ |mail| mail.to.include?(user.email) }.first
+      mail_body = mail.body
+      
+      puts "Subject: #{mail.subject}"
+      mail.subject.should include "Ny kommentar fra: #{admin.name}"
+      
       mail_body.should include "<a href=\"#{task_url(task)}\">"
       
       # Ensures the mail is being translated to the users language.
