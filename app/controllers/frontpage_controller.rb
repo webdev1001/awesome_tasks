@@ -3,7 +3,7 @@ class FrontpageController < ApplicationController
     @ransack_params = params[:q] || {}
     
     @ransack = Task
-      .related_for_user(current_user)
+      .related_to_user(current_user)
       .not_closed
       .ransack(@ransack_params)
     
