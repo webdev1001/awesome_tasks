@@ -55,7 +55,6 @@ describe TasksController do
     let!(:user){ create :user }
     let(:task_access){ create :task, :user => user }
     let(:task_no_access){ create :task }
-    let(:task_assigned){ create :task }
     let(:task_with_timelogs){ create :task, :user => user }
     let(:timelog){ create :timelog, :task => task_with_timelogs }
     
@@ -69,7 +68,8 @@ describe TasksController do
     end
     
     it "can edit assigned tasks" do
-      get :edit, :id => task_assigned.id
+      task_no_access.assigned_users << user
+      get :edit, :id => task_no_access.id
       response.should be_success
     end
     
