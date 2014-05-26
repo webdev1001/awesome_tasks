@@ -30,20 +30,10 @@ describe CommentsController do
       }.to change { ActionMailer::Base.deliveries.count }.by(2)
       
       mail = ActionMailer::Base.deliveries.select{ |mail| mail.to.include?(user.email) }.first
-      mail_body = mail.body
-      
-      puts "Subject: #{mail.subject}"
       mail.subject.should include "Ny kommentar fra: #{admin.name}"
-      
-      mail_body.should include "<a href=\"#{task_url(task)}\">"
-      
-      # Ensures the mail is being translated to the users language.
-      mail_body.should include "Kommentar"
-      mail_body.should include "Hej #{user.name}"
-      
-      #ActionMailer::Base.deliveries.each do |delivery|
-      #  puts "Delivery: #{delivery.inspect}"
-      #end
+      mail.body.should include "<a href=\"#{task_url(task)}\">"
+      mail.body.should include "Kommentar"
+      mail.body.should include "Hej #{user.name}"
     end
   end
 end
