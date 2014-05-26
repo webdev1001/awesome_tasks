@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/kaspernj/awesome_tasks.png)](https://codeclimate.com/github/kaspernj/awesome_tasks)
 [![Build Status](https://travis-ci.org/kaspernj/rails_imager.svg?branch=master)](https://travis-ci.org/kaspernj/rails_imager)
 
 # Awesome Tasks
