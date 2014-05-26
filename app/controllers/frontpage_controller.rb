@@ -22,9 +22,9 @@ private
       
       yield(
         :task => task,
-        :total_length => task.timelogs.sum(:transport_length),
-        :total_hors => task.timelogs.sum(:time).to_f / 3600.0,
-        :total_transport => task.timelogs.sum(:time_transport).to_f / 3600.0
+        :length => task.timelogs.sum(:transport_length).to_f,
+        :hours => task.timelogs.sum(:time).to_f / 3600.0,
+        :transport => task.timelogs.sum(:time_transport).to_f / 3600.0
       )
     end
   end

@@ -14,7 +14,7 @@
       %th= sort_link @ransack, :created_at
       %th= sort_link @ransack, :state
       - if can? :admin, :admin
-        %th= "#{_("Hours")} / #{_("Driving")}"
+        %th= "#{Timelog.human_attribute_name(:time)} / #{Timelog.human_attribute_name(:transport)}"
         %th= Task.human_attribute_name(:transport_length)
   %tbody
     - each_task do |data|
@@ -27,10 +27,10 @@
         %td= data[:task].translated_state
         - if can? :admin, :admin
           %td.nowrap
-            = Knj::Locales.number_out(data[:total_hours], 2)
+            = number_with_precision(data[:hours], :precision => 2)
             = " / "
-            = Knj::Locales.number_out(data[:total_transport], 2)
-          %td.nowrap= Knj::Locales.number_out(data[:total_length], 0)
+            = number_with_precision(data[:transport], :precision => 2)
+          %td.nowrap= number_with_precision(data[:length], :precision => 0)
     - if no_tasks?
       %tr
         %td.error{:colspan => 8}

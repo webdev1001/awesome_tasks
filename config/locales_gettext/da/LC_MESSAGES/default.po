@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AwesomeTasks\n"
-"POT-Creation-Date: 2014-05-26 10:16+0100\n"
+"POT-Creation-Date: 2014-05-26 17:40+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kasper Johansen <k@spernj.org>\n"
 "Language-Team: \n"
@@ -2006,31 +2006,31 @@ msgstr "Ugyldigt navn blev givet."
 msgid "A project with the given project-ID could not be found: '%s'."
 msgstr "Et projekt med det givne projekt-ID kunne ikke findes: '%s'."
 
-#: Ruby/knjtasks/models/class_task.rb:35 app/models/task.rb:19
+#: Ruby/knjtasks/models/class_task.rb:35 app/models/task.rb:26
 msgid "Feature"
 msgstr "Feature"
 
-#: Ruby/knjtasks/models/class_task.rb:36 app/models/task.rb:20
+#: Ruby/knjtasks/models/class_task.rb:36 app/models/task.rb:27
 msgid "Bug report"
 msgstr "Fejlrapport"
 
-#: Ruby/knjtasks/models/class_task.rb:37 app/models/task.rb:21
+#: Ruby/knjtasks/models/class_task.rb:37 app/models/task.rb:28
 msgid "Question"
 msgstr "Spørgsmål"
 
-#: Ruby/knjtasks/models/class_task.rb:43 app/models/task.rb:36
+#: Ruby/knjtasks/models/class_task.rb:43 app/models/task.rb:43
 msgid "Open"
 msgstr "Åben"
 
-#: Ruby/knjtasks/models/class_task.rb:44 app/models/task.rb:37
+#: Ruby/knjtasks/models/class_task.rb:44 app/models/task.rb:44
 msgid "Confirmed"
 msgstr "Bekræftet"
 
-#: Ruby/knjtasks/models/class_task.rb:45 app/models/task.rb:38
+#: Ruby/knjtasks/models/class_task.rb:45 app/models/task.rb:45
 msgid "Waiting"
 msgstr "Venter"
 
-#: Ruby/knjtasks/models/class_task.rb:46 app/models/task.rb:39
+#: Ruby/knjtasks/models/class_task.rb:46 app/models/task.rb:46
 msgid "Closed"
 msgstr "Lukket"
 
@@ -2062,7 +2062,7 @@ msgstr ""
 msgid "no date"
 msgstr "ingen dato"
 
-#: app/models/task.rb:22
+#: app/models/task.rb:29
 msgid "Other"
 msgstr "Andet"
 
@@ -2084,48 +2084,10 @@ msgstr ""
 msgid "Choose:"
 msgstr "Vælg:"
 
-#: app/helpers/application_helper.rb:7 app/views/timelogs/index.html.erb:56
+#: app/helpers/application_helper.rb:7
+#: app/controllers/timelogs_controller.rb:9
 msgid "All"
 msgstr "Alle"
-
-#: app/helpers/application_helper.rb:24 Ruby/knjtasks/www/index.rhtml:11
-#: Ruby/knjtasks/www/index.rhtml:85 app/views/frontpage/index.html.erb:1
-msgid "Frontpage"
-msgstr "Forside"
-
-#: app/helpers/application_helper.rb:31 Ruby/knjtasks/www/index.rhtml:16
-#: Ruby/knjtasks/www/index.rhtml:97 app/views/timelogs/index.html.erb:11
-#: app/views/tasks/show.html.erb:142
-msgid "Timelogs"
-msgstr "Tidslogs"
-
-#: app/helpers/application_helper.rb:32
-#: app/controllers/application_controller.rb:44
-#: Ruby/knjtasks/www/index.rhtml:17 Ruby/knjtasks/www/index.rhtml:98
-#: app/views/workstatus/index.html.erb:13
-msgid "Work-status"
-msgstr "Arbejdsstatus"
-
-#: app/helpers/application_helper.rb:33
-#: app/controllers/application_controller.rb:45
-#: Ruby/knjtasks/www/index.rhtml:18 Ruby/knjtasks/www/index.rhtml:99
-msgid "Administration"
-msgstr "Administration"
-
-#: app/helpers/application_helper.rb:34 Ruby/knjtasks/www/index.rhtml:102
-#: app/views/profile/index.html.erb:1
-msgid "Your profile"
-msgstr "Din profil"
-
-#: app/helpers/application_helper.rb:35 Ruby/knjtasks/www/index.rhtml:103
-msgid "Log out"
-msgstr "Log ud"
-
-#: app/helpers/application_helper.rb:38 Ruby/knjtasks/www/index.rhtml:106
-#: app/views/user_authentications/new.html.erb:1
-#: app/views/user_authentications/new.html.erb:29
-msgid "Log in"
-msgstr "Log ind"
 
 #: app/helpers/project_helper.rb:3
 msgid "no project"
@@ -2134,58 +2096,6 @@ msgstr "intet projekt"
 #: app/helpers/user_helper.rb:3
 msgid "no user"
 msgstr "ingen bruger"
-
-#: app/controllers/frontpage_controller.rb:15
-#: app/views/profile/index.html.erb:48 app/views/tasks/show.html.erb:49
-#: app/views/projects/show.html.haml:50
-msgid "Task"
-msgstr "Opgave"
-
-#: app/controllers/frontpage_controller.rb:19
-#: app/views/workstatus/index.html.erb:30
-#: app/views/workstatus/index.html.erb:194 app/views/tasks/show.html.erb:67
-msgid "Project"
-msgstr "Projekt"
-
-#: app/controllers/frontpage_controller.rb:23 app/views/tasks/show.html.erb:77
-msgid "Priority"
-msgstr ""
-
-#: app/controllers/frontpage_controller.rb:27
-#: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:7
-#: app/views/tasks/show.html.erb:72 app/views/projects/show.html.haml:51
-#: app/views/tasks/index.html.haml:26
-msgid "Author"
-msgstr "Forfatter"
-
-#: app/controllers/frontpage_controller.rb:31
-#: app/views/workstatus/index.html.erb:61
-#: app/views/timelogs/index.html.erb:154 app/views/tasks/show.html.erb:62
-#: app/views/tasks/_timelogs.html.erb:6 app/views/projects/show.html.haml:19
-#: app/views/projects/show.html.haml:53
-msgid "Date"
-msgstr "Dato"
-
-#: app/controllers/frontpage_controller.rb:35 app/views/tasks/show.html.erb:52
-#: app/views/projects/show.html.haml:52
-msgid "Status"
-msgstr "Status"
-
-#: app/controllers/frontpage_controller.rb:40
-#: app/views/workstatus/index.html.erb:62
-#: app/views/workstatus/index.html.erb:155
-#: app/views/workstatus/index.html.erb:195
-#: app/views/timelogs/index.html.erb:154 app/views/tasks/_timelogs.html.erb:5
-msgid "Hours"
-msgstr "Timer"
-
-#: app/controllers/frontpage_controller.rb:40
-msgid "Driving"
-msgstr "Kørsel"
-
-#: app/controllers/frontpage_controller.rb:42
-msgid "Transport length"
-msgstr "Transportlængde"
 
 #: app/controllers/tasks_controller.rb:87 app/views/tasks/show.html.erb:7
 msgid "You do not have access to that task and cannot view this page."
@@ -2199,28 +2109,26 @@ msgstr "Dansk"
 msgid "English"
 msgstr "Engelsk"
 
-#: app/controllers/application_controller.rb:55
-#: Ruby/knjtasks/www/index.rhtml:28
-msgid "That task could not be found."
-msgstr "Den opgave kunne ikke findes."
-
-#: app/controllers/application_controller.rb:63
-#: Ruby/knjtasks/www/index.rhtml:36
-msgid "That project could not be found."
-msgstr "Projektet kunne ikke findes."
+#: app/controllers/timelogs_controller.rb:10
+msgid "Only invoiced"
+msgstr "Kun faktureret"
 
 #: app/controllers/timelogs_controller.rb:11
+msgid "Only un-invoiced"
+msgstr "Kun ikke faktuerede"
+
+#: app/controllers/timelogs_controller.rb:37
+#: app/controllers/timelogs_controller.rb:49
+msgid "Could not save: %{errors}"
+msgstr "Kunne ikke gemme: %{errors}"
+
+#: app/controllers/timelogs_controller.rb:85
 msgid "Invalid date-from."
 msgstr ""
 
-#: app/controllers/timelogs_controller.rb:18
+#: app/controllers/timelogs_controller.rb:92
 msgid "Invalid date-to."
 msgstr ""
-
-#: app/controllers/timelogs_controller.rb:49
-#: app/controllers/timelogs_controller.rb:61
-msgid "Could not save: %{errors}"
-msgstr "Kunne ikke gemme: %{errors}"
 
 #: app/controllers/user_authentications_controller.rb:9
 msgid "A user with that username and/or password was found."
@@ -2250,13 +2158,18 @@ msgstr ""
 msgid "New comment from: %{author_name}"
 msgstr "Ny kommentar fra: %{author_name}"
 
+#: Ruby/knjtasks/www/index.rhtml:11 Ruby/knjtasks/www/index.rhtml:85
+#: app/views/frontpage/index.html.haml:1
+#: app/views/layouts/application.html.haml:37
+msgid "Frontpage"
+msgstr "Forside"
+
 #: Ruby/knjtasks/www/index.rhtml:12 Ruby/knjtasks/www/index.rhtml:89
 msgid "Customers"
 msgstr "Kunder"
 
 #: Ruby/knjtasks/www/index.rhtml:13 Ruby/knjtasks/www/index.rhtml:90
 #: app/views/workstatus/index.html.erb:190
-#: app/views/timelogs/index.html.erb:43
 msgid "Projects"
 msgstr "Projekter"
 
@@ -2266,11 +2179,53 @@ msgid "Tasks"
 msgstr "Opgaver"
 
 #: Ruby/knjtasks/www/index.rhtml:15 Ruby/knjtasks/www/index.rhtml:94
-#: app/views/timelogs/index.html.erb:35 app/views/projects/show.html.haml:39
+#: app/views/projects/show.html.haml:39
 msgid "Users"
 msgstr "Brugere"
 
-#: Ruby/knjtasks/www/index.rhtml:136 app/views/layouts/application.html.erb:69
+#: Ruby/knjtasks/www/index.rhtml:16 Ruby/knjtasks/www/index.rhtml:97
+#: app/views/tasks/show.html.erb:142
+#: app/views/layouts/application.html.haml:42
+#: app/views/timelogs/index.html.haml:1
+msgid "Timelogs"
+msgstr "Tidslogs"
+
+#: Ruby/knjtasks/www/index.rhtml:17 Ruby/knjtasks/www/index.rhtml:98
+#: app/views/workstatus/index.html.erb:13
+#: app/views/layouts/application.html.haml:43
+msgid "Work-status"
+msgstr "Arbejdsstatus"
+
+#: Ruby/knjtasks/www/index.rhtml:18 Ruby/knjtasks/www/index.rhtml:99
+msgid "Administration"
+msgstr "Administration"
+
+#: Ruby/knjtasks/www/index.rhtml:28
+msgid "That task could not be found."
+msgstr "Den opgave kunne ikke findes."
+
+#: Ruby/knjtasks/www/index.rhtml:36
+msgid "That project could not be found."
+msgstr "Projektet kunne ikke findes."
+
+#: Ruby/knjtasks/www/index.rhtml:102 app/views/profile/index.html.erb:1
+#: app/views/layouts/application.html.haml:44
+msgid "Your profile"
+msgstr "Din profil"
+
+#: Ruby/knjtasks/www/index.rhtml:103
+#: app/views/layouts/application.html.haml:45
+msgid "Log out"
+msgstr "Log ud"
+
+#: Ruby/knjtasks/www/index.rhtml:106
+#: app/views/user_authentications/new.html.erb:1
+#: app/views/user_authentications/new.html.erb:29
+#: app/views/layouts/application.html.haml:46
+msgid "Log in"
+msgstr "Log ind"
+
+#: Ruby/knjtasks/www/index.rhtml:136
 msgid "Made by %s"
 msgstr "Lavet af %s"
 
@@ -2303,20 +2258,24 @@ msgstr "Du skal være logget ind for at se denne side."
 
 #: app/views/workstatus/index.html.erb:19
 #: app/views/user_roles/_search.html.erb:49
-#: app/views/timelogs/index.html.erb:17
 #: app/views/users/_index_form.html.haml:1
-#: app/views/customers/index.html.haml:3 app/views/projects/index.html.haml:3
-#: app/views/tasks/index.html.haml:3
+#: app/views/customers/index.html.haml:3 app/views/timelogs/index.html.haml:3
+#: app/views/projects/index.html.haml:3 app/views/tasks/index.html.haml:3
 msgid "Enter criteria"
 msgstr "Indtast kriterier"
 
-#: app/views/workstatus/index.html.erb:22 app/views/timelogs/index.html.erb:20
+#: app/views/workstatus/index.html.erb:22 app/views/timelogs/index.html.haml:5
 msgid "Date from"
 msgstr "Date fra"
 
-#: app/views/workstatus/index.html.erb:26 app/views/timelogs/index.html.erb:25
+#: app/views/workstatus/index.html.erb:26 app/views/timelogs/index.html.haml:6
 msgid "Date to"
 msgstr "Dato til"
+
+#: app/views/workstatus/index.html.erb:30
+#: app/views/workstatus/index.html.erb:194 app/views/tasks/show.html.erb:67
+msgid "Project"
+msgstr "Projekt"
 
 #: app/views/workstatus/index.html.erb:40
 msgid "Filter"
@@ -2324,11 +2283,24 @@ msgstr "Filter"
 
 #: app/views/workstatus/index.html.erb:57
 #: app/views/user_roles/_search.html.erb:9
-#: app/views/timelogs/index.html.erb:92
 #: app/views/users/_index_results.html.haml:1
-#: app/views/customers/index.html.haml:13 app/views/tasks/index.html.haml:18
+#: app/views/customers/index.html.haml:13
+#: app/views/timelogs/index.html.haml:35 app/views/tasks/index.html.haml:18
 msgid "Results"
 msgstr "Resultater"
+
+#: app/views/workstatus/index.html.erb:61 app/views/tasks/show.html.erb:62
+#: app/views/timelogs/index.html.haml:80 app/views/projects/show.html.haml:19
+#: app/views/projects/show.html.haml:53 app/views/tasks/_timelogs.html.haml:6
+msgid "Date"
+msgstr "Dato"
+
+#: app/views/workstatus/index.html.erb:62
+#: app/views/workstatus/index.html.erb:155
+#: app/views/workstatus/index.html.erb:195
+#: app/views/timelogs/index.html.haml:80 app/views/tasks/_timelogs.html.haml:5
+msgid "Hours"
+msgstr "Timer"
 
 #: app/views/workstatus/index.html.erb:63
 msgid "Hours driving"
@@ -2353,7 +2325,7 @@ msgstr "Oversigt"
 
 #: app/views/workstatus/index.html.erb:160
 #: app/views/workstatus/index.html.erb:196
-#: app/views/timelogs/index.html.erb:103
+#: app/views/timelogs/index.html.haml:46
 msgid "Transport"
 msgstr "Transport"
 
@@ -2370,7 +2342,7 @@ msgid "Total after tax"
 msgstr "Total efter skat"
 
 #: app/views/workstatus/index.html.erb:180
-#: app/views/timelogs/index.html.erb:82
+#: app/views/timelogs/index.html.haml:26
 msgid "Total transport"
 msgstr "Total transport"
 
@@ -2393,8 +2365,8 @@ msgstr "Navn"
 msgid "The name of the check as it should appear for the other users."
 msgstr ""
 
-#: app/views/task_checks/form.html.erb:50
-#: app/views/timelogs/index.html.erb:156 app/views/tasks/show.html.erb:87
+#: app/views/task_checks/form.html.erb:50 app/views/tasks/show.html.erb:87
+#: app/views/timelogs/index.html.haml:82
 msgid "Description"
 msgstr "Beskrivelse"
 
@@ -2407,10 +2379,10 @@ msgstr ""
 msgid "Do you want to delete this check?"
 msgstr "Vil du gerne slette dette check?"
 
-#: app/views/task_checks/form.html.erb:61
-#: app/views/tasks/_timelogs.html.erb:13 app/views/tasks/_form.html.erb:13
+#: app/views/task_checks/form.html.erb:61 app/views/tasks/_form.html.erb:13
 #: app/views/users/_form.html.haml:13 app/views/customers/_form.html.haml:7
 #: app/views/projects/_form.html.haml:16
+#: app/views/tasks/_timelogs.html.haml:12
 msgid "Delete"
 msgstr "Slet"
 
@@ -2465,6 +2437,12 @@ msgstr "Tildelt af"
 msgid "A new comment has been written to the task '%s'."
 msgstr "En ny kommentar er skrevet til opgaven '%s'."
 
+#: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:7
+#: app/views/tasks/show.html.erb:72 app/views/projects/show.html.haml:51
+#: app/views/tasks/index.html.haml:26
+msgid "Author"
+msgstr "Forfatter"
+
 #: app/views/profile/index.html.erb:9 app/views/users/show.html.haml:16
 msgid "Email"
 msgstr "Email"
@@ -2481,40 +2459,14 @@ msgstr ""
 msgid "Task-list"
 msgstr "Opgaveliste"
 
+#: app/views/profile/index.html.erb:48 app/views/tasks/show.html.erb:49
+#: app/views/projects/show.html.haml:50
+msgid "Task"
+msgstr "Opgave"
+
 #: app/views/profile/index.html.erb:72
 msgid "No tasks has been added to your list."
-msgstr ""
-
-#: app/views/frontpage/index.html.erb:5 app/views/tasks/show.html.erb:129
-#: app/views/tasks/show.html.erb:137 app/views/tasks/show.html.erb:144
-#: app/views/users/_index_form.html.haml:9
-#: app/views/projects/index.html.haml:6 app/views/tasks/index.html.haml:11
-msgid "Add new"
-msgstr "Tilføj ny"
-
-#: app/views/frontpage/index.html.erb:80 app/views/projects/show.html.haml:67
-msgid "No tasks were found."
-msgstr "Der blev ikke fundet nogle opgaver."
-
-#: app/views/layouts/application.html.erb:17
-msgid "Close"
-msgstr "Luk"
-
-#: app/views/layouts/application.html.erb:18
-msgid "Edit comment"
-msgstr "Rediger kommentar"
-
-#: app/views/layouts/application.html.erb:19
-msgid "New comment"
-msgstr "Ny kommentar"
-
-#: app/views/layouts/application.html.erb:20
-msgid "Edit timelog"
-msgstr "Rediger tidslog"
-
-#: app/views/layouts/application.html.erb:21
-msgid "Edit task-check"
-msgstr "Rediger opgavecheck"
+msgstr "Der er ingen opgaver på din liste."
 
 #: app/views/user_roles/_search.html.erb:13
 msgid "Rank"
@@ -2529,108 +2481,15 @@ msgid "Enter a part of the name of the permission you are searching for."
 msgstr ""
 
 #: app/views/user_roles/_search.html.erb:61
-#: app/views/timelogs/index.html.erb:63
 #: app/views/users/_index_form.html.haml:10
-#: app/views/customers/index.html.haml:7 app/views/projects/index.html.haml:7
-#: app/views/tasks/index.html.haml:12
+#: app/views/customers/index.html.haml:7 app/views/timelogs/index.html.haml:12
+#: app/views/projects/index.html.haml:7 app/views/tasks/index.html.haml:12
 msgid "Search"
 msgstr "Søg"
 
 #: app/views/user_roles/_search.html.erb:73
 msgid "Please enter criteria and search..."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:23
-msgid "If you only want timelogs from a specific date and up."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:28
-msgid "If you only want timelogs up to a specific date."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:30 app/views/tasks/_timelogs.html.erb:8
-msgid "Comment"
-msgstr "Kommentar"
-
-#: app/views/timelogs/index.html.erb:33
-msgid "A part of the comment in the timelog you are looking for."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:41
-msgid "If you want to find timelogs from specific users."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:49
-msgid "If you want to find timelogs from specific projects."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:51
-msgid "Invoiced"
-msgstr "Faktureret"
-
-#: app/views/timelogs/index.html.erb:54
-msgid "If you only want to view invoiced, uninvoiced or all timelogs."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:57
-msgid "Only invoiced"
-msgstr "Kun faktureret"
-
-#: app/views/timelogs/index.html.erb:58
-msgid "Only un-invoiced"
-msgstr "Kun ikke faktuerede"
-
-#: app/views/timelogs/index.html.erb:74
-msgid "Sum"
-msgstr "Sum"
-
-#: app/views/timelogs/index.html.erb:77
-msgid "Total hours"
-msgstr "Total timer"
-
-#: app/views/timelogs/index.html.erb:80
-msgid ""
-"The total amount of hours of all the found time-logs (first hours used then "
-"time used on transport)."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:85
-msgid "Total km's of transport used in all the timelogs found."
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:125
-msgid "Yes"
-msgstr "Ja"
-
-#: app/views/timelogs/index.html.erb:125
-msgid "No"
-msgstr "Nej"
-
-#: app/views/timelogs/index.html.erb:140 app/views/tasks/_timelogs.html.erb:75
-msgid "No timelogs were found."
-msgstr "Der blev ikke fundet nogle tidslogs."
-
-#: app/views/timelogs/index.html.erb:150
-msgid "Customer message"
-msgstr "Kundebesked"
-
-#: app/views/timelogs/index.html.erb:155 app/views/tasks/_timelogs.html.erb:7
-#: app/views/tasks/_users.html.erb:4
-#: app/views/projects/_assigned_users.html.haml:4
-msgid "User"
-msgstr "Bruger"
-
-#: app/views/timelogs/index.html.erb:201
-msgid "Mark timelogs as invoiced"
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:201
-msgid "Are you sure you want to mark all the found timelogs as invoiced?"
-msgstr ""
-
-#: app/views/timelogs/index.html.erb:201
-msgid "All timelogs was marked as invoiced."
-msgstr ""
+msgstr "Indtast kriterier og søg..."
 
 #: app/views/tasks/show.html.erb:32
 msgid "Show task: %s."
@@ -2654,9 +2513,13 @@ msgstr "Er du sikker?"
 msgid "Add to list"
 msgstr "Tilføj til liste"
 
+#: app/views/tasks/show.html.erb:52 app/views/projects/show.html.haml:52
+msgid "Status"
+msgstr "Status"
+
 #: app/views/tasks/show.html.erb:55
 msgid "The current status of the task."
-msgstr ""
+msgstr "Den nuværende status på opgaven."
 
 #: app/views/tasks/show.html.erb:57
 msgid "Type"
@@ -2664,18 +2527,22 @@ msgstr "Type"
 
 #: app/views/tasks/show.html.erb:60
 msgid "The type of task this is."
-msgstr ""
+msgstr "Opgavens type."
 
 #: app/views/tasks/show.html.erb:65
 msgid "The date this task was added."
-msgstr ""
+msgstr "Datoen opgaven blev oprettet."
 
 #: app/views/tasks/show.html.erb:70
 msgid "The project this task is created under."
-msgstr ""
+msgstr "Projektet denne opgave tilhører."
 
 #: app/views/tasks/show.html.erb:75
 msgid "The user that created this task."
+msgstr "Den bruger der oprettede opgaven."
+
+#: app/views/tasks/show.html.erb:77
+msgid "Priority"
 msgstr ""
 
 #: app/views/tasks/show.html.erb:80
@@ -2711,37 +2578,24 @@ msgstr "Tilføj nyt check"
 msgid "Comments"
 msgstr "Kommentarer"
 
-#: app/views/tasks/_timelogs.html.erb:4
-msgid "ID"
-msgstr "ID"
+#: app/views/tasks/show.html.erb:129 app/views/tasks/show.html.erb:137
+#: app/views/tasks/show.html.erb:144 app/views/users/_index_form.html.haml:9
+#: app/views/frontpage/index.html.haml:5 app/views/projects/index.html.haml:6
+#: app/views/tasks/index.html.haml:11
+msgid "Add new"
+msgstr "Tilføj ny"
 
-#: app/views/tasks/_timelogs.html.erb:10
-msgid "Invoiced?"
-msgstr "Faktureret?"
-
-#: app/views/tasks/_timelogs.html.erb:64
-msgid "Do you want to delete this timelog?"
-msgstr "Vil du slette denne tidslog?"
-
-#: app/views/tasks/_timelogs.html.erb:64 app/views/tasks/_checks.html.erb:6
-#: app/views/tasks/_comments.html.erb:16
-msgid "delete"
-msgstr "slet"
-
-#: app/views/tasks/_checks.html.erb:6 app/views/tasks/_comments.html.erb:13
+#: app/views/tasks/_checks.html.erb:6 app/views/tasks/_comments.html.haml:12
 msgid "edit"
 msgstr "rediger"
 
+#: app/views/tasks/_checks.html.erb:6 app/views/tasks/_comments.html.haml:16
+#: app/views/tasks/_timelogs.html.haml:39
+msgid "delete"
+msgstr "slet"
+
 #: app/views/tasks/_checks.html.erb:17
 msgid "No checks has been added for this task."
-msgstr ""
-
-#: app/views/tasks/_comments.html.erb:16
-msgid "Do you want to delete this comment?"
-msgstr ""
-
-#: app/views/tasks/_comments.html.erb:32
-msgid "No comments were found for this task."
 msgstr ""
 
 #: app/views/tasks/_form.html.erb:2
@@ -2758,16 +2612,22 @@ msgstr ""
 
 #: app/views/tasks/_form.html.erb:10
 msgid "Insert browser and os"
-msgstr ""
+msgstr "Indsæt browser og OS"
 
 #: app/views/tasks/_form.html.erb:12 app/views/users/_form.html.haml:12
 #: app/views/customers/_form.html.haml:6 app/views/projects/_form.html.haml:14
 msgid "Show"
 msgstr "Vis"
 
+#: app/views/tasks/_users.html.erb:4 app/views/timelogs/index.html.haml:81
+#: app/views/projects/_assigned_users.html.haml:4
+#: app/views/tasks/_timelogs.html.haml:7
+msgid "User"
+msgstr "Bruger"
+
 #: app/views/tasks/_users.html.erb:15
 msgid "Do you want to remove this user from this task?"
-msgstr ""
+msgstr "Vil du fjerne denne bruger fra opgaven?"
 
 #: app/views/tasks/_users.html.erb:15
 #: app/views/projects/_assigned_users.html.haml:14
@@ -2776,7 +2636,7 @@ msgstr "fjern"
 
 #: app/views/tasks/_users.html.erb:23
 msgid "No users has been assigned to this task."
-msgstr ""
+msgstr "Der er ikke blevet tildelt nogle brugere."
 
 #: app/views/users/_form.html.haml:5
 msgid "Only write a password here if you whish to change it."
@@ -2788,7 +2648,7 @@ msgstr "Log ind som"
 
 #: app/views/users/_form.html.haml:21
 msgid "Permissions"
-msgstr ""
+msgstr "Rettigheder"
 
 #: app/views/users/show.html.haml:1
 msgid "Show user: %s."
@@ -2841,6 +2701,10 @@ msgstr "Vil du fjerne denne rang?"
 msgid "No roles has been added to this user."
 msgstr "Der er ikke tilføjet nogen rang for denne bruger."
 
+#: app/views/frontpage/index.html.haml:37 app/views/projects/show.html.haml:67
+msgid "No tasks were found."
+msgstr "Der blev ikke fundet nogle opgaver."
+
 #: app/views/customers/show.html.haml:1
 msgid "Show customer: %s"
 msgstr "Vis kunde: %s"
@@ -2865,9 +2729,84 @@ msgstr "Tilføj ny kunde"
 msgid "No customers were found."
 msgstr "Der blev ikke fundet nogle kunder."
 
+#: app/views/layouts/application.html.haml:16
+msgid "Close"
+msgstr "Luk"
+
+#: app/views/layouts/application.html.haml:17
+msgid "Edit comment"
+msgstr "Rediger kommentar"
+
+#: app/views/layouts/application.html.haml:18
+msgid "New comment"
+msgstr "Ny kommentar"
+
+#: app/views/layouts/application.html.haml:19
+msgid "Edit timelog"
+msgstr "Rediger tidslog"
+
+#: app/views/layouts/application.html.haml:20
+msgid "Edit task-check"
+msgstr "Rediger opgavecheck"
+
+#: app/views/timelogs/index.html.haml:8
+msgid "If you want to find timelogs from specific projects."
+msgstr ""
+
+#: app/views/timelogs/index.html.haml:11
+msgid "If you only want to view invoiced, uninvoiced or all timelogs."
+msgstr ""
+
+#: app/views/timelogs/index.html.haml:18
+msgid "Sum"
+msgstr "Sum"
+
+#: app/views/timelogs/index.html.haml:21
+msgid "Total hours"
+msgstr "Total timer"
+
+#: app/views/timelogs/index.html.haml:24
+msgid ""
+"The total amount of hours of all the found time-logs (first hours used then "
+"time used on transport)."
+msgstr ""
+
+#: app/views/timelogs/index.html.haml:29
+msgid "Total km's of transport used in all the timelogs found."
+msgstr ""
+
+#: app/views/timelogs/index.html.haml:62
+msgid "Yes"
+msgstr "Ja"
+
+#: app/views/timelogs/index.html.haml:62
+msgid "No"
+msgstr "Nej"
+
+#: app/views/timelogs/index.html.haml:71
+#: app/views/tasks/_timelogs.html.haml:44
+msgid "No timelogs were found."
+msgstr "Der blev ikke fundet nogle tidslogs."
+
+#: app/views/timelogs/index.html.haml:76
+msgid "Customer message"
+msgstr "Kundebesked"
+
+#: app/views/timelogs/index.html.haml:107
+msgid "Mark timelogs as invoiced"
+msgstr "Marker tidslogs som fakturerede"
+
+#: app/views/timelogs/index.html.haml:107
+msgid "Are you sure you want to mark all the found timelogs as invoiced?"
+msgstr ""
+
+#: app/views/timelogs/index.html.haml:107
+msgid "All timelogs was marked as invoiced."
+msgstr "Alle tidslogs blev markeret som fakturerede."
+
 #: app/views/projects/_form.html.haml:12
 msgid "Added by %{user_link}"
-msgstr ""
+msgstr "Tilføjet af %{user_link}"
 
 #: app/views/projects/_form.html.haml:15 app/views/projects/show.html.haml:9
 msgid "Add task"
@@ -2911,7 +2850,7 @@ msgstr "Nyt projekt"
 
 #: app/views/projects/_assigned_users.html.haml:14
 msgid "Do you want to remove this user from the project?"
-msgstr ""
+msgstr "Vil du fjerne denne bruger fra projektet?"
 
 #: app/views/projects/_assigned_users.html.haml:19
 msgid "No users were found."
@@ -2925,9 +2864,42 @@ msgstr "Søg efter opgaver"
 msgid "Edit task: %{task_name}"
 msgstr "Rediger opgave: %{task_name}"
 
+#: app/views/tasks/_comments.html.haml:16
+msgid "Do you want to delete this comment?"
+msgstr "Vil du slette denne kommentar?"
+
+#: app/views/tasks/_comments.html.haml:24
+msgid "No comments were found for this task."
+msgstr "Der blev ikke fundet nogle kommentarer for denne opgave."
+
 #: app/views/tasks/new.html.haml:1
 msgid "Add new task"
 msgstr "Tilføj ny opgave"
+
+#: app/views/tasks/_timelogs.html.haml:4
+msgid "ID"
+msgstr "ID"
+
+#: app/views/tasks/_timelogs.html.haml:8
+msgid "Comment"
+msgstr "Kommentar"
+
+#: app/views/tasks/_timelogs.html.haml:10
+msgid "Invoiced?"
+msgstr "Faktureret?"
+
+#: app/views/tasks/_timelogs.html.haml:39
+msgid "Do you want to delete this timelog?"
+msgstr "Vil du slette denne tidslog?"
+
+#~ msgid "Driving"
+#~ msgstr "Kørsel"
+
+#~ msgid "Transport length"
+#~ msgstr "Transportlængde"
+
+#~ msgid "Invoiced"
+#~ msgstr "Faktureret"
 
 #~ msgid "Customer"
 #~ msgstr "Kunde"
