@@ -27,21 +27,63 @@ describe TasksController do
   end
   
   context "#show" do
-    let(:user){ create :user }
-    let(:task_access){ create :task, :user => user }
-    let(:task_no_access){ create :task }
+    let!(:user){ create :user }
+    let!(:task_access){ create :task, :user => user }
+    let!(:task_no_access){ create :task }
+    let!(:task_assigned){ create :task }
+    
+    before do
+      sign_in user
+      task_assigned.assigned_users << user
+    end
     
     it "shows tasks that the user have access to" do
-      sign_in user
       get :show, :id => task_access.id
       response.should be_success
     end
     
     it "doesnt show tasks that the user doesnt have access to" do
-      sign_in user
       request.env["HTTP_REFERER"] = root_url
-      get :show, :id => task_no_access.id
-      response.should_not be_success
+      
+      expect{
+        get :show, :id => task_no_access.id
+      }.to raise_error CanCan::AccessDenied
+    end
+  end
+  
+  context "#edit" do
+    let!(:user){ create :user }
+    let(:task_access){ create :task, :user => user }
+    let(:task_no_access){ create :task }
+    let(:task_assigned){ create :task }
+    let(:task_with_timelogs){ create :task, :user => user }
+    let(:timelog){ create :timelog, :task => task_with_timelogs }
+    
+    before do
+      sign_in user
+    end
+    
+    it "can edit own tasks" do
+      get :edit, :id => task_access.id
+      response.should be_success
+    end
+    
+    it "can edit assigned tasks" do
+      get :edit, :id => task_assigned.id
+      response.should be_success
+    end
+    
+    it "cannot edit other tasks" do
+      expect {
+        get :edit, :id => task_no_access.id
+      }.to raise_error CanCan::AccessDenied
+    end
+    
+    it "cannot destroy tasks with timelogs" do
+      timelog #creates the timelog.
+      delete :destroy, :id => task_with_timelogs.id
+      response.should redirect_to task_path(task_with_timelogs)
+      controller.flash[:error].should_not eq nil
     end
   end
 end
