@@ -1,5 +1,7 @@
 AwesomeTasks::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+  devise_for :users, :encryptor => :md5
+  
   resources :comments
   
   resources :users do
@@ -52,8 +54,6 @@ AwesomeTasks::Application.routes.draw do
   resources :timelogs do
     post :mark_invoiced, :on => :collection
   end
-  
-  devise_for :users
   
   root 'frontpage#index'
 end

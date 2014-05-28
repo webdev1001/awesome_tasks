@@ -83,7 +83,7 @@ GEM
       railties (>= 3.0.0)
     forgery (0.6.0)
     gettext_simple (0.0.9)
-    gettext_simple_rails (0.0.13)
+    gettext_simple_rails (0.0.14)
       gettext_simple (>= 0.0.9)
       rails (~> 4.0.4)
       string-cases
@@ -233,7 +233,7 @@ DEPENDENCIES
   devise-encryptable
   factory_girl_rails
   forgery
-  gettext_simple_rails (>= 0.0.13)
+  gettext_simple_rails (>= 0.0.14)
   haml-rails
   jbuilder (~> 1.2)
   jquery-migrate-rails

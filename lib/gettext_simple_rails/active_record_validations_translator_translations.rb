@@ -21,9 +21,23 @@ class GettextSimpleRails::MonthNames
     #. Default value: cannot be blank
     _('activerecord.errors.models.comment.attributes.user.blank')
     #. Default value: cannot be blank
+    _('activerecord.errors.models.project.attributes.customer.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.task.attributes.user.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.task.attributes.project.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.task.attributes.name.blank')
+    #. Default value: cannot be blank
     _('activerecord.errors.models.task_assigned_user.attributes.task.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.task_assigned_user.attributes.user.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.task_check.attributes.task.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.timelog.attributes.task.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.timelog.attributes.user.blank')
     #. Default value: has already been taken
     _('activerecord.errors.models.user_project_link.attributes.user.taken')
     #. Default value: cannot be blank

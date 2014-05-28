@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AwesomeTasks\n"
-"POT-Creation-Date: 2014-05-26 17:40+0100\n"
+"POT-Creation-Date: 2014-05-28 22:05+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kasper Johansen <k@spernj.org>\n"
 "Language-Team: \n"
@@ -14,256 +14,6 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#. Default value: Your account was successfully confirmed.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:4
-msgid "devise.confirmations.confirmed"
-msgstr ""
-
-#. Default value: You will receive an email with instructions about how to confirm your account in a few minutes.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:6
-msgid "devise.confirmations.send_instructions"
-msgstr ""
-
-#. Default value: If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:8
-msgid "devise.confirmations.send_paranoid_instructions"
-msgstr ""
-
-#. Default value: You are already signed in.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:10
-msgid "devise.failure.already_authenticated"
-msgstr ""
-
-#. Default value: Your account is not activated yet.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:12
-msgid "devise.failure.inactive"
-msgstr ""
-
-#. Default value: Invalid email or password.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:14
-msgid "devise.failure.invalid"
-msgstr ""
-
-#. Default value: Your account is locked.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:16
-msgid "devise.failure.locked"
-msgstr ""
-
-#. Default value: You have one more attempt before your account will be locked.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:18
-msgid "devise.failure.last_attempt"
-msgstr ""
-
-#. Default value: Invalid email or password.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:20
-msgid "devise.failure.not_found_in_database"
-msgstr ""
-
-#. Default value: Your session expired. Please sign in again to continue.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:22
-msgid "devise.failure.timeout"
-msgstr ""
-
-#. Default value: You need to sign in or sign up before continuing.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:24
-msgid "devise.failure.unauthenticated"
-msgstr ""
-
-#. Default value: You have to confirm your account before continuing.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:26
-msgid "devise.failure.unconfirmed"
-msgstr ""
-
-#. Default value: You are already signed in.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:28
-msgid "devise.failure.user.already_authenticated"
-msgstr ""
-
-#. Default value: Your account is not activated yet.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:30
-msgid "devise.failure.user.inactive"
-msgstr ""
-
-#. Default value: Invalid email or password.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:32
-msgid "devise.failure.user.invalid"
-msgstr ""
-
-#. Default value: Your account is locked.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:34
-msgid "devise.failure.user.locked"
-msgstr ""
-
-#. Default value: You have one more attempt before your account will be locked.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:36
-msgid "devise.failure.user.last_attempt"
-msgstr ""
-
-#. Default value: Invalid email or password.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:38
-msgid "devise.failure.user.not_found_in_database"
-msgstr ""
-
-#. Default value: Your session expired. Please sign in again to continue.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:40
-msgid "devise.failure.user.timeout"
-msgstr ""
-
-#. Default value: You need to sign in or sign up before continuing.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:42
-msgid "devise.failure.user.unauthenticated"
-msgstr ""
-
-#. Default value: You have to confirm your account before continuing.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:44
-msgid "devise.failure.user.unconfirmed"
-msgstr ""
-
-#. Default value: Confirmation instructions
-#: lib/gettext_simple_rails/devise_translator_translations.rb:46
-msgid "devise.mailer.confirmation_instructions.subject"
-msgstr ""
-
-#. Default value: Reset password instructions
-#: lib/gettext_simple_rails/devise_translator_translations.rb:48
-msgid "devise.mailer.reset_password_instructions.subject"
-msgstr ""
-
-#. Default value: Unlock Instructions
-#: lib/gettext_simple_rails/devise_translator_translations.rb:50
-msgid "devise.mailer.unlock_instructions.subject"
-msgstr ""
-
-#. Default value: Could not authenticate you from %{kind} because "%{reason}".
-#: lib/gettext_simple_rails/devise_translator_translations.rb:52
-msgid "devise.omniauth_callbacks.failure"
-msgstr ""
-
-#. Default value: Successfully authenticated from %{kind} account.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:54
-msgid "devise.omniauth_callbacks.success"
-msgstr ""
-
-#. Default value: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:56
-msgid "devise.passwords.no_token"
-msgstr ""
-
-#. Default value: You will receive an email with instructions on how to reset your password in a few minutes.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:58
-msgid "devise.passwords.send_instructions"
-msgstr ""
-
-#. Default value: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:60
-msgid "devise.passwords.send_paranoid_instructions"
-msgstr ""
-
-#. Default value: Your password was changed successfully. You are now signed in.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:62
-msgid "devise.passwords.updated"
-msgstr ""
-
-#. Default value: Your password was changed successfully.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:64
-msgid "devise.passwords.updated_not_active"
-msgstr ""
-
-#. Default value: Bye! Your account was successfully cancelled. We hope to see you again soon.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:66
-msgid "devise.registrations.destroyed"
-msgstr ""
-
-#. Default value: Welcome! You have signed up successfully.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:68
-msgid "devise.registrations.signed_up"
-msgstr ""
-
-#. Default value: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:70
-msgid "devise.registrations.signed_up_but_inactive"
-msgstr ""
-
-#. Default value: You have signed up successfully. However, we could not sign you in because your account is locked.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:72
-msgid "devise.registrations.signed_up_but_locked"
-msgstr ""
-
-#. Default value: A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:74
-msgid "devise.registrations.signed_up_but_unconfirmed"
-msgstr ""
-
-#. Default value: You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:76
-msgid "devise.registrations.update_needs_confirmation"
-msgstr ""
-
-#. Default value: You updated your account successfully.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:78
-msgid "devise.registrations.updated"
-msgstr ""
-
-#. Default value: Signed in successfully.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:80
-msgid "devise.sessions.signed_in"
-msgstr ""
-
-#. Default value: Signed out successfully.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:82
-msgid "devise.sessions.signed_out"
-msgstr ""
-
-#. Default value: You will receive an email with instructions about how to unlock your account in a few minutes.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:84
-msgid "devise.unlocks.send_instructions"
-msgstr ""
-
-#. Default value: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:86
-msgid "devise.unlocks.send_paranoid_instructions"
-msgstr ""
-
-#. Default value: Your account has been unlocked successfully. Please sign in to continue.
-#: lib/gettext_simple_rails/devise_translator_translations.rb:88
-msgid "devise.unlocks.unlocked"
-msgstr ""
-
-#. Default value: was already confirmed, please try signing in
-#: lib/gettext_simple_rails/devise_translator_translations.rb:90
-msgid "errors.messages.already_confirmed"
-msgstr ""
-
-#. Default value: needs to be confirmed within %{period}, please request a new one
-#: lib/gettext_simple_rails/devise_translator_translations.rb:92
-msgid "errors.messages.confirmation_period_expired"
-msgstr ""
-
-#. Default value: has expired, please request a new one
-#: lib/gettext_simple_rails/devise_translator_translations.rb:94
-msgid "errors.messages.expired"
-msgstr ""
-
-#. Default value: not found
-#: lib/gettext_simple_rails/devise_translator_translations.rb:96
-msgid "errors.messages.not_found"
-msgstr ""
-
-#. Default value: was not locked
-#: lib/gettext_simple_rails/devise_translator_translations.rb:98
-msgid "errors.messages.not_locked"
-msgstr ""
-
-#. Default value: 1 error prohibited this %{resource} from being saved:
-#: lib/gettext_simple_rails/devise_translator_translations.rb:100
-msgid "errors.messages.not_saved.one"
-msgstr ""
-
-#. Default value: %{count} errors prohibited this %{resource} from being saved:
-#: lib/gettext_simple_rails/devise_translator_translations.rb:102
-msgid "errors.messages.not_saved.other"
-msgstr ""
 
 #. Default value: %Y-%m-%d
 #: lib/gettext_simple_rails/date_translator_translations.rb:4
@@ -477,100 +227,6 @@ msgstr ""
 msgid "time.pm"
 msgstr ""
 
-#. Default value: Invalid record: %{errors}
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:4
-msgid "activerecord.errors.messages.record_invalid"
-msgstr "Ugyldig række: %{errors}"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:6
-msgid "activerecord.errors.models.user.attributes.email.blank"
-msgstr "må ikke være tom"
-
-#. Default value: has already been taken
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:8
-msgid "activerecord.errors.models.user.attributes.email.taken"
-msgstr "er allerede i brug"
-
-#. Default value: is invalid
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:10
-msgid "activerecord.errors.models.user.attributes.email.invalid"
-msgstr "er ikke gyldig"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:12
-msgid "activerecord.errors.models.user.attributes.password.blank"
-msgstr "må ikke være tom"
-
-#. Default value: is too short. The minimum is %{count}
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:14
-msgid "activerecord.errors.models.user.attributes.password.too_short"
-msgstr "er for kort. Minimum er %{count}"
-
-#. Default value: is too long. The maximum is %{count}
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:16
-msgid "activerecord.errors.models.user.attributes.password.too_long"
-msgstr "er for lang. Maksimum er %{count}"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:18
-msgid "activerecord.errors.models.comment.attributes.resource.blank"
-msgstr "må ikke være tom"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:20
-msgid "activerecord.errors.models.comment.attributes.comment.blank"
-msgstr "må ikke være tom"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:22
-msgid "activerecord.errors.models.comment.attributes.user.blank"
-msgstr "må ikke være tom"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:24
-msgid "activerecord.errors.models.task_assigned_user.attributes.task.blank"
-msgstr "må ikke være tom"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:26
-msgid "activerecord.errors.models.task_assigned_user.attributes.user.blank"
-msgstr "må ikke være tom"
-
-#. Default value: has already been taken
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:28
-#, fuzzy
-msgid "activerecord.errors.models.user_project_link.attributes.user.taken"
-msgstr "må ikke være tom"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:30
-#, fuzzy
-msgid "activerecord.errors.models.user_role.attributes.user.blank"
-msgstr "må ikke være tom"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:32
-#, fuzzy
-msgid "activerecord.errors.models.user_role.attributes.role.blank"
-msgstr "må ikke være tom"
-
-#. Default value: has already been taken
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:34
-#, fuzzy
-msgid "activerecord.errors.models.user_role.attributes.role.taken"
-msgstr "er allerede i brug"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:36
-msgid "activerecord.errors.models.user_task_list_link.attributes.user.blank"
-msgstr "må ikke være tom"
-
-#. Default value: cannot be blank
-#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:38
-msgid "activerecord.errors.models.user_task_list_link.attributes.task.blank"
-msgstr "må ikke være tom"
-
 #. Default value: ,
 #: lib/gettext_simple_rails/number_translator_translations.rb:4
 msgid "number.currency.format.delimiter"
@@ -680,6 +336,916 @@ msgstr ""
 #: lib/gettext_simple_rails/number_translator_translations.rb:46
 msgid "number.percentage.format.delimiter"
 msgstr ""
+
+#. Default value: Your account was successfully confirmed.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:4
+msgid "devise.confirmations.confirmed"
+msgstr ""
+
+#. Default value: You will receive an email with instructions about how to confirm your account in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:6
+msgid "devise.confirmations.send_instructions"
+msgstr ""
+
+#. Default value: If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:8
+msgid "devise.confirmations.send_paranoid_instructions"
+msgstr ""
+
+#. Default value: You are already signed in.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:10
+msgid "devise.failure.already_authenticated"
+msgstr ""
+
+#. Default value: Your account is not activated yet.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:12
+msgid "devise.failure.inactive"
+msgstr ""
+
+#. Default value: Invalid email or password.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:14
+msgid "devise.failure.invalid"
+msgstr "Ugyldig email eller adgangskode."
+
+#. Default value: Your account is locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:16
+msgid "devise.failure.locked"
+msgstr ""
+
+#. Default value: You have one more attempt before your account will be locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:18
+msgid "devise.failure.last_attempt"
+msgstr ""
+
+#. Default value: Invalid email or password.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:20
+msgid "devise.failure.not_found_in_database"
+msgstr "Bruger blev ikke fundet i databasen."
+
+#. Default value: Your session expired. Please sign in again to continue.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:22
+msgid "devise.failure.timeout"
+msgstr ""
+
+#. Default value: You need to sign in or sign up before continuing.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:24
+msgid "devise.failure.unauthenticated"
+msgstr ""
+
+#. Default value: You have to confirm your account before continuing.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:26
+msgid "devise.failure.unconfirmed"
+msgstr ""
+
+#. Default value: You are already signed in.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:28
+msgid "devise.failure.user.already_authenticated"
+msgstr ""
+
+#. Default value: Your account is not activated yet.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:30
+msgid "devise.failure.user.inactive"
+msgstr ""
+
+#. Default value: Invalid email or password.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:32
+msgid "devise.failure.user.invalid"
+msgstr "Ugyldig email eller adgangskode."
+
+#. Default value: Your account is locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:34
+msgid "devise.failure.user.locked"
+msgstr ""
+
+#. Default value: You have one more attempt before your account will be locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:36
+msgid "devise.failure.user.last_attempt"
+msgstr ""
+
+#. Default value: Invalid email or password.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:38
+msgid "devise.failure.user.not_found_in_database"
+msgstr ""
+
+#. Default value: Your session expired. Please sign in again to continue.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:40
+msgid "devise.failure.user.timeout"
+msgstr ""
+
+#. Default value: You need to sign in or sign up before continuing.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:42
+msgid "devise.failure.user.unauthenticated"
+msgstr ""
+
+#. Default value: You have to confirm your account before continuing.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:44
+msgid "devise.failure.user.unconfirmed"
+msgstr ""
+
+#. Default value: Confirmation instructions
+#: lib/gettext_simple_rails/devise_translator_translations.rb:46
+msgid "devise.mailer.confirmation_instructions.subject"
+msgstr ""
+
+#. Default value: Reset password instructions
+#: lib/gettext_simple_rails/devise_translator_translations.rb:48
+msgid "devise.mailer.reset_password_instructions.subject"
+msgstr ""
+
+#. Default value: Unlock Instructions
+#: lib/gettext_simple_rails/devise_translator_translations.rb:50
+msgid "devise.mailer.unlock_instructions.subject"
+msgstr ""
+
+#. Default value: Could not authenticate you from %{kind} because "%{reason}".
+#: lib/gettext_simple_rails/devise_translator_translations.rb:52
+msgid "devise.omniauth_callbacks.failure"
+msgstr ""
+
+#. Default value: Successfully authenticated from %{kind} account.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:54
+msgid "devise.omniauth_callbacks.success"
+msgstr ""
+
+#. Default value: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:56
+msgid "devise.passwords.no_token"
+msgstr ""
+
+#. Default value: You will receive an email with instructions on how to reset your password in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:58
+msgid "devise.passwords.send_instructions"
+msgstr ""
+
+#. Default value: If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:60
+msgid "devise.passwords.send_paranoid_instructions"
+msgstr ""
+
+#. Default value: Your password was changed successfully. You are now signed in.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:62
+msgid "devise.passwords.updated"
+msgstr ""
+
+#. Default value: Your password was changed successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:64
+msgid "devise.passwords.updated_not_active"
+msgstr ""
+
+#. Default value: Bye! Your account was successfully cancelled. We hope to see you again soon.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:66
+msgid "devise.registrations.destroyed"
+msgstr ""
+
+#. Default value: Welcome! You have signed up successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:68
+msgid "devise.registrations.signed_up"
+msgstr ""
+
+#. Default value: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:70
+msgid "devise.registrations.signed_up_but_inactive"
+msgstr ""
+
+#. Default value: You have signed up successfully. However, we could not sign you in because your account is locked.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:72
+msgid "devise.registrations.signed_up_but_locked"
+msgstr ""
+
+#. Default value: A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:74
+msgid "devise.registrations.signed_up_but_unconfirmed"
+msgstr ""
+
+#. Default value: You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:76
+msgid "devise.registrations.update_needs_confirmation"
+msgstr ""
+
+#. Default value: You updated your account successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:78
+msgid "devise.registrations.updated"
+msgstr ""
+
+#. Default value: Signed in successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:80
+msgid "devise.sessions.signed_in"
+msgstr "Du blev logget ind."
+
+#. Default value: Signed out successfully.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:82
+msgid "devise.sessions.signed_out"
+msgstr "Du blev logget ud."
+
+#. Default value: You will receive an email with instructions about how to unlock your account in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:84
+msgid "devise.unlocks.send_instructions"
+msgstr ""
+
+#. Default value: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:86
+msgid "devise.unlocks.send_paranoid_instructions"
+msgstr ""
+
+#. Default value: Your account has been unlocked successfully. Please sign in to continue.
+#: lib/gettext_simple_rails/devise_translator_translations.rb:88
+msgid "devise.unlocks.unlocked"
+msgstr ""
+
+#. Default value: was already confirmed, please try signing in
+#: lib/gettext_simple_rails/devise_translator_translations.rb:90
+msgid "errors.messages.already_confirmed"
+msgstr ""
+
+#. Default value: needs to be confirmed within %{period}, please request a new one
+#: lib/gettext_simple_rails/devise_translator_translations.rb:92
+msgid "errors.messages.confirmation_period_expired"
+msgstr ""
+
+#. Default value: has expired, please request a new one
+#: lib/gettext_simple_rails/devise_translator_translations.rb:94
+msgid "errors.messages.expired"
+msgstr ""
+
+#. Default value: not found
+#: lib/gettext_simple_rails/devise_translator_translations.rb:96
+msgid "errors.messages.not_found"
+msgstr ""
+
+#. Default value: was not locked
+#: lib/gettext_simple_rails/devise_translator_translations.rb:98
+msgid "errors.messages.not_locked"
+msgstr ""
+
+#. Default value: 1 error prohibited this %{resource} from being saved:
+#: lib/gettext_simple_rails/devise_translator_translations.rb:100
+msgid "errors.messages.not_saved.one"
+msgstr ""
+
+#. Default value: %{count} errors prohibited this %{resource} from being saved:
+#: lib/gettext_simple_rails/devise_translator_translations.rb:102
+msgid "errors.messages.not_saved.other"
+msgstr ""
+
+#. Default value: Invalid record: %{errors}
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:4
+msgid "activerecord.errors.messages.record_invalid"
+msgstr "Ugyldig række: %{errors}"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:6
+msgid "activerecord.errors.models.user.attributes.email.blank"
+msgstr "må ikke være tom"
+
+#. Default value: has already been taken
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:8
+msgid "activerecord.errors.models.user.attributes.email.taken"
+msgstr "er allerede i brug"
+
+#. Default value: is invalid
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:10
+msgid "activerecord.errors.models.user.attributes.email.invalid"
+msgstr "er ikke gyldig"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:12
+msgid "activerecord.errors.models.user.attributes.password.blank"
+msgstr "må ikke være tom"
+
+#. Default value: is too short. The minimum is %{count}
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:14
+msgid "activerecord.errors.models.user.attributes.password.too_short"
+msgstr "er for kort. Minimum er %{count}"
+
+#. Default value: is too long. The maximum is %{count}
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:16
+msgid "activerecord.errors.models.user.attributes.password.too_long"
+msgstr "er for lang. Maksimum er %{count}"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:18
+msgid "activerecord.errors.models.comment.attributes.resource.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:20
+msgid "activerecord.errors.models.comment.attributes.comment.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:22
+msgid "activerecord.errors.models.comment.attributes.user.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:24
+#, fuzzy
+msgid "activerecord.errors.models.project.attributes.customer.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:26
+#, fuzzy
+msgid "activerecord.errors.models.task.attributes.user.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:28
+#, fuzzy
+msgid "activerecord.errors.models.task.attributes.project.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:30
+#, fuzzy
+msgid "activerecord.errors.models.task.attributes.name.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:32
+msgid "activerecord.errors.models.task_assigned_user.attributes.task.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:34
+msgid "activerecord.errors.models.task_assigned_user.attributes.user.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:36
+#, fuzzy
+msgid "activerecord.errors.models.task_check.attributes.task.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:38
+#, fuzzy
+msgid "activerecord.errors.models.timelog.attributes.task.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:40
+#, fuzzy
+msgid "activerecord.errors.models.timelog.attributes.user.blank"
+msgstr "må ikke være tom"
+
+#. Default value: has already been taken
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:42
+#, fuzzy
+msgid "activerecord.errors.models.user_project_link.attributes.user.taken"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:44
+#, fuzzy
+msgid "activerecord.errors.models.user_role.attributes.user.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:46
+#, fuzzy
+msgid "activerecord.errors.models.user_role.attributes.role.blank"
+msgstr "må ikke være tom"
+
+#. Default value: has already been taken
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:48
+#, fuzzy
+msgid "activerecord.errors.models.user_role.attributes.role.taken"
+msgstr "er allerede i brug"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:50
+msgid "activerecord.errors.models.user_task_list_link.attributes.user.blank"
+msgstr "må ikke være tom"
+
+#. Default value: cannot be blank
+#: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:52
+msgid "activerecord.errors.models.user_task_list_link.attributes.task.blank"
+msgstr "må ikke være tom"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:4
+msgid "simple_form.hints.user.id"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:6
+msgid "simple_form.hints.user.name"
+msgstr "Brugerens rigtige navn"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:8
+msgid "simple_form.hints.user.username"
+msgstr "Brugernavnet som brugeren skal bruge til at logge ind."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:10
+#, fuzzy
+msgid "simple_form.hints.user.encrypted_password"
+msgstr "Krypteret adgangskode"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:12
+msgid "simple_form.hints.user.email"
+msgstr "Den email der skal bruges til notifikationer og kommunikation."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:14
+msgid "simple_form.hints.user.locale"
+msgstr "Det sprog siden skal vises i for brugeren."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:16
+msgid "simple_form.hints.user.active"
+msgstr ""
+"Om brugeren er aktiv. Hvis den ikke er aktiv, så vil den ikke være i stand "
+"til at logge ind."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:18
+#, fuzzy
+msgid "simple_form.hints.user.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:20
+#, fuzzy
+msgid "simple_form.hints.user.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:22
+#, fuzzy
+msgid "simple_form.hints.user.first_name"
+msgstr "Fornavn"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:24
+#, fuzzy
+msgid "simple_form.hints.user.last_name"
+msgstr "Efternavn"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:26
+msgid "simple_form.hints.user.reset_password_token"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:28
+msgid "simple_form.hints.user.reset_password_sent_at"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:30
+#, fuzzy
+msgid "simple_form.hints.user.remember_created_at"
+msgstr "Husk oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:32
+#, fuzzy
+msgid "simple_form.hints.user.sign_in_count"
+msgstr "Log ind antal"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:34
+#, fuzzy
+msgid "simple_form.hints.user.current_sign_in_at"
+msgstr "Nuværende log ind d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:36
+#, fuzzy
+msgid "simple_form.hints.user.last_sign_in_at"
+msgstr "Sidste log ind d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:38
+#, fuzzy
+msgid "simple_form.hints.user.current_sign_in_ip"
+msgstr "Nuværende log ind IP"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:40
+#, fuzzy
+msgid "simple_form.hints.user.last_sign_in_ip"
+msgstr "Sidste log ind IP"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:42
+#, fuzzy
+msgid "simple_form.hints.comment.id"
+msgstr "ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:44
+#, fuzzy
+msgid "simple_form.hints.comment.id_per_resource"
+msgstr "ID per ressource"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:46
+#, fuzzy
+msgid "simple_form.hints.comment.resource_type"
+msgstr "Ressourcetype"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:48
+#, fuzzy
+msgid "simple_form.hints.comment.resource_id"
+msgstr "Ressource ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:50
+#, fuzzy
+msgid "simple_form.hints.comment.user_id"
+msgstr "Bruger ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:52
+#, fuzzy
+msgid "simple_form.hints.comment.comment"
+msgstr "Kommentar"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:54
+#, fuzzy
+msgid "simple_form.hints.comment.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:56
+#, fuzzy
+msgid "simple_form.hints.comment.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:58
+#, fuzzy
+msgid "simple_form.hints.customer.id"
+msgstr "ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:60
+msgid "simple_form.hints.customer.name"
+msgstr "En del af den kundes navn, som du leder efter."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:62
+#, fuzzy
+msgid "simple_form.hints.customer.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:64
+#, fuzzy
+msgid "simple_form.hints.customer.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:66
+msgid "simple_form.hints.project.id"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:68
+msgid "simple_form.hints.project.customer_id"
+msgstr "The customer the project belongs to."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:70
+msgid "simple_form.hints.project.user_added_id"
+msgstr "The user who added the project."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:72
+msgid "simple_form.hints.project.name"
+msgstr "The name of the project as it should appear in the system."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:74
+msgid "simple_form.hints.project.description"
+msgstr "A description of the project to dell what it is about."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:76
+msgid "simple_form.hints.project.deadline_at"
+msgstr "At which date the project should be finished."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:78
+#, fuzzy
+msgid "simple_form.hints.project.price_per_hour"
+msgstr "Pris per time"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:80
+#, fuzzy
+msgid "simple_form.hints.project.price_per_hour_transport"
+msgstr "Pris per time transport"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:82
+#, fuzzy
+msgid "simple_form.hints.project.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:84
+#, fuzzy
+msgid "simple_form.hints.project.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:86
+msgid "simple_form.hints.task.id"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:88
+msgid "simple_form.hints.task.project_id"
+msgstr "Projektet som opgaven hører under."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:90
+msgid "simple_form.hints.task.user_id"
+msgstr "Brugeren der har oprettet opgaven."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:92
+msgid "simple_form.hints.task.name"
+msgstr "Navnet på opgaven som den skal se ud i systemet."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:94
+msgid "simple_form.hints.task.description"
+msgstr "Beskrivelsen som den skal se ud for brugeren."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:96
+msgid "simple_form.hints.task.task_type"
+msgstr "Typen på opgaven."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:98
+msgid "simple_form.hints.task.state"
+msgstr "Status på opgaven."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:100
+msgid "simple_form.hints.task.priority"
+msgstr "10 for mest vigtig og 1 for mindst vigtig."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:102
+#, fuzzy
+msgid "simple_form.hints.task.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:104
+#, fuzzy
+msgid "simple_form.hints.task.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:106
+#, fuzzy
+msgid "simple_form.hints.task_assigned_user.id"
+msgstr "ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:108
+#, fuzzy
+msgid "simple_form.hints.task_assigned_user.task_id"
+msgstr "Opgave ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:110
+#, fuzzy
+msgid "simple_form.hints.task_assigned_user.user_id"
+msgstr "Bruger ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:112
+#, fuzzy
+msgid "simple_form.hints.task_assigned_user.user_assigned_by_id"
+msgstr "Bruger ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:114
+#, fuzzy
+msgid "simple_form.hints.task_assigned_user.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:116
+#, fuzzy
+msgid "simple_form.hints.task_assigned_user.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:118
+#, fuzzy
+msgid "simple_form.hints.task_check.id"
+msgstr "ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:120
+#, fuzzy
+msgid "simple_form.hints.task_check.task_id"
+msgstr "Opgave ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:122
+msgid "simple_form.hints.task_check.user_added_id"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:124
+#, fuzzy
+msgid "simple_form.hints.task_check.name"
+msgstr "Navn"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:126
+#, fuzzy
+msgid "simple_form.hints.task_check.description"
+msgstr "Beskrivelse"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:128
+#, fuzzy
+msgid "simple_form.hints.task_check.checked"
+msgstr "Checket"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:130
+#, fuzzy
+msgid "simple_form.hints.task_check.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:132
+#, fuzzy
+msgid "simple_form.hints.task_check.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:134
+#, fuzzy
+msgid "simple_form.hints.timelog.id"
+msgstr "ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:136
+msgid "simple_form.hints.timelog.task_id"
+msgstr "Opgaven som tidsloggen er for."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:138
+msgid "simple_form.hints.timelog.user_id"
+msgstr "Brugeren der brugte tiden."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:140
+msgid "simple_form.hints.timelog.date"
+msgstr "Datoen hvor tiden blev brugt."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:142
+msgid "simple_form.hints.timelog.time"
+msgstr "Mængden af tid der blev brugt."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:144
+msgid "simple_form.hints.timelog.time_transport"
+msgstr "Mængden af tid der blev brugt på transport."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:146
+msgid "simple_form.hints.timelog.transport_length"
+msgstr "Hvor langt der blev rejst."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:148
+msgid "simple_form.hints.timelog.comment"
+msgstr "En beskrivelse af hvad tiden blev brugt på."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:150
+msgid "simple_form.hints.timelog.invoiced"
+msgstr "Om tiden er faktureret eller ej."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:152
+msgid "simple_form.hints.timelog.invoiced_at"
+msgstr "Datoen hvor tiden blev faktureret."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:154
+msgid "simple_form.hints.timelog.invoiced_by_user_id"
+msgstr "Brugeren der fakturerede tiden."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:156
+msgid "simple_form.hints.timelog.created_at"
+msgstr "Dato hvor tidsloggen blev oprettet."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:158
+msgid "simple_form.hints.timelog.updated_at"
+msgstr "Dato for sidste opdatering af tidsloggen."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:160
+#, fuzzy
+msgid "simple_form.hints.user_project_link.id"
+msgstr "ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:162
+#, fuzzy
+msgid "simple_form.hints.user_project_link.user_id"
+msgstr "Bruger ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:164
+#, fuzzy
+msgid "simple_form.hints.user_project_link.project_id"
+msgstr "Projekt ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:166
+#, fuzzy
+msgid "simple_form.hints.user_project_link.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:168
+#, fuzzy
+msgid "simple_form.hints.user_project_link.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:170
+#, fuzzy
+msgid "simple_form.hints.user_role.id"
+msgstr "ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:172
+#, fuzzy
+msgid "simple_form.hints.user_role.user_id"
+msgstr "Bruger ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:174
+#, fuzzy
+msgid "simple_form.hints.user_role.role"
+msgstr "Rolle"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:176
+#, fuzzy
+msgid "simple_form.hints.user_role.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:178
+#, fuzzy
+msgid "simple_form.hints.user_role.updated_at"
+msgstr "Opdateret d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:180
+#, fuzzy
+msgid "simple_form.hints.user_task_list_link.id"
+msgstr "ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:182
+#, fuzzy
+msgid "simple_form.hints.user_task_list_link.user_id"
+msgstr "Bruger ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:184
+#, fuzzy
+msgid "simple_form.hints.user_task_list_link.task_id"
+msgstr "Opgave ID"
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:186
+#, fuzzy
+msgid "simple_form.hints.user_task_list_link.created_at"
+msgstr "Oprettet d."
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:188
+#, fuzzy
+msgid "simple_form.hints.user_task_list_link.updated_at"
+msgstr "Opdateret d."
 
 #. Default value: id
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:4
@@ -1431,556 +1997,36 @@ msgstr "Bruger opgavelistelink"
 msgid "activerecord.models.user_task_list_link.other"
 msgstr "Bruger opgavelistelinks"
 
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:4
-msgid "simple_form.hints.user.id"
+#: Ruby/knjtasks/lib/knjtasks.rb:90
+msgid "user"
+msgstr "bruger"
+
+#: Ruby/knjtasks/lib/knjtasks.rb:91
+msgid "project"
+msgstr "projekt"
+
+#: Ruby/knjtasks/lib/knjtasks.rb:92
+msgid "task"
+msgstr "opgave"
+
+#: Ruby/knjtasks/lib/knjtasks.rb:99
+msgid "no %s"
 msgstr ""
 
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:6
-msgid "simple_form.hints.user.name"
-msgstr "Brugerens rigtige navn"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:8
-msgid "simple_form.hints.user.username"
-msgstr "Brugernavnet som brugeren skal bruge til at logge ind."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:10
-#, fuzzy
-msgid "simple_form.hints.user.encrypted_password"
-msgstr "Krypteret adgangskode"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:12
-msgid "simple_form.hints.user.email"
-msgstr "Den email der skal bruges til notifikationer og kommunikation."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:14
-msgid "simple_form.hints.user.locale"
-msgstr "Det sprog siden skal vises i for brugeren."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:16
-msgid "simple_form.hints.user.active"
-msgstr ""
-"Om brugeren er aktiv. Hvis den ikke er aktiv, så vil den ikke være i stand "
-"til at logge ind."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:18
-#, fuzzy
-msgid "simple_form.hints.user.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:20
-#, fuzzy
-msgid "simple_form.hints.user.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:22
-#, fuzzy
-msgid "simple_form.hints.user.first_name"
-msgstr "Fornavn"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:24
-#, fuzzy
-msgid "simple_form.hints.user.last_name"
-msgstr "Efternavn"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:26
-msgid "simple_form.hints.user.reset_password_token"
-msgstr ""
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:28
-msgid "simple_form.hints.user.reset_password_sent_at"
-msgstr ""
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:30
-#, fuzzy
-msgid "simple_form.hints.user.remember_created_at"
-msgstr "Husk oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:32
-#, fuzzy
-msgid "simple_form.hints.user.sign_in_count"
-msgstr "Log ind antal"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:34
-#, fuzzy
-msgid "simple_form.hints.user.current_sign_in_at"
-msgstr "Nuværende log ind d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:36
-#, fuzzy
-msgid "simple_form.hints.user.last_sign_in_at"
-msgstr "Sidste log ind d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:38
-#, fuzzy
-msgid "simple_form.hints.user.current_sign_in_ip"
-msgstr "Nuværende log ind IP"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:40
-#, fuzzy
-msgid "simple_form.hints.user.last_sign_in_ip"
-msgstr "Sidste log ind IP"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:42
-#, fuzzy
-msgid "simple_form.hints.comment.id"
-msgstr "ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:44
-#, fuzzy
-msgid "simple_form.hints.comment.id_per_resource"
-msgstr "ID per ressource"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:46
-#, fuzzy
-msgid "simple_form.hints.comment.resource_type"
-msgstr "Ressourcetype"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:48
-#, fuzzy
-msgid "simple_form.hints.comment.resource_id"
-msgstr "Ressource ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:50
-#, fuzzy
-msgid "simple_form.hints.comment.user_id"
-msgstr "Bruger ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:52
-#, fuzzy
-msgid "simple_form.hints.comment.comment"
-msgstr "Kommentar"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:54
-#, fuzzy
-msgid "simple_form.hints.comment.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:56
-#, fuzzy
-msgid "simple_form.hints.comment.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:58
-#, fuzzy
-msgid "simple_form.hints.customer.id"
-msgstr "ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:60
-msgid "simple_form.hints.customer.name"
-msgstr "En del af den kundes navn, som du leder efter."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:62
-#, fuzzy
-msgid "simple_form.hints.customer.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:64
-#, fuzzy
-msgid "simple_form.hints.customer.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:66
-msgid "simple_form.hints.project.id"
-msgstr ""
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:68
-msgid "simple_form.hints.project.customer_id"
-msgstr "The customer the project belongs to."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:70
-msgid "simple_form.hints.project.user_added_id"
-msgstr "The user who added the project."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:72
-msgid "simple_form.hints.project.name"
-msgstr "The name of the project as it should appear in the system."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:74
-msgid "simple_form.hints.project.description"
-msgstr "A description of the project to dell what it is about."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:76
-msgid "simple_form.hints.project.deadline_at"
-msgstr "At which date the project should be finished."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:78
-#, fuzzy
-msgid "simple_form.hints.project.price_per_hour"
-msgstr "Pris per time"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:80
-#, fuzzy
-msgid "simple_form.hints.project.price_per_hour_transport"
-msgstr "Pris per time transport"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:82
-#, fuzzy
-msgid "simple_form.hints.project.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:84
-#, fuzzy
-msgid "simple_form.hints.project.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:86
-msgid "simple_form.hints.task.id"
-msgstr ""
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:88
-msgid "simple_form.hints.task.project_id"
-msgstr "Projektet som opgaven hører under."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:90
-msgid "simple_form.hints.task.user_id"
-msgstr "Brugeren der har oprettet opgaven."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:92
-msgid "simple_form.hints.task.name"
-msgstr "Navnet på opgaven som den skal se ud i systemet."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:94
-msgid "simple_form.hints.task.description"
-msgstr "Beskrivelsen som den skal se ud for brugeren."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:96
-msgid "simple_form.hints.task.task_type"
-msgstr "Typen på opgaven."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:98
-msgid "simple_form.hints.task.state"
-msgstr "Status på opgaven."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:100
-msgid "simple_form.hints.task.priority"
-msgstr "10 for mest vigtig og 1 for mindst vigtig."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:102
-#, fuzzy
-msgid "simple_form.hints.task.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:104
-#, fuzzy
-msgid "simple_form.hints.task.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:106
-#, fuzzy
-msgid "simple_form.hints.task_assigned_user.id"
-msgstr "ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:108
-#, fuzzy
-msgid "simple_form.hints.task_assigned_user.task_id"
-msgstr "Opgave ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:110
-#, fuzzy
-msgid "simple_form.hints.task_assigned_user.user_id"
-msgstr "Bruger ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:112
-#, fuzzy
-msgid "simple_form.hints.task_assigned_user.user_assigned_by_id"
-msgstr "Bruger ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:114
-#, fuzzy
-msgid "simple_form.hints.task_assigned_user.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:116
-#, fuzzy
-msgid "simple_form.hints.task_assigned_user.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:118
-#, fuzzy
-msgid "simple_form.hints.task_check.id"
-msgstr "ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:120
-#, fuzzy
-msgid "simple_form.hints.task_check.task_id"
-msgstr "Opgave ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:122
-msgid "simple_form.hints.task_check.user_added_id"
-msgstr ""
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:124
-#, fuzzy
-msgid "simple_form.hints.task_check.name"
-msgstr "Navn"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:126
-#, fuzzy
-msgid "simple_form.hints.task_check.description"
-msgstr "Beskrivelse"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:128
-#, fuzzy
-msgid "simple_form.hints.task_check.checked"
-msgstr "Checket"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:130
-#, fuzzy
-msgid "simple_form.hints.task_check.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:132
-#, fuzzy
-msgid "simple_form.hints.task_check.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:134
-#, fuzzy
-msgid "simple_form.hints.timelog.id"
-msgstr "ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:136
-msgid "simple_form.hints.timelog.task_id"
-msgstr "Opgaven som tidsloggen er for."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:138
-msgid "simple_form.hints.timelog.user_id"
-msgstr "Brugeren der brugte tiden."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:140
-msgid "simple_form.hints.timelog.date"
-msgstr "Datoen hvor tiden blev brugt."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:142
-msgid "simple_form.hints.timelog.time"
-msgstr "Mængden af tid der blev brugt."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:144
-msgid "simple_form.hints.timelog.time_transport"
-msgstr "Mængden af tid der blev brugt på transport."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:146
-msgid "simple_form.hints.timelog.transport_length"
-msgstr "Hvor langt der blev rejst."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:148
-msgid "simple_form.hints.timelog.comment"
-msgstr "En beskrivelse af hvad tiden blev brugt på."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:150
-msgid "simple_form.hints.timelog.invoiced"
-msgstr "Om tiden er faktureret eller ej."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:152
-msgid "simple_form.hints.timelog.invoiced_at"
-msgstr "Datoen hvor tiden blev faktureret."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:154
-msgid "simple_form.hints.timelog.invoiced_by_user_id"
-msgstr "Brugeren der fakturerede tiden."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:156
-msgid "simple_form.hints.timelog.created_at"
-msgstr "Dato hvor tidsloggen blev oprettet."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:158
-msgid "simple_form.hints.timelog.updated_at"
-msgstr "Dato for sidste opdatering af tidsloggen."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:160
-#, fuzzy
-msgid "simple_form.hints.user_project_link.id"
-msgstr "ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:162
-#, fuzzy
-msgid "simple_form.hints.user_project_link.user_id"
-msgstr "Bruger ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:164
-#, fuzzy
-msgid "simple_form.hints.user_project_link.project_id"
-msgstr "Projekt ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:166
-#, fuzzy
-msgid "simple_form.hints.user_project_link.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:168
-#, fuzzy
-msgid "simple_form.hints.user_project_link.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:170
-#, fuzzy
-msgid "simple_form.hints.user_role.id"
-msgstr "ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:172
-#, fuzzy
-msgid "simple_form.hints.user_role.user_id"
-msgstr "Bruger ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:174
-#, fuzzy
-msgid "simple_form.hints.user_role.role"
-msgstr "Rolle"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:176
-#, fuzzy
-msgid "simple_form.hints.user_role.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:178
-#, fuzzy
-msgid "simple_form.hints.user_role.updated_at"
-msgstr "Opdateret d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:180
-#, fuzzy
-msgid "simple_form.hints.user_task_list_link.id"
-msgstr "ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:182
-#, fuzzy
-msgid "simple_form.hints.user_task_list_link.user_id"
-msgstr "Bruger ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:184
-#, fuzzy
-msgid "simple_form.hints.user_task_list_link.task_id"
-msgstr "Opgave ID"
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:186
-#, fuzzy
-msgid "simple_form.hints.user_task_list_link.created_at"
-msgstr "Oprettet d."
-
-#. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:188
-#, fuzzy
-msgid "simple_form.hints.user_task_list_link.updated_at"
-msgstr "Opdateret d."
-
-#: Ruby/knjtasks/models/class_task_check.rb:12
-#: Ruby/knjtasks/models/class_timelog.rb:47
-#: Ruby/knjtasks/models/class_task_assigned_user.rb:34
-#: Ruby/knjtasks/models/class_comment.rb:15
-msgid "Invalid key: %s."
-msgstr "Ugyldig nøgle: %s."
-
-#: Ruby/knjtasks/models/class_user_task_list_link.rb:15
-msgid "That user has already listed that task."
-msgstr "Den bruger har allerede listet den opgave."
+#: Ruby/knjtasks/lib/knjtasks.rb:103
+msgid "no date"
+msgstr "ingen dato"
 
 #: Ruby/knjtasks/models/class_user_rank_link.rb:15
 msgid "That user already have that rank."
 msgstr "Den bruger har allerede den rang."
 
-#: Ruby/knjtasks/models/class_user_project_link.rb:27
-msgid "Invalid key: '%s'."
-msgstr "Ugyldig nøgle: '%s'."
-
-#: Ruby/knjtasks/models/class_user_project_link.rb:53
-msgid "That user is already assigned to that project."
-msgstr "Den bruger er allerede tildelt det projekt."
-
-#: Ruby/knjtasks/models/class_project.rb:13
-msgid "Invalid name given."
-msgstr "Ugyldigt navn givet."
+#: Ruby/knjtasks/models/class_timelog.rb:47
+#: Ruby/knjtasks/models/class_comment.rb:15
+#: Ruby/knjtasks/models/class_task_check.rb:12
+#: Ruby/knjtasks/models/class_task_assigned_user.rb:34
+msgid "Invalid key: %s."
+msgstr "Ugyldig nøgle: %s."
 
 #: Ruby/knjtasks/models/class_timelog.rb:66
 msgid "No comment has been written."
@@ -1990,9 +2036,21 @@ msgstr "Der blev ikke skrevet en kommentar."
 msgid "Timelog %s"
 msgstr "Tidslog %s"
 
-#: Ruby/knjtasks/models/class_task_assigned_user.rb:56
-msgid "That user is already assigned to that task."
-msgstr "Den bruger er allerede tildelt den opgave."
+#: Ruby/knjtasks/models/class_project.rb:13
+msgid "Invalid name given."
+msgstr "Ugyldigt navn givet."
+
+#: Ruby/knjtasks/models/class_user_task_list_link.rb:15
+msgid "That user has already listed that task."
+msgstr "Den bruger har allerede listet den opgave."
+
+#: Ruby/knjtasks/models/class_user_project_link.rb:27
+msgid "Invalid key: '%s'."
+msgstr "Ugyldig nøgle: '%s'."
+
+#: Ruby/knjtasks/models/class_user_project_link.rb:53
+msgid "That user is already assigned to that project."
+msgstr "Den bruger er allerede tildelt det projekt."
 
 #: Ruby/knjtasks/models/class_task.rb:19
 msgid "No project-ID was given."
@@ -2042,72 +2100,26 @@ msgstr ""
 msgid "no name"
 msgstr "intet navn"
 
-#: Ruby/knjtasks/lib/knjtasks.rb:90
-msgid "user"
-msgstr "bruger"
+#: Ruby/knjtasks/models/class_task_assigned_user.rb:56
+msgid "That user is already assigned to that task."
+msgstr "Den bruger er allerede tildelt den opgave."
 
-#: Ruby/knjtasks/lib/knjtasks.rb:91
-msgid "project"
-msgstr "projekt"
+#: app/controllers/user_authentications_controller.rb:9
+msgid "A user with that username and/or password was found."
+msgstr "En bruger med det brugernavn og/eller adgangskode blev ikke fundet."
 
-#: Ruby/knjtasks/lib/knjtasks.rb:92
-msgid "task"
-msgstr "opgave"
+#: app/controllers/user_authentications_controller.rb:12
+msgid "That user is not active any more and cant be used."
+msgstr "Den bruger er ikke aktiv mere."
 
-#: Ruby/knjtasks/lib/knjtasks.rb:99
-msgid "no %s"
+#: app/controllers/comments_controller.rb:86
+msgid "Changed the task-status to '%s'."
 msgstr ""
 
-#: Ruby/knjtasks/lib/knjtasks.rb:103
-msgid "no date"
-msgstr "ingen dato"
-
-#: app/models/task.rb:29
-msgid "Other"
-msgstr "Andet"
-
-#: app/models/user_role.rb:9
-#, fuzzy
-msgid "Administrator"
-msgstr "Administration"
-
-#: app/models/user_role.rb:10
-#, fuzzy
-msgid "Customer administrator"
-msgstr "Kundebesked"
-
-#: app/models/user_role.rb:25
-msgid "is not allowed: %{role}"
-msgstr ""
-
-#: app/helpers/application_helper.rb:6
-msgid "Choose:"
-msgstr "Vælg:"
-
-#: app/helpers/application_helper.rb:7
 #: app/controllers/timelogs_controller.rb:9
+#: app/helpers/application_helper.rb:7
 msgid "All"
 msgstr "Alle"
-
-#: app/helpers/project_helper.rb:3
-msgid "no project"
-msgstr "intet projekt"
-
-#: app/helpers/user_helper.rb:3
-msgid "no user"
-msgstr "ingen bruger"
-
-#: app/controllers/tasks_controller.rb:87 app/views/tasks/show.html.erb:7
-msgid "You do not have access to that task and cannot view this page."
-msgstr "Du har ikke adgang til denne opgave og kan ikke se denne side."
-
-#: app/controllers/application_controller.rb:30
-msgid "Danish"
-msgstr "Dansk"
-
-#: app/controllers/application_controller.rb:31
-msgid "English"
-msgstr "Engelsk"
 
 #: app/controllers/timelogs_controller.rb:10
 msgid "Only invoiced"
@@ -2130,21 +2142,47 @@ msgstr ""
 msgid "Invalid date-to."
 msgstr ""
 
-#: app/controllers/user_authentications_controller.rb:9
-msgid "A user with that username and/or password was found."
-msgstr "En bruger med det brugernavn og/eller adgangskode blev ikke fundet."
+#: app/controllers/application_controller.rb:40
+msgid "Danish"
+msgstr "Dansk"
 
-#: app/controllers/user_authentications_controller.rb:12
-msgid "That user is not active any more and cant be used."
-msgstr "Den bruger er ikke aktiv mere."
-
-#: app/controllers/comments_controller.rb:86
-msgid "Changed the task-status to '%s'."
-msgstr ""
+#: app/controllers/application_controller.rb:41
+msgid "English"
+msgstr "Engelsk"
 
 #: app/controllers/users_controller.rb:24 app/views/users/_form.html.haml:23
 msgid "Add rank"
 msgstr "Tilføj rang"
+
+#: app/helpers/user_helper.rb:3
+msgid "no user"
+msgstr "ingen bruger"
+
+#: app/helpers/application_helper.rb:6
+msgid "Choose:"
+msgstr "Vælg:"
+
+#: app/helpers/project_helper.rb:3
+msgid "no project"
+msgstr "intet projekt"
+
+#: app/models/user_role.rb:9
+#, fuzzy
+msgid "Administrator"
+msgstr "Administration"
+
+#: app/models/user_role.rb:10
+#, fuzzy
+msgid "Customer administrator"
+msgstr "Kundebesked"
+
+#: app/models/user_role.rb:25
+msgid "is not allowed: %{role}"
+msgstr ""
+
+#: app/models/task.rb:29
+msgid "Other"
+msgstr "Andet"
 
 #: app/mailers/task_assigned_user_mailer.rb:11
 msgid "You have been assigned to: %s"
@@ -2174,7 +2212,7 @@ msgid "Projects"
 msgstr "Projekter"
 
 #: Ruby/knjtasks/www/index.rhtml:14 Ruby/knjtasks/www/index.rhtml:93
-#: app/views/users/show.html.haml:23 app/views/projects/show.html.haml:46
+#: app/views/projects/show.html.haml:46 app/views/users/show.html.haml:23
 msgid "Tasks"
 msgstr "Opgaver"
 
@@ -2184,9 +2222,8 @@ msgid "Users"
 msgstr "Brugere"
 
 #: Ruby/knjtasks/www/index.rhtml:16 Ruby/knjtasks/www/index.rhtml:97
-#: app/views/tasks/show.html.erb:142
+#: app/views/tasks/show.html.erb:142 app/views/timelogs/index.html.haml:1
 #: app/views/layouts/application.html.haml:42
-#: app/views/timelogs/index.html.haml:1
 msgid "Timelogs"
 msgstr "Tidslogs"
 
@@ -2242,9 +2279,10 @@ msgid "Update comment IDs"
 msgstr "Opdateret kommentar IDer"
 
 #: app/views/customers/update_id_per_obj.rhtml:33
-#: app/views/tasks/_users.html.erb:5 app/views/users/show.html.haml:3
-#: app/views/customers/show.html.haml:3 app/views/projects/show.html.haml:6
+#: app/views/tasks/_users.html.erb:5
 #: app/views/projects/_assigned_users.html.haml:6
+#: app/views/projects/show.html.haml:6 app/views/customers/show.html.haml:3
+#: app/views/users/show.html.haml:3
 msgid "Actions"
 msgstr "Muligheder"
 
@@ -2252,17 +2290,144 @@ msgstr "Muligheder"
 msgid "Update"
 msgstr "Opdater"
 
+#: app/views/comments/_form.html.erb:5 app/views/task_checks/form.html.erb:41
+#: app/views/user_authentications/new.html.erb:9
+#: app/views/profile/index.html.erb:6 app/views/tasks/_form.html.erb:1
+#: app/views/projects/_form.html.haml:1 app/views/user_roles/_form.html.haml:1
+#: app/views/customers/_form.html.haml:1 app/views/timelogs/_form.html.haml:1
+#: app/views/users/_form.html.haml:1
+msgid "Enter details"
+msgstr "Indtast detaljer"
+
+#: app/views/comments/_form.html.erb:14 app/views/task_checks/form.html.erb:63
+#: app/views/profile/index.html.erb:21 app/views/tasks/_form.html.erb:16
+#: app/views/projects/_form.html.haml:18
+#: app/views/user_roles/_form.html.haml:5
+#: app/views/customers/_form.html.haml:9 app/views/timelogs/_form.html.haml:10
+#: app/views/users/_form.html.haml:15
+msgid "Save"
+msgstr "Gem"
+
+#: app/views/user_roles/_search.html.erb:9
+#: app/views/workstatus/index.html.erb:57
+#: app/views/customers/index.html.haml:13
+#: app/views/timelogs/index.html.haml:35
+#: app/views/users/_index_results.html.haml:1
+#: app/views/tasks/index.html.haml:18
+msgid "Results"
+msgstr "Resultater"
+
+#: app/views/user_roles/_search.html.erb:13
+msgid "Rank"
+msgstr "Rang"
+
+#: app/views/user_roles/_search.html.erb:32
+msgid "No ranks were found."
+msgstr "Der blev ikke fundet nogle rang."
+
+#: app/views/user_roles/_search.html.erb:49
+#: app/views/workstatus/index.html.erb:19 app/views/projects/index.html.haml:3
+#: app/views/customers/index.html.haml:3 app/views/timelogs/index.html.haml:3
+#: app/views/users/_index_form.html.haml:1 app/views/tasks/index.html.haml:3
+msgid "Enter criteria"
+msgstr "Indtast kriterier"
+
+#: app/views/user_roles/_search.html.erb:53
+#: app/views/task_checks/form.html.erb:45 app/views/users/show.html.haml:11
+msgid "Name"
+msgstr "Navn"
+
+#: app/views/user_roles/_search.html.erb:56
+msgid "Enter a part of the name of the permission you are searching for."
+msgstr ""
+
+#: app/views/user_roles/_search.html.erb:61
+#: app/views/projects/index.html.haml:7 app/views/customers/index.html.haml:7
+#: app/views/timelogs/index.html.haml:12
+#: app/views/users/_index_form.html.haml:10 app/views/tasks/index.html.haml:12
+msgid "Search"
+msgstr "Søg"
+
+#: app/views/user_roles/_search.html.erb:73
+msgid "Please enter criteria and search..."
+msgstr "Indtast kriterier og søg..."
+
+#: app/views/task_checks/form.html.erb:48
+msgid "The name of the check as it should appear for the other users."
+msgstr ""
+
+#: app/views/task_checks/form.html.erb:50 app/views/tasks/show.html.erb:87
+#: app/views/timelogs/index.html.haml:82
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: app/views/task_checks/form.html.erb:55
+msgid ""
+"A description that describes what should be done before marking this check."
+msgstr ""
+
+#: app/views/task_checks/form.html.erb:61 app/views/tasks/_checks.html.erb:6
+msgid "Do you want to delete this check?"
+msgstr "Vil du gerne slette dette check?"
+
+#: app/views/task_checks/form.html.erb:61 app/views/tasks/_form.html.erb:13
+#: app/views/projects/_form.html.haml:16 app/views/customers/_form.html.haml:7
+#: app/views/users/_form.html.haml:13 app/views/tasks/_timelogs.html.haml:12
+msgid "Delete"
+msgstr "Slet"
+
+#: app/views/user_authentications/new.html.erb:4
+msgid "You are logged in as %{user_link}."
+msgstr "Du er logget ind som %{user_link}."
+
+#: app/views/user_authentications/new.html.erb:12
+msgid "Username"
+msgstr "Brugernavn"
+
+#: app/views/user_authentications/new.html.erb:15
+msgid "The username you want to log in as."
+msgstr ""
+
+#: app/views/user_authentications/new.html.erb:17
+#: app/views/profile/index.html.erb:14
+msgid "Password"
+msgstr "Adgangskode"
+
+#: app/views/user_authentications/new.html.erb:21
+msgid "The password associated with the entered username."
+msgstr ""
+
+#: app/views/user_authentications/new.html.erb:23
+msgid "Remember me on this computer"
+msgstr ""
+
+#: app/views/user_authentications/new.html.erb:25
+msgid ""
+"If you do not want to log in again on this computer then check this box."
+msgstr ""
+
+#: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:1
+#: app/views/task_assigned_user_mailer/notification.html.erb:1
+msgid "Hello %{user_name}"
+msgstr "Hej %{user_name}"
+
+#: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:4
+msgid "A new comment has been written to the task '%s'."
+msgstr "En ny kommentar er skrevet til opgaven '%s'."
+
+#: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:7
+#: app/views/tasks/show.html.erb:72 app/views/projects/show.html.haml:51
+#: app/views/tasks/index.html.haml:26
+msgid "Author"
+msgstr "Forfatter"
+
+#: app/views/task_assigned_user_mailer/notification.html.erb:4
+msgid "Assigned by"
+msgstr "Tildelt af"
+
 #: app/views/workstatus/index.html.erb:3
 msgid "You need to be logged in to view this page."
 msgstr "Du skal være logget ind for at se denne side."
-
-#: app/views/workstatus/index.html.erb:19
-#: app/views/user_roles/_search.html.erb:49
-#: app/views/users/_index_form.html.haml:1
-#: app/views/customers/index.html.haml:3 app/views/timelogs/index.html.haml:3
-#: app/views/projects/index.html.haml:3 app/views/tasks/index.html.haml:3
-msgid "Enter criteria"
-msgstr "Indtast kriterier"
 
 #: app/views/workstatus/index.html.erb:22 app/views/timelogs/index.html.haml:5
 msgid "Date from"
@@ -2281,17 +2446,9 @@ msgstr "Projekt"
 msgid "Filter"
 msgstr "Filter"
 
-#: app/views/workstatus/index.html.erb:57
-#: app/views/user_roles/_search.html.erb:9
-#: app/views/users/_index_results.html.haml:1
-#: app/views/customers/index.html.haml:13
-#: app/views/timelogs/index.html.haml:35 app/views/tasks/index.html.haml:18
-msgid "Results"
-msgstr "Resultater"
-
 #: app/views/workstatus/index.html.erb:61 app/views/tasks/show.html.erb:62
-#: app/views/timelogs/index.html.haml:80 app/views/projects/show.html.haml:19
-#: app/views/projects/show.html.haml:53 app/views/tasks/_timelogs.html.haml:6
+#: app/views/projects/show.html.haml:19 app/views/projects/show.html.haml:53
+#: app/views/timelogs/index.html.haml:80 app/views/tasks/_timelogs.html.haml:6
 msgid "Date"
 msgstr "Dato"
 
@@ -2346,103 +2503,6 @@ msgstr "Total efter skat"
 msgid "Total transport"
 msgstr "Total transport"
 
-#: app/views/task_checks/form.html.erb:41
-#: app/views/user_authentications/new.html.erb:9
-#: app/views/profile/index.html.erb:6 app/views/comments/_form.html.erb:5
-#: app/views/tasks/_form.html.erb:1 app/views/users/_form.html.haml:1
-#: app/views/customers/_form.html.haml:1
-#: app/views/user_roles/_form.html.haml:1 app/views/timelogs/_form.html.haml:1
-#: app/views/projects/_form.html.haml:1
-msgid "Enter details"
-msgstr "Indtast detaljer"
-
-#: app/views/task_checks/form.html.erb:45
-#: app/views/user_roles/_search.html.erb:53 app/views/users/show.html.haml:11
-msgid "Name"
-msgstr "Navn"
-
-#: app/views/task_checks/form.html.erb:48
-msgid "The name of the check as it should appear for the other users."
-msgstr ""
-
-#: app/views/task_checks/form.html.erb:50 app/views/tasks/show.html.erb:87
-#: app/views/timelogs/index.html.haml:82
-msgid "Description"
-msgstr "Beskrivelse"
-
-#: app/views/task_checks/form.html.erb:55
-msgid ""
-"A description that describes what should be done before marking this check."
-msgstr ""
-
-#: app/views/task_checks/form.html.erb:61 app/views/tasks/_checks.html.erb:6
-msgid "Do you want to delete this check?"
-msgstr "Vil du gerne slette dette check?"
-
-#: app/views/task_checks/form.html.erb:61 app/views/tasks/_form.html.erb:13
-#: app/views/users/_form.html.haml:13 app/views/customers/_form.html.haml:7
-#: app/views/projects/_form.html.haml:16
-#: app/views/tasks/_timelogs.html.haml:12
-msgid "Delete"
-msgstr "Slet"
-
-#: app/views/task_checks/form.html.erb:63 app/views/profile/index.html.erb:21
-#: app/views/comments/_form.html.erb:14 app/views/tasks/_form.html.erb:16
-#: app/views/users/_form.html.haml:15 app/views/customers/_form.html.haml:9
-#: app/views/user_roles/_form.html.haml:5
-#: app/views/timelogs/_form.html.haml:10 app/views/projects/_form.html.haml:18
-msgid "Save"
-msgstr "Gem"
-
-#: app/views/user_authentications/new.html.erb:4
-msgid "You are logged in as %{user_link}."
-msgstr "Du er logget ind som %{user_link}."
-
-#: app/views/user_authentications/new.html.erb:12
-msgid "Username"
-msgstr "Brugernavn"
-
-#: app/views/user_authentications/new.html.erb:15
-msgid "The username you want to log in as."
-msgstr ""
-
-#: app/views/user_authentications/new.html.erb:17
-#: app/views/profile/index.html.erb:14
-msgid "Password"
-msgstr "Adgangskode"
-
-#: app/views/user_authentications/new.html.erb:21
-msgid "The password associated with the entered username."
-msgstr ""
-
-#: app/views/user_authentications/new.html.erb:23
-msgid "Remember me on this computer"
-msgstr ""
-
-#: app/views/user_authentications/new.html.erb:25
-msgid ""
-"If you do not want to log in again on this computer then check this box."
-msgstr ""
-
-#: app/views/task_assigned_user_mailer/notification.html.erb:1
-#: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:1
-msgid "Hello %{user_name}"
-msgstr "Hej %{user_name}"
-
-#: app/views/task_assigned_user_mailer/notification.html.erb:4
-msgid "Assigned by"
-msgstr "Tildelt af"
-
-#: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:4
-msgid "A new comment has been written to the task '%s'."
-msgstr "En ny kommentar er skrevet til opgaven '%s'."
-
-#: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:7
-#: app/views/tasks/show.html.erb:72 app/views/projects/show.html.haml:51
-#: app/views/tasks/index.html.haml:26
-msgid "Author"
-msgstr "Forfatter"
-
 #: app/views/profile/index.html.erb:9 app/views/users/show.html.haml:16
 msgid "Email"
 msgstr "Email"
@@ -2468,28 +2528,68 @@ msgstr "Opgave"
 msgid "No tasks has been added to your list."
 msgstr "Der er ingen opgaver på din liste."
 
-#: app/views/user_roles/_search.html.erb:13
-msgid "Rank"
-msgstr "Rang"
-
-#: app/views/user_roles/_search.html.erb:32
-msgid "No ranks were found."
-msgstr "Der blev ikke fundet nogle rang."
-
-#: app/views/user_roles/_search.html.erb:56
-msgid "Enter a part of the name of the permission you are searching for."
+#: app/views/tasks/_form.html.erb:2
+msgid "Browser"
 msgstr ""
 
-#: app/views/user_roles/_search.html.erb:61
-#: app/views/users/_index_form.html.haml:10
-#: app/views/customers/index.html.haml:7 app/views/timelogs/index.html.haml:12
-#: app/views/projects/index.html.haml:7 app/views/tasks/index.html.haml:12
-msgid "Search"
-msgstr "Søg"
+#: app/views/tasks/_form.html.erb:2
+msgid "Version"
+msgstr ""
 
-#: app/views/user_roles/_search.html.erb:73
-msgid "Please enter criteria and search..."
-msgstr "Indtast kriterier og søg..."
+#: app/views/tasks/_form.html.erb:2
+msgid "Operating system"
+msgstr ""
+
+#: app/views/tasks/_form.html.erb:10
+msgid "Insert browser and os"
+msgstr "Indsæt browser og OS"
+
+#: app/views/tasks/_form.html.erb:12 app/views/projects/_form.html.haml:14
+#: app/views/customers/_form.html.haml:6 app/views/users/_form.html.haml:12
+msgid "Show"
+msgstr "Vis"
+
+#: app/views/tasks/_form.html.erb:13 app/views/tasks/show.html.erb:39
+#: app/views/customers/_form.html.haml:7 app/views/users/_form.html.haml:11
+#: app/views/users/_form.html.haml:13
+msgid "Are you sure?"
+msgstr "Er du sikker?"
+
+#: app/views/tasks/_checks.html.erb:6 app/views/tasks/_comments.html.haml:12
+msgid "edit"
+msgstr "rediger"
+
+#: app/views/tasks/_checks.html.erb:6 app/views/tasks/_timelogs.html.haml:39
+#: app/views/tasks/_comments.html.haml:16
+msgid "delete"
+msgstr "slet"
+
+#: app/views/tasks/_checks.html.erb:17
+msgid "No checks has been added for this task."
+msgstr ""
+
+#: app/views/tasks/_users.html.erb:4
+#: app/views/projects/_assigned_users.html.haml:4
+#: app/views/timelogs/index.html.haml:81 app/views/tasks/_timelogs.html.haml:7
+msgid "User"
+msgstr "Bruger"
+
+#: app/views/tasks/_users.html.erb:15
+msgid "Do you want to remove this user from this task?"
+msgstr "Vil du fjerne denne bruger fra opgaven?"
+
+#: app/views/tasks/_users.html.erb:15
+#: app/views/projects/_assigned_users.html.haml:14
+msgid "remove"
+msgstr "fjern"
+
+#: app/views/tasks/_users.html.erb:23
+msgid "No users has been assigned to this task."
+msgstr "Der er ikke blevet tildelt nogle brugere."
+
+#: app/views/tasks/show.html.erb:7
+msgid "You do not have access to that task and cannot view this page."
+msgstr "Du har ikke adgang til denne opgave og kan ikke se denne side."
 
 #: app/views/tasks/show.html.erb:32
 msgid "Show task: %s."
@@ -2502,12 +2602,6 @@ msgstr "Rediger opgave"
 #: app/views/tasks/show.html.erb:39
 msgid "Remove from list"
 msgstr "Fjern fra liste"
-
-#: app/views/tasks/show.html.erb:39 app/views/tasks/_form.html.erb:13
-#: app/views/users/_form.html.haml:11 app/views/users/_form.html.haml:13
-#: app/views/customers/_form.html.haml:7
-msgid "Are you sure?"
-msgstr "Er du sikker?"
 
 #: app/views/tasks/show.html.erb:41
 msgid "Add to list"
@@ -2579,175 +2673,95 @@ msgid "Comments"
 msgstr "Kommentarer"
 
 #: app/views/tasks/show.html.erb:129 app/views/tasks/show.html.erb:137
-#: app/views/tasks/show.html.erb:144 app/views/users/_index_form.html.haml:9
-#: app/views/frontpage/index.html.haml:5 app/views/projects/index.html.haml:6
-#: app/views/tasks/index.html.haml:11
+#: app/views/tasks/show.html.erb:144 app/views/projects/index.html.haml:6
+#: app/views/frontpage/index.html.haml:5
+#: app/views/users/_index_form.html.haml:9 app/views/tasks/index.html.haml:11
 msgid "Add new"
 msgstr "Tilføj ny"
 
-#: app/views/tasks/_checks.html.erb:6 app/views/tasks/_comments.html.haml:12
-msgid "edit"
-msgstr "rediger"
+#: app/views/projects/_form.html.haml:12
+msgid "Added by %{user_link}"
+msgstr "Tilføjet af %{user_link}"
 
-#: app/views/tasks/_checks.html.erb:6 app/views/tasks/_comments.html.haml:16
-#: app/views/tasks/_timelogs.html.haml:39
-msgid "delete"
-msgstr "slet"
+#: app/views/projects/_form.html.haml:15 app/views/projects/show.html.haml:9
+msgid "Add task"
+msgstr "Tilføj opgave"
 
-#: app/views/tasks/_checks.html.erb:17
-msgid "No checks has been added for this task."
-msgstr ""
+#: app/views/projects/_form.html.haml:16
+msgid "Do you want to delete this project?"
+msgstr "Vil du slette dette projekt?"
 
-#: app/views/tasks/_form.html.erb:2
-msgid "Browser"
-msgstr ""
-
-#: app/views/tasks/_form.html.erb:2
-msgid "Version"
-msgstr ""
-
-#: app/views/tasks/_form.html.erb:2
-msgid "Operating system"
-msgstr ""
-
-#: app/views/tasks/_form.html.erb:10
-msgid "Insert browser and os"
-msgstr "Indsæt browser og OS"
-
-#: app/views/tasks/_form.html.erb:12 app/views/users/_form.html.haml:12
-#: app/views/customers/_form.html.haml:6 app/views/projects/_form.html.haml:14
-msgid "Show"
-msgstr "Vis"
-
-#: app/views/tasks/_users.html.erb:4 app/views/timelogs/index.html.haml:81
-#: app/views/projects/_assigned_users.html.haml:4
-#: app/views/tasks/_timelogs.html.haml:7
-msgid "User"
-msgstr "Bruger"
-
-#: app/views/tasks/_users.html.erb:15
-msgid "Do you want to remove this user from this task?"
-msgstr "Vil du fjerne denne bruger fra opgaven?"
-
-#: app/views/tasks/_users.html.erb:15
 #: app/views/projects/_assigned_users.html.haml:14
-msgid "remove"
-msgstr "fjern"
+msgid "Do you want to remove this user from the project?"
+msgstr "Vil du fjerne denne bruger fra projektet?"
 
-#: app/views/tasks/_users.html.erb:23
-msgid "No users has been assigned to this task."
-msgstr "Der er ikke blevet tildelt nogle brugere."
+#: app/views/projects/_assigned_users.html.haml:19
+msgid "No users were found."
+msgstr "Der blev ikke fundet nogle brugere."
 
-#: app/views/users/_form.html.haml:5
-msgid "Only write a password here if you whish to change it."
-msgstr ""
+#: app/views/projects/edit.html.haml:1 app/views/projects/show.html.haml:8
+msgid "Edit project"
+msgstr "Rediger projekt"
 
-#: app/views/users/_form.html.haml:11
-msgid "Log in as"
-msgstr "Log ind som"
+#: app/views/projects/show.html.haml:1
+msgid "Show project: %s."
+msgstr "Vis projekt: %s."
 
-#: app/views/users/_form.html.haml:21
-msgid "Permissions"
-msgstr "Rettigheder"
-
-#: app/views/users/show.html.haml:1
-msgid "Show user: %s."
-msgstr "Vis bruger: %s."
-
-#: app/views/users/show.html.haml:4
-msgid "Edit"
-msgstr "Rediger"
-
-#: app/views/users/show.html.haml:7 app/views/projects/show.html.haml:12
+#: app/views/projects/show.html.haml:12 app/views/users/show.html.haml:7
 msgid "Information"
 msgstr "Information"
 
-#: app/views/users/show.html.haml:14
-msgid "The real name of the user."
-msgstr "Brugerens rigtige navn"
+#: app/views/projects/show.html.haml:15
+msgid "Added by"
+msgstr "Tilføjet af"
 
-#: app/views/users/show.html.haml:19
-msgid "The email of the user."
-msgstr "Brugerens email."
+#: app/views/projects/show.html.haml:33
+msgid "Deadline"
+msgstr "Deadline"
 
-#: app/views/users/show.html.haml:47
-msgid "No tasks were found for this user."
-msgstr "Der blev ikke fundet nogle opgaver for denne bruger."
+#: app/views/projects/show.html.haml:41
+msgid "Assign user"
+msgstr "Tildel bruger"
 
-#: app/views/users/index.html.haml:1
-msgid "Search for users"
-msgstr "Søg efter brugere"
-
-#: app/views/users/edit.html.haml:1
-msgid "Edit user"
-msgstr "Rediger bruger"
-
-#: app/views/users/new.html.haml:1
-msgid "New user"
-msgstr "Ny bruger"
-
-#: app/views/users/_roles.html.haml:11
-#, fuzzy
-msgid "Remove"
-msgstr "fjern"
-
-#: app/views/users/_roles.html.haml:11
-#, fuzzy
-msgid "Do you want to remove this role?"
-msgstr "Vil du fjerne denne rang?"
-
-#: app/views/users/_roles.html.haml:16
-#, fuzzy
-msgid "No roles has been added to this user."
-msgstr "Der er ikke tilføjet nogen rang for denne bruger."
-
-#: app/views/frontpage/index.html.haml:37 app/views/projects/show.html.haml:67
+#: app/views/projects/show.html.haml:67 app/views/frontpage/index.html.haml:37
 msgid "No tasks were found."
 msgstr "Der blev ikke fundet nogle opgaver."
+
+#: app/views/projects/new.html.haml:1
+msgid "New project"
+msgstr "Nyt projekt"
+
+#: app/views/projects/index.html.haml:1
+msgid "Search for project"
+msgstr "Søg efter projekter"
+
+#: app/views/projects/index.html.haml:26
+msgid "No projects were found."
+msgstr "Der blev ikke fundet nogle projekter."
+
+#: app/views/customers/edit.html.haml:1 app/views/customers/show.html.haml:4
+msgid "Edit customer"
+msgstr "Rediger kunde"
 
 #: app/views/customers/show.html.haml:1
 msgid "Show customer: %s"
 msgstr "Vis kunde: %s"
 
-#: app/views/customers/show.html.haml:4 app/views/customers/edit.html.haml:1
-msgid "Edit customer"
-msgstr "Rediger kunde"
-
 #: app/views/customers/show.html.haml:22
 msgid "No projects has been added for this customer."
 msgstr "Der er ikke tilføjet nogle projekter for denne kunde."
+
+#: app/views/customers/new.html.haml:1 app/views/customers/index.html.haml:6
+msgid "Add new customer"
+msgstr "Tilføj ny kunde"
 
 #: app/views/customers/index.html.haml:1
 msgid "Search for customers"
 msgstr "Søg efter kunder"
 
-#: app/views/customers/index.html.haml:6 app/views/customers/new.html.haml:1
-msgid "Add new customer"
-msgstr "Tilføj ny kunde"
-
 #: app/views/customers/index.html.haml:26
 msgid "No customers were found."
 msgstr "Der blev ikke fundet nogle kunder."
-
-#: app/views/layouts/application.html.haml:16
-msgid "Close"
-msgstr "Luk"
-
-#: app/views/layouts/application.html.haml:17
-msgid "Edit comment"
-msgstr "Rediger kommentar"
-
-#: app/views/layouts/application.html.haml:18
-msgid "New comment"
-msgstr "Ny kommentar"
-
-#: app/views/layouts/application.html.haml:19
-msgid "Edit timelog"
-msgstr "Rediger tidslog"
-
-#: app/views/layouts/application.html.haml:20
-msgid "Edit task-check"
-msgstr "Rediger opgavecheck"
 
 #: app/views/timelogs/index.html.haml:8
 msgid "If you want to find timelogs from specific projects."
@@ -2804,77 +2818,84 @@ msgstr ""
 msgid "All timelogs was marked as invoiced."
 msgstr "Alle tidslogs blev markeret som fakturerede."
 
-#: app/views/projects/_form.html.haml:12
-msgid "Added by %{user_link}"
-msgstr "Tilføjet af %{user_link}"
+#: app/views/users/_form.html.haml:5
+msgid "Only write a password here if you whish to change it."
+msgstr ""
 
-#: app/views/projects/_form.html.haml:15 app/views/projects/show.html.haml:9
-msgid "Add task"
-msgstr "Tilføj opgave"
+#: app/views/users/_form.html.haml:11
+msgid "Log in as"
+msgstr "Log ind som"
 
-#: app/views/projects/_form.html.haml:16
-msgid "Do you want to delete this project?"
-msgstr "Vil du slette dette projekt?"
+#: app/views/users/_form.html.haml:21
+msgid "Permissions"
+msgstr "Rettigheder"
 
-#: app/views/projects/show.html.haml:1
-msgid "Show project: %s."
-msgstr "Vis projekt: %s."
+#: app/views/users/edit.html.haml:1
+msgid "Edit user"
+msgstr "Rediger bruger"
 
-#: app/views/projects/show.html.haml:8 app/views/projects/edit.html.haml:1
-msgid "Edit project"
-msgstr "Rediger projekt"
+#: app/views/users/show.html.haml:1
+msgid "Show user: %s."
+msgstr "Vis bruger: %s."
 
-#: app/views/projects/show.html.haml:15
-msgid "Added by"
-msgstr "Tilføjet af"
+#: app/views/users/show.html.haml:4
+msgid "Edit"
+msgstr "Rediger"
 
-#: app/views/projects/show.html.haml:33
-msgid "Deadline"
-msgstr "Deadline"
+#: app/views/users/show.html.haml:14
+msgid "The real name of the user."
+msgstr "Brugerens rigtige navn"
 
-#: app/views/projects/show.html.haml:41
-msgid "Assign user"
-msgstr "Tildel bruger"
+#: app/views/users/show.html.haml:19
+msgid "The email of the user."
+msgstr "Brugerens email."
 
-#: app/views/projects/index.html.haml:1
-msgid "Search for project"
-msgstr "Søg efter projekter"
+#: app/views/users/show.html.haml:47
+msgid "No tasks were found for this user."
+msgstr "Der blev ikke fundet nogle opgaver for denne bruger."
 
-#: app/views/projects/index.html.haml:26
-msgid "No projects were found."
-msgstr "Der blev ikke fundet nogle projekter."
+#: app/views/users/new.html.haml:1
+msgid "New user"
+msgstr "Ny bruger"
 
-#: app/views/projects/new.html.haml:1
-msgid "New project"
-msgstr "Nyt projekt"
+#: app/views/users/index.html.haml:1
+msgid "Search for users"
+msgstr "Søg efter brugere"
 
-#: app/views/projects/_assigned_users.html.haml:14
-msgid "Do you want to remove this user from the project?"
-msgstr "Vil du fjerne denne bruger fra projektet?"
+#: app/views/users/_roles.html.haml:11
+#, fuzzy
+msgid "Remove"
+msgstr "fjern"
 
-#: app/views/projects/_assigned_users.html.haml:19
-msgid "No users were found."
-msgstr "Der blev ikke fundet nogle brugere."
+#: app/views/users/_roles.html.haml:11
+#, fuzzy
+msgid "Do you want to remove this role?"
+msgstr "Vil du fjerne denne rang?"
 
-#: app/views/tasks/index.html.haml:1
-msgid "Search for tasks"
-msgstr "Søg efter opgaver"
+#: app/views/users/_roles.html.haml:16
+#, fuzzy
+msgid "No roles has been added to this user."
+msgstr "Der er ikke tilføjet nogen rang for denne bruger."
 
-#: app/views/tasks/edit.html.haml:1
-msgid "Edit task: %{task_name}"
-msgstr "Rediger opgave: %{task_name}"
+#: app/views/layouts/application.html.haml:16
+msgid "Close"
+msgstr "Luk"
 
-#: app/views/tasks/_comments.html.haml:16
-msgid "Do you want to delete this comment?"
-msgstr "Vil du slette denne kommentar?"
+#: app/views/layouts/application.html.haml:17
+msgid "Edit comment"
+msgstr "Rediger kommentar"
 
-#: app/views/tasks/_comments.html.haml:24
-msgid "No comments were found for this task."
-msgstr "Der blev ikke fundet nogle kommentarer for denne opgave."
+#: app/views/layouts/application.html.haml:18
+msgid "New comment"
+msgstr "Ny kommentar"
 
-#: app/views/tasks/new.html.haml:1
-msgid "Add new task"
-msgstr "Tilføj ny opgave"
+#: app/views/layouts/application.html.haml:19
+msgid "Edit timelog"
+msgstr "Rediger tidslog"
+
+#: app/views/layouts/application.html.haml:20
+msgid "Edit task-check"
+msgstr "Rediger opgavecheck"
 
 #: app/views/tasks/_timelogs.html.haml:4
 msgid "ID"
@@ -2891,6 +2912,26 @@ msgstr "Faktureret?"
 #: app/views/tasks/_timelogs.html.haml:39
 msgid "Do you want to delete this timelog?"
 msgstr "Vil du slette denne tidslog?"
+
+#: app/views/tasks/_comments.html.haml:16
+msgid "Do you want to delete this comment?"
+msgstr "Vil du slette denne kommentar?"
+
+#: app/views/tasks/_comments.html.haml:24
+msgid "No comments were found for this task."
+msgstr "Der blev ikke fundet nogle kommentarer for denne opgave."
+
+#: app/views/tasks/edit.html.haml:1
+msgid "Edit task: %{task_name}"
+msgstr "Rediger opgave: %{task_name}"
+
+#: app/views/tasks/new.html.haml:1
+msgid "Add new task"
+msgstr "Tilføj ny opgave"
+
+#: app/views/tasks/index.html.haml:1
+msgid "Search for tasks"
+msgstr "Søg efter opgaver"
 
 #~ msgid "Driving"
 #~ msgstr "Kørsel"

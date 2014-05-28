@@ -27,6 +27,9 @@ AwesomeTasks::Application.configure do
   config.action_mailer.default_options = {
     :from => "development@awesometasks.kaspernj.org"
   }
+  config.action_mailer.default_url_options = {
+    :host => "development.awesometasks.com"
+  }
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large

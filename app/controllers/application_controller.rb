@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_to_sign_in_if_not_signed_in
   before_filter :redirect_old_task_urls_to_new_ones
   
-  #Redirects old URL's to new ones.
+  # Redirects old URL's to new ones.
   def redirect_old_task_urls_to_new_ones
     if params[:show] == "tasks_show" && params[:id] && Task.exists?(params[:id])
       redirect_to task_path(params[:id])
@@ -14,8 +14,9 @@ class ApplicationController < ActionController::Base
   end
   
   def redirect_to_sign_in_if_not_signed_in
-    if !signed_in? && controller_name != "user_authentications"
-      redirect_to new_user_authentication_path(:backurl => request.original_url)
+    if !signed_in? && controller_name != "sessions" && controller_name != "locales"
+      session[:previous_url] = request.original_url
+      redirect_to new_user_session_path
     end
   end
   

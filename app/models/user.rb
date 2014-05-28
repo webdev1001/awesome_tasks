@@ -1,5 +1,11 @@
+require Rails.root.join('lib', 'devise', 'encryptors', 'md5')
+
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :encryptable
   
   has_many :tasks, :dependent => :restrict_with_exception
   has_many :task_assigned_users, :dependent => :destroy
@@ -14,6 +20,13 @@ class User < ActiveRecord::Base
     return username if username.present?
     return email if email.present?
     return "#{User.model_name.human} #{id}"
+  end
+  
+  def password_salt
+  'no salt'
+  end
+
+  def password_salt=(new_salt)
   end
   
   def locale!

@@ -188,3 +188,18 @@ input.input_text, input.input_password, select.input_select, textarea.input_text
 .nowrap{
   white-space: nowrap;
 }
+
+.flash {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 6px;
+  margin-bottom: 20px;
+}
+
+.flash-error, .flash-alert {
+  background-color: #ffd9d9;
+}
+
+.flash-notice {
+  background-color: #e0ffde;
+}
