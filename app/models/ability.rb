@@ -50,17 +50,18 @@ private
   end
   
   def task_access(current_user)
+    can [:new, :create], Task
     can :create, UserTaskListLink
     can [:edit, :update, :destroy], UserTaskListLink do |user_task_list_link|
       user_task_list_link.user_id = current_user.id
     end
     
-    can :show, Task do |task|
+    can [:edit, :update, :show, :destroy], Task do |task|
       access = false
       
-      if task.task_assigned_users.where(:user => current_user).any?
+      if task.task_assigned_users.where(:user_id => current_user.id).any?
         access = true
-      elsif task.project && current_user.user_project_links.where(:project => task.project).any?
+      elsif task.project && current_user.user_project_links.where(:project_id => task.project.id).any?
         access = true
       elsif task.user == current_user
         access = true

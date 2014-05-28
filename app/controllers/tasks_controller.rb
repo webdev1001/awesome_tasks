@@ -77,21 +77,28 @@ class TasksController < ApplicationController
     render :json => {:success => true}
   end
   
+  def destroy
+    if @task.destroy
+      redirect_to tasks_path
+    else
+      flash[:error] = @task.errors.full_messages.join(". ")
+      redirect_to task_path(@task)
+    end
+  end
+  
 private
   
   def set_task
     if params[:id]
       @task = Task.includes(:task_checks, :timelogs, :task_assigned_users => :user, :comments => :user).find(params[:id])
-      
-      if !can?(:show, @task)
-        flash[:warning] = (_("You do not have access to that task and cannot view this page."))
-        redirect_to :back
-      end
+      authorize! action_name.to_sym, @task
       
       @checks = @task.task_checks.order(:name)
       @users = @task.task_assigned_users
       @comments = @task.comments.order(:created_at)
       @timelogs = @task.timelogs.order(:created_at).reverse_order
+    else
+      authorize! action_name.to_sym, Task
     end
   end
   
