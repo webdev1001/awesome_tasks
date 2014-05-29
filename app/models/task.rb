@@ -83,6 +83,10 @@ class Task < ActiveRecord::Base
     return ret
   end
   
+  def name_force
+    name.presence || "[#{_("task %{task_id}", :task_id => id)}]"
+  end
+  
 private
   
   def set_priority
