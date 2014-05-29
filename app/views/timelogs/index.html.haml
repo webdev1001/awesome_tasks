@@ -17,17 +17,22 @@
   
   = DesignBox.boxt _("Sum"), 350
   %table.form
-    = Knj::Web.inputs([{                                                                                                                                         |
-      :title => _("Total hours"),                                                                                                                              |
-      :type => :info,                                                                                                                                          |
-      :value => Knj::Locales.number_out(@timelogs.sum(:time).to_f / 3600, 1) + " / " + Knj::Locales.number_out(@timelogs.sum(:time_transport).to_f / 3600, 1), |
-      :descr => _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")                                      |
-    },{                                                                                                                                                        |
-      :title => _("Total transport"),                                                                                                                          |
-      :type => :info,                                                                                                                                          |
-      :value => Knj::Locales.number_out(@timelogs.sum(:transport_length), 1),                                                                                  |
-      :descr => _("Total km's of transport used in all the timelogs found.")                                                                                   |
-    }]).html_safe                                                                                                                                              |
+    %tbody
+      %tr
+        %td.tdt= _("Total hours")
+        %td
+          = Knj::Locales.number_out(@timelogs.sum("TIME_TO_SEC(timelogs.time)").to_f / 3600, 1)
+          = " / "
+          = Knj::Locales.number_out(@timelogs.sum("TIME_TO_SEC(timelogs.time_transport)").to_f / 3600, 1)
+      %tr
+        %td.tdd{:colspan => 2}
+          = _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")
+      %tr
+        %td.tdt= _("Total transport")
+        %td= Knj::Locales.number_out(@timelogs.sum(:transport_length), 1)
+      %tr
+        %td.tdd{:colspan => 2}
+          = _("Total km's of transport used in all the timelogs found.")
   = DesignBox.boxb
   
   %br
@@ -57,8 +62,8 @@
           %td= link_to_user tlog.user
           %td= l(tlog.date)
           %td= link_to_task tlog.task
-          %td= link_to_project tlog.task.project
-          %td= link_to_customer tlog.task.project.customer
+          %td= link_to_project tlog.task.project if tlog.task
+          %td= link_to_customer tlog.task.project.customer if tlog.task
           %td= tlog.invoiced? ? _("Yes") : _("No")
           %td
             = Knj::Locales.number_out(dbt.hours_total, 1)
