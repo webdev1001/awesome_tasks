@@ -51,6 +51,9 @@ private
   
   def task_access(current_user)
     can [:new, :create], Task
+    can :manage, TaskCheck do |task_check|
+      can? :show, task_check.task
+    end
     can :create, UserTaskListLink
     can [:edit, :update, :destroy], UserTaskListLink do |user_task_list_link|
       user_task_list_link.user_id = current_user.id

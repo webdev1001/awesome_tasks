@@ -28,3 +28,88 @@ $ ->
     @browser_and_os_inserted = false
     $("#task_task_type").change ->
       insert_browser_and_os() if this.value == "bug" && !@browser_and_os_inserted
+  
+  if $("body.action_show").length > 0
+    task_show = $(".task_show")
+    
+    window.task_show_comments_update = ->
+      $.ajax({type: "GET", url: task_show.data("comments-task-path"), async: true, cache: false, complete: (data) ->
+        $("#divcomments").slideUp("fast", ->
+          $("#divcomments").html(data.responseText)
+          $("#divcomments").slideDown("fast")
+        )
+      })
+
+    window.task_show_timelogs_update = ->
+      $.ajax({type: "GET", url: tash_show.data("timelogs-task-path"), async: true, cache: false, complete: (data) ->
+        $("#divtimelogs").slideUp("fast", ->
+          $("#divtimelogs").html(data.responseText)
+          $("#divtimelogs").slideDown("fast")
+        )
+      })
+
+    window.task_show_users_update = ->
+      $.ajax({type: "GET", url: task_show.data("users-task-path"), async: true, cache: false, complete: (data) ->
+        $("#divusers").slideUp("fast", ->
+          $("#divusers").html(data.responseText)
+          $("#divusers").slideDown("fast")
+        )
+      })
+
+    window.task_show_assign_user_choose = (user_id) ->
+      $.ajax({type: "POST", url: task_show.data("assign-user-task-path"), data: {"user_id": user_id}, async: true, cache: false, dataType: "json", success: (data) ->
+        alert(data.errors) unless data.success
+        task_show_users_update()
+        modal_close()
+      })
+
+    window.task_show_checks_update = ->
+      $.ajax({type: "GET", url: task_show.data("checks-task-path"), async: true, cache: false, complete: (data) ->
+        $("#divchecks").slideUp("fast", ->
+          $("#divchecks").html(data.responseText)
+          $("#divchecks").slideDown("fast")
+        )
+      })
+    
+    $(".assign_user_to_task").click (e) ->
+      e.preventDefault()
+      modal({title: $(this).data("title"), url: $(this).data("url")})
+    
+    $(".add_new_check").click (e) ->
+      e.preventDefault()
+      modal({title: $(this).data("title"), url: $(this).data("url")})
+    
+    $("body").on("ajax:success", ".new_task_check, .edit_task_check", (data) ->
+      alert("success!")
+      events.call("on_task_check_added")
+      events.call("do_task_check_update")
+      modal_close()
+    )
+    
+    $("body").on "change", "input.task_check", ->
+      task_check_set $(this).data("task-id"), $(this).data("task-check-id"), $(this).is(":checked")
+    
+    $("body").on "click", ".task_check_edit", ->
+      task_check_edit $(this).data("task-id"), $(this).data("task-check-id")
+    
+    $("body").on "click", ".task_check_delete", ->
+      task_check_delete $(this).data("task-id"), $(this).data("task-check-id") if confirm $(this).data("confirm-msg")
+    
+    $("body").on "click", ".remove_user", ->
+      task_remove_assigned($(this).data("link-id")) if confirm $(this).data("confirm-msg")
+    
+    events.connect("do_comments_update", ->
+      task_show_comments_update()
+    )
+    
+    events.connect("do_timelogs_update", ->
+      task_show_timelogs_update()
+    )
+    
+    events.connect("do_task_assigned_users_update", ->
+      task_show_users_update()
+    )
+    
+    events.connect("do_task_check_update", ->
+      task_show_checks_update()
+    )
