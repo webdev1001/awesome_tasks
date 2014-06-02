@@ -3,7 +3,7 @@
 
 # Awesome Tasks
 
-A task system made for freelancer, making it easy to see all your tasks, log time, see how much money you have earned per day, week, month and year.
+A task system made for freelancers, making it easy to see all your tasks, log time, see how much money you have earned per day, week, month and year.
 
 It also makes it easy writing documentation for invoices, showing all timelog descriptions and much more.
 
