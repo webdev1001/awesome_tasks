@@ -7,6 +7,14 @@ form.simple_form {
     width: 18%;
     display: inline-block;
     font-weight: bold;
+    
+    &.boolean {
+      width: 80%;
+    }
+    
+    &.text {
+      width: 80%;
+    }
   }
   
   input[type=text], input[type=number], input[type=email], input[type=password] {

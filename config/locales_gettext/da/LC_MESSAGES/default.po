@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AwesomeTasks\n"
-"POT-Creation-Date: 2014-05-28 22:05+0100\n"
+"POT-Creation-Date: 2014-06-02 07:31+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kasper Johansen <k@spernj.org>\n"
 "Language-Team: \n"
@@ -250,12 +250,12 @@ msgstr ""
 #. Default value: ,
 #: lib/gettext_simple_rails/number_translator_translations.rb:12
 msgid "number.format.delimiter"
-msgstr ""
+msgstr "."
 
 #. Default value: .
 #: lib/gettext_simple_rails/number_translator_translations.rb:14
 msgid "number.format.separator"
-msgstr ""
+msgstr ","
 
 #. Default value: %n %u
 #: lib/gettext_simple_rails/number_translator_translations.rb:16
@@ -639,25 +639,21 @@ msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:24
-#, fuzzy
 msgid "activerecord.errors.models.project.attributes.customer.blank"
 msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:26
-#, fuzzy
 msgid "activerecord.errors.models.task.attributes.user.blank"
 msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:28
-#, fuzzy
 msgid "activerecord.errors.models.task.attributes.project.blank"
 msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:30
-#, fuzzy
 msgid "activerecord.errors.models.task.attributes.name.blank"
 msgstr "må ikke være tom"
 
@@ -673,43 +669,36 @@ msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:36
-#, fuzzy
 msgid "activerecord.errors.models.task_check.attributes.task.blank"
 msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:38
-#, fuzzy
 msgid "activerecord.errors.models.timelog.attributes.task.blank"
 msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:40
-#, fuzzy
 msgid "activerecord.errors.models.timelog.attributes.user.blank"
 msgstr "må ikke være tom"
 
 #. Default value: has already been taken
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:42
-#, fuzzy
 msgid "activerecord.errors.models.user_project_link.attributes.user.taken"
-msgstr "må ikke være tom"
+msgstr "er allerede taget"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:44
-#, fuzzy
 msgid "activerecord.errors.models.user_role.attributes.user.blank"
 msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:46
-#, fuzzy
 msgid "activerecord.errors.models.user_role.attributes.role.blank"
 msgstr "må ikke være tom"
 
 #. Default value: has already been taken
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:48
-#, fuzzy
 msgid "activerecord.errors.models.user_role.attributes.role.taken"
 msgstr "er allerede i brug"
 
@@ -740,9 +729,8 @@ msgstr "Brugernavnet som brugeren skal bruge til at logge ind."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:10
-#, fuzzy
 msgid "simple_form.hints.user.encrypted_password"
-msgstr "Krypteret adgangskode"
+msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:12
@@ -1997,124 +1985,9 @@ msgstr "Bruger opgavelistelink"
 msgid "activerecord.models.user_task_list_link.other"
 msgstr "Bruger opgavelistelinks"
 
-#: Ruby/knjtasks/lib/knjtasks.rb:90
-msgid "user"
-msgstr "bruger"
-
-#: Ruby/knjtasks/lib/knjtasks.rb:91
-msgid "project"
-msgstr "projekt"
-
-#: Ruby/knjtasks/lib/knjtasks.rb:92
-msgid "task"
-msgstr "opgave"
-
-#: Ruby/knjtasks/lib/knjtasks.rb:99
-msgid "no %s"
-msgstr ""
-
-#: Ruby/knjtasks/lib/knjtasks.rb:103
-msgid "no date"
-msgstr "ingen dato"
-
-#: Ruby/knjtasks/models/class_user_rank_link.rb:15
-msgid "That user already have that rank."
-msgstr "Den bruger har allerede den rang."
-
-#: Ruby/knjtasks/models/class_timelog.rb:47
-#: Ruby/knjtasks/models/class_comment.rb:15
-#: Ruby/knjtasks/models/class_task_check.rb:12
-#: Ruby/knjtasks/models/class_task_assigned_user.rb:34
-msgid "Invalid key: %s."
-msgstr "Ugyldig nøgle: %s."
-
-#: Ruby/knjtasks/models/class_timelog.rb:66
-msgid "No comment has been written."
-msgstr "Der blev ikke skrevet en kommentar."
-
-#: Ruby/knjtasks/models/class_timelog.rb:76
-msgid "Timelog %s"
-msgstr "Tidslog %s"
-
-#: Ruby/knjtasks/models/class_project.rb:13
-msgid "Invalid name given."
-msgstr "Ugyldigt navn givet."
-
-#: Ruby/knjtasks/models/class_user_task_list_link.rb:15
-msgid "That user has already listed that task."
-msgstr "Den bruger har allerede listet den opgave."
-
-#: Ruby/knjtasks/models/class_user_project_link.rb:27
-msgid "Invalid key: '%s'."
-msgstr "Ugyldig nøgle: '%s'."
-
-#: Ruby/knjtasks/models/class_user_project_link.rb:53
-msgid "That user is already assigned to that project."
-msgstr "Den bruger er allerede tildelt det projekt."
-
-#: Ruby/knjtasks/models/class_task.rb:19
-msgid "No project-ID was given."
-msgstr "Intet projekt-ID blev givet."
-
-#: Ruby/knjtasks/models/class_task.rb:20
-msgid "Invalid name was given."
-msgstr "Ugyldigt navn blev givet."
-
-#: Ruby/knjtasks/models/class_task.rb:29
-msgid "A project with the given project-ID could not be found: '%s'."
-msgstr "Et projekt med det givne projekt-ID kunne ikke findes: '%s'."
-
-#: Ruby/knjtasks/models/class_task.rb:35 app/models/task.rb:26
-msgid "Feature"
-msgstr "Feature"
-
-#: Ruby/knjtasks/models/class_task.rb:36 app/models/task.rb:27
-msgid "Bug report"
-msgstr "Fejlrapport"
-
-#: Ruby/knjtasks/models/class_task.rb:37 app/models/task.rb:28
-msgid "Question"
-msgstr "Spørgsmål"
-
-#: Ruby/knjtasks/models/class_task.rb:43 app/models/task.rb:43
-msgid "Open"
-msgstr "Åben"
-
-#: Ruby/knjtasks/models/class_task.rb:44 app/models/task.rb:44
-msgid "Confirmed"
-msgstr "Bekræftet"
-
-#: Ruby/knjtasks/models/class_task.rb:45 app/models/task.rb:45
-msgid "Waiting"
-msgstr "Venter"
-
-#: Ruby/knjtasks/models/class_task.rb:46 app/models/task.rb:46
-msgid "Closed"
-msgstr "Lukket"
-
-#: Ruby/knjtasks/models/class_user.rb:11
-msgid "Cannot delete user because that user has created tasks."
-msgstr ""
-
-#: Ruby/knjtasks/models/class_user.rb:55 app/helpers/user_helper.rb:11
-msgid "no name"
-msgstr "intet navn"
-
-#: Ruby/knjtasks/models/class_task_assigned_user.rb:56
-msgid "That user is already assigned to that task."
-msgstr "Den bruger er allerede tildelt den opgave."
-
-#: app/controllers/user_authentications_controller.rb:9
-msgid "A user with that username and/or password was found."
-msgstr "En bruger med det brugernavn og/eller adgangskode blev ikke fundet."
-
-#: app/controllers/user_authentications_controller.rb:12
-msgid "That user is not active any more and cant be used."
-msgstr "Den bruger er ikke aktiv mere."
-
 #: app/controllers/comments_controller.rb:86
 msgid "Changed the task-status to '%s'."
-msgstr ""
+msgstr "Ændret opgavestatus til '%s'."
 
 #: app/controllers/timelogs_controller.rb:9
 #: app/helpers/application_helper.rb:7
@@ -2158,31 +2031,69 @@ msgstr "Tilføj rang"
 msgid "no user"
 msgstr "ingen bruger"
 
+#: app/helpers/user_helper.rb:11
+msgid "no name"
+msgstr "intet navn"
+
 #: app/helpers/application_helper.rb:6
 msgid "Choose:"
 msgstr "Vælg:"
+
+#: app/helpers/task_helper.rb:3
+msgid "no task"
+msgstr "ingen opgave"
 
 #: app/helpers/project_helper.rb:3
 msgid "no project"
 msgstr "intet projekt"
 
 #: app/models/user_role.rb:9
-#, fuzzy
 msgid "Administrator"
 msgstr "Administration"
 
 #: app/models/user_role.rb:10
-#, fuzzy
 msgid "Customer administrator"
-msgstr "Kundebesked"
+msgstr "Kunde administrator"
 
 #: app/models/user_role.rb:25
 msgid "is not allowed: %{role}"
-msgstr ""
+msgstr "er ikke tilladt: %{role}"
+
+#: app/models/task.rb:26
+msgid "Feature"
+msgstr "Feature"
+
+#: app/models/task.rb:27
+msgid "Bug report"
+msgstr "Fejlrapport"
+
+#: app/models/task.rb:28
+msgid "Question"
+msgstr "Spørgsmål"
 
 #: app/models/task.rb:29
 msgid "Other"
 msgstr "Andet"
+
+#: app/models/task.rb:43
+msgid "Open"
+msgstr "Åben"
+
+#: app/models/task.rb:44
+msgid "Confirmed"
+msgstr "Bekræftet"
+
+#: app/models/task.rb:45
+msgid "Waiting"
+msgstr "Venter"
+
+#: app/models/task.rb:46
+msgid "Closed"
+msgstr "Lukket"
+
+#: app/models/task.rb:87
+msgid "task %{task_id}"
+msgstr "opgave %{task_id}"
 
 #: app/mailers/task_assigned_user_mailer.rb:11
 msgid "You have been assigned to: %s"
@@ -2190,81 +2101,11 @@ msgstr "Du er blevet tildelt til: %s"
 
 #: app/mailers/task_assigned_user_mailer.rb:24
 msgid "Task #%1$s: %2$s"
-msgstr ""
+msgstr "Opgave #%1$s: %2$s"
 
 #: app/mailers/task_assigned_user_mailer.rb:25
 msgid "New comment from: %{author_name}"
 msgstr "Ny kommentar fra: %{author_name}"
-
-#: Ruby/knjtasks/www/index.rhtml:11 Ruby/knjtasks/www/index.rhtml:85
-#: app/views/frontpage/index.html.haml:1
-#: app/views/layouts/application.html.haml:37
-msgid "Frontpage"
-msgstr "Forside"
-
-#: Ruby/knjtasks/www/index.rhtml:12 Ruby/knjtasks/www/index.rhtml:89
-msgid "Customers"
-msgstr "Kunder"
-
-#: Ruby/knjtasks/www/index.rhtml:13 Ruby/knjtasks/www/index.rhtml:90
-#: app/views/workstatus/index.html.erb:190
-msgid "Projects"
-msgstr "Projekter"
-
-#: Ruby/knjtasks/www/index.rhtml:14 Ruby/knjtasks/www/index.rhtml:93
-#: app/views/projects/show.html.haml:46 app/views/users/show.html.haml:23
-msgid "Tasks"
-msgstr "Opgaver"
-
-#: Ruby/knjtasks/www/index.rhtml:15 Ruby/knjtasks/www/index.rhtml:94
-#: app/views/projects/show.html.haml:39
-msgid "Users"
-msgstr "Brugere"
-
-#: Ruby/knjtasks/www/index.rhtml:16 Ruby/knjtasks/www/index.rhtml:97
-#: app/views/tasks/show.html.erb:142 app/views/timelogs/index.html.haml:1
-#: app/views/layouts/application.html.haml:42
-msgid "Timelogs"
-msgstr "Tidslogs"
-
-#: Ruby/knjtasks/www/index.rhtml:17 Ruby/knjtasks/www/index.rhtml:98
-#: app/views/workstatus/index.html.erb:13
-#: app/views/layouts/application.html.haml:43
-msgid "Work-status"
-msgstr "Arbejdsstatus"
-
-#: Ruby/knjtasks/www/index.rhtml:18 Ruby/knjtasks/www/index.rhtml:99
-msgid "Administration"
-msgstr "Administration"
-
-#: Ruby/knjtasks/www/index.rhtml:28
-msgid "That task could not be found."
-msgstr "Den opgave kunne ikke findes."
-
-#: Ruby/knjtasks/www/index.rhtml:36
-msgid "That project could not be found."
-msgstr "Projektet kunne ikke findes."
-
-#: Ruby/knjtasks/www/index.rhtml:102 app/views/profile/index.html.erb:1
-#: app/views/layouts/application.html.haml:44
-msgid "Your profile"
-msgstr "Din profil"
-
-#: Ruby/knjtasks/www/index.rhtml:103
-#: app/views/layouts/application.html.haml:45
-msgid "Log out"
-msgstr "Log ud"
-
-#: Ruby/knjtasks/www/index.rhtml:106
-#: app/views/user_authentications/new.html.erb:1
-#: app/views/user_authentications/new.html.erb:29
-#: app/views/layouts/application.html.haml:46
-msgid "Log in"
-msgstr "Log ind"
-
-#: Ruby/knjtasks/www/index.rhtml:136
-msgid "Made by %s"
-msgstr "Lavet af %s"
 
 #: app/views/customers/update_id_per_obj.rhtml:3
 msgid "You do not have permission to view this page."
@@ -2291,11 +2132,10 @@ msgid "Update"
 msgstr "Opdater"
 
 #: app/views/comments/_form.html.erb:5 app/views/task_checks/form.html.erb:41
-#: app/views/user_authentications/new.html.erb:9
 #: app/views/profile/index.html.erb:6 app/views/tasks/_form.html.erb:1
 #: app/views/projects/_form.html.haml:1 app/views/user_roles/_form.html.haml:1
 #: app/views/customers/_form.html.haml:1 app/views/timelogs/_form.html.haml:1
-#: app/views/users/_form.html.haml:1
+#: app/views/users/_form.html.haml:1 app/views/devise/sessions/new.html.haml:4
 msgid "Enter details"
 msgstr "Indtast detaljer"
 
@@ -2311,7 +2151,7 @@ msgstr "Gem"
 #: app/views/user_roles/_search.html.erb:9
 #: app/views/workstatus/index.html.erb:57
 #: app/views/customers/index.html.haml:13
-#: app/views/timelogs/index.html.haml:35
+#: app/views/timelogs/index.html.haml:40
 #: app/views/users/_index_results.html.haml:1
 #: app/views/tasks/index.html.haml:18
 msgid "Results"
@@ -2357,7 +2197,7 @@ msgid "The name of the check as it should appear for the other users."
 msgstr ""
 
 #: app/views/task_checks/form.html.erb:50 app/views/tasks/show.html.erb:87
-#: app/views/timelogs/index.html.haml:82
+#: app/views/timelogs/index.html.haml:87
 msgid "Description"
 msgstr "Beskrivelse"
 
@@ -2375,36 +2215,6 @@ msgstr "Vil du gerne slette dette check?"
 #: app/views/users/_form.html.haml:13 app/views/tasks/_timelogs.html.haml:12
 msgid "Delete"
 msgstr "Slet"
-
-#: app/views/user_authentications/new.html.erb:4
-msgid "You are logged in as %{user_link}."
-msgstr "Du er logget ind som %{user_link}."
-
-#: app/views/user_authentications/new.html.erb:12
-msgid "Username"
-msgstr "Brugernavn"
-
-#: app/views/user_authentications/new.html.erb:15
-msgid "The username you want to log in as."
-msgstr ""
-
-#: app/views/user_authentications/new.html.erb:17
-#: app/views/profile/index.html.erb:14
-msgid "Password"
-msgstr "Adgangskode"
-
-#: app/views/user_authentications/new.html.erb:21
-msgid "The password associated with the entered username."
-msgstr ""
-
-#: app/views/user_authentications/new.html.erb:23
-msgid "Remember me on this computer"
-msgstr ""
-
-#: app/views/user_authentications/new.html.erb:25
-msgid ""
-"If you do not want to log in again on this computer then check this box."
-msgstr ""
 
 #: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:1
 #: app/views/task_assigned_user_mailer/notification.html.erb:1
@@ -2429,6 +2239,11 @@ msgstr "Tildelt af"
 msgid "You need to be logged in to view this page."
 msgstr "Du skal være logget ind for at se denne side."
 
+#: app/views/workstatus/index.html.erb:13
+#: app/views/layouts/application.html.haml:43
+msgid "Work-status"
+msgstr "Arbejdsstatus"
+
 #: app/views/workstatus/index.html.erb:22 app/views/timelogs/index.html.haml:5
 msgid "Date from"
 msgstr "Date fra"
@@ -2448,14 +2263,14 @@ msgstr "Filter"
 
 #: app/views/workstatus/index.html.erb:61 app/views/tasks/show.html.erb:62
 #: app/views/projects/show.html.haml:19 app/views/projects/show.html.haml:53
-#: app/views/timelogs/index.html.haml:80 app/views/tasks/_timelogs.html.haml:6
+#: app/views/timelogs/index.html.haml:85 app/views/tasks/_timelogs.html.haml:6
 msgid "Date"
 msgstr "Dato"
 
 #: app/views/workstatus/index.html.erb:62
 #: app/views/workstatus/index.html.erb:155
 #: app/views/workstatus/index.html.erb:195
-#: app/views/timelogs/index.html.haml:80 app/views/tasks/_timelogs.html.haml:5
+#: app/views/timelogs/index.html.haml:85 app/views/tasks/_timelogs.html.haml:5
 msgid "Hours"
 msgstr "Timer"
 
@@ -2482,7 +2297,7 @@ msgstr "Oversigt"
 
 #: app/views/workstatus/index.html.erb:160
 #: app/views/workstatus/index.html.erb:196
-#: app/views/timelogs/index.html.haml:46
+#: app/views/timelogs/index.html.haml:51
 msgid "Transport"
 msgstr "Transport"
 
@@ -2499,9 +2314,18 @@ msgid "Total after tax"
 msgstr "Total efter skat"
 
 #: app/views/workstatus/index.html.erb:180
-#: app/views/timelogs/index.html.haml:26
+#: app/views/timelogs/index.html.haml:31
 msgid "Total transport"
 msgstr "Total transport"
+
+#: app/views/workstatus/index.html.erb:190
+msgid "Projects"
+msgstr "Projekter"
+
+#: app/views/profile/index.html.erb:1
+#: app/views/layouts/application.html.haml:44
+msgid "Your profile"
+msgstr "Din profil"
 
 #: app/views/profile/index.html.erb:9 app/views/users/show.html.haml:16
 msgid "Email"
@@ -2511,9 +2335,13 @@ msgstr "Email"
 msgid "The email that you want notifications and stuff sent to."
 msgstr ""
 
+#: app/views/profile/index.html.erb:14
+msgid "Password"
+msgstr "Adgangskode"
+
 #: app/views/profile/index.html.erb:17
 msgid "You can enter a new password to change it."
-msgstr ""
+msgstr "Du kan skrive en ny adgangskode for at ændre den."
 
 #: app/views/profile/index.html.erb:44
 msgid "Task-list"
@@ -2538,7 +2366,7 @@ msgstr ""
 
 #: app/views/tasks/_form.html.erb:2
 msgid "Operating system"
-msgstr ""
+msgstr "Operativsystem"
 
 #: app/views/tasks/_form.html.erb:10
 msgid "Insert browser and os"
@@ -2566,11 +2394,11 @@ msgstr "slet"
 
 #: app/views/tasks/_checks.html.erb:17
 msgid "No checks has been added for this task."
-msgstr ""
+msgstr "Der er ikke tilføjet nogle checks for denne opgave."
 
 #: app/views/tasks/_users.html.erb:4
 #: app/views/projects/_assigned_users.html.haml:4
-#: app/views/timelogs/index.html.haml:81 app/views/tasks/_timelogs.html.haml:7
+#: app/views/timelogs/index.html.haml:86 app/views/tasks/_timelogs.html.haml:7
 msgid "User"
 msgstr "Bruger"
 
@@ -2637,7 +2465,7 @@ msgstr "Den bruger der oprettede opgaven."
 
 #: app/views/tasks/show.html.erb:77
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
 
 #: app/views/tasks/show.html.erb:80
 msgid ""
@@ -2646,7 +2474,7 @@ msgstr ""
 
 #: app/views/tasks/show.html.erb:90
 msgid "No description has been written for this task."
-msgstr ""
+msgstr "Der er ikke blevet skrevet en beskrivelse for denne opgave."
 
 #: app/views/tasks/show.html.erb:98
 msgid "Assigned users"
@@ -2678,6 +2506,11 @@ msgstr "Kommentarer"
 #: app/views/users/_index_form.html.haml:9 app/views/tasks/index.html.haml:11
 msgid "Add new"
 msgstr "Tilføj ny"
+
+#: app/views/tasks/show.html.erb:142 app/views/timelogs/index.html.haml:1
+#: app/views/layouts/application.html.haml:42
+msgid "Timelogs"
+msgstr "Tidslogs"
 
 #: app/views/projects/_form.html.haml:12
 msgid "Added by %{user_link}"
@@ -2719,9 +2552,17 @@ msgstr "Tilføjet af"
 msgid "Deadline"
 msgstr "Deadline"
 
+#: app/views/projects/show.html.haml:39
+msgid "Users"
+msgstr "Brugere"
+
 #: app/views/projects/show.html.haml:41
 msgid "Assign user"
 msgstr "Tildel bruger"
+
+#: app/views/projects/show.html.haml:46 app/views/users/show.html.haml:23
+msgid "Tasks"
+msgstr "Opgaver"
 
 #: app/views/projects/show.html.haml:67 app/views/frontpage/index.html.haml:37
 msgid "No tasks were found."
@@ -2738,6 +2579,11 @@ msgstr "Søg efter projekter"
 #: app/views/projects/index.html.haml:26
 msgid "No projects were found."
 msgstr "Der blev ikke fundet nogle projekter."
+
+#: app/views/frontpage/index.html.haml:1
+#: app/views/layouts/application.html.haml:37
+msgid "Frontpage"
+msgstr "Forside"
 
 #: app/views/customers/edit.html.haml:1 app/views/customers/show.html.haml:4
 msgid "Edit customer"
@@ -2769,58 +2615,60 @@ msgstr ""
 
 #: app/views/timelogs/index.html.haml:11
 msgid "If you only want to view invoiced, uninvoiced or all timelogs."
-msgstr ""
+msgstr "Hvis du kun vil se fakturerede, ikke fakturerede eller alle tidslogs."
 
 #: app/views/timelogs/index.html.haml:18
 msgid "Sum"
 msgstr "Sum"
 
-#: app/views/timelogs/index.html.haml:21
+#: app/views/timelogs/index.html.haml:22
 msgid "Total hours"
 msgstr "Total timer"
 
-#: app/views/timelogs/index.html.haml:24
+#: app/views/timelogs/index.html.haml:29
 msgid ""
 "The total amount of hours of all the found time-logs (first hours used then "
 "time used on transport)."
 msgstr ""
 
-#: app/views/timelogs/index.html.haml:29
+#: app/views/timelogs/index.html.haml:35
 msgid "Total km's of transport used in all the timelogs found."
 msgstr ""
 
-#: app/views/timelogs/index.html.haml:62
+#: app/views/timelogs/index.html.haml:67
+#: app/views/tasks/_timelogs.html.haml:35
 msgid "Yes"
 msgstr "Ja"
 
-#: app/views/timelogs/index.html.haml:62
+#: app/views/timelogs/index.html.haml:67
+#: app/views/tasks/_timelogs.html.haml:35
 msgid "No"
 msgstr "Nej"
 
-#: app/views/timelogs/index.html.haml:71
+#: app/views/timelogs/index.html.haml:76
 #: app/views/tasks/_timelogs.html.haml:44
 msgid "No timelogs were found."
 msgstr "Der blev ikke fundet nogle tidslogs."
 
-#: app/views/timelogs/index.html.haml:76
+#: app/views/timelogs/index.html.haml:81
 msgid "Customer message"
 msgstr "Kundebesked"
 
-#: app/views/timelogs/index.html.haml:107
+#: app/views/timelogs/index.html.haml:112
 msgid "Mark timelogs as invoiced"
 msgstr "Marker tidslogs som fakturerede"
 
-#: app/views/timelogs/index.html.haml:107
+#: app/views/timelogs/index.html.haml:112
 msgid "Are you sure you want to mark all the found timelogs as invoiced?"
-msgstr ""
+msgstr "Vil du markere alle fundene og viste tidslogs som fakturerede?"
 
-#: app/views/timelogs/index.html.haml:107
+#: app/views/timelogs/index.html.haml:112
 msgid "All timelogs was marked as invoiced."
 msgstr "Alle tidslogs blev markeret som fakturerede."
 
 #: app/views/users/_form.html.haml:5
 msgid "Only write a password here if you whish to change it."
-msgstr ""
+msgstr "Skriv kun en adgangskode her, hvis du ønsker at ændre den."
 
 #: app/views/users/_form.html.haml:11
 msgid "Log in as"
@@ -2863,19 +2711,16 @@ msgid "Search for users"
 msgstr "Søg efter brugere"
 
 #: app/views/users/_roles.html.haml:11
-#, fuzzy
 msgid "Remove"
-msgstr "fjern"
+msgstr "Fjern"
 
 #: app/views/users/_roles.html.haml:11
-#, fuzzy
 msgid "Do you want to remove this role?"
-msgstr "Vil du fjerne denne rang?"
+msgstr "Vil du fjerne denne rolle?"
 
 #: app/views/users/_roles.html.haml:16
-#, fuzzy
 msgid "No roles has been added to this user."
-msgstr "Der er ikke tilføjet nogen rang for denne bruger."
+msgstr "Der er ikke tilføjet nogle roller for denne bruger."
 
 #: app/views/layouts/application.html.haml:16
 msgid "Close"
@@ -2896,6 +2741,40 @@ msgstr "Rediger tidslog"
 #: app/views/layouts/application.html.haml:20
 msgid "Edit task-check"
 msgstr "Rediger opgavecheck"
+
+#: app/views/layouts/application.html.haml:45
+msgid "Log out"
+msgstr "Log ud"
+
+#: app/views/layouts/application.html.haml:46
+msgid "Log in"
+msgstr "Log ind"
+
+#: app/views/devise/shared/_links.haml:2
+#: app/views/devise/sessions/new.html.haml:1
+#: app/views/devise/sessions/new.html.haml:8
+msgid "Sign in"
+msgstr "Log ind"
+
+#: app/views/devise/shared/_links.haml:5
+msgid "Sign up"
+msgstr "Opret bruger"
+
+#: app/views/devise/shared/_links.haml:8
+msgid "Forgot your password?"
+msgstr "Glemt din adgangskode?"
+
+#: app/views/devise/shared/_links.haml:11
+msgid "Didn't receive confirmation instructions?"
+msgstr ""
+
+#: app/views/devise/shared/_links.haml:14
+msgid "Didn't receive unlock instructions?"
+msgstr ""
+
+#: app/views/devise/shared/_links.haml:18
+msgid "Sign in with %{provider_title}"
+msgstr "Log in med %{provider_title}"
 
 #: app/views/tasks/_timelogs.html.haml:4
 msgid "ID"
@@ -2932,6 +2811,81 @@ msgstr "Tilføj ny opgave"
 #: app/views/tasks/index.html.haml:1
 msgid "Search for tasks"
 msgstr "Søg efter opgaver"
+
+#~ msgid "user"
+#~ msgstr "bruger"
+
+#~ msgid "project"
+#~ msgstr "projekt"
+
+#~ msgid "task"
+#~ msgstr "opgave"
+
+#~ msgid "no date"
+#~ msgstr "ingen dato"
+
+#~ msgid "That user already have that rank."
+#~ msgstr "Den bruger har allerede den rang."
+
+#~ msgid "Invalid key: %s."
+#~ msgstr "Ugyldig nøgle: %s."
+
+#~ msgid "No comment has been written."
+#~ msgstr "Der blev ikke skrevet en kommentar."
+
+#~ msgid "Timelog %s"
+#~ msgstr "Tidslog %s"
+
+#~ msgid "Invalid name given."
+#~ msgstr "Ugyldigt navn givet."
+
+#~ msgid "That user has already listed that task."
+#~ msgstr "Den bruger har allerede listet den opgave."
+
+#~ msgid "Invalid key: '%s'."
+#~ msgstr "Ugyldig nøgle: '%s'."
+
+#~ msgid "That user is already assigned to that project."
+#~ msgstr "Den bruger er allerede tildelt det projekt."
+
+#~ msgid "No project-ID was given."
+#~ msgstr "Intet projekt-ID blev givet."
+
+#~ msgid "Invalid name was given."
+#~ msgstr "Ugyldigt navn blev givet."
+
+#~ msgid "A project with the given project-ID could not be found: '%s'."
+#~ msgstr "Et projekt med det givne projekt-ID kunne ikke findes: '%s'."
+
+#~ msgid "That user is already assigned to that task."
+#~ msgstr "Den bruger er allerede tildelt den opgave."
+
+#~ msgid "Customers"
+#~ msgstr "Kunder"
+
+#~ msgid "Administration"
+#~ msgstr "Administration"
+
+#~ msgid "That task could not be found."
+#~ msgstr "Den opgave kunne ikke findes."
+
+#~ msgid "That project could not be found."
+#~ msgstr "Projektet kunne ikke findes."
+
+#~ msgid "Made by %s"
+#~ msgstr "Lavet af %s"
+
+#~ msgid "A user with that username and/or password was found."
+#~ msgstr "En bruger med det brugernavn og/eller adgangskode blev ikke fundet."
+
+#~ msgid "That user is not active any more and cant be used."
+#~ msgstr "Den bruger er ikke aktiv mere."
+
+#~ msgid "You are logged in as %{user_link}."
+#~ msgstr "Du er logget ind som %{user_link}."
+
+#~ msgid "Username"
+#~ msgstr "Brugernavn"
 
 #~ msgid "Driving"
 #~ msgstr "Kørsel"

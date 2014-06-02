@@ -1,0 +1,15 @@
+= simple_form_for [@task, @task_check], :remote => true do |f|
+  = DesignBox.boxt _("Enter details"), "450px"
+  = f.input :name
+  = f.input :description
+  
+  - unless @task_check.new_record?
+    = link_to _("Delete"), "#", :class => ["button", "delete_task_check"], :data => {:task_check_id => @task_check.id}
+  
+  = f.submit _("Save")
+  = DesignBox.boxb
+
+:javascript
+  modal_on_opened(function(){
+    $("#task_check_name").focus()
+  })

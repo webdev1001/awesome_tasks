@@ -1,0 +1,18 @@
+%table.list
+  %thead
+    %tr
+      %th= _("User")
+      %th= _("Actions")
+  %tbody
+    - @users.each do |link|
+      %tr
+        %td
+          = link_to_user link.user
+        %td
+          (
+          = link_to _("remove"), "#", :class => "remove_user", :data => {:link_id => link.id, :confirm_msg => _("Are you sure?")}
+          )
+    - if @users.none?
+      %tr
+        %td.error{colspan: "2"}
+          = _("No users has been assigned to this task.")

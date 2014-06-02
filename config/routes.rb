@@ -19,6 +19,8 @@ AwesomeTasks::Application.routes.draw do
     post :assign_user, :on => :member
     get :assign_user_choose, :on => :member
     get :checks, :on => :member
+    
+    resources :task_checks
   end
   
   resources :task_assigned_users

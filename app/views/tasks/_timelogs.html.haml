@@ -32,7 +32,7 @@
         %td{style: "width: 130px;"}= link_to_user tlog.user
         %td= simple_format tlog.comment
         - if can? :view_invoiced, tlog
-          %td= Knj::Strings.yn_str(tlog.invoiced?)
+          %td= tlog.invoiced? ? _("Yes") : _("No")
         - if can? :destroy, tlog
           %td{style: "width: 10%;"}
             (
