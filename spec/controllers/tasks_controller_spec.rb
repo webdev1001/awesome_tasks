@@ -4,10 +4,12 @@ describe TasksController do
   let!(:admin){ create :user_admin }
   let!(:task){ create :task, :user => admin }
   
+  render_views
+  
   context "#assign_user" do
     let(:user_to_be_assigned){ create :user }
     
-    it "works" do
+    it "#assign_user" do
       sign_in admin
       
       expect {

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :projects, :through => :user_project_links, :dependent => :destroy
   has_many :user_roles, :dependent => :destroy
   has_many :user_task_list_links, :dependent => :destroy
+  has_many :customers, :through => :projects
   
   def name!
     return name if name.present?
@@ -30,77 +31,38 @@ class User < ActiveRecord::Base
     return "en"
   end
   
-  def has_rank?(rank_str)
-    rank = self.ob.get_by(:User_rank, {
-      "id_str" => rank_str
-    })
-    return false if !rank
-    
-    rank_link = self.ob.get_by(:User_rank_link, {
-      "user" => self,
-      "rank" => rank
-    })
-    return false if !rank_link
-    
-    return true
-  end
-  
-  def has_email?
-    return Knj::Strings.is_email?(self[:email])
-  end
-  
-  def customers
-    customers = {}
-    self.ob.list(:Project, {
-      [:User_project_link, "user_id"] => self.id
-    }) do |project|
-      customer = project.customer
-      next if !customer or customers.key?(customer.id)
-      customers[customer.id] = customer
-    end
-    
-    customers = customers.values.to_a
-    customers.sort do |cust1, cust2|
-      cust1.name.downcase <=> cust2.name.downcase
-    end
-    
-    return customers
-  end
-  
   #A list of all relevant users for this user (from the same customer).
-  def users_list
-    users = {}
+  def visible_users
+    project_ids = projects.map{ |project| project.id }
     
-    customers.each do |customer|
-      customer.projects.each do |project|
-        project.users do |user|
-          users[user.id] = user
-        end
-      end
-    end
+    query = User
+      .joins(:user_project_links)
+      .where("user_project_links.project_id = (?)", project_ids)
+      .group("users.id")
     
-    users = users.values
-    users.sort do |user1, user2|
-      user1.name.downcase <=> user2.name.downcase
-    end
+    user_ids = query.map{ |user| user.id }
     
-    return users
+    return User.where(:id => user_ids)
   end
   
   def admin?
     user_roles.where(:role => "administrator").any?
   end
   
+  def customer_admin?
+    user_roles.where(:role => "customer_administrator").any?
+  end
+  
   def users_with_access_to
     if admin?
       User.all
     else
-      users_list
+      visible_users
     end
   end
   
-  def projects_with_access_to
-    if user_roles.where(:role => "administrator").any?
+  def visible_projects
+    if admin?
       Project.all
     else
       projects
