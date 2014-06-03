@@ -80,7 +80,6 @@ $ ->
       modal({title: $(this).data("title"), url: $(this).data("url")})
     
     $("body").on("ajax:success", ".new_task_check, .edit_task_check", (data) ->
-      alert("success!")
       events.call("on_task_check_added")
       events.call("do_task_check_update")
       modal_close()

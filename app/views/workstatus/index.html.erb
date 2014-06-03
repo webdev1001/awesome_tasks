@@ -102,7 +102,7 @@
             transport_length = timelogs_date.sum(:transport_length)
             
             %>
-              <tr<%if date.to_date == Time.zone.today.to_date; print " style=\"font-weight: bold;\""; end%>>
+              <tr<% if date.to_date == Time.zone.today.to_date%> style="font-weight: bold;" <% end %>>
                 <td>
                   <%= l(date.to_date, :format => :short) %>
                 </td>

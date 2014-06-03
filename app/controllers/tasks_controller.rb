@@ -19,6 +19,9 @@ class TasksController < ApplicationController
     else
       @task = Task.new
     end
+    
+    @task.priority = 1 unless @task.priority
+    @task.state = "open" unless @task.state
   end
   
   def create

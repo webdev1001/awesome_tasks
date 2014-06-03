@@ -2,7 +2,7 @@ class UserProjectLinksController < ApplicationController
   before_filter :set_user_project_link
   
   def destroy
-    @user_project_link.destroy
+    @user_project_link.destroy!
     render :nothing => true
   end
   

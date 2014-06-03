@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-    @comment.destroy
+    @comment.destroy!
     render :nothing => true
   end
   

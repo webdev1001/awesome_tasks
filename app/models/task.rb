@@ -12,14 +12,14 @@ class Task < ActiveRecord::Base
   before_save :set_priority
   before_save :set_state
   
-  validates_presence_of :user, :project, :name
+  validates_presence_of :user, :project, :name, :task_type, :priority
   
   scope :related_to_user, lambda{ |user|
     joins("LEFT JOIN task_assigned_users ON task_assigned_users.task_id = tasks.id")
       .where("tasks.user_id = ? || task_assigned_users.user_id = ?", user, user)
       .group("tasks.id")
   }
-  scope :not_closed, lambda{ where(:state => ["new", "open", "waiting"]) }
+  scope :not_closed, lambda{ where(:state => ["open", "confirmed", "waiting"]) }
   
   def self.translated_task_types
     return {

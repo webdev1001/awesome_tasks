@@ -1,7 +1,7 @@
 = DesignBox.boxt _("Enter details"), 700
 = simple_form_for @task, :data => {:browser => _("Browser"), :version => _("Version"), :os => _("Operating system")} do |f|
   = f.input :name
-  = f.input :project_id, :collection => current_user.projects_with_access_to
+  = f.input :project_id, :collection => current_user.projects_with_access_to, :label => Project.model_name.human
   = f.input :task_type, :collection => Task.translated_task_types.invert
   = f.input :state, :collection => Task.translated_states.invert
   = f.input :priority, :collection => 1..10

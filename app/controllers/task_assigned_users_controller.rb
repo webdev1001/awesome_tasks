@@ -2,7 +2,7 @@ class TaskAssignedUsersController < ApplicationController
   before_filter :set_task_assigned_user
   
   def destroy
-    @task_assigned_user.destroy
+    @task_assigned_user.destroy!
     render :nothing => true
   end
   

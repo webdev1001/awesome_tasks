@@ -9,7 +9,7 @@ window.task_check_edit = (task_id, check_id) ->
 
 window.task_check_delete = (task_id, check_id) ->
   $.ajax({type: "DELETE", url: "/tasks/" + task_id + "/task_checks/" + check_id, cache: false, async: true, complete: (data) ->
-    alert(data.responseText) if data.responseText.length > 0
+    alert(data.responseText) if $.trim(data.responseText).length > 0
     events.call("do_task_check_update")
   })
 
