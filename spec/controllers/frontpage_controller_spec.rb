@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe FrontpageController do
+  render_views
+  
   context "should redirect to new urls when using old ones" do
     let!(:user){ create :user }
     let!(:task){ create :task }

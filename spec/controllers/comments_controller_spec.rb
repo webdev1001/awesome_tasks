@@ -1,6 +1,8 @@
 require "spec_helper"
 
 describe CommentsController do
+  render_views
+  
   context "#create" do
     let!(:admin){ create :user_admin }
     let!(:task){ create :task, :user => user }
