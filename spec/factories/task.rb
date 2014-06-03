@@ -4,5 +4,7 @@ FactoryGirl.define do
     association :user, :factory => :user
     association :project, :factory => :project
     description { Forgery(:lorem_ipsum).words(100) }
+    task_type "feature"
+    priority 1
   end
 end

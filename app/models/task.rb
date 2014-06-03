@@ -19,7 +19,7 @@ class Task < ActiveRecord::Base
       .where("tasks.user_id = ? || task_assigned_users.user_id = ?", user, user)
       .group("tasks.id")
   }
-  scope :not_closed, lambda{ where(:state => ["new", "open", "waiting"]) }
+  scope :not_closed, lambda{ where(:state => ["open", "confirmed", "waiting"]) }
   
   def self.translated_task_types
     return {

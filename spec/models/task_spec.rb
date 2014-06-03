@@ -14,14 +14,14 @@ describe Task do
   end
   
   context "#not_closed" do
-    let!(:task_new){ create :task, :state => "new" }
+    let!(:task_confirmed){ create :task, :state => "confirmed" }
     let!(:task_open){ create :task, :state => "open" }
     let!(:task_waiting){ create :task, :state => "waiting" }
     let!(:task_closed){ create :task, :state => "closed" }
     
     it "find the right tasks" do
       list = Task.not_closed
-      list.should include task_new
+      list.should include task_confirmed
       list.should include task_open
       list.should include task_waiting
       list.should_not include task_closed
