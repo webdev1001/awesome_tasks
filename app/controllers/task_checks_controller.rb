@@ -28,6 +28,11 @@ class TaskChecksController < ApplicationController
     end
   end
   
+  def destroy
+    @task_check.destroy!
+    render :nothing => true
+  end
+  
 private
   
   def task_check_params
