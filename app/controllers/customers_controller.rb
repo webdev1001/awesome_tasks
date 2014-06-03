@@ -32,7 +32,7 @@ class CustomersController < ApplicationController
   end
   
   def destroy
-    @customer.destroy
+    @customer.destroy!
     redirect_to customers_path
   end
   

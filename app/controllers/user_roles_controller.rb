@@ -28,7 +28,7 @@ class UserRolesController < ApplicationController
   end
   
   def destroy
-    @user_role.destroy
+    @user_role.destroy!
     render :nothing => true
   end
   

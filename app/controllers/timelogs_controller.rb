@@ -51,7 +51,7 @@ class TimelogsController < ApplicationController
   end
   
   def destroy
-    @timelog.destroy
+    @timelog.destroy!
     render :nothing => true
   end
   

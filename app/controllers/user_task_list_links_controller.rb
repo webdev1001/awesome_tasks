@@ -13,7 +13,7 @@ class UserTaskListLinksController < ApplicationController
   end
   
   def destroy
-    @user_task_list_link.destroy
+    @user_task_list_link.destroy!
     render :nothing => true
   end
   
