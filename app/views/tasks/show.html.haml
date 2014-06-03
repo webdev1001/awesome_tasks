@@ -30,7 +30,7 @@
                 = _("The type of task this is.")
             %tr
               %td.tdt= Task.human_attribute_name(:created_at)
-              %td= l(@task.created_at) if @task.created_at
+              %td= l(@task.created_at, :format => :long) if @task.created_at
             %tr
               %td.tdd{:colspan => 2}
                 = _("The date this task was added.")
