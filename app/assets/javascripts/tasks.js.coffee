@@ -41,7 +41,7 @@ $ ->
       })
 
     window.task_show_timelogs_update = ->
-      $.ajax({type: "GET", url: tash_show.data("timelogs-task-path"), async: true, cache: false, complete: (data) ->
+      $.ajax({type: "GET", url: task_show.data("timelogs-task-path"), async: true, cache: false, complete: (data) ->
         $("#divtimelogs").slideUp("fast", ->
           $("#divtimelogs").html(data.responseText)
           $("#divtimelogs").slideDown("fast")
