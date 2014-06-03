@@ -1,10 +1,6 @@
 require Rails.root.join('lib', 'devise', 'encryptors', 'md5')
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :encryptable
   
   has_many :tasks, :dependent => :restrict_with_exception
@@ -23,7 +19,7 @@ class User < ActiveRecord::Base
   end
   
   def password_salt
-  'no salt'
+    'no salt'
   end
 
   def password_salt=(new_salt)
