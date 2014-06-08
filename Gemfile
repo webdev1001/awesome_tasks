@@ -22,6 +22,7 @@ gem 'datet'
 gem 'ransack'
 gem 'haml-rails'
 gem 'baza'
+gem 'email_validator'
 
 # Delayed job
 gem 'delayed_job_active_record'

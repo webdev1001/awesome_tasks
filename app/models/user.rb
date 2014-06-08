@@ -1,7 +1,7 @@
 require Rails.root.join('lib', 'devise', 'encryptors', 'md5')
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :encryptable
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :encryptable
   
   has_many :tasks, :dependent => :restrict_with_exception
   has_many :task_assigned_users, :dependent => :destroy
@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   has_many :user_roles, :dependent => :destroy
   has_many :user_task_list_links, :dependent => :destroy
   has_many :customers, :through => :projects
+  
+  validates_presence_of :email
+  validates_uniqueness_of :email
+  validates :email, :email => true
   
   def name!
     return name if name.present?
