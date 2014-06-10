@@ -99,7 +99,7 @@ private
       @checks = @task.task_checks.order(:name)
       @users = @task.task_assigned_users
       @comments = @task.comments.order(:created_at)
-      @timelogs = @task.timelogs.order(:created_at).reverse_order
+      @timelogs = @task.timelogs.order(:id).reverse_order
     else
       authorize! action_name.to_sym, Task
     end
