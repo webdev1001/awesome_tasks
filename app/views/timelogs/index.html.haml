@@ -21,15 +21,15 @@
       %tr
         %td.tdt= _("Total hours")
         %td
-          = Knj::Locales.number_out(@timelogs.sum("TIME_TO_SEC(timelogs.time)").to_f / 3600, 1)
+          = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time)").to_f / 3600, :precision => 1
           = " / "
-          = Knj::Locales.number_out(@timelogs.sum("TIME_TO_SEC(timelogs.time_transport)").to_f / 3600, 1)
+          = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time_transport)").to_f / 3600, :precision => 1
       %tr
         %td.tdd{:colspan => 2}
           = _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")
       %tr
         %td.tdt= _("Total transport")
-        %td= Knj::Locales.number_out(@timelogs.sum(:transport_length), 1)
+        %td= format_number @timelogs.sum(:transport_length), :precision => 1
       %tr
         %td.tdd{:colspan => 2}
           = _("Total km's of transport used in all the timelogs found.")
@@ -66,10 +66,10 @@
           %td= link_to_customer tlog.task.project.customer if tlog.task
           %td= tlog.invoiced? ? _("Yes") : _("No")
           %td
-            = Knj::Locales.number_out(dbt.hours_total, 1)
+            = format_number dbt.hours_total, :precision => 1
             = "/"
-            = Knj::Locales.number_out(dbt_transport.hours_total, 1)
-          %td= Knj::Locales.number_out(tlog.transport_length, 0)
+            = format_number dbt_transport.hours_total, :precision => 1
+          %td= format_number tlog.transport_length.to_i
       - if @timelogs.none?
         %tr
           %td.error{colspan: "1"}
@@ -101,9 +101,9 @@
               %input{name: "timelogs_#{tlog.id}", type: "hidden", value: "1"}/
               = l(tlog.date)
               %br
-              = Knj::Locales.number_out(dbt.hours_total, 2)
+              = format_number dbt.hours_total, :precision => 2
               = "/"
-              = Knj::Locales.number_out(dbt_transport.hours_total, 2)
+              = format_number dbt_transport.hours_total, :percision => 2
             %td.nowrap= link_to_user tlog.user
             %td= simple_format tlog.comment
       - unless tlogs_sorted.empty?

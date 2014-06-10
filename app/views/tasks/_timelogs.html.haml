@@ -27,7 +27,7 @@
       - first = false if first
       %tr
         %td{style: "width: 50px;"}= link_to_timelog tlog
-        %td{style: "width: 60px;"}= Knj::Locales.number_out(dbt.hours_total, 1)
+        %td{style: "width: 60px;"}= format_number dbt.hours_total, :precision => 1
         %td.nowrap{style: "width: 90px;"}= l(tlog.date)
         %td{style: "width: 130px;"}= link_to_user tlog.user
         %td= simple_format tlog.comment
