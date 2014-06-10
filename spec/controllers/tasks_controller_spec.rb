@@ -19,10 +19,12 @@ describe TasksController do
         })
       }.to change { ActionMailer::Base.deliveries.count }.by(1)
       
-      mail_body = ActionMailer::Base.deliveries.last.body
-      mail_body.should include task_url(task)
-      mail_body.should include user_to_be_assigned.name
-      mail_body.should include admin.name
+      mail = ActionMailer::Base.deliveries.last
+      mail.body.should include task_url(task)
+      mail.body.should include user_to_be_assigned.name
+      mail.body.should include admin.name
+      
+      mail.subject.should include "[#{task.project.name}]"
       
       # puts ActionMailer::Base.deliveries.last.body
     end
