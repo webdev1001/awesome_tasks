@@ -20,10 +20,10 @@
             %td= (@project.created_at ? l(@project.created_at, :format => :long) : "")
           %tr
             %td.tdt= Project.human_attribute_name(:price_per_hour)                                                            |
-            %td= Knj::Locales.number_out(@project.price_per_hour, 2)
+            %td= format_number @project.price_per_hour
           %tr
             %td.tdt= Project.human_attribute_name(:price_per_hour_transport)
-            %td= Knj::Locales.number_out(@project.price_per_hour_transport, 2)
+            %td= format_number @project.price_per_hour_transport
           - if @project.deadline_at
             %tr
               %td.tdt= _("Deadline")

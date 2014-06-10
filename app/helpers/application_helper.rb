@@ -17,4 +17,8 @@ module ApplicationHelper
     return "00:00:00" unless time
     return time.strftime("%H:%M:%S")
   end
+  
+  def format_number(number, args = {})
+    return number_to_currency(number, {:unit => ""}.merge(args))
+  end
 end

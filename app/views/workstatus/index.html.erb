@@ -107,19 +107,19 @@
                   <%= l(date.to_date, :format => :short) %>
                 </td>
                 <td class="tdr">
-                  <%= Knj::Locales.number_out(hours, 1) %>
+                  <%= format_number hours, :precision => 1 %>
                 </td>
                 <td class="tdr">
-                  <%= Knj::Locales.number_out(hours_tarnsport, 1) %>
+                  <%= format_number hours_tarnsport, :precision => 1 %>
                 </td>
                 <td class="tdr">
-                  <%= Knj::Locales.number_out(earned, 0) %>
+                  <%= format_number earned, :precision => 0 %>
                 </td>
                 <td class="tdr">
-                  <%= Knj::Locales.number_out(earned_transport, 0) %>
+                  <%= format_number earned_transport, :precision => 0 %>
                 </td>
                 <td class="tdr">
-                  <%= Knj::Locales.number_out(transport_length, 0) %>
+                  <%= format_number transport_length, :precision => 0 %>
                 </td>
               </tr>
             <%
@@ -155,32 +155,32 @@
       :title => _("Hours"),
       :type => :info,
       :align => :right,
-      :value => Knj::Locales.number_out(earned, 2)
+      :value => format_number(earned, :precision => 2)
     },{
       :title => _("Transport"),
       :type => :info,
       :align => :right,
-      :value => Knj::Locales.number_out(earned_transport, 2)
+      :value => format_number(earned_transport, :precision => 2)
     },{
       :title => _("Total earned"),
       :type => :info,
       :align => :right,
-      :value => Knj::Locales.number_out(earned_total, 2)
+      :value => format_number(earned_total, :precision => 2)
     },{
       :title => _("Tax") + " (40%)",
       :type => :info,
       :align => :right,
-      :value => Knj::Locales.number_out(tax_40, 2)
+      :value => format_number(tax_40, :precision => 2)
     },{
       :title => _("Total after tax"),
       :type => :info,
       :align => :right,
-      :value => Knj::Locales.number_out(earned_total - tax_40.to_f, 2)
+      :value => format_number(earned_total - tax_40.to_f, :precision => 2)
     },{
       :title => _("Total transport"),
       :type => :info,
       :align => :right,
-      :value => Knj::Locales.number_out(transport_length, 0)
+      :value => format_number(transport_length, :precision => 0)
     }]).html_safe %>
   </table>
 <%=DesignBox.boxb%>
@@ -214,13 +214,13 @@
               <%= link_to_project project %>
             </td>
             <td class="tdr">
-              <%= Knj::Locales.number_out(hours, 1) %>
+              <%= format_number hours, :precision => 1 %>
             </td>
             <td class="tdr">
-              <%= Knj::Locales.number_out(hours_transport, 1) %>
+              <%= format_number hours_transport, :precision => 1 %>
             </td>
             <td class="tdr">
-              <%= Knj::Locales.number_out(earned + earned_transport, 2) %>
+              <%= format_number earned + earned_transport, :precision => 2 %>
             </td>
           </tr>
         <%
