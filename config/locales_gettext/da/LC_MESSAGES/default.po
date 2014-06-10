@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AwesomeTasks\n"
-"POT-Creation-Date: 2014-06-03 09:45+0100\n"
+"POT-Creation-Date: 2014-06-10 15:44+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kasper Johansen <k@spernj.org>\n"
 "Language-Team: \n"
@@ -485,7 +485,7 @@ msgstr ""
 #. Default value: Your password was changed successfully. You are now signed in.
 #: lib/gettext_simple_rails/devise_translator_translations.rb:62
 msgid "devise.passwords.updated"
-msgstr ""
+msgstr "Din adgangskodeblev ændret. Du er nu logget ind."
 
 #. Default value: Your password was changed successfully.
 #: lib/gettext_simple_rails/devise_translator_translations.rb:64
@@ -2009,11 +2009,11 @@ msgstr "Kunne ikke gemme: %{errors}"
 
 #: app/controllers/timelogs_controller.rb:85
 msgid "Invalid date-from."
-msgstr ""
+msgstr "Ugyldig fra-dato."
 
 #: app/controllers/timelogs_controller.rb:92
 msgid "Invalid date-to."
-msgstr ""
+msgstr "Ugyldig til-dato,"
 
 #: app/controllers/application_controller.rb:40
 msgid "Danish"
@@ -2135,6 +2135,8 @@ msgstr "Opdater"
 #: app/views/task_checks/_form.html.haml:2
 #: app/views/customers/_form.html.haml:1 app/views/timelogs/_form.html.haml:1
 #: app/views/users/_form.html.haml:1 app/views/devise/sessions/new.html.haml:4
+#: app/views/devise/passwords/edit.html.haml:3
+#: app/views/devise/passwords/new.html.haml:3
 #: app/views/tasks/_form.html.haml:1
 msgid "Enter details"
 msgstr "Indtast detaljer"
@@ -2158,7 +2160,7 @@ msgid "A new comment has been written to the task '%s'."
 msgstr "En ny kommentar er skrevet til opgaven '%s'."
 
 #: app/views/task_assigned_user_mailer/new_comment_notification.html.erb:7
-#: app/views/projects/show.html.haml:51 app/views/tasks/show.html.haml:44
+#: app/views/projects/show.html.haml:47 app/views/tasks/show.html.haml:44
 #: app/views/tasks/index.html.haml:26
 msgid "Author"
 msgstr "Forfatter"
@@ -2207,9 +2209,8 @@ msgstr "Filter"
 msgid "Results"
 msgstr "Resultater"
 
-#: app/views/workstatus/index.html.erb:61 app/views/projects/show.html.haml:19
-#: app/views/projects/show.html.haml:53 app/views/timelogs/index.html.haml:85
-#: app/views/tasks/_timelogs.html.haml:6
+#: app/views/workstatus/index.html.erb:61 app/views/projects/show.html.haml:49
+#: app/views/timelogs/index.html.haml:85 app/views/tasks/_timelogs.html.haml:6
 msgid "Date"
 msgstr "Dato"
 
@@ -2279,7 +2280,7 @@ msgstr "Email"
 
 #: app/views/profile/index.html.erb:11
 msgid "The email that you want notifications and stuff sent to."
-msgstr ""
+msgstr "Emailen som notifikationer og andet skal sendes til."
 
 #: app/views/profile/index.html.erb:14
 #: app/views/devise/sessions/new.html.haml:6
@@ -2294,7 +2295,7 @@ msgstr "Du kan skrive en ny adgangskode for at ændre den."
 msgid "Task-list"
 msgstr "Opgaveliste"
 
-#: app/views/profile/index.html.erb:48 app/views/projects/show.html.haml:50
+#: app/views/profile/index.html.erb:48 app/views/projects/show.html.haml:46
 #: app/views/tasks/show.html.haml:16
 msgid "Task"
 msgstr "Opgave"
@@ -2358,35 +2359,31 @@ msgstr "Vis projekt: %s."
 msgid "Information"
 msgstr "Information"
 
-#: app/views/projects/show.html.haml:15
+#: app/views/projects/show.html.haml:16
 msgid "Added by"
 msgstr "Tilføjet af"
 
-#: app/views/projects/show.html.haml:33
+#: app/views/projects/show.html.haml:29
 msgid "Deadline"
 msgstr "Deadline"
 
-#: app/views/projects/show.html.haml:39
-msgid "Users"
-msgstr "Brugere"
-
-#: app/views/projects/show.html.haml:41 app/views/tasks/show.html.haml:67
+#: app/views/projects/show.html.haml:35 app/views/tasks/show.html.haml:67
 msgid "Assign user to task"
 msgstr "Tildel bruger til opgave"
 
-#: app/views/projects/show.html.haml:41
+#: app/views/projects/show.html.haml:35
 msgid "Assign user"
 msgstr "Tildel bruger"
 
-#: app/views/projects/show.html.haml:46 app/views/users/show.html.haml:23
+#: app/views/projects/show.html.haml:42 app/views/users/show.html.haml:23
 msgid "Tasks"
 msgstr "Opgaver"
 
-#: app/views/projects/show.html.haml:52
+#: app/views/projects/show.html.haml:48
 msgid "Status"
 msgstr "Status"
 
-#: app/views/projects/show.html.haml:67 app/views/frontpage/index.html.haml:37
+#: app/views/projects/show.html.haml:63 app/views/frontpage/index.html.haml:37
 msgid "No tasks were found."
 msgstr "Der blev ikke fundet nogle opgaver."
 
@@ -2459,7 +2456,7 @@ msgstr "Tidslogs"
 
 #: app/views/timelogs/index.html.haml:8
 msgid "If you want to find timelogs from specific projects."
-msgstr ""
+msgstr "Hvis du kun vil finde tidslogs fra bestemte projekter."
 
 #: app/views/timelogs/index.html.haml:11
 msgid "If you only want to view invoiced, uninvoiced or all timelogs."
@@ -2478,10 +2475,12 @@ msgid ""
 "The total amount of hours of all the found time-logs (first hours used then "
 "time used on transport)."
 msgstr ""
+"Den totale mængde timer på alle fundne tidslogs (først de brugte timer og "
+"derefter transport timer)."
 
 #: app/views/timelogs/index.html.haml:35
 msgid "Total km's of transport used in all the timelogs found."
-msgstr ""
+msgstr "Total antal km på alle fundne tidslogs."
 
 #: app/views/timelogs/index.html.haml:67
 #: app/views/tasks/_timelogs.html.haml:35
@@ -2606,6 +2605,38 @@ msgstr "Log ud"
 msgid "Log in"
 msgstr "Log ind"
 
+#: app/views/devise/mailer/reset_password_instructions.html.haml:1
+#, fuzzy
+msgid "Hello %{email}!"
+msgstr "Hej %{user_name}"
+
+#: app/views/devise/mailer/reset_password_instructions.html.haml:3
+msgid ""
+"Someone has requested a link to change your password. You can do this "
+"through the link below."
+msgstr ""
+"Nogen har anmodet om et link til at ændre din adgangskode. Du kan ændre den "
+"ved at følge linket."
+
+#: app/views/devise/mailer/reset_password_instructions.html.haml:4
+#: app/views/devise/passwords/edit.html.haml:10
+#, fuzzy
+msgid "Change my password"
+msgstr "Glemt din adgangskode?"
+
+#: app/views/devise/mailer/reset_password_instructions.html.haml:5
+msgid "If you didn't request this, please ignore this email."
+msgstr ""
+"Hvis du ikke har anmodet om dette, så kan du bare ignorere denne email."
+
+#: app/views/devise/mailer/reset_password_instructions.html.haml:6
+msgid ""
+"Your password won't change until you access the link above and create a new "
+"one."
+msgstr ""
+"Din adgangskode vil ikke ændres, indtil du har brugt linket til at lave den "
+"om."
+
 #: app/views/devise/shared/_links.haml:2
 #: app/views/devise/sessions/new.html.haml:1
 #: app/views/devise/sessions/new.html.haml:8
@@ -2617,6 +2648,7 @@ msgid "Sign up"
 msgstr "Opret bruger"
 
 #: app/views/devise/shared/_links.haml:8
+#: app/views/devise/passwords/new.html.haml:1
 msgid "Forgot your password?"
 msgstr "Glemt din adgangskode?"
 
@@ -2635,6 +2667,25 @@ msgstr "Log in med %{provider_title}"
 #: app/views/devise/sessions/new.html.haml:7
 msgid "Remember me"
 msgstr "Husk mig"
+
+#: app/views/devise/passwords/edit.html.haml:1
+#, fuzzy
+msgid "Change your password"
+msgstr "Glemt din adgangskode?"
+
+#: app/views/devise/passwords/edit.html.haml:8
+#, fuzzy
+msgid "New password"
+msgstr "Adgangskode"
+
+#: app/views/devise/passwords/edit.html.haml:9
+#, fuzzy
+msgid "Confirm your new password"
+msgstr "Glemt din adgangskode?"
+
+#: app/views/devise/passwords/new.html.haml:7
+msgid "Send me reset password instructions"
+msgstr ""
 
 #: app/views/tasks/_form.html.haml:2
 msgid "Browser"
@@ -2733,6 +2784,7 @@ msgstr "Den bruger der oprettede opgaven."
 msgid ""
 "The priority of the task. 10 as most important and 1 as least important."
 msgstr ""
+"Prioriteten af opgaven. 10 som den mest vigtige og 1 som den mindst vigtige."
 
 #: app/views/tasks/show.html.haml:60
 msgid "No description has been written for this task."
@@ -2761,6 +2813,9 @@ msgstr "Tilføj ny opgave"
 #: app/views/tasks/index.html.haml:1
 msgid "Search for tasks"
 msgstr "Søg efter opgaver"
+
+#~ msgid "Users"
+#~ msgstr "Brugere"
 
 #~ msgid "Rank"
 #~ msgstr "Rang"
