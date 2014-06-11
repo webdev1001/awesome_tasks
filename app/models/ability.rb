@@ -24,6 +24,7 @@ private
     can :manage, Comment
     can :manage, Customer
     can :manage, Comment
+    can :manage, Invoice
     can :manage, Project
     can :manage, Task
     can :manage, User

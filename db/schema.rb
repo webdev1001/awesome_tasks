@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518121831) do
+ActiveRecord::Schema.define(version: 20140611071421) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -63,6 +63,30 @@ ActiveRecord::Schema.define(version: 20140518121831) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "invoice_lines", force: true do |t|
+    t.string   "title"
+    t.float    "amount"
+    t.integer  "quantity"
+    t.integer  "invoice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
+
+  create_table "invoices", force: true do |t|
+    t.date     "date"
+    t.string   "invoice_type"
+    t.float    "amount"
+    t.integer  "customer_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
+  add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.integer  "customer_id"

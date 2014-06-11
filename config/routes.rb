@@ -3,6 +3,7 @@ AwesomeTasks::Application.routes.draw do
   devise_for :users, :encryptor => :md5
   
   resources :comments
+  resources :invoices
   
   resources :users do
     get :search, :on => :collection

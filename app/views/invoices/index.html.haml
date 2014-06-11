@@ -1,0 +1,35 @@
+%h1= Invoice.model_name.human(:count => 2)
+
+- if can? :new, Invoice
+  = link_to _("New invoice"), new_invoice_path, :class => "button"
+  %br/
+  %br/
+
+= DesignBox.boxt _("Enter criteria"), 450
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :customer_name_cont
+  = f.submit _("Filter")
+= DesignBox.boxb
+
+%br/
+
+= DesignBox.boxt Invoice.model_name.human(:count => 2), 700
+%table
+  %thead
+    %tr
+      %th= sort_link @ransack, :id
+      %th= sort_link @ransack, :customer_name, Invoice.human_attribute_name(:customer)
+      %th= sort_link @ransack, :date
+      %th= sort_link @ransack, :amount
+  %tbody
+    - @invoices.each do |invoice|
+      %tr
+        %th= link_to_invoice invoice
+        %th= link_to_customer invoice.customer
+        %th= l(invoice.date, :format => :long)
+        %th= format_number invoice.amount
+    - if @invoices.none?
+      %tr
+        %td.error{:colspan => 4}
+          = _("No invoices could be found.")
+= DesignBox.boxb
