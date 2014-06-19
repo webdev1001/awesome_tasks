@@ -43,6 +43,7 @@ class Task < ActiveRecord::Base
       :open => _("Open"),
       :confirmed => _("Confirmed"),
       :waiting => _("Waiting"),
+      :inactive => _("Inactive"),
       :closed => _("Closed")
     }
   end
