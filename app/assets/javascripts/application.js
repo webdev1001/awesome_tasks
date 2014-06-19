@@ -27,6 +27,7 @@
 //= require comments
 //= require locales
 //= require projects
+//= require project_autoassigned_users
 //= require projects_functions
 //= require tasks
 //= require task_functions

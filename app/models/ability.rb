@@ -25,6 +25,7 @@ private
     can :manage, Customer
     can :manage, Comment
     can :manage, Project
+    can :manage, ProjectAutoassignedUser
     can :manage, Task
     can :manage, User
     can :manage, UserTaskListLink

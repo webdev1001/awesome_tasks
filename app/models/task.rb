@@ -12,6 +12,8 @@ class Task < ActiveRecord::Base
   before_save :set_priority
   before_save :set_state
   
+  after_create :assign_users_from_project
+  
   validates_presence_of :user, :project, :name, :task_type, :priority
   
   scope :related_to_user, lambda{ |user|
@@ -96,5 +98,13 @@ private
   
   def set_state
     self.state = "open" unless state
+  end
+  
+  def assign_users_from_project
+    return unless project
+    
+    project.autoassigned_users.each do |user|
+      assigned_users << user
+    end
   end
 end
