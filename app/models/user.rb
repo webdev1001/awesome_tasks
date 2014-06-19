@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :user_rank_links, :dependent => :destroy
   has_many :user_project_links, :dependent => :destroy
   has_many :projects, :through => :user_project_links, :dependent => :destroy
+  has_many :project_autoassigned_users, :dependent => :destroy
   has_many :user_roles, :dependent => :destroy
   has_many :user_task_list_links, :dependent => :destroy
   has_many :customers, :through => :projects
@@ -41,7 +42,7 @@ class User < ActiveRecord::Base
     
     query = User
       .joins(:user_project_links)
-      .where("user_project_links.project_id = (?)", project_ids)
+      .where("user_project_links.project_id IN (?)", project_ids)
       .group("users.id")
     
     user_ids = query.map{ |user| user.id }

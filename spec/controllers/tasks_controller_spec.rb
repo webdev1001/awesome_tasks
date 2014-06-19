@@ -3,8 +3,22 @@ require "spec_helper"
 describe TasksController do
   let!(:admin){ create :user_admin }
   let!(:task){ create :task, :user => admin }
+  let(:user){ create :user }
+  let(:project){ create :project }
   
   render_views
+  
+  context "auto assigns users" do
+    it "assigns users automatically" do
+      sign_in admin
+      project.autoassigned_users << user
+      post :create, :task => {:name => "Test", :project_id => project.id, :priority => 1, :task_type => "feature"}
+      controller.flash[:error].should eq nil
+      task = Task.last
+      response.location.should eq task_url(task)
+      task.assigned_users.to_a.should include user
+    end
+  end
   
   context "#assign_user" do
     let(:user_to_be_assigned){ create :user }
@@ -31,7 +45,6 @@ describe TasksController do
   end
   
   context "#show" do
-    let!(:user){ create :user }
     let!(:task_access){ create :task, :user => user }
     let!(:task_no_access){ create :task }
     let!(:task_assigned){ create :task }
@@ -56,7 +69,6 @@ describe TasksController do
   end
   
   context "#edit" do
-    let!(:user){ create :user }
     let(:task_access){ create :task, :user => user }
     let(:task_no_access){ create :task }
     let(:task_with_timelogs){ create :task, :user => user }

@@ -1,0 +1,5 @@
+= DesignBox.boxt _("Enter details"), 400
+= simple_form_for [@project, @project_autoassigned_user] do |f|
+  = f.input :user_id, :collection => users_collection
+  = f.submit _("Save")
+= DesignBox.boxb
