@@ -35,7 +35,14 @@ class InvoicesController < ApplicationController
     end
   end
   
+  def show
+  end
+  
 private
+  
+  def invoice_params
+    params.require(:invoice).permit(:date, :customer_id, :invoice_type, :amount)
+  end
   
   def set_and_authorize_invoice
     if params[:id]

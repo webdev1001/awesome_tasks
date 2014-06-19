@@ -52,6 +52,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.user.user_roles')
     #. Default value: user_task_list_links
     _('activerecord.attributes.user.user_task_list_links')
+    #. Default value: customers
+    _('activerecord.attributes.user.customers')
     #. Default value: id
     _('activerecord.attributes.comment.id')
     #. Default value: id_per_resource
@@ -82,6 +84,44 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.customer.updated_at')
     #. Default value: projects
     _('activerecord.attributes.customer.projects')
+    #. Default value: id
+    _('activerecord.attributes.invoice.id')
+    #. Default value: date
+    _('activerecord.attributes.invoice.date')
+    #. Default value: invoice_type
+    _('activerecord.attributes.invoice.invoice_type')
+    #. Default value: amount
+    _('activerecord.attributes.invoice.amount')
+    #. Default value: customer_id
+    _('activerecord.attributes.invoice.customer_id')
+    #. Default value: user_id
+    _('activerecord.attributes.invoice.user_id')
+    #. Default value: created_at
+    _('activerecord.attributes.invoice.created_at')
+    #. Default value: updated_at
+    _('activerecord.attributes.invoice.updated_at')
+    #. Default value: customer
+    _('activerecord.attributes.invoice.customer')
+    #. Default value: user
+    _('activerecord.attributes.invoice.user')
+    #. Default value: invoice_lines
+    _('activerecord.attributes.invoice.invoice_lines')
+    #. Default value: id
+    _('activerecord.attributes.invoice_line.id')
+    #. Default value: title
+    _('activerecord.attributes.invoice_line.title')
+    #. Default value: amount
+    _('activerecord.attributes.invoice_line.amount')
+    #. Default value: quantity
+    _('activerecord.attributes.invoice_line.quantity')
+    #. Default value: invoice_id
+    _('activerecord.attributes.invoice_line.invoice_id')
+    #. Default value: created_at
+    _('activerecord.attributes.invoice_line.created_at')
+    #. Default value: updated_at
+    _('activerecord.attributes.invoice_line.updated_at')
+    #. Default value: invoice
+    _('activerecord.attributes.invoice_line.invoice')
     #. Default value: id
     _('activerecord.attributes.project.id')
     #. Default value: customer_id
@@ -217,6 +257,32 @@ class GettextSimpleRails::MonthNames
     #. Default value: user
     _('activerecord.attributes.timelog.user')
     #. Default value: id
+    _('activerecord.attributes.uploaded_file.id')
+    #. Default value: title
+    _('activerecord.attributes.uploaded_file.title')
+    #. Default value: resource_type
+    _('activerecord.attributes.uploaded_file.resource_type')
+    #. Default value: resource_id
+    _('activerecord.attributes.uploaded_file.resource_id')
+    #. Default value: user_id
+    _('activerecord.attributes.uploaded_file.user_id')
+    #. Default value: created_at
+    _('activerecord.attributes.uploaded_file.created_at')
+    #. Default value: updated_at
+    _('activerecord.attributes.uploaded_file.updated_at')
+    #. Default value: file_file_name
+    _('activerecord.attributes.uploaded_file.file_file_name')
+    #. Default value: file_content_type
+    _('activerecord.attributes.uploaded_file.file_content_type')
+    #. Default value: file_file_size
+    _('activerecord.attributes.uploaded_file.file_file_size')
+    #. Default value: file_updated_at
+    _('activerecord.attributes.uploaded_file.file_updated_at')
+    #. Default value: user
+    _('activerecord.attributes.uploaded_file.user')
+    #. Default value: resource
+    _('activerecord.attributes.uploaded_file.resource')
+    #. Default value: id
     _('activerecord.attributes.user_project_link.id')
     #. Default value: user_id
     _('activerecord.attributes.user_project_link.user_id')
@@ -268,6 +334,14 @@ class GettextSimpleRails::MonthNames
     _('activerecord.models.customer.one')
     #. Default value: Customer
     _('activerecord.models.customer.other')
+    #. Default value: Invoice
+    _('activerecord.models.invoice.one')
+    #. Default value: Invoice
+    _('activerecord.models.invoice.other')
+    #. Default value: InvoiceLine
+    _('activerecord.models.invoice_line.one')
+    #. Default value: InvoiceLine
+    _('activerecord.models.invoice_line.other')
     #. Default value: Project
     _('activerecord.models.project.one')
     #. Default value: Project
@@ -288,6 +362,10 @@ class GettextSimpleRails::MonthNames
     _('activerecord.models.timelog.one')
     #. Default value: Timelog
     _('activerecord.models.timelog.other')
+    #. Default value: UploadedFile
+    _('activerecord.models.uploaded_file.one')
+    #. Default value: UploadedFile
+    _('activerecord.models.uploaded_file.other')
     #. Default value: UserProjectLink
     _('activerecord.models.user_project_link.one')
     #. Default value: UserProjectLink

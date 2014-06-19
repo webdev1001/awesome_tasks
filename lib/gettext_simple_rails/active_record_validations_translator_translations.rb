@@ -9,12 +9,6 @@ class GettextSimpleRails::MonthNames
     #. Default value: is invalid
     _('activerecord.errors.models.user.attributes.email.invalid')
     #. Default value: cannot be blank
-    _('activerecord.errors.models.user.attributes.password.blank')
-    #. Default value: is too short. The minimum is %{count}
-    _('activerecord.errors.models.user.attributes.password.too_short')
-    #. Default value: is too long. The maximum is %{count}
-    _('activerecord.errors.models.user.attributes.password.too_long')
-    #. Default value: cannot be blank
     _('activerecord.errors.models.comment.attributes.resource.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.comment.attributes.comment.blank')
@@ -29,15 +23,29 @@ class GettextSimpleRails::MonthNames
     #. Default value: cannot be blank
     _('activerecord.errors.models.task.attributes.name.blank')
     #. Default value: cannot be blank
+    _('activerecord.errors.models.task.attributes.task_type.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.task.attributes.priority.blank')
+    #. Default value: cannot be blank
     _('activerecord.errors.models.task_assigned_user.attributes.task.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.task_assigned_user.attributes.user.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.task_check.attributes.task.blank')
     #. Default value: cannot be blank
+    _('activerecord.errors.models.task_check.attributes.name.blank')
+    #. Default value: cannot be blank
     _('activerecord.errors.models.timelog.attributes.task.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.timelog.attributes.user.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.uploaded_file.attributes.user.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.uploaded_file.attributes.resource.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.uploaded_file.attributes.title.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.uploaded_file.attributes.file.blank')
     #. Default value: has already been taken
     _('activerecord.errors.models.user_project_link.attributes.user.taken')
     #. Default value: cannot be blank

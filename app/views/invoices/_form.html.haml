@@ -1,7 +1,9 @@
-= DesignBox.boxt _("Enter details"), 450
+= DesignBox.boxt _("Enter details"), 600
 = simple_form_for @invoice do |f|
   = f.input :date
-  = f.input :customer, :collection => Customer.all.order(:name)
+  = f.input :customer_id, :collection => Customer.all.order(:name)
+  = f.input :invoice_type, :collection => Invoice.translated_invoice_types
+  = f.input :amount
   = f.submit _("Save")
   
   - unless @invoice.new_record?

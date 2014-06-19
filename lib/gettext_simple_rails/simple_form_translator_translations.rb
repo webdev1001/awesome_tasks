@@ -63,6 +63,36 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.hints.customer.updated_at')
     #. Default value: 
+    _('simple_form.hints.invoice.id')
+    #. Default value: 
+    _('simple_form.hints.invoice.date')
+    #. Default value: 
+    _('simple_form.hints.invoice.invoice_type')
+    #. Default value: 
+    _('simple_form.hints.invoice.amount')
+    #. Default value: 
+    _('simple_form.hints.invoice.customer_id')
+    #. Default value: 
+    _('simple_form.hints.invoice.user_id')
+    #. Default value: 
+    _('simple_form.hints.invoice.created_at')
+    #. Default value: 
+    _('simple_form.hints.invoice.updated_at')
+    #. Default value: 
+    _('simple_form.hints.invoice_line.id')
+    #. Default value: 
+    _('simple_form.hints.invoice_line.title')
+    #. Default value: 
+    _('simple_form.hints.invoice_line.amount')
+    #. Default value: 
+    _('simple_form.hints.invoice_line.quantity')
+    #. Default value: 
+    _('simple_form.hints.invoice_line.invoice_id')
+    #. Default value: 
+    _('simple_form.hints.invoice_line.created_at')
+    #. Default value: 
+    _('simple_form.hints.invoice_line.updated_at')
+    #. Default value: 
     _('simple_form.hints.project.id')
     #. Default value: 
     _('simple_form.hints.project.customer_id')
@@ -156,6 +186,28 @@ class GettextSimpleRails::MonthNames
     _('simple_form.hints.timelog.created_at')
     #. Default value: 
     _('simple_form.hints.timelog.updated_at')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.id')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.title')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.resource_type')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.resource_id')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.user_id')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.created_at')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.updated_at')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.file_file_name')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.file_content_type')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.file_file_size')
+    #. Default value: 
+    _('simple_form.hints.uploaded_file.file_updated_at')
     #. Default value: 
     _('simple_form.hints.user_project_link.id')
     #. Default value: 

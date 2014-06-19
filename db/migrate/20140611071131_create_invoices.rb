@@ -1,6 +1,7 @@
 class CreateInvoices < ActiveRecord::Migration
   def change
     create_table :invoices do |t|
+      t.string :title
       t.date :date
       t.string :invoice_type
       t.float :amount
