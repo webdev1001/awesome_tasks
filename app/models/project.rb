@@ -5,6 +5,8 @@ class Project < ActiveRecord::Base
   has_many :tasks
   has_many :user_project_links
   has_many :users, :through => :user_project_links
+  has_many :project_autoassigned_users, :dependent => :destroy
+  has_many :autoassigned_users, :through => :project_autoassigned_users, :source => :user
   
   validates_presence_of :customer
 end

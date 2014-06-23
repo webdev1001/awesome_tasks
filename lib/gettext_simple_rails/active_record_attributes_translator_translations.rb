@@ -48,6 +48,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.user.user_project_links')
     #. Default value: projects
     _('activerecord.attributes.user.projects')
+    #. Default value: project_autoassigned_users
+    _('activerecord.attributes.user.project_autoassigned_users')
     #. Default value: user_roles
     _('activerecord.attributes.user.user_roles')
     #. Default value: user_task_list_links
@@ -152,6 +154,24 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.project.user_project_links')
     #. Default value: users
     _('activerecord.attributes.project.users')
+    #. Default value: project_autoassigned_users
+    _('activerecord.attributes.project.project_autoassigned_users')
+    #. Default value: autoassigned_users
+    _('activerecord.attributes.project.autoassigned_users')
+    #. Default value: id
+    _('activerecord.attributes.project_autoassigned_user.id')
+    #. Default value: project_id
+    _('activerecord.attributes.project_autoassigned_user.project_id')
+    #. Default value: user_id
+    _('activerecord.attributes.project_autoassigned_user.user_id')
+    #. Default value: created_at
+    _('activerecord.attributes.project_autoassigned_user.created_at')
+    #. Default value: updated_at
+    _('activerecord.attributes.project_autoassigned_user.updated_at')
+    #. Default value: project
+    _('activerecord.attributes.project_autoassigned_user.project')
+    #. Default value: user
+    _('activerecord.attributes.project_autoassigned_user.user')
     #. Default value: id
     _('activerecord.attributes.task.id')
     #. Default value: project_id
@@ -346,6 +366,10 @@ class GettextSimpleRails::MonthNames
     _('activerecord.models.project.one')
     #. Default value: Project
     _('activerecord.models.project.other')
+    #. Default value: ProjectAutoassignedUser
+    _('activerecord.models.project_autoassigned_user.one')
+    #. Default value: ProjectAutoassignedUser
+    _('activerecord.models.project_autoassigned_user.other')
     #. Default value: Task
     _('activerecord.models.task.one')
     #. Default value: Task

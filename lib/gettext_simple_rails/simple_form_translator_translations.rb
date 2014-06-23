@@ -113,6 +113,16 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.hints.project.updated_at')
     #. Default value: 
+    _('simple_form.hints.project_autoassigned_user.id')
+    #. Default value: 
+    _('simple_form.hints.project_autoassigned_user.project_id')
+    #. Default value: 
+    _('simple_form.hints.project_autoassigned_user.user_id')
+    #. Default value: 
+    _('simple_form.hints.project_autoassigned_user.created_at')
+    #. Default value: 
+    _('simple_form.hints.project_autoassigned_user.updated_at')
+    #. Default value: 
     _('simple_form.hints.task.id')
     #. Default value: 
     _('simple_form.hints.task.project_id')

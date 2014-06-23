@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612144200) do
+ActiveRecord::Schema.define(version: 20140619144141) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(version: 20140612144200) do
 
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
+
+  create_table "project_autoassigned_users", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_autoassigned_users", ["project_id"], name: "index_project_autoassigned_users_on_project_id", using: :btree
+  add_index "project_autoassigned_users", ["user_id"], name: "index_project_autoassigned_users_on_user_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.integer  "customer_id"

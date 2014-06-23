@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   def update
     params_save = user_params
     params_save.delete(:password)
+    params_save.delete(:encrypted_password) unless params_save[:encrypted_password].present?
     
     if @user.update_attributes(params_save)
       redirect_to user_path(@user)
@@ -72,6 +73,6 @@ private
   end
   
   def user_params
-    params.require(:user).permit(:username, :password, :name, :email, :active)
+    params.require(:user).permit(:username, :password, :encrypted_password, :name, :email, :active)
   end
 end
