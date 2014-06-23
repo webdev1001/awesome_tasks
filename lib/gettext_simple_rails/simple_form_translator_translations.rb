@@ -63,6 +63,24 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.hints.customer.updated_at')
     #. Default value: 
+    _('simple_form.hints.customer.email')
+    #. Default value: 
+    _('simple_form.hints.customer.delivery_address')
+    #. Default value: 
+    _('simple_form.hints.customer.delivery_zip_code')
+    #. Default value: 
+    _('simple_form.hints.customer.delivery_city')
+    #. Default value: 
+    _('simple_form.hints.customer.delivery_country')
+    #. Default value: 
+    _('simple_form.hints.customer.invoice_address')
+    #. Default value: 
+    _('simple_form.hints.customer.invoice_zip_code')
+    #. Default value: 
+    _('simple_form.hints.customer.invoice_city')
+    #. Default value: 
+    _('simple_form.hints.customer.invoice_country')
+    #. Default value: 
     _('simple_form.hints.invoice.id')
     #. Default value: 
     _('simple_form.hints.invoice.date')

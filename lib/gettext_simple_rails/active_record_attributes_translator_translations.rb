@@ -84,6 +84,24 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.customer.created_at')
     #. Default value: updated_at
     _('activerecord.attributes.customer.updated_at')
+    #. Default value: email
+    _('activerecord.attributes.customer.email')
+    #. Default value: delivery_address
+    _('activerecord.attributes.customer.delivery_address')
+    #. Default value: delivery_zip_code
+    _('activerecord.attributes.customer.delivery_zip_code')
+    #. Default value: delivery_city
+    _('activerecord.attributes.customer.delivery_city')
+    #. Default value: delivery_country
+    _('activerecord.attributes.customer.delivery_country')
+    #. Default value: invoice_address
+    _('activerecord.attributes.customer.invoice_address')
+    #. Default value: invoice_zip_code
+    _('activerecord.attributes.customer.invoice_zip_code')
+    #. Default value: invoice_city
+    _('activerecord.attributes.customer.invoice_city')
+    #. Default value: invoice_country
+    _('activerecord.attributes.customer.invoice_country')
     #. Default value: projects
     _('activerecord.attributes.customer.projects')
     #. Default value: id

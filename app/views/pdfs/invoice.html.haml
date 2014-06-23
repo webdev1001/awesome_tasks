@@ -1,0 +1,39 @@
+%h1= _("Invoice %{id}", :id => invoice.id)
+
+%h2= Customer.model_name.human
+%table
+  %tbody
+    %tr
+      %td= Customer.human_attribute_name(:name)
+      %td= invoice.customer.try(:name)
+    - [:delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
+      %tr
+        %td= Customer.human_attribute_name(column)
+        %td= invoice.customer.try(:__send__, column)
+
+%h2= _("Invoice details")
+%table
+  %tbody
+    %tr
+      %td= Invoice.human_attribute_name(:date)
+      %td= l(invoice.date, :format => :long) if invoice.date
+    %tr
+      %td= Invoice.human_attribute_name(:invoice_type)
+      %td= invoice.translated_invoice_type
+    %tr
+      %td= Invoice.human_attribute_name(:amount)
+      %td= format_number invoice.amount
+
+%h2= InvoiceLine.model_name.human(:count => 2)
+%table
+  %thead
+    %tr
+      %th= InvoiceLine.human_attribute_name(:title)
+      %th= InvoiceLine.human_attribute_name(:quantity)
+      %th= InvoiceLine.human_attribute_name(:amount)
+  %tbody
+    - invoice.invoice_lines.each do |invoice_line|
+      %tr
+        %td= invoice_line.title
+        %td= format_number invoice_line.quantity
+        %td= format_number invoice_line.amount

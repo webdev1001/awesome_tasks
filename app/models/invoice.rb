@@ -1,4 +1,6 @@
 class Invoice < ActiveRecord::Base
+  include ::ViewRenderer # Used for PDF generation.
+  
   belongs_to :customer
   belongs_to :user
   
@@ -24,11 +26,45 @@ class Invoice < ActiveRecord::Base
   
   def update_amount
     total = 0.0
-    invoice_lines.each do |invoice_line|
-      total = invoice_line.quantity * invoice_line.amount
+    invoice_lines.find_each do |invoice_line|
+      total += invoice_line.quantity.to_f * invoice_line.amount.to_f
     end
     
     self.amount = total
     save!
+  end
+  
+  def filename
+    filename_str = _("Invoice %{id}", :id => id)
+    filename_str << ".pdf"
+    return filename_str
+  end
+  
+  def filetype
+    return "application/pdf"
+  end
+  
+  def to_pdf
+    html = render_pdf_to_string
+    
+    header_html = render_pdf_to_string '_header'
+    header_file = Tempfile.new(['header', '.html'])
+    header_file.write(header_html)
+    header_file.close
+    
+    footer_html = render_pdf_to_string '_footer'
+    footer_file = Tempfile.new(['footer', '.html'])
+    footer_file.write(footer_html)
+    footer_file.close
+    
+    pdf = PDFKit.new(html, {
+      "header-html" => "file://#{header_file.path}",
+      "footer-html" => "file://#{footer_file.path}"
+    }).to_pdf
+    
+    header_file.unlink
+    footer_file.unlink
+    
+    return pdf
   end
 end

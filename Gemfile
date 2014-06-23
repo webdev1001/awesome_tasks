@@ -24,6 +24,10 @@ gem 'haml-rails'
 gem 'baza'
 gem 'email_validator'
 
+# PDF generation.
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+
 # Delayed job
 gem 'delayed_job_active_record'
 gem 'daemons'

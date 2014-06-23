@@ -128,6 +128,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pdfkit (0.6.2)
     php4r (0.0.4)
       datet
       http2
@@ -215,6 +216,7 @@ GEM
     tzinfo (0.3.39)
     warden (1.2.3)
       rack (>= 1.0)
+    wkhtmltopdf-binary (0.9.9.1)
     wref (0.0.6)
 
 PLATFORMS
@@ -245,6 +247,7 @@ DEPENDENCIES
   mysql
   mysql2
   paperclip
+  pdfkit
   php4r
   rails (= 4.0.5)
   ransack
@@ -253,3 +256,4 @@ DEPENDENCIES
   sdoc
   simple_form
   simple_form_ransack (>= 0.0.5)
+  wkhtmltopdf-binary

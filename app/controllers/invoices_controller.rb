@@ -38,6 +38,19 @@ class InvoicesController < ApplicationController
   def show
   end
   
+  def destroy
+    if @invoice.destroy
+      redirect_to invoices_path
+    else
+      flash[:error] = @invoice.errors.full_messages.join(". ")
+      redirect_to invoice_path(@invoice)
+    end
+  end
+  
+  def pdf
+    send_data @invoice.to_pdf, :filename => @invoice.filename, :type => @invoice.filetype
+  end
+  
 private
   
   def invoice_params

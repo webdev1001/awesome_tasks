@@ -20,9 +20,19 @@ class InvoiceLinesController < ApplicationController
   end
   
   def update
+    if @invoice_line.update_attributes(invoice_line_params)
+      redirect_to invoice_path(@invoice)
+    else
+      render :edit
+    end
   end
   
   def destroy
+    if !@invoice_line.destroy
+      flash[:error] = @invoice_line.errors.full_messages.join(". ")
+    end
+    
+    redirect_to invoice_path(@invoice_line.invoice)
   end
   
 private

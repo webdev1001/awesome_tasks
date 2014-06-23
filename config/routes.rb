@@ -4,6 +4,7 @@ AwesomeTasks::Application.routes.draw do
   
   resources :comments
   resources :invoices do
+    post :pdf, :on => :member
     resources :invoice_lines
   end
   

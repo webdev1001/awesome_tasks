@@ -14,6 +14,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.errors.models.comment.attributes.comment.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.comment.attributes.user.blank')
+    #. Default value: is invalid
+    _('activerecord.errors.models.customer.attributes.email.invalid')
     #. Default value: cannot be blank
     _('activerecord.errors.models.invoice.attributes.user.blank')
     #. Default value: cannot be blank
@@ -22,6 +24,14 @@ class GettextSimpleRails::MonthNames
     _('activerecord.errors.models.invoice.attributes.date.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.invoice.attributes.invoice_type.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.invoice_line.attributes.invoice.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.invoice_line.attributes.title.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.invoice_line.attributes.quantity.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.invoice_line.attributes.amount.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.project.attributes.customer.blank')
     #. Default value: cannot be blank

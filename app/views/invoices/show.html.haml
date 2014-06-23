@@ -1,5 +1,14 @@
 - content_for(:header_title){ _("Invoice %{id}", :id => @invoice.id) }
 
+- if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
+  = DesignBox.boxt _("Manage"), 350
+  = link_to _("Edit"), edit_invoice_path(@invoice), :class => "button" if can? :edit, @invoice
+  = link_to _("Delete"), @invoice, :class => "button", :method => :delete, :data => {:confirm => _("Are you sure?")} if can? :destory, @invoice
+  = link_to _("Download as PDF"), ["pdf", @invoice], :class => "button", :method => :post if can? :pdf, @invoice
+  = DesignBox.boxb
+
+%br/
+
 = DesignBox.boxt _("Details"), 500
 %table.form
   %tbody
@@ -37,12 +46,16 @@
       %th= InvoiceLine.human_attribute_name(:title)
       %th= InvoiceLine.human_attribute_name(:quantity)
       %th= InvoiceLine.human_attribute_name(:amount)
+      %th= _("Actions")
   %tbody
     - @invoice.invoice_lines.each do |line|
       %tr
         %td= line.title
         %td= format_number line.quantity
         %td= format_number line.amount
+        %td
+          = link_to _("Edit"), ["edit", @invoice, line] if can? :edit, line
+          = link_to _("Delete"), [@invoice, line], :method => :delete, :data => {:confirm => _("Are you sure?")} if can? :destroy, line
     - if @invoice.invoice_lines.none?
       %tr
         %td.error{:colspan => 3}= _("No lines were found.")
