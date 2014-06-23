@@ -14,7 +14,7 @@
 %br/
 
 = DesignBox.boxt Invoice.model_name.human(:count => 2), 700
-%table
+%table.list
   %thead
     %tr
       %th= sort_link @ransack, :id
@@ -24,10 +24,10 @@
   %tbody
     - @invoices.each do |invoice|
       %tr
-        %th= link_to_invoice invoice
-        %th= link_to_customer invoice.customer
-        %th= l(invoice.date, :format => :long)
-        %th= format_number invoice.amount
+        %td= link_to_invoice invoice
+        %td= link_to_customer invoice.customer
+        %td= l(invoice.date, :format => :long)
+        %td= format_number invoice.amount
     - if @invoices.none?
       %tr
         %td.error{:colspan => 4}

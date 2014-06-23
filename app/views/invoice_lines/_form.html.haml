@@ -1,0 +1,7 @@
+= DesignBox.boxt _("Details"), 500
+= simple_form_for [@invoice, @invoice_line] do |f|
+  = f.input :title
+  = f.input :quantity
+  = f.input :amount
+  = f.submit _("Save")
+= DesignBox.boxb

@@ -1,0 +1,49 @@
+- content_for(:header_title){ _("Invoice %{id}", :id => @invoice.id) }
+
+= DesignBox.boxt _("Details"), 500
+%table.form
+  %tbody
+    %tr
+      %td.tdt= Invoice.human_attribute_name(:id)
+      %td= @invoice.id
+    %tr
+      %td.tdt= Invoice.human_attribute_name(:date)
+      %td= l(@invoice.date, :format => :long) if @invoice.date
+    %tr
+      %td.tdt= Invoice.human_attribute_name(:invoice_type)
+      %td= @invoice.translated_invoice_type
+    %tr
+      %td.tdt= Invoice.human_attribute_name(:amount)
+      %td= format_number @invoice.amount
+    %tr
+      %td.tdt= Invoice.human_attribute_name(:customer)
+      %td= link_to_customer @invoice.customer
+    %tr
+      %td.tdt= Invoice.human_attribute_name(:user)
+      %td= link_to_user @invoice.user
+= DesignBox.boxb
+
+%br/
+
+= DesignBox.boxt InvoiceLine.model_name.human(:count => 2), 700
+
+= link_to _("Add new invoice-line"), new_invoice_invoice_line_path(@invoice), :class => "button"
+%br/
+%br/
+
+%table.list
+  %thead
+    %tr
+      %th= InvoiceLine.human_attribute_name(:title)
+      %th= InvoiceLine.human_attribute_name(:quantity)
+      %th= InvoiceLine.human_attribute_name(:amount)
+  %tbody
+    - @invoice.invoice_lines.each do |line|
+      %tr
+        %td= line.title
+        %td= format_number line.quantity
+        %td= format_number line.amount
+    - if @invoice.invoice_lines.none?
+      %tr
+        %td.error{:colspan => 3}= _("No lines were found.")
+= DesignBox.boxb
