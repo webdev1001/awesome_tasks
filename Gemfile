@@ -44,6 +44,13 @@ group :test do
   gem "codeclimate-test-reporter", group: :test, require: nil
 end
 
+group :development do
+  # Use Capistrano for deployment
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
