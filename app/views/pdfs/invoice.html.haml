@@ -23,6 +23,12 @@
     %tr
       %td= Invoice.human_attribute_name(:amount)
       %td= format_number invoice.amount
+    %tr
+      %td= _("Vat")
+      %td= format_number invoice.amount_vat
+    %tr
+      %td= _("Total")
+      %td= format_number invoice.amount_total
 
 %h2= InvoiceLine.model_name.human(:count => 2)
 %table

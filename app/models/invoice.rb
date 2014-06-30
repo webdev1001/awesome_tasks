@@ -10,6 +10,10 @@ class Invoice < ActiveRecord::Base
   
   validates_presence_of :user, :amount, :date, :invoice_type
   
+  scope :debit, ->{ where(:invoice_type => "debit") }
+  scope :credit, ->{ where(:invoice_type => "credit") }
+  scope :purchase, ->{ where(:invoice_type => "purchase") }
+  
   def self.translated_invoice_types
     return {
       _("Debit") => "debit",
@@ -68,5 +72,13 @@ class Invoice < ActiveRecord::Base
     footer_file.unlink
     
     return pdf
+  end
+  
+  def amount_vat
+    amount.to_f * 0.25
+  end
+  
+  def amount_total
+    amount.to_f * 1.25
   end
 end

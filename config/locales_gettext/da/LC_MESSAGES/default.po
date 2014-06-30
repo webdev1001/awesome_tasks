@@ -3012,7 +3012,7 @@ msgstr "Detaljer"
 
 #: app/views/invoices/show.html.haml:39
 msgid "Add new invoice-line"
-msgstr "Tilføj nye fakturalinjer"
+msgstr "Tilføj ny fakturalinje"
 
 #: app/views/invoices/show.html.haml:61
 msgid "No lines were found."

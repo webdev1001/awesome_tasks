@@ -14,22 +14,28 @@
   %tbody
     %tr
       %td.tdt= Invoice.human_attribute_name(:id)
-      %td= @invoice.id
+      %td.align-right= @invoice.id
     %tr
       %td.tdt= Invoice.human_attribute_name(:date)
-      %td= l(@invoice.date, :format => :long) if @invoice.date
+      %td.align-right= l(@invoice.date, :format => :long) if @invoice.date
     %tr
       %td.tdt= Invoice.human_attribute_name(:invoice_type)
-      %td= @invoice.translated_invoice_type
+      %td.align-right= @invoice.translated_invoice_type
     %tr
       %td.tdt= Invoice.human_attribute_name(:amount)
-      %td= format_number @invoice.amount
+      %td.align-right= format_number @invoice.amount
+    %tr
+      %td.tdt= _("Vat")
+      %td.align-right= format_number @invoice.amount_vat
+    %tr
+      %td.tdt= _("Total")
+      %td.align-right= format_number @invoice.amount_total
     %tr
       %td.tdt= Invoice.human_attribute_name(:customer)
-      %td= link_to_customer @invoice.customer
+      %td.align-right= link_to_customer @invoice.customer
     %tr
       %td.tdt= Invoice.human_attribute_name(:user)
-      %td= link_to_user @invoice.user
+      %td.align-right= link_to_user @invoice.user
 = DesignBox.boxb
 
 %br/
@@ -48,15 +54,17 @@
   %thead
     %tr
       %th= InvoiceLine.human_attribute_name(:title)
-      %th= InvoiceLine.human_attribute_name(:quantity)
-      %th= InvoiceLine.human_attribute_name(:amount)
+      %th.align-right= InvoiceLine.human_attribute_name(:quantity)
+      %th.align-right= InvoiceLine.human_attribute_name(:amount)
+      %th.align-right= _("Total")
       %th= _("Actions")
   %tbody
     - @invoice.invoice_lines.each do |line|
       %tr
         %td= line.title
-        %td= format_number line.quantity
-        %td= format_number line.amount
+        %td.align-right= format_number line.quantity
+        %td.align-right= format_number line.amount
+        %td.align-right= format_number line.amount_total
         %td
           = link_to _("Edit"), ["edit", @invoice, line] if can? :edit, line
           = link_to _("Delete"), [@invoice, line], :method => :delete, :data => {:confirm => _("Are you sure?")} if can? :destroy, line

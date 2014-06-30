@@ -37,3 +37,20 @@
         %td.error{:colspan => 4}
           = _("No invoices could be found.")
 = DesignBox.boxb
+
+%br/
+%br/
+
+= DesignBox.boxt _("Totals"), 400
+%table.form
+  %tbody
+    %tr
+      %td.tdt= _("Amount")
+      %td.align-right= format_number @invoices.sum(:amount)
+    %tr
+      %td.tdt= _("Vat")
+      %td.align-right= format_number @invoices.sum(:amount) * 0.25
+    %tr
+      %td.tdt= _("Total")
+      %td.align-right= format_number @invoices.sum(:amount) * 1.25
+= DesignBox.boxb
