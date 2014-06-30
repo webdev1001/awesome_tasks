@@ -108,7 +108,7 @@ private
     if params[:timelog].try(:[], :invoiced) == "only_invoiced"
       @timelogs = @timelogs.where("timelogs.invoiced = '1'")
     elsif params[:timelog].try(:[], :invoiced) == "only_not_invoiced"
-      @timelogs = @timelogs.where("timelogs.invoiced IS NULL")
+      @timelogs = @timelogs.not_invoiced
     end
   end
   
