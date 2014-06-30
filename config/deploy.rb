@@ -37,7 +37,7 @@ set :linked_files, %w{config/database.yml config/smtp.yml}
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    on roles(:web), in: :sequence, wait: 5 do
+    on roles(:web), in: :sequence do
       execute :sudo, "apache2ctl graceful"
     end
   end
@@ -45,7 +45,7 @@ namespace :deploy do
   after :publishing, :restart
 
   after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    on roles(:web), in: :groups, limit: 3 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
