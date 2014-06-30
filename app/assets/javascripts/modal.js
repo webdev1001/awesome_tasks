@@ -104,7 +104,7 @@ function modal(args){
 	
 	if (args["title"]){
 		realcontent += "<div class=\"simplemodal_header\">";
-		realcontent += "<div style=\"float: right; font-size: 9px; font-weight: normal; padding-top: 5px;\"><a href=\"javascript: modalClose();\">[" + locale_strings["close"] + "]</a></div>";
+		realcontent += "<div style=\"float: right; font-size: 9px; font-weight: normal; padding-top: 5px;\"><a href=\"javascript: modal_close();\">[" + locale_strings["close"] + "]</a></div>";
 		realcontent += args["title"] + "</div>";
 	}
 	
@@ -145,7 +145,6 @@ function modal_setup(args){
 	if (navigator.appName == "Netscape"){
 		var divele = document.createElement("div");
 		divele.innerHTML = "<style type=\"text/css\">" + sh + "</style>";
-		
 		document.body.appendChild(divele);
 	}else if(navigator.appName == "Microsoft Internet Explorer"){
 		var style = document.createElement("style");
