@@ -28,5 +28,7 @@ module AwesomeTasks
     
     # Autoload lib/ folder including all subdirectories
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    
+    config.assets.precompile += Ckeditor.assets
   end
 end
