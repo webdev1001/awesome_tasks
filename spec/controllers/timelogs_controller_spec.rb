@@ -30,4 +30,17 @@ describe TimelogsController do
     patch :update, :task_id => task.id, :id => timelog.id, :timelog => {:description => Forgery(:lorem_ipsum).words(5) }
     response.code.should eq "200"
   end
+  
+  context "#index" do
+    context "finds timelogs where invoiced is 0" do
+      let!(:timelog_invoiced_0){ create :timelog, :invoiced => 0 }
+      let!(:timelog_invoiced_nil){ create :timelog, :invoiced => nil }
+      
+      it "works" do
+        get :index, :timelog => {:invoiced => "only_not_invoiced"}
+        assigns(:timelogs).should include timelog_invoiced_0
+        assigns(:timelogs).should include timelog_invoiced_nil
+      end
+    end
+  end
 end
