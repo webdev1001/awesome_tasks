@@ -13,12 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-migrate-min
-//= require knjjsfw/jquery.md5
-//= require knjjsfw/events
-//= require knjjsfw/forms
-//= require knjjsfw/select
-//= require knjjsfw/modal
-//= require knjjsfw/includes/jquery.simplemodal-1.4.1.js
+//= require jquery.md5
+//= require events
+//= require select
+//= require modal
+//= require jquery.simplemodal.1.4.1.min
 //= require ckeditor/init
 //= require ckeditor_awesometasks_config
 //= require ckeditor/config
