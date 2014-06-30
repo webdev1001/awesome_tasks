@@ -1,0 +1,22 @@
+= DesignBox.boxt _("Uploaded files"), 600
+
+- if can? :new, UploadedFile
+  = link_to _("Add new"), new_uploaded_file_path(:uploaded_file => {:resource_type => resource.class.name, :resource_id => resource.id}), :class => "button"
+  %br/
+  %br/
+
+%table.list
+  %thead
+    %tr
+      %th= UploadedFile.human_attribute_name(:id)
+      %th= UploadedFile.human_attribute_name(:file_file_size)
+  %tbody
+    - resource.uploaded_files.each do |uploaded_file|
+      %tr
+        %td= link_to_uploaded_file uploaded_file
+        %td= number_to_human_size uploaded_file.file_file_size
+    - if resource.uploaded_files.none?
+      %tr
+        %td{:colspan => 1}= _("No files has been uploaded.")
+  
+= DesignBox.boxb

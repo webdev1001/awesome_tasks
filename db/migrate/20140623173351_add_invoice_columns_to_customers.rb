@@ -1,6 +1,7 @@
 class AddInvoiceColumnsToCustomers < ActiveRecord::Migration
   def change
     add_column :customers, :email, :string
+    add_column :customers, :vat_no, :string
     
     add_column :customers, :delivery_address, :string
     add_column :customers, :delivery_zip_code, :string

@@ -1,5 +1,6 @@
 AwesomeTasks::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+  mount RailsImager::Engine => "/rails_imager"
   devise_for :users, :encryptor => :md5
   
   resources :comments
@@ -7,6 +8,8 @@ AwesomeTasks::Application.routes.draw do
     post :pdf, :on => :member
     resources :invoice_lines
   end
+  
+  resources :uploaded_files
   
   resources :users do
     get :search, :on => :collection

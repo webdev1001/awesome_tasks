@@ -34,6 +34,10 @@
 
 %br/
 
+= render "/uploaded_files/list_for_resource", :resource => @invoice
+
+%br/
+
 = DesignBox.boxt InvoiceLine.model_name.human(:count => 2), 700
 
 = link_to _("Add new invoice-line"), new_invoice_invoice_line_path(@invoice), :class => "button"

@@ -6,7 +6,7 @@
     %tr
       %td= Customer.human_attribute_name(:name)
       %td= invoice.customer.try(:name)
-    - [:delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
+    - [:vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
       %tr
         %td= Customer.human_attribute_name(column)
         %td= invoice.customer.try(:__send__, column)

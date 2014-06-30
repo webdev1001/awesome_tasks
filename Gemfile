@@ -23,6 +23,7 @@ gem 'ransack'
 gem 'haml-rails'
 gem 'baza'
 gem 'email_validator'
+gem 'rails_imager'
 
 # PDF generation.
 gem 'pdfkit'

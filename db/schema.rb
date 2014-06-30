@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623173351) do
+ActiveRecord::Schema.define(version: 20140630162308) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140623173351) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+    t.string   "vat_no"
     t.string   "delivery_address"
     t.string   "delivery_zip_code"
     t.string   "delivery_city"
@@ -93,8 +94,10 @@ ActiveRecord::Schema.define(version: 20140623173351) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creditor_id"
   end
 
+  add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 

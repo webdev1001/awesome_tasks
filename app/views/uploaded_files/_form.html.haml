@@ -1,6 +1,8 @@
+= DesignBox.boxt _("Details"), 500
 = simple_form_for @uploaded_file do |f|
   = f.input :resource_type, :as => :hidden
-  = f.input :resource_id, :as => :id
-  = f.input :title
+  = f.input :resource_id, :as => :hidden
+  = f.input :title, :autofocus => true
   = f.input :file
   = f.submit _("Save")
+= DesignBox.boxb

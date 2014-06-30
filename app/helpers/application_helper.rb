@@ -1,5 +1,6 @@
 module ApplicationHelper
   include SimpleFormRansackHelper
+  include RailsImager::ImagesHelper
   
   def knjrbfw_opts(query, args = {})
     list = {}
@@ -20,5 +21,10 @@ module ApplicationHelper
   
   def format_number(number, args = {})
     return number_to_currency(number, {:unit => ""}.merge(args))
+  end
+  
+  def link_to_model(model)
+    method_name = "link_to_#{StringCases.camel_to_snake(model.class.name)}"
+    __send__(method_name, model)
   end
 end

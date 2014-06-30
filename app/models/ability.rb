@@ -31,6 +31,7 @@ private
     can :manage, Project
     can :manage, ProjectAutoassignedUser
     can :manage, Task
+    can :manage, UploadedFile
     can :manage, User
     can :manage, UserTaskListLink
     can :manage, Timelog

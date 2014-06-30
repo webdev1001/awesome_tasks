@@ -5,9 +5,11 @@
   %br/
   %br/
 
-= DesignBox.boxt _("Enter criteria"), 450
+= DesignBox.boxt _("Enter criteria"), 550
 = simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :id_eq, :autofocus => true
   = f.input :customer_name_cont
+  = f.input :invoice_type_eq, :collection => Invoice.translated_invoice_types, :include_blank => true
   = f.submit _("Filter")
 = DesignBox.boxb
 
@@ -18,6 +20,7 @@
   %thead
     %tr
       %th= sort_link @ransack, :id
+      %th= sort_link @ransack, :invoice_type
       %th= sort_link @ransack, :customer_name, Invoice.human_attribute_name(:customer)
       %th= sort_link @ransack, :date
       %th= sort_link @ransack, :amount
@@ -25,6 +28,7 @@
     - @invoices.each do |invoice|
       %tr
         %td= link_to_invoice invoice
+        %td= invoice.translated_invoice_type
         %td= link_to_customer invoice.customer
         %td= l(invoice.date, :format => :long)
         %td= format_number invoice.amount
