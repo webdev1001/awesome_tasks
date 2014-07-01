@@ -39,9 +39,11 @@ describe InvoicesController do
   end
   
   it "#pdf" do
-    post :pdf, :id => invoice.id
+    request.env["HTTP_REFERER"] = root_url
+    get :pdf, :id => invoice.id
+    controller.flash.to_a.should eq []
     response.should be_success
     response.headers["Content-Type"].should eq "application/pdf"
-    response.headers["Content-Disposition"].should eq "attachment; filename=\"Invoice #{invoice.id}.pdf\""
+    response.headers["Content-Disposition"].should eq "inline; filename=\"Invoice #{invoice.id}.pdf\""
   end
 end

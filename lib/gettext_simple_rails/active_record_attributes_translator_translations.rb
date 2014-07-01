@@ -86,6 +86,10 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.customer.updated_at')
     #. Default value: email
     _('activerecord.attributes.customer.email')
+    #. Default value: vat_no
+    _('activerecord.attributes.customer.vat_no')
+    #. Default value: payment_info
+    _('activerecord.attributes.customer.payment_info')
     #. Default value: delivery_address
     _('activerecord.attributes.customer.delivery_address')
     #. Default value: delivery_zip_code
@@ -104,10 +108,16 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.customer.invoice_country')
     #. Default value: projects
     _('activerecord.attributes.customer.projects')
+    #. Default value: invoices
+    _('activerecord.attributes.customer.invoices')
+    #. Default value: credit_invoices
+    _('activerecord.attributes.customer.credit_invoices')
     #. Default value: id
     _('activerecord.attributes.invoice.id')
     #. Default value: date
     _('activerecord.attributes.invoice.date')
+    #. Default value: invoice_no
+    _('activerecord.attributes.invoice.invoice_no')
     #. Default value: invoice_type
     _('activerecord.attributes.invoice.invoice_type')
     #. Default value: amount
@@ -116,16 +126,24 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.invoice.customer_id')
     #. Default value: user_id
     _('activerecord.attributes.invoice.user_id')
+    #. Default value: payment_at
+    _('activerecord.attributes.invoice.payment_at')
     #. Default value: created_at
     _('activerecord.attributes.invoice.created_at')
     #. Default value: updated_at
     _('activerecord.attributes.invoice.updated_at')
+    #. Default value: creditor_id
+    _('activerecord.attributes.invoice.creditor_id')
+    #. Default value: creditor
+    _('activerecord.attributes.invoice.creditor')
     #. Default value: customer
     _('activerecord.attributes.invoice.customer')
     #. Default value: user
     _('activerecord.attributes.invoice.user')
     #. Default value: invoice_lines
     _('activerecord.attributes.invoice.invoice_lines')
+    #. Default value: uploaded_files
+    _('activerecord.attributes.invoice.uploaded_files')
     #. Default value: id
     _('activerecord.attributes.invoice_line.id')
     #. Default value: title

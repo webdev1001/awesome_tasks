@@ -20,6 +20,7 @@
   %thead
     %tr
       %th= sort_link @ransack, :id
+      %th= sort_link @ransack, :invoice_no
       %th= sort_link @ransack, :invoice_type
       %th= sort_link @ransack, :customer_name, Invoice.human_attribute_name(:customer)
       %th= sort_link @ransack, :date
@@ -27,7 +28,8 @@
   %tbody
     - @invoices.each do |invoice|
       %tr
-        %td= link_to_invoice invoice
+        %td= link_to_invoice invoice, :title => invoice.id
+        %td= link_to_invoice invoice, :title => invoice.invoice_no if invoice.invoice_no.present?
         %td= invoice.translated_invoice_type
         %td= link_to_customer invoice.customer
         %td= l(invoice.date, :format => :long)

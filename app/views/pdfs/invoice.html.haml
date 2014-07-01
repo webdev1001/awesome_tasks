@@ -1,45 +1,107 @@
-%h1= _("Invoice %{id}", :id => invoice.id)
+%style{:type => "text/css"}
+  :plain
+    thead th {
+      text-align: left;
+    }
+    
+    .invoice_lines {
+      width: 100%;
+    }
+    
+    .invoice_lines tbody tr td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+    
+    .invoice_lines thead tr th {
+      padding: 4px;
+    }
+    
+    .align-right {
+      text-align: right;
+    }
+    
+    .totals {
+      margin-top: 15px;
+      float: right;
+    }
+    
+    tr.total td {
+      font-weight: bold;
+    }
 
-%h2= Customer.model_name.human
-%table
+%table{:width => "100%"}
   %tbody
     %tr
-      %td= Customer.human_attribute_name(:name)
-      %td= invoice.customer.try(:name)
-    - [:vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
-      %tr
-        %td= Customer.human_attribute_name(column)
-        %td= invoice.customer.try(:__send__, column)
-
-%h2= _("Invoice details")
-%table
-  %tbody
-    %tr
-      %td= Invoice.human_attribute_name(:date)
-      %td= l(invoice.date, :format => :long) if invoice.date
-    %tr
-      %td= Invoice.human_attribute_name(:invoice_type)
-      %td= invoice.translated_invoice_type
-    %tr
-      %td= Invoice.human_attribute_name(:amount)
-      %td= format_number invoice.amount
-    %tr
-      %td= _("Vat")
-      %td= format_number invoice.amount_vat
-    %tr
-      %td= _("Total")
-      %td= format_number invoice.amount_total
+      %td{:style => "width: 50%; vertical-align: top;"}
+        %h2= invoice.creditor.name
+        %table
+          %tbody
+            - [:vat_no, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
+              %tr
+                %td= Customer.human_attribute_name(column)
+                %td= invoice.customer.try(:__send__, column)
+        
+        %h2= invoice.customer.name
+        %table
+          %tbody
+            - [:vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
+              %tr
+                %td= Customer.human_attribute_name(column)
+                %td= invoice.customer.try(:__send__, column)
+      %td{:style => "vertical-align: top;"}
+        %h2= Invoice.model_name.human
+        %table
+          %tbody
+            %tr
+              %td= Invoice.human_attribute_name(:invoice_no)
+              %td= invoice.invoice_no
+            %tr
+              %td= Invoice.human_attribute_name(:date)
+              %td= l(invoice.date, :format => :long)
+            %tr
+              %td= Invoice.human_attribute_name(:payment_at)
+              %td= l(invoice.payment_at, :format => :long)
+            %tr
+              %td= Invoice.human_attribute_name(:invoice_type)
+              %td= invoice.translated_invoice_type
+            %tr
+              %td= Invoice.human_attribute_name(:amount)
+              %td= format_number invoice.amount
+            %tr
+              %td= _("Vat")
+              %td= format_number invoice.amount_vat
+            %tr
+              %td= _("Total")
+              %td= format_number invoice.amount_total
+        
+        %h2= Customer.human_attribute_name(:payment_info)
+        .payment_info= simple_format invoice.creditor.payment_info
 
 %h2= InvoiceLine.model_name.human(:count => 2)
-%table
+%table.invoice_lines
   %thead
     %tr
       %th= InvoiceLine.human_attribute_name(:title)
-      %th= InvoiceLine.human_attribute_name(:quantity)
-      %th= InvoiceLine.human_attribute_name(:amount)
+      %th.align-right= InvoiceLine.human_attribute_name(:quantity)
+      %th.align-right= InvoiceLine.human_attribute_name(:amount)
+      %th.align-right= _("Total")
   %tbody
     - invoice.invoice_lines.each do |invoice_line|
       %tr
         %td= invoice_line.title
-        %td= format_number invoice_line.quantity
-        %td= format_number invoice_line.amount
+        %td.align-right= format_number invoice_line.quantity
+        %td.align-right= format_number invoice_line.amount
+        %td.align-right= format_number invoice_line.amount_total
+
+%table.totals
+  %tbody
+    %tr
+      %td= _("Amount")
+      %td.align-right= format_number invoice.amount
+    %tr
+      %td= _("Vat")
+      %td.align-right= format_number invoice.amount_vat
+    %tr.total
+      %td= _("Total")
+      %td.align-right= format_number invoice.amount_total

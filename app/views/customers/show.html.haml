@@ -13,10 +13,13 @@
       %td= Customer.human_attribute_name(:email)
       %td= mail_to @customer.email if @customer.email.present?
     
-    - [:delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
+    - [:name, :vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
       %tr
         %td= Customer.human_attribute_name(column)
         %td= @customer.__send__(column)
+    %tr
+      %td= Customer.human_attribute_name(:payment_info)
+      %td= simple_format @customer.payment_info
 = DesignBox.boxb
 
 %br/

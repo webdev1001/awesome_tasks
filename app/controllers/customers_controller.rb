@@ -46,8 +46,8 @@ private
   end
   
   def customer_params
-    params.require(:customer).permit(:name, :email, :delivery_address, :delivery_zip_code,
-      :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city,
-      :invoice_country)
+    params.require(:customer).permit(:name, :email, :vat_no, :payment_info, :delivery_address,
+      :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code,
+      :invoice_city, :invoice_country)
   end
 end

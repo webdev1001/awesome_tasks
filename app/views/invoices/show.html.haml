@@ -4,7 +4,7 @@
   = DesignBox.boxt _("Manage"), 350
   = link_to _("Edit"), edit_invoice_path(@invoice), :class => "button" if can? :edit, @invoice
   = link_to _("Delete"), @invoice, :class => "button", :method => :delete, :data => {:confirm => _("Are you sure?")} if can? :destory, @invoice
-  = link_to _("Download as PDF"), ["pdf", @invoice], :class => "button", :method => :post if can? :pdf, @invoice
+  = link_to _("PDF"), ["pdf", @invoice], :class => "button" if can? :pdf, @invoice
   = DesignBox.boxb
 
 %br/
@@ -16,8 +16,14 @@
       %td.tdt= Invoice.human_attribute_name(:id)
       %td.align-right= @invoice.id
     %tr
+      %td.tdt= Invoice.human_attribute_name(:invoice_no)
+      %td.align-right= @invoice.invoice_no
+    %tr
       %td.tdt= Invoice.human_attribute_name(:date)
       %td.align-right= l(@invoice.date, :format => :long) if @invoice.date
+    %tr
+      %td.tdt= Invoice.human_attribute_name(:payment_at)
+      %td.align-right= l(@invoice.payment_at, :format => :long) if @invoice.payment_at
     %tr
       %td.tdt= Invoice.human_attribute_name(:invoice_type)
       %td.align-right= @invoice.translated_invoice_type
@@ -33,6 +39,9 @@
     %tr
       %td.tdt= Invoice.human_attribute_name(:customer)
       %td.align-right= link_to_customer @invoice.customer
+    %tr
+      %td.tdt= Invoice.human_attribute_name(:creditor)
+      %td.align-right= link_to_customer @invoice.creditor
     %tr
       %td.tdt= Invoice.human_attribute_name(:user)
       %td.align-right= link_to_user @invoice.user

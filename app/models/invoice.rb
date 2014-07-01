@@ -51,6 +51,11 @@ class Invoice < ActiveRecord::Base
   end
   
   def to_pdf
+    raise _("No invoice number has been set.") unless invoice_no.present?
+    raise _("No invoice-date has been set.") unless date.present?
+    raise _("No payment-date has been set.") unless payment_at.present?
+    raise _("No creditor has been set.") unless creditor
+    
     html = render_pdf_to_string
     
     header_html = render_pdf_to_string '_header'

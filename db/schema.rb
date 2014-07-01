@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630162308) do
+ActiveRecord::Schema.define(version: 20140701082832) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20140630162308) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "vat_no"
+    t.text     "payment_info"
     t.string   "delivery_address"
     t.string   "delivery_zip_code"
     t.string   "delivery_city"
@@ -88,10 +89,12 @@ ActiveRecord::Schema.define(version: 20140630162308) do
   create_table "invoices", force: true do |t|
     t.string   "title"
     t.date     "date"
+    t.string   "invoice_no"
     t.string   "invoice_type"
     t.float    "amount"
     t.integer  "customer_id"
     t.integer  "user_id"
+    t.date     "payment_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creditor_id"
@@ -99,6 +102,7 @@ ActiveRecord::Schema.define(version: 20140630162308) do
 
   add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
   add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
+  add_index "invoices", ["invoice_no"], name: "index_invoices_on_invoice_no", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "project_autoassigned_users", force: true do |t|

@@ -48,13 +48,18 @@ class InvoicesController < ApplicationController
   end
   
   def pdf
-    send_data @invoice.to_pdf, :filename => @invoice.filename, :type => @invoice.filetype
+    begin
+      send_data @invoice.to_pdf, :filename => @invoice.filename, :type => @invoice.filetype, :disposition => "inline"
+    rescue RuntimeError => e
+      flash[:error] = e.message
+      redirect_to :back
+    end
   end
   
 private
   
   def invoice_params
-    params.require(:invoice).permit(:date, :customer_id, :invoice_type, :amount)
+    params.require(:invoice).permit(:invoice_no, :date, :payment_at, :customer_id, :creditor_id, :invoice_type, :amount)
   end
   
   def set_and_authorize_invoice
