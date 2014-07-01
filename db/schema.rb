@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619144141) do
+ActiveRecord::Schema.define(version: 20140701082832) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20140619144141) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "vat_no"
+    t.text     "payment_info"
+    t.string   "delivery_address"
+    t.string   "delivery_zip_code"
+    t.string   "delivery_city"
+    t.string   "delivery_country"
+    t.string   "invoice_address"
+    t.string   "invoice_zip_code"
+    t.string   "invoice_city"
+    t.string   "invoice_country"
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -63,6 +74,36 @@ ActiveRecord::Schema.define(version: 20140619144141) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "invoice_lines", force: true do |t|
+    t.string   "title"
+    t.float    "amount"
+    t.integer  "quantity"
+    t.integer  "invoice_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
+
+  create_table "invoices", force: true do |t|
+    t.string   "title"
+    t.date     "date"
+    t.string   "invoice_no"
+    t.string   "invoice_type"
+    t.float    "amount"
+    t.integer  "customer_id"
+    t.integer  "user_id"
+    t.date     "payment_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "creditor_id"
+  end
+
+  add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
+  add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
+  add_index "invoices", ["invoice_no"], name: "index_invoices_on_invoice_no", using: :btree
+  add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "project_autoassigned_users", force: true do |t|
     t.integer  "project_id"
@@ -157,6 +198,22 @@ ActiveRecord::Schema.define(version: 20140619144141) do
   add_index "timelogs", ["invoiced_by_user_id"], name: "index_timelogs_on_invoiced_by_user_id", using: :btree
   add_index "timelogs", ["task_id"], name: "index_timelogs_on_task_id", using: :btree
   add_index "timelogs", ["user_id"], name: "index_timelogs_on_user_id", using: :btree
+
+  create_table "uploaded_files", force: true do |t|
+    t.string   "title"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  add_index "uploaded_files", ["resource_type", "resource_id"], name: "index_uploaded_files_on_resource_type_and_resource_id", using: :btree
+  add_index "uploaded_files", ["user_id"], name: "index_uploaded_files_on_user_id", using: :btree
 
   create_table "user_project_links", force: true do |t|
     t.integer  "user_id"

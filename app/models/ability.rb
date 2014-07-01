@@ -24,9 +24,14 @@ private
     can :manage, Comment
     can :manage, Customer
     can :manage, Comment
+    can :manage, Invoice
+    can :manage, InvoiceLine do |invoice_line|
+      can? :manage, invoice_line.invoice
+    end
     can :manage, Project
     can :manage, ProjectAutoassignedUser
     can :manage, Task
+    can :manage, UploadedFile
     can :manage, User
     can :manage, UserTaskListLink
     can :manage, Timelog

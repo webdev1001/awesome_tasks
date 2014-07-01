@@ -1,0 +1,31 @@
+- content_for(:header_title){ _("Show uploaded file %{title}", :title => @uploaded_file.title) }
+
+- if can? :edit, @uploaded_file
+  = link_to _("Edit"), ["edit", @uploaded_file], :class => "button"
+  %br/
+  %br/
+
+= DesignBox.boxt _("Details"), 500
+%table.form
+  %tbody
+    - [:id, :title].each do |column|
+      %tr
+        %td.tdt= UploadedFile.human_attribute_name(column)
+        %td= @uploaded_file.__send__(column)
+    %tr
+      %td.tdt= UploadedFile.human_attribute_name(:created_at)
+      %td= l(@uploaded_file.created_at, :format => :long)
+    %tr
+      %td.tdt= UploadedFile.human_attribute_name(:user)
+      %td= link_to_user @uploaded_file.user
+    %tr
+      %td.tdt= UploadedFile.human_attribute_name(:resource)
+      %td= link_to_model @uploaded_file.resource
+    %tr
+      %td.tdt= UploadedFile.human_attribute_name(:file)
+      %td
+        - if @uploaded_file.image?
+          = link_to image_tag(rails_imager_p(@uploaded_file.file, :smartsize => 350, :border => 1, :rounded_corners => 7, :border_color => "black")), @uploaded_file.file.url
+        - else
+          = link_to @uploaded_file.title, @uploaded_file.file.url
+= DesignBox.boxb

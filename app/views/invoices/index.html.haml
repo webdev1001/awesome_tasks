@@ -1,0 +1,58 @@
+%h1= Invoice.model_name.human(:count => 2)
+
+- if can? :new, Invoice
+  = link_to _("New invoice"), new_invoice_path, :class => "button"
+  %br/
+  %br/
+
+= DesignBox.boxt _("Enter criteria"), 550
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :id_eq, :autofocus => true
+  = f.input :customer_name_cont
+  = f.input :invoice_type_eq, :collection => Invoice.translated_invoice_types, :include_blank => true
+  = f.submit _("Filter")
+= DesignBox.boxb
+
+%br/
+
+= DesignBox.boxt Invoice.model_name.human(:count => 2), 700
+%table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :id
+      %th= sort_link @ransack, :invoice_no
+      %th= sort_link @ransack, :invoice_type
+      %th= sort_link @ransack, :customer_name, Invoice.human_attribute_name(:customer)
+      %th= sort_link @ransack, :date
+      %th= sort_link @ransack, :amount
+  %tbody
+    - @invoices.each do |invoice|
+      %tr
+        %td= link_to_invoice invoice, :title => invoice.id
+        %td= link_to_invoice invoice, :title => invoice.invoice_no if invoice.invoice_no.present?
+        %td= invoice.translated_invoice_type
+        %td= link_to_customer invoice.customer
+        %td= l(invoice.date, :format => :long)
+        %td= format_number invoice.amount
+    - if @invoices.none?
+      %tr
+        %td.error{:colspan => 4}
+          = _("No invoices could be found.")
+= DesignBox.boxb
+
+%br/
+%br/
+
+= DesignBox.boxt _("Totals"), 400
+%table.form
+  %tbody
+    %tr
+      %td.tdt= _("Amount")
+      %td.align-right= format_number @invoices.sum(:amount)
+    %tr
+      %td.tdt= _("Vat")
+      %td.align-right= format_number @invoices.sum(:amount) * 0.25
+    %tr
+      %td.tdt= _("Total")
+      %td.align-right= format_number @invoices.sum(:amount) * 1.25
+= DesignBox.boxb

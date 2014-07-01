@@ -23,6 +23,11 @@ gem 'ransack'
 gem 'haml-rails'
 gem 'baza'
 gem 'email_validator'
+gem 'rails_imager'
+
+# PDF generation.
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
 
 # Delayed job
 gem 'delayed_job_active_record'

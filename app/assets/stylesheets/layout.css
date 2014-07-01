@@ -185,6 +185,10 @@ input.input_text, input.input_password, select.input_select, textarea.input_text
   width: 100%;
 }
 
+.align-right {
+  text-align: right;
+}
+
 .nowrap{
   white-space: nowrap;
 }
