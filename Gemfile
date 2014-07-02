@@ -24,6 +24,7 @@ gem 'haml-rails'
 gem 'baza'
 gem 'email_validator'
 gem 'rails_imager'
+gem 'will_paginate'
 
 # PDF generation.
 gem 'pdfkit'

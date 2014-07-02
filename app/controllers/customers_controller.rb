@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = Customer.ransack(@ransack_params)
-    @customers = @ransack.result.order(:name)
+    @customers = @ransack.result.paginate(:page => params[:page], :per_page => 30)
   end
   
   def new

@@ -241,6 +241,7 @@ GEM
     tzinfo (0.3.39)
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.5)
     wkhtmltopdf-binary (0.9.9.1)
     wref (0.0.6)
 
@@ -285,4 +286,5 @@ DEPENDENCIES
   sdoc
   simple_form
   simple_form_ransack (>= 0.0.5)
+  will_paginate
   wkhtmltopdf-binary
