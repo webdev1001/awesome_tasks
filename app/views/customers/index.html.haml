@@ -7,21 +7,25 @@
   = f.submit _("Search")
 = DesignBox.boxb
 
-- if params[:q]
-  %br
-  
-  = DesignBox.boxt _("Results"), 350
-  %table.list
-    %thead
+%br/
+
+= DesignBox.boxt _("Results"), 500
+%table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :name
+      %th= sort_link @ransack, :email
+  %tbody
+    - @customers.each do |customer|
       %tr
-        %th=_("Customer")
-    %tbody
-      - @customers.each do |customer|
-        %tr
-          %td
-            = link_to_customer customer
-      - if @customers.none?
-        %tr
-          %td{:colspan => 1, :class => "error"}
-            = _("No customers were found.")
-  = DesignBox.boxb
+        %td= link_to_customer customer
+        %td= mail_to customer.email if customer.email.present?
+    - if @customers.none?
+      %tr
+        %td{:colspan => 1, :class => "error"}
+          = _("No customers were found.")
+= DesignBox.boxb
+
+%br/
+
+= will_paginate @customers
