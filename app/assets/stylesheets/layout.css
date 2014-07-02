@@ -175,6 +175,7 @@ input[type=button], input[type=submit], input.button, a.button {
   padding: 2px 9px 2px 9px;
   margin: 0px 0px 0px 0px;
   color: black;
+  cursor: default;
 }
 
 input[type=checkbox]{
