@@ -43,7 +43,6 @@ private
   
   def set_invoice
     @invoice = Invoice.find(params[:invoice_id])
-    authorize! :show, @invoice
   end
   
   def set_and_authroize_invoice_line
