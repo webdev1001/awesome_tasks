@@ -13,6 +13,7 @@ html, body, html > body > center{
 
 body{
   background: url("/gfx/body_bg.jpg") 0 0 repeat;
+  overflow-y: scroll;
 }
 
 a:link, a:visited{
