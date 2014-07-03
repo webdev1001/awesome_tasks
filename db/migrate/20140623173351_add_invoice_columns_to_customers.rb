@@ -1,16 +1,16 @@
-class AddInvoiceColumnsToOrganizations < ActiveRecord::Migration
+class AddInvoiceColumnsToCustomers < ActiveRecord::Migration
   def change
-    add_column :organizations, :email, :string
-    add_column :organizations, :vat_no, :string
+    add_column :customers, :email, :string
+    add_column :customers, :vat_no, :string
     
-    add_column :organizations, :delivery_address, :string
-    add_column :organizations, :delivery_zip_code, :string
-    add_column :organizations, :delivery_city, :string
-    add_column :organizations, :delivery_country, :string
+    add_column :customers, :delivery_address, :string
+    add_column :customers, :delivery_zip_code, :string
+    add_column :customers, :delivery_city, :string
+    add_column :customers, :delivery_country, :string
     
-    add_column :organizations, :invoice_address, :string
-    add_column :organizations, :invoice_zip_code, :string
-    add_column :organizations, :invoice_city, :string
-    add_column :organizations, :invoice_country, :string
+    add_column :customers, :invoice_address, :string
+    add_column :customers, :invoice_zip_code, :string
+    add_column :customers, :invoice_city, :string
+    add_column :customers, :invoice_country, :string
   end
 end
