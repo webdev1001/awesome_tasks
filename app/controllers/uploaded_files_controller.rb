@@ -14,7 +14,7 @@ class UploadedFilesController < ApplicationController
     @uploaded_file.user = current_user
     
     if @uploaded_file.save
-      redirect_to uploaded_file_path(@uploaded_file)
+      redirect_to @uploaded_file.resource
     else
       flash[:error] = @uploaded_file.errors.full_messages.join(". ")
       render :new
@@ -26,7 +26,7 @@ class UploadedFilesController < ApplicationController
   
   def update
     if @uploaded_file.update_attributes(uploaded_file_params)
-      redirect_to @uploaded_file
+      redirect_to @uploaded_file.resource
     else
       flash[:error] = @uploaded_file.errors.full_messages.join(". ")
       render :edit

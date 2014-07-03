@@ -11,6 +11,10 @@ class Ability
       ckeditor_access(current_user)
       comment_access(current_user)
       
+      can :manage, UploadedFile do |uploaded_file|
+        can? :show, uploaded_file.resource
+      end
+      
       current_user.user_roles.each do |role|
         __send__(role.role)
       end

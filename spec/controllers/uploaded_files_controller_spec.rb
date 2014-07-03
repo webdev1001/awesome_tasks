@@ -27,7 +27,7 @@ describe UploadedFilesController do
       controller.flash.to_a.should eq []
       new_uploaded_file = UploadedFile.last
       new_uploaded_file.should_not eq nil
-      response.should redirect_to uploaded_file_url(new_uploaded_file)
+      response.should redirect_to invoice_url(invoice)
     end
     
     it "#edit" do
@@ -37,7 +37,7 @@ describe UploadedFilesController do
     
     it "#update" do
       patch :update, :id => uploaded_file.id, :uploaded_file => {:title => "Test test"}
-      response.should redirect_to uploaded_file
+      response.should redirect_to invoice
     end
     
     it "#destroy" do
