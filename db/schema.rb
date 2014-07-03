@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703070348) do
+ActiveRecord::Schema.define(version: 20140703072528) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -103,7 +103,12 @@ ActiveRecord::Schema.define(version: 20140703070348) do
     t.string   "invoice_zip_code"
     t.string   "invoice_city"
     t.string   "invoice_country"
+    t.boolean  "customer"
+    t.boolean  "creditor"
   end
+
+  add_index "organizations", ["creditor"], name: "index_organizations_on_creditor", using: :btree
+  add_index "organizations", ["customer"], name: "index_organizations_on_customer", using: :btree
 
   create_table "project_autoassigned_users", force: true do |t|
     t.integer  "project_id"

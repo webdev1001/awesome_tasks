@@ -48,6 +48,6 @@ private
   def organization_params
     params.require(:organization).permit(:name, :email, :vat_no, :payment_info, :delivery_address,
       :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code,
-      :invoice_city, :invoice_country)
+      :invoice_city, :invoice_country, :customer, :creditor)
   end
 end

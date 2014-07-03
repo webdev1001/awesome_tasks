@@ -77,42 +77,6 @@ class GettextSimpleRails::MonthNames
     #. Default value: resource
     _('activerecord.attributes.comment.resource')
     #. Default value: id
-    _('activerecord.attributes.organization.id')
-    #. Default value: name
-    _('activerecord.attributes.organization.name')
-    #. Default value: created_at
-    _('activerecord.attributes.organization.created_at')
-    #. Default value: updated_at
-    _('activerecord.attributes.organization.updated_at')
-    #. Default value: email
-    _('activerecord.attributes.organization.email')
-    #. Default value: vat_no
-    _('activerecord.attributes.organization.vat_no')
-    #. Default value: payment_info
-    _('activerecord.attributes.organization.payment_info')
-    #. Default value: delivery_address
-    _('activerecord.attributes.organization.delivery_address')
-    #. Default value: delivery_zip_code
-    _('activerecord.attributes.organization.delivery_zip_code')
-    #. Default value: delivery_city
-    _('activerecord.attributes.organization.delivery_city')
-    #. Default value: delivery_country
-    _('activerecord.attributes.organization.delivery_country')
-    #. Default value: invoice_address
-    _('activerecord.attributes.organization.invoice_address')
-    #. Default value: invoice_zip_code
-    _('activerecord.attributes.organization.invoice_zip_code')
-    #. Default value: invoice_city
-    _('activerecord.attributes.organization.invoice_city')
-    #. Default value: invoice_country
-    _('activerecord.attributes.organization.invoice_country')
-    #. Default value: projects
-    _('activerecord.attributes.organization.projects')
-    #. Default value: invoices
-    _('activerecord.attributes.organization.invoices')
-    #. Default value: credit_invoices
-    _('activerecord.attributes.organization.credit_invoices')
-    #. Default value: id
     _('activerecord.attributes.invoice.id')
     #. Default value: date
     _('activerecord.attributes.invoice.date')
@@ -160,6 +124,46 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.invoice_line.updated_at')
     #. Default value: invoice
     _('activerecord.attributes.invoice_line.invoice')
+    #. Default value: id
+    _('activerecord.attributes.organization.id')
+    #. Default value: name
+    _('activerecord.attributes.organization.name')
+    #. Default value: created_at
+    _('activerecord.attributes.organization.created_at')
+    #. Default value: updated_at
+    _('activerecord.attributes.organization.updated_at')
+    #. Default value: email
+    _('activerecord.attributes.organization.email')
+    #. Default value: vat_no
+    _('activerecord.attributes.organization.vat_no')
+    #. Default value: payment_info
+    _('activerecord.attributes.organization.payment_info')
+    #. Default value: delivery_address
+    _('activerecord.attributes.organization.delivery_address')
+    #. Default value: delivery_zip_code
+    _('activerecord.attributes.organization.delivery_zip_code')
+    #. Default value: delivery_city
+    _('activerecord.attributes.organization.delivery_city')
+    #. Default value: delivery_country
+    _('activerecord.attributes.organization.delivery_country')
+    #. Default value: invoice_address
+    _('activerecord.attributes.organization.invoice_address')
+    #. Default value: invoice_zip_code
+    _('activerecord.attributes.organization.invoice_zip_code')
+    #. Default value: invoice_city
+    _('activerecord.attributes.organization.invoice_city')
+    #. Default value: invoice_country
+    _('activerecord.attributes.organization.invoice_country')
+    #. Default value: customer
+    _('activerecord.attributes.organization.customer')
+    #. Default value: creditor
+    _('activerecord.attributes.organization.creditor')
+    #. Default value: projects
+    _('activerecord.attributes.organization.projects')
+    #. Default value: invoices
+    _('activerecord.attributes.organization.invoices')
+    #. Default value: credit_invoices
+    _('activerecord.attributes.organization.credit_invoices')
     #. Default value: id
     _('activerecord.attributes.project.id')
     #. Default value: organization_id
@@ -386,10 +390,6 @@ class GettextSimpleRails::MonthNames
     _('activerecord.models.comment.one')
     #. Default value: Comment
     _('activerecord.models.comment.other')
-    #. Default value: Organization
-    _('activerecord.models.organization.one')
-    #. Default value: Organization
-    _('activerecord.models.organization.other')
     #. Default value: Invoice
     _('activerecord.models.invoice.one')
     #. Default value: Invoice
@@ -398,6 +398,10 @@ class GettextSimpleRails::MonthNames
     _('activerecord.models.invoice_line.one')
     #. Default value: InvoiceLine
     _('activerecord.models.invoice_line.other')
+    #. Default value: Organization
+    _('activerecord.models.organization.one')
+    #. Default value: Organization
+    _('activerecord.models.organization.other')
     #. Default value: Project
     _('activerecord.models.project.one')
     #. Default value: Project
