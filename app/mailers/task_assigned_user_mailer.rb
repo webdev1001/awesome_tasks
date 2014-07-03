@@ -7,10 +7,10 @@ class TaskAssignedUserMailer < ActionMailer::Base
     @task_url = url
     @task = task_assigned_user.task
     
-    I18n.with_locale task_assigned_user.user_assigned_by.locale! do
+    I18n.with_locale @user.locale! do
       subject = "[#{@task.project.name}] "
       subject << sprintf(_("You have been assigned to: %s"), task_assigned_user.task.name)
-      mail(:to => task_assigned_user.user.email, :subject => subject)
+      mail(:to => @user.email, :subject => subject)
     end
   end
   

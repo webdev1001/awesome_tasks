@@ -14,11 +14,19 @@ describe TasksController do
     it "assigns users automatically" do
       sign_in admin
       project.autoassigned_users << user
-      post :create, :task => {:name => "Test", :project_id => project.id, :priority => 1, :task_type => "feature"}
+      
+      expect {
+        post :create, :task => {:name => "Test", :project_id => project.id, :priority => 1, :task_type => "feature"}
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      
       controller.flash[:error].should eq nil
       task = Task.last
       response.location.should eq task_url(task)
       task.assigned_users.to_a.should include user
+      
+      mail = ActionMailer::Base.deliveries.last
+      mail.subject.should include "[#{task.project.name}] "
+      mail.body.to_s.should include task_url(task)
     end
   end
   

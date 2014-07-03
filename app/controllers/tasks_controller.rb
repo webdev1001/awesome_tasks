@@ -29,6 +29,11 @@ class TasksController < ApplicationController
     @task.user = current_user if signed_in?
     
     if @task.save
+      # Mail auto-assigned users
+      @task.task_assigned_users.each do |task_assigned_user|
+        TaskAssignedUserMailer.notification(task_assigned_user, task_url(@task)).deliver!
+      end
+      
       redirect_to task_path(@task)
     else
       flash[:error] = @task.errors.full_messages.join(". ")
