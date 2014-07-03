@@ -73,6 +73,7 @@ $ ->
     
     $(".assign_user_to_task").click (e) ->
       e.preventDefault()
+      modal_on_opened -> $("#user_name").focus()
       modal({title: $(this).data("title"), url: $(this).data("url")})
     
     $(".add_new_check").click (e) ->
