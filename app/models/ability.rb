@@ -66,7 +66,7 @@ private
       user_task_list_link.user_id = current_user.id
     end
     
-    can [:edit, :update, :show, :destroy], Task do |task|
+    can [:edit, :update, :show, :destroy, :assign_user], Task do |task|
       access = false
       
       if task.task_assigned_users.where(:user_id => current_user.id).any?
