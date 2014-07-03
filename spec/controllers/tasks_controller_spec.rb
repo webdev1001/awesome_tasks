@@ -3,6 +3,8 @@ require "spec_helper"
 describe TasksController do
   let!(:admin){ create :user_admin }
   let!(:task){ create :task, :user => admin }
+  let(:task_user){ create :task, :user => user }
+  let(:third_user){ create :user }
   let(:user){ create :user }
   let(:project){ create :project }
   
@@ -41,6 +43,32 @@ describe TasksController do
       mail.subject.should include "[#{task.project.name}]"
       
       # puts ActionMailer::Base.deliveries.last.body
+    end
+    
+    it "can assign users that are the creators of a task can assign users" do
+      sign_in user
+      
+      expect {
+        post :assign_user, id: task_user.id, user_id: admin.id
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      
+      task_user.assigned_users.should include admin
+    end
+    
+    it "can assign users where he is assigned himself" do
+      task.assigned_users << user
+      sign_in user
+      
+      post :assign_user, id: task.id, user_id: third_user.id
+      task.assigned_users.should include third_user
+    end
+    
+    it "cannot assign users where is not assigned, doesnt own the task and isnt in the project" do
+      sign_in third_user
+      
+      expect {
+        post :assign_user, id: task.id, user_id: user.id
+      }.to raise_error(CanCan::AccessDenied)
     end
   end
   
