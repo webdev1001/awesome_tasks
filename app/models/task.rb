@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
   has_many :assigned_users, :through => :task_assigned_users, :source => :user
   has_many :task_checks, :dependent => :destroy
   has_many :user_task_list_links, :dependent => :destroy
+  has_many :uploaded_files, as: :resource, :dependent => :destroy
   has_many :comments, :as => :resource, :dependent => :destroy
   
   belongs_to :project

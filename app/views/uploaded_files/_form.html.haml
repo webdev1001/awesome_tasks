@@ -3,7 +3,7 @@
   = f.input :resource_type, :as => :hidden
   = f.input :resource_id, :as => :hidden
   = f.input :title, :autofocus => true, :required => false
-  = f.input :file
+  = f.input :file, :required => false
   = f.submit _("Save")
   
   - if can?(:destroy, @uploaded_file) && !@uploaded_file.new_record?

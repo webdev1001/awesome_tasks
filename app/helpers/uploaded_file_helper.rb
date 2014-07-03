@@ -10,6 +10,6 @@ module UploadedFileHelper
       title = _("File %{id}", :id => uploaded_file.id)
     end
     
-    return link_to title, uploaded_file
+    return link_to title, uploaded_file.file.url
   end
 end

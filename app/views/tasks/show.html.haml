@@ -54,27 +54,30 @@
                 = _("The priority of the task. 10 as most important and 1 as least important.")
         = DesignBox.boxb
         %br
-        = DesignBox.boxt(_("Description"))
+        = DesignBox.boxt _("Description")
         - if @task.description.blank?
-          .error
-            = _("No description has been written for this task.")
+          .error= _("No description has been written for this task.")
         - else
           = @task.description.html_safe
         = DesignBox.boxb
       %td{style: "vertical-align: top; padding-left: 15px;"}
-        = DesignBox.boxt(_("Assigned users"))
+        = DesignBox.boxt _("Assigned users")
         %div{style: "padding-bottom: 10px;"}
           = link_to _("Assign user to task"), "#", :class => ["button", "assign_user_to_task"], :data => {:title => _("Assign user to task"), :url => search_users_path(@task, :ajaxsearch => true, :not_in_task_id => @task.id, :jscallback => "task_show_assign_user_choose")}
-        #divusers
-          = render :partial => "users"
+        #divusers= render :partial => "users"
         = DesignBox.boxb
+        
         %br/
-        = DesignBox.boxt(_("Checklist"))
+        
+        = DesignBox.boxt _("Checklist")
         %div{style: "padding-bottom: 15px;"}
           = link_to _("Add new check"), "#", :class => ["button", "add_new_check"], :data => {:title => _("Add new check"), :url => new_task_task_check_path(:task_id => @task.id)}
-        #divchecks
-          = render :partial => "checks"
+        #divchecks= render :partial => "checks"
         = DesignBox.boxb
+        
+        %br/
+        
+        = render "/uploaded_files/list_for_resource", :resource => @task
   %div{style: "clear: both;"}
 %div{style: "padding-bottom: 15px;"}
   = DesignBox.boxt(_("Comments"))
