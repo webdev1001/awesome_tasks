@@ -1,37 +1,57 @@
 - content_for(:header_title){ sprintf(_("Show user: %s."), @user.name) }
+
 - if can?(:edit, @user)
-  = DesignBox.boxt(_("Actions"), 450)
-  = link_to _("Edit"), edit_user_path(@user), :class => "button"
+  = DesignBox.boxt _("Actions"), 450
+  = link_to _("Edit"), ["edit", @user], :class => "button"
   = DesignBox.boxb
   %br/
-= DesignBox.boxt(_("Information"), 450)
 
+= DesignBox.boxt _("Information"), 450
 %table.form
-  = Knj::Web.inputs([{                          |
-      :title => _("Name"),                      |
-      :type => :info,                           |
-      :value => @user.name,                     |
-      :descr => _("The real name of the user.") |
-    },{                                         |
-      :title => _("Email"),                     |
-      :type => :info,                           |
-      :value => mail_to(@user.email),           |
-      :descr => _("The email of the user.")     |
-    }]).html_safe                               |
+  %tbody
+    %tr
+      %td.tdt= User.human_attribute_name(:name)
+      %td= @user.name
+    %tr
+      %td.tdd{colspan: 2}
+        = _("The real name of the user.")
+    %tr
+      %td.tdt= User.human_attribute_name(:email)
+      %td= mail_to @user.email
+    %tr
+      %td.tdd{colspan: 2}
+        = _("The email of the user.")
 = DesignBox.boxb
-%br
-= DesignBox.boxt(_("Tasks"), 1000)
+
+%br/
+
+.tasks-filter-button-container{style: "display: #{params[:q] ? "none" : "block"}"}
+  = link_to _("Filter"), "#", class: ["button", "tasks-filter-button"]
+
+.tasks-filter{style: "display: #{params[:q] ? "block" : "none"}"}
+  = DesignBox.boxt _("Filter"), 550
+  = simple_search_form_for @ransack, @ransack_params do |f|
+    = f.input :name_cont
+    = f.input :state_eq_any, :as => :check_boxes, :collection => Task.translated_states.invert
+    = f.input :project_name_cont
+    = f.input :project_organization_name_cont
+    = f.submit _("Search")
+    = link_to _("Hide filter"), "#", class: ["button", "tasks-hide-filter-button"]
+  = DesignBox.boxb
+  %br/
+
+= DesignBox.boxt _("Tasks"), 1000
 %table.list
   %thead
     %tr
-      %th= Task.model_name.human
-      %th= Task.human_attribute_name(:state)
-      %th= Task.human_attribute_name(:created_at)
-      %th= Project.model_name.human
-      %th= Organization.model_name.human
+      %th= sort_link @ransack, :name, Task.model_name.human
+      %th= sort_link @ransack, :state
+      %th= sort_link @ransack, :created_at
+      %th= sort_link @ransack, :project_name, Project.model_name.human
+      %th= sort_link @ransack, :project_organization_name, Organization.model_name.human
   %tbody
     - count = 0
-    - @user.tasks.includes(:project => :organization).order(:created_at).each do |task|
+    - @tasks.each do |task|
     - next if !can?(:show, task)
     - count += 1
       %tr
@@ -46,3 +66,6 @@
         %td.error{:colspan => "2"}
           = _("No tasks were found for this user.")
 = DesignBox.boxb
+
+%br/
+= will_paginate @tasks

@@ -12,6 +12,15 @@ class UsersController < ApplicationController
     render :partial => "roles", :layout => false
   end
   
+  def show
+    @ransack_params = params[:q] || {}
+    @ransack = @user.tasks.ransack(@ransack_params)
+    
+    @tasks = @ransack.result.includes(:project => :organization)
+    @tasks = @tasks.order(:created_at).reverse_order unless @ransack_params[:s]
+    @tasks = @tasks.paginate(:page => params[:page])
+  end
+  
   def new
     @user = User.new
   end
