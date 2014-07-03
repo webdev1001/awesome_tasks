@@ -22,7 +22,7 @@
 //= require ckeditor_awesometasks_config
 //= require ckeditor/config
 //= require init
-//= require customers
+//= require organizations
 //= require comments
 //= require locales
 //= require projects

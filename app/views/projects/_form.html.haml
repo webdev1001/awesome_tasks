@@ -4,7 +4,7 @@
   = f.input :deadline_at
   = f.input :price_per_hour
   = f.input :price_per_hour_transport
-  = f.input :customer_id, :collection => Customer.order(:name)
+  = f.input :organization_id, :collection => Organization.order(:name)
   = f.cktext_area :description
   
   - unless @project.new_record?

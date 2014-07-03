@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-customer = Customer.find_or_initialize_by(:name => "Test Customer")
-customer.save!
+organization = Organization.find_or_initialize_by(:name => "Test Organization")
+organization.save!
 
 project = Project.find_or_initialize_by(:name => "Test Project")
 project.save!

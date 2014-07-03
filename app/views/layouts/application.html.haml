@@ -35,7 +35,7 @@
             .main_menu_outer
               .main_menu_inner
                 = link_to _("Frontpage"), root_path if signed_in?
-                = link_to Customer.model_name.human(:count => 2), customers_path if can? :index, Customer
+                = link_to Organization.model_name.human(:count => 2), organizations_path if can? :index, Organization
                 = link_to Project.model_name.human(:count => 2), projects_path if can? :index, Project
                 = link_to Task.model_name.human(:count => 2), tasks_path if can? :index, Task
                 = link_to User.model_name.human(:count => 2), users_path if can? :index, User

@@ -22,7 +22,7 @@ private
   def administrator
     can :admin, :admin
     can :manage, Comment
-    can :manage, Customer
+    can :manage, Organization
     can :manage, Comment
     can :manage, Invoice
     can :manage, InvoiceLine do |invoice_line|
@@ -38,7 +38,7 @@ private
     can :manage, UserRole
   end
   
-  def customer_administrator
+  def organization_administrator
     
   end
   

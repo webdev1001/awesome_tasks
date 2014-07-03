@@ -36,10 +36,10 @@ namespace :migrate_database do
         })
       end
       
-      db.select("Customer", nil, "orderby" => "id") do |customer_orig|
-        puts "Migrating customer #{customer_orig[:id]}"
-        customer = Customer.find_or_initialize_by(:id => customer_orig[:id])
-        MigrateHelper.assign(customer_orig, customer, transactioner, {
+      db.select("Organization", nil, "orderby" => "id") do |organization_orig|
+        puts "Migrating organization #{organization_orig[:id]}"
+        organization = Organization.find_or_initialize_by(:id => organization_orig[:id])
+        MigrateHelper.assign(organization_orig, organization, transactioner, {
           :name => :name,
           :date_added => :created_at
         })
@@ -50,7 +50,7 @@ namespace :migrate_database do
         project = Project.find_or_initialize_by(:id => project_orig[:id])
         MigrateHelper.assign(project_orig, project, transactioner, {
           :name => :name,
-          :customer_id => :customer_id,
+          :organization_id => :organization_id,
           :descr => :description,
           :added_date => :created_at,
           :added_user_id => :user_added_id,

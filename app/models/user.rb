@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :project_autoassigned_users, :dependent => :destroy
   has_many :user_roles, :dependent => :destroy
   has_many :user_task_list_links, :dependent => :destroy
-  has_many :customers, :through => :projects
+  has_many :organizations, :through => :projects
   
   validates_presence_of :email
   validates_uniqueness_of :email
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     return "en"
   end
   
-  #A list of all relevant users for this user (from the same customer).
+  #A list of all relevant users for this user (from the same organization).
   def visible_users
     project_ids = projects.map{ |project| project.id }
     
@@ -54,8 +54,8 @@ class User < ActiveRecord::Base
     user_roles.where(:role => "administrator").any?
   end
   
-  def customer_admin?
-    user_roles.where(:role => "customer_administrator").any?
+  def organization_admin?
+    user_roles.where(:role => "organization_administrator").any?
   end
   
   def users_with_access_to

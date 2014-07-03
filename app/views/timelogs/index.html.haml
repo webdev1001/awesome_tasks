@@ -46,13 +46,13 @@
         %th= Timelog.human_attribute_name(:date)
         %th= Task.model_name.human
         %th= Project.model_name.human
-        %th= Customer.model_name.human
+        %th= Organization.model_name.human
         %th= Timelog.human_attribute_name(:invoiced)
         %th= "#{Timelog.human_attribute_name(:time)} / #{_("Transport")}"
         %th= Timelog.human_attribute_name(:transport_length)
     %tbody
       - tlogs_sorted = {}
-      - @timelogs.includes(:user, :task => {:project => :customer}).find_each do |tlog|
+      - @timelogs.includes(:user, :task => {:project => :organization}).find_each do |tlog|
         - dbt = Baza::Dbtime.new(time_as_string(tlog.time))
         - dbt_transport = Baza::Dbtime.new(time_as_string(tlog.time_transport))
         - tlogs_sorted[tlog.task] = [] if !tlogs_sorted.has_key?(tlog.task)
@@ -63,7 +63,7 @@
           %td= l(tlog.date)
           %td= link_to_task tlog.task
           %td= link_to_project tlog.task.project if tlog.task
-          %td= link_to_customer tlog.task.project.customer if tlog.task
+          %td= link_to_organization tlog.task.project.organization if tlog.task
           %td= tlog.invoiced? ? _("Yes") : _("No")
           %td
             = format_number dbt.hours_total, :precision => 1
@@ -78,8 +78,8 @@
   
   %br
   
-  = DesignBox.boxt(_("Customer message"))
-  %table#table_customer_message.list
+  = DesignBox.boxt(_("Organization message"))
+  %table#table_organization_message.list
     %thead
       %tr
         %th= "#{_("Date")} / #{_("Hours")}"

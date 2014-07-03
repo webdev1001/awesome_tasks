@@ -3,8 +3,8 @@
   = f.input :invoice_no
   = f.input :date
   = f.input :payment_at
-  = f.input :creditor_id, :collection => Customer.all.order(:name), :label => Invoice.human_attribute_name(:creditor)
-  = f.input :customer_id, :collection => Customer.all.order(:name), :label => Invoice.human_attribute_name(:customer)
+  = f.input :creditor_id, :collection => Organization.all.order(:name), :label => Invoice.human_attribute_name(:creditor)
+  = f.input :organization_id, :collection => Organization.all.order(:name), :label => Invoice.human_attribute_name(:organization)
   = f.input :invoice_type, :collection => Invoice.translated_invoice_types
   = f.input :amount
   = f.submit _("Save")

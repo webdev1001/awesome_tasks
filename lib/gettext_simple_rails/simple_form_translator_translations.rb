@@ -55,36 +55,6 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.hints.comment.updated_at')
     #. Default value: 
-    _('simple_form.hints.customer.id')
-    #. Default value: 
-    _('simple_form.hints.customer.name')
-    #. Default value: 
-    _('simple_form.hints.customer.created_at')
-    #. Default value: 
-    _('simple_form.hints.customer.updated_at')
-    #. Default value: 
-    _('simple_form.hints.customer.email')
-    #. Default value: 
-    _('simple_form.hints.customer.vat_no')
-    #. Default value: 
-    _('simple_form.hints.customer.payment_info')
-    #. Default value: 
-    _('simple_form.hints.customer.delivery_address')
-    #. Default value: 
-    _('simple_form.hints.customer.delivery_zip_code')
-    #. Default value: 
-    _('simple_form.hints.customer.delivery_city')
-    #. Default value: 
-    _('simple_form.hints.customer.delivery_country')
-    #. Default value: 
-    _('simple_form.hints.customer.invoice_address')
-    #. Default value: 
-    _('simple_form.hints.customer.invoice_zip_code')
-    #. Default value: 
-    _('simple_form.hints.customer.invoice_city')
-    #. Default value: 
-    _('simple_form.hints.customer.invoice_country')
-    #. Default value: 
     _('simple_form.hints.invoice.id')
     #. Default value: 
     _('simple_form.hints.invoice.date')
@@ -95,7 +65,7 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.hints.invoice.amount')
     #. Default value: 
-    _('simple_form.hints.invoice.customer_id')
+    _('simple_form.hints.invoice.organization_id')
     #. Default value: 
     _('simple_form.hints.invoice.user_id')
     #. Default value: 
@@ -121,9 +91,43 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.hints.invoice_line.updated_at')
     #. Default value: 
+    _('simple_form.hints.organization.id')
+    #. Default value: 
+    _('simple_form.hints.organization.name')
+    #. Default value: 
+    _('simple_form.hints.organization.created_at')
+    #. Default value: 
+    _('simple_form.hints.organization.updated_at')
+    #. Default value: 
+    _('simple_form.hints.organization.email')
+    #. Default value: 
+    _('simple_form.hints.organization.vat_no')
+    #. Default value: 
+    _('simple_form.hints.organization.payment_info')
+    #. Default value: 
+    _('simple_form.hints.organization.delivery_address')
+    #. Default value: 
+    _('simple_form.hints.organization.delivery_zip_code')
+    #. Default value: 
+    _('simple_form.hints.organization.delivery_city')
+    #. Default value: 
+    _('simple_form.hints.organization.delivery_country')
+    #. Default value: 
+    _('simple_form.hints.organization.invoice_address')
+    #. Default value: 
+    _('simple_form.hints.organization.invoice_zip_code')
+    #. Default value: 
+    _('simple_form.hints.organization.invoice_city')
+    #. Default value: 
+    _('simple_form.hints.organization.invoice_country')
+    #. Default value: 
+    _('simple_form.hints.organization.customer')
+    #. Default value: 
+    _('simple_form.hints.organization.creditor')
+    #. Default value: 
     _('simple_form.hints.project.id')
     #. Default value: 
-    _('simple_form.hints.project.customer_id')
+    _('simple_form.hints.project.organization_id')
     #. Default value: 
     _('simple_form.hints.project.user_added_id')
     #. Default value: 
@@ -331,36 +335,6 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.placeholders.comment.updated_at')
     #. Default value: 
-    _('simple_form.placeholders.customer.id')
-    #. Default value: 
-    _('simple_form.placeholders.customer.name')
-    #. Default value: 
-    _('simple_form.placeholders.customer.created_at')
-    #. Default value: 
-    _('simple_form.placeholders.customer.updated_at')
-    #. Default value: 
-    _('simple_form.placeholders.customer.email')
-    #. Default value: 
-    _('simple_form.placeholders.customer.vat_no')
-    #. Default value: 
-    _('simple_form.placeholders.customer.payment_info')
-    #. Default value: 
-    _('simple_form.placeholders.customer.delivery_address')
-    #. Default value: 
-    _('simple_form.placeholders.customer.delivery_zip_code')
-    #. Default value: 
-    _('simple_form.placeholders.customer.delivery_city')
-    #. Default value: 
-    _('simple_form.placeholders.customer.delivery_country')
-    #. Default value: 
-    _('simple_form.placeholders.customer.invoice_address')
-    #. Default value: 
-    _('simple_form.placeholders.customer.invoice_zip_code')
-    #. Default value: 
-    _('simple_form.placeholders.customer.invoice_city')
-    #. Default value: 
-    _('simple_form.placeholders.customer.invoice_country')
-    #. Default value: 
     _('simple_form.placeholders.invoice.id')
     #. Default value: 
     _('simple_form.placeholders.invoice.date')
@@ -371,7 +345,7 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.placeholders.invoice.amount')
     #. Default value: 
-    _('simple_form.placeholders.invoice.customer_id')
+    _('simple_form.placeholders.invoice.organization_id')
     #. Default value: 
     _('simple_form.placeholders.invoice.user_id')
     #. Default value: 
@@ -397,9 +371,43 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.placeholders.invoice_line.updated_at')
     #. Default value: 
+    _('simple_form.placeholders.organization.id')
+    #. Default value: 
+    _('simple_form.placeholders.organization.name')
+    #. Default value: 
+    _('simple_form.placeholders.organization.created_at')
+    #. Default value: 
+    _('simple_form.placeholders.organization.updated_at')
+    #. Default value: 
+    _('simple_form.placeholders.organization.email')
+    #. Default value: 
+    _('simple_form.placeholders.organization.vat_no')
+    #. Default value: 
+    _('simple_form.placeholders.organization.payment_info')
+    #. Default value: 
+    _('simple_form.placeholders.organization.delivery_address')
+    #. Default value: 
+    _('simple_form.placeholders.organization.delivery_zip_code')
+    #. Default value: 
+    _('simple_form.placeholders.organization.delivery_city')
+    #. Default value: 
+    _('simple_form.placeholders.organization.delivery_country')
+    #. Default value: 
+    _('simple_form.placeholders.organization.invoice_address')
+    #. Default value: 
+    _('simple_form.placeholders.organization.invoice_zip_code')
+    #. Default value: 
+    _('simple_form.placeholders.organization.invoice_city')
+    #. Default value: 
+    _('simple_form.placeholders.organization.invoice_country')
+    #. Default value: 
+    _('simple_form.placeholders.organization.customer')
+    #. Default value: 
+    _('simple_form.placeholders.organization.creditor')
+    #. Default value: 
     _('simple_form.placeholders.project.id')
     #. Default value: 
-    _('simple_form.placeholders.project.customer_id')
+    _('simple_form.placeholders.project.organization_id')
     #. Default value: 
     _('simple_form.placeholders.project.user_added_id')
     #. Default value: 

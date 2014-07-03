@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701082832) do
+ActiveRecord::Schema.define(version: 20140703072528) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -41,23 +41,6 @@ ActiveRecord::Schema.define(version: 20140701082832) do
 
   add_index "comments", ["resource_type", "resource_id"], name: "index_comments_on_resource_type_and_resource_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
-  create_table "customers", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email"
-    t.string   "vat_no"
-    t.text     "payment_info"
-    t.string   "delivery_address"
-    t.string   "delivery_zip_code"
-    t.string   "delivery_city"
-    t.string   "delivery_country"
-    t.string   "invoice_address"
-    t.string   "invoice_zip_code"
-    t.string   "invoice_city"
-    t.string   "invoice_country"
-  end
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -92,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140701082832) do
     t.string   "invoice_no"
     t.string   "invoice_type"
     t.float    "amount"
-    t.integer  "customer_id"
+    t.integer  "organization_id"
     t.integer  "user_id"
     t.date     "payment_at"
     t.datetime "created_at"
@@ -101,9 +84,31 @@ ActiveRecord::Schema.define(version: 20140701082832) do
   end
 
   add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
-  add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
   add_index "invoices", ["invoice_no"], name: "index_invoices_on_invoice_no", using: :btree
+  add_index "invoices", ["organization_id"], name: "index_invoices_on_organization_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+    t.string   "vat_no"
+    t.text     "payment_info"
+    t.string   "delivery_address"
+    t.string   "delivery_zip_code"
+    t.string   "delivery_city"
+    t.string   "delivery_country"
+    t.string   "invoice_address"
+    t.string   "invoice_zip_code"
+    t.string   "invoice_city"
+    t.string   "invoice_country"
+    t.boolean  "customer"
+    t.boolean  "creditor"
+  end
+
+  add_index "organizations", ["creditor"], name: "index_organizations_on_creditor", using: :btree
+  add_index "organizations", ["customer"], name: "index_organizations_on_customer", using: :btree
 
   create_table "project_autoassigned_users", force: true do |t|
     t.integer  "project_id"
@@ -116,7 +121,7 @@ ActiveRecord::Schema.define(version: 20140701082832) do
   add_index "project_autoassigned_users", ["user_id"], name: "index_project_autoassigned_users_on_user_id", using: :btree
 
   create_table "projects", force: true do |t|
-    t.integer  "customer_id"
+    t.integer  "organization_id"
     t.integer  "user_added_id"
     t.string   "name"
     t.text     "description"
@@ -127,7 +132,7 @@ ActiveRecord::Schema.define(version: 20140701082832) do
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["organization_id"], name: "index_projects_on_organization_id", using: :btree
   add_index "projects", ["user_added_id"], name: "index_projects_on_user_added_id", using: :btree
 
   create_table "sessions", force: true do |t|
