@@ -1,0 +1,31 @@
+- content_for(:header_title){ _("Search for organizations") }
+
+= DesignBox.boxt _("Enter criteria"), 350
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :name_cont
+  = link_to _("Add new organization"), new_organization_path, :class => "button"
+  = f.submit _("Search")
+= DesignBox.boxb
+
+%br/
+
+= DesignBox.boxt _("Results"), 500
+%table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :name
+      %th= sort_link @ransack, :email
+  %tbody
+    - @organizations.each do |organization|
+      %tr
+        %td= link_to_organization organization
+        %td= mail_to organization.email if organization.email.present?
+    - if @organizations.none?
+      %tr
+        %td{:colspan => 1, :class => "error"}
+          = _("No organizations were found.")
+= DesignBox.boxb
+
+%br/
+
+= will_paginate @organizations

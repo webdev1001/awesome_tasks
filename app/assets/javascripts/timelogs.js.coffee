@@ -12,7 +12,7 @@ $ ->
       return unless confirm(button.data("confirm-msg"))
       
       tlog_ids = []
-      $("input[type=hidden]", $("#table_customer_message")).each ->
+      $("input[type=hidden]", $("#table_organization_message")).each ->
         id = $(this).attr("name").substring(9)
         tlog_ids.push(id)
       

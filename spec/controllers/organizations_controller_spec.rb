@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe CustomersController do
-  let(:customer){ create :customer }
+describe OrganizationsController do
+  let(:organization){ create :organization }
   let(:admin){ create :user_admin}
   
   before do
@@ -11,23 +11,23 @@ describe CustomersController do
   render_views
   
   it "#show" do
-    get :show, :id => customer.id
+    get :show, :id => organization.id
     response.should be_success
   end
   
   it "#index" do
-    customer
+    organization
     get :index
     response.should be_success
   end
   
   it "#destroy" do
-    delete :destroy, :id => customer.id
-    response.location.should eq customers_url
+    delete :destroy, :id => organization.id
+    response.location.should eq organizations_url
   end
   
   it "#edit" do
-    get :edit, :id => customer.id
+    get :edit, :id => organization.id
     response.should be_success
   end
 end

@@ -32,7 +32,7 @@ AwesomeTasks::Application.routes.draw do
   
   resources :task_assigned_users
   
-  resources :customers
+  resources :organizations
   
   resources :projects do
     get :assigned_users, :on => :member

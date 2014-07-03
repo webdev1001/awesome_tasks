@@ -1,8 +1,8 @@
 class Invoice < ActiveRecord::Base
   include ::ViewRenderer # Used for PDF generation.
   
-  belongs_to :creditor, :class_name => "Customer"
-  belongs_to :customer
+  belongs_to :creditor, :class_name => "Organization"
+  belongs_to :organization
   belongs_to :user
   
   has_many :invoice_lines, :dependent => :destroy

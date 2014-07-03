@@ -39,16 +39,16 @@
           %tbody
             - [:vat_no, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
               %tr
-                %td= Customer.human_attribute_name(column)
-                %td= invoice.customer.try(:__send__, column)
+                %td= Organization.human_attribute_name(column)
+                %td= invoice.organization.try(:__send__, column)
         
-        %h2= invoice.customer.name
+        %h2= invoice.organization.name
         %table
           %tbody
             - [:vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
               %tr
-                %td= Customer.human_attribute_name(column)
-                %td= invoice.customer.try(:__send__, column)
+                %td= Organization.human_attribute_name(column)
+                %td= invoice.organization.try(:__send__, column)
       %td{:style => "vertical-align: top;"}
         %h2= Invoice.model_name.human
         %table
@@ -75,7 +75,7 @@
               %td= _("Total")
               %td= format_number invoice.amount_total
         
-        %h2= Customer.human_attribute_name(:payment_info)
+        %h2= Organization.human_attribute_name(:payment_info)
         .payment_info= simple_format invoice.creditor.payment_info
 
 %h2= InvoiceLine.model_name.human(:count => 2)

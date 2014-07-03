@@ -1,5 +1,5 @@
-class AddPaymentInfoToCustomers < ActiveRecord::Migration
+class AddPaymentInfoToOrganizations < ActiveRecord::Migration
   def change
-    add_column :customers, :payment_info, :text, :after => :vat_no
+    add_column :organizations, :payment_info, :text, :after => :vat_no
   end
 end

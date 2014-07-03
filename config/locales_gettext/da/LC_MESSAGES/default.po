@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AwesomeTasks\n"
-"POT-Creation-Date: 2014-07-01 10:40+0100\n"
+"POT-Creation-Date: 2014-07-03 09:16+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kasper Johansen <k@spernj.org>\n"
 "Language-Team: \n"
@@ -624,7 +624,7 @@ msgstr "må ikke være tom"
 
 #. Default value: is invalid
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:18
-msgid "activerecord.errors.models.customer.attributes.email.invalid"
+msgid "activerecord.errors.models.organization.attributes.email.invalid"
 msgstr "er ikke gyldig"
 
 #. Default value: cannot be blank
@@ -669,7 +669,7 @@ msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
 #: lib/gettext_simple_rails/active_record_validations_translator_translations.rb:36
-msgid "activerecord.errors.models.project.attributes.customer.blank"
+msgid "activerecord.errors.models.project.attributes.organization.blank"
 msgstr "må ikke være tom"
 
 #. Default value: cannot be blank
@@ -934,77 +934,77 @@ msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:58
-msgid "simple_form.hints.customer.id"
+msgid "simple_form.hints.organization.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:60
-msgid "simple_form.hints.customer.name"
-msgstr "En del af den kundes navn, som du leder efter."
+msgid "simple_form.hints.organization.name"
+msgstr "En del af den organisations navn, som du leder efter."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:62
-msgid "simple_form.hints.customer.created_at"
+msgid "simple_form.hints.organization.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:64
-msgid "simple_form.hints.customer.updated_at"
+msgid "simple_form.hints.organization.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:66
-msgid "simple_form.hints.customer.email"
+msgid "simple_form.hints.organization.email"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:68
-msgid "simple_form.hints.customer.vat_no"
+msgid "simple_form.hints.organization.vat_no"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:70
-msgid "simple_form.hints.customer.payment_info"
+msgid "simple_form.hints.organization.payment_info"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:72
-msgid "simple_form.hints.customer.delivery_address"
+msgid "simple_form.hints.organization.delivery_address"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:74
-msgid "simple_form.hints.customer.delivery_zip_code"
+msgid "simple_form.hints.organization.delivery_zip_code"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:76
-msgid "simple_form.hints.customer.delivery_city"
+msgid "simple_form.hints.organization.delivery_city"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:78
-msgid "simple_form.hints.customer.delivery_country"
+msgid "simple_form.hints.organization.delivery_country"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:80
-msgid "simple_form.hints.customer.invoice_address"
+msgid "simple_form.hints.organization.invoice_address"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:82
-msgid "simple_form.hints.customer.invoice_zip_code"
+msgid "simple_form.hints.organization.invoice_zip_code"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:84
-msgid "simple_form.hints.customer.invoice_city"
+msgid "simple_form.hints.organization.invoice_city"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:86
-msgid "simple_form.hints.customer.invoice_country"
+msgid "simple_form.hints.organization.invoice_country"
 msgstr ""
 
 #. Default value:
@@ -1034,7 +1034,7 @@ msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:98
-msgid "simple_form.hints.invoice.customer_id"
+msgid "simple_form.hints.invoice.organization_id"
 msgstr ""
 
 #. Default value:
@@ -1104,8 +1104,8 @@ msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:126
-msgid "simple_form.hints.project.customer_id"
-msgstr "The customer the project belongs to."
+msgid "simple_form.hints.project.organization_id"
+msgstr "The organization the project belongs to."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:128
@@ -1624,77 +1624,77 @@ msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:334
-msgid "simple_form.placeholders.customer.id"
+msgid "simple_form.placeholders.organization.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:336
-msgid "simple_form.placeholders.customer.name"
+msgid "simple_form.placeholders.organization.name"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:338
-msgid "simple_form.placeholders.customer.created_at"
+msgid "simple_form.placeholders.organization.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:340
-msgid "simple_form.placeholders.customer.updated_at"
+msgid "simple_form.placeholders.organization.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:342
-msgid "simple_form.placeholders.customer.email"
+msgid "simple_form.placeholders.organization.email"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:344
-msgid "simple_form.placeholders.customer.vat_no"
+msgid "simple_form.placeholders.organization.vat_no"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:346
-msgid "simple_form.placeholders.customer.payment_info"
+msgid "simple_form.placeholders.organization.payment_info"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:348
-msgid "simple_form.placeholders.customer.delivery_address"
+msgid "simple_form.placeholders.organization.delivery_address"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:350
-msgid "simple_form.placeholders.customer.delivery_zip_code"
+msgid "simple_form.placeholders.organization.delivery_zip_code"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:352
-msgid "simple_form.placeholders.customer.delivery_city"
+msgid "simple_form.placeholders.organization.delivery_city"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:354
-msgid "simple_form.placeholders.customer.delivery_country"
+msgid "simple_form.placeholders.organization.delivery_country"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:356
-msgid "simple_form.placeholders.customer.invoice_address"
+msgid "simple_form.placeholders.organization.invoice_address"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:358
-msgid "simple_form.placeholders.customer.invoice_zip_code"
+msgid "simple_form.placeholders.organization.invoice_zip_code"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:360
-msgid "simple_form.placeholders.customer.invoice_city"
+msgid "simple_form.placeholders.organization.invoice_city"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:362
-msgid "simple_form.placeholders.customer.invoice_country"
+msgid "simple_form.placeholders.organization.invoice_country"
 msgstr ""
 
 #. Default value:
@@ -1724,7 +1724,7 @@ msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:374
-msgid "simple_form.placeholders.invoice.customer_id"
+msgid "simple_form.placeholders.invoice.organization_id"
 msgstr ""
 
 #. Default value:
@@ -1794,7 +1794,7 @@ msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:402
-msgid "simple_form.placeholders.project.customer_id"
+msgid "simple_form.placeholders.project.organization_id"
 msgstr ""
 
 #. Default value:
@@ -2160,7 +2160,7 @@ msgstr "Projektet som opgaven hører under."
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:528
 #, fuzzy
 msgid "simple_form.placeholders.user_project_link.user_id"
-msgstr "The customer the project belongs to."
+msgstr "The organization the project belongs to."
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:530
@@ -2375,10 +2375,10 @@ msgstr "Brugerroller"
 msgid "activerecord.attributes.user.user_task_list_links"
 msgstr "Opgave opgaveliste links"
 
-#. Default value: customers
+#. Default value: organizations
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:58
-msgid "activerecord.attributes.user.customers"
-msgstr "Kunder"
+msgid "activerecord.attributes.user.organizations"
+msgstr "Organisationer"
 
 #. Default value: id
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:60
@@ -2432,92 +2432,92 @@ msgstr "Ressource"
 
 #. Default value: id
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:80
-msgid "activerecord.attributes.customer.id"
+msgid "activerecord.attributes.organization.id"
 msgstr "ID"
 
 #. Default value: name
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:82
-msgid "activerecord.attributes.customer.name"
+msgid "activerecord.attributes.organization.name"
 msgstr "Navn"
 
 #. Default value: created_at
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:84
-msgid "activerecord.attributes.customer.created_at"
+msgid "activerecord.attributes.organization.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:86
-msgid "activerecord.attributes.customer.updated_at"
+msgid "activerecord.attributes.organization.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: email
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:88
-msgid "activerecord.attributes.customer.email"
+msgid "activerecord.attributes.organization.email"
 msgstr "Email"
 
 #. Default value: vat_no
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:90
-msgid "activerecord.attributes.customer.vat_no"
+msgid "activerecord.attributes.organization.vat_no"
 msgstr "CVR"
 
 #. Default value: payment_info
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:92
-msgid "activerecord.attributes.customer.payment_info"
+msgid "activerecord.attributes.organization.payment_info"
 msgstr "Betalingsinformation"
 
 #. Default value: delivery_address
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:94
-msgid "activerecord.attributes.customer.delivery_address"
+msgid "activerecord.attributes.organization.delivery_address"
 msgstr "Leveringsadresse"
 
 #. Default value: delivery_zip_code
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:96
-msgid "activerecord.attributes.customer.delivery_zip_code"
+msgid "activerecord.attributes.organization.delivery_zip_code"
 msgstr "Leverings postnummer"
 
 #. Default value: delivery_city
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:98
-msgid "activerecord.attributes.customer.delivery_city"
+msgid "activerecord.attributes.organization.delivery_city"
 msgstr "Leverings by"
 
 #. Default value: delivery_country
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:100
-msgid "activerecord.attributes.customer.delivery_country"
+msgid "activerecord.attributes.organization.delivery_country"
 msgstr "Leverings land"
 
 #. Default value: invoice_address
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:102
-msgid "activerecord.attributes.customer.invoice_address"
+msgid "activerecord.attributes.organization.invoice_address"
 msgstr "Faktura adresse"
 
 #. Default value: invoice_zip_code
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:104
-msgid "activerecord.attributes.customer.invoice_zip_code"
+msgid "activerecord.attributes.organization.invoice_zip_code"
 msgstr "Faktura postnummer"
 
 #. Default value: invoice_city
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:106
-msgid "activerecord.attributes.customer.invoice_city"
+msgid "activerecord.attributes.organization.invoice_city"
 msgstr "Faktura by"
 
 #. Default value: invoice_country
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:108
-msgid "activerecord.attributes.customer.invoice_country"
+msgid "activerecord.attributes.organization.invoice_country"
 msgstr "Faktura land"
 
 #. Default value: projects
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:110
-msgid "activerecord.attributes.customer.projects"
+msgid "activerecord.attributes.organization.projects"
 msgstr "Projekter"
 
 #. Default value: invoices
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:112
-msgid "activerecord.attributes.customer.invoices"
+msgid "activerecord.attributes.organization.invoices"
 msgstr "Fakturaer"
 
 #. Default value: credit_invoices
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:114
-msgid "activerecord.attributes.customer.credit_invoices"
+msgid "activerecord.attributes.organization.credit_invoices"
 msgstr "Kredit fakturaer"
 
 #. Default value: id
@@ -2545,10 +2545,10 @@ msgstr "Fakturatype"
 msgid "activerecord.attributes.invoice.amount"
 msgstr "Beløb"
 
-#. Default value: customer_id
+#. Default value: organization_id
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:126
-msgid "activerecord.attributes.invoice.customer_id"
-msgstr "Kunde ID"
+msgid "activerecord.attributes.invoice.organization_id"
+msgstr "Organisations ID"
 
 #. Default value: user_id
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:128
@@ -2580,10 +2580,10 @@ msgstr "Kreditor ID"
 msgid "activerecord.attributes.invoice.creditor"
 msgstr "Kreditor"
 
-#. Default value: customer
+#. Default value: organization
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:140
-msgid "activerecord.attributes.invoice.customer"
-msgstr "Kunde"
+msgid "activerecord.attributes.invoice.organization"
+msgstr "Organisation"
 
 #. Default value: user
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:142
@@ -2645,10 +2645,10 @@ msgstr "Faktura"
 msgid "activerecord.attributes.project.id"
 msgstr "ID"
 
-#. Default value: customer_id
+#. Default value: organization_id
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:166
-msgid "activerecord.attributes.project.customer_id"
-msgstr "Kunde ID"
+msgid "activerecord.attributes.project.organization_id"
+msgstr "Organisations ID"
 
 #. Default value: user_added_id
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:168
@@ -2695,10 +2695,10 @@ msgstr "Opdateret d."
 msgid "activerecord.attributes.project.added_user"
 msgstr "Tilføjet bruger"
 
-#. Default value: customer
+#. Default value: organization
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:186
-msgid "activerecord.attributes.project.customer"
-msgstr "Kunde"
+msgid "activerecord.attributes.project.organization"
+msgstr "Organisation"
 
 #. Default value: tasks
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:188
@@ -3205,15 +3205,15 @@ msgstr "Kommentar"
 msgid "activerecord.models.comment.other"
 msgstr "Kommentarer"
 
-#. Default value: Customer
+#. Default value: Organization
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:390
-msgid "activerecord.models.customer.one"
-msgstr "Kunde"
+msgid "activerecord.models.organization.one"
+msgstr "Organisation"
 
-#. Default value: Customer
+#. Default value: Organization
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:392
-msgid "activerecord.models.customer.other"
-msgstr "Kunder"
+msgid "activerecord.models.organization.other"
+msgstr "Organisationer"
 
 #. Default value: Invoice
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:394
@@ -3385,10 +3385,6 @@ msgstr "ingen bruger"
 msgid "no name"
 msgstr "intet navn"
 
-#: app/helpers/customer_helper.rb:3
-msgid "no customer"
-msgstr "ingen kunde"
-
 #: app/helpers/application_helper.rb:7
 msgid "Choose:"
 msgstr "Vælg:"
@@ -3413,13 +3409,17 @@ msgstr "intet projekt"
 msgid "File %{id}"
 msgstr "Fil %{id}"
 
+#: app/helpers/organization_helper.rb:3
+msgid "no organization"
+msgstr "ingen organisation"
+
 #: app/models/user_role.rb:9
 msgid "Administrator"
 msgstr "Administration"
 
 #: app/models/user_role.rb:10
-msgid "Customer administrator"
-msgstr "Kunde administrator"
+msgid "Organization administrator"
+msgstr "Organisations administrator"
 
 #: app/models/user_role.rb:25
 msgid "is not allowed: %{role}"
@@ -3509,30 +3509,30 @@ msgstr "Opgave #%1$s: %2$s"
 msgid "New comment from: %{author_name}"
 msgstr "Ny kommentar fra: %{author_name}"
 
-#: app/views/customers/update_id_per_obj.rhtml:3
+#: app/views/organizations/update_id_per_obj.rhtml:3
 msgid "You do not have permission to view this page."
 msgstr "Du har ikke adgang til at se den side."
 
-#: app/views/customers/update_id_per_obj.rhtml:27
+#: app/views/organizations/update_id_per_obj.rhtml:27
 msgid "Done"
 msgstr "Færdig"
 
-#: app/views/customers/update_id_per_obj.rhtml:30
+#: app/views/organizations/update_id_per_obj.rhtml:30
 msgid "Update comment IDs"
 msgstr "Opdateret kommentar IDer"
 
-#: app/views/customers/update_id_per_obj.rhtml:33
+#: app/views/organizations/update_id_per_obj.rhtml:33
 #: app/views/invoices/show.html.haml:69
 #: app/views/uploaded_files/_list_for_resource.html.haml:13
 #: app/views/projects/_autoassigned_users.html.haml:5
 #: app/views/projects/_assigned_users.html.haml:6
-#: app/views/projects/show.html.haml:6 app/views/customers/show.html.haml:3
-#: app/views/users/show.html.haml:3 app/views/users/_roles.html.haml:5
-#: app/views/tasks/_users.html.haml:5
+#: app/views/projects/show.html.haml:6
+#: app/views/organizations/show.html.haml:3 app/views/users/show.html.haml:3
+#: app/views/users/_roles.html.haml:5 app/views/tasks/_users.html.haml:5
 msgid "Actions"
 msgstr "Muligheder"
 
-#: app/views/customers/update_id_per_obj.rhtml:40
+#: app/views/organizations/update_id_per_obj.rhtml:40
 msgid "Update"
 msgstr "Opdater"
 
@@ -3540,9 +3540,10 @@ msgstr "Opdater"
 #: app/views/invoices/_form.html.haml:1 app/views/projects/_form.html.haml:1
 #: app/views/user_roles/_form.html.haml:1
 #: app/views/project_autoassigned_users/_form.html.haml:1
+#: app/views/organizations/_form.html.haml:1
 #: app/views/task_checks/_form.html.haml:2
-#: app/views/customers/_form.html.haml:1 app/views/timelogs/_form.html.haml:1
-#: app/views/users/_form.html.haml:1 app/views/devise/sessions/new.html.haml:4
+#: app/views/timelogs/_form.html.haml:1 app/views/users/_form.html.haml:1
+#: app/views/devise/sessions/new.html.haml:4
 #: app/views/devise/passwords/edit.html.haml:3
 #: app/views/devise/passwords/new.html.haml:3
 #: app/views/tasks/_form.html.haml:1
@@ -3555,8 +3556,8 @@ msgstr "Indtast detaljer"
 #: app/views/projects/_form.html.haml:18
 #: app/views/user_roles/_form.html.haml:5
 #: app/views/project_autoassigned_users/_form.html.haml:4
+#: app/views/organizations/_form.html.haml:28
 #: app/views/task_checks/_form.html.haml:9
-#: app/views/customers/_form.html.haml:28
 #: app/views/invoice_lines/_form.html.haml:6
 #: app/views/timelogs/_form.html.haml:10 app/views/users/_form.html.haml:15
 #: app/views/tasks/_form.html.haml:15
@@ -3593,7 +3594,8 @@ msgstr "Arbejdsstatus"
 
 #: app/views/workstatus/index.html.erb:19 app/views/invoices/index.html.haml:8
 #: app/views/uploaded_files/index.html.haml:3
-#: app/views/projects/index.html.haml:3 app/views/customers/index.html.haml:3
+#: app/views/projects/index.html.haml:3
+#: app/views/organizations/index.html.haml:3
 #: app/views/timelogs/index.html.haml:3
 #: app/views/users/_index_form.html.haml:1 app/views/tasks/index.html.haml:3
 msgid "Enter criteria"
@@ -3620,7 +3622,7 @@ msgstr "Filter"
 
 #: app/views/workstatus/index.html.erb:57
 #: app/views/uploaded_files/index.html.haml:13
-#: app/views/customers/index.html.haml:13
+#: app/views/organizations/index.html.haml:12
 #: app/views/timelogs/index.html.haml:40
 #: app/views/users/_index_results.html.haml:1
 #: app/views/tasks/index.html.haml:18
@@ -3723,8 +3725,8 @@ msgid "No tasks has been added to your list."
 msgstr "Der er ingen opgaver på din liste."
 
 #: app/views/invoices/_form.html.haml:13 app/views/projects/_form.html.haml:14
-#: app/views/customers/_form.html.haml:25 app/views/users/_form.html.haml:12
-#: app/views/tasks/_form.html.haml:12
+#: app/views/organizations/_form.html.haml:25
+#: app/views/users/_form.html.haml:12 app/views/tasks/_form.html.haml:12
 msgid "Show"
 msgstr "Vis"
 
@@ -3733,8 +3735,8 @@ msgstr "Vis"
 #: app/views/uploaded_files/_form.html.haml:10
 #: app/views/uploaded_files/_list_for_resource.html.haml:21
 #: app/views/projects/_form.html.haml:16
-#: app/views/task_checks/_form.html.haml:7
-#: app/views/customers/_form.html.haml:26 app/views/users/_form.html.haml:13
+#: app/views/organizations/_form.html.haml:26
+#: app/views/task_checks/_form.html.haml:7 app/views/users/_form.html.haml:13
 #: app/views/tasks/_form.html.haml:13 app/views/tasks/_timelogs.html.haml:12
 msgid "Delete"
 msgstr "Slet"
@@ -3744,10 +3746,10 @@ msgstr "Slet"
 #: app/views/uploaded_files/_form.html.haml:10
 #: app/views/uploaded_files/_list_for_resource.html.haml:21
 #: app/views/projects/_autoassigned_users.html.haml:10
-#: app/views/customers/_form.html.haml:26 app/views/users/_form.html.haml:11
-#: app/views/users/_form.html.haml:13 app/views/tasks/_form.html.haml:13
-#: app/views/tasks/_checks.html.haml:8 app/views/tasks/_users.html.haml:12
-#: app/views/tasks/show.html.haml:8
+#: app/views/organizations/_form.html.haml:26
+#: app/views/users/_form.html.haml:11 app/views/users/_form.html.haml:13
+#: app/views/tasks/_form.html.haml:13 app/views/tasks/_checks.html.haml:8
+#: app/views/tasks/_users.html.haml:12 app/views/tasks/show.html.haml:8
 msgid "Are you sure?"
 msgstr "Er du sikker?"
 
@@ -3772,7 +3774,7 @@ msgstr "PDF"
 #: app/views/invoices/show.html.haml:12
 #: app/views/uploaded_files/_form.html.haml:1
 #: app/views/uploaded_files/show.html.haml:8
-#: app/views/customers/show.html.haml:9
+#: app/views/organizations/show.html.haml:9
 #: app/views/invoice_lines/_form.html.haml:1
 msgid "Details"
 msgstr "Detaljer"
@@ -3938,7 +3940,8 @@ msgstr "Nyt projekt"
 msgid "Search for project"
 msgstr "Søg efter projekter"
 
-#: app/views/projects/index.html.haml:7 app/views/customers/index.html.haml:7
+#: app/views/projects/index.html.haml:7
+#: app/views/organizations/index.html.haml:7
 #: app/views/timelogs/index.html.haml:12
 #: app/views/users/_index_form.html.haml:10 app/views/tasks/index.html.haml:12
 msgid "Search"
@@ -3952,34 +3955,36 @@ msgstr "Der blev ikke fundet nogle projekter."
 msgid "New autoassigned user"
 msgstr "Ny autotildelt bruger"
 
+#: app/views/organizations/edit.html.haml:1
+#: app/views/organizations/show.html.haml:4
+msgid "Edit organization"
+msgstr "Rediger organisation"
+
+#: app/views/organizations/show.html.haml:1
+msgid "Show organization: %s"
+msgstr "Vis organisation: %s"
+
+#: app/views/organizations/show.html.haml:40
+msgid "No projects has been added for this organization."
+msgstr "Der er ikke tilføjet nogle projekter for denne organisation."
+
+#: app/views/organizations/new.html.haml:1
+#: app/views/organizations/index.html.haml:6
+msgid "Add new organization"
+msgstr "Tilføj ny organisation"
+
+#: app/views/organizations/index.html.haml:1
+msgid "Search for organizations"
+msgstr "Søg efter organisationer"
+
+#: app/views/organizations/index.html.haml:26
+msgid "No organizations were found."
+msgstr "Der blev ikke fundet nogle organisationer."
+
 #: app/views/frontpage/index.html.haml:1
 #: app/views/layouts/application.html.haml:37
 msgid "Frontpage"
 msgstr "Forside"
-
-#: app/views/customers/edit.html.haml:1 app/views/customers/show.html.haml:4
-msgid "Edit customer"
-msgstr "Rediger kunde"
-
-#: app/views/customers/show.html.haml:1
-msgid "Show customer: %s"
-msgstr "Vis kunde: %s"
-
-#: app/views/customers/show.html.haml:40
-msgid "No projects has been added for this customer."
-msgstr "Der er ikke tilføjet nogle projekter for denne kunde."
-
-#: app/views/customers/new.html.haml:1 app/views/customers/index.html.haml:6
-msgid "Add new customer"
-msgstr "Tilføj ny kunde"
-
-#: app/views/customers/index.html.haml:1
-msgid "Search for customers"
-msgstr "Søg efter kunder"
-
-#: app/views/customers/index.html.haml:26
-msgid "No customers were found."
-msgstr "Der blev ikke fundet nogle kunder."
 
 #: app/views/invoice_lines/edit.html.haml:1
 msgid "Edit invoice-line %{id}"
@@ -4039,8 +4044,8 @@ msgid "No timelogs were found."
 msgstr "Der blev ikke fundet nogle tidslogs."
 
 #: app/views/timelogs/index.html.haml:81
-msgid "Customer message"
-msgstr "Kundebesked"
+msgid "Organization message"
+msgstr "Organisationsbesked"
 
 #: app/views/timelogs/index.html.haml:87 app/views/tasks/show.html.haml:57
 msgid "Description"
@@ -4439,7 +4444,7 @@ msgstr "Søg efter opgaver"
 #~ msgid "That user is already assigned to that task."
 #~ msgstr "Den bruger er allerede tildelt den opgave."
 
-#~ msgid "Customers"
+#~ msgid "Organizations"
 #~ msgstr "Kunder"
 
 #~ msgid "Administration"
@@ -4469,7 +4474,7 @@ msgstr "Søg efter opgaver"
 #~ msgid "Transport length"
 #~ msgstr "Transportlængde"
 
-#~ msgid "Customer"
+#~ msgid "Organization"
 #~ msgstr "Kunde"
 
 #~ msgid "Time"

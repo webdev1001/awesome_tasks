@@ -7,7 +7,7 @@ A task system made for freelancers, making it easy to see all your tasks, log ti
 
 It also makes it easy writing documentation for invoices, showing all timelog descriptions and much more.
 
-Also supports customer access, so customers can write comments and feedback to various tasks.
+Also supports organization access, so organizations can write comments and feedback to various tasks.
 
 Written in Ruby on Rails.
 

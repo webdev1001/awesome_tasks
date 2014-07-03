@@ -1,6 +1,6 @@
-class CreateCustomers < ActiveRecord::Migration
+class CreateOrganizations < ActiveRecord::Migration
   def change
-    create_table :customers do |t|
+    create_table :organizations do |t|
       t.string :name
       t.timestamps
     end

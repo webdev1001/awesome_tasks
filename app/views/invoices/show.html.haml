@@ -37,11 +37,11 @@
       %td.tdt= _("Total")
       %td.align-right= format_number @invoice.amount_total
     %tr
-      %td.tdt= Invoice.human_attribute_name(:customer)
-      %td.align-right= link_to_customer @invoice.customer
+      %td.tdt= Invoice.human_attribute_name(:organization)
+      %td.align-right= link_to_organization @invoice.organization
     %tr
       %td.tdt= Invoice.human_attribute_name(:creditor)
-      %td.align-right= link_to_customer @invoice.creditor
+      %td.align-right= link_to_organization @invoice.creditor
     %tr
       %td.tdt= Invoice.human_attribute_name(:user)
       %td.align-right= link_to_user @invoice.user

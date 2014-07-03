@@ -7,7 +7,7 @@ class UserRole < ActiveRecord::Base
   def self.translated_roles
     {
       _("Administrator") => "administrator",
-      _("Customer administrator") => "customer_administrator"
+      _("Organization administrator") => "organization_administrator"
     }
   end
   

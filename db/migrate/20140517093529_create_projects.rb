@@ -1,7 +1,7 @@
 class CreateProjects < ActiveRecord::Migration
   def change
     create_table :projects do |t|
-      t.integer :customer_id
+      t.integer :organization_id
       t.integer :user_added_id
       t.string :name
       t.text :description
@@ -11,7 +11,7 @@ class CreateProjects < ActiveRecord::Migration
       t.timestamps
     end
     
-    add_index :projects, :customer_id
+    add_index :projects, :organization_id
     add_index :projects, :user_added_id
   end
 end
