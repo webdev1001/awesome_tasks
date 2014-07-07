@@ -5,6 +5,9 @@ class UsersController < ApplicationController
     @ransack_params = params[:q] || {}
     @ransack = User.ransack(@ransack_params)
     @users = @ransack.result.order(:name)
+    
+    @users = @users.where("users.id IN (?)", current_user.users_with_access_to.map(&:id))
+    
     render :index, :layout => false
   end
   
@@ -62,6 +65,15 @@ class UsersController < ApplicationController
     else
       flash[:error] = @user.errors.full_messages.join(". ")
       render :edit
+    end
+  end
+  
+  def destroy
+    if @user.destroy
+      redirect_to users_path
+    else
+      flash[:error] = @user.errors.full_messages.join(". ")
+      redirect_to edit_user_path(@user)
     end
   end
   
