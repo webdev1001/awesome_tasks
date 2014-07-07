@@ -8,7 +8,7 @@ AwesomeTasks::Application.routes.draw do
     get :pdf, :on => :member
     resources :invoice_lines
   end
-  
+  resources :invoice_groups
   resources :uploaded_files
   
   resources :users do

@@ -1,0 +1,8 @@
+= DesignBox.boxt _("Details"), 500
+= simple_form_for @invoice_group do |f|
+  = f.input :name
+  = f.submit _("Save")
+  
+  - unless @invoice_group.new_record?
+    = link_to _("Delete"), @invoice_group, :class => "button", :method => :delete, :data => {:confirm => _("Are you sure?")}
+= DesignBox.boxb

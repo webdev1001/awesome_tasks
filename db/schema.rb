@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703072528) do
+ActiveRecord::Schema.define(version: 20140703144147) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -58,6 +58,10 @@ ActiveRecord::Schema.define(version: 20140703072528) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "invoice_groups", force: true do |t|
+    t.string "name"
+  end
+
   create_table "invoice_lines", force: true do |t|
     t.string   "title"
     t.float    "amount"
@@ -70,7 +74,6 @@ ActiveRecord::Schema.define(version: 20140703072528) do
   add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
 
   create_table "invoices", force: true do |t|
-    t.string   "title"
     t.date     "date"
     t.string   "invoice_no"
     t.string   "invoice_type"
@@ -84,7 +87,6 @@ ActiveRecord::Schema.define(version: 20140703072528) do
   end
 
   add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
-  add_index "invoices", ["invoice_no"], name: "index_invoices_on_invoice_no", using: :btree
   add_index "invoices", ["organization_id"], name: "index_invoices_on_organization_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 

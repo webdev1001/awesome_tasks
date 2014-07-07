@@ -1,0 +1,29 @@
+- content_for(:header_title){ InvoiceGroup.model_name.human(:count => 2) }
+
+- if can? :new, InvoiceGroup
+  = link_to _("Add new"), new_invoice_group_path, :class => "button"
+  %br/
+  %br/
+
+= DesignBox.boxt _("Filter"), 450
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :name_cont
+  = f.submit _("Filter")
+= DesignBox.boxb
+
+%br/
+
+= DesignBox.boxt InvoiceGroup.model_name.human(:count => 2), 500
+%table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :name
+  %tbody
+    - @invoice_groups.each do |invoice_group|
+      %tr
+        %td= link_to_invoice_group invoice_group
+    - if @invoice_groups.none?
+      %tr
+        %td.error{colspan: 1}
+          = _("No groups were found.")
+= DesignBox.boxb
