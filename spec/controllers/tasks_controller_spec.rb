@@ -74,7 +74,7 @@ describe TasksController do
   
   context "#show" do
     let!(:task_access){ create :task, :user => user }
-    let!(:task_no_access){ create :task }
+    let(:task_no_access){ create :task }
     let!(:task_assigned){ create :task }
     
     before do
@@ -93,6 +93,26 @@ describe TasksController do
       expect{
         get :show, :id => task_no_access.id
       }.to raise_error CanCan::AccessDenied
+    end
+    
+    it "#checks" do
+      get :checks, :id => task_assigned.id
+      response.should be_success
+    end
+    
+    it "#users" do
+      get :users, :id => task_assigned.id
+      response.should be_success
+    end
+    
+    it "#comments" do
+      get :users, :id => task_assigned.id
+      response.should be_success
+    end
+    
+    it "#timelogs" do
+      get :users, :id => task_assigned.id
+      response.should be_success
     end
   end
   
