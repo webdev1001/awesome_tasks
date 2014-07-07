@@ -10,6 +10,7 @@ class Ability
       task_access(current_user)
       ckeditor_access(current_user)
       comment_access(current_user)
+      users_access(current_user)
       
       can :manage, UploadedFile do |uploaded_file|
         can? :show, uploaded_file.resource
@@ -83,5 +84,9 @@ private
       
       access
     end
+  end
+  
+  def users_access current_user
+    can :search, User
   end
 end

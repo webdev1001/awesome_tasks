@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   
   has_many :tasks, :dependent => :restrict_with_exception
   has_many :task_assigned_users, :dependent => :destroy
-  has_many :user_rank_links, :dependent => :destroy
   has_many :user_project_links, :dependent => :destroy
   has_many :projects, :through => :user_project_links, :dependent => :destroy
   has_many :project_autoassigned_users, :dependent => :destroy
@@ -36,7 +35,7 @@ class User < ActiveRecord::Base
     return "en"
   end
   
-  #A list of all relevant users for this user (from the same organization).
+  # A list of all relevant users for this user (from the same organization).
   def visible_users
     project_ids = projects.map{ |project| project.id }
     

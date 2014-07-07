@@ -63,7 +63,7 @@
       %td{style: "vertical-align: top; padding-left: 15px;"}
         = DesignBox.boxt _("Assigned users")
         %div{style: "padding-bottom: 10px;"}
-          = link_to _("Assign user to task"), "#", :class => ["button", "assign_user_to_task"], :data => {:title => _("Assign user to task"), :url => search_users_path(@task, :ajaxsearch => true, :not_in_task_id => @task.id, :jscallback => "task_show_assign_user_choose")}
+          = link_to _("Assign user to task"), "#", :class => ["button", "assign_user_to_task"], :data => {:title => _("Assign user to task"), :url => search_users_path(:ajaxsearch => true, :not_in_task_id => @task.id, :jscallback => "task_show_assign_user_choose")}
         #divusers= render :partial => "users"
         = DesignBox.boxb
         

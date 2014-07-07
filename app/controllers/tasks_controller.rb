@@ -73,6 +73,9 @@ class TasksController < ApplicationController
     @comments = @task.comments
   end
   
+  def assign_user_choose
+  end
+  
   def assign_user
     assigned_user = @task.task_assigned_users.find_or_initialize_by(
       :user_id => params[:user_id],
