@@ -47,7 +47,7 @@ AwesomeTasks::Application.routes.draw do
   
   namespace :profile do
     get :index
-    post :update
+    patch :update
   end
   
   namespace :workstatus do
