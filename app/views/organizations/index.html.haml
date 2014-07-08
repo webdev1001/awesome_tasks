@@ -3,8 +3,8 @@
 = DesignBox.boxt _("Enter criteria"), 350
 = simple_search_form_for @ransack, @ransack_params do |f|
   = f.input :name_cont
-  = f.input :customer_eq
-  = f.input :creditor_eq
+  = f.input :customer_eq, :collection => form_boolean_collection
+  = f.input :creditor_eq, :collection => form_boolean_collection
   = link_to _("Add new organization"), new_organization_path, :class => "button"
   = f.submit _("Search")
 = DesignBox.boxb

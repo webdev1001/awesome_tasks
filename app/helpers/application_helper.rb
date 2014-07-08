@@ -27,4 +27,11 @@ module ApplicationHelper
     method_name = "link_to_#{StringCases.camel_to_snake(model.class.name)}"
     __send__(method_name, model)
   end
+  
+  def form_boolean_collection
+    {
+      _("All") => nil,
+      _("True") => 1
+    }
+  end
 end
