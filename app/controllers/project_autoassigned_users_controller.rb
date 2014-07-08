@@ -48,10 +48,7 @@ private
   def users_collection
     assigned_user_ids = @project.project_autoassigned_users.map{ |aa_user| puts "AaUser: #{aa_user.inspect}"; aa_user.user_id }
     
-    query = current_user
-      .visible_users
-      .order(:name)
-    
+    query = @project.users
     query = query.where("users.id NOT IN (?)", assigned_user_ids) if assigned_user_ids.any?
     
     return query
