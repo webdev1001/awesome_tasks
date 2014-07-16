@@ -7,6 +7,7 @@ FactoryGirl.define do
     invoice_no 123
     payment_at "2014-06-24"
 
+    association :invoice_group, factory: :invoice_group
     association :organization, factory: :organization
     association :creditor, factory: :organization
     association :user, factory: :user

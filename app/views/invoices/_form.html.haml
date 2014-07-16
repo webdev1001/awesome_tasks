@@ -1,5 +1,6 @@
 = DesignBox.boxt _("Enter details"), 600
 = simple_form_for invoice do |f|
+  = f.input :invoice_group_id, collection: InvoiceGroup.all, label: Invoice.human_attribute_name(:invoice_group)
   = f.input :invoice_no
   = f.input :date
   = f.input :payment_at

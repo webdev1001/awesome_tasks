@@ -30,6 +30,7 @@ private
     can :manage, Organization
     can :manage, Comment
     can :manage, Invoice
+    can :manage, InvoiceGroup
     can :manage, InvoiceLine do |invoice_line|
       can? :manage, invoice_line.invoice
     end

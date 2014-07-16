@@ -9,6 +9,7 @@ AwesomeTasks::Application.routes.draw do
     resources :invoice_lines, except: [:show, :index]
   end
 
+  resources :invoice_groups
   resources :uploaded_files
 
   resources :users do
