@@ -12,7 +12,7 @@ class CreateTimelogs < ActiveRecord::Migration
       t.integer :invoiced_by_user_id
       t.timestamps
     end
-    
+
     add_index :timelogs, :task_id
     add_index :timelogs, :user_id
     add_index :timelogs, :invoiced_by_user_id

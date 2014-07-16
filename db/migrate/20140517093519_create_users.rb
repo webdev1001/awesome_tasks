@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :active
       t.timestamps
     end
-    
+
     add_index :users, :username
     add_index :users, :email
   end

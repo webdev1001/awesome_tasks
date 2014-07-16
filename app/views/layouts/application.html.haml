@@ -2,16 +2,16 @@
 %html
   %head
     %title= yield(:header_title)
-    
+
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body{:class => ["controller_#{controller_name}", "action_#{action_name}"]}
+  %body{class: ["controller_#{controller_name}", "action_#{action_name}"]}
     :javascript
       var js_settings = {
         "knjjs_url": "#{@knjjsfw_url}"
       }
-      
+
       var locale_strings = {
         "close": "#{_('Close')}",
         "comment_edit_title": "#{_('Edit comment')}",
@@ -19,11 +19,11 @@
         "timelog_edit_title": "#{_('Edit timelog')}",
         "task_check_edit_title": "#{_('Edit task-check')}"
       }
-    
+
     %center
-      %table.main_table{:cellspacing => 0, :cellpadding => 0}
+      %table.main_table{cellspacing: 0, cellpadding: 0}
         %tr
-          %td{:colspan => 3, :class => :main_logo}
+          %td{colspan: 3, class: :main_logo}
             Awesome Tasks
         %tr
           %td.main_corner_top_left
@@ -35,30 +35,30 @@
             .main_menu_outer
               .main_menu_inner
                 = link_to _("Frontpage"), root_path if signed_in?
-                = link_to Organization.model_name.human(:count => 2), organizations_path if can? :index, Organization
-                = link_to Project.model_name.human(:count => 2), projects_path if can? :index, Project
-                = link_to Task.model_name.human(:count => 2), tasks_path if can? :index, Task
-                = link_to User.model_name.human(:count => 2), users_path if can? :index, User
+                = link_to Organization.model_name.human(count: 2), organizations_path if can? :index, Organization
+                = link_to Project.model_name.human(count: 2), projects_path if can? :index, Project
+                = link_to Task.model_name.human(count: 2), tasks_path if can? :index, Task
+                = link_to User.model_name.human(count: 2), users_path if can? :index, User
                 = link_to _("Timelogs"), timelogs_path if can? :manage, Timelog
                 = link_to _("Work-status"), workstatus_index_path if can? :admin, :admin
-                = link_to Invoice.model_name.human(:count => 2), invoices_path if can? :index, Invoice
-                = link_to UploadedFile.model_name.human(:count => 2), uploaded_files_path if can? :index, UploadedFile
+                = link_to Invoice.model_name.human(count: 2), invoices_path if can? :index, Invoice
+                = link_to UploadedFile.model_name.human(count: 2), uploaded_files_path if can? :index, UploadedFile
                 = link_to _("Your profile"), profile_index_path if signed_in?
-                = link_to _("Log out"), destroy_user_session_path, :method => :delete if signed_in?
+                = link_to _("Log out"), destroy_user_session_path, method: :delete if signed_in?
                 = link_to _("Log in"), new_user_session_path unless signed_in?
             .main_content
               %h1= yield(:header_title)
-              
+
               - flash.each do |type, message|
-                %div{:class => ["flash", "flash-#{type}"]}
+                %div{class: ["flash", "flash-#{type}"]}
                   = message
-              
+
               = yield
           %td.main_side_right
         %tr
           %td.main_side_left
           %td.main_bottom
-            %div{:style => "padding-bottom: 15px;"}
+            %div{style: "padding-bottom: 15px;"}
               Language:
               = select_tag :bottom_locale, options_for_select(available_locales.invert, I18n.locale.to_s)
           %td.main_side_right

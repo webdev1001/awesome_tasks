@@ -1,12 +1,12 @@
 - content_for(:header_title){ sprintf(_("Show project: %s."), @project.name) }
 
-%table.project_table{:data => {:project_id => @project.id, :assigned_users_path => assigned_users_project_path(@project)}}
+%table.project_table{data: {project_id: @project.id, assigned_users_path: assigned_users_project_path(@project)}}
   %tr
-    %td{:style => "vertical-align: top;"}
+    %td{style: "vertical-align: top;"}
       = DesignBox.boxt(_("Actions"), 350)
       - if can?(:admin, :admin)
-        %input{:onclick => "location.href='#{edit_project_path(@project)}';", :type => "button", :value => _("Edit project")}
-      %input{:onclick => "location.href='#{new_task_path(:task => {:project_id => @project.id})}';", :type => "button", :value => _("Add task")}
+        %input{onclick: "location.href='#{edit_project_path(@project)}';", type: "button", value: _("Edit project")}
+      %input{onclick: "location.href='#{new_task_path(task: {project_id: @project.id})}';", type: "button", value: _("Add task")}
       = DesignBox.boxb
       %br/
       = DesignBox.boxt(_("Information"), 350)
@@ -17,7 +17,7 @@
             %td= link_to_user(@project.added_user)
           %tr
             %td.tdt= Project.human_attribute_name(:created_at)
-            %td= (@project.created_at ? l(@project.created_at, :format => :long) : "")
+            %td= (@project.created_at ? l(@project.created_at, format: :long) : "")
           %tr
             %td.tdt= Project.human_attribute_name(:price_per_hour)                                                            |
             %td= format_number @project.price_per_hour
@@ -29,20 +29,20 @@
               %td.tdt= _("Deadline")
               %td= l(@project.deadline_at.to_date)
       = DesignBox.boxb
-    %td{:style => "vertical-align: top; padding-left: 15px;"}
-      = DesignBox.boxt User.model_name.human(:count => 2), 350
-      %div{:style => "padding-bottom: 15px;"}
-        %input{:onclick => "modal({title: '#{_("Assign user to task")}', url: '#{search_users_path(:ajaxsearch => true, :jscallback => :project_show_assign_user_choose)}'});", :type => "button", :value => _("Assign user")}/
+    %td{style: "vertical-align: top; padding-left: 15px;"}
+      = DesignBox.boxt User.model_name.human(count: 2), 350
+      %div{style: "padding-bottom: 15px;"}
+        %input{onclick: "modal({title: '#{_("Assign user to task")}', url: '#{search_users_path(ajaxsearch: true, jscallback: :project_show_assign_user_choose)}'});", type: "button", value: _("Assign user")}/
       #divassignedusers
-        = render "assigned_users"
+        = render "assigned_users", project: @project
       = DesignBox.boxb
-      
+
       %br/
-      
+
       = DesignBox.boxt _("Autoassigned users"), 350
-      %div{:style => "padding-bottom: 15px;"}
-        = link_to _("Add autoassigned user"), new_project_project_autoassigned_user_path(@project), :class => "button"
-      = render "autoassigned_users"
+      %div{style: "padding-bottom: 15px;"}
+        = link_to _("Add autoassigned user"), new_project_project_autoassigned_user_path(@project), class: "button"
+      = render "autoassigned_users", project: @project
       = DesignBox.boxb
 
 %br/
@@ -67,6 +67,6 @@
         %td= l(task.created_at.to_date) if task.created_at
     - if count <= 0
       %tr
-        %td.error{:colspan => 2}
+        %td.error{colspan: 2}
           = _("No tasks were found.")
 = DesignBox.boxb

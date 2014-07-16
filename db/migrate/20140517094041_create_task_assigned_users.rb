@@ -6,7 +6,7 @@ class CreateTaskAssignedUsers < ActiveRecord::Migration
       t.integer :user_assigned_by_id
       t.timestamps
     end
-    
+
     add_index :task_assigned_users, :task_id
     add_index :task_assigned_users, :user_id
     add_index :task_assigned_users, :user_assigned_by_id

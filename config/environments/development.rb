@@ -21,14 +21,14 @@ AwesomeTasks::Application.configure do
 
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
-  
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = YAML.load(File.read("#{Rails.root}/config/smtp.yml")).symbolize_keys!
   config.action_mailer.default_options = {
-    :from => "development@awesometasks.kaspernj.org"
+    from: "development@awesometasks.kaspernj.org"
   }
   config.action_mailer.default_url_options = {
-    :host => "development.awesometasks.com"
+    host: "development.awesometasks.com"
   }
 
   # Debug mode disables concatenation and preprocessing of assets.

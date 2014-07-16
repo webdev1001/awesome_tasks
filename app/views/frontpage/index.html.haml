@@ -1,8 +1,8 @@
 - content_for(:header_title){ _("Frontpage") }
 
-= DesignBox.boxt Task.model_name.human(:count => 2)
+= DesignBox.boxt Task.model_name.human(count: 2)
 %div{style: "padding-bottom: 15px;"}
-  = link_to _("Add new"), new_task_path, :class => "button"
+  = link_to _("Add new"), new_task_path, class: "button"
 
 %table.list
   %thead
@@ -27,12 +27,12 @@
         %td= data[:task].translated_state
         - if can? :admin, :admin
           %td.nowrap
-            = number_with_precision(data[:hours], :precision => 2)
+            = number_with_precision(data[:hours], precision: 2)
             = " / "
-            = number_with_precision(data[:transport], :precision => 2)
-          %td.nowrap= number_with_precision(data[:length], :precision => 0)
+            = number_with_precision(data[:transport], precision: 2)
+          %td.nowrap= number_with_precision(data[:length], precision: 0)
     - if no_tasks?
       %tr
-        %td.error{:colspan => 8}
+        %td.error{colspan: 8}
           = _("No tasks were found.")
 = DesignBox.boxb
