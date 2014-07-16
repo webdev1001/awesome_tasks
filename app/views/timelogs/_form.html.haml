@@ -1,6 +1,6 @@
 = DesignBox.boxt(_("Enter details"))
-= simple_form_for @timelog, :remote => true do |f|
-  = f.input :task_id, :collection => Task.order(:id), :include_blank => true
+= simple_form_for timelog, remote: true do |f|
+  = f.input :task_id, collection: Task.order(:id), include_blank: true
   = f.input :time
   = f.input :time_transport
   = f.input :transport_length

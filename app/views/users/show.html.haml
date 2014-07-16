@@ -2,7 +2,7 @@
 
 - if can?(:edit, @user)
   = DesignBox.boxt _("Actions"), 450
-  = link_to _("Edit"), ["edit", @user], :class => "button"
+  = link_to _("Edit"), ["edit", @user], class: "button"
   = DesignBox.boxb
   %br/
 
@@ -32,7 +32,7 @@
   = DesignBox.boxt _("Filter"), 550
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :name_cont
-    = f.input :state_eq_any, :as => :check_boxes, :collection => Task.translated_states.invert
+    = f.input :state_eq_any, as: :check_boxes, collection: Task.translated_states.invert
     = f.input :project_name_cont
     = f.input :project_organization_name_cont
     = f.submit _("Search")
@@ -57,13 +57,13 @@
       %tr
         %td= link_to_task task
         %td= task.translated_state
-        %td.nowrap{:style => "width: 100px;"}
-          = task.created_at ? l(task.created_at, :format => :long) : ""
+        %td.nowrap{style: "width: 100px;"}
+          = task.created_at ? l(task.created_at, format: :long) : ""
         %td= link_to_project task.project
         %td= link_to_organization task.project.organization
     - if count <= 0
       %tr
-        %td.error{:colspan => "2"}
+        %td.error{colspan: "2"}
           = _("No tasks were found for this user.")
 = DesignBox.boxb
 

@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   def search
     @ransack_params = params[:q] || {}
     @ransack = User.ransack(@ransack_params)
-    @users = @ransack.result.order(:name)
 
+    @users = @ransack.result.order(:name)
     @users = @users.where("users.id IN (?)", current_user.users_with_access_to.map(&:id))
 
     if params[:not_in_task_id]

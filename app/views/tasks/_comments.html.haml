@@ -1,5 +1,5 @@
-- @comments.each do |comment|
-  %div{:class => "comment_#{comment.id}", :style => "padding-bottom: 25px;"}
+- comments.each do |comment|
+  %div{class: "comment_#{comment.id}", style: "padding-bottom: 25px;"}
     %table{style: "width: 100%;"}
       %tr
         %td{style: "white-space: nowrap; width: 25px;"}
@@ -15,10 +15,10 @@
             (
             %a{href: "javascript: if (confirm('#{_"Do you want to delete this comment?"}')){comment_delete('#{comment.id}');}"}>= _"delete"
             )
-          = l(comment.created_at, :format => :long)
+          = l(comment.created_at, format: :long)
       %tr
         %td{colspan: "3", style: "border-top: 1px solid #cfcfcf; border-bottom: 1px solid #cfcfcf;"}
           = comment.comment.html_safe
-- if @comments.none?
+- if comments.none?
   .error{style: "padding-bottom: 15px;"}
-    = _"No comments were found for this task."
+    = _("No comments were found for this task.")

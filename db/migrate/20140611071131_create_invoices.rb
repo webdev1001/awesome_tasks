@@ -9,7 +9,7 @@ class CreateInvoices < ActiveRecord::Migration
       t.integer :user_id
       t.timestamps
     end
-    
+
     add_index :invoices, :customer_id
     add_index :invoices, :user_id
   end

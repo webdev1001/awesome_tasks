@@ -54,19 +54,19 @@ class TasksController < ApplicationController
   end
 
   def checks
-    render partial: "checks", layout: false
+    render partial: "checks", layout: false, locals: {checks: @checks, task: @task}
   end
 
   def users
-    render partial: "users", layout: false
+    render partial: "users", layout: false, locals: {users: @users, task: @task}
   end
 
   def comments
-    render partial: "comments", layout: false
+    render partial: "comments", layout: false, locales: {comments: @comments, task: @task}
   end
 
   def timelogs
-    render partial: "timelogs", layout: false
+    render partial: "timelogs", layout: false, locals: {timelogs: @timelogs, task: @task}
   end
 
   def show

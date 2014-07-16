@@ -1,3 +1,2 @@
 - content_for(:header_title){ _("New invoice-line") }
-
-= render "form"
+= render "form", invoice_line: @invoice_line

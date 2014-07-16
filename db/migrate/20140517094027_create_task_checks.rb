@@ -8,7 +8,7 @@ class CreateTaskChecks < ActiveRecord::Migration
       t.boolean :checked
       t.timestamps
     end
-    
+
     add_index :task_checks, :task_id
     add_index :task_checks, :user_added_id
   end

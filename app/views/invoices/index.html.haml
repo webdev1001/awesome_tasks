@@ -1,21 +1,21 @@
-%h1= Invoice.model_name.human(:count => 2)
+%h1= Invoice.model_name.human(count: 2)
 
 - if can? :new, Invoice
-  = link_to _("New invoice"), new_invoice_path, :class => "button"
+  = link_to _("New invoice"), new_invoice_path, class: "button"
   %br/
   %br/
 
 = DesignBox.boxt _("Enter criteria"), 550
 = simple_search_form_for @ransack, @ransack_params do |f|
-  = f.input :id_eq, :autofocus => true
+  = f.input :id_eq, autofocus: true
   = f.input :organization_name_cont
-  = f.input :invoice_type_eq, :collection => Invoice.translated_invoice_types, :include_blank => true
+  = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
   = f.submit _("Filter")
 = DesignBox.boxb
 
 %br/
 
-= DesignBox.boxt Invoice.model_name.human(:count => 2), 700
+= DesignBox.boxt Invoice.model_name.human(count: 2), 700
 %table.list
   %thead
     %tr
@@ -28,15 +28,15 @@
   %tbody
     - @invoices.each do |invoice|
       %tr
-        %td= link_to_invoice invoice, :title => invoice.id
-        %td= link_to_invoice invoice, :title => invoice.invoice_no if invoice.invoice_no.present?
+        %td= link_to_invoice invoice, title: invoice.id
+        %td= link_to_invoice invoice, title: invoice.invoice_no if invoice.invoice_no?
         %td= invoice.translated_invoice_type
         %td= link_to_organization invoice.organization
-        %td= l(invoice.date, :format => :long)
+        %td= l(invoice.date, format: :long)
         %td= format_number invoice.amount
     - if @invoices.none?
       %tr
-        %td.error{:colspan => 4}
+        %td.error{colspan: 4}
           = _("No invoices could be found.")
 = DesignBox.boxb
 

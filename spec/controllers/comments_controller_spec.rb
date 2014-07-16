@@ -2,38 +2,39 @@ require "spec_helper"
 
 describe CommentsController do
   render_views
-  
+
   context "#create" do
     let!(:admin){ create :user_admin }
-    let!(:task){ create :task, :user => user }
-    let!(:user){ create :user, :locale => "da" }
-    let!(:assigned_user){ create :user, :locale => "en" }
+    let!(:task){ create :task, user: user }
+    let!(:user){ create :user, locale: "da" }
+    let!(:assigned_user){ create :user, locale: "en" }
     let!(:other_user){ create :user }
-    
+
     before do
       task.assigned_users << assigned_user
     end
-    
+
     it "#notify_emails" do
       result = task.notify_emails
       result.length.should eq 2
-      
-      result[0].should eq(:email => user.email, :user => user)
-      result[1].should eq(:email => assigned_user.email, :user => assigned_user)
+
+      result[0].should eq(email: user.email, user: user)
+      result[1].should eq(email: assigned_user.email, user: assigned_user)
     end
-    
+
     it "works and sends mail to both owner and assigned users" do
       sign_in admin
       task.assigned_users.count.should eq 1
-      
+      ActionMailer::Base.deliveries.clear
+
       expect {
-        post :create, :comment => {:resource_type => "Task", :resource_id => task.id, :comment => "Test comment"}, :task => {:state => task.state}
+        post :create, comment: {resource_type: "Task", resource_id: task.id, comment: "Test comment"}, task: {state: task.state}
         assigns(:comment).errors.to_a.should eq []
       }.to change { ActionMailer::Base.deliveries.count }.by(2)
-      
+
       mail = ActionMailer::Base.deliveries.select{ |mail| mail.to.include?(user.email) }.first
       mail.subject.should include "Ny kommentar fra: #{admin.name}"
-      mail.body.should include "<a href=\"#{task_url(task)}\">"
+      mail.body.should include "<a href='#{task_url(task)}'>"
       mail.body.should include "Kommentar"
       mail.body.should include "Hej #{user.name}"
     end

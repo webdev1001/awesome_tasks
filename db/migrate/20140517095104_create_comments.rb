@@ -8,7 +8,7 @@ class CreateComments < ActiveRecord::Migration
       t.text :comment
       t.timestamps
     end
-    
+
     add_index :comments, [:resource_type, :resource_id]
     add_index :comments, :user_id
   end

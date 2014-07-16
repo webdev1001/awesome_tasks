@@ -46,12 +46,12 @@ class ProjectsController < ApplicationController
   end
 
   def assigned_users
-    render partial: "assigned_users", layout: false
+    render partial: "assigned_users", layout: false, project: @project
   end
 
   def assign_user
     @project.user_project_links.create(user_id: params[:user_id])
-    render :nothing => true
+    render nothing: true
   end
 
 private

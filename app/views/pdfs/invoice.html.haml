@@ -1,39 +1,39 @@
-%style{:type => "text/css"}
+%style{type: "text/css"}
   :plain
     thead th {
       text-align: left;
     }
-    
+
     .invoice_lines {
       width: 100%;
     }
-    
+
     .invoice_lines tbody tr td {
       border: 1px solid black;
       padding: 4px;
     }
-    
+
     .invoice_lines thead tr th {
       padding: 4px;
     }
-    
+
     .align-right {
       text-align: right;
     }
-    
+
     .totals {
       margin-top: 15px;
       float: right;
     }
-    
+
     tr.total td {
       font-weight: bold;
     }
 
-%table{:width => "100%"}
+%table{width: "100%"}
   %tbody
     %tr
-      %td{:style => "width: 50%; vertical-align: top;"}
+      %td{style: "width: 50%; vertical-align: top;"}
         %h2= invoice.creditor.name
         %table
           %tbody
@@ -41,7 +41,7 @@
               %tr
                 %td= Organization.human_attribute_name(column)
                 %td= invoice.organization.try(:__send__, column)
-        
+
         %h2= invoice.organization.name
         %table
           %tbody
@@ -49,7 +49,7 @@
               %tr
                 %td= Organization.human_attribute_name(column)
                 %td= invoice.organization.try(:__send__, column)
-      %td{:style => "vertical-align: top;"}
+      %td{style: "vertical-align: top;"}
         %h2= Invoice.model_name.human
         %table
           %tbody
@@ -58,10 +58,10 @@
               %td= invoice.invoice_no
             %tr
               %td= Invoice.human_attribute_name(:date)
-              %td= l(invoice.date, :format => :long)
+              %td= l(invoice.date, format: :long)
             %tr
               %td= Invoice.human_attribute_name(:payment_at)
-              %td= l(invoice.payment_at, :format => :long)
+              %td= l(invoice.payment_at, format: :long)
             %tr
               %td= Invoice.human_attribute_name(:invoice_type)
               %td= invoice.translated_invoice_type
@@ -74,11 +74,11 @@
             %tr
               %td= _("Total")
               %td= format_number invoice.amount_total
-        
+
         %h2= Organization.human_attribute_name(:payment_info)
         .payment_info= simple_format invoice.creditor.payment_info
 
-%h2= InvoiceLine.model_name.human(:count => 2)
+%h2= InvoiceLine.model_name.human(count: 2)
 %table.invoice_lines
   %thead
     %tr

@@ -1,31 +1,31 @@
 = DesignBox.boxt _("Enter details"), 700
-= simple_form_for @organization do |f|
+= simple_form_for organization do |f|
   = f.input :name
   = f.input :email
   = f.input :vat_no
   = f.input :payment_info
   = f.input :customer
   = f.input :creditor
-  
+
   %br/
-  
+
   = f.input :delivery_address
   = f.input :delivery_zip_code
   = f.input :delivery_city
-  = f.input :delivery_country, :as => :string
-  
+  = f.input :delivery_country, as: :string
+
   %br/
-  
+
   = f.input :invoice_address
   = f.input :invoice_zip_code
   = f.input :invoice_city
-  = f.input :invoice_country, :as => :string
-  
+  = f.input :invoice_country, as: :string
+
   %br/
-  
-  - unless @organization.new_record?
-    = link_to _("Show"), organization_path(@organization), :class => "button"
-    = link_to _("Delete"), organization_path(@organization), :class => "button", :method => :delete, :data => {:confirm => _("Are you sure?")}
-  
+
+  - unless organization.new_record?
+    = link_to _("Show"), organization_path(organization), class: "button"
+    = link_to _("Delete"), organization_path(organization), class: "button", method: :delete, data: {confirm: _("Are you sure?")}
+
   = f.submit _("Save")
 = DesignBox.boxb

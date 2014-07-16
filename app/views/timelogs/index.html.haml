@@ -2,41 +2,41 @@
 
 = DesignBox.boxt _("Enter criteria"), 460
 = simple_search_form_for @ransack, @ransack_params do |f|
-  = f.input :date_gteq, :label => _("Date from"), :as => :string, :input_html => {:value => @date_from.out(:time => false)}
-  = f.input :date_lteq, :label => _("Date to"), :as => :string, :input_html => {:value => @date_to.out(:time => false)}
-  = f.input :user_id_eq_any, :as => :check_boxes, :label => User.model_name.human, :collection => current_user.users_with_access_to.order(:name), :include_blank => true
-  = f.input :task_project_id_eq_any, :as => :check_boxes, :label => Project.model_name.human, :hint => _("If you want to find timelogs from specific projects."), :collection => current_user.visible_projects.order(:name), :include_blank => true
-  = f.input :comment_cont, :as => :string
+  = f.input :date_gteq, label: _("Date from"), as: :string, input_html: {value: @date_from.out(time: false)}
+  = f.input :date_lteq, label: _("Date to"), as: :string, input_html: {value: @date_to.out(time: false)}
+  = f.input :user_id_eq_any, as: :check_boxes, label: User.model_name.human, collection: current_user.users_with_access_to.order(:name), include_blank: true
+  = f.input :task_project_id_eq_any, as: :check_boxes, label: Project.model_name.human, hint: _("If you want to find timelogs from specific projects."), collection: current_user.visible_projects.order(:name), include_blank: true
+  = f.input :comment_cont, as: :string
   = simple_fields_for Timelog.new do |t_f|
-    = t_f.input :invoiced, :collection => @invoiced_collection, :selected => params[:timelog].try(:[], :invoiced), :hint => _("If you only want to view invoiced, uninvoiced or all timelogs.")
+    = t_f.input :invoiced, collection: @invoiced_collection, selected: params[:timelog].try(:[], :invoiced), hint: _("If you only want to view invoiced, uninvoiced or all timelogs.")
   = f.submit _("Search")
 = DesignBox.boxb
 
 - if @ransack_params.any?
   %br
-  
+
   = DesignBox.boxt _("Sum"), 350
   %table.form
     %tbody
       %tr
         %td.tdt= _("Total hours")
         %td
-          = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time)").to_f / 3600, :precision => 1
+          = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time)").to_f / 3600, precision: 1
           = " / "
-          = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time_transport)").to_f / 3600, :precision => 1
+          = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time_transport)").to_f / 3600, precision: 1
       %tr
-        %td.tdd{:colspan => 2}
+        %td.tdd{colspan: 2}
           = _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")
       %tr
         %td.tdt= _("Total transport")
-        %td= format_number @timelogs.sum(:transport_length), :precision => 1
+        %td= format_number @timelogs.sum(:transport_length), precision: 1
       %tr
-        %td.tdd{:colspan => 2}
+        %td.tdd{colspan: 2}
           = _("Total km's of transport used in all the timelogs found.")
   = DesignBox.boxb
-  
+
   %br
-  
+
   = DesignBox.boxt _("Results")
   %table.form
     %thead
@@ -52,7 +52,7 @@
         %th= Timelog.human_attribute_name(:transport_length)
     %tbody
       - tlogs_sorted = {}
-      - @timelogs.includes(:user, :task => {:project => :organization}).find_each do |tlog|
+      - @timelogs.includes(:user, task: {project: :organization}).find_each do |tlog|
         - dbt = Baza::Dbtime.new(time_as_string(tlog.time))
         - dbt_transport = Baza::Dbtime.new(time_as_string(tlog.time_transport))
         - tlogs_sorted[tlog.task] = [] if !tlogs_sorted.has_key?(tlog.task)
@@ -66,18 +66,18 @@
           %td= link_to_organization tlog.task.project.organization if tlog.task
           %td= tlog.invoiced? ? _("Yes") : _("No")
           %td
-            = format_number dbt.hours_total, :precision => 1
+            = format_number dbt.hours_total, precision: 1
             = "/"
-            = format_number dbt_transport.hours_total, :precision => 1
+            = format_number dbt_transport.hours_total, precision: 1
           %td= format_number tlog.transport_length.to_i
       - if @timelogs.none?
         %tr
           %td.error{colspan: "1"}
             = _("No timelogs were found.")
   = DesignBox.boxb
-  
+
   %br
-  
+
   = DesignBox.boxt(_("Organization message"))
   %table#table_organization_message.list
     %thead
@@ -89,7 +89,7 @@
       - tlogs_sorted.each do |task, tlogs_arr|
         %tr
           %td.tdt{colspan: "3", style: "padding-top: 10px;"}= link_to_task task
-        
+
         - tlogs_arr.each do |tlog|
           - dbt = Baza::Dbtime.new(time_as_string(tlog.time))
           - dbt_transport = Baza::Dbtime.new(time_as_string(tlog.time_transport))
@@ -101,13 +101,13 @@
               %input{name: "timelogs_#{tlog.id}", type: "hidden", value: "1"}/
               = l(tlog.date)
               %br
-              = format_number dbt.hours_total, :precision => 2
+              = format_number dbt.hours_total, precision: 2
               = "/"
-              = format_number dbt_transport.hours_total, :percision => 2
+              = format_number dbt_transport.hours_total, percision: 2
             %td.nowrap= link_to_user tlog.user
             %td= simple_format tlog.comment
       - unless tlogs_sorted.empty?
         %tr
           %td{colspan: "3", style: "padding-top: 15px; text-align: right;"}
-            = link_to _("Mark timelogs as invoiced"), "#", :class => ["button", "mark_timelogs_as_invoiced"], :data => {:url => mark_invoiced_timelogs_path, :success_msg => _('All timelogs was marked as invoiced.'), :confirm_msg => _("Are you sure you want to mark all the found timelogs as invoiced?")}
+            = link_to _("Mark timelogs as invoiced"), "#", class: ["button", "mark_timelogs_as_invoiced"], data: {url: mark_invoiced_timelogs_path, success_msg: _('All timelogs was marked as invoiced.'), confirm_msg: _("Are you sure you want to mark all the found timelogs as invoiced?")}
   = DesignBox.boxb

@@ -5,12 +5,12 @@
       - if can?(:admin, :admin)
         %th= _("Actions")
   %tbody
-    - @project.user_project_links.joins(:user).order("users.name").each do |link|
+    - project.user_project_links.joins(:user).order("users.name").each do |link|
       %tr
         %td= link_to_user link.user
         %td
           = link_to _("Remove"), "javascript: if (confirm('#{_"Do you want to remove this user from the project?"}')){project_remove_assigned_user('#{link.id}');}"
-    - if @project.users.none?
+    - if project.users.none?
       %tr
-        %td.error{:colspan => 2}
+        %td.error{colspan: 2}
           = _("No users were found.")
