@@ -4,12 +4,12 @@
   = f.input :deadline_at
   = f.input :price_per_hour
   = f.input :price_per_hour_transport
-  = f.input :organization_id, collection: Organization.order(:name)
+  = f.input :organization_id, collection: Organization.order(:name), label: Project.human_attribute_name(:organization)
   = f.cktext_area :description
 
   - unless project.new_record?
     .added_by
-      = _("Added by %{user_link}", user_link: link_to_user(project.added_user))
+      = _("Added by %{user_link}", user_link: link_to_user(project.user_added))
 
     = link_to _("Show"), project_path(project), class: "button"
     = link_to _("Add task"), new_task_path(task: {project_id: project.id}), class: "button"

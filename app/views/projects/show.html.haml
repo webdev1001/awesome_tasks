@@ -14,7 +14,7 @@
         %tbody
           %tr
             %td.tdt= _("Added by")
-            %td= link_to_user(@project.added_user)
+            %td= link_to_user(@project.user_added)
           %tr
             %td.tdt= Project.human_attribute_name(:created_at)
             %td= (@project.created_at ? l(@project.created_at, format: :long) : "")

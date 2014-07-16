@@ -1,4 +1,4 @@
-= DesignBox.boxt(_("Results"), "350px")
+= DesignBox.boxt _("Results"), 350
 %table.list
   %thead
     %tr
@@ -6,7 +6,7 @@
   %tbody
     - count = 0
     - users.each do |user|
-      - next if !can?(:show, user)
+      - next unless can?(:show, user)
       - count += 1
       %tr
         %td

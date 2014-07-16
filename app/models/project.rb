@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  belongs_to :added_user, class_name: "User"
+  belongs_to :user_added, class_name: "User"
   belongs_to :organization
 
   has_many :tasks, dependent: :restrict_with_error
