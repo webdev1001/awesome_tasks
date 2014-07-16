@@ -14,7 +14,7 @@
         %tbody
           %tr
             %td.tdt= _("Added by")
-            %td= link_to_user(@project.added_user)
+            %td= link_to_user(@project.user_added)
           %tr
             %td.tdt= Project.human_attribute_name(:created_at)
             %td= (@project.created_at ? l(@project.created_at, :format => :long) : "")
@@ -36,9 +36,9 @@
       #divassignedusers
         = render "assigned_users"
       = DesignBox.boxb
-      
+
       %br/
-      
+
       = DesignBox.boxt _("Autoassigned users"), 350
       %div{:style => "padding-bottom: 15px;"}
         = link_to _("Add autoassigned user"), new_project_project_autoassigned_user_path(@project), :class => "button"
