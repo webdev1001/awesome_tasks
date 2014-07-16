@@ -37,6 +37,12 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_path
   end
 
+  def show
+  end
+
+  def edit
+  end
+
 private
 
   def set_organization

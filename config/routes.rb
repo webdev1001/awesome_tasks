@@ -3,10 +3,10 @@ AwesomeTasks::Application.routes.draw do
   mount RailsImager::Engine => "/rails_imager"
   devise_for :users, encryptor: :md5
 
-  resources :comments
+  resources :comments, except: [:show, :index]
   resources :invoices do
     get :pdf, on: :member
-    resources :invoice_lines
+    resources :invoice_lines, except: [:show, :index]
   end
 
   resources :uploaded_files
@@ -17,7 +17,7 @@ AwesomeTasks::Application.routes.draw do
     get :roles, on: :member
   end
 
-  resources :user_roles
+  resources :user_roles, except: [:show, :index]
 
   resources :tasks do
     get :comments, on: :member
@@ -27,18 +27,17 @@ AwesomeTasks::Application.routes.draw do
     get :assign_user_choose, on: :member
     get :checks, on: :member
 
-    resources :task_checks
+    resources :task_checks, except: [:show, :index]
   end
 
-  resources :task_assigned_users
-
+  resources :task_assigned_users, only: [:destroy]
   resources :organizations
 
   resources :projects do
     get :assigned_users, on: :member
     post :assign_user, on: :member
 
-    resources :project_autoassigned_users
+    resources :project_autoassigned_users, only: [:new, :create, :destroy]
   end
 
   resources :user_authentications do
@@ -58,10 +57,10 @@ AwesomeTasks::Application.routes.draw do
     post :set
   end
 
-  resources :user_project_links
-  resources :user_task_list_links
+  resources :user_project_links, only: [:destroy]
+  resources :user_task_list_links, only: [:create, :destroy]
 
-  resources :timelogs do
+  resources :timelogs, except: [:show] do
     post :mark_invoiced, on: :collection
   end
 
