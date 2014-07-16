@@ -1,19 +1,19 @@
 = DesignBox.boxt _("Enter details"), 800
-= simple_form_for @project do |f|
+= simple_form_for project do |f|
   = f.input :name
   = f.input :deadline_at
   = f.input :price_per_hour
   = f.input :price_per_hour_transport
-  = f.input :organization_id, :collection => Organization.order(:name)
+  = f.input :organization_id, collection: Organization.order(:name), label: Project.human_attribute_name(:organization)
   = f.cktext_area :description
-  
-  - unless @project.new_record?
+
+  - unless project.new_record?
     .added_by
-      = _("Added by %{user_link}", :user_link => link_to_user(@project.added_user))
-    
-    = link_to _("Show"), project_path(@project), :class => "button"
-    = link_to _("Add task"), new_task_path(:task => {:project_id => @project.id}), :class => "button"
-    = link_to _("Delete"), project_path(@project), :method => :delete, :class => "button", :data => {:confirm => _("Do you want to delete this project?")}
-  
+      = _("Added by %{user_link}", user_link: link_to_user(project.user_added))
+
+    = link_to _("Show"), project_path(project), class: "button"
+    = link_to _("Add task"), new_task_path(task: {project_id: project.id}), class: "button"
+    = link_to _("Delete"), project_path(project), method: :delete, class: "button", data: {confirm: _("Do you want to delete this project?")}
+
   = f.submit _("Save")
 = DesignBox.boxb

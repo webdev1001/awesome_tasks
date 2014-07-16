@@ -1,0 +1,24 @@
+= form_for comment, remote: true do |f|
+  = f.hidden_field :resource_id
+  = f.hidden_field :resource_type
+  = DesignBox.boxt(_("Enter details"))
+  = f.cktext_area :comment, ckeditor: {toolbar: "mini", height: 240}
+  - if comment.resource.is_a?(Task) && comment.new_record?
+    = simple_fields_for resource do |f_task|
+      = f_task.input :state, collection: Task.translated_states.invert, selected: comment.resource.state.to_s
+  = f.submit _("Save")
+  = DesignBox.boxb
+
+:javascript
+  modal_on_opened(function(){
+    form = $(".new_comment, .edit_comment")
+    form.bind("ajax:complete", function(env, data, status){
+      if ($.trim(data.responseText).length > 0){
+        alert(data.responseText);
+      }else{
+        events.call("on_comment_added")
+        events.call("do_comments_update")
+        modal_close()
+      }
+    })
+  })

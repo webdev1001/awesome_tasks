@@ -1,2 +1,6 @@
 # Execute jobs realtime when testing.
-Delayed::Worker.delay_jobs = !Rails.env.test? && !Rails.env.development?
+if Rails.env.production?
+  Delayed::Worker.delay_jobs = true
+else
+  Delayed::Worker.delay_jobs = false
+end

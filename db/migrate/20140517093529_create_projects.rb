@@ -10,7 +10,7 @@ class CreateProjects < ActiveRecord::Migration
       t.float :price_per_hour_transport
       t.timestamps
     end
-    
+
     add_index :projects, :customer_id
     add_index :projects, :user_added_id
   end

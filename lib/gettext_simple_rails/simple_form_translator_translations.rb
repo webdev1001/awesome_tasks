@@ -77,6 +77,12 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.hints.invoice.creditor_id')
     #. Default value: 
+    _('simple_form.hints.invoice.invoice_group_id')
+    #. Default value: 
+    _('simple_form.hints.invoice_group.id')
+    #. Default value: 
+    _('simple_form.hints.invoice_group.name')
+    #. Default value: 
     _('simple_form.hints.invoice_line.id')
     #. Default value: 
     _('simple_form.hints.invoice_line.title')
@@ -356,6 +362,12 @@ class GettextSimpleRails::MonthNames
     _('simple_form.placeholders.invoice.updated_at')
     #. Default value: 
     _('simple_form.placeholders.invoice.creditor_id')
+    #. Default value: 
+    _('simple_form.placeholders.invoice.invoice_group_id')
+    #. Default value: 
+    _('simple_form.placeholders.invoice_group.id')
+    #. Default value: 
+    _('simple_form.placeholders.invoice_group.name')
     #. Default value: 
     _('simple_form.placeholders.invoice_line.id')
     #. Default value: 

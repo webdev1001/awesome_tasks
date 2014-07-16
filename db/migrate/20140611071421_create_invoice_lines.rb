@@ -7,7 +7,7 @@ class CreateInvoiceLines < ActiveRecord::Migration
       t.integer :invoice_id
       t.timestamps
     end
-    
+
     add_index :invoice_lines, :invoice_id
   end
 end

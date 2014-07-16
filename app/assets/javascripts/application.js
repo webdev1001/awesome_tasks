@@ -25,6 +25,7 @@
 //= require organizations
 //= require comments
 //= require locales
+//= require profile
 //= require projects
 //= require project_autoassigned_users
 //= require projects_functions

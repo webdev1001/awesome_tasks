@@ -5,7 +5,7 @@ class CreateUserProjectLinks < ActiveRecord::Migration
       t.integer :project_id
       t.timestamps
     end
-    
+
     add_index :user_project_links, :user_id
     add_index :user_project_links, :project_id
   end

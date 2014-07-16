@@ -1,3 +1,2 @@
-- content_for(:header_title){ _("Edit file: %{title}", :title => @uploaded_file.title) }
-
-= render "form"
+- content_for(:header_title){ _("Edit file: %{title}", title: @uploaded_file.title) }
+= render "form", uploaded_file: @uploaded_file

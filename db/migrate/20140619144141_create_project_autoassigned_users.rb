@@ -5,7 +5,7 @@ class CreateProjectAutoassignedUsers < ActiveRecord::Migration
       t.integer :user_id
       t.timestamps
     end
-    
+
     add_index :project_autoassigned_users, :project_id
     add_index :project_autoassigned_users, :user_id
   end

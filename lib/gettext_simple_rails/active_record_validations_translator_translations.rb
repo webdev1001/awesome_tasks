@@ -21,7 +21,11 @@ class GettextSimpleRails::MonthNames
     #. Default value: cannot be blank
     _('activerecord.errors.models.invoice.attributes.date.blank')
     #. Default value: cannot be blank
+    _('activerecord.errors.models.invoice.attributes.invoice_group.blank')
+    #. Default value: cannot be blank
     _('activerecord.errors.models.invoice.attributes.invoice_type.blank')
+    #. Default value: cannot be blank
+    _('activerecord.errors.models.invoice_group.attributes.name.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.invoice_line.attributes.invoice.blank')
     #. Default value: cannot be blank

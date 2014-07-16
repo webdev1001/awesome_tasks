@@ -7,7 +7,7 @@ class CreateUploadedFiles < ActiveRecord::Migration
       t.integer :user_id
       t.timestamps
     end
-    
+
     add_attachment :uploaded_files, :file
     add_index :uploaded_files, :user_id
     add_index :uploaded_files, [:resource_type, :resource_id]

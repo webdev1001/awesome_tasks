@@ -1,16 +1,16 @@
 = DesignBox.boxt _("Enter details"), 700
-= simple_form_for @task, :data => {:browser => _("Browser"), :version => _("Version"), :os => _("Operating system")} do |f|
+= simple_form_for task, data: {browser: _("Browser"), version: _("Version"), os: _("Operating system")} do |f|
   = f.input :name
-  = f.input :project_id, :collection => current_user.visible_projects.order(:name), :label => Project.model_name.human
-  = f.input :task_type, :collection => Task.translated_task_types.invert
-  = f.input :state, :collection => Task.translated_states.invert
-  = f.input :priority, :collection => 1..10
-  = f.cktext_area :description, :ckeditor => {:toolbar => "mini", :height => 240}
-  
-  = link_to _("Insert browser and os"), "#", :class => "button", :onclick => "insert_browser_and_os()"
-  - unless @task.new_record?
-    = link_to _("Show"), task_path(@task), :class => "button"
-    = link_to _("Delete"), task_path(@task), :method => :delete, :class => "button", :data => {:confirm => _("Are you sure?")}
-  
+  = f.input :project_id, collection: current_user.visible_projects.order(:name), label: Project.model_name.human
+  = f.input :task_type, collection: Task.translated_task_types.invert
+  = f.input :state, collection: Task.translated_states.invert
+  = f.input :priority, collection: 1..10
+  = f.cktext_area :description, ckeditor: {toolbar: "mini", height: 240}
+
+  = link_to _("Insert browser and os"), "#", class: "button", onclick: "insert_browser_and_os()"
+  - unless task.new_record?
+    = link_to _("Show"), task_path(task), class: "button"
+    = link_to _("Delete"), task_path(task), method: :delete, class: "button", data: {confirm: _("Are you sure?")}
+
   = f.submit _("Save")
 = DesignBox.boxb

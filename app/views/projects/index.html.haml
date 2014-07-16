@@ -3,13 +3,13 @@
 = DesignBox.boxt(_("Enter criteria"), "350px")
 = simple_search_form_for @ransack, @ransack_params do |f|
   = f.input :name_cont
-  = link_to _("Add new"), new_project_path, :class => "button"
+  = link_to _("Add new"), new_project_path, class: "button"
   = f.submit _("Search")
 = DesignBox.boxb
 
 - if params[:q]
   %br
-  
+
   = DesignBox.boxt("Projects", 500)
   %table.form
     %thead
@@ -22,6 +22,6 @@
             = link_to_project project
       - if @projects.none?
         %tr
-          %td.error{:colspan => 1}
+          %td.error{colspan: 1}
             = _("No projects were found.")
   = DesignBox.boxb
