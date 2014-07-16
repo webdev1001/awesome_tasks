@@ -1,7 +1,7 @@
 %table.list
   %thead
     %tr
-      %th= _("User")
+      %th= User.model_name.human
       - if can?(:admin, :admin)
         %th= _("Actions")
   %tbody
