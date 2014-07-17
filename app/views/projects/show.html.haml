@@ -13,6 +13,9 @@
       %table.form
         %tbody
           %tr
+            %td.tdt= Project.human_attribute_name(:organization)
+            %td= link_to_organization @project.organization
+          %tr
             %td.tdt= _("Added by")
             %td= link_to_user(@project.user_added)
           %tr
