@@ -8,7 +8,11 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    @invoice = Invoice.new
+    if params[:invoice]
+      @invoice = Invoice.new(invoice_params)
+    else
+      @invoice = Invoice.new
+    end
   end
 
   def create
@@ -59,7 +63,7 @@ class InvoicesController < ApplicationController
 private
 
   def invoice_params
-    params.require(:invoice).permit(:invoice_no, :date, :payment_at, :organization_id, :creditor_id, :invoice_type, :amount)
+    params.require(:invoice).permit(:invoice_group_id, :invoice_no, :date, :payment_at, :organization_id, :creditor_id, :invoice_type, :amount)
   end
 
   def set_and_authorize_invoice

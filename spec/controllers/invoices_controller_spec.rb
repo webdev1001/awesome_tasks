@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe InvoicesController do
   let(:invoice){ create :invoice }
+  let(:invoice_group){ create :invoice_group }
   let(:admin){ create :user_admin }
 
   before do
@@ -24,7 +25,7 @@ describe InvoicesController do
   it "#destroy" do
     delete :destroy, id: invoice.id
     controller.flash[:error].should eq nil
-    response.location.should eq invoices_url
+    response.should redirect_to(invoices_url)
   end
 
   it "#edit" do
@@ -35,7 +36,12 @@ describe InvoicesController do
   it "#update" do
     post :update, id: invoice.id, invoice: {title: "Test"}
     assigns(:invoice).valid?.should eq true
-    response.location.should eq invoice_url(invoice)
+    response.should redirect_to(invoice_url(invoice))
+  end
+
+  it "#new" do
+    post :create, invoice: {title: "Test"}
+    response.should be_success
   end
 
   it "#pdf" do

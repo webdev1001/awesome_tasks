@@ -42,8 +42,6 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.user.tasks')
     #. Default value: task_assigned_users
     _('activerecord.attributes.user.task_assigned_users')
-    #. Default value: user_rank_links
-    _('activerecord.attributes.user.user_rank_links')
     #. Default value: user_project_links
     _('activerecord.attributes.user.user_project_links')
     #. Default value: projects
@@ -98,8 +96,12 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.invoice.updated_at')
     #. Default value: creditor_id
     _('activerecord.attributes.invoice.creditor_id')
+    #. Default value: invoice_group_id
+    _('activerecord.attributes.invoice.invoice_group_id')
     #. Default value: creditor
     _('activerecord.attributes.invoice.creditor')
+    #. Default value: invoice_group
+    _('activerecord.attributes.invoice.invoice_group')
     #. Default value: organization
     _('activerecord.attributes.invoice.organization')
     #. Default value: user
@@ -108,6 +110,12 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.invoice.invoice_lines')
     #. Default value: uploaded_files
     _('activerecord.attributes.invoice.uploaded_files')
+    #. Default value: id
+    _('activerecord.attributes.invoice_group.id')
+    #. Default value: name
+    _('activerecord.attributes.invoice_group.name')
+    #. Default value: invoices
+    _('activerecord.attributes.invoice_group.invoices')
     #. Default value: id
     _('activerecord.attributes.invoice_line.id')
     #. Default value: title
@@ -184,8 +192,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.project.created_at')
     #. Default value: updated_at
     _('activerecord.attributes.project.updated_at')
-    #. Default value: added_user
-    _('activerecord.attributes.project.added_user')
+    #. Default value: user_added
+    _('activerecord.attributes.project.user_added')
     #. Default value: organization
     _('activerecord.attributes.project.organization')
     #. Default value: tasks
@@ -242,6 +250,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.task.task_checks')
     #. Default value: user_task_list_links
     _('activerecord.attributes.task.user_task_list_links')
+    #. Default value: uploaded_files
+    _('activerecord.attributes.task.uploaded_files')
     #. Default value: comments
     _('activerecord.attributes.task.comments')
     #. Default value: project
@@ -394,6 +404,10 @@ class GettextSimpleRails::MonthNames
     _('activerecord.models.invoice.one')
     #. Default value: Invoice
     _('activerecord.models.invoice.other')
+    #. Default value: InvoiceGroup
+    _('activerecord.models.invoice_group.one')
+    #. Default value: InvoiceGroup
+    _('activerecord.models.invoice_group.other')
     #. Default value: InvoiceLine
     _('activerecord.models.invoice_line.one')
     #. Default value: InvoiceLine

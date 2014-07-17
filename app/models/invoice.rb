@@ -2,13 +2,14 @@ class Invoice < ActiveRecord::Base
   include ::ViewRenderer # Used for PDF generation.
 
   belongs_to :creditor, class_name: "Organization"
+  belongs_to :invoice_group
   belongs_to :organization
   belongs_to :user
 
   has_many :invoice_lines, dependent: :destroy
   has_many :uploaded_files, as: :resource, dependent: :destroy
 
-  validates_presence_of :user, :amount, :date, :invoice_type
+  validates_presence_of :user, :amount, :date, :invoice_group, :invoice_type
 
   scope :debit, ->{ where(invoice_type: "debit") }
   scope :credit, ->{ where(invoice_type: "credit") }

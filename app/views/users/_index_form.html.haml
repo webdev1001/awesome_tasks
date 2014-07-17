@@ -1,6 +1,7 @@
 = DesignBox.boxt(_("Enter criteria"), "350px")
 = simple_search_form_for ransack, ransack_params, remote: (params[:ajaxsearch] == "true"), html: {id: "form_users"}, data: {users_path: search_users_path} do |f|
   = hidden_field_tag :not_in_task_id, params[:not_in_task_id] if params[:not_in_task_id]
+  = hidden_field_tag :not_in_project_id, params[:not_in_project_id] if params[:not_in_project_id]
   = hidden_field_tag :ajaxsearch, params[:ajaxsearch]
   = hidden_field_tag :jscallback, params[:jscallback]
 

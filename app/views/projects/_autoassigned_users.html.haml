@@ -10,4 +10,4 @@
         %td= link_to _("Remove"), project_project_autoassigned_user_path(project, project_autoassigned_user), method: :delete, remote: true, class: "remove_autoassigned_user_path", data: {confirm: _("Are you sure?")}
     - if project.project_autoassigned_users.none?
       %tr
-        %td{colspan: 2}= _("No users have been autoassigned yet.")
+        %td.error{colspan: 2}= _("No users have been autoassigned yet.")

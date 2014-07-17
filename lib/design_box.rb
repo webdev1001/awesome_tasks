@@ -1,4 +1,6 @@
 class DesignBox
+  include ActionView::Helpers::TagHelper
+
   def self.boxt(title, width = "100%")
     width = "#{width}px" if width.is_a?(Fixnum) or width.is_a?(Integer)
 
