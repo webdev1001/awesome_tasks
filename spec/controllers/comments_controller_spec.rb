@@ -1,12 +1,14 @@
 require "spec_helper"
 
 describe CommentsController do
+  let!(:user){ create :user, locale: "da" }
+  let!(:task){ create :task, user: user }
+  let(:comment){ create :comment, resource: task, user: user }
+
   render_views
 
   context "#create" do
     let!(:admin){ create :user_admin }
-    let!(:task){ create :task, user: user }
-    let!(:user){ create :user, locale: "da" }
     let!(:assigned_user){ create :user, locale: "en" }
     let!(:other_user){ create :user }
 
@@ -38,5 +40,17 @@ describe CommentsController do
       mail.body.should include "Kommentar"
       mail.body.should include "Hej #{user.name}"
     end
+  end
+
+  it "#new" do
+    sign_in task.user
+    get :new, comment: {resource_type: "Task", resource_id: task.id}
+    response.should be_success
+  end
+
+  it "#edit" do
+    sign_in task.user
+    get :edit, id: comment.id
+    response.should be_success
   end
 end
