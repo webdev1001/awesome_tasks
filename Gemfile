@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.5'
+gem 'rails', '4.0.8'
 gem 'mysql2'
 gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-rails', '~> 4.0.0'
