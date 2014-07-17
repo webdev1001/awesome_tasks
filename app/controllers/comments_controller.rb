@@ -59,8 +59,12 @@ private
   end
 
   def set_resource
-    @resource = ::Kernel.const_get(params[:comment][:resource_type]).find(params[:comment][:resource_id]) if params[:comment] && params[:comment][:resource_type] && params[:comment][:resource_id]
-    @resource = @comment.resource if @comment
+    if params[:comment] && params[:comment][:resource_type] && params[:comment][:resource_id]
+      @resource = ::Kernel.const_get(params[:comment][:resource_type]).find(params[:comment][:resource_id])
+    elsif @comment
+      @resource = @comment.resource
+    end
+
     authorize! :show, @resource if @resource
   end
 
