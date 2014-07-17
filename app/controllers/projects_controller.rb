@@ -8,7 +8,12 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    if params[:project]
+      @project = Project.new(project_params)
+    else
+      @project = Project.new
+    end
+
     @project.user_added = current_user
   end
 
@@ -46,7 +51,7 @@ class ProjectsController < ApplicationController
   end
 
   def assigned_users
-    render partial: "assigned_users", layout: false, project: @project
+    render partial: "assigned_users", layout: false, locals: {project: @project}
   end
 
   def assign_user
