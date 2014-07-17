@@ -1,8 +1,8 @@
 - content_for(:header_title){ _("Show organization: %{name}", name: @organization.name) }
 
-= DesignBox.boxt _("Actions"), 350
-= link_to _("Edit organization"), edit_organization_path(@organization), class: "button"
-= DesignBox.boxb
+= design_box _("Actions"), 350 do
+  = link_to _("Edit organization"), edit_organization_path(@organization), class: "button"
+  = link_to _("Add project"), new_project_path(project: {organization_id: @organization.id}), class: "button"
 
 %br/
 

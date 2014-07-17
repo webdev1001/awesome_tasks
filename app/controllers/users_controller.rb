@@ -10,12 +10,12 @@ class UsersController < ApplicationController
 
     if params[:not_in_task_id]
       task = Task.find(params[:not_in_task_id])
-      @users = @users.where("users.id NOT IN (?)", task.assigned_users.map{ |user| user.id })
+      @users = @users.where("users.id NOT IN (?)", task.assigned_users.map{ |user| user.id }) if task.assigned_users.any?
     end
 
     if params[:not_in_project_id]
       project = Project.find(params[:not_in_project_id])
-      @users = @users.where("users.id NOT IN (?)", project.users.map{ |user| user.id })
+      @users = @users.where("users.id NOT IN (?)", project.users.map{ |user| user.id }) if project.users.any?
     end
 
     render :index, layout: false

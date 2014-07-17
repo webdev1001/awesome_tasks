@@ -46,5 +46,10 @@ describe ProjectsController do
       controller.flash.to_a.should eq []
       project.reload.name.should eq "Test new name"
     end
+
+    it "#assigned_users" do
+      get :assigned_users, id: project.id
+      response.should be_success
+    end
   end
 end
