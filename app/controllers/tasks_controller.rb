@@ -62,7 +62,7 @@ class TasksController < ApplicationController
   end
 
   def comments
-    render partial: "comments", layout: false, locales: {comments: @comments, task: @task}
+    render partial: "comments", layout: false, locals: {comments: @comments, task: @task}
   end
 
   def timelogs
