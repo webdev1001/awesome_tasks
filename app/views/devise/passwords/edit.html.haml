@@ -1,4 +1,4 @@
-%h2= _("Change your password")
+- content_for(:header_title){ _("Change your password") }
 
 = DesignBox.boxt _("Enter details"), 650
 = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put} do |f|

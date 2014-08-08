@@ -1,4 +1,4 @@
-%h2= _("Sign in")
+- content_for(:header_title){ _("Sign in") }
 
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   = DesignBox.boxt _("Enter details"), 550
