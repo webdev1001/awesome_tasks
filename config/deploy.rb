@@ -40,6 +40,12 @@ namespace :deploy do
   task :restart do
     on roles(:web), in: :sequence do
       execute :sudo, "apache2ctl graceful"
+
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :bundle, :exec, 'bin/delayed_job', :restart
+        end
+      end
     end
   end
 
