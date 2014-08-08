@@ -33,14 +33,13 @@ private
     can :manage, Comment
     can :manage, Invoice
     can :manage, InvoiceGroup
-    can :manage, InvoiceLine do |invoice_line|
-      can? :manage, invoice_line.invoice
-    end
+    can :manage, InvoiceLine
     can :manage, Project
     can :manage, ProjectAutoassignedUser
     can :manage, Task
     can :manage, UploadedFile
     can :manage, User
+    can :manage, UserProjectLink
     can :manage, UserTaskListLink
     can :manage, Timelog
     can :manage, UserRole
@@ -67,7 +66,18 @@ private
   def task_access
     can [:new, :create], Task
     can :manage, TaskCheck do |task_check|
-      can? :show, task_check.task
+      if task_check.task
+        can? :show, task_check.task
+      else
+        true
+      end
+    end
+    can :manage, TaskAssignedUser do |task_assigned_user|
+      if task_assigned_user.task
+        can? :edit, task_assigned_user.task
+      else
+        true
+      end
     end
     can :create, UserTaskListLink
     can [:edit, :update, :destroy], UserTaskListLink do |user_task_list_link|
