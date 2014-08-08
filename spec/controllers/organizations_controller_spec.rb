@@ -30,4 +30,9 @@ describe OrganizationsController do
     get :edit, id: organization.id
     response.should be_success
   end
+
+  it "#show" do
+    get :show, id: organization.id
+    response.should be_success
+  end
 end

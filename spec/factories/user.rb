@@ -17,7 +17,7 @@ FactoryGirl.define do
     active true
 
     after(:create) do |user|
-      user.user_roles.create(role: "administrator")
+      user.user_roles.create!(role: "administrator")
     end
   end
 end
