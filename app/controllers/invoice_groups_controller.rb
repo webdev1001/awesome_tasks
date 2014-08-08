@@ -43,12 +43,7 @@ class InvoiceGroupsController < ApplicationController
   end
 
   def destroy
-    if @invoice_group.destroy
-      redirect_to invoice_groups_path
-    else
-      flash[:error] = @invoice_group.errors.full_messages.join(". ")
-      redirect_to @invoice_group
-    end
+    destroy_model @invoice_group
   end
 
 private

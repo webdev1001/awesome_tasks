@@ -46,8 +46,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy!
-    redirect_to projects_path
+    destroy_model @project
   end
 
   def assigned_users

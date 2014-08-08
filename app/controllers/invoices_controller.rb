@@ -43,12 +43,7 @@ class InvoicesController < ApplicationController
   end
 
   def destroy
-    if @invoice.destroy
-      redirect_to invoices_path
-    else
-      flash[:error] = @invoice.errors.full_messages.join(". ")
-      redirect_to invoice_path(@invoice)
-    end
+    destroy_model @invoice
   end
 
   def pdf
