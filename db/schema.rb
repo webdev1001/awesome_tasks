@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716183032) do
+ActiveRecord::Schema.define(version: 20140808183939) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -171,10 +171,12 @@ ActiveRecord::Schema.define(version: 20140716183032) do
     t.boolean  "checked"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_assigned_id"
   end
 
   add_index "task_checks", ["task_id"], name: "index_task_checks_on_task_id", using: :btree
   add_index "task_checks", ["user_added_id"], name: "index_task_checks_on_user_added_id", using: :btree
+  add_index "task_checks", ["user_assigned_id"], name: "index_task_checks_on_user_assigned_id", using: :btree
 
   create_table "tasks", force: true do |t|
     t.integer  "project_id"

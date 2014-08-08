@@ -8,8 +8,13 @@ class TaskChecksController < ApplicationController
 
   def create
     @task_check = @task.task_checks.new(task_check_params)
+    @task_check.user_added = current_user
 
     if @task_check.save
+      if @task_check.user_assigned && !@task.assigned_users.include?(@task_check.user_assigned)
+        @task.assigned_users << @task_check.user_assigned
+      end
+
       render nothing: true
     else
       render text: @task_check.errors.full_messages.join(". ")
@@ -21,7 +26,11 @@ class TaskChecksController < ApplicationController
   end
 
   def update
-    if @task_check.update_attributes(task_check_params)
+    @task_check.assign_attributes(task_check_params)
+    do_send_notifications = true if @task_check.checked_changed?
+
+    if @task_check.save
+      @task_check.delay.send_notifications(task_url(@task)) if do_send_notifications
       render nothing: true
     else
       render text: @task_check.errors.full_messages.join(". ")
@@ -36,7 +45,7 @@ class TaskChecksController < ApplicationController
 private
 
   def task_check_params
-    params.require(:task_check).permit(:name, :description, :checked)
+    params.require(:task_check).permit(:name, :description, :checked, :user_assigned_id)
   end
 
   def set_task_check
