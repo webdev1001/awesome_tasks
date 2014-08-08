@@ -1,5 +1,5 @@
 class UserRolesController < ApplicationController
-  before_filter :set_user_role
+  load_and_authorize_resource
 
   def new
     @user_role = UserRole.new(params.key?(:user_role) ? user_role_params : {})
@@ -33,15 +33,6 @@ class UserRolesController < ApplicationController
   end
 
 private
-
-  def set_user_role
-    if params[:id]
-      @user_role = UserRole.find(params[:id])
-      authorize! action_name.to_sym, @user_role
-    else
-      authorize! action_name.to_sym, UserRole
-    end
-  end
 
   def user_role_params
     params.require(:user_role).permit(:user_id, :role)

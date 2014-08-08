@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :set_user
+  load_and_authorize_resource
 
   def search
     @ransack_params = params[:q] || {}
@@ -93,15 +93,6 @@ class UsersController < ApplicationController
   end
 
 private
-
-  def set_user
-    if params[:id]
-      @user = User.find(params[:id])
-      authorize! action_name.to_sym, @user
-    else
-      authorize! action_name.to_sym, User
-    end
-  end
 
   def user_params
     params.require(:user).permit(:username, :password, :encrypted_password, :name, :email, :active)

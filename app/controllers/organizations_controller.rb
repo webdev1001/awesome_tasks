@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  before_filter :set_organization
+  load_and_authorize_resource
 
   def index
     @ransack_params = params[:q] || {}
@@ -44,13 +44,6 @@ class OrganizationsController < ApplicationController
   end
 
 private
-
-  def set_organization
-    if params[:id]
-      @organization = Organization.find(params[:id])
-      authorize! action_name.to_sym, @organization
-    end
-  end
 
   def organization_params
     params.require(:organization).permit(:name, :email, :vat_no, :payment_info, :delivery_address,

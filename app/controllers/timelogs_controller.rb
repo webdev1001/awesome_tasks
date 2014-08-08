@@ -1,5 +1,5 @@
 class TimelogsController < ApplicationController
-  before_filter :set_timelog
+  load_and_authorize_resource
 
   def index
     @ransack_params = params[:q] || {}
@@ -67,15 +67,6 @@ class TimelogsController < ApplicationController
   end
 
 private
-
-  def set_timelog
-    if params[:id]
-      @timelog = Timelog.find(params[:id])
-      authorize! action_name.to_sym, @timelog
-    else
-      authorize! action_name.to_sym, Timelog
-    end
-  end
 
   def set_dates
     if @ransack_params.any?
