@@ -1,14 +1,23 @@
-- checks.each do |check|
-  %div
-    = check_box_tag dom_id(check), 1, check.checked?, class: "task_check", data: {task_id: task.id, task_check_id: check.id}
-    = label_tag dom_id(check), check.name
+%table.list
+  %thead
+    %tr
+      %th= TaskCheck.human_attribute_name(:title)
+      %th= TaskCheck.human_attribute_name(:user_assigned)
+      %th= _("Actions")
+  %tbody
+    - checks.each do |check|
+      %tr
+        %td
+          = check_box_tag dom_id(check), 1, check.checked?, class: "task_check", data: {task_id: task.id, task_check_id: check.id}
+          = label_tag dom_id(check), check.name
+        %td= link_to_user(check.user_assigned)
+        %td
+          = link_to _("Edit"), "#", class: "task_check_edit", data: {task_id: task.id, task_check_id: check.id}
+          = link_to _("Delete"), "#", class: "task_check_delete", data: {task_id: task.id, task_check_id: check.id, confirm_msg: _("Are you sure?")}
+      - if check.description.present?
+        %tr
+          %td.tdd{colspan: 3}= Php4r.nl2br(check.description).html_safe
 
-    (
-    = link_to _("edit"), "#", class: "task_check_edit", data: {task_id: task.id, task_check_id: check.id}
-    = link_to _("delete"), "#", class: "task_check_delete", data: {task_id: task.id, task_check_id: check.id, confirm_msg: _("Are you sure?")}
-    )
-  - if check.description.present?
-    .tdd= Php4r.nl2br(check.description).html_safe
-
-- if checks.none?
-  .error=_("No checks has been added for this task.")
+    - if checks.none?
+      %tr
+        %td{colspan: 3}.error=_("No checks has been added for this task.")
