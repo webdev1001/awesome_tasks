@@ -41,4 +41,15 @@ class ApplicationController < ActionController::Base
       "en" => _("English")
     }
   end
+
+  def destroy_model model
+    models_path = StringCases.camel_to_snake(model.class.name).pluralize
+
+    if model.destroy
+      redirect_to __send__("#{models_path}_path")
+    else
+      flash[:error] = model.errors.full_messages.join(". ")
+      redirect_to [:edit, model]
+    end
+  end
 end

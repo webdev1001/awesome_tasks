@@ -153,7 +153,7 @@ describe TasksController do
     it "cannot destroy tasks with timelogs" do
       timelog #creates the timelog.
       delete :destroy, id: task_with_timelogs.id
-      response.should redirect_to task_path(task_with_timelogs)
+      response.should redirect_to edit_task_path(task_with_timelogs)
       controller.flash[:error].should_not eq nil
     end
   end

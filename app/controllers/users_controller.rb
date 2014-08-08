@@ -8,15 +8,8 @@ class UsersController < ApplicationController
     @users = @ransack.result.order(:name)
     @users = @users.where("users.id IN (?)", current_user.users_with_access_to.map(&:id))
 
-    if params[:not_in_task_id]
-      task = Task.find(params[:not_in_task_id])
-      @users = @users.where("users.id NOT IN (?)", task.assigned_users.map{ |user| user.id }) if task.assigned_users.any?
-    end
-
-    if params[:not_in_project_id]
-      project = Project.find(params[:not_in_project_id])
-      @users = @users.where("users.id NOT IN (?)", project.users.map{ |user| user.id }) if project.users.any?
-    end
+    not_in_task_query
+    not_in_project_query
 
     render :index, layout: false
   end
@@ -79,12 +72,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.destroy
-      redirect_to users_path
-    else
-      flash[:error] = @user.errors.full_messages.join(". ")
-      redirect_to edit_user_path(@user)
-    end
+    destroy_model @user
   end
 
   def log_in_as
@@ -96,5 +84,17 @@ private
 
   def user_params
     params.require(:user).permit(:username, :password, :encrypted_password, :name, :email, :active)
+  end
+
+  def not_in_task_query
+    return unless params[:not_in_task_id]
+    task = Task.find(params[:not_in_task_id])
+    @users = @users.where("users.id NOT IN (?)", task.assigned_users.map{ |user| user.id }) if task.assigned_users.any?
+  end
+
+  def not_in_project_query
+    return unless params[:not_in_project_id]
+    project = Project.find(params[:not_in_project_id])
+    @users = @users.where("users.id NOT IN (?)", project.users.map{ |user| user.id }) if project.users.any?
   end
 end
