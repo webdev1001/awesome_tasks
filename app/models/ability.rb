@@ -66,7 +66,11 @@ private
   def task_access
     can [:new, :create], Task
     can :manage, TaskCheck do |task_check|
-      can? :show, task_check.task
+      if task_check.task
+        can? :show, task_check.task
+      else
+        true
+      end
     end
     can :manage, TaskAssignedUser do |task_assigned_user|
       if task_assigned_user.task

@@ -1,5 +1,6 @@
 class TaskChecksController < ApplicationController
   load_and_authorize_resource
+  before_filter :set_task
 
   def new
     @task_check = @task.task_checks.new
@@ -43,6 +44,10 @@ class TaskChecksController < ApplicationController
   end
 
 private
+
+  def set_task
+    @task = Task.find(params[:task_id])
+  end
 
   def task_check_params
     params.require(:task_check).permit(:name, :description, :checked, :user_assigned_id)
