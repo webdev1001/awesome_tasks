@@ -113,12 +113,12 @@ describe TasksController do
     end
 
     it "#comments" do
-      get :users, id: task_assigned.id
+      get :comments, id: task_assigned.id
       response.should be_success
     end
 
     it "#timelogs" do
-      get :users, id: task_assigned.id
+      get :timelogs, id: task_assigned.id
       response.should be_success
     end
   end
