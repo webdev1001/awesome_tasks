@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_filter :set_task
+  load_and_authorize_resource
+  before_filter :set_task_resources
 
   def index
     if can? :manage, User
@@ -96,17 +97,12 @@ class TasksController < ApplicationController
 
 private
 
-  def set_task
+  def set_task_resources
     if params[:id]
-      @task = Task.includes(:task_checks, :timelogs, task_assigned_users: :user, comments: :user).find(params[:id])
-      authorize! action_name.to_sym, @task
-
       @checks = @task.task_checks.order(:name)
       @users = @task.task_assigned_users
       @comments = @task.comments.order(:created_at)
       @timelogs = @task.timelogs.order(:id).reverse_order
-    else
-      authorize! action_name.to_sym, Task
     end
   end
 

@@ -1,6 +1,6 @@
 class ProjectAutoassignedUsersController < ApplicationController
   before_filter :set_project
-  before_filter :set_autoassigned_user
+  load_and_authorize_resource
 
   def new
     @project_autoassigned_user = ProjectAutoassignedUser.new(project_id: @project.id)
@@ -29,15 +29,6 @@ private
 
   def project_autoassigned_user_params
     params.require(:project_autoassigned_user).permit(:user_id)
-  end
-
-  def set_autoassigned_user
-    if params[:id].to_i > 0
-      @project_autoassigned_user = @project.project_autoassigned_users.find(params[:id])
-      authorize! action_name.to_sym, @project_autoassigned_user
-    else
-      authorize! action_name.to_sym, ProjectAutoassignedUser
-    end
   end
 
   def set_project

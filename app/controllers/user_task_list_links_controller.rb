@@ -1,5 +1,5 @@
 class UserTaskListLinksController < ApplicationController
-  before_filter :set_user_task_list_link
+  load_and_authorize_resource
 
   def create
     @user_task_list_link = UserTaskListLink.new(user_task_list_link_params)
@@ -18,13 +18,6 @@ class UserTaskListLinksController < ApplicationController
   end
 
 private
-
-  def set_user_task_list_link
-    if params[:id]
-      @user_task_list_link = UserTaskListLink.find(params[:id])
-      authorize! action_name.to_sym, @user_task_list_link
-    end
-  end
 
   def user_task_list_link_params
     params.require(:user_task_list_link).permit(:task_id)

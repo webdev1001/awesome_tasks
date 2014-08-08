@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :set_project
+  load_and_authorize_resource
 
   def index
     @ransack_params = params[:q] || {}
@@ -60,15 +60,6 @@ class ProjectsController < ApplicationController
   end
 
 private
-
-  def set_project
-    if params[:id]
-      @project = Project.find(params[:id])
-      authorize! action_name.to_sym, @project
-    else
-      authorize! action_name.to_sym, Project
-    end
-  end
 
   def project_params
     params.require(:project).permit(:name, :description, :organization_id, :deadline_at, :price_per_hour, :price_per_hour_transport)

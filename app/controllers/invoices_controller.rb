@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-  before_filter :set_and_authorize_invoice
+  load_and_authorize_resource
 
   def index
     @ransack_params = params[:q] || {}
@@ -64,14 +64,5 @@ private
 
   def invoice_params
     params.require(:invoice).permit(:invoice_group_id, :invoice_no, :date, :payment_at, :organization_id, :creditor_id, :invoice_type, :amount)
-  end
-
-  def set_and_authorize_invoice
-    if params[:id]
-      @invoice = Invoice.find(params[:id])
-      authorize! action_name.to_sym, @invoice
-    else
-      authorize! action_name.to_sym, Invoice
-    end
   end
 end

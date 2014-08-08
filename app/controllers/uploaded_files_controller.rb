@@ -1,5 +1,5 @@
 class UploadedFilesController < ApplicationController
-  before_filter :set_and_authorize_uploaded_file
+  load_and_authorize_resource
 
   def new
     if params[:uploaded_file]
@@ -52,14 +52,5 @@ private
 
   def uploaded_file_params
     params.require(:uploaded_file).permit(:resource_type, :resource_id, :title, :file)
-  end
-
-  def set_and_authorize_uploaded_file
-    if params[:id].to_i > 0
-      @uploaded_file = UploadedFile.find(params[:id])
-      authorize! action_name.to_sym, @uploaded_file
-    else
-      authorize! action_name.to_sym, UploadedFile
-    end
   end
 end

@@ -1,6 +1,6 @@
 class InvoiceLinesController < ApplicationController
   before_filter :set_invoice
-  before_filter :set_and_authroize_invoice_line
+  load_and_authorize_resource
 
   def new
     @invoice_line = @invoice.invoice_lines.new
@@ -43,14 +43,5 @@ private
 
   def set_invoice
     @invoice = Invoice.find(params[:invoice_id])
-  end
-
-  def set_and_authroize_invoice_line
-    if params[:id].to_i > 0
-      @invoice_line = @invoice.invoice_lines.find(params[:id])
-      authorize! action_name.to_sym, @invoice_line
-    else
-      authorize! action_name.to_sym, InvoiceLine
-    end
   end
 end

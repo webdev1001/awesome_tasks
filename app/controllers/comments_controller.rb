@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :set_comment
+  load_and_authorize_resource
   before_filter :set_resource
 
   def new
@@ -47,16 +47,6 @@ class CommentsController < ApplicationController
   end
 
 private
-
-  def set_comment
-    if params[:id]
-      @comment = Comment.find(params[:id])
-      @resource = @comment.resource
-      authorize! action_name.to_sym, @comment
-    else
-      authorize! action_name.to_sym, Comment
-    end
-  end
 
   def set_resource
     if params[:comment] && params[:comment][:resource_type] && params[:comment][:resource_id]
