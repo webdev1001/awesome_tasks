@@ -1,6 +1,7 @@
 module ApplicationHelper
   include SimpleFormRansackHelper
   include RailsImager::ImagesHelper
+  include AgentHelpers::DetectorHelper
 
   def knjrbfw_opts(query, args = {})
     list = {}

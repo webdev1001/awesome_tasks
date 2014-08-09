@@ -21,13 +21,17 @@ $ ->
       form = $("form")
 
       ck = CKEDITOR.instances.task_description;
-      ck.insertHtml("<b>" + form.data("browser") + ":</b> " + $.browser + "<br />")
-      ck.insertHtml("<b>" + form.data("version") + "</b> " + $.browser.version + "<br />")
-      ck.insertHtml("<b>" + form.data("os") + "</b> os<br />")
+      ck.insertHtml("<b>" + form.data("browser-key") + ":</b> " + form.data("browser-value") + "<br />")
+      ck.insertHtml("<b>" + form.data("version-key") + ":</b> " + form.data("version-value") + "<br />")
+      ck.insertHtml("<b>" + form.data("os-key") + ":</b> " + form.data("os-value") + "<br />")
 
     @browser_and_os_inserted = false
     $("#task_task_type").change ->
       insert_browser_and_os() if this.value == "bug" && !@browser_and_os_inserted
+
+  $(".button-insert-browser-and-os").click (e) ->
+    e.preventDefault()
+    insert_browser_and_os()
 
   if $("body.action_show").length > 0
     task_show = $(".task_show")

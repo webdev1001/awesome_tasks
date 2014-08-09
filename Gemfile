@@ -25,6 +25,7 @@ gem 'baza'
 gem 'email_validator'
 gem 'rails_imager'
 gem 'will_paginate'
+gem 'agent_helpers'
 
 # PDF generation.
 gem 'pdfkit'
