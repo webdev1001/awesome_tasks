@@ -1,0 +1,12 @@
+= _("Hello %{user_name}", user_name: @user.name)
+%br
+%br
+
+%b= Task.model_name.human
+%br
+= link_to_task @task, url: true
+
+%br
+%br
+
+= _("You have been assigned to a check for the mentionen task: %{check_name}", check_name: @task_check.name)

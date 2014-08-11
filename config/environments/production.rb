@@ -67,6 +67,7 @@ AwesomeTasks::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = YAML.load(File.read("#{Rails.root}/config/smtp.yml")).symbolize_keys!
   config.action_mailer.default_options = YAML.load(File.read("#{Rails.root}/config/smtp_defaults.yml")).symbolize_keys!
+  config.action_mailer.default_url_options = YAML.load(File.read("#{Rails.root}/config/smtp_default_url_options.yml")).symbolize_keys!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
