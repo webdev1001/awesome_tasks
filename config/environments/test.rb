@@ -33,6 +33,9 @@ AwesomeTasks::Application.configure do
   config.action_mailer.default_options = {
     from: "test@awesometasks.org"
   }
+  config.action_mailer.default_url_options = {
+    host: "awesometasks.github.com"
+  }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
