@@ -40,7 +40,7 @@
             - [:vat_no, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
               %tr
                 %td= Organization.human_attribute_name(column)
-                %td= invoice.organization.try(:__send__, column)
+                %td= invoice.creditor.try(:__send__, column)
 
         %h2= invoice.organization.name
         %table
