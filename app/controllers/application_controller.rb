@@ -6,20 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter :redirect_to_sign_in_if_not_signed_in
   before_filter :redirect_old_task_urls_to_new_ones
 
-  # Redirects old URL's to new ones.
-  def redirect_old_task_urls_to_new_ones
-    if params[:show] == "tasks_show" && params[:id] && Task.exists?(params[:id])
-      redirect_to task_path(params[:id])
-    end
-  end
-
-  def redirect_to_sign_in_if_not_signed_in
-    if !signed_in? && controller_name != "sessions" && controller_name != "locales" && controller_name != "passwords"
-      session[:previous_url] = request.original_url
-      redirect_to new_user_session_path
-    end
-  end
-
   before_filter :set_knjjsfw_url
   def set_knjjsfw_url
     @knjjsfw_url = "https://www.kaspernj.org/js"
@@ -51,5 +37,26 @@ class ApplicationController < ActionController::Base
       flash[:error] = model.errors.full_messages.join(". ")
       redirect_to [:edit, model]
     end
+  end
+
+private
+
+  # Redirects old URL's to new ones.
+  def redirect_old_task_urls_to_new_ones
+    if params[:show] == "tasks_show" && params[:id] && Task.exists?(params[:id])
+      redirect_to task_path(params[:id])
+    end
+  end
+
+  def redirect_to_sign_in_if_not_signed_in
+    if !signed_in? && controller_name != "sessions" && controller_name != "locales" && controller_name != "passwords"
+      session[:previous_url] = request.original_url
+      puts "Previous URL set to: #{session[:previous_url]}"
+      redirect_to new_user_session_path
+    end
+  end
+
+  def after_sign_in_path_for resource
+    session[:previous_url] || root_path
   end
 end
