@@ -41,10 +41,6 @@ AwesomeTasks::Application.routes.draw do
     resources :project_autoassigned_users, only: [:new, :create, :destroy]
   end
 
-  resources :user_authentications do
-    delete :logout, on: :collection
-  end
-
   namespace :profile do
     get :index
     patch :update
