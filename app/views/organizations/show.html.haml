@@ -4,7 +4,7 @@
   = link_to _("Edit organization"), edit_organization_path(@organization), class: "button"
   = link_to _("Add project"), new_project_path(project: {organization_id: @organization.id}), class: "button"
 
-%br/
+%br
 
 = DesignBox.boxt _("Details"), 500
 %table.form
@@ -28,7 +28,7 @@
       %td= simple_format @organization.payment_info
 = DesignBox.boxb
 
-%br/
+%br
 
 = DesignBox.boxt Project.model_name.human(count: 2), 350
 %table.list
@@ -41,6 +41,28 @@
         %td= link_to_project project
     - if @organization.projects.none?
       %tr
-        %td{colspan: 1, class: "error"}
+        %td.error{colspan: 1}
           = _("No projects has been added for this organization.")
 = DesignBox.boxb
+
+%br
+
+= design_box Invoice.model_name.human(count: 2), 600 do
+  %table.list
+    %thead
+      %tr
+        %th= Invoice.model_name.human
+        %th= Invoice.human_attribute_name(:invoice_type)
+        %th= Invoice.human_attribute_name(:created_at)
+        %th.align-right= Invoice.human_attribute_name(:amount)
+    %tbody
+      - @organization.invoices.order(:created_at).reverse_order.each do |invoice|
+        %tr
+          %td= link_to_invoice invoice
+          %td= invoice.translated_invoice_type
+          %td= l(invoice.created_at, format: :short)
+          %td.align-right= number_to_currency invoice.amount, unit: ""
+      - if @organization.invoices.none?
+        %tr
+          %td.error{colspan: 4}
+            = _("No invoices has been added for this organization.")
