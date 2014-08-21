@@ -1,4 +1,4 @@
-%h1= Invoice.model_name.human(count: 2)
+- content_for(:header_title){ Invoice.model_name.human(count: 2) }
 
 - if can? :new, Invoice
   = link_to _("New invoice"), new_invoice_path, class: "button"
