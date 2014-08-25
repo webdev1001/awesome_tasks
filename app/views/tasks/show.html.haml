@@ -13,84 +13,78 @@
   %table{cellpadding: "0", cellspacing: "0", style: "width: 100%;"}
     %tr
       %td{style: "vertical-align: top; width: 60%;"}
-        = DesignBox.boxt(_("Task"))
-        %table.form
-          %tbody
-            %tr
-              %td.tdt= Task.human_attribute_name(:state)
-              %td= @task.translated_state
-            %tr
-              %td.tdd{colspan: 2}
-                = _("The current status of the task.")
-            %tr
-              %td.tdt= Task.human_attribute_name(:task_type)
-              %td= @task.translated_task_type
-            %tr
-              %td.tdd{colspan: 2}
-                = _("The type of task this is.")
-            %tr
-              %td.tdt= Task.human_attribute_name(:created_at)
-              %td= l(@task.created_at, format: :long) if @task.created_at
-            %tr
-              %td.tdd{colspan: 2}
-                = _("The date this task was added.")
-            %tr
-              %td.tdt= Project.model_name.human
-              %td= link_to_project(@task.project) if @task.project
-            %tr
-              %td.tdd{colspan: 2}
-                = _("The project this task is created under.")
-            %tr
-              %td.tdt= _("Author")
-              %td= link_to_user(@task.user) if @task.user
-            %tr
-              %td.tdd{colspan: 2}
-                = _("The user that created this task.")
-            %tr
-              %td.tdt= Task.human_attribute_name(:priority)
-              %td= @task.priority
-            %tr
-              %td.tdd{colspan: 2}
-                = _("The priority of the task. 10 as most important and 1 as least important.")
-        = DesignBox.boxb
+        = design_box Task.model_name.human do
+          %table.form
+            %tbody
+              %tr
+                %td.tdt= Task.human_attribute_name(:state)
+                %td= @task.translated_state
+              %tr
+                %td.tdd{colspan: 2}
+                  = _("The current status of the task.")
+              %tr
+                %td.tdt= Task.human_attribute_name(:task_type)
+                %td= @task.translated_task_type
+              %tr
+                %td.tdd{colspan: 2}
+                  = _("The type of task this is.")
+              %tr
+                %td.tdt= Task.human_attribute_name(:created_at)
+                %td= l(@task.created_at, format: :long) if @task.created_at
+              %tr
+                %td.tdd{colspan: 2}
+                  = _("The date this task was added.")
+              %tr
+                %td.tdt= Project.model_name.human
+                %td= link_to_project(@task.project) if @task.project
+              %tr
+                %td.tdd{colspan: 2}
+                  = _("The project this task is created under.")
+              %tr
+                %td.tdt= _("Author")
+                %td= link_to_user(@task.user) if @task.user
+              %tr
+                %td.tdd{colspan: 2}
+                  = _("The user that created this task.")
+              %tr
+                %td.tdt= Task.human_attribute_name(:priority)
+                %td= @task.priority
+              %tr
+                %td.tdd{colspan: 2}
+                  = _("The priority of the task. 10 as most important and 1 as least important.")
         %br
-        = DesignBox.boxt _("Description")
-        - unless @task.description?
-          .error= _("No description has been written for this task.")
-        - else
-          = @task.description.html_safe
-        = DesignBox.boxb
+        = design_box Task.human_attribute_name(:description) do
+          - unless @task.description?
+            .error= _("No description has been written for this task.")
+          - else
+            = @task.description.html_safe
       %td{style: "vertical-align: top; padding-left: 15px;"}
-        = DesignBox.boxt _("Assigned users")
-        %div{style: "padding-bottom: 10px;"}
-          = link_to _("Assign user to task"), "#", class: ["button", "assign_user_to_task"], data: {title: _("Assign user to task"), url: search_users_path(ajaxsearch: true, not_in_task_id: @task.id, jscallback: "task_show_assign_user_choose")}
-        #divusers= render "users", users: @users, task: @task
-        = DesignBox.boxb
+        = design_box _("Assigned users") do
+          %div{style: "padding-bottom: 10px;"}
+            = link_to _("Assign user to task"), "#", class: ["button", "assign_user_to_task"], data: {title: _("Assign user to task"), url: search_users_path(ajaxsearch: true, not_in_task_id: @task.id, jscallback: "task_show_assign_user_choose")}
+          #divusers= render "users", users: @users, task: @task
 
-        %br/
+        %br
 
-        = DesignBox.boxt _("Checklist")
-        %div{style: "padding-bottom: 15px;"}
-          = link_to _("Add new check"), "#", class: ["button", "add_new_check"], data: {title: _("Add new check"), url: new_task_task_check_path(task_id: @task.id)}
-        #divchecks= render "checks", checks: @checks, task: @task
-        = DesignBox.boxb
+        = design_box _("Checklist") do
+          %div{style: "padding-bottom: 15px;"}
+            = link_to _("Add new check"), "#", class: ["button", "add_new_check"], data: {title: _("Add new check"), url: new_task_task_check_path(task_id: @task.id)}
+          #divchecks= render "checks", checks: @checks, task: @task
 
-        %br/
+        %br
 
         = render "/uploaded_files/list_for_resource", resource: @task
   %div{style: "clear: both;"}
 %div{style: "padding-bottom: 15px;"}
-  = DesignBox.boxt(_("Comments"))
+  = design_box Comment.model_name.human(count: 2) do
+    %div{style: "padding-bottom: 15px;"}
+      %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: _("Add new")}/
+    #divcomments
+      = render "comments", comments: @comments, task: @task
+    %div
+      %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: _("Add new")}/
+= design_box Timelog.model_name.human(count: 2) do
   %div{style: "padding-bottom: 15px;"}
-    %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: _("Add new")}/
-  #divcomments
-    = render "comments", comments: @comments, task: @task
-  %div
-    %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: _("Add new")}/
-  = DesignBox.boxb
-= DesignBox.boxt(_("Timelogs"))
-%div{style: "padding-bottom: 15px;"}
-  %input{onclick: "timelog_add('#{@task.id}');", type: "button", value: _("Add new")}/
-#divtimelogs
-  = render "timelogs", timelogs: @timelogs, task: @task
-= DesignBox.boxb
+    %input{onclick: "timelog_add('#{@task.id}');", type: "button", value: _("Add new")}/
+  #divtimelogs
+    = render "timelogs", timelogs: @timelogs, task: @task

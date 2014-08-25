@@ -1,11 +1,10 @@
-= DesignBox.boxt _("Details"), 500
-= simple_form_for uploaded_file do |f|
-  = f.input :resource_type, as: :hidden
-  = f.input :resource_id, as: :hidden
-  = f.input :title, autofocus: true, required: false
-  = f.input :file, required: false
-  = f.submit _("Save")
+= design_box _("Details"), 500 do
+  = simple_form_for uploaded_file do |f|
+    = f.input :resource_type, as: :hidden
+    = f.input :resource_id, as: :hidden
+    = f.input :title, autofocus: true, required: false
+    = f.input :file, required: false
+    = f.submit _("Save")
 
-  - if can?(:destroy, uploaded_file) && !uploaded_file.new_record?
-    = link_to _("Delete"), uploaded_file, class: "button", method: :delete, data: {confirm: _("Are you sure?")}
-= DesignBox.boxb
+    - if can?(:destroy, uploaded_file) && !uploaded_file.new_record?
+      = link_to _("Delete"), uploaded_file, class: "button", method: :delete, data: {confirm: _("Are you sure?")}

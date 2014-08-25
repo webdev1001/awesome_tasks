@@ -1,18 +1,17 @@
-= DesignBox.boxt(_("Enter criteria"), "350px")
-= simple_search_form_for ransack, ransack_params, remote: (params[:ajaxsearch] == "true"), html: {id: "form_users"}, data: {users_path: search_users_path} do |f|
-  = hidden_field_tag :not_in_task_id, params[:not_in_task_id] if params[:not_in_task_id]
-  = hidden_field_tag :not_in_project_id, params[:not_in_project_id] if params[:not_in_project_id]
-  = hidden_field_tag :ajaxsearch, params[:ajaxsearch]
-  = hidden_field_tag :jscallback, params[:jscallback]
+= design_box _("Enter criteria"), 350 do
+  = simple_search_form_for ransack, ransack_params, remote: (params[:ajaxsearch] == "true"), html: {id: "form_users"}, data: {users_path: search_users_path} do |f|
+    = hidden_field_tag :not_in_task_id, params[:not_in_task_id] if params[:not_in_task_id]
+    = hidden_field_tag :not_in_project_id, params[:not_in_project_id] if params[:not_in_project_id]
+    = hidden_field_tag :ajaxsearch, params[:ajaxsearch]
+    = hidden_field_tag :jscallback, params[:jscallback]
 
-  = f.input :name_cont
+    = f.input :name_cont
 
-  = link_to _("Add new"), new_user_path, class: "button"
-  = f.submit _("Search")
-= DesignBox.boxb
+    = link_to _("Add new"), new_user_path, class: "button"
+    = f.submit _("Search")
 
 - if params[:ajaxsearch] == "true"
-  %br/
+  %br
 
   #divresults
     .error= _("Please search...")

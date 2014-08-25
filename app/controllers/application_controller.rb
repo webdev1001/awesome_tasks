@@ -51,7 +51,6 @@ private
   def redirect_to_sign_in_if_not_signed_in
     if !signed_in? && controller_name != "sessions" && controller_name != "locales" && controller_name != "passwords"
       session[:previous_url] = request.original_url
-      puts "Previous URL set to: #{session[:previous_url]}"
       redirect_to new_user_session_path
     end
   end
