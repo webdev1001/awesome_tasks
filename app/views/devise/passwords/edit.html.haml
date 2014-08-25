@@ -1,14 +1,13 @@
 - content_for(:header_title){ _("Change your password") }
 
-= DesignBox.boxt _("Enter details"), 650
-= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put} do |f|
-  = f.error_notification
-  = f.input :reset_password_token, as: :hidden
-  = f.full_error :reset_password_token
-  = f.input :password, label: _("New password"), required: true, autofocus: true
-  = f.input :password_confirmation, label: _("Confirm your new password"), required: true
-  = f.button :submit, _("Change my password")
-= DesignBox.boxb
+= design_box _("Enter details"), 650 do
+  = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put} do |f|
+    = f.error_notification
+    = f.input :reset_password_token, as: :hidden
+    = f.full_error :reset_password_token
+    = f.input :password, label: _("New password"), required: true, autofocus: true
+    = f.input :password_confirmation, label: _("Confirm your new password"), required: true
+    = f.button :submit, _("Change my password")
 
-%br/
+%br
 = render "devise/shared/links"

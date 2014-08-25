@@ -1,11 +1,10 @@
 - content_for(:header_title){ _("Invoice %{id}", id: @invoice.id) }
 
 - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
-  = DesignBox.boxt _("Manage"), 350
-  = link_to _("Edit"), edit_invoice_path(@invoice), class: "button" if can? :edit, @invoice
-  = link_to _("Delete"), @invoice, class: "button", method: :delete, data: {confirm: _("Are you sure?")} if can? :destory, @invoice
-  = link_to _("PDF"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice
-  = DesignBox.boxb
+  = design_box _("Manage"), 350 do
+    = link_to _("Edit"), edit_invoice_path(@invoice), class: "button" if can? :edit, @invoice
+    = link_to _("Delete"), @invoice, class: "button", method: :delete, data: {confirm: _("Are you sure?")} if can? :destory, @invoice
+    = link_to _("PDF"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice
 
 %br/
 
