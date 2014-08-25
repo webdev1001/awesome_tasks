@@ -1,19 +1,11 @@
 class WorkstatusController < ApplicationController
   def index
-    @search = params[:search] || {}
+    @ransack_params = params[:q] || {}
+    @ransack = Timelog.ransack(@ransack_params)
+    @timelogs = @ransack.result.includes(task: :project)
 
-    @date_from = Datet.in(@search[:date_from]) if @search[:date_from]
-    @date_to = Datet.in(@search[:date_to]) if @search[:date_to]
-
-    unless @date_from
-      @date_from = Datet.new
-      @date_from.day = 1
-    end
-
-    unless @date_to
-      @date_to = Datet.new
-      @date_to.day = @date_to.days_in_month
-    end
+    set_dates
+    calculate_totals
   end
 
 private
@@ -49,5 +41,31 @@ private
       yield cur_date.month
       cur_date += 1.month
     end
+  end
+
+  def set_dates
+    @date_from = Time.zone.parse(@ransack_params[:date_gteq]) if @ransack_params[:date_gteq]
+    @date_to = Time.zone.parse(@ransack_params[:date_lteq]) if @ransack_params[:date_lteq]
+
+    unless @date_from
+      @date_from = Time.zone.now.beginning_of_month
+      @timelogs = @timelogs.where("timelogs.date >= ?", @date_from)
+    end
+
+    unless @date_to
+      @date_to = Time.zone.now.end_of_month
+      @timelogs = @timelogs.where("timelogs.date <= ?", @date_to)
+    end
+  end
+
+  def calculate_totals
+    @hours = @timelogs.sum("TIME_TO_SEC(timelogs.time)") / 3600.0
+    @hours_transport = @timelogs.sum("TIME_TO_SEC(timelogs.time_transport)") / 3600.0
+    @earned = @timelogs.sum("TIME_TO_SEC(timelogs.time) * projects.price_per_hour") / 3600.0
+    @earned_transport = @timelogs.sum("TIME_TO_SEC(timelogs.time_transport) * projects.price_per_hour_transport") / 3600.0
+    @earned_total = @earned + @earned_transport
+    @transport_length = @timelogs.sum(:transport_length)
+    @hours_total = @hours + @hours_transport
+    @tax_40 = @earned_total * 0.4
   end
 end
