@@ -1,0 +1,12 @@
+.task_progress {
+  border: 1px solid #666666;
+  border-radius: 3px;
+  background-color: #f6f6ff;
+  height: 16px;
+  width: 100%;
+
+  .progress_bar {
+    background-color: #698295;
+    height: 16px;
+  }
+}

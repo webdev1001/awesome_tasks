@@ -91,6 +91,11 @@ class Task < ActiveRecord::Base
     name.presence || "[#{_("task %{task_id}", task_id: id)}]"
   end
 
+  def progress
+    return 0 if task_checks.count == 0
+    task_checks.checked.count / task_checks.count
+  end
+
 private
 
   def set_priority
