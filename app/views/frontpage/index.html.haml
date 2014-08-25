@@ -4,10 +4,10 @@
 %div{style: "padding-bottom: 15px;"}
   = link_to _("Add new"), new_task_path, class: "button"
 
-%table.list
+%table.list.task-list
   %thead
     %tr
-      %th= sort_link @ransack, :name, Task.model_name.human
+      %th{colspan: 2}= sort_link @ransack, :name, Task.model_name.human
       %th= sort_link @ransack, :project_name, Project.model_name.human
       %th= sort_link @ransack, :priority
       %th= sort_link @ransack, :user_name
@@ -18,7 +18,8 @@
         %th= Task.human_attribute_name(:transport_length)
   %tbody
     - each_task do |data|
-      %tr
+      %tr.task-row{data: {task_id: data[:task].id, task_path: task_path(data[:task])}}
+        %td= check_box_tag "task_check_#{data[:task_id]}"
         %td= link_to_task data[:task]
         %td.nowrap= link_to_project data[:task].project
         %td.nowrap= data[:task].priority

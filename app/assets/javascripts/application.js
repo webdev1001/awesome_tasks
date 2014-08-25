@@ -21,6 +21,7 @@
 //= require ckeditor/init
 //= require ckeditor_awesometasks_config
 //= require ckeditor/config
+//= require frontpage
 //= require init
 //= require organizations
 //= require comments

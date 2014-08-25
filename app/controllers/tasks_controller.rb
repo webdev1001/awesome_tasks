@@ -46,11 +46,18 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update_attributes(task_params)
-      redirect_to task_path(@task)
-    else
-      flash[:error] = @task.errors.full_messages.join(". ")
-      render :edit
+    respond_to do |format|
+      if @task.update_attributes(task_params)
+        format.html { redirect_to task_path(@task) }
+        format.json { render json: {success: true} }
+      else
+        format.html {
+          flash[:error] = @task.errors.full_messages.join(". ")
+          render :edit
+        }
+
+        format.json { render json: {success: false, errors: @task.errors.full_messages.join(". ")} }
+      end
     end
   end
 

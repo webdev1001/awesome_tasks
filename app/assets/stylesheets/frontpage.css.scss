@@ -2,4 +2,8 @@ body.controller_frontpage {
   .task_link.state_open {
     font-weight: bold;
   }
+
+  table.task-list tbody tr.task-row td:first-child {
+    width: 10px;
+  }
 }
