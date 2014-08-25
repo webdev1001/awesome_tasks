@@ -4,43 +4,41 @@
   = link_to _("Edit organization"), edit_organization_path(@organization), class: "button"
   = link_to _("Add project"), new_project_path(project: {organization_id: @organization.id}), class: "button"
 
-%br/
+%br
 
-= DesignBox.boxt _("Details"), 500
-%table.form
-  %tbody
-    %tr
-      %td= Organization.human_attribute_name(:email)
-      %td= mail_to @organization.email if @organization.email?
-    %tr
-      %td= Organization.human_attribute_name(:customer)
-      %td= @organization.customer? ? _("Yes") : _("No")
-    %tr
-      %td= Organization.human_attribute_name(:creditor)
-      %td= @organization.creditor? ? _("Yes") : _("No")
-
-    - [:name, :vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
+= design_box _("Details"), 500 do
+  %table.form
+    %tbody
       %tr
-        %td= Organization.human_attribute_name(column)
-        %td= @organization.__send__(column)
-    %tr
-      %td= Organization.human_attribute_name(:payment_info)
-      %td= simple_format @organization.payment_info
-= DesignBox.boxb
-
-%br/
-
-= DesignBox.boxt Project.model_name.human(count: 2), 350
-%table.list
-  %thead
-    %tr
-      %th= Project.model_name.human
-  %tbody
-    - @organization.projects.each do |project|
+        %td= Organization.human_attribute_name(:email)
+        %td= mail_to @organization.email if @organization.email?
       %tr
-        %td= link_to_project project
-    - if @organization.projects.none?
+        %td= Organization.human_attribute_name(:customer)
+        %td= @organization.customer? ? _("Yes") : _("No")
       %tr
-        %td{colspan: 1, class: "error"}
-          = _("No projects has been added for this organization.")
-= DesignBox.boxb
+        %td= Organization.human_attribute_name(:creditor)
+        %td= @organization.creditor? ? _("Yes") : _("No")
+
+      - [:name, :vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
+        %tr
+          %td= Organization.human_attribute_name(column)
+          %td= @organization.__send__(column)
+      %tr
+        %td= Organization.human_attribute_name(:payment_info)
+        %td= simple_format @organization.payment_info
+
+%br
+
+= design_box Project.model_name.human(count: 2), 350 do
+  %table.list
+    %thead
+      %tr
+        %th= Project.model_name.human
+    %tbody
+      - @organization.projects.each do |project|
+        %tr
+          %td= link_to_project project
+      - if @organization.projects.none?
+        %tr
+          %td{colspan: 1, class: "error"}
+            = _("No projects has been added for this organization.")

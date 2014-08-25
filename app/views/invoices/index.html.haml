@@ -5,54 +5,51 @@
   %br/
   %br/
 
-= DesignBox.boxt _("Enter criteria"), 550
-= simple_search_form_for @ransack, @ransack_params do |f|
-  = f.input :id_eq, autofocus: true
-  = f.input :organization_name_cont
-  = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
-  = f.submit _("Filter")
-= DesignBox.boxb
+= design_box _("Enter criteria"), 550 do
+  = simple_search_form_for @ransack, @ransack_params do |f|
+    = f.input :id_eq, autofocus: true
+    = f.input :organization_name_cont
+    = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
+    = f.submit _("Filter")
 
-%br/
+%br
 
-= DesignBox.boxt Invoice.model_name.human(count: 2), 700
-%table.list
-  %thead
-    %tr
-      %th= sort_link @ransack, :id
-      %th= sort_link @ransack, :invoice_no
-      %th= sort_link @ransack, :invoice_type
-      %th= sort_link @ransack, :organization_name, Invoice.human_attribute_name(:organization)
-      %th= sort_link @ransack, :date
-      %th= sort_link @ransack, :amount
-  %tbody
-    - @invoices.each do |invoice|
+= design_box Invoice.model_name.human(count: 2), 700 do
+  %table.list
+    %thead
       %tr
-        %td= link_to_invoice invoice, title: invoice.id
-        %td= link_to_invoice invoice, title: invoice.invoice_no if invoice.invoice_no?
-        %td= invoice.translated_invoice_type
-        %td= link_to_organization invoice.organization
-        %td= l(invoice.date, format: :long)
-        %td= format_number invoice.amount
-    - if @invoices.none?
+        %th= sort_link @ransack, :id
+        %th= sort_link @ransack, :invoice_no
+        %th= sort_link @ransack, :invoice_type
+        %th= sort_link @ransack, :organization_name, Invoice.human_attribute_name(:organization)
+        %th= sort_link @ransack, :date
+        %th= sort_link @ransack, :amount
+    %tbody
+      - @invoices.each do |invoice|
+        %tr
+          %td= link_to_invoice invoice, title: invoice.id
+          %td= link_to_invoice invoice, title: invoice.invoice_no if invoice.invoice_no?
+          %td= invoice.translated_invoice_type
+          %td= link_to_organization invoice.organization
+          %td= l(invoice.date, format: :long)
+          %td= format_number invoice.amount
+      - if @invoices.none?
+        %tr
+          %td.error{colspan: 4}
+            = _("No invoices could be found.")
+
+%br
+%br
+
+= design_box _("Totals"), 400 do
+  %table.form
+    %tbody
       %tr
-        %td.error{colspan: 4}
-          = _("No invoices could be found.")
-= DesignBox.boxb
-
-%br/
-%br/
-
-= DesignBox.boxt _("Totals"), 400
-%table.form
-  %tbody
-    %tr
-      %td.tdt= _("Amount")
-      %td.align-right= format_number @invoices.sum(:amount)
-    %tr
-      %td.tdt= _("Vat")
-      %td.align-right= format_number @invoices.sum(:amount) * 0.25
-    %tr
-      %td.tdt= _("Total")
-      %td.align-right= format_number @invoices.sum(:amount) * 1.25
-= DesignBox.boxb
+        %td.tdt= _("Amount")
+        %td.align-right= format_number @invoices.sum(:amount)
+      %tr
+        %td.tdt= _("Vat")
+        %td.align-right= format_number @invoices.sum(:amount) * 0.25
+      %tr
+        %td.tdt= _("Total")
+        %td.align-right= format_number @invoices.sum(:amount) * 1.25

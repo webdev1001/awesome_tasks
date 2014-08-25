@@ -1,86 +1,82 @@
 - content_for(:header_title){ _("Invoice %{id}", id: @invoice.id) }
 
 - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
-  = DesignBox.boxt _("Manage"), 350
-  = link_to _("Edit"), edit_invoice_path(@invoice), class: "button" if can? :edit, @invoice
-  = link_to _("Delete"), @invoice, class: "button", method: :delete, data: {confirm: _("Are you sure?")} if can? :destory, @invoice
-  = link_to _("PDF"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice
-  = DesignBox.boxb
+  = design_box _("Manage"), 350 do
+    = link_to _("Edit"), edit_invoice_path(@invoice), class: "button" if can? :edit, @invoice
+    = link_to _("Delete"), @invoice, class: "button", method: :delete, data: {confirm: _("Are you sure?")} if can? :destory, @invoice
+    = link_to _("PDF"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice
 
-%br/
+%br
 
-= DesignBox.boxt _("Details"), 500
-%table.form
-  %tbody
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:id)
-      %td.align-right= @invoice.id
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:invoice_group)
-      %td.align-right= link_to_invoice_group @invoice.invoice_group
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:invoice_no)
-      %td.align-right= @invoice.invoice_no
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:date)
-      %td.align-right= l(@invoice.date, format: :long) if @invoice.date
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:payment_at)
-      %td.align-right= l(@invoice.payment_at, format: :long) if @invoice.payment_at
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:invoice_type)
-      %td.align-right= @invoice.translated_invoice_type
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:amount)
-      %td.align-right= format_number @invoice.amount
-    %tr
-      %td.tdt= _("Vat")
-      %td.align-right= format_number @invoice.amount_vat
-    %tr
-      %td.tdt= _("Total")
-      %td.align-right= format_number @invoice.amount_total
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:organization)
-      %td.align-right= link_to_organization @invoice.organization
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:creditor)
-      %td.align-right= link_to_organization @invoice.creditor
-    %tr
-      %td.tdt= Invoice.human_attribute_name(:user)
-      %td.align-right= link_to_user @invoice.user
-= DesignBox.boxb
+= design_box _("Details"), 500 do
+  %table.form
+    %tbody
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:id)
+        %td.align-right= @invoice.id
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:invoice_group)
+        %td.align-right= link_to_invoice_group @invoice.invoice_group
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:invoice_no)
+        %td.align-right= @invoice.invoice_no
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:date)
+        %td.align-right= l(@invoice.date, format: :long) if @invoice.date
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:payment_at)
+        %td.align-right= l(@invoice.payment_at, format: :long) if @invoice.payment_at
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:invoice_type)
+        %td.align-right= @invoice.translated_invoice_type
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:amount)
+        %td.align-right= format_number @invoice.amount
+      %tr
+        %td.tdt= _("Vat")
+        %td.align-right= format_number @invoice.amount_vat
+      %tr
+        %td.tdt= _("Total")
+        %td.align-right= format_number @invoice.amount_total
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:organization)
+        %td.align-right= link_to_organization @invoice.organization
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:creditor)
+        %td.align-right= link_to_organization @invoice.creditor
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:user)
+        %td.align-right= link_to_user @invoice.user
 
-%br/
+%br
 
 = render "/uploaded_files/list_for_resource", resource: @invoice
 
-%br/
+%br
 
-= DesignBox.boxt InvoiceLine.model_name.human(count: 2), 700
+= design_box InvoiceLine.model_name.human(count: 2), 700 do
+  = link_to _("Add new invoice-line"), new_invoice_invoice_line_path(@invoice), class: "button"
+  %br
+  %br
 
-= link_to _("Add new invoice-line"), new_invoice_invoice_line_path(@invoice), class: "button"
-%br/
-%br/
-
-%table.list
-  %thead
-    %tr
-      %th= InvoiceLine.human_attribute_name(:title)
-      %th.align-right= InvoiceLine.human_attribute_name(:quantity)
-      %th.align-right= InvoiceLine.human_attribute_name(:amount)
-      %th.align-right= _("Total")
-      %th= _("Actions")
-  %tbody
-    - @invoice.invoice_lines.each do |line|
+  %table.list
+    %thead
       %tr
-        %td= line.title
-        %td.align-right= format_number line.quantity
-        %td.align-right= format_number line.amount
-        %td.align-right= format_number line.amount_total
-        %td
-          = link_to _("Edit"), ["edit", @invoice, line] if can? :edit, line
-          = link_to _("Delete"), [@invoice, line], method: :delete, data: {confirm: _("Are you sure?")} if can? :destroy, line
-    - if @invoice.invoice_lines.none?
-      %tr
-        %td.error{colspan: 3}= _("No lines were found.")
-= DesignBox.boxb
+        %th= InvoiceLine.human_attribute_name(:title)
+        %th.align-right= InvoiceLine.human_attribute_name(:quantity)
+        %th.align-right= InvoiceLine.human_attribute_name(:amount)
+        %th.align-right= _("Total")
+        %th= _("Actions")
+    %tbody
+      - @invoice.invoice_lines.each do |line|
+        %tr
+          %td= line.title
+          %td.align-right= format_number line.quantity
+          %td.align-right= format_number line.amount
+          %td.align-right= format_number line.amount_total
+          %td
+            = link_to _("Edit"), ["edit", @invoice, line] if can? :edit, line
+            = link_to _("Delete"), [@invoice, line], method: :delete, data: {confirm: _("Are you sure?")} if can? :destroy, line
+      - if @invoice.invoice_lines.none?
+        %tr
+          %td.error{colspan: 3}= _("No lines were found.")
