@@ -21,11 +21,16 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.comment = comment_with_changed_state
 
-    if @comment.save && @resource.save
-      @resource.delay.send_notify_new_comment(@comment, task_url(@resource)) if @resource.is_a?(Task)
-      render nothing: true
-    else
-      render text: errors.join(". ")
+    respond_to do |format|
+      if @comment.save && @resource.save
+        @resource.delay.send_notify_new_comment(@comment, task_url(@resource)) if @resource.is_a?(Task)
+
+        format.html { render nothing: true }
+        format.json { render json: {success: true} }
+      else
+        format.html { render text: errors.join(". ") }
+        format.json { render json: {success: false, errors: errors.join(". ")} }
+      end
     end
   end
 
