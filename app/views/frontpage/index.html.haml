@@ -4,7 +4,7 @@
 %div{style: "padding-bottom: 15px;"}
   = link_to _("Add new"), new_task_path, class: "button"
 
-%table.list.task-list
+%table.list.task-list{data: {close_msg: _("Closed the task."), create_comment_path: comments_path}}
   %thead
     %tr
       %th{colspan: 2}= sort_link @ransack, :name, Task.model_name.human
