@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+Dir.chdir("#{__dir__}/../")
+puts %x[RAILS_ENV=production bundle exec bin/delayed_job restart]

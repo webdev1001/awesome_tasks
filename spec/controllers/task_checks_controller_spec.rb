@@ -43,6 +43,24 @@ describe TaskChecksController do
         task_check.reload
         task_check.checked?.should eq true
         ActionMailer::Base.deliveries.length.should eq task.notify_emails.length
+
+        mail = ActionMailer::Base.deliveries.last
+        mail.body.to_s.should include "has been completed"
+        mail.subject.should include "completed"
+      end
+
+      it "sends email when being checked" do
+        ActionMailer::Base.deliveries.clear
+        task_check.checked?.should eq false
+        patch :update, id: task_check.id, task_id: task.id, task_check: {checked: 0}
+        response.should be_success
+        task_check.reload
+        task_check.checked?.should eq false
+        ActionMailer::Base.deliveries.length.should eq task.notify_emails.length
+
+        mail = ActionMailer::Base.deliveries.last
+        mail.body.to_s.should include "has been marked as not complete"
+        mail.subject.should include "not completed"
       end
     end
 
