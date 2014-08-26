@@ -13,6 +13,8 @@ class InvoicesController < ApplicationController
     else
       @invoice = Invoice.new
     end
+
+    @invoice.payment_at = 1.week.since(Time.zone.now) unless params[:invoice] && params[:invoice][:payment_at]
   end
 
   def create
