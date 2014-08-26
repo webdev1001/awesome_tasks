@@ -18,19 +18,12 @@ class TasksController < ApplicationController
   end
 
   def new
-    if params[:task]
-      @task = Task.new(params[:task].permit!)
-    else
-      @task = Task.new
-    end
-
     @task.priority = 1 unless @task.priority
     @task.state = "open" unless @task.state
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.user = current_user if signed_in?
+    @task.user = current_user
 
     if @task.save
       # Mail auto-assigned users

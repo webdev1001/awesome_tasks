@@ -3,14 +3,6 @@ class CommentsController < ApplicationController
   before_filter :set_resource
 
   def new
-    if params[:comment]
-      @comment = Comment.new(comment_params)
-      @comment.user = current_user
-      @comment.resource = @resource
-    else
-      raise "Missing resource"
-    end
-
     render :new, layout: false
   end
 

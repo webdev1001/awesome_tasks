@@ -2,8 +2,8 @@
 
 - if can? :new, Invoice
   = link_to _("New invoice"), new_invoice_path, class: "button"
-  %br/
-  %br/
+  %br
+  %br
 
 = design_box _("Enter criteria"), 550 do
   = simple_search_form_for @ransack, @ransack_params do |f|

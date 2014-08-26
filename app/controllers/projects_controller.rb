@@ -8,17 +8,9 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    if params[:project]
-      @project = Project.new(project_params)
-    else
-      @project = Project.new
-    end
-
-    @project.user_added = current_user
   end
 
   def create
-    @project = Project.new(project_params)
     @project.user_added = current_user
 
     if @project.save

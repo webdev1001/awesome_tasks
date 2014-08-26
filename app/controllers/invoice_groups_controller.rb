@@ -18,12 +18,9 @@ class InvoiceGroupsController < ApplicationController
   end
 
   def new
-    @invoice_group = InvoiceGroup.new
   end
 
   def create
-    @invoice_group = InvoiceGroup.new(invoice_group_params)
-
     if @invoice_group.save
       redirect_to @invoice_group
     else

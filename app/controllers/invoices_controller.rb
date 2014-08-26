@@ -8,15 +8,9 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    if params[:invoice]
-      @invoice = Invoice.new(invoice_params)
-    else
-      @invoice = Invoice.new
-    end
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
     @invoice.user = current_user
 
     if @invoice.save
