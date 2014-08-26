@@ -7,6 +7,8 @@ class TaskCheck < ActiveRecord::Base
 
   after_save :email_user_assigned_if_changed
 
+  scope :checked, -> { where(checked: true) }
+
   def send_notifications(task_url)
     task.notify_emails.each do |data|
       TaskChecksMailer.notification(self, data[:user], task_url).deliver!

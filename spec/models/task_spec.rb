@@ -27,4 +27,14 @@ describe Task do
       list.should_not include task_closed
     end
   end
+
+  context "#progress" do
+    let!(:task){ create :task }
+    let!(:task_check){ create :task_check, task: task }
+    let!(:task_check_checked){ create :task_check, task: task, checked: true }
+
+    it "returns the correct amount" do
+      task.progress.should eq 0.5
+    end
+  end
 end

@@ -9,9 +9,12 @@ class TasksController < ApplicationController
       @users = current_user.users_list
     end
 
+    @projects = current_user.visible_projects.order(:name)
+
     @ransack_params = params[:q] || {}
     @ransack = Task.ransack(@ransack_params)
     @tasks = @ransack.result.includes(:user, :project).order(:name)
+    @tasks = @tasks.paginate(page: params[:p], per_page: 40)
   end
 
   def new

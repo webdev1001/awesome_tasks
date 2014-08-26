@@ -1,0 +1,28 @@
+body.controller_tasks {
+  &.action_index {
+    table.tasks-list {
+      td:nth-child(2) {
+        width: 100px;
+        padding-right: 15px;
+      }
+    }
+  }
+}
+
+.task_progress {
+  border: 1px solid #666666;
+  border-radius: 3px;
+  background-color: #f6f6ff;
+  height: 16px;
+  width: 100%;
+
+  &.no-checks {
+    border-color: #bfbfbf;
+    background-color: #ffffff;
+  }
+
+  .progress_bar {
+    background-color: #698295;
+    height: 16px;
+  }
+}
