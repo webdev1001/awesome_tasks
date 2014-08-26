@@ -1,0 +1,94 @@
+- content_for(:header_title){ _("Work-status") }
+
+= design_box _("Filter"), 550 do
+  = simple_search_form_for @ransack, @ransack_params do |f|
+    = f.input :date_gteq, label: _("Date from"), as: :string, input_html: {value: @date_from.strftime("%Y-%m-%d")}
+    = f.input :date_lteq, label: _("Date to"), as: :string, input_html: {value: @date_to.strftime("%Y-%m-%d")}
+    = f.input :task_project_id_eq_any, as: :check_boxes, collection: Project.all.order(:name), label: Project.model_name.human(count: 2)
+    = f.submit _("Search")
+
+%br
+
+= design_box _("Results"), 700 do
+  %table.list
+    %thead
+      %tr
+        %th= _("Date")
+        %th.tdr= _("Hours")
+        %th.tdr= _("Hours driving")
+        %th.tdr= _("Earned")
+        %th.tdr= _("Driving earned")
+        %th.tdr= _("Driving length")
+    %tbody
+      - each_year do |year|
+        - if @date_from.year != year
+          %tr
+            %td{colspan: 6}
+              %h2= year
+
+        - each_month_in_year(year) do |month|
+          - month_date = Datet.in("#{year}-#{month}-1")
+          - if @date_from.year != @date_to.year or @date_from.month != @date_to.month
+            %tr
+              %td{colspan: 6}
+                %h3= month
+          - each_date_in_month_and_year(month, year) do |date|
+            - timelogs_date = @timelogs.where("timelogs.date = ?", date.to_date).joins(task: :project)
+            - hours = timelogs_date.sum("TIME_TO_SEC(timelogs.time)") / 3600.0
+            - hours_tarnsport = timelogs_date.sum("TIME_TO_SEC(timelogs.time_transport)") / 3600.0
+            - earned = timelogs_date.sum("TIME_TO_SEC(timelogs.time) * projects.price_per_hour") / 3600.0
+            - earned_transport = timelogs_date.sum("TIME_TO_SEC(timelogs.time_transport) * projects.price_per_hour_transport") / 3600.0
+            - transport_length = timelogs_date.sum(:transport_length)
+
+            %tr{class: (date.to_date == Time.zone.today.to_date ? "today" : "other_day")}
+              %td= l(date.to_date, format: :short)
+              %td.tdr= format_number hours, precision: 1
+              %td.tdr= format_number hours_tarnsport, precision: 1
+              %td.tdr= format_number earned, precision: 0
+              %td.tdr= format_number earned_transport, precision: 0
+              %td.tdr= format_number transport_length, precision: 0
+
+%br
+
+= design_box _("Overview"), 450 do
+  %table.form
+    %tbody
+      %tr
+        %td.tdt= _("Hours")
+        %td.tdr= format_number @earned, precision: 2
+      %tr
+        %td.tdt= _("Transport")
+        %td.tdr= format_number @earned_transport, precision: 2
+      %tr
+        %td.tdt= _("Total earned")
+        %td.tdr= format_number @earned_total, precision: 2
+      %tr
+        %td.tdt= _("Tax") + " (40%)"
+        %td.tdr= format_number @earned_total - @tax_40.to_f, precision: 2
+      %tr
+        %td.tdt= _("Total transport")
+        %td.tdr= format_number @transport_length, precision: 0
+
+%br
+
+= design_box Project.model_name.human(count: 2), 450 do
+  %table.list
+    %thead
+      %tr
+        %th= Project.model_name.human
+        %th.tdr= _("Hours")
+        %th.tdr= _("Transport")
+        %th.tdr= _("Earned")
+    %tbody
+      - @timelogs.group("projects.id").order("projects.name").each do |timelog|
+        - timelogs_project = @timelogs.where("projects.id = ?", timelog.task.try(:project))
+        - hours = timelogs_project.sum("TIME_TO_SEC(timelogs.time)") / 3600.0
+        - hours_transport = timelogs_project.sum("TIME_TO_SEC(timelogs.time_transport)") / 3600.0
+        - earned = timelogs_project.sum("TIME_TO_SEC(timelogs.time) * projects.price_per_hour") / 3600.0
+        - earned_transport = timelogs_project.sum("TIME_TO_SEC(timelogs.time_transport) * projects.price_per_hour_transport") / 3600.0
+
+        %tr
+          %td= link_to_project timelog.task.try(:project)
+          %td.tdr= format_number hours, precision: 1
+          %td.tdr= format_number hours_transport, precision: 1
+          %td.tdr= format_number earned + earned_transport, precision: 2
