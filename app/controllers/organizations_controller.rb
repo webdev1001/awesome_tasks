@@ -9,12 +9,9 @@ class OrganizationsController < ApplicationController
   end
 
   def new
-    @organization = Organization.new
   end
 
   def create
-    @organization = Organization.new(organization_params)
-
     if @organization.save
       redirect_to organization_path(@organization)
     else

@@ -1,15 +1,12 @@
 class ProjectAutoassignedUsersController < ApplicationController
-  before_filter :set_project
   load_and_authorize_resource
+  before_filter :set_project
 
   def new
-    @project_autoassigned_user = ProjectAutoassignedUser.new(project_id: @project.id)
   end
 
   def create
-    project_autoassigned_user = @project.project_autoassigned_users.new(project_autoassigned_user_params)
-
-    if project_autoassigned_user.save
+    if @project_autoassigned_user.save
       redirect_to project_path(@project)
     else
       render json: {
@@ -20,8 +17,7 @@ class ProjectAutoassignedUsersController < ApplicationController
   end
 
   def destroy
-    project_autoassigned_user = ProjectAutoassignedUser.find(params[:id])
-    project_autoassigned_user.destroy!
+    @project_autoassigned_user.destroy!
     render nothing: true
   end
 
@@ -33,6 +29,7 @@ private
 
   def set_project
     @project = Project.find(params[:project_id])
+    @project_autoassigned_user.project = @project
   end
 
   helper_method :users_collection

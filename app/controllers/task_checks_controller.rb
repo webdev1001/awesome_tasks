@@ -3,12 +3,10 @@ class TaskChecksController < ApplicationController
   before_filter :set_task
 
   def new
-    @task_check = @task.task_checks.new
     render :new, layout: false
   end
 
   def create
-    @task_check = @task.task_checks.new(task_check_params)
     @task_check.user_added = current_user
 
     if @task_check.save
@@ -47,6 +45,7 @@ private
 
   def set_task
     @task = Task.find(params[:task_id])
+    @task_check.task = @task if @task_check
   end
 
   def task_check_params
