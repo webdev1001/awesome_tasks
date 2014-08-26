@@ -93,7 +93,7 @@ class Task < ActiveRecord::Base
 
   def progress
     return 0 if task_checks.count == 0
-    task_checks.checked.count / task_checks.count
+    task_checks.checked.count.to_f / task_checks.count.to_f
   end
 
 private

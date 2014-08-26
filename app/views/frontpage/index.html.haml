@@ -23,7 +23,7 @@
           %td= check_box_tag "task_check_#{data[:task_id]}"
           %td= link_to_task data[:task]
           %td.nowrap= link_to_project data[:task].project
-          %td{width: "100px"}= render "/tasks/progress", task: data[:task]
+          %td= render "/tasks/progress", task: data[:task]
           %td.nowrap= data[:task].priority
           %td.nowrap= link_to_user data[:task].user
           %td.nowrap= l(data[:task].created_at.to_date) if data[:task].created_at

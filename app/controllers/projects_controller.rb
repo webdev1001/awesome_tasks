@@ -42,7 +42,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @tasks = @project.tasks.order("tasks.created_at DESC, tasks.name")
+    @ransack_values = params[:q] || {}
+    @ransack = @project.tasks.ransack(@ransack_values)
+
+    @tasks = @ransack.result
+    @tasks = @tasks.order("tasks.created_at DESC, tasks.name") unless @ransack_values[:s]
+    @tasks = @tasks.paginate(page: params[:page], per_page: 40)
   end
 
   def destroy
