@@ -14,5 +14,7 @@
  *= require frontpage
  *= require projects
  *= require sessions
+ *= require tasks
+ *= require users
  *= require workstatus
  */

@@ -17,7 +17,7 @@
             )
           = l(comment.created_at, format: :long)
       %tr
-        %td{colspan: "3", style: "border-top: 1px solid #cfcfcf; border-bottom: 1px solid #cfcfcf;"}
+        %td{colspan: 3, style: "border-top: 1px solid #cfcfcf; border-bottom: 1px solid #cfcfcf;"}
           = comment.comment.html_safe
 - if comments.none?
   .error{style: "padding-bottom: 15px;"}

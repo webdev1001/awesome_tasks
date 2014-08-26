@@ -9,6 +9,7 @@
       %tr
         %th{colspan: 2}= sort_link @ransack, :name, Task.model_name.human
         %th= sort_link @ransack, :project_name, Project.model_name.human
+        %th= _("Progress")
         %th= sort_link @ransack, :priority
         %th= sort_link @ransack, :user_name
         %th= sort_link @ransack, :created_at
@@ -22,6 +23,7 @@
           %td= check_box_tag "task_check_#{data[:task_id]}"
           %td= link_to_task data[:task]
           %td.nowrap= link_to_project data[:task].project
+          %td= render "/tasks/progress", task: data[:task]
           %td.nowrap= data[:task].priority
           %td.nowrap= link_to_user data[:task].user
           %td.nowrap= l(data[:task].created_at.to_date) if data[:task].created_at

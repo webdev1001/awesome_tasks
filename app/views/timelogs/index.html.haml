@@ -70,7 +70,7 @@
             %td= format_number tlog.transport_length.to_i
         - if @timelogs.none?
           %tr
-            %td.error{colspan: "1"}
+            %td.error{colspan: 1}
               = _("No timelogs were found.")
 
   %br
@@ -85,17 +85,17 @@
       %tbody
         - tlogs_sorted.each do |task, tlogs_arr|
           %tr
-            %td.tdt{colspan: "3", style: "padding-top: 10px;"}= link_to_task task
+            %td.tdt{colspan: 3, style: "padding-top: 10px;"}= link_to_task task
 
           - tlogs_arr.each do |tlog|
             - dbt = Baza::Dbtime.new(time_as_string(tlog.time))
             - dbt_transport = Baza::Dbtime.new(time_as_string(tlog.time_transport))
             %tr
-              %td{colspan: "3"}
-                %hr{color: "#cfcfcf", size: "1"}/
+              %td{colspan: 3}
+                %hr{color: "#cfcfcf", size: 1}/
             %tr
               %td{style: "text-align: center;"}
-                %input{name: "timelogs_#{tlog.id}", type: "hidden", value: "1"}/
+                %input{name: "timelogs_#{tlog.id}", type: "hidden", value: 1}/
                 = l(tlog.date)
                 %br
                 = format_number dbt.hours_total, precision: 2
@@ -105,5 +105,5 @@
               %td= simple_format tlog.comment
         - unless tlogs_sorted.empty?
           %tr
-            %td{colspan: "3", style: "padding-top: 15px; text-align: right;"}
+            %td{colspan: 3, style: "padding-top: 15px; text-align: right;"}
               = link_to _("Mark timelogs as invoiced"), "#", class: ["button", "mark_timelogs_as_invoiced"], data: {url: mark_invoiced_timelogs_path, success_msg: _('All timelogs was marked as invoiced.'), confirm_msg: _("Are you sure you want to mark all the found timelogs as invoiced?")}

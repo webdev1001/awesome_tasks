@@ -157,4 +157,32 @@ describe TasksController do
       controller.flash[:error].should_not eq nil
     end
   end
+
+  context "#update" do
+    it "updates attributes" do
+      sign_in admin
+      patch :update, id: task.id, task: {name: "New name"}
+      task.reload
+      task.name.should eq "New name"
+    end
+
+    it "cannot assign protected attributes" do
+      sign_in admin
+      patch :update, id: task.id, task: {user_id: user.id}
+      task.reload
+      task.user.should eq admin
+    end
+  end
+
+  context "#create" do
+    it "adds with attributes" do
+      sign_in admin
+      post :create, task: {name: "test name", user_id: user.id, project_id: project.id, task_type: "feature", priority: 1}
+      assigns(:task).errors.to_a.should eq []
+      task = Task.last
+      response.should redirect_to(task)
+      task.name.should eq "test name"
+      task.user.should eq admin
+    end
+  end
 end

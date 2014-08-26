@@ -12,14 +12,12 @@
         %td.tdt= User.human_attribute_name(:name)
         %td= @user.name
       %tr
-        %td.tdd{colspan: 2}
-          = _("The real name of the user.")
+        %td.tdd{colspan: 2}= _("The real name of the user.")
       %tr
         %td.tdt= User.human_attribute_name(:email)
         %td= mail_to @user.email
       %tr
-        %td.tdd{colspan: 2}
-          = _("The email of the user.")
+        %td.tdd{colspan: 2}= _("The email of the user.")
 
 %br
 
@@ -37,11 +35,12 @@
       = link_to _("Hide filter"), "#", class: ["button", "tasks-hide-filter-button"]
   %br
 
-= design_box Task.model_name.human(count: 2), 1000 do
-  %table.list
+= design_box Task.model_name.human(count: 2), 1200 do
+  %table.list.tasks-list
     %thead
       %tr
         %th= sort_link @ransack, :name, Task.model_name.human
+        %th= _("Progress")
         %th= sort_link @ransack, :state
         %th= sort_link @ransack, :created_at
         %th= sort_link @ransack, :project_name, Project.model_name.human
@@ -49,19 +48,19 @@
     %tbody
       - count = 0
       - @tasks.each do |task|
-      - next if !can?(:show, task)
-      - count += 1
+        - next if !can?(:show, task)
+        - count += 1
+
         %tr
           %td= link_to_task task
+          %td= render "/tasks/progress", task: task
           %td= task.translated_state
-          %td.nowrap{style: "width: 100px;"}
-            = task.created_at ? l(task.created_at, format: :long) : ""
+          %td= l(task.created_at, format: :long) if task.created_at
           %td= link_to_project task.project
           %td= link_to_organization task.project.organization
       - if count <= 0
         %tr
-          %td.error{colspan: "2"}
-            = _("No tasks were found for this user.")
+          %td.error{colspan: 2}= _("No tasks were found for this user.")
 
 %br
 = will_paginate @tasks

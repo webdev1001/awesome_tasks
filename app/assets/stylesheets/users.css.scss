@@ -1,15 +1,15 @@
-body.controller_projects {
+body.controller_users {
   &.action_show {
     .tasks-list tr {
       td:nth-child(2) {
         width: 100px;
         padding-right: 15px;
       }
-    }
-  }
 
-  .added_by {
-    margin-top: 15px;
-    margin-bottom: 15px;
+      td:nth-child(4) {
+        width: 100px;
+        white-space: nowrap;
+      }
+    }
   }
 }

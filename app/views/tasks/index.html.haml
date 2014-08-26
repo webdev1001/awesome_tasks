@@ -6,34 +6,40 @@
     = f.input :description_cont, as: :string
     = f.input :state_eq, collection: Task.translated_states.invert, include_blank: true
     = f.input :task_type_eq, collection: Task.translated_task_types.invert, include_blank: true
-    = f.input :user_id_eq, collection: @users, include_blank: true
+    = f.input :user_id_eq, collection: @users, include_blank: true, label: User.model_name.human
+    = f.input :project_id_eq, collection: @projects, label: Project.model_name.human, include_blank: true
 
     = link_to _("Add new"), new_task_path, class: "button"
     = f.submit _("Search")
 
-- if params[:q]
-  %br
+%br
 
-  = design_box _("Results"), 900 do
-    %table.list
-      %thead
+= design_box _("Results"), 1150 do
+  %table.list.tasks-list
+    %thead
+      %tr
+        %th= sort_link @ransack, :name
+        %th= _("Progress")
+        %th= sort_link @ransack, :state
+        %th= sort_link @ransack, :task_type
+        %th= sort_link @ransack, :project_name, Project.model_name.human
+        %th= sort_link @ransack, :user_name, _("Author")
+    %tbody
+      - @tasks.each do |task|
+        - next unless can?(:show, task)
         %tr
-          %th= Task.human_attribute_name(:name)
-          %th= Task.human_attribute_name(:state)
-          %th= Task.human_attribute_name(:task_type)
-          %th= Project.model_name.human
-          %th= _"Author"
-      %tbody
-        - @tasks.find_each do |task|
-          - next unless can?(:show, task)
-          %tr
-            %td= link_to_task task
-            %td= task.translated_state
-            %td= task.translated_task_type
-            %td= link_to_project task.project
-            %td= link_to_user task.user
+          %td= link_to_task task
+          %td= render "progress", task: task
+          %td= task.translated_state
+          %td= task.translated_task_type
+          %td= link_to_project task.project
+          %td= link_to_user task.user
 
-        - if @tasks.none?
-          %tr
-            %td{colspan: 1, class: :error}
-              =_("No tasks were found.")
+      - if @tasks.none?
+        %tr
+          %td{colspan: 6, class: "error"}
+            =_("No tasks were found.")
+
+%br
+
+= will_paginate @tasks

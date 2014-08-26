@@ -48,13 +48,14 @@
 %br
 
 = design_box Task.model_name.human(count: 2) do
-  %table.list
+  %table.list.tasks-list
     %thead
       %tr
-        %th= Task.model_name.human
-        %th= _("Author")
-        %th= Task.human_attribute_name(:state)
-        %th= _("Date")
+        %th= sort_link @ransack, :name, Task.model_name.human
+        %th= _("Progress")
+        %th= sort_link @ransack, :user_name, _("Author")
+        %th= sort_link @ransack, :state
+        %th= sort_link @ransack, :created_at, _("Date")
     %tbody
       - count = 0
       - @tasks.each do |task|
@@ -62,6 +63,7 @@
         - count += 1
         %tr
           %td= link_to_task task
+          %td= render "/tasks/progress", task: task
           %td= link_to_user task.user
           %td= task.translated_state
           %td= l(task.created_at.to_date) if task.created_at
@@ -69,3 +71,6 @@
         %tr
           %td.error{colspan: 2}
             = _("No tasks were found.")
+
+%br
+= will_paginate @tasks
