@@ -14,7 +14,7 @@
 
 %br
 
-= design_box Invoice.model_name.human(count: 2), 700 do
+= design_box Invoice.model_name.human(count: 2) do
   %table.list
     %thead
       %tr
@@ -22,8 +22,10 @@
         %th= sort_link @ransack, :invoice_no
         %th= sort_link @ransack, :invoice_type
         %th= sort_link @ransack, :organization_name, Invoice.human_attribute_name(:organization)
+        %th= sort_link @ransack, :creditor_name, Invoice.human_attribute_name(:creditor)
         %th= sort_link @ransack, :date
         %th= sort_link @ransack, :amount
+        %th= _("Vat")
     %tbody
       - @invoices.each do |invoice|
         %tr
@@ -31,8 +33,10 @@
           %td= link_to_invoice invoice, title: invoice.invoice_no if invoice.invoice_no?
           %td= invoice.translated_invoice_type
           %td= link_to_organization invoice.organization
+          %td= link_to_organization invoice.creditor
           %td= l(invoice.date, format: :long)
           %td= format_number invoice.amount
+          %td= format_number invoice.amount_vat
       - if @invoices.none?
         %tr
           %td.error{colspan: 4}
