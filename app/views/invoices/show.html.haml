@@ -33,6 +33,9 @@
         %td.tdt= Invoice.human_attribute_name(:amount)
         %td.align-right= format_number @invoice.amount
       %tr
+        %td.tdt= Invoice.human_attribute_name(:no_vat)
+        %td.align-right= @invoice.no_vat? ? _("True") : _("False")
+      %tr
         %td.tdt= _("Vat")
         %td.align-right= format_number @invoice.amount_vat
       %tr
