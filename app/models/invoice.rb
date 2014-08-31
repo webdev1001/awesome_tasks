@@ -81,10 +81,14 @@ class Invoice < ActiveRecord::Base
   end
 
   def amount_vat
-    amount.to_f * 0.25
+    if no_vat?
+      0.0
+    else
+      amount.to_f * 0.25
+    end
   end
 
   def amount_total
-    amount.to_f * 1.25
+    amount.to_f + amount_vat
   end
 end

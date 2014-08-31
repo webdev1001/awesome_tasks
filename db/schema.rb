@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808183939) do
+ActiveRecord::Schema.define(version: 20140831102259) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20140808183939) do
     t.datetime "updated_at"
     t.integer  "creditor_id"
     t.integer  "invoice_group_id"
+    t.boolean  "no_vat"
   end
 
   add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
