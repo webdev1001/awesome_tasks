@@ -49,12 +49,11 @@
           %th= "#{Timelog.human_attribute_name(:time)} / #{_("Transport")}"
           %th= Timelog.human_attribute_name(:transport_length)
       %tbody
-        - tlogs_sorted = {}
         - @timelogs.includes(:user, task: {project: :organization}).find_each do |tlog|
           - dbt = Baza::Dbtime.new(time_as_string(tlog.time))
           - dbt_transport = Baza::Dbtime.new(time_as_string(tlog.time_transport))
-          - tlogs_sorted[tlog.task] = [] if !tlogs_sorted.has_key?(tlog.task)
-          - tlogs_sorted[tlog.task] << tlog
+          - @timelogs_sorted[tlog.task] = [] unless @timelogs_sorted.has_key?(tlog.task)
+          - @timelogs_sorted[tlog.task] << tlog
           %tr
             %td= link_to_timelog tlog
             %td= link_to_user tlog.user
@@ -83,7 +82,7 @@
           %th= _("User")
           %th= _("Description")
       %tbody
-        - tlogs_sorted.each do |task, tlogs_arr|
+        - @timelogs_sorted.each do |task, tlogs_arr|
           %tr
             %td.tdt{colspan: 3, style: "padding-top: 10px;"}= link_to_task task
 
@@ -103,7 +102,7 @@
                 = format_number dbt_transport.hours_total, percision: 2
               %td.nowrap= link_to_user tlog.user
               %td= simple_format tlog.comment
-        - unless tlogs_sorted.empty?
+        - unless @timelogs_sorted.empty?
           %tr
             %td{colspan: 3, style: "padding-top: 15px; text-align: right;"}
               = link_to _("Mark timelogs as invoiced"), "#", class: ["button", "mark_timelogs_as_invoiced"], data: {url: mark_invoiced_timelogs_path, success_msg: _('All timelogs was marked as invoiced.'), confirm_msg: _("Are you sure you want to mark all the found timelogs as invoiced?")}

@@ -11,6 +11,8 @@ class TimelogsController < ApplicationController
       _("Only un-invoiced") => "only_not_invoiced"
     }
 
+    @timelogs_sorted = {}
+
     set_dates
     set_timelogs
   end
