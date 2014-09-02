@@ -10,6 +10,8 @@
     = f.input :id_eq, autofocus: true
     = f.input :organization_name_cont
     = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
+    = f.input :date_gteq, as: :string, label: _("Date from")
+    = f.input :date_lteq, as: :string, label: _("Date to")
     = f.submit _("Filter")
 
 %br
