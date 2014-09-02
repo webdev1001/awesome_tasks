@@ -79,6 +79,8 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.hints.invoice.invoice_group_id')
     #. Default value: 
+    _('simple_form.hints.invoice.no_vat')
+    #. Default value: 
     _('simple_form.hints.invoice_group.id')
     #. Default value: 
     _('simple_form.hints.invoice_group.name')
@@ -208,6 +210,8 @@ class GettextSimpleRails::MonthNames
     _('simple_form.hints.task_check.created_at')
     #. Default value: 
     _('simple_form.hints.task_check.updated_at')
+    #. Default value: 
+    _('simple_form.hints.task_check.user_assigned_id')
     #. Default value: 
     _('simple_form.hints.timelog.id')
     #. Default value: 
@@ -365,6 +369,8 @@ class GettextSimpleRails::MonthNames
     #. Default value: 
     _('simple_form.placeholders.invoice.invoice_group_id')
     #. Default value: 
+    _('simple_form.placeholders.invoice.no_vat')
+    #. Default value: 
     _('simple_form.placeholders.invoice_group.id')
     #. Default value: 
     _('simple_form.placeholders.invoice_group.name')
@@ -494,6 +500,8 @@ class GettextSimpleRails::MonthNames
     _('simple_form.placeholders.task_check.created_at')
     #. Default value: 
     _('simple_form.placeholders.task_check.updated_at')
+    #. Default value: 
+    _('simple_form.placeholders.task_check.user_assigned_id')
     #. Default value: 
     _('simple_form.placeholders.timelog.id')
     #. Default value: 

@@ -8,6 +8,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.errors.models.user.attributes.email.taken')
     #. Default value: is invalid
     _('activerecord.errors.models.user.attributes.email.invalid')
+    #. Default value: Cannot delete record because dependent %{record} exist
+    _('activerecord.errors.models.user.attributes.base.restrict_dependent_destroy.many')
     #. Default value: cannot be blank
     _('activerecord.errors.models.comment.attributes.resource.blank')
     #. Default value: cannot be blank
@@ -26,6 +28,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.errors.models.invoice.attributes.invoice_type.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.invoice_group.attributes.name.blank')
+    #. Default value: Cannot delete record because dependent %{record} exist
+    _('activerecord.errors.models.invoice_group.attributes.base.restrict_dependent_destroy.many')
     #. Default value: cannot be blank
     _('activerecord.errors.models.invoice_line.attributes.invoice.blank')
     #. Default value: cannot be blank
@@ -36,8 +40,12 @@ class GettextSimpleRails::MonthNames
     _('activerecord.errors.models.invoice_line.attributes.amount.blank')
     #. Default value: is invalid
     _('activerecord.errors.models.organization.attributes.email.invalid')
+    #. Default value: Cannot delete record because dependent %{record} exist
+    _('activerecord.errors.models.organization.attributes.base.restrict_dependent_destroy.many')
     #. Default value: cannot be blank
     _('activerecord.errors.models.project.attributes.organization.blank')
+    #. Default value: Cannot delete record because dependent %{record} exist
+    _('activerecord.errors.models.project.attributes.base.restrict_dependent_destroy.many')
     #. Default value: cannot be blank
     _('activerecord.errors.models.project_autoassigned_user.attributes.user.blank')
     #. Default value: cannot be blank
@@ -54,6 +62,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.errors.models.task.attributes.task_type.blank')
     #. Default value: cannot be blank
     _('activerecord.errors.models.task.attributes.priority.blank')
+    #. Default value: Cannot delete record because dependent %{record} exist
+    _('activerecord.errors.models.task.attributes.base.restrict_dependent_destroy.many')
     #. Default value: cannot be blank
     _('activerecord.errors.models.task_assigned_user.attributes.task.blank')
     #. Default value: cannot be blank

@@ -42,6 +42,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.user.tasks')
     #. Default value: task_assigned_users
     _('activerecord.attributes.user.task_assigned_users')
+    #. Default value: assigned_task_checks
+    _('activerecord.attributes.user.assigned_task_checks')
     #. Default value: user_project_links
     _('activerecord.attributes.user.user_project_links')
     #. Default value: projects
@@ -98,6 +100,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.invoice.creditor_id')
     #. Default value: invoice_group_id
     _('activerecord.attributes.invoice.invoice_group_id')
+    #. Default value: no_vat
+    _('activerecord.attributes.invoice.no_vat')
     #. Default value: creditor
     _('activerecord.attributes.invoice.creditor')
     #. Default value: invoice_group
@@ -292,10 +296,14 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.task_check.created_at')
     #. Default value: updated_at
     _('activerecord.attributes.task_check.updated_at')
+    #. Default value: user_assigned_id
+    _('activerecord.attributes.task_check.user_assigned_id')
     #. Default value: task
     _('activerecord.attributes.task_check.task')
-    #. Default value: added_user
-    _('activerecord.attributes.task_check.added_user')
+    #. Default value: user_added
+    _('activerecord.attributes.task_check.user_added')
+    #. Default value: user_assigned
+    _('activerecord.attributes.task_check.user_assigned')
     #. Default value: id
     _('activerecord.attributes.timelog.id')
     #. Default value: task_id
