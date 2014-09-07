@@ -15,6 +15,7 @@ body.controller_tasks {
   background-color: #f6f6ff;
   height: 16px;
   width: 100%;
+  position: relative;
 
   &.no-checks {
     border-color: #bfbfbf;
@@ -24,5 +25,13 @@ body.controller_tasks {
   .progress_bar {
     background-color: #698295;
     height: 16px;
+    position: absolute;
+    border-radius: 3px;
+  }
+
+  .progress_text {
+    width: 100%;
+    position: absolute;
+    text-align: center;
   }
 }
