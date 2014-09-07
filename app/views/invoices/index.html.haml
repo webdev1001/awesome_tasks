@@ -26,8 +26,8 @@
         %th= sort_link @ransack, :organization_name, Invoice.human_attribute_name(:organization)
         %th= sort_link @ransack, :creditor_name, Invoice.human_attribute_name(:creditor)
         %th= sort_link @ransack, :date
-        %th= sort_link @ransack, :amount
-        %th= _("Vat")
+        %th.align-right= sort_link @ransack, :amount
+        %th.align-right= _("Vat")
     %tbody
       - @invoices.each do |invoice|
         %tr
@@ -37,8 +37,8 @@
           %td= link_to_organization invoice.organization
           %td= link_to_organization invoice.creditor
           %td= l(invoice.date, format: :long)
-          %td= format_number invoice.amount
-          %td= format_number invoice.amount_vat
+          %td.align-right= format_number invoice.amount
+          %td.align-right= format_number invoice.amount_vat
       - if @invoices.none?
         %tr
           %td.error{colspan: 4}
