@@ -57,7 +57,7 @@
           - unless @task.description?
             .error= _("No description has been written for this task.")
           - else
-            = @task.description.html_safe
+            = UserReferences.new(text: @task.description).unparse_user_references(html: true).html_safe
       %td{style: "vertical-align: top; padding-left: 15px;"}
         = design_box _("Assigned users") do
           %div{style: "padding-bottom: 10px;"}

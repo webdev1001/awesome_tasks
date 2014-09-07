@@ -24,6 +24,7 @@ class TasksController < ApplicationController
 
   def create
     @task.user = current_user
+    @task.description = UserReferences.new(text: @task.description).parse_user_references
 
     if @task.save
       # Mail auto-assigned users
@@ -42,8 +43,11 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task.assign_attributes(task_params)
+    @task.description = UserReferences.new(text: @task.description).parse_user_references
+
     respond_to do |format|
-      if @task.update_attributes(task_params)
+      if @task.save
         format.html { redirect_to task_path(@task) }
         format.json { render json: {success: true} }
       else

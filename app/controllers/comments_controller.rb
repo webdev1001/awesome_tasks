@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    @comment.comment = comment_with_changed_state
+    @comment.comment = comment_with_changed_state_and_references
 
     respond_to do |format|
       if @comment.save && @resource.save
@@ -31,7 +31,10 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update_attributes(comment_params)
+    @comment.assign_attributes(comment_params)
+    @comment.comment = comment_with_changed_state_and_references
+
+    if @comment.save
       render nothing: true
     else
       render text: errors.join(". ")
@@ -41,6 +44,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy!
     render nothing: true
+  end
+
+  def show
   end
 
 private
@@ -70,13 +76,14 @@ private
     return errors
   end
 
-  def comment_with_changed_state
+  def comment_with_changed_state_and_references
     comment_str = comment_params[:comment].to_s
 
     if @resource.state_changed?
       comment_str << "<div style=\"padding-top: 15px; padding-bottom: 15px;\">#{sprintf(_("Changed the task-status to '%s'."), @resource.translated_state)}</div>"
     end
 
-    comment_str
+    comment_str = UserReferences.new(text: comment_str).parse_user_references
+    return comment_str
   end
 end

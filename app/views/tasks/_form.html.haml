@@ -5,7 +5,7 @@
     = f.input :task_type, collection: Task.translated_task_types.invert
     = f.input :state, collection: Task.translated_states.invert
     = f.input :priority, collection: 1..10
-    = f.cktext_area :description, ckeditor: {toolbar: "mini", height: 240}
+    = f.cktext_area :description, ckeditor: {toolbar: "mini", height: 240}, value: UserReferences.new(text: @task.description.to_s).unparse_user_references
 
     = link_to _("Insert browser and os"), "#", class: ["button", "button-insert-browser-and-os"]
     - unless task.new_record?

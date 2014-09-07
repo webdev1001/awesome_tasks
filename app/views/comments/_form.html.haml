@@ -2,7 +2,8 @@
   = f.hidden_field :resource_id
   = f.hidden_field :resource_type
   = design_box _("Enter details") do
-    = f.cktext_area :comment, ckeditor: {toolbar: "mini", height: 240}
+    = f.cktext_area :comment, ckeditor: {toolbar: "mini", height: 240}, value: UserReferences.new(text: @comment.comment.to_s).unparse_user_references
+
     - if comment.resource.is_a?(Task) && comment.new_record?
       = simple_fields_for resource do |f_task|
         = f_task.input :state, collection: Task.translated_states.invert, selected: comment.resource.state.to_s

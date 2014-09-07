@@ -18,7 +18,7 @@
           = l(comment.created_at, format: :long)
       %tr
         %td{colspan: 3, style: "border-top: 1px solid #cfcfcf; border-bottom: 1px solid #cfcfcf;"}
-          = comment.comment.html_safe
+          = UserReferences.new(text: comment.comment).unparse_user_references(html: true).html_safe
 - if comments.none?
   .error{style: "padding-bottom: 15px;"}
     = _("No comments were found for this task.")
