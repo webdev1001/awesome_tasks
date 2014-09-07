@@ -26,6 +26,7 @@ gem 'email_validator'
 gem 'rails_imager'
 gem 'will_paginate'
 gem 'agent_helpers'
+gem 'whenever', require: false
 
 # PDF generation.
 gem 'pdfkit'
