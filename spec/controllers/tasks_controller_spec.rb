@@ -16,7 +16,7 @@ describe TasksController do
       project.autoassigned_users << user
 
       expect {
-        post :create, task: {name: "Test", project_id: project.id, priority: 1, task_type: "feature"}
+        post :create, task: {name: "Test", project_id: project.id, priority: 1, task_type: "feature", description: "test"}
       }.to change { ActionMailer::Base.deliveries.count }.by(1)
 
       controller.flash[:error].should eq nil
@@ -177,7 +177,7 @@ describe TasksController do
   context "#create" do
     it "adds with attributes" do
       sign_in admin
-      post :create, task: {name: "test name", user_id: user.id, project_id: project.id, task_type: "feature", priority: 1}
+      post :create, task: {name: "test name", user_id: user.id, project_id: project.id, task_type: "feature", priority: 1, description: "test"}
       assigns(:task).errors.to_a.should eq []
       task = Task.last
       response.should redirect_to(task)
