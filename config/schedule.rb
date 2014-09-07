@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+job_type :envcommand, 'cd :path && RAILS_ENV=:environment bundle exec :task'
+
 every :reboot do
   envcommand :bundle, :exec, "bin/delayed_job restart"
 end
