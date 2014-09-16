@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery-migrate-min
 //= require jquery.md5
+//= require autonumeric-init
+//= require autonumeric
 //= require events
 //= require select
 //= require modal

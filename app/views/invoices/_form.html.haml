@@ -7,7 +7,7 @@
     = f.input :creditor_id, collection: Organization.all.order(:name), label: Invoice.human_attribute_name(:creditor)
     = f.input :organization_id, collection: Organization.all.order(:name), label: Invoice.human_attribute_name(:organization)
     = f.input :invoice_type, collection: Invoice.translated_invoice_types
-    = f.input :amount
+    = f.input :amount, input_html: {data: {autonumeric: true}}
     = f.input :no_vat
     = f.submit _("Save")
 

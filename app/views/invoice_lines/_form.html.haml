@@ -2,5 +2,5 @@
   = simple_form_for [@invoice, invoice_line] do |f|
     = f.input :title, autofocus: true
     = f.input :quantity
-    = f.input :amount
+    = f.input :amount, input_html: {data: {autonumeric: true}}
     = f.submit _("Save")
