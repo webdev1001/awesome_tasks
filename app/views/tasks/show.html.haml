@@ -74,6 +74,10 @@
         %br
 
         = render "/uploaded_files/list_for_resource", resource: @task
+
+        %br
+
+        = render "/tags/show_for_resource", resource: @task
   %div{style: "clear: both;"}
 %div{style: "padding-bottom: 15px;"}
   = design_box Comment.model_name.human(count: 2) do

@@ -27,6 +27,7 @@ gem 'rails_imager'
 gem 'will_paginate'
 gem 'agent_helpers'
 gem 'whenever', require: false
+gem 'acts-as-taggable-on'
 
 # PDF generation.
 gem 'pdfkit'
