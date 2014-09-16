@@ -47,6 +47,9 @@ describe TaskChecksController do
         mail = ActionMailer::Base.deliveries.last
         mail.body.to_s.should include "has been completed"
         mail.subject.should include "completed"
+
+        from_email = Rails.application.config.action_mailer.default_options[:from]
+        mail.header["From"].to_s.should eq "#{user_admin.name} <#{from_email}>"
       end
 
       it "sends email when being checked" do
@@ -61,6 +64,9 @@ describe TaskChecksController do
         mail = ActionMailer::Base.deliveries.last
         mail.body.to_s.should include "has been marked as not complete"
         mail.subject.should include "not completed"
+
+        from_email = Rails.application.config.action_mailer.default_options[:from]
+        mail.header["From"].to_s.should eq "#{user_admin.name} <#{from_email}>"
       end
     end
 

@@ -9,9 +9,11 @@ class TaskCheck < ActiveRecord::Base
 
   scope :checked, -> { where(checked: true) }
 
-  def send_notifications(task_url)
+  attr_accessor :user_assigner
+
+  def send_notifications task_url, user_changed
     task.notify_emails.each do |data|
-      TaskChecksMailer.notification(self, data[:user], task_url).deliver!
+      TaskChecksMailer.notification(self, data[:user], task_url, user_changed).deliver!
     end
   end
 
@@ -23,6 +25,7 @@ private
   end
 
   def send_notification_email
-    TaskChecksMailer.notification_assigned(self).deliver!
+    user_that_assigned = user_assigner || user_added
+    TaskChecksMailer.notification_assigned(self, user_that_assigned).deliver!
   end
 end
