@@ -39,6 +39,9 @@ describe CommentsController do
       mail.body.should include "<a href='#{task_url(task)}'>"
       mail.body.should include "Kommentar"
       mail.body.should include "Hej #{user.name}"
+
+      from_email = Rails.application.config.action_mailer.default_options[:from]
+      mail.header["From"].to_s.should eq "#{admin.name} <#{from_email}>"
     end
   end
 

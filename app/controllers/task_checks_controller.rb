@@ -26,10 +26,11 @@ class TaskChecksController < ApplicationController
 
   def update
     @task_check.assign_attributes(task_check_params)
+    @task_check.user_assigner = current_user
     do_send_notifications = true if @task_check.checked_changed?
 
     if @task_check.save
-      @task_check.delay.send_notifications(task_url(@task)) if do_send_notifications
+      @task_check.delay.send_notifications(task_url(@task), current_user) if do_send_notifications
       render nothing: true
     else
       render text: @task_check.errors.full_messages.join(". ")

@@ -25,7 +25,17 @@ class TaskAssignedUserMailer < ActionMailer::Base
       subject = "[#{@task.project.name}] #{sprintf(_("Task #%1$s: %2$s"), @task.id, @task.name)} - "
       subject << _("New comment from: %{author_name}", author_name: @author.name)
 
-      mail(to: user.email, subject: subject)
+      mail(
+        to: user.email,
+        from: "#{comment.user.name} <#{from_email}>",
+        subject: subject
+      )
     end
+  end
+
+private
+
+  def from_email
+    Rails.application.config.action_mailer.default_options[:from]
   end
 end
