@@ -35,6 +35,8 @@ GEM
       string-cases
     arel (4.0.2)
     array_enumerator (0.0.3)
+    autonumeric-rails (1.9.25.0)
+      jquery-rails (>= 2.0.2)
     baza (0.0.13)
       array_enumerator
       datet
@@ -264,6 +266,7 @@ DEPENDENCIES
   active-record-transactioner (= 0.0.5)
   activerecord-session_store
   agent_helpers
+  autonumeric-rails
   baza
   cancancan
   capistrano

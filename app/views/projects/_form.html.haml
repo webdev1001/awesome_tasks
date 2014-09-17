@@ -2,8 +2,8 @@
   = simple_form_for project do |f|
     = f.input :name
     = f.input :deadline_at
-    = f.input :price_per_hour
-    = f.input :price_per_hour_transport
+    = f.input :price_per_hour, input_html: {data: {autonumeric: true}}
+    = f.input :price_per_hour_transport, input_html: {data: {autonumeric: true}}
     = f.input :organization_id, collection: Organization.order(:name), label: Project.human_attribute_name(:organization)
     = f.cktext_area :description
 

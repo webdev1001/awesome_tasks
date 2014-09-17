@@ -28,6 +28,9 @@ gem 'will_paginate'
 gem 'agent_helpers'
 gem 'whenever', require: false
 
+# For handeling internationalized amount formats.
+gem 'autonumeric-rails'
+
 # PDF generation.
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
