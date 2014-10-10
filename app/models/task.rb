@@ -96,6 +96,10 @@ class Task < ActiveRecord::Base
     task_checks.checked.count.to_f / task_checks.count.to_f
   end
 
+  def first_email_id
+    Digest::MD5.hexdigest("<awesome-tasks-task-#{id}-#{created_at}>")
+  end
+
 private
 
   def set_priority
