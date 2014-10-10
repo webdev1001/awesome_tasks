@@ -85,5 +85,10 @@ describe UsersController do
       controller.flash.to_a.should eq []
       user.reload.email.should eq "new_email@example.com"
     end
+
+    it "#roles" do
+      get :roles, id: user.id
+      response.should be_success
+    end
   end
 end

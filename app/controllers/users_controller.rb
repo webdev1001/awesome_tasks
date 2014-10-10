@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def roles
-    render partial: "roles", layout: false
+    render partial: "roles", layout: false, locals: {user: @user}
   end
 
   def show
