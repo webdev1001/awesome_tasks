@@ -50,6 +50,6 @@ describe InvoicesController do
     controller.flash.to_a.should eq []
     response.should be_success
     response.headers["Content-Type"].should eq "application/pdf"
-    response.headers["Content-Disposition"].should eq "inline; filename=\"Invoice #{invoice.id}.pdf\""
+    response.headers["Content-Disposition"].should eq "inline; filename=\"Invoice #{invoice.invoice_no}.pdf\""
   end
 end
