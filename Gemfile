@@ -27,6 +27,8 @@ gem 'rails_imager'
 gem 'will_paginate'
 gem 'agent_helpers'
 gem 'whenever', require: false
+gem 'state_machine'
+gem 'public_activity'
 
 # For handeling internationalized amount formats.
 gem 'autonumeric-rails'

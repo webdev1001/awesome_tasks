@@ -1,4 +1,8 @@
 class InvoiceLine < ActiveRecord::Base
+  # Track changes.
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+
   belongs_to :invoice
 
   validates_presence_of :invoice, :title, :quantity, :amount

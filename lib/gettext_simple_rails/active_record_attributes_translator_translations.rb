@@ -102,6 +102,8 @@ class GettextSimpleRails::MonthNames
     _('activerecord.attributes.invoice.invoice_group_id')
     #. Default value: no_vat
     _('activerecord.attributes.invoice.no_vat')
+    #. Default value: state
+    _('activerecord.attributes.invoice.state')
     #. Default value: creditor
     _('activerecord.attributes.invoice.creditor')
     #. Default value: invoice_group

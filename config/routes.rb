@@ -6,6 +6,11 @@ AwesomeTasks::Application.routes.draw do
   resources :comments, except: [:show, :index]
   resources :invoices do
     get :pdf, on: :member
+
+    post :finish, on: :member
+    post :register_as_sent, on: :member
+    post :register_as_paid, on: :member
+
     resources :invoice_lines, except: [:show, :index]
   end
 

@@ -9,6 +9,7 @@
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :id_eq, autofocus: true
     = f.input :organization_name_cont
+    = f.input :state_eq_any, as: :check_boxes, collection: translated_invoice_states
     = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
     = f.input :date_gteq, as: :string, label: _("Date from")
     = f.input :date_lteq, as: :string, label: _("Date to")
@@ -22,6 +23,7 @@
       %tr
         %th= sort_link @ransack, :id
         %th= sort_link @ransack, :invoice_no
+        %th= sort_link @ransack, :state
         %th= sort_link @ransack, :invoice_type
         %th= sort_link @ransack, :organization_name, Invoice.human_attribute_name(:organization)
         %th= sort_link @ransack, :creditor_name, Invoice.human_attribute_name(:creditor)
@@ -33,6 +35,7 @@
         %tr
           %td= link_to_invoice invoice, title: invoice.id
           %td= link_to_invoice invoice, title: invoice.invoice_no if invoice.invoice_no?
+          %td= translated_invoice_state invoice
           %td= invoice.translated_invoice_type
           %td= link_to_organization invoice.organization
           %td= link_to_organization invoice.creditor
