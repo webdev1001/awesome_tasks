@@ -10,4 +10,17 @@ describe Invoice do
       invoice_without_vat.amount_vat.should eq 0.0
     end
   end
+
+  context "#filename" do
+    let(:invoice_with_invoice_no){ create :invoice, invoice_no: 123 }
+    let(:invoice_without_invoice_no){ create :invoice, invoice_no: nil }
+
+    it "uses invoice_no when present" do
+      invoice_with_invoice_no.filename.should eq "Invoice 123.pdf"
+    end
+
+    it "uses id otherwise" do
+      invoice_without_invoice_no.filename.should eq "Invoice ID #{invoice_without_invoice_no.id}.pdf"
+    end
+  end
 end
