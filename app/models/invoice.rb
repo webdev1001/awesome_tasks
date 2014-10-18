@@ -72,7 +72,12 @@ class Invoice < ActiveRecord::Base
   end
 
   def filename
-    filename_str = _("Invoice %{id}", id: id)
+    if invoice_no.present?
+      filename_str = _("Invoice %{invoice_no}", invoice_no: invoice_no)
+    else
+      filename_str = _("Invoice ID %{id}", id: id)
+    end
+
     filename_str << ".pdf"
     return filename_str
   end

@@ -5,6 +5,7 @@ class InvoicesController < ApplicationController
     @ransack_params = params[:q] || {}
     @ransack = Invoice.ransack(@ransack_params)
     @invoices = @ransack.result
+    @invoices = @invoices.order(:id).reverse_order unless @ransack_params[:s]
   end
 
   def new

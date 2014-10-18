@@ -20,7 +20,8 @@ class TaskChecksMailer < ActionMailer::Base
       mail(
         to: user.email,
         from: "#{user_changed.name} <#{from_email}>",
-        subject: subject
+        subject: subject,
+        in_reply_to: @task.first_email_id
       )
     end
   end
@@ -37,7 +38,8 @@ class TaskChecksMailer < ActionMailer::Base
       mail(
         to: @user.email,
         from: "#{user_assigner.name} <#{from_email}>",
-        subject: subject
+        subject: subject,
+        in_reply_to: @task.first_email_id
       )
     end
   end
