@@ -10,6 +10,7 @@ describe TaskChecksController do
 
   context "when signed in as admin" do
     before do
+      ActionMailer::Base.deliveries.clear
       sign_in user_admin
     end
 
@@ -22,6 +23,9 @@ describe TaskChecksController do
       post :create, task_id: task.id, task_check: valid_attributes
       response.should be_success
       task.assigned_users.should include user_assigned
+
+      mail = ActionMailer::Base.deliveries.first
+      mail.in_reply_to.should eq task.first_email_id
     end
 
     it "#edit" do
@@ -36,7 +40,6 @@ describe TaskChecksController do
       end
 
       it "sends email when being checked" do
-        ActionMailer::Base.deliveries.clear
         task_check.checked?.should eq false
         patch :update, id: task_check.id, task_id: task.id, task_check: {checked: 1}
         response.should be_success
@@ -47,14 +50,15 @@ describe TaskChecksController do
         mail = ActionMailer::Base.deliveries.last
         mail.body.to_s.should include "has been completed"
         mail.subject.should include "completed"
+        mail.in_reply_to.should eq task.first_email_id
 
         from_email = Rails.application.config.action_mailer.default_options[:from]
         mail.header["From"].to_s.should eq "#{user_admin.name} <#{from_email}>"
       end
 
-      it "sends email when being checked" do
-        ActionMailer::Base.deliveries.clear
-        task_check.checked?.should eq false
+      it "sends email when being unchecked" do
+        task_check.update_column(:checked, true)
+        task_check.checked?.should eq true
         patch :update, id: task_check.id, task_id: task.id, task_check: {checked: 0}
         response.should be_success
         task_check.reload
@@ -64,6 +68,7 @@ describe TaskChecksController do
         mail = ActionMailer::Base.deliveries.last
         mail.body.to_s.should include "has been marked as not complete"
         mail.subject.should include "not completed"
+        mail.in_reply_to.should eq task.first_email_id
 
         from_email = Rails.application.config.action_mailer.default_options[:from]
         mail.header["From"].to_s.should eq "#{user_admin.name} <#{from_email}>"

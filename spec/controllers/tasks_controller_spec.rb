@@ -27,6 +27,7 @@ describe TasksController do
       mail = ActionMailer::Base.deliveries.last
       mail.subject.should include "[#{task.project.name}] "
       mail.body.to_s.should include task_url(task)
+      mail.message_id.should eq task.first_email_id
     end
   end
 
@@ -46,6 +47,7 @@ describe TasksController do
       mail.body.should include task_url(task)
       mail.body.should include user_to_be_assigned.name
       mail.body.should include admin.name
+      mail.message_id.should eq task.first_email_id
 
       mail.subject.should include "[#{task.project.name}]"
 
