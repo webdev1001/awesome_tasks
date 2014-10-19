@@ -159,15 +159,15 @@ GEM
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     public_activity (1.4.2)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
       i18n (>= 0.5.0)
       railties (>= 3.0.0)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -307,8 +307,8 @@ DEPENDENCIES
   paperclip
   pdfkit
   php4r
-  public_activity
   pry
+  public_activity
   rails (= 4.0.9)
   rails_imager
   ransack
