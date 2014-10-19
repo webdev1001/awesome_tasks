@@ -3,7 +3,7 @@ class Invoice < ActiveRecord::Base
 
   # Track changes.
   include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  tracked owner: Proc.new{ |controller, model| controller.try(:current_user) }
 
   belongs_to :creditor, class_name: "Organization"
   belongs_to :invoice_group
