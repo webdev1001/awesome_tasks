@@ -1,5 +1,5 @@
 module TaskHelper
-  def link_to_task task, args = {}
+  def link_to_task(task, args = {})
     return "[#{_("no task")}]" unless task
 
     if args[:url]
@@ -8,6 +8,10 @@ module TaskHelper
       url = task_path(task)
     end
 
-    link_to task.name_force, url, class: ["task_link", "state_#{task.state}"]
+    if can? :show, task
+      link_to task.name_force, url, class: ["task_link", "state_#{task.state}"]
+    else
+      task.name_force
+    end
   end
 end

@@ -1,5 +1,5 @@
 module InvoiceHelper
-  def link_to_invoice invoice, args = {}
+  def link_to_invoice(invoice, args = {})
     if args[:title].present?
       title = args[:title]
     elsif invoice.invoice_no?
@@ -24,7 +24,7 @@ module InvoiceHelper
     }
   end
 
-  def translated_invoice_state invoice
+  def translated_invoice_state(invoice)
     translated_invoice_states.each do |state_text, state|
       return state_text if invoice.state.to_s == state.to_s
     end
