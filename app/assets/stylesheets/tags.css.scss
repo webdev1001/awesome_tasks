@@ -1,9 +1,11 @@
 .tags-show-for-resource {
   .tag-element {
     border-radius: 7px;
-    padding: 10px;
+    padding: 10px 20px 10px 20px;
     margin-right: 10px;
-    background-color: brown;
+    background-color: #e1dee5;
     float: left;
+    text-transform: uppercase;
+    font-weight: bold;
   }
 }
