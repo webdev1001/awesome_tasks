@@ -1,7 +1,7 @@
 - content_for(:header_title){ _("Uploaded files") }
 
 = design_box _("Enter criteria"), 450 do
-  = simple_search_form_for @q, @values do |f|
+  = simple_search_form_for @ransack, @values do |f|
     = f.input :id_eq, autofocus: true
     = f.input :file_file_name_cont
     = f.submit _("Filter")
@@ -13,10 +13,10 @@
   %table.list
     %thead
       %tr
-        %th= sort_link @q, :id
-        %th= sort_link @q, :file_file_name
-        %th= sort_link @q, :file_file_size
-        %th= sort_link @q, :created_at
+        %th= sort_link @ransack, :id
+        %th= sort_link @ransack, :file_file_name
+        %th= sort_link @ransack, :file_file_size
+        %th= sort_link @ransack, :created_at
     %tbody
       - @uploaded_files.each do |uploaded_file|
         %tr
@@ -27,3 +27,7 @@
       - if @uploaded_files.none?
         %tr
           %td.error{colspan: 2}= _("No uploaded files were found.")
+
+%br
+
+= will_paginate @tasks
