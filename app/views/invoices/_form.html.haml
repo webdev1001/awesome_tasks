@@ -1,6 +1,6 @@
 = design_box _("Enter details"), 600 do
   = simple_form_for invoice do |f|
-    = f.input :invoice_group_id, collection: InvoiceGroup.all, label: Invoice.human_attribute_name(:invoice_group)
+    = f.input :invoice_group_id, autofocus: true, collection: InvoiceGroup.all, label: Invoice.human_attribute_name(:invoice_group)
     = f.input :invoice_no
     = f.input :state, collection: translated_invoice_states
     = f.input :date

@@ -26,7 +26,8 @@ body.controller_tasks {
     background-color: #698295;
     height: 16px;
     position: absolute;
-    border-radius: 3px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
   }
 
   .progress_text {
