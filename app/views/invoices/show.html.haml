@@ -1,4 +1,4 @@
-- content_for(:header_title){ _("Invoice %{id}", id: @invoice.id) }
+- content_for(:header_title){ _("Invoice %{invoice_no}", invoice_no: @invoice.invoice_no) }
 
 - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
   = design_box _("Manage"), 600 do
