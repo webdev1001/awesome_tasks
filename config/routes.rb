@@ -24,6 +24,7 @@ AwesomeTasks::Application.routes.draw do
   end
 
   resources :user_roles, except: [:show, :index]
+  resources :tags, only: [:create, :destroy]
 
   resources :tasks do
     get :comments, on: :member

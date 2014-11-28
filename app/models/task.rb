@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+  acts_as_taggable
+
   has_many :timelogs, dependent: :restrict_with_error
   has_many :task_assigned_users, dependent: :destroy
   has_many :assigned_users, through: :task_assigned_users, source: :user
