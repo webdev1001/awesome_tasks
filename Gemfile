@@ -28,6 +28,11 @@ gem 'will_paginate'
 gem 'agent_helpers'
 gem 'whenever', require: false
 gem 'acts-as-taggable-on'
+gem 'state_machine'
+gem 'public_activity'
+
+# For handeling internationalized amount formats.
+gem 'autonumeric-rails'
 
 # PDF generation.
 gem 'pdfkit'
@@ -58,6 +63,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
+  gem 'pry'
 end
 
 group :development, :test do

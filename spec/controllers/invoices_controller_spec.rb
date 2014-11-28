@@ -50,6 +50,27 @@ describe InvoicesController do
     controller.flash.to_a.should eq []
     response.should be_success
     response.headers["Content-Type"].should eq "application/pdf"
-    response.headers["Content-Disposition"].should eq "inline; filename=\"Invoice #{invoice.id}.pdf\""
+    response.headers["Content-Disposition"].should eq "inline; filename=\"Invoice #{invoice.invoice_no}.pdf\""
+  end
+
+  it "#finish" do
+    post :finish, id: invoice.id
+    response.should redirect_to invoice
+    invoice.reload
+    invoice.state.should eq "finished"
+  end
+
+  it "#register_as_sent" do
+    post :register_as_sent, id: invoice.id
+    response.should redirect_to invoice
+    invoice.reload
+    invoice.state.should eq "sent"
+  end
+
+  it "#register_as_paid" do
+    post :register_as_paid, id: invoice.id
+    response.should redirect_to invoice
+    invoice.reload
+    invoice.state.should eq "paid"
   end
 end

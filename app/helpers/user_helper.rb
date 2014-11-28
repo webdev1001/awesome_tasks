@@ -11,6 +11,10 @@ module UserHelper
       name_str = "[#{_("no name")}]"
     end
 
-    link_to user.name, user_path(user)
+    if can? :show, user
+      link_to user.name, user_path(user)
+    else
+      user.name
+    end
   end
 end

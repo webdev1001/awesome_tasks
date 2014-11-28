@@ -10,7 +10,7 @@ class TaskAssignedUserMailer < ActionMailer::Base
     I18n.with_locale @user.locale! do
       subject = "[#{@task.project.name}] "
       subject << sprintf(_("You have been assigned to: %s"), task_assigned_user.task.name)
-      mail(to: @user.email, subject: subject)
+      mail(to: @user.email, subject: subject, message_id: @task.first_email_id)
     end
   end
 
@@ -25,7 +25,18 @@ class TaskAssignedUserMailer < ActionMailer::Base
       subject = "[#{@task.project.name}] #{sprintf(_("Task #%1$s: %2$s"), @task.id, @task.name)} - "
       subject << _("New comment from: %{author_name}", author_name: @author.name)
 
-      mail(to: user.email, subject: subject)
+      mail(
+        to: user.email,
+        from: "#{comment.user.name} <#{from_email}>",
+        subject: subject,
+        in_reply_to: @comment.resource.first_email_id
+      )
     end
+  end
+
+private
+
+  def from_email
+    Rails.application.config.action_mailer.default_options[:from]
   end
 end

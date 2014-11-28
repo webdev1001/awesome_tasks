@@ -5,6 +5,7 @@ class InvoicesController < ApplicationController
     @ransack_params = params[:q] || {}
     @ransack = Invoice.ransack(@ransack_params)
     @invoices = @ransack.result
+    @invoices = @invoices.order(:id).reverse_order unless @ransack_params[:s]
   end
 
   def new
@@ -50,9 +51,33 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def finish
+    unless @invoice.finish
+      flash[:error] = @invoice.errors.full_messages.join(". ")
+    end
+
+    redirect_to @invoice
+  end
+
+  def register_as_sent
+    unless @invoice.register_as_sent
+      flash[:error] = @invoice.errors.full_messages.join(". ")
+    end
+
+    redirect_to @invoice
+  end
+
+  def register_as_paid
+    unless @invoice.register_as_paid
+      flash[:error] = @invoice.errors.full_messages.join(". ")
+    end
+
+    redirect_to @invoice
+  end
+
 private
 
   def invoice_params
-    params.require(:invoice).permit(:invoice_group_id, :invoice_no, :date, :payment_at, :organization_id, :creditor_id, :invoice_type, :amount, :no_vat)
+    params.require(:invoice).permit(:invoice_group_id, :invoice_no, :state, :date, :payment_at, :organization_id, :creditor_id, :invoice_type, :amount, :no_vat)
   end
 end

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AwesomeTasks\n"
-"POT-Creation-Date: 2014-09-02 09:22+0100\n"
+"POT-Creation-Date: 2014-10-11 11:04+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Kasper Johansen <k@spernj.org>\n"
 "Language-Team: \n"
@@ -541,1251 +541,1261 @@ msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:84
-msgid "simple_form.hints.invoice_group.id"
+msgid "simple_form.hints.invoice.state"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:86
-msgid "simple_form.hints.invoice_group.name"
+msgid "simple_form.hints.invoice_group.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:88
-msgid "simple_form.hints.invoice_line.id"
+msgid "simple_form.hints.invoice_group.name"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:90
-msgid "simple_form.hints.invoice_line.title"
+msgid "simple_form.hints.invoice_line.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:92
-msgid "simple_form.hints.invoice_line.amount"
+msgid "simple_form.hints.invoice_line.title"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:94
-msgid "simple_form.hints.invoice_line.quantity"
+msgid "simple_form.hints.invoice_line.amount"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:96
-msgid "simple_form.hints.invoice_line.invoice_id"
+msgid "simple_form.hints.invoice_line.quantity"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:98
-msgid "simple_form.hints.invoice_line.created_at"
+msgid "simple_form.hints.invoice_line.invoice_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:100
-msgid "simple_form.hints.invoice_line.updated_at"
+msgid "simple_form.hints.invoice_line.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:102
-msgid "simple_form.hints.organization.id"
+msgid "simple_form.hints.invoice_line.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:104
+msgid "simple_form.hints.organization.id"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:106
 msgid "simple_form.hints.organization.name"
 msgstr "En del af den organisations navn, som du leder efter."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:106
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:108
 msgid "simple_form.hints.organization.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:108
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:110
 msgid "simple_form.hints.organization.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:110
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:112
 msgid "simple_form.hints.organization.email"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:112
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:114
 msgid "simple_form.hints.organization.vat_no"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:114
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:116
 msgid "simple_form.hints.organization.payment_info"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:116
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:118
 msgid "simple_form.hints.organization.delivery_address"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:118
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:120
 msgid "simple_form.hints.organization.delivery_zip_code"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:120
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:122
 msgid "simple_form.hints.organization.delivery_city"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:122
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:124
 msgid "simple_form.hints.organization.delivery_country"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:124
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:126
 msgid "simple_form.hints.organization.invoice_address"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:126
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:128
 msgid "simple_form.hints.organization.invoice_zip_code"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:128
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:130
 msgid "simple_form.hints.organization.invoice_city"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:130
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:132
 msgid "simple_form.hints.organization.invoice_country"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:132
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:134
 msgid "simple_form.hints.organization.customer"
 msgstr "Om organisationen er en kunde."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:134
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:136
 msgid "simple_form.hints.organization.creditor"
 msgstr "Om organisationen er en kreditor."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:136
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:138
 msgid "simple_form.hints.project.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:138
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:140
 msgid "simple_form.hints.project.organization_id"
 msgstr "The organization the project belongs to."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:140
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:142
 msgid "simple_form.hints.project.user_added_id"
 msgstr "The user who added the project."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:142
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:144
 msgid "simple_form.hints.project.name"
 msgstr "The name of the project as it should appear in the system."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:144
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:146
 msgid "simple_form.hints.project.description"
 msgstr "A description of the project to dell what it is about."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:146
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:148
 msgid "simple_form.hints.project.deadline_at"
 msgstr "At which date the project should be finished."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:148
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:150
 msgid "simple_form.hints.project.price_per_hour"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:150
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:152
 msgid "simple_form.hints.project.price_per_hour_transport"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:152
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:154
 msgid "simple_form.hints.project.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:154
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:156
 msgid "simple_form.hints.project.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:156
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:158
 msgid "simple_form.hints.project_autoassigned_user.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:158
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:160
 msgid "simple_form.hints.project_autoassigned_user.project_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:160
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:162
 msgid "simple_form.hints.project_autoassigned_user.user_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:162
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:164
 msgid "simple_form.hints.project_autoassigned_user.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:164
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:166
 msgid "simple_form.hints.project_autoassigned_user.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:166
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:168
 msgid "simple_form.hints.task.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:168
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:170
 msgid "simple_form.hints.task.project_id"
 msgstr "Projektet som opgaven hører under."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:170
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:172
 msgid "simple_form.hints.task.user_id"
 msgstr "Brugeren der har oprettet opgaven."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:172
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:174
 msgid "simple_form.hints.task.name"
 msgstr "Navnet på opgaven som den skal se ud i systemet."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:174
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:176
 msgid "simple_form.hints.task.description"
 msgstr "Beskrivelsen som den skal se ud for brugeren."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:176
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:178
 msgid "simple_form.hints.task.task_type"
 msgstr "Typen på opgaven."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:178
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:180
 msgid "simple_form.hints.task.state"
 msgstr "Status på opgaven."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:180
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:182
 msgid "simple_form.hints.task.priority"
 msgstr "10 for mest vigtig og 1 for mindst vigtig."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:182
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:184
 msgid "simple_form.hints.task.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:184
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:186
 msgid "simple_form.hints.task.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:186
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:188
 msgid "simple_form.hints.task_assigned_user.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:188
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:190
 msgid "simple_form.hints.task_assigned_user.task_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:190
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:192
 msgid "simple_form.hints.task_assigned_user.user_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:192
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:194
 msgid "simple_form.hints.task_assigned_user.user_assigned_by_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:194
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:196
 msgid "simple_form.hints.task_assigned_user.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:196
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:198
 msgid "simple_form.hints.task_assigned_user.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:198
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:200
 msgid "simple_form.hints.task_check.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:200
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:202
 msgid "simple_form.hints.task_check.task_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:202
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:204
 msgid "simple_form.hints.task_check.user_added_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:204
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:206
 msgid "simple_form.hints.task_check.name"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:206
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:208
 msgid "simple_form.hints.task_check.description"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:208
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:210
 msgid "simple_form.hints.task_check.checked"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:210
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:212
 msgid "simple_form.hints.task_check.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:212
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:214
 msgid "simple_form.hints.task_check.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:214
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:216
 msgid "simple_form.hints.task_check.user_assigned_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:216
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:218
 msgid "simple_form.hints.timelog.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:218
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:220
 msgid "simple_form.hints.timelog.task_id"
 msgstr "Opgaven som tidsloggen er for."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:220
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:222
 msgid "simple_form.hints.timelog.user_id"
 msgstr "Brugeren der brugte tiden."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:222
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:224
 msgid "simple_form.hints.timelog.date"
 msgstr "Datoen hvor tiden blev brugt."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:224
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:226
 msgid "simple_form.hints.timelog.time"
 msgstr "Mængden af tid der blev brugt."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:226
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:228
 msgid "simple_form.hints.timelog.time_transport"
 msgstr "Mængden af tid der blev brugt på transport."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:228
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:230
 msgid "simple_form.hints.timelog.transport_length"
 msgstr "Hvor langt der blev rejst."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:230
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:232
 msgid "simple_form.hints.timelog.comment"
 msgstr "En beskrivelse af hvad tiden blev brugt på."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:232
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:234
 msgid "simple_form.hints.timelog.invoiced"
 msgstr "Om tiden er faktureret eller ej."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:234
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:236
 msgid "simple_form.hints.timelog.invoiced_at"
 msgstr "Datoen hvor tiden blev faktureret."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:236
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:238
 msgid "simple_form.hints.timelog.invoiced_by_user_id"
 msgstr "Brugeren der fakturerede tiden."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:238
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:240
 msgid "simple_form.hints.timelog.created_at"
 msgstr "Dato hvor tidsloggen blev oprettet."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:240
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:242
 msgid "simple_form.hints.timelog.updated_at"
 msgstr "Dato for sidste opdatering af tidsloggen."
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:242
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:244
 msgid "simple_form.hints.uploaded_file.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:244
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:246
 msgid "simple_form.hints.uploaded_file.title"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:246
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:248
 msgid "simple_form.hints.uploaded_file.resource_type"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:248
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:250
 msgid "simple_form.hints.uploaded_file.resource_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:250
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:252
 msgid "simple_form.hints.uploaded_file.user_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:252
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:254
 msgid "simple_form.hints.uploaded_file.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:254
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:256
 msgid "simple_form.hints.uploaded_file.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:256
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:258
 msgid "simple_form.hints.uploaded_file.file_file_name"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:258
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:260
 msgid "simple_form.hints.uploaded_file.file_content_type"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:260
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:262
 msgid "simple_form.hints.uploaded_file.file_file_size"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:262
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:264
 msgid "simple_form.hints.uploaded_file.file_updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:264
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:266
 msgid "simple_form.hints.user_project_link.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:266
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:268
 msgid "simple_form.hints.user_project_link.user_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:268
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:270
 msgid "simple_form.hints.user_project_link.project_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:270
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:272
 msgid "simple_form.hints.user_project_link.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:272
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:274
 msgid "simple_form.hints.user_project_link.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:274
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:276
 msgid "simple_form.hints.user_role.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:276
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:278
 msgid "simple_form.hints.user_role.user_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:278
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:280
 msgid "simple_form.hints.user_role.role"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:280
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:282
 msgid "simple_form.hints.user_role.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:282
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:284
 msgid "simple_form.hints.user_role.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:284
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:286
 msgid "simple_form.hints.user_task_list_link.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:286
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:288
 msgid "simple_form.hints.user_task_list_link.user_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:288
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:290
 msgid "simple_form.hints.user_task_list_link.task_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:290
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:292
 msgid "simple_form.hints.user_task_list_link.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:292
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:294
 msgid "simple_form.hints.user_task_list_link.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:294
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:296
 msgid "simple_form.placeholders.user.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:296
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:298
 msgid "simple_form.placeholders.user.name"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:298
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:300
 msgid "simple_form.placeholders.user.username"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:300
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:302
 msgid "simple_form.placeholders.user.encrypted_password"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:302
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:304
 msgid "simple_form.placeholders.user.email"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:304
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:306
 msgid "simple_form.placeholders.user.locale"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:306
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:308
 msgid "simple_form.placeholders.user.active"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:308
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:310
 msgid "simple_form.placeholders.user.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:310
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:312
 msgid "simple_form.placeholders.user.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:312
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:314
 msgid "simple_form.placeholders.user.first_name"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:314
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:316
 msgid "simple_form.placeholders.user.last_name"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:316
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:318
 msgid "simple_form.placeholders.user.reset_password_token"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:318
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:320
 msgid "simple_form.placeholders.user.reset_password_sent_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:320
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:322
 msgid "simple_form.placeholders.user.remember_created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:322
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:324
 msgid "simple_form.placeholders.user.sign_in_count"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:324
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:326
 msgid "simple_form.placeholders.user.current_sign_in_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:326
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:328
 msgid "simple_form.placeholders.user.last_sign_in_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:328
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:330
 msgid "simple_form.placeholders.user.current_sign_in_ip"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:330
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:332
 msgid "simple_form.placeholders.user.last_sign_in_ip"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:332
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:334
 msgid "simple_form.placeholders.comment.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:334
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:336
 msgid "simple_form.placeholders.comment.id_per_resource"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:336
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:338
 msgid "simple_form.placeholders.comment.resource_type"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:338
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:340
 msgid "simple_form.placeholders.comment.resource_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:340
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:342
 msgid "simple_form.placeholders.comment.user_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:342
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:344
 msgid "simple_form.placeholders.comment.comment"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:344
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:346
 msgid "simple_form.placeholders.comment.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:346
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:348
 msgid "simple_form.placeholders.comment.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:348
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:350
 msgid "simple_form.placeholders.invoice.id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:350
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:352
 msgid "simple_form.placeholders.invoice.date"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:352
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:354
 msgid "simple_form.placeholders.invoice.invoice_no"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:354
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:356
 msgid "simple_form.placeholders.invoice.invoice_type"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:356
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:358
 msgid "simple_form.placeholders.invoice.amount"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:358
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:360
 msgid "simple_form.placeholders.invoice.organization_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:360
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:362
 msgid "simple_form.placeholders.invoice.user_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:362
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:364
 msgid "simple_form.placeholders.invoice.payment_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:364
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:366
 msgid "simple_form.placeholders.invoice.created_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:366
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:368
 msgid "simple_form.placeholders.invoice.updated_at"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:368
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:370
 msgid "simple_form.placeholders.invoice.creditor_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:370
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:372
 msgid "simple_form.placeholders.invoice.invoice_group_id"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:372
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:374
 msgid "simple_form.placeholders.invoice.no_vat"
 msgstr ""
 
 #. Default value:
-#: lib/gettext_simple_rails/simple_form_translator_translations.rb:374
-msgid "simple_form.placeholders.invoice_group.id"
-msgstr ""
-
-#. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:376
-msgid "simple_form.placeholders.invoice_group.name"
+msgid "simple_form.placeholders.invoice.state"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:378
-msgid "simple_form.placeholders.invoice_line.id"
+msgid "simple_form.placeholders.invoice_group.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:380
-msgid "simple_form.placeholders.invoice_line.title"
+msgid "simple_form.placeholders.invoice_group.name"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:382
-msgid "simple_form.placeholders.invoice_line.amount"
+msgid "simple_form.placeholders.invoice_line.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:384
-msgid "simple_form.placeholders.invoice_line.quantity"
+msgid "simple_form.placeholders.invoice_line.title"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:386
-msgid "simple_form.placeholders.invoice_line.invoice_id"
+msgid "simple_form.placeholders.invoice_line.amount"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:388
-msgid "simple_form.placeholders.invoice_line.created_at"
+msgid "simple_form.placeholders.invoice_line.quantity"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:390
-msgid "simple_form.placeholders.invoice_line.updated_at"
+msgid "simple_form.placeholders.invoice_line.invoice_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:392
-msgid "simple_form.placeholders.organization.id"
+msgid "simple_form.placeholders.invoice_line.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:394
-msgid "simple_form.placeholders.organization.name"
+msgid "simple_form.placeholders.invoice_line.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:396
-msgid "simple_form.placeholders.organization.created_at"
+msgid "simple_form.placeholders.organization.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:398
-msgid "simple_form.placeholders.organization.updated_at"
+msgid "simple_form.placeholders.organization.name"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:400
-msgid "simple_form.placeholders.organization.email"
+msgid "simple_form.placeholders.organization.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:402
-msgid "simple_form.placeholders.organization.vat_no"
+msgid "simple_form.placeholders.organization.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:404
-msgid "simple_form.placeholders.organization.payment_info"
+msgid "simple_form.placeholders.organization.email"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:406
-msgid "simple_form.placeholders.organization.delivery_address"
+msgid "simple_form.placeholders.organization.vat_no"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:408
-msgid "simple_form.placeholders.organization.delivery_zip_code"
+msgid "simple_form.placeholders.organization.payment_info"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:410
-msgid "simple_form.placeholders.organization.delivery_city"
+msgid "simple_form.placeholders.organization.delivery_address"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:412
-msgid "simple_form.placeholders.organization.delivery_country"
+msgid "simple_form.placeholders.organization.delivery_zip_code"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:414
-msgid "simple_form.placeholders.organization.invoice_address"
+msgid "simple_form.placeholders.organization.delivery_city"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:416
-msgid "simple_form.placeholders.organization.invoice_zip_code"
+msgid "simple_form.placeholders.organization.delivery_country"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:418
-msgid "simple_form.placeholders.organization.invoice_city"
+msgid "simple_form.placeholders.organization.invoice_address"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:420
-msgid "simple_form.placeholders.organization.invoice_country"
+msgid "simple_form.placeholders.organization.invoice_zip_code"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:422
-msgid "simple_form.placeholders.organization.customer"
+msgid "simple_form.placeholders.organization.invoice_city"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:424
-msgid "simple_form.placeholders.organization.creditor"
+msgid "simple_form.placeholders.organization.invoice_country"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:426
-msgid "simple_form.placeholders.project.id"
+msgid "simple_form.placeholders.organization.customer"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:428
-msgid "simple_form.placeholders.project.organization_id"
+msgid "simple_form.placeholders.organization.creditor"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:430
-msgid "simple_form.placeholders.project.user_added_id"
+msgid "simple_form.placeholders.project.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:432
-msgid "simple_form.placeholders.project.name"
+msgid "simple_form.placeholders.project.organization_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:434
-msgid "simple_form.placeholders.project.description"
+msgid "simple_form.placeholders.project.user_added_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:436
-msgid "simple_form.placeholders.project.deadline_at"
+msgid "simple_form.placeholders.project.name"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:438
-msgid "simple_form.placeholders.project.price_per_hour"
+msgid "simple_form.placeholders.project.description"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:440
-msgid "simple_form.placeholders.project.price_per_hour_transport"
+msgid "simple_form.placeholders.project.deadline_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:442
-msgid "simple_form.placeholders.project.created_at"
+msgid "simple_form.placeholders.project.price_per_hour"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:444
-msgid "simple_form.placeholders.project.updated_at"
+msgid "simple_form.placeholders.project.price_per_hour_transport"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:446
-msgid "simple_form.placeholders.project_autoassigned_user.id"
+msgid "simple_form.placeholders.project.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:448
-msgid "simple_form.placeholders.project_autoassigned_user.project_id"
+msgid "simple_form.placeholders.project.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:450
-msgid "simple_form.placeholders.project_autoassigned_user.user_id"
+msgid "simple_form.placeholders.project_autoassigned_user.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:452
-msgid "simple_form.placeholders.project_autoassigned_user.created_at"
+msgid "simple_form.placeholders.project_autoassigned_user.project_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:454
-msgid "simple_form.placeholders.project_autoassigned_user.updated_at"
+msgid "simple_form.placeholders.project_autoassigned_user.user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:456
-msgid "simple_form.placeholders.task.id"
+msgid "simple_form.placeholders.project_autoassigned_user.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:458
-msgid "simple_form.placeholders.task.project_id"
+msgid "simple_form.placeholders.project_autoassigned_user.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:460
-msgid "simple_form.placeholders.task.user_id"
+msgid "simple_form.placeholders.task.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:462
-msgid "simple_form.placeholders.task.name"
+msgid "simple_form.placeholders.task.project_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:464
-msgid "simple_form.placeholders.task.description"
+msgid "simple_form.placeholders.task.user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:466
-msgid "simple_form.placeholders.task.task_type"
+msgid "simple_form.placeholders.task.name"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:468
-msgid "simple_form.placeholders.task.state"
+msgid "simple_form.placeholders.task.description"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:470
-msgid "simple_form.placeholders.task.priority"
+msgid "simple_form.placeholders.task.task_type"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:472
-msgid "simple_form.placeholders.task.created_at"
+msgid "simple_form.placeholders.task.state"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:474
-msgid "simple_form.placeholders.task.updated_at"
+msgid "simple_form.placeholders.task.priority"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:476
-msgid "simple_form.placeholders.task_assigned_user.id"
+msgid "simple_form.placeholders.task.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:478
-msgid "simple_form.placeholders.task_assigned_user.task_id"
+msgid "simple_form.placeholders.task.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:480
-msgid "simple_form.placeholders.task_assigned_user.user_id"
+msgid "simple_form.placeholders.task_assigned_user.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:482
-msgid "simple_form.placeholders.task_assigned_user.user_assigned_by_id"
+msgid "simple_form.placeholders.task_assigned_user.task_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:484
-msgid "simple_form.placeholders.task_assigned_user.created_at"
+msgid "simple_form.placeholders.task_assigned_user.user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:486
-msgid "simple_form.placeholders.task_assigned_user.updated_at"
+msgid "simple_form.placeholders.task_assigned_user.user_assigned_by_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:488
-msgid "simple_form.placeholders.task_check.id"
+msgid "simple_form.placeholders.task_assigned_user.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:490
-msgid "simple_form.placeholders.task_check.task_id"
+msgid "simple_form.placeholders.task_assigned_user.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:492
-msgid "simple_form.placeholders.task_check.user_added_id"
+msgid "simple_form.placeholders.task_check.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:494
-msgid "simple_form.placeholders.task_check.name"
+msgid "simple_form.placeholders.task_check.task_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:496
-msgid "simple_form.placeholders.task_check.description"
+msgid "simple_form.placeholders.task_check.user_added_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:498
-msgid "simple_form.placeholders.task_check.checked"
+msgid "simple_form.placeholders.task_check.name"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:500
-msgid "simple_form.placeholders.task_check.created_at"
+msgid "simple_form.placeholders.task_check.description"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:502
-msgid "simple_form.placeholders.task_check.updated_at"
+msgid "simple_form.placeholders.task_check.checked"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:504
-msgid "simple_form.placeholders.task_check.user_assigned_id"
+msgid "simple_form.placeholders.task_check.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:506
-msgid "simple_form.placeholders.timelog.id"
+msgid "simple_form.placeholders.task_check.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:508
-msgid "simple_form.placeholders.timelog.task_id"
+msgid "simple_form.placeholders.task_check.user_assigned_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:510
-msgid "simple_form.placeholders.timelog.user_id"
+msgid "simple_form.placeholders.timelog.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:512
-msgid "simple_form.placeholders.timelog.date"
+msgid "simple_form.placeholders.timelog.task_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:514
-msgid "simple_form.placeholders.timelog.time"
+msgid "simple_form.placeholders.timelog.user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:516
-msgid "simple_form.placeholders.timelog.time_transport"
+msgid "simple_form.placeholders.timelog.date"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:518
-msgid "simple_form.placeholders.timelog.transport_length"
+msgid "simple_form.placeholders.timelog.time"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:520
-msgid "simple_form.placeholders.timelog.comment"
+msgid "simple_form.placeholders.timelog.time_transport"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:522
-msgid "simple_form.placeholders.timelog.invoiced"
+msgid "simple_form.placeholders.timelog.transport_length"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:524
-msgid "simple_form.placeholders.timelog.invoiced_at"
+msgid "simple_form.placeholders.timelog.comment"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:526
-msgid "simple_form.placeholders.timelog.invoiced_by_user_id"
+msgid "simple_form.placeholders.timelog.invoiced"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:528
-msgid "simple_form.placeholders.timelog.created_at"
+msgid "simple_form.placeholders.timelog.invoiced_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:530
-msgid "simple_form.placeholders.timelog.updated_at"
+msgid "simple_form.placeholders.timelog.invoiced_by_user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:532
-msgid "simple_form.placeholders.uploaded_file.id"
+msgid "simple_form.placeholders.timelog.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:534
-msgid "simple_form.placeholders.uploaded_file.title"
+msgid "simple_form.placeholders.timelog.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:536
-msgid "simple_form.placeholders.uploaded_file.resource_type"
+msgid "simple_form.placeholders.uploaded_file.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:538
-msgid "simple_form.placeholders.uploaded_file.resource_id"
+msgid "simple_form.placeholders.uploaded_file.title"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:540
-msgid "simple_form.placeholders.uploaded_file.user_id"
+msgid "simple_form.placeholders.uploaded_file.resource_type"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:542
-msgid "simple_form.placeholders.uploaded_file.created_at"
+msgid "simple_form.placeholders.uploaded_file.resource_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:544
-msgid "simple_form.placeholders.uploaded_file.updated_at"
+msgid "simple_form.placeholders.uploaded_file.user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:546
-msgid "simple_form.placeholders.uploaded_file.file_file_name"
+msgid "simple_form.placeholders.uploaded_file.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:548
-msgid "simple_form.placeholders.uploaded_file.file_content_type"
+msgid "simple_form.placeholders.uploaded_file.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:550
-msgid "simple_form.placeholders.uploaded_file.file_file_size"
+msgid "simple_form.placeholders.uploaded_file.file_file_name"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:552
-msgid "simple_form.placeholders.uploaded_file.file_updated_at"
+msgid "simple_form.placeholders.uploaded_file.file_content_type"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:554
-msgid "simple_form.placeholders.user_project_link.id"
+msgid "simple_form.placeholders.uploaded_file.file_file_size"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:556
-msgid "simple_form.placeholders.user_project_link.user_id"
+msgid "simple_form.placeholders.uploaded_file.file_updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:558
-msgid "simple_form.placeholders.user_project_link.project_id"
+msgid "simple_form.placeholders.user_project_link.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:560
-msgid "simple_form.placeholders.user_project_link.created_at"
+msgid "simple_form.placeholders.user_project_link.user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:562
-msgid "simple_form.placeholders.user_project_link.updated_at"
+msgid "simple_form.placeholders.user_project_link.project_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:564
-msgid "simple_form.placeholders.user_role.id"
+msgid "simple_form.placeholders.user_project_link.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:566
-msgid "simple_form.placeholders.user_role.user_id"
+msgid "simple_form.placeholders.user_project_link.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:568
-msgid "simple_form.placeholders.user_role.role"
+msgid "simple_form.placeholders.user_role.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:570
-msgid "simple_form.placeholders.user_role.created_at"
+msgid "simple_form.placeholders.user_role.user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:572
-msgid "simple_form.placeholders.user_role.updated_at"
+msgid "simple_form.placeholders.user_role.role"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:574
-msgid "simple_form.placeholders.user_task_list_link.id"
+msgid "simple_form.placeholders.user_role.created_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:576
-msgid "simple_form.placeholders.user_task_list_link.user_id"
+msgid "simple_form.placeholders.user_role.updated_at"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:578
-msgid "simple_form.placeholders.user_task_list_link.task_id"
+msgid "simple_form.placeholders.user_task_list_link.id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:580
-msgid "simple_form.placeholders.user_task_list_link.created_at"
+msgid "simple_form.placeholders.user_task_list_link.user_id"
 msgstr ""
 
 #. Default value:
 #: lib/gettext_simple_rails/simple_form_translator_translations.rb:582
+msgid "simple_form.placeholders.user_task_list_link.task_id"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:584
+msgid "simple_form.placeholders.user_task_list_link.created_at"
+msgstr ""
+
+#. Default value:
+#: lib/gettext_simple_rails/simple_form_translator_translations.rb:586
 msgid "simple_form.placeholders.user_task_list_link.updated_at"
 msgstr ""
 
@@ -2552,908 +2562,913 @@ msgstr "Fakturagruppe ID"
 msgid "activerecord.attributes.invoice.no_vat"
 msgstr "Ingen moms"
 
-#. Default value: creditor
+#. Default value: state
 #: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:106
+msgid "activerecord.attributes.invoice.state"
+msgstr "Status"
+
+#. Default value: creditor
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:108
 msgid "activerecord.attributes.invoice.creditor"
 msgstr "Kreditor"
 
 #. Default value: invoice_group
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:108
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:110
 msgid "activerecord.attributes.invoice.invoice_group"
 msgstr "Fakturagruppe"
 
 #. Default value: organization
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:110
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:112
 msgid "activerecord.attributes.invoice.organization"
 msgstr "Organisation"
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:112
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:114
 msgid "activerecord.attributes.invoice.user"
 msgstr "Bruger"
 
 #. Default value: invoice_lines
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:114
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:116
 msgid "activerecord.attributes.invoice.invoice_lines"
 msgstr "Fakturalinjer"
 
 #. Default value: uploaded_files
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:116
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:118
 msgid "activerecord.attributes.invoice.uploaded_files"
 msgstr "Uploadede filer"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:118
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:120
 msgid "activerecord.attributes.invoice_group.id"
 msgstr "ID"
 
 #. Default value: name
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:120
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:122
 msgid "activerecord.attributes.invoice_group.name"
 msgstr "Navn"
 
 #. Default value: invoices
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:122
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:124
 msgid "activerecord.attributes.invoice_group.invoices"
 msgstr "Fakturaer"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:124
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:126
 msgid "activerecord.attributes.invoice_line.id"
 msgstr "ID"
 
 #. Default value: title
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:126
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:128
 msgid "activerecord.attributes.invoice_line.title"
 msgstr "Titel"
 
 #. Default value: amount
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:128
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:130
 msgid "activerecord.attributes.invoice_line.amount"
 msgstr "Beløb"
 
 #. Default value: quantity
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:130
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:132
 msgid "activerecord.attributes.invoice_line.quantity"
 msgstr "Antal"
 
 #. Default value: invoice_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:132
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:134
 msgid "activerecord.attributes.invoice_line.invoice_id"
 msgstr "Faktura ID"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:134
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:136
 msgid "activerecord.attributes.invoice_line.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:136
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:138
 msgid "activerecord.attributes.invoice_line.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: invoice
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:138
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:140
 msgid "activerecord.attributes.invoice_line.invoice"
 msgstr "Faktura"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:140
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:142
 msgid "activerecord.attributes.organization.id"
 msgstr "ID"
 
 #. Default value: name
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:142
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:144
 msgid "activerecord.attributes.organization.name"
 msgstr "Navn"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:144
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:146
 msgid "activerecord.attributes.organization.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:146
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:148
 msgid "activerecord.attributes.organization.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: email
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:148
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:150
 msgid "activerecord.attributes.organization.email"
 msgstr "Email"
 
 #. Default value: vat_no
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:150
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:152
 msgid "activerecord.attributes.organization.vat_no"
 msgstr "CVR"
 
 #. Default value: payment_info
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:152
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:154
 msgid "activerecord.attributes.organization.payment_info"
 msgstr "Betalingsinformation"
 
 #. Default value: delivery_address
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:154
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:156
 msgid "activerecord.attributes.organization.delivery_address"
 msgstr "Leveringsadresse"
 
 #. Default value: delivery_zip_code
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:156
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:158
 msgid "activerecord.attributes.organization.delivery_zip_code"
 msgstr "Leverings postnummer"
 
 #. Default value: delivery_city
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:158
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:160
 msgid "activerecord.attributes.organization.delivery_city"
 msgstr "Leverings by"
 
 #. Default value: delivery_country
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:160
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:162
 msgid "activerecord.attributes.organization.delivery_country"
 msgstr "Leverings land"
 
 #. Default value: invoice_address
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:162
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:164
 msgid "activerecord.attributes.organization.invoice_address"
 msgstr "Faktura adresse"
 
 #. Default value: invoice_zip_code
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:164
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:166
 msgid "activerecord.attributes.organization.invoice_zip_code"
 msgstr "Faktura postnummer"
 
 #. Default value: invoice_city
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:166
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:168
 msgid "activerecord.attributes.organization.invoice_city"
 msgstr "Faktura by"
 
 #. Default value: invoice_country
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:168
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:170
 msgid "activerecord.attributes.organization.invoice_country"
 msgstr "Faktura land"
 
 #. Default value: customer
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:170
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:172
 msgid "activerecord.attributes.organization.customer"
 msgstr "Kunde"
 
 #. Default value: creditor
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:172
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:174
 msgid "activerecord.attributes.organization.creditor"
 msgstr "Kreditor"
 
 #. Default value: projects
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:174
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:176
 msgid "activerecord.attributes.organization.projects"
 msgstr "Projekter"
 
 #. Default value: invoices
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:176
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:178
 msgid "activerecord.attributes.organization.invoices"
 msgstr "Fakturaer"
 
 #. Default value: credit_invoices
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:178
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:180
 msgid "activerecord.attributes.organization.credit_invoices"
 msgstr "Kredit fakturaer"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:180
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:182
 msgid "activerecord.attributes.project.id"
 msgstr "ID"
 
 #. Default value: organization_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:182
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:184
 msgid "activerecord.attributes.project.organization_id"
 msgstr "Organisations ID"
 
 #. Default value: user_added_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:184
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:186
 msgid "activerecord.attributes.project.user_added_id"
 msgstr "Bruger tilføjet ID"
 
 #. Default value: name
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:186
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:188
 msgid "activerecord.attributes.project.name"
 msgstr "Navn"
 
 #. Default value: description
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:188
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:190
 msgid "activerecord.attributes.project.description"
 msgstr "Beskrivelse"
 
 #. Default value: deadline_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:190
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:192
 msgid "activerecord.attributes.project.deadline_at"
 msgstr "Deadline d."
 
 #. Default value: price_per_hour
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:192
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:194
 msgid "activerecord.attributes.project.price_per_hour"
 msgstr "Pris per time"
 
 #. Default value: price_per_hour_transport
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:194
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:196
 msgid "activerecord.attributes.project.price_per_hour_transport"
 msgstr "Pris per time transport"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:196
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:198
 msgid "activerecord.attributes.project.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:198
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:200
 msgid "activerecord.attributes.project.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: user_added
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:200
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:202
 msgid "activerecord.attributes.project.user_added"
 msgstr "Tilføjet af bruger"
 
 #. Default value: organization
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:202
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:204
 msgid "activerecord.attributes.project.organization"
 msgstr "Organisation"
 
 #. Default value: tasks
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:204
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:206
 msgid "activerecord.attributes.project.tasks"
 msgstr "Opgaver"
 
 #. Default value: user_project_links
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:206
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:208
 msgid "activerecord.attributes.project.user_project_links"
 msgstr "Bruger projekt links"
 
 #. Default value: users
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:208
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:210
 msgid "activerecord.attributes.project.users"
 msgstr "Brugere"
 
 #. Default value: project_autoassigned_users
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:210
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:212
 msgid "activerecord.attributes.project.project_autoassigned_users"
 msgstr "Projekt autotildelte brugere"
 
 #. Default value: autoassigned_users
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:212
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:214
 msgid "activerecord.attributes.project.autoassigned_users"
 msgstr "Autotildelte brugere"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:214
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:216
 msgid "activerecord.attributes.project_autoassigned_user.id"
 msgstr "ID"
 
 #. Default value: project_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:216
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:218
 msgid "activerecord.attributes.project_autoassigned_user.project_id"
 msgstr "Projekt ID"
 
 #. Default value: user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:218
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:220
 msgid "activerecord.attributes.project_autoassigned_user.user_id"
 msgstr "Bruger ID"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:220
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:222
 msgid "activerecord.attributes.project_autoassigned_user.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:222
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:224
 msgid "activerecord.attributes.project_autoassigned_user.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: project
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:224
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:226
 msgid "activerecord.attributes.project_autoassigned_user.project"
 msgstr "Projekt"
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:226
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:228
 msgid "activerecord.attributes.project_autoassigned_user.user"
 msgstr "Bruger"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:228
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:230
 msgid "activerecord.attributes.task.id"
 msgstr "ID"
 
 #. Default value: project_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:230
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:232
 msgid "activerecord.attributes.task.project_id"
 msgstr "Projekt ID"
 
 #. Default value: user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:232
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:234
 msgid "activerecord.attributes.task.user_id"
 msgstr "Bruger ID"
 
 #. Default value: name
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:234
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:236
 msgid "activerecord.attributes.task.name"
 msgstr "Navn"
 
 #. Default value: description
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:236
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:238
 msgid "activerecord.attributes.task.description"
 msgstr "Beskrivelse"
 
 #. Default value: task_type
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:238
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:240
 msgid "activerecord.attributes.task.task_type"
 msgstr "Opgavetype"
 
 #. Default value: state
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:240
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:242
 msgid "activerecord.attributes.task.state"
 msgstr "Status"
 
 #. Default value: priority
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:242
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:244
 msgid "activerecord.attributes.task.priority"
 msgstr "Prioritet"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:244
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:246
 msgid "activerecord.attributes.task.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:246
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:248
 msgid "activerecord.attributes.task.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: timelogs
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:248
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:250
 msgid "activerecord.attributes.task.timelogs"
 msgstr "Tidslogs"
 
 #. Default value: task_assigned_users
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:250
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:252
 msgid "activerecord.attributes.task.task_assigned_users"
 msgstr "Tildelte brugere"
 
 #. Default value: assigned_users
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:252
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:254
 msgid "activerecord.attributes.task.assigned_users"
 msgstr "Tildelte brugere"
 
 #. Default value: task_checks
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:254
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:256
 msgid "activerecord.attributes.task.task_checks"
 msgstr "Opgavechecks"
 
 #. Default value: user_task_list_links
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:256
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:258
 msgid "activerecord.attributes.task.user_task_list_links"
 msgstr "Bruger opgaveliste links"
 
 #. Default value: uploaded_files
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:258
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:260
 msgid "activerecord.attributes.task.uploaded_files"
 msgstr "Uploadede filer"
 
 #. Default value: comments
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:260
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:262
 msgid "activerecord.attributes.task.comments"
 msgstr "Kommentarer"
 
 #. Default value: project
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:262
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:264
 msgid "activerecord.attributes.task.project"
 msgstr "Projekt"
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:264
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:266
 msgid "activerecord.attributes.task.user"
 msgstr "Bruger"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:266
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:268
 msgid "activerecord.attributes.task_assigned_user.id"
 msgstr "ID"
 
 #. Default value: task_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:268
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:270
 msgid "activerecord.attributes.task_assigned_user.task_id"
 msgstr "Opgave ID"
 
 #. Default value: user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:270
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:272
 msgid "activerecord.attributes.task_assigned_user.user_id"
 msgstr "Bruger ID"
 
 #. Default value: user_assigned_by_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:272
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:274
 msgid "activerecord.attributes.task_assigned_user.user_assigned_by_id"
 msgstr "Tildelt af bruger ID"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:274
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:276
 msgid "activerecord.attributes.task_assigned_user.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:276
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:278
 msgid "activerecord.attributes.task_assigned_user.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: task
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:278
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:280
 msgid "activerecord.attributes.task_assigned_user.task"
 msgstr "Opgave"
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:280
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:282
 msgid "activerecord.attributes.task_assigned_user.user"
 msgstr "Bruger"
 
 #. Default value: user_assigned_by
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:282
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:284
 msgid "activerecord.attributes.task_assigned_user.user_assigned_by"
 msgstr "Tildelt af bruger"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:284
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:286
 msgid "activerecord.attributes.task_check.id"
 msgstr "ID"
 
 #. Default value: task_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:286
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:288
 msgid "activerecord.attributes.task_check.task_id"
 msgstr "Opgave ID"
 
 #. Default value: user_added_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:288
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:290
 msgid "activerecord.attributes.task_check.user_added_id"
 msgstr "Tilføjet af bruger ID"
 
 #. Default value: name
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:290
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:292
 msgid "activerecord.attributes.task_check.name"
 msgstr "Navn"
 
 #. Default value: description
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:292
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:294
 msgid "activerecord.attributes.task_check.description"
 msgstr "Beskrivelse"
 
 #. Default value: checked
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:294
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:296
 msgid "activerecord.attributes.task_check.checked"
 msgstr "Checket"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:296
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:298
 msgid "activerecord.attributes.task_check.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:298
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:300
 msgid "activerecord.attributes.task_check.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: user_assigned_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:300
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:302
 msgid "activerecord.attributes.task_check.user_assigned_id"
 msgstr "Tilføjet af bruger ID"
 
 #. Default value: task
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:302
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:304
 msgid "activerecord.attributes.task_check.task"
 msgstr "Opgave"
 
 #. Default value: user_added
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:304
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:306
 msgid "activerecord.attributes.task_check.user_added"
 msgstr "Tilføjet af bruger"
 
 #. Default value: user_assigned
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:306
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:308
 msgid "activerecord.attributes.task_check.user_assigned"
 msgstr "Tildelt bruger"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:308
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:310
 msgid "activerecord.attributes.timelog.id"
 msgstr "ID"
 
 #. Default value: task_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:310
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:312
 msgid "activerecord.attributes.timelog.task_id"
 msgstr "Opgave ID"
 
 #. Default value: user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:312
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:314
 msgid "activerecord.attributes.timelog.user_id"
 msgstr "Bruger ID"
 
 #. Default value: date
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:314
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:316
 msgid "activerecord.attributes.timelog.date"
 msgstr "Dato"
 
 #. Default value: time
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:316
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:318
 msgid "activerecord.attributes.timelog.time"
 msgstr "Tid"
 
 #. Default value: time_transport
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:318
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:320
 msgid "activerecord.attributes.timelog.time_transport"
 msgstr "Tid transport"
 
 #. Default value: transport_length
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:320
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:322
 msgid "activerecord.attributes.timelog.transport_length"
 msgstr "Transport længde"
 
 #. Default value: comment
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:322
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:324
 msgid "activerecord.attributes.timelog.comment"
 msgstr "Kommentar"
 
 #. Default value: invoiced
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:324
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:326
 msgid "activerecord.attributes.timelog.invoiced"
 msgstr "Faktureret"
 
 #. Default value: invoiced_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:326
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:328
 msgid "activerecord.attributes.timelog.invoiced_at"
 msgstr "Faktureret d."
 
 #. Default value: invoiced_by_user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:328
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:330
 msgid "activerecord.attributes.timelog.invoiced_by_user_id"
 msgstr "Faktureret af bruger ID"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:330
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:332
 msgid "activerecord.attributes.timelog.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:332
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:334
 msgid "activerecord.attributes.timelog.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: task
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:334
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:336
 msgid "activerecord.attributes.timelog.task"
 msgstr "Opgave"
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:336
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:338
 msgid "activerecord.attributes.timelog.user"
 msgstr "Bruger"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:338
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:340
 msgid "activerecord.attributes.uploaded_file.id"
 msgstr "ID"
 
 #. Default value: title
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:340
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:342
 msgid "activerecord.attributes.uploaded_file.title"
 msgstr "Titel"
 
 #. Default value: resource_type
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:342
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:344
 msgid "activerecord.attributes.uploaded_file.resource_type"
 msgstr "Ressourcetype"
 
 #. Default value: resource_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:344
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:346
 msgid "activerecord.attributes.uploaded_file.resource_id"
 msgstr "Ressource ID"
 
 #. Default value: user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:346
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:348
 msgid "activerecord.attributes.uploaded_file.user_id"
 msgstr "Bruger ID"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:348
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:350
 msgid "activerecord.attributes.uploaded_file.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:350
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:352
 msgid "activerecord.attributes.uploaded_file.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: file_file_name
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:352
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:354
 msgid "activerecord.attributes.uploaded_file.file_file_name"
 msgstr "Filnavn"
 
 #. Default value: file_content_type
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:354
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:356
 msgid "activerecord.attributes.uploaded_file.file_content_type"
 msgstr "Fil indholdstype"
 
 #. Default value: file_file_size
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:356
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:358
 msgid "activerecord.attributes.uploaded_file.file_file_size"
 msgstr "Fil størrelse"
 
 #. Default value: file_updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:358
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:360
 msgid "activerecord.attributes.uploaded_file.file_updated_at"
 msgstr "Fil opdateret d."
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:360
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:362
 msgid "activerecord.attributes.uploaded_file.user"
 msgstr "Bruger"
 
 #. Default value: resource
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:362
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:364
 msgid "activerecord.attributes.uploaded_file.resource"
 msgstr "Ressource"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:364
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:366
 msgid "activerecord.attributes.user_project_link.id"
 msgstr "ID"
 
 #. Default value: user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:366
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:368
 msgid "activerecord.attributes.user_project_link.user_id"
 msgstr "Bruger ID"
 
 #. Default value: project_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:368
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:370
 msgid "activerecord.attributes.user_project_link.project_id"
 msgstr "Projekt ID"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:370
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:372
 msgid "activerecord.attributes.user_project_link.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:372
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:374
 msgid "activerecord.attributes.user_project_link.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: project
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:374
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:376
 msgid "activerecord.attributes.user_project_link.project"
 msgstr "Projekt"
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:376
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:378
 msgid "activerecord.attributes.user_project_link.user"
 msgstr "Bruger"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:378
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:380
 msgid "activerecord.attributes.user_role.id"
 msgstr "ID"
 
 #. Default value: user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:380
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:382
 msgid "activerecord.attributes.user_role.user_id"
 msgstr "Bruger ID"
 
 #. Default value: role
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:382
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:384
 msgid "activerecord.attributes.user_role.role"
 msgstr "Rolle"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:384
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:386
 msgid "activerecord.attributes.user_role.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:386
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:388
 msgid "activerecord.attributes.user_role.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:388
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:390
 msgid "activerecord.attributes.user_role.user"
 msgstr "Bruger"
 
 #. Default value: id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:390
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:392
 msgid "activerecord.attributes.user_task_list_link.id"
 msgstr "ID"
 
 #. Default value: user_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:392
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:394
 msgid "activerecord.attributes.user_task_list_link.user_id"
 msgstr "Bruger ID"
 
 #. Default value: task_id
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:394
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:396
 msgid "activerecord.attributes.user_task_list_link.task_id"
 msgstr "Opgave ID"
 
 #. Default value: created_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:396
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:398
 msgid "activerecord.attributes.user_task_list_link.created_at"
 msgstr "Oprettet d."
 
 #. Default value: updated_at
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:398
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:400
 msgid "activerecord.attributes.user_task_list_link.updated_at"
 msgstr "Opdateret d."
 
 #. Default value: user
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:400
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:402
 msgid "activerecord.attributes.user_task_list_link.user"
 msgstr "Bruger"
 
 #. Default value: task
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:402
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:404
 msgid "activerecord.attributes.user_task_list_link.task"
 msgstr "Opgave"
 
 #. Default value: User
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:404
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:406
 msgid "activerecord.models.user.one"
 msgstr "Bruger"
 
 #. Default value: User
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:406
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:408
 msgid "activerecord.models.user.other"
 msgstr "Brugere"
 
 #. Default value: Comment
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:408
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:410
 msgid "activerecord.models.comment.one"
 msgstr "Kommentar"
 
 #. Default value: Comment
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:410
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:412
 msgid "activerecord.models.comment.other"
 msgstr "Kommentarer"
 
 #. Default value: Invoice
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:412
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:414
 msgid "activerecord.models.invoice.one"
 msgstr "Faktura"
 
 #. Default value: Invoice
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:414
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:416
 msgid "activerecord.models.invoice.other"
 msgstr "Fakturaer"
 
 #. Default value: InvoiceGroup
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:416
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:418
 msgid "activerecord.models.invoice_group.one"
 msgstr "Fakturagruppe"
 
 #. Default value: InvoiceGroup
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:418
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:420
 msgid "activerecord.models.invoice_group.other"
 msgstr "Fakturagrupper"
 
 #. Default value: InvoiceLine
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:420
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:422
 msgid "activerecord.models.invoice_line.one"
 msgstr "Fakturalinje"
 
 #. Default value: InvoiceLine
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:422
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:424
 msgid "activerecord.models.invoice_line.other"
 msgstr "Fakturalinjer"
 
 #. Default value: Organization
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:424
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:426
 msgid "activerecord.models.organization.one"
 msgstr "Organisation"
 
 #. Default value: Organization
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:426
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:428
 msgid "activerecord.models.organization.other"
 msgstr "Organisationer"
 
 #. Default value: Project
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:428
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:430
 msgid "activerecord.models.project.one"
 msgstr "Projekt"
 
 #. Default value: Project
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:430
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:432
 msgid "activerecord.models.project.other"
 msgstr "Projekter"
 
 #. Default value: ProjectAutoassignedUser
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:432
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:434
 msgid "activerecord.models.project_autoassigned_user.one"
 msgstr "Autotildelt bruger"
 
 #. Default value: ProjectAutoassignedUser
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:434
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:436
 msgid "activerecord.models.project_autoassigned_user.other"
 msgstr "Autotildelte brugere"
 
 #. Default value: Task
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:436
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:438
 msgid "activerecord.models.task.one"
 msgstr "Opgave"
 
 #. Default value: Task
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:438
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:440
 msgid "activerecord.models.task.other"
 msgstr "Opgaver"
 
 #. Default value: TaskAssignedUser
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:440
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:442
 msgid "activerecord.models.task_assigned_user.one"
 msgstr "Opgave tildelt bruger"
 
 #. Default value: TaskAssignedUser
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:442
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:444
 msgid "activerecord.models.task_assigned_user.other"
 msgstr "Opgave tildelte brugere"
 
 #. Default value: TaskCheck
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:444
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:446
 msgid "activerecord.models.task_check.one"
 msgstr "Opgavecheck"
 
 #. Default value: TaskCheck
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:446
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:448
 msgid "activerecord.models.task_check.other"
 msgstr "Opgavechecks"
 
 #. Default value: Timelog
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:448
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:450
 msgid "activerecord.models.timelog.one"
 msgstr "Tidslog"
 
 #. Default value: Timelog
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:450
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:452
 msgid "activerecord.models.timelog.other"
 msgstr "Tidslogs"
 
 #. Default value: UploadedFile
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:452
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:454
 msgid "activerecord.models.uploaded_file.one"
 msgstr "Uploadet fil"
 
 #. Default value: UploadedFile
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:454
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:456
 msgid "activerecord.models.uploaded_file.other"
 msgstr "Uploadede filer"
 
 #. Default value: UserProjectLink
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:456
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:458
 msgid "activerecord.models.user_project_link.one"
 msgstr "Bruger projektlink"
 
 #. Default value: UserProjectLink
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:458
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:460
 msgid "activerecord.models.user_project_link.other"
 msgstr "Bruger projektlinks"
 
 #. Default value: UserRole
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:460
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:462
 msgid "activerecord.models.user_role.one"
 msgstr "Brugerrolle"
 
 #. Default value: UserRole
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:462
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:464
 msgid "activerecord.models.user_role.other"
 msgstr "Brugerroller"
 
 #. Default value: UserTaskListLink
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:464
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:466
 msgid "activerecord.models.user_task_list_link.one"
 msgstr "Bruger opgavelistelink"
 
 #. Default value: UserTaskListLink
-#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:466
+#: lib/gettext_simple_rails/active_record_attributes_translator_translations.rb:468
 msgid "activerecord.models.user_task_list_link.other"
 msgstr "Bruger opgavelistelinks"
 
@@ -3477,7 +3492,7 @@ msgstr "færdig"
 msgid "not completed"
 msgstr "ikke færdig"
 
-#: app/mailers/task_checks_mailer.rb:31
+#: app/mailers/task_checks_mailer.rb:35
 msgid "Assigned to check: %{check_name}"
 msgstr "Tildelt til check: %{check_name}"
 
@@ -3515,7 +3530,7 @@ msgstr "Ugyldig fra-dato."
 msgid "Invalid date-to."
 msgstr "Ugyldig til-dato,"
 
-#: app/controllers/comments_controller.rb:77
+#: app/controllers/comments_controller.rb:83
 msgid "Changed the task-status to '%s'."
 msgstr "Ændret opgavestatus til '%s'."
 
@@ -3575,35 +3590,35 @@ msgstr "Lukket"
 msgid "task %{task_id}"
 msgstr "opgave %{task_id}"
 
-#: app/models/invoice.rb:20
+#: app/models/invoice.rb:34
 msgid "Debit"
 msgstr "Debit"
 
-#: app/models/invoice.rb:21
+#: app/models/invoice.rb:35
 msgid "Credit"
 msgstr "Kredit"
 
-#: app/models/invoice.rb:22
+#: app/models/invoice.rb:36
 msgid "Purchase"
 msgstr "Køb"
 
-#: app/models/invoice.rb:45 app/views/invoices/show.html.haml:1
+#: app/models/invoice.rb:59 app/views/invoices/show.html.haml:1
 msgid "Invoice %{id}"
 msgstr "Faktura %{id}"
 
-#: app/models/invoice.rb:55
+#: app/models/invoice.rb:69
 msgid "No invoice number has been set."
 msgstr "Der er ikke blevet sat et fakturanummer."
 
-#: app/models/invoice.rb:56
+#: app/models/invoice.rb:70
 msgid "No invoice-date has been set."
 msgstr "Der er ikke blevet sat en fakturadato."
 
-#: app/models/invoice.rb:57
+#: app/models/invoice.rb:71
 msgid "No payment-date has been set."
 msgstr "Der er ikke blevet sat en betalingsdato."
 
-#: app/models/invoice.rb:58
+#: app/models/invoice.rb:72
 msgid "No creditor has been set."
 msgstr "Der er ikke blevet sat en kreditor."
 
@@ -3647,6 +3662,22 @@ msgstr "Faktura %{invoice_no}"
 msgid "Invoice with ID %{id}"
 msgstr "Faktura med ID %{id}"
 
+#: app/helpers/invoice_helper.rb:20
+msgid "Draft"
+msgstr "Udkast"
+
+#: app/helpers/invoice_helper.rb:21
+msgid "Finished"
+msgstr "Færdig"
+
+#: app/helpers/invoice_helper.rb:22
+msgid "Sent"
+msgstr "Sendt"
+
+#: app/helpers/invoice_helper.rb:23
+msgid "Paid"
+msgstr "Betalt"
+
 #: app/helpers/task_helper.rb:3
 msgid "no task"
 msgstr "ingen opgave"
@@ -3666,7 +3697,7 @@ msgstr "Indtast detaljer"
 
 #: app/views/timelogs/_form.html.haml:10 app/views/users/_form.html.haml:15
 #: app/views/uploaded_files/_form.html.haml:7
-#: app/views/projects/_form.html.haml:18 app/views/comments/_form.html.haml:9
+#: app/views/projects/_form.html.haml:18 app/views/comments/_form.html.haml:10
 #: app/views/user_roles/_form.html.haml:5 app/views/profile/index.html.haml:15
 #: app/views/task_checks/_form.html.haml:10 app/views/tasks/_form.html.haml:15
 #: app/views/invoice_groups/_form.html.haml:4
@@ -3691,12 +3722,12 @@ msgid "Enter criteria"
 msgstr "Indtast kriterier"
 
 #: app/views/timelogs/index.html.haml:5 app/views/workstatus/index.html.haml:5
-#: app/views/invoices/index.html.haml:13
+#: app/views/invoices/index.html.haml:14
 msgid "Date from"
 msgstr "Date fra"
 
 #: app/views/timelogs/index.html.haml:6 app/views/workstatus/index.html.haml:6
-#: app/views/invoices/index.html.haml:14
+#: app/views/invoices/index.html.haml:15
 msgid "Date to"
 msgstr "Dato til"
 
@@ -3907,7 +3938,7 @@ msgstr "Brugerens email."
 #: app/views/workstatus/index.html.haml:3
 #: app/views/invoice_groups/index.html.haml:8
 #: app/views/invoice_groups/index.html.haml:11
-#: app/views/invoices/index.html.haml:15
+#: app/views/invoices/index.html.haml:16
 msgid "Filter"
 msgstr "Filter"
 
@@ -4070,7 +4101,7 @@ msgid "No users were found."
 msgstr "Der blev ikke fundet nogle brugere."
 
 #: app/views/workstatus/index.html.haml:1
-#: app/views/layouts/application.html.haml:43
+#: app/views/layouts/application.html.haml:45
 msgid "Work-status"
 msgstr "Arbejdsstatus"
 
@@ -4186,18 +4217,18 @@ msgid "Remember me"
 msgstr "Husk mig"
 
 #: app/views/pdfs/invoice.html.haml:72 app/views/pdfs/invoice.html.haml:103
-#: app/views/invoices/show.html.haml:39 app/views/invoices/index.html.haml:30
-#: app/views/invoices/index.html.haml:57
+#: app/views/invoices/show.html.haml:39 app/views/invoices/index.html.haml:31
+#: app/views/invoices/index.html.haml:58
 msgid "Vat"
 msgstr "Moms"
 
 #: app/views/pdfs/invoice.html.haml:75 app/views/pdfs/invoice.html.haml:88
 #: app/views/pdfs/invoice.html.haml:106 app/views/invoices/show.html.haml:42
-#: app/views/invoices/show.html.haml:71 app/views/invoices/index.html.haml:60
+#: app/views/invoices/show.html.haml:71 app/views/invoices/index.html.haml:61
 msgid "Total"
 msgstr "Total"
 
-#: app/views/pdfs/invoice.html.haml:100 app/views/invoices/index.html.haml:54
+#: app/views/pdfs/invoice.html.haml:100 app/views/invoices/index.html.haml:55
 msgid "Amount"
 msgstr "Beløb"
 
@@ -4221,21 +4252,21 @@ msgstr "Rediger tidslog"
 msgid "Edit task-check"
 msgstr "Rediger opgavecheck"
 
-#: app/views/layouts/application.html.haml:37
+#: app/views/layouts/application.html.haml:39
 #: app/views/frontpage/index.html.haml:1
 msgid "Frontpage"
 msgstr "Forside"
 
-#: app/views/layouts/application.html.haml:47
+#: app/views/layouts/application.html.haml:49
 #: app/views/profile/index.html.haml:1
 msgid "Your profile"
 msgstr "Din profil"
 
-#: app/views/layouts/application.html.haml:48
+#: app/views/layouts/application.html.haml:50
 msgid "Log out"
 msgstr "Log ud"
 
-#: app/views/layouts/application.html.haml:49
+#: app/views/layouts/application.html.haml:51
 msgid "Log in"
 msgstr "Log ind"
 
@@ -4495,11 +4526,11 @@ msgstr "Tilføj ny fakturalinje"
 msgid "No lines were found."
 msgstr "Der blev ikke fundet nogle linjer."
 
-#: app/views/invoices/index.html.haml:45
+#: app/views/invoices/index.html.haml:46
 msgid "No invoices could be found."
 msgstr "Der blev ikke fundet nogle fakturaer."
 
-#: app/views/invoices/index.html.haml:50
+#: app/views/invoices/index.html.haml:51
 msgid "Totals"
 msgstr "Totaler"
 

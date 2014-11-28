@@ -1,6 +1,10 @@
 class Invoice < ActiveRecord::Base
   include ::ViewRenderer # Used for PDF generation.
 
+  # Track changes.
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.try(:current_user) }
+
   belongs_to :creditor, class_name: "Organization"
   belongs_to :invoice_group
   belongs_to :organization
@@ -14,6 +18,32 @@ class Invoice < ActiveRecord::Base
   scope :debit, ->{ where(invoice_type: "debit") }
   scope :credit, ->{ where(invoice_type: "credit") }
   scope :purchase, ->{ where(invoice_type: "purchase") }
+
+  state_machine :state, :initial => :draft do
+    after_transition on: :finish do |invoice|
+      invoice.create_activity action: "finished"
+    end
+
+    after_transition on: :register_as_sent do |invoice|
+      invoice.create_activity action: "registered_as_sent"
+    end
+
+    after_transition on: :register_as_paid do |invoice|
+      invoice.create_activity action: "registered_as_paid"
+    end
+
+    event :finish do
+      transition :draft => :finished
+    end
+
+    event :register_as_sent do
+      transition [:draft, :finished] => :sent
+    end
+
+    event :register_as_paid do
+      transition [:draft, :sent] => :paid
+    end
+  end
 
   def self.translated_invoice_types
     return {
@@ -42,7 +72,12 @@ class Invoice < ActiveRecord::Base
   end
 
   def filename
-    filename_str = _("Invoice %{id}", id: id)
+    if invoice_no.present?
+      filename_str = _("Invoice %{invoice_no}", invoice_no: invoice_no)
+    else
+      filename_str = _("Invoice ID %{id}", id: id)
+    end
+
     filename_str << ".pdf"
     return filename_str
   end

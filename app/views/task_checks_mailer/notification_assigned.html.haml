@@ -4,7 +4,7 @@
 
 %b= Task.model_name.human
 %br
-= link_to_task @task, url: true
+= link_to @task.name_force, task_url(@task)
 
 %br
 %br

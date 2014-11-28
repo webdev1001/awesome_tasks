@@ -1,7 +1,7 @@
 class TaskChecksMailer < ActionMailer::Base
   helper :task
 
-  def notification(task_check, user, task_url)
+  def notification(task_check, user, task_url, user_changed)
     @task_check = task_check
     @task = @task_check.task
     @task_url = task_url
@@ -17,11 +17,16 @@ class TaskChecksMailer < ActionMailer::Base
       subject = "[#{@task.project.name}] "
       subject << "'#{@task_check.name}' #{subject_text}"
 
-      mail(to: user.email, subject: subject)
+      mail(
+        to: user.email,
+        from: "#{user_changed.name} <#{from_email}>",
+        subject: subject,
+        in_reply_to: @task.first_email_id
+      )
     end
   end
 
-  def notification_assigned(task_check)
+  def notification_assigned(task_check, user_assigner)
     @task_check = task_check
     @task = @task_check.task
     @user = @task_check.user_assigned
@@ -30,7 +35,18 @@ class TaskChecksMailer < ActionMailer::Base
       subject = "[#{@task.project.name}] "
       subject << _("Assigned to check: %{check_name}", check_name: @task_check.name)
 
-      mail to: @user.email, subject: subject
+      mail(
+        to: @user.email,
+        from: "#{user_assigner.name} <#{from_email}>",
+        subject: subject,
+        in_reply_to: @task.first_email_id
+      )
     end
+  end
+
+private
+
+  def from_email
+    Rails.application.config.action_mailer.default_options[:from]
   end
 end
