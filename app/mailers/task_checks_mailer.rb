@@ -1,7 +1,7 @@
 class TaskChecksMailer < ActionMailer::Base
   helper :task
 
-  def notification task_check, user, task_url, user_changed
+  def notification(task_check, user, task_url, user_changed)
     @task_check = task_check
     @task = @task_check.task
     @task_url = task_url
@@ -26,7 +26,7 @@ class TaskChecksMailer < ActionMailer::Base
     end
   end
 
-  def notification_assigned task_check, user_assigner
+  def notification_assigned(task_check, user_assigner)
     @task_check = task_check
     @task = @task_check.task
     @user = @task_check.user_assigned

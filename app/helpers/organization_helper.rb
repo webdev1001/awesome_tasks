@@ -1,6 +1,11 @@
 module OrganizationHelper
   def link_to_organization(organization)
     return "[#{_("no organization")}]" unless organization
-    link_to organization.name, organization_path(organization)
+
+    if can? :show, organization
+      link_to organization.name, organization_path(organization)
+    else
+      organization.name
+    end
   end
 end
