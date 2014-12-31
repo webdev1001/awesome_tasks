@@ -5,4 +5,5 @@ $ ->
   inputs.autoNumeric("init", {
     aDec: locale_strings.number_format_separator
     aSep: locale_strings.number_format_delimiter
+    vMin: -999999999.99
   })
