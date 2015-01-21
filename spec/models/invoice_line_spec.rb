@@ -10,4 +10,10 @@ describe InvoiceLine do
 
     invoice.reload.amount.should eq 50.0
   end
+
+  it "updates the amount of an invoice on removal" do
+    invoice.amount.should_not eq 0.0
+    invoice_line.destroy!
+    invoice.amount.should eq 0.0
+  end
 end
