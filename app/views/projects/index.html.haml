@@ -6,19 +6,23 @@
     = link_to _("Add new"), new_project_path, class: "button"
     = f.submit _("Search")
 
-- if params[:q]
-  %br
-
-  = design_box Project.model_name.human(count: 2), 500 do
-    %table.form
-      %thead
+= design_box Project.model_name.human(count: 2), 600 do
+  %table.form
+    %thead
+      %tr
+        %th= sort_link @ransack, :name
+        %th= sort_link @ransack, :state
+        %th= sort_link @ransack, :created_at
+    %tbody
+      - @projects.each do |project|
         %tr
-          %th= Project.human_attribute_name(:name)
-      %tbody
-        - @projects.each do |project|
-          %tr
-            %td= link_to_project project
-        - if @projects.none?
-          %tr
-            %td.error{colspan: 1}
-              = _("No projects were found.")
+          %td= link_to_project project
+          %td= project.translated_state
+          %td= l(project.created_at, format: :long)
+      - unless @projects.any?
+        %tr
+          %td.error{colspan: 2}
+            = _("No projects were found.")
+
+%br
+= will_paginate @projects
