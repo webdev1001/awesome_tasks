@@ -111,4 +111,12 @@ private
   def task_params
     params.require(:task).permit(:name, :project_id, :task_type, :state, :priority, :description)
   end
+
+  helper_method :projects_collection
+  def projects_collection
+    projects = current_user.visible_projects.where(projects: {state: "active"}).order(:name).to_a
+    projects << @task.project if !@task.new_record? && !projects.include?(@task.project)
+
+    return projects
+  end
 end

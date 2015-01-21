@@ -9,4 +9,34 @@ class Project < ActiveRecord::Base
   has_many :autoassigned_users, through: :project_autoassigned_users, source: :user
 
   validates_presence_of :organization
+
+  state_machine :state, initial: :active do
+    event :activate do
+      transition [:finished, :inactive] => :active
+    end
+
+    event :deactivate do
+      transition :active => :inactive
+    end
+
+    event :finish do
+      transition [:active, :inactive] => :finished
+    end
+  end
+
+  def self.translated_states
+    return {
+      _("Active") => "active",
+      _("Inactive") => "inactive",
+      _("Finished") => "finished"
+    }
+  end
+
+  def translated_state
+    Project.translated_states.each do |title, state_i|
+      return title if state_i == state.to_s
+    end
+
+    return ""
+  end
 end

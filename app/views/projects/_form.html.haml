@@ -1,6 +1,7 @@
 = design_box _("Enter details"), 800 do
   = simple_form_for project do |f|
     = f.input :name
+    = f.input :state, collection: Project.translated_states
     = f.input :deadline_at
     = f.input :price_per_hour, input_html: {data: {autonumeric: true}}
     = f.input :price_per_hour_transport, input_html: {data: {autonumeric: true}}

@@ -187,4 +187,21 @@ describe TasksController do
       task.user.should eq admin
     end
   end
+
+  describe "#projects_collection" do
+    let!(:inactive_project) { create :project, state: "inactive" }
+    let!(:task_with_inactive_project) { create :task, user: user, project: inactive_project_that_belongs_to_task }
+    let!(:inactive_project_that_belongs_to_task) { create :project, state: "inactive" }
+
+    it "should include the correct projects" do
+      sign_in user
+      project
+
+      get :show, id: task_with_inactive_project.id
+      projects = controller.__send__(:projects_collection)
+      projects.should_not include inactive_project
+      projects.should include inactive_project_that_belongs_to_task
+      projects.should_not include project # The user doesn't have access to this project.
+    end
+  end
 end
