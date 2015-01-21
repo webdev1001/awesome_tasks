@@ -6,9 +6,9 @@
     = link_to _("Delete"), @invoice, class: "button", method: :delete, data: {confirm: _("Are you sure?")} if can? :destory, @invoice
     = link_to _("PDF"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice
 
-    = link_to _("Finish"), finish_invoice_path(@invoice), method: :post, class: "button" if @invoice.can_finish?
-    = link_to _("Register as sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "button" if @invoice.can_register_as_sent?
-    = link_to _("Register as paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "button" if @invoice.can_register_as_paid?
+    = link_to _("Finish"), finish_invoice_path(@invoice), method: :post, class: "button", data: {confirm: _("Are you sure?")} if @invoice.can_finish?
+    = link_to _("Register as sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "button", data: {confirm: _("Are you sure?")} if @invoice.can_register_as_sent?
+    = link_to _("Register as paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "button", data: {confirm: _("Are you sure?")} if @invoice.can_register_as_paid?
 
 %br
 
