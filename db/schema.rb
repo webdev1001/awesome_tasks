@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011092125) do
+ActiveRecord::Schema.define(version: 20150121132120) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20141011092125) do
     t.string   "recipient_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
 
   add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
@@ -81,7 +82,7 @@ ActiveRecord::Schema.define(version: 20141011092125) do
   create_table "invoice_lines", force: true do |t|
     t.string   "title"
     t.float    "amount"
-    t.integer  "quantity"
+    t.float    "quantity"
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
