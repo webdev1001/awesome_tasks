@@ -1,19 +1,32 @@
 = _("Hello %{user_name}", user_name: @user.name)
-%br/
-%br/
+%br
+%br
+
+%b= _("Task name")
+%br
+= @task.name
+%br
+%br
+
+- if @task.user
+  %b= _("Task author")
+  %br
+  = @task.user.name
+  %br
+  %br
 
 - if @user_assigned_by
   %b= _("Assigned by")
-  %br/
+  %br
   = @user_assigned_by.name
-  %br/
-  %br/
+  %br
+  %br
 
 %b= Task.model_name.human
-%br/
+%br
 = link_to @task_url, @task_url
-%br/
-%br/
+%br
+%br
 %b= Task.human_attribute_name(:description)
-%br/
+%br
 = @task.description.to_s.html_safe
