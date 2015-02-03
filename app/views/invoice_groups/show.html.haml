@@ -24,8 +24,8 @@
   %table.list
     %thead
       %tr
-        %th= Invoice.model_name.human
-        %th= Invoice.human_attribute_name(:amount)
+        %th= sort_link @ransack, :name
+        %th= sort_link @ransack, :amount
     %tbody
       - @invoices.each do |invoice|
         %tr
@@ -34,3 +34,7 @@
       - if @invoices.none?
         %tr
           %td.error{colspan: 2}= _("No invoices has been added for this group.")
+
+%br
+
+= will_paginate @invoices

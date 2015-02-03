@@ -13,8 +13,8 @@ class InvoiceGroupsController < ApplicationController
     @ransack_values = params[:q] || {}
     @ransack = @invoice_group.invoices.ransack(@ransack_values)
 
-    @invoices = @ransack.result.paginate(page: params[:page])
-    @invoices.order("invoices.id").reverse_order unless @ransack_values[:s]
+    @invoices = @ransack.result.paginate(page: params[:page], per_page: 30)
+    @invoices = @invoices.order("invoices.id").reverse_order unless @ransack_values[:s]
   end
 
   def new
