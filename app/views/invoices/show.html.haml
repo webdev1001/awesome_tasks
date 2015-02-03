@@ -38,16 +38,16 @@
         %td.align-right= @invoice.translated_invoice_type
       %tr
         %td.tdt= Invoice.human_attribute_name(:amount)
-        %td.align-right= format_number @invoice.amount
+        %td.align-right.nowrap= format_number @invoice.amount
       %tr
         %td.tdt= Invoice.human_attribute_name(:no_vat)
         %td.align-right= @invoice.no_vat? ? _("True") : _("False")
       %tr
         %td.tdt= _("Vat")
-        %td.align-right= format_number @invoice.amount_vat
+        %td.align-right.nowrap= format_number @invoice.amount_vat
       %tr
         %td.tdt= _("Total")
-        %td.align-right= format_number @invoice.amount_total
+        %td.align-right.nowrap= format_number @invoice.amount_total
       %tr
         %td.tdt= Invoice.human_attribute_name(:organization)
         %td.align-right= link_to_organization @invoice.organization
