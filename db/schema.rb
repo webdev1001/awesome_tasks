@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121132120) do
+ActiveRecord::Schema.define(version: 20150203093133) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20150121132120) do
 
   create_table "invoice_lines", force: true do |t|
     t.string   "title"
-    t.float    "amount"
+    t.decimal  "amount",     precision: 10, scale: 2
     t.float    "quantity"
     t.integer  "invoice_id"
     t.datetime "created_at"
@@ -91,11 +91,10 @@ ActiveRecord::Schema.define(version: 20150121132120) do
   add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
 
   create_table "invoices", force: true do |t|
-    t.string   "title"
     t.date     "date"
     t.string   "invoice_no"
     t.string   "invoice_type"
-    t.float    "amount"
+    t.decimal  "amount",           precision: 10, scale: 2
     t.integer  "organization_id"
     t.integer  "user_id"
     t.date     "payment_at"
@@ -109,7 +108,6 @@ ActiveRecord::Schema.define(version: 20150121132120) do
 
   add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
   add_index "invoices", ["invoice_group_id"], name: "index_invoices_on_invoice_group_id", using: :btree
-  add_index "invoices", ["invoice_no"], name: "index_invoices_on_invoice_no", using: :btree
   add_index "invoices", ["organization_id"], name: "index_invoices_on_organization_id", using: :btree
   add_index "invoices", ["state"], name: "index_invoices_on_state", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
@@ -150,15 +148,17 @@ ActiveRecord::Schema.define(version: 20150121132120) do
     t.integer  "organization_id"
     t.integer  "user_added_id"
     t.string   "name"
+    t.string   "state",                                             default: "active"
     t.text     "description"
     t.datetime "deadline_at"
-    t.float    "price_per_hour"
-    t.float    "price_per_hour_transport"
+    t.decimal  "price_per_hour",           precision: 10, scale: 2
+    t.decimal  "price_per_hour_transport", precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "projects", ["organization_id"], name: "index_projects_on_organization_id", using: :btree
+  add_index "projects", ["state"], name: "index_projects_on_state", using: :btree
   add_index "projects", ["user_added_id"], name: "index_projects_on_user_added_id", using: :btree
 
   create_table "sessions", force: true do |t|
