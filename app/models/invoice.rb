@@ -13,11 +13,13 @@ class Invoice < ActiveRecord::Base
   has_many :invoice_lines, dependent: :destroy
   has_many :uploaded_files, as: :resource, dependent: :destroy
 
-  validates_presence_of :user, :amount, :date, :invoice_group, :invoice_type
+  validates_presence_of :user, :date, :invoice_group, :invoice_type
 
   scope :debit, ->{ where(invoice_type: "debit") }
   scope :credit, ->{ where(invoice_type: "credit") }
   scope :purchase, ->{ where(invoice_type: "purchase") }
+
+  before_validation :before_validation_set_price_if_not_given
 
   state_machine :state, :initial => :draft do
     after_transition on: :finish do |invoice|
@@ -125,5 +127,11 @@ class Invoice < ActiveRecord::Base
 
   def amount_total
     amount.to_f + amount_vat
+  end
+
+private
+
+  def before_validation_set_price_if_not_given
+    self.amount = 0.0 unless amount.present?
   end
 end
