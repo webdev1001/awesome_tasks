@@ -40,8 +40,8 @@
           %td= link_to_organization invoice.organization
           %td= link_to_organization invoice.creditor
           %td= l(invoice.date, format: :long)
-          %td.align-right= format_number invoice.amount
-          %td.align-right= format_number invoice.amount_vat
+          %td.align-right.nowrap= format_number invoice.amount
+          %td.align-right.nowrap= format_number invoice.amount_vat
       - if @invoices.none?
         %tr
           %td.error{colspan: 4}
@@ -55,10 +55,10 @@
     %tbody
       %tr
         %td.tdt= _("Amount")
-        %td.align-right= format_number @invoices.sum(:amount)
+        %td.align-right.nowrap= format_number @invoices.sum(:amount)
       %tr
         %td.tdt= _("Vat")
-        %td.align-right= format_number @invoices.sum(:amount) * 0.25
+        %td.align-right.nowrap= format_number @invoices.sum(:amount) * 0.25
       %tr
         %td.tdt= _("Total")
-        %td.align-right= format_number @invoices.sum(:amount) * 1.25
+        %td.align-right.nowrap= format_number @invoices.sum(:amount) * 1.25
