@@ -19,7 +19,7 @@ describe TextShortcutHandler do
   it "#replace_timelog_tags_with_links" do
     text = "asd [timelog:#{timelog.id}] asd"
     handler = TextShortcutHandler.new(text: text, host: "test.host")
-    handler.replace_timelog_tags_with_links.text.should eq "asd <a href=\"http://test.host/tasks/#{task.id}\">Timelog #{timelog.id}</a> asd"
+    handler.replace_timelog_tags_with_links.text.should eq "asd <a href=\"http://test.host/tasks/#{task.id}#timelog-#{timelog.id}\">Timelog #{timelog.id}</a> asd"
   end
 
   it "#replace_timelog_tags_with_text" do
