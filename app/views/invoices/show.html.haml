@@ -1,10 +1,11 @@
 - content_for(:header_title){ _("Invoice %{invoice_no}", invoice_no: @invoice.invoice_no) }
 
 - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
-  = design_box _("Manage"), 600 do
+  = design_box _("Manage"), 700 do
     = link_to _("Edit"), edit_invoice_path(@invoice), class: "button" if can? :edit, @invoice
     = link_to _("Delete"), @invoice, class: "button", method: :delete, data: {confirm: _("Are you sure?")} if can? :destory, @invoice
     = link_to _("PDF"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice
+    = link_to _("Add un-invoiced timelogs"), ["add_uninvoiced_timelogs", @invoice], class: "button", method: :post, data: {confirm: _("Are you sure?")} if can? :add_uninvoiced_timelogs, @invoice
 
     = link_to _("Finish"), finish_invoice_path(@invoice), method: :post, class: "button", data: {confirm: _("Are you sure?")} if @invoice.can_finish?
     = link_to _("Register as sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "button", data: {confirm: _("Are you sure?")} if @invoice.can_register_as_sent?
@@ -64,7 +65,7 @@
 
 %br
 
-= design_box InvoiceLine.model_name.human(count: 2), 700 do
+= design_box InvoiceLine.model_name.human(count: 2), 1100 do
   = link_to _("Add new invoice-line"), new_invoice_invoice_line_path(@invoice), class: "button"
   %br
   %br
@@ -73,6 +74,7 @@
     %thead
       %tr
         %th= InvoiceLine.human_attribute_name(:title)
+        %th= Timelog.model_name.human
         %th.align-right= InvoiceLine.human_attribute_name(:quantity)
         %th.align-right= InvoiceLine.human_attribute_name(:amount)
         %th.align-right= _("Total")
@@ -80,7 +82,8 @@
     %tbody
       - @invoice.invoice_lines.each do |line|
         %tr
-          %td= line.title
+          %td= TextShortcutHandler.as_html(text: line.title, request: request)
+          %td= link_to_timelog line.timelog if line.timelog
           %td.align-right= format_number line.quantity
           %td.align-right= format_number line.amount
           %td.align-right= format_number line.amount_total

@@ -14,18 +14,23 @@
     - first = true
     - count_shown = 0
     - cur_date = Datet.new
+
     - timelogs.each do |tlog|
       - tlog_date = tlog.date
       - next if !can?(:admin, :admin) && tlog_date.day == cur_date.day && tlog_date.month == cur_date.month && tlog_date.year == cur_date.year
+
       - dbt = Baza::Dbtime.new(time_as_string(tlog.time))
       - count_shown += 1
-      - if !first
+
+      - unless first
         %tr
           %td{colspan: 7}
             %hr{color: "#cfcfcf", size: "1"}/
           %td
+
       - first = false if first
-      %tr
+
+      %tr{id: "timelog-#{tlog.id}"}
         %td{style: "width: 50px;"}= link_to_timelog tlog
         %td{style: "width: 60px;"}= format_number dbt.hours_total, precision: 1
         %td.nowrap{style: "width: 90px;"}= l(tlog.date)

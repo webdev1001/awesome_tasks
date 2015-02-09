@@ -129,6 +129,44 @@ class Invoice < ActiveRecord::Base
     amount.to_f + amount_vat
   end
 
+  def add_uninvoiced_timelogs_for_user(user)
+    timelogs = Timelog
+      .joins(:project)
+      .includes(:project)
+      .where(projects: {organization_id: organization_id})
+      .readonly(false)
+      .not_invoiced
+
+    timelogs.find_each do |timelog|
+      time = Baza::Dbtime.new(timelog.time.strftime("%H:%M:%S"))
+      time_transport = Baza::Dbtime.new(timelog.time_transport.strftime("%H:%M:%S"))
+
+      if time.total_secs > 0
+        invoice_line = invoice_lines.create!(
+          title: "[task:#{timelog.task_id}] - [timelog:#{timelog.id}]: #{timelog.comment.truncate(100)}".strip,
+          quantity: time.hours_total,
+          amount: timelog.project.price_per_hour,
+          timelog: timelog
+        )
+      end
+
+      if time_transport.total_secs > 0 && timelog.project.price_per_hour_transport > 0
+        invoice_line = invoice_lines.create!(
+          title: "[task:#{timelog.task_id}] - [timelog:#{timelog.id}]: #{_("Transport")}",
+          quantity: time_transport.hours_total,
+          amount: timelog.project.price_per_hour_transport,
+          timelog: timelog
+        )
+      end
+
+      timelog.update_attributes!(
+        invoiced: true,
+        invoiced_at: Time.zone.now,
+        invoiced_by_user: user
+      )
+    end
+  end
+
 private
 
   def before_validation_set_price_if_not_given

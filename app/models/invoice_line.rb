@@ -4,6 +4,7 @@ class InvoiceLine < ActiveRecord::Base
   tracked owner: Proc.new{ |controller, model| controller.try(:current_user) }
 
   belongs_to :invoice
+  belongs_to :timelog
 
   validates_presence_of :invoice, :title, :quantity, :amount
 

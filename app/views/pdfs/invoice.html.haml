@@ -89,7 +89,7 @@
   %tbody
     - invoice.invoice_lines.each do |invoice_line|
       %tr
-        %td= invoice_line.title
+        %td= TextShortcutHandler.as_text(text: invoice_line.title, request: request)
         %td.align-right= format_number invoice_line.quantity
         %td.align-right= format_number invoice_line.amount
         %td.align-right= format_number invoice_line.amount_total

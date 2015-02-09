@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203093133) do
+ActiveRecord::Schema.define(version: 20150209101223) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -86,11 +86,14 @@ ActiveRecord::Schema.define(version: 20150203093133) do
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "timelog_id"
   end
 
   add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
+  add_index "invoice_lines", ["timelog_id"], name: "index_invoice_lines_on_timelog_id", using: :btree
 
   create_table "invoices", force: true do |t|
+    t.string   "title"
     t.date     "date"
     t.string   "invoice_no"
     t.string   "invoice_type"
@@ -108,6 +111,7 @@ ActiveRecord::Schema.define(version: 20150203093133) do
 
   add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
   add_index "invoices", ["invoice_group_id"], name: "index_invoices_on_invoice_group_id", using: :btree
+  add_index "invoices", ["invoice_no"], name: "index_invoices_on_invoice_no", using: :btree
   add_index "invoices", ["organization_id"], name: "index_invoices_on_organization_id", using: :btree
   add_index "invoices", ["state"], name: "index_invoices_on_state", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree

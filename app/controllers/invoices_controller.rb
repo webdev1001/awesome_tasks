@@ -76,6 +76,11 @@ class InvoicesController < ApplicationController
     redirect_to @invoice
   end
 
+  def add_uninvoiced_timelogs
+    @invoice.add_uninvoiced_timelogs_for_user(current_user)
+    redirect_to @invoice
+  end
+
 private
 
   def invoice_params
