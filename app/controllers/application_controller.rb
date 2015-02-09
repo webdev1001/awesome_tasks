@@ -46,8 +46,10 @@ private
 
   # Redirects old URL's to new ones.
   def redirect_old_task_urls_to_new_ones
-    if params[:show] == "tasks_show" && params[:id] && Task.exists?(params[:id])
-      redirect_to task_path(params[:id])
+    if params[:show] == "tasks_show" && params[:task_id] && Task.exists?(params[:task_id])
+      redirect_to task_url(params[:task_id])
+    elsif params[:show] == "users_show" && params[:user_id] && User.exists?(params[:user_id])
+      redirect_to user_url(params[:user_id])
     end
   end
 
