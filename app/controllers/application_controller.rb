@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # To automatically set owner on PublicActivity-tracked models.
   include PublicActivity::StoreController
+  include LightMobile::DynamicRenderer
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

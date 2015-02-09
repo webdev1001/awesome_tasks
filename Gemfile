@@ -30,6 +30,7 @@ gem 'whenever', require: false
 gem 'acts-as-taggable-on'
 gem 'state_machine'
 gem 'public_activity'
+gem 'light_mobile', path: "/home/kaspernj/Dev/Rails/light_mobile"
 
 # For handeling internationalized amount formats.
 gem 'autonumeric-rails'

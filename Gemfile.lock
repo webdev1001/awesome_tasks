@@ -1,3 +1,9 @@
+PATH
+  remote: /home/kaspernj/Dev/Rails/light_mobile
+  specs:
+    light_mobile (0.0.1)
+      rails (~> 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -305,6 +311,7 @@ DEPENDENCIES
   jquery-migrate-rails
   jquery-rails
   knjrbfw (>= 0.0.110)
+  light_mobile!
   mysql
   mysql2
   paperclip

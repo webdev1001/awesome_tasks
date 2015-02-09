@@ -3,7 +3,9 @@ class CommentsController < ApplicationController
   before_filter :set_resource
 
   def new
-    render :new, layout: false
+    if request.xhr?
+      render :new, layout: false
+    end
   end
 
   def create
@@ -17,7 +19,7 @@ class CommentsController < ApplicationController
       if @comment.save && @resource.save
         @resource.delay.send_notify_new_comment(@comment, task_url(@resource)) if @resource.is_a?(Task)
 
-        format.html { render nothing: true }
+        format.html { redirect_to @comment.resource }
         format.json { render json: {success: true} }
       else
         format.html { render text: errors.join(". ") }
