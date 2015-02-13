@@ -1,11 +1,11 @@
 - content_for(:header_title){ _("Show task: %{task_name}", task_name: @task.name) }
 
 = mobile_tabs do |tabs|
-  - tabs.tab label: _("Details"), id: "tab-details", active: true
-  - tabs.tab label: "#{Comment.model_name.human(count: 2)} (#{@task.comments.count})", id: "tab-comments"
-  - tabs.tab label: "#{_("Assigned users")} (#{@task.assigned_users.count})", id: "tab-assigned-users"
-  - tabs.tab label: "#{TaskCheck.model_name.human(count: 2)} (#{@task.task_checks.count})", id: "tab-checks"
-  - tabs.tab label: "#{Timelog.model_name.human(count: 2)} (#{@task.timelogs.count})", id: "tab-timelogs"
+  - tabs.tab icon: "/assets/icons/list.png", id: "tab-details", active: true
+  - tabs.tab icon: "/assets/icons/comments.png", label: @task.comments.count, id: "tab-comments"
+  - tabs.tab icon: "/assets/icons/user.png", label: @task.assigned_users.count, id: "tab-assigned-users"
+  - tabs.tab icon: "/assets/icons/check.png", label: @task.task_checks.count, id: "tab-checks"
+  - tabs.tab icon: "/assets/icons/time.png", label: @task.timelogs.count, id: "tab-timelogs"
 
 .mobile-tab#tab-details
   %table.mobile-table.form
