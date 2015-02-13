@@ -3,7 +3,9 @@ class TaskChecksController < ApplicationController
   before_filter :set_task
 
   def new
-    render :new, layout: false
+    if request.xhr?
+      render :new, layout: false
+    end
   end
 
   def create
@@ -14,14 +16,20 @@ class TaskChecksController < ApplicationController
         @task.assigned_users << @task_check.user_assigned
       end
 
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to @task_check.task
+      end
     else
       render text: @task_check.errors.full_messages.join(". ")
     end
   end
 
   def edit
-    render :edit, layout: false
+    if request.xhr?
+      render :edit, layout: false
+    end
   end
 
   def update
@@ -31,7 +39,12 @@ class TaskChecksController < ApplicationController
 
     if @task_check.save
       @task_check.delay.send_notifications(task_url(@task), current_user) if do_send_notifications
-      render nothing: true
+
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to @task_check.task
+      end
     else
       render text: @task_check.errors.full_messages.join(". ")
     end
@@ -39,7 +52,12 @@ class TaskChecksController < ApplicationController
 
   def destroy
     @task_check.destroy!
-    render nothing: true
+
+    if request.xhr?
+      render nothing: true
+    else
+      redirect_to @task_check.task
+    end
   end
 
 private
