@@ -1,7 +1,7 @@
 = design_box _("Enter details"), 700 do
   = simple_form_for task, data: {browser_key: _("Browser"), browser_value: agent_title, version_key: _("Version"), version_value: agent_version, os_key: _("Operating system"), os_value: agent_os_title} do |f|
     = f.input :name
-    = f.input :project_id, collection: current_user.visible_projects.order(:name), label: Project.model_name.human
+    = f.association :project, collection: current_user.visible_projects.order(:name)
     = f.input :task_type, collection: Task.translated_task_types.invert
     = f.input :state, collection: Task.translated_states.invert
     = f.input :priority, collection: 1..10

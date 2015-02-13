@@ -12,6 +12,6 @@ describe TaskAssignedUsersController do
 
   it "#destroy" do
     delete :destroy, id: task_assigned_user.id
-    response.should be_success
+    response.should redirect_to task_path(task_assigned_user.task, anchor: "mobile-tab-tab-assigned-users")
   end
 end

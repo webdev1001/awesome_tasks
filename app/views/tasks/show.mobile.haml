@@ -6,8 +6,11 @@
   - tabs.tab icon: "/assets/icons/user.png", label: @task.assigned_users.count, id: "tab-assigned-users"
   - tabs.tab icon: "/assets/icons/check.png", label: @task.task_checks.count, id: "tab-checks"
   - tabs.tab icon: "/assets/icons/time.png", label: @task.timelogs.count, id: "tab-timelogs"
+  - tabs.tab icon: "/assets/icons/camera.png", label: @task.uploaded_files.count, id: "tab-uploaded-files"
 
 .mobile-tab#tab-details
+  = link_to _("Edit"), [:edit, @task], class: "mobile-button"
+
   %table.mobile-table.form
     %tbody
       %tr
@@ -80,13 +83,24 @@
               = link_to _("Edit"), [:edit, comment]
 
 #tab-assigned-users
-  %table.mobile-table.list
-    %tbody
-      - @task.assigned_users.each do |user|
+  = link_to _("Add new"), new_task_assigned_user_path(task_assigned_user: {task_id: @task.id}), class: "mobile-button"
+
+  - @task.task_assigned_users.each do |task_assigned_user|
+    %table.mobile-table.list
+      %tbody
         %tr
-          %td= link_to_user user
+          %td= TaskAssignedUser.human_attribute_name(:user)
+          %td= link_to_user task_assigned_user.user
+        %tr
+          %td= TaskAssignedUser.human_attribute_name(:user_assigned_by)
+          %td= link_to_user task_assigned_user.user_assigned_by
+
+    - if can? :destroy, task_assigned_user
+      = link_to _("Unassign"), task_assigned_user, method: :delete, data: {confirm: _("Are you sure?")}, class: ["mobile-button", "mobile-button-danger"]
 
 #tab-timelogs
+  = link_to _("Add new"), new_timelog_path(timelog: {task_id: @task.id}), class: "mobile-button" if can? :new, Timelog
+
   - @task.timelogs.each do |timelog|
     %table.mobile-table.form
       %tbody
@@ -106,3 +120,11 @@
         %tr
           %td= Timelog.human_attribute_name(:comment)
           %td= simple_format timelog.comment, {}, wrapper_tag: "div"
+
+    = link_to _("Edit"), [:edit, timelog], class: "mobile-button" if can? :edit, timelog
+
+  - unless @task.timelogs.any?
+    .error= _("No timelogs were found.")
+
+#tab-uploaded-files
+  = render "/uploaded_files/list_for_resource", resource: @task
