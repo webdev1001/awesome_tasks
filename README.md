@@ -13,7 +13,7 @@ Also supports organization access, so organizations can write comments and feedb
 Written in Ruby on Rails.
 
 ## Contributing to Awesome Tasks
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
@@ -25,3 +25,5 @@ Written in Ruby on Rails.
 ## Copyright
 
 Copyright (c) 2011 Kasper Johansen. See LICENSE.txt for further details.
+
+Icons from https://www.iconfinder.com/icons/103169
