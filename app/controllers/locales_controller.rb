@@ -1,13 +1,18 @@
 class LocalesController < ApplicationController
-  def set
-    I18n.locale = params[:locale]
-    session[:locale] = I18n.locale
+  def new
+  end
 
-    if signed_in?
-      current_user.locale = params[:locale]
-      current_user.save!
+  def create
+    locale = params[:locale][:locale]
+
+    I18n.locale = locale
+    session[:locale] = locale
+    current_user.update_attributes!(locale: locale) if signed_in?
+
+    if request.xhr?
+      render nothing: true
+    else
+      redirect_to root_path
     end
-
-    render nothing: true
   end
 end
