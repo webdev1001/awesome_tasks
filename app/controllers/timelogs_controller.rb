@@ -26,7 +26,9 @@ class TimelogsController < ApplicationController
     @timelog.user = current_user
     @timelog.assign_attributes(timelog_params) if params[:timelog]
 
-    render :new, layout: false
+    if request.xhr?
+      render :new, layout: false
+    end
   end
 
   def create
@@ -34,27 +36,51 @@ class TimelogsController < ApplicationController
     @timelog.user = current_user
 
     if @timelog.save
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to @timelog.task
+      end
     else
-      render text: _("Could not save: %{errors}", errors: @timelog.errors.full_messages.join(". "))
+      if request.xhr?
+        render text: _("Could not save: %{errors}", errors: @timelog.errors.full_messages.join(". "))
+      else
+        flash[:error] = @timelog.errors.full_messages.join(". ")
+        render :new
+      end
     end
   end
 
   def edit
-    render :edit, layout: false
+    if request.xhr?
+      render :edit, layout: false
+    end
   end
 
   def update
     if @timelog.update_attributes(timelog_params)
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to @timelog.task
+      end
     else
-      render text: _("Could not save: %{errors}", errors: @timelog.errors.full_messages.join(". "))
+      if request.xhr?
+        render text: _("Could not save: %{errors}", errors: @timelog.errors.full_messages.join(". "))
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
     @timelog.destroy!
-    render nothing: true
+
+    if request.xhr?
+      render nothing: true
+    else
+      redirect_to @timelog.task
+    end
   end
 
   def mark_invoiced

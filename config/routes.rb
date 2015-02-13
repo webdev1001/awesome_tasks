@@ -37,7 +37,7 @@ AwesomeTasks::Application.routes.draw do
     resources :task_checks, except: [:show, :index]
   end
 
-  resources :task_assigned_users, only: [:destroy]
+  resources :task_assigned_users, only: [:new, :create, :destroy]
   resources :organizations
 
   resources :projects do
