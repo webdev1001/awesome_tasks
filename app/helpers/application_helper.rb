@@ -2,6 +2,7 @@ module ApplicationHelper
   include SimpleFormRansackHelper
   include RailsImager::ImagesHelper
   include AgentHelpers::DetectorHelper
+  include LightMobile::TabsHelper
 
   def knjrbfw_opts(query, args = {})
     list = {}

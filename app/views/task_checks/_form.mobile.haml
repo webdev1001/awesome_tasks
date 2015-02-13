@@ -1,0 +1,8 @@
+= simple_form_for [task_check.task, task_check] do |f|
+  = f.input :name, autofocus: true
+  = f.input :description
+  = f.association :user_assigned, collection: current_user.visible_users.order(:name)
+  = f.submit _("Save"), class: ["mobile-button", "mobile-button-primary"]
+
+  - if can?(:destroy, task_check) && !task_check.new_record?
+    = link_to _("Delete"), [task_check.task, task_check], method: :delete, class: ["mobile-button", "mobile-button-danger"], data: {confirm: _("Are you sure?")}

@@ -1,74 +1,108 @@
 - content_for(:header_title){ _("Show task: %{task_name}", task_name: @task.name) }
 
-%h2= _("Details")
-%table.mobile-table.form
-  %tbody
-    %tr
-      %td.tdt= Task.human_attribute_name(:state)
-      %td= @task.translated_state
-    %tr
-      %td.tdt= Task.human_attribute_name(:task_type)
-      %td= @task.translated_task_type
-    %tr
-      %td.tdt= Task.human_attribute_name(:created_at)
-      %td= l(@task.created_at, format: :long) if @task.created_at
-    %tr
-      %td.tdt= Project.model_name.human
-      %td= link_to_project(@task.project) if @task.project
-    %tr
-      %td.tdt= _("Author")
-      %td= link_to_user(@task.user) if @task.user
-    %tr
-      %td.tdt= Task.human_attribute_name(:priority)
-      %td= @task.priority
+= mobile_tabs do |tabs|
+  - tabs.tab label: _("Details"), id: "tab-details", active: true
+  - tabs.tab label: "#{Comment.model_name.human(count: 2)} (#{@task.comments.count})", id: "tab-comments"
+  - tabs.tab label: "#{_("Assigned users")} (#{@task.assigned_users.count})", id: "tab-assigned-users"
+  - tabs.tab label: "#{TaskCheck.model_name.human(count: 2)} (#{@task.task_checks.count})", id: "tab-checks"
+  - tabs.tab label: "#{Timelog.model_name.human(count: 2)} (#{@task.timelogs.count})", id: "tab-timelogs"
 
-%h2= Task.human_attribute_name(:description)
-.description
-  - if @task.description?
-    = UserReferences.new(text: @task.description).unparse_user_references(html: true).html_safe
-  - else
-    .error= _("No description has been written for this task.")
-
-%h2= _("Assigned users")
-%table.mobile-table.list
-  %tbody
-    - @task.assigned_users.each do |user|
-      %tr
-        %td= link_to_user user
-
-%h2= Comment.model_name.human(count: 2)
-= link_to _("Add new"), new_comment_path(comment: {resource_type: "Task", resource_id: @task.id}), class: "mobile-button"
-
-- @task.comments.each do |comment|
+.mobile-tab#tab-details
   %table.mobile-table.form
     %tbody
       %tr
-        %td= User.model_name.human
-        %td= link_to_user comment.user
+        %td.tdt= Task.human_attribute_name(:state)
+        %td= @task.translated_state
       %tr
-        %td= Comment.human_attribute_name(:created_at)
-        %td= l(comment.created_at, format: :short)
+        %td.tdt= Task.human_attribute_name(:task_type)
+        %td= @task.translated_task_type
       %tr
-        %td{colspan: 2}
-          = comment.comment.html_safe
+        %td.tdt= Task.human_attribute_name(:created_at)
+        %td= l(@task.created_at, format: :long) if @task.created_at
+      %tr
+        %td.tdt= Project.model_name.human
+        %td= link_to_project(@task.project) if @task.project
+      %tr
+        %td.tdt= _("Author")
+        %td= link_to_user(@task.user) if @task.user
+      %tr
+        %td.tdt= Task.human_attribute_name(:priority)
+        %td= @task.priority
 
-%h2= Timelog.model_name.human(count: 2)
-- @task.timelogs.each do |timelog|
-  %table.mobile-table.form
-    %tbody
-      %tr
-        %td= Timelog.human_attribute_name(:date)
-        %td= l(timelog.date, format: :short)
-      %tr
-        %td= Timelog.human_attribute_name(:user)
-        %td= link_to_user timelog.user
-      %tr
-        %td= Timelog.human_attribute_name(:time)
-        %td= format_number timelog.hours, precision: 1
-      - if timelog.hours_transport && timelog.hours_transport.to_i > 0
+  %h2= Task.human_attribute_name(:description)
+  .description
+    - if @task.description?
+      = UserReferences.new(text: @task.description).unparse_user_references(html: true).html_safe
+    - else
+      .error= _("No description has been written for this task.")
+
+#tab-checks
+  = link_to _("Add new"), new_task_task_check_path(@task), class: "mobile-button"
+
+  - @task.task_checks.each do |task_check|
+    %table.mobile-table.list
+      %tbody
         %tr
-          %td= Timelog.human_attribute_name(:time_transport)
-          %td= format_number timelog.hours_transport, precision: 1
-      %tr
-        %td= Timelog.human_attribute_name(:comment)
-        %td= simple_format timelog.comment
+          %td= TaskCheck.human_attribute_name(:name)
+          %td= task_check.name
+        %tr
+          %td= TaskCheck.human_attribute_name(:checked)
+          %td= task_check.checked? ? _("Yes") : _("No")
+        %tr
+          %td= TaskCheck.human_attribute_name(:user_assigned)
+          %td= link_to_user task_check.user_assigned
+        - if task_check.description?
+          %tr
+            %td{colspan: 2}= simple_format task_check.description, {}, wrapper_tag: "div"
+        - if can? :edit, task_check
+          %tr
+            %td{colspan: 2}
+              = link_to _("Edit"), ["edit", @task, task_check]
+
+#tab-comments
+  = link_to _("Add new"), new_comment_path(comment: {resource_type: "Task", resource_id: @task.id}), class: "mobile-button"
+
+  - @task.comments.each do |comment|
+    %table.mobile-table.form
+      %tbody
+        %tr
+          %td= User.model_name.human
+          %td= link_to_user comment.user
+        %tr
+          %td= Comment.human_attribute_name(:created_at)
+          %td= l(comment.created_at, format: :short)
+        %tr
+          %td{colspan: 2}
+            = comment.comment.html_safe
+        - if can? :edit, comment
+          %tr
+            %td{colspan: 2}
+              = link_to _("Edit"), [:edit, comment]
+
+#tab-assigned-users
+  %table.mobile-table.list
+    %tbody
+      - @task.assigned_users.each do |user|
+        %tr
+          %td= link_to_user user
+
+#tab-timelogs
+  - @task.timelogs.each do |timelog|
+    %table.mobile-table.form
+      %tbody
+        %tr
+          %td= Timelog.human_attribute_name(:date)
+          %td= l(timelog.date, format: :short)
+        %tr
+          %td= Timelog.human_attribute_name(:user)
+          %td= link_to_user timelog.user
+        %tr
+          %td= Timelog.human_attribute_name(:time)
+          %td= format_number timelog.hours, precision: 1
+        - if timelog.hours_transport && timelog.hours_transport.to_i > 0
+          %tr
+            %td= Timelog.human_attribute_name(:time_transport)
+            %td= format_number timelog.hours_transport, precision: 1
+        %tr
+          %td= Timelog.human_attribute_name(:comment)
+          %td= simple_format timelog.comment, {}, wrapper_tag: "div"

@@ -10,6 +10,10 @@ body, textarea {
   font-size: 14px;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 a:link, a:visited {
   color: blue;
   text-decoration: none;

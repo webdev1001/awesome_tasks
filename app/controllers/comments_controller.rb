@@ -29,7 +29,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    render :edit, layout: false
+    if request.xhr?
+      render :edit, layout: false
+    end
   end
 
   def update
