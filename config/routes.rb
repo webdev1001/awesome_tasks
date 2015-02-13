@@ -56,9 +56,7 @@ AwesomeTasks::Application.routes.draw do
     get :index
   end
 
-  namespace :locales do
-    post :set
-  end
+  resources :locales, only: [:new, :create]
 
   resources :user_project_links, only: [:destroy]
   resources :user_task_list_links, only: [:create, :destroy]

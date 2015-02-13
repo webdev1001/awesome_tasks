@@ -38,6 +38,7 @@
             .menu_item= link_to Invoice.model_name.human(count: 2), invoices_path
           - if can? :index, UploadedFile
             .menu_item= link_to UploadedFile.model_name.human(count: 2), uploaded_files_path
+          .menu_item= link_to _("Change language"), new_locale_path
           .menu_item= link_to _("Your profile"), profile_index_path
           .menu_item= link_to _("Log out"), destroy_user_session_path, method: :delete
         - else signed_in?
