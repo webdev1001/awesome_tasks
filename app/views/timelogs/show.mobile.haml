@@ -1,0 +1,42 @@
+- content_for(:header_title) { _("Show timelog %{id}", id: @timelog.id) }
+- if can? :edit, @timelog
+  - content_for(:header_right) { link_to _("Edit"), [:edit, @timelog], class: ["mobile-button", "mobile-button-small"] }
+
+%table.mobile-table.form
+  %tbody
+    %tr
+      %td= Timelog.human_attribute_name(:id)
+      %td= @timelog.id
+    %tr
+      %td= Timelog.human_attribute_name(:date)
+      %td= l(@timelog.date) if @timelog.date?
+    %tr
+      %td= Timelog.human_attribute_name(:user)
+      %td= link_to_user @timelog.user
+    %tr
+      %td= Timelog.human_attribute_name(:task)
+      %td= link_to_task @timelog.task
+    %tr
+      %td= Project.model_name.human
+      %td= link_to_project @timelog.project
+    %tr
+      %td= Organization.model_name.human
+      %td= link_to_organization @timelog.organization
+    %tr
+      %td= Timelog.human_attribute_name(:hours)
+      %td= @timelog.hours
+    %tr
+      %td= Timelog.human_attribute_name(:hours_transport)
+      %td= @timelog.hours_transport
+    %tr
+      %td= Timelog.human_attribute_name(:transport_length)
+      %td= @timelog.transport_length
+    %tr
+      %td= Timelog.human_attribute_name(:invoiced)
+      %td= @timelog.invoiced? ? _("Yes") : _("No")
+    %tr
+      %td= Timelog.human_attribute_name(:invoiced_at)
+      %td= l(@timelog.invoiced_at, format: :long) if @timelog.invoiced_at?
+    %tr
+      %td= Timelog.human_attribute_name(:comment)
+      %td= simple_format @timelog.comment, wrapper_tag: "div"

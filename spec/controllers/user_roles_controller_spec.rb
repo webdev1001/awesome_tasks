@@ -20,7 +20,7 @@ describe UserRolesController do
 
     it "#create" do
       post :create, user_role: valid_attributes
-      response.should be_success
+      response.should redirect_to user_path(user, anchor: "mobile-tab-tab-roles")
     end
 
     it "#edit" do
@@ -30,12 +30,12 @@ describe UserRolesController do
 
     it "#update" do
       patch :update, id: user_role.id, user_role: valid_attributes
-      response.should be_success
+      response.should redirect_to user_path(user, anchor: "mobile-tab-tab-roles")
     end
 
     it "#destroy" do
       delete :destroy, id: user_role.id
-      response.should be_success
+      response.should redirect_to user_path(user, anchor: "mobile-tab-tab-roles")
     end
   end
 end

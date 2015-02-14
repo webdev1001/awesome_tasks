@@ -2,6 +2,9 @@ class InvoiceLinesController < ApplicationController
   load_and_authorize_resource
   before_filter :set_invoice
 
+  def show
+  end
+
   def new
   end
 

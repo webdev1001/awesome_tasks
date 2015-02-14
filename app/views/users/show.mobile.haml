@@ -1,0 +1,79 @@
+- content_for(:header_title) { _("Show user: %{name}", name: @user.name) }
+- if can? :edit, @user
+  - content_for(:header_right) { link_to _("Edit"), ["edit", @user], class: ["mobile-button", "mobile-button-small"] }
+
+= mobile_tabs do |tabs|
+  - tabs.tab id: "tab-information", icon: "/assets/icons/list.png", active: true
+  - tabs.tab id: "tab-tasks", icon: "/assets/icons/list.png", label: @user.tasks.count
+  - if can?(:new, UserRole)
+    - tabs.tab id: "tab-roles", icon: "/assets/icons/list.png", label: @user.user_roles.count
+
+#tab-information
+  %h2= _("Details")
+  %table.mobile-table.form
+    %tbody
+      %tr
+        %td= User.human_attribute_name(:name)
+        %td= @user.name
+      %tr
+        %td= User.human_attribute_name(:username)
+        %td= @user.username
+      %tr
+        %td= User.human_attribute_name(:email)
+        %td= mail_to @user.email
+      %tr
+        %td= User.human_attribute_name(:active)
+        %td= @user.active? ? _("Yes") : _("No")
+
+#tab-tasks
+  %h2= Task.model_name.human(count: 2)
+  = simple_search_form_for @ransack, @ransack_params, url: user_path(@user, anchor: "mobile-tab-tab-tasks") do |f|
+    = f.input :name_cont
+    = f.input :state_eq_any, as: :check_boxes, collection: Task.translated_states.invert
+    = f.input :project_name_cont
+    = f.input :project_organization_name_cont
+    = f.submit _("Search"), class: ["mobile-button", "mobile-button-primary"]
+
+  %table.mobile-table.list
+    %thead
+      %tr
+        %th= sort_link @ransack, :name, Task.model_name.human
+        %th= sort_link @ransack, :state
+        %th= sort_link @ransack, :project_name, Project.model_name.human
+    %tbody
+      - count = 0
+      - @tasks.each do |task|
+        - next if !can?(:show, task)
+        - count += 1
+
+        %tr
+          %td= link_to_task task
+          %td= task.translated_state
+          %td= link_to_project task.project
+      - if count <= 0
+        %tr
+          %td.error{colspan: 3}= _("No tasks were found for this user.")
+
+  %br
+  = will_paginate @tasks
+
+- if can?(:new, UserRole)
+  #tab-roles
+    %h2= UserRole.model_name.human(count: 2)
+    = link_to _("Add new"), new_user_role_path(user_role: {user_id: @user.id}), class: "mobile-button"
+
+    %table.mobile-table.list
+      %thead
+        %tr
+          %th= UserRole.human_attribute_name(:role)
+          %th= _("Actions")
+      %tbody
+        - @user.user_roles.each do |user_role|
+          %tr
+            %td= user_role.translated_role
+            %td
+              = link_to _("Edit"), [:edit, user_role], class: ["mobile-button", "mobile-button-small"]
+              = link_to _("Remove"), user_role, method: :delete, data: {confirm: _("Are you sure?")}, class: ["mobile-button", "mobile-button-danger", "mobile-button-small"]
+        - unless @user.user_roles.any?
+          %tr
+            %td.error{colspan: 2}= _("No results.")

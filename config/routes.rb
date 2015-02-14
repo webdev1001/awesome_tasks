@@ -11,7 +11,7 @@ AwesomeTasks::Application.routes.draw do
     post :register_as_sent, on: :member
     post :register_as_paid, on: :member
 
-    resources :invoice_lines, except: [:show, :index]
+    resources :invoice_lines, except: [:index]
   end
 
   resources :invoice_groups
@@ -61,7 +61,7 @@ AwesomeTasks::Application.routes.draw do
   resources :user_project_links, only: [:new, :create, :destroy]
   resources :user_task_list_links, only: [:create, :destroy]
 
-  resources :timelogs, except: [:show] do
+  resources :timelogs do
     post :mark_invoiced, on: :collection
   end
 

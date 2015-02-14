@@ -3,16 +3,27 @@ class UserRolesController < ApplicationController
 
   def new
     @user_role = UserRole.new(params.key?(:user_role) ? user_role_params : {})
-    render :new, layout: false
+
+    if request.xhr?
+      render :new, layout: false
+    end
   end
 
   def create
     @user_role = UserRole.new(user_role_params)
 
     if @user_role.save
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to user_path(@user_role.user, anchor: "mobile-tab-tab-roles")
+      end
     else
-      render text: @user_role.errors.full_messages.join(". ")
+      if request.xhr?
+        render text: @user_role.errors.full_messages.join(". ")
+      else
+        render :new
+      end
     end
   end
 
@@ -21,15 +32,28 @@ class UserRolesController < ApplicationController
 
   def update
     if @user_role.update_attributes(user_role_params)
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to user_path(@user_role.user, anchor: "mobile-tab-tab-roles")
+      end
     else
-      render text: @user_role.errors.full_messages.join(". ")
+      if request.xhr?
+        render text: @user_role.errors.full_messages.join(". ")
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
     @user_role.destroy!
-    render nothing: true
+
+    if request.xhr?
+      render nothing: true
+    else
+      redirect_to user_path(@user_role.user, anchor: "mobile-tab-tab-roles")
+    end
   end
 
 private

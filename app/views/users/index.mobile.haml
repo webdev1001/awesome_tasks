@@ -1,0 +1,27 @@
+- content_for(:header_title) { _("Search for users") }
+- if can? :new, User
+  - content_for(:header_right) { link_to _("Add new"), new_user_path, class: ["mobile-button", "mobile-button-small"] }
+
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :name_cont
+  = f.input :email_cont
+  = f.submit _("Search"), class: ["mobile-button", "mobile-button-primary"]
+
+%table.mobile-table.list
+  %thead
+    %tr
+      %th= User.human_attribute_name(:name)
+      %th= User.human_attribute_name(:email)
+  %tbody
+    - count = 0
+    - @users.each do |user|
+      - next unless can?(:show, user)
+      - count += 1
+      %tr
+        %td= link_to_user user
+        %td= mail_to user.email
+
+    - if count <= 0
+      %tr
+        %td.error{colspan: 1}
+          =_("No users were found.")

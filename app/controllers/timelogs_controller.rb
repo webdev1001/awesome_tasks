@@ -73,6 +73,9 @@ class TimelogsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def destroy
     @timelog.destroy!
 
