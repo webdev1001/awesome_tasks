@@ -13,7 +13,7 @@ describe UserProjectLinksController do
 
     it "#destroy" do
       delete :destroy, id: user_project_link.id
-      response.should be_success
+      response.should redirect_to project_path(user_project_link.project, anchor: "mobile-tab-tab-users")
     end
   end
 end

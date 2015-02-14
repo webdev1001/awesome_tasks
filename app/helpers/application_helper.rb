@@ -33,7 +33,8 @@ module ApplicationHelper
   def form_boolean_collection
     {
       _("All") => nil,
-      _("True") => 1
+      _("True") => 1,
+      _("False") => 0
     }
   end
 end

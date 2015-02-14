@@ -58,7 +58,7 @@ AwesomeTasks::Application.routes.draw do
 
   resources :locales, only: [:new, :create]
 
-  resources :user_project_links, only: [:destroy]
+  resources :user_project_links, only: [:new, :create, :destroy]
   resources :user_task_list_links, only: [:create, :destroy]
 
   resources :timelogs, except: [:show] do

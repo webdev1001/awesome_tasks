@@ -1,0 +1,3 @@
+= simple_form_for [project_autoassigned_user.project, project_autoassigned_user] do |f|
+  = f.association :user, collection: users_collection, autofocus: true
+  = f.submit _("Save"), class: ["mobile-button", "mobile-button-primary"]

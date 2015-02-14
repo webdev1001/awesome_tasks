@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @ransack_params = params[:q] || {}
     @ransack = Task.ransack(@ransack_params)
     @tasks = @ransack.result.includes(:user, :project).order(:name)
-    @tasks = @tasks.paginate(page: params[:p], per_page: 40)
+    @tasks = @tasks.paginate(page: params[:page], per_page: 40)
   end
 
   def new

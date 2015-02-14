@@ -137,7 +137,7 @@ GEM
       ruby_process
       tsafe
       wref
-    light_mobile (0.0.5)
+    light_mobile (0.0.6)
       html_gen (= 0.0.6)
       rails (~> 4.0.0)
     mail (2.5.4)
@@ -310,7 +310,7 @@ DEPENDENCIES
   jquery-migrate-rails
   jquery-rails
   knjrbfw (>= 0.0.110)
-  light_mobile (= 0.0.5)
+  light_mobile (= 0.0.6)
   mysql
   mysql2
   paperclip
