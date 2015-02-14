@@ -1,0 +1,24 @@
+- content_for(:header_title) { _("Show invoice line %{id}", id: @invoice_line.id) }
+- if can? :edit, @invoice_line
+  - content_for(:header_right) { link_to _("Edit"), [:edit, @invoice_line.invoice, @invoice_line], class: ["mobile-button", "mobile-button-small"] }
+
+%table.mobile-table.form
+  %tbody
+    %tr
+      %td= InvoiceLine.human_attribute_name(:title)
+      %td= @invoice_line.title
+    %tr
+      %td= InvoiceLine.human_attribute_name(:invoice)
+      %td= link_to_invoice @invoice_line.invoice
+    %tr
+      %td= InvoiceLine.human_attribute_name(:amount)
+      %td= format_number @invoice_line.amount
+    %tr
+      %td= InvoiceLine.human_attribute_name(:quantity)
+      %td= format_number @invoice_line.quantity
+    %tr
+      %td= _("Total amount")
+      %td= format_number @invoice_line.amount_total
+    %tr
+      %td= InvoiceLine.human_attribute_name(:created_at)
+      %td= l @invoice_line.created_at, format: :long

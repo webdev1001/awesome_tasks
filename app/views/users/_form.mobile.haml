@@ -1,0 +1,12 @@
+= simple_form_for user, html: {autocomplete: "off"} do |f|
+  = f.input :username
+  = f.input :encrypted_password, as: :hidden
+  = f.input :password, hint: _("Only write a password here if you whish to change it.")
+  = f.input :name
+  = f.input :email
+  = f.input :active
+
+  - if can?(:destroy, user) && !user.new_record?
+    = link_to _("Delete"), user, method: :delete, class: ["mobile-button", "mobile-button-danger"], data: {confirm: _("Are you sure?")}
+
+  = f.submit _("Save"), class: ["mobile-button", "mobile-button-primary"]
