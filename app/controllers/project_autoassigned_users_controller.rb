@@ -18,7 +18,12 @@ class ProjectAutoassignedUsersController < ApplicationController
 
   def destroy
     @project_autoassigned_user.destroy!
-    render nothing: true
+
+    if request.xhr?
+      render nothing: true
+    else
+      redirect_to project_path(@project_autoassigned_user.project, anchor: "mobile-tab-tab-autoassigned-users")
+    end
   end
 
 private

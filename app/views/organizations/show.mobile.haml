@@ -1,0 +1,38 @@
+- content_for(:header_title) { _("Show organization: %{name}", name: @organization.name) }
+- content_for(:header_right) { link_to _("Edit"), [:edit, @organization], class: ["mobile-button", "mobile-button-small"] }
+
+%table.mobile-table.form
+  %tbody
+    %tr
+      %td= Organization.human_attribute_name(:email)
+      %td= mail_to @organization.email if @organization.email?
+    %tr
+      %td= Organization.human_attribute_name(:customer)
+      %td= @organization.customer? ? _("Yes") : _("No")
+    %tr
+      %td= Organization.human_attribute_name(:creditor)
+      %td= @organization.creditor? ? _("Yes") : _("No")
+
+    - [:name, :vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
+      %tr
+        %td= Organization.human_attribute_name(column)
+        %td= @organization.__send__(column)
+    %tr
+      %td= Organization.human_attribute_name(:payment_info)
+      %td= simple_format @organization.payment_info
+
+%br
+
+%h2= Project.model_name.human(count: 2)
+%table.mobile-table.list
+  %thead
+    %tr
+      %th= Project.model_name.human
+  %tbody
+    - @organization.projects.each do |project|
+      %tr
+        %td= link_to_project project
+    - if @organization.projects.none?
+      %tr
+        %td.error{colspan: 1}
+          = _("No projects has been added for this organization.")
