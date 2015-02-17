@@ -2,7 +2,7 @@
 
 = simple_search_form_for @ransack, @values do |f|
   = f.input :file_file_name_cont
-  = f.submit _("Filter"), class: ["mobile-button", "mobile-button-primary"]
+  = f.submit _("Filter"), class: "mobile-button-primary"
 
 %table.mobile-table.list
   %thead
@@ -15,7 +15,7 @@
         %td= link_to_uploaded_file uploaded_file
         %td
           - if can? :edit, uploaded_file
-            = link_to _("Edit"), [:edit, uploaded_file], class: ["mobile-button", "mobile-button-small"]
+            = link_to _("Edit"), [:edit, uploaded_file], class: "mobile-button-mini"
     - unless @uploaded_files.any?
       %tr
         %td.error{colspan: 1}= _("No uploaded files were found.")

@@ -2,4 +2,4 @@
 
 = simple_form_for :locale, url: locales_path do |f|
   = f.input :locale, collection: available_locales.invert, selected: I18n.locale.to_s
-  = f.submit _("Save"), class: ["mobile-button", "mobile-button-primary"]
+  = f.submit _("Save"), class: "mobile-button-primary"

@@ -3,7 +3,7 @@
   = f.input :resource_id, as: :hidden
   = f.input :title, autofocus: true, required: false
   = f.input :file, required: false
-  = f.submit _("Save"), class: ["mobile-button", "mobile-button-primary"]
+  = f.submit _("Save"), class: "mobile-button-primary"
 
   - if can?(:destroy, uploaded_file) && !uploaded_file.new_record?
-    = link_to _("Delete"), uploaded_file, class: ["mobile-button", "mobile-button-danger"], method: :delete, data: {confirm: _("Are you sure?")}
+    = link_to _("Delete"), uploaded_file, class: "mobile-button-danger", method: :delete, data: {confirm: _("Are you sure?")}

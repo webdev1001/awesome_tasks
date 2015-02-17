@@ -1,7 +1,7 @@
 - content_for(:header_title){ _("Show invoice-group: %{name}", name: @invoice_group.name) }
 
 - if can? :edit, @invoice_group
-  - content_for(:header_right) { link_to _("Edit"), [:edit, @invoice_group], class: ["mobile-button", "mobile-button-small"] }
+  - content_for(:header_right) { link_to _("Edit"), [:edit, @invoice_group], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
   - tabs.tab id: "tab-details", icon: "/assets/icons/list.png", active: true

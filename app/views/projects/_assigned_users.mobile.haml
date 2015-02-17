@@ -9,7 +9,7 @@
       %tr
         %td= link_to_user link.user
         %td
-          = link_to _("Remove"), link, method: :delete, data: {confirm: _("Are you sure?")}, class: ["mobile-button", "mobile-button-small", "mobile-button-danger"]
+          = link_to _("Remove"), link, method: :delete, data: {confirm: _("Are you sure?")}, class: ["mobile-button-mini", "mobile-button-danger"]
     - if project.users.none?
       %tr
         %td.error{colspan: 2}

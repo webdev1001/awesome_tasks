@@ -7,6 +7,6 @@
   = f.input :active
 
   - if can?(:destroy, user) && !user.new_record?
-    = link_to _("Delete"), user, method: :delete, class: ["mobile-button", "mobile-button-danger"], data: {confirm: _("Are you sure?")}
+    = link_to _("Delete"), user, method: :delete, class: "mobile-button-danger", data: {confirm: _("Are you sure?")}
 
-  = f.submit _("Save"), class: ["mobile-button", "mobile-button-primary"]
+  = f.submit _("Save"), class: "mobile-button-primary"

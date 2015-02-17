@@ -5,4 +5,7 @@
   = f.input :state, collection: Task.translated_states.invert
   = f.input :priority, collection: 1..10
   = f.input :description
-  = f.submit _("Save"), class: ["mobile-button", "mobile-button-primary"]
+  = f.submit _("Save"), class: "mobile-button-primary"
+
+  - if can?(:destroy, task) && !task.new_record?
+    = link_to _("Delete"), task, method: :delete, class: "mobile-button-danger", data: {confirm: _("Are you sure?")}

@@ -11,7 +11,7 @@ class TaskCheck < ActiveRecord::Base
 
   attr_accessor :user_assigner
 
-  def send_notifications task_url, user_changed
+  def send_notifications(task_url, user_changed)
     task.notify_emails.each do |data|
       TaskChecksMailer.notification(self, data[:user], task_url, user_changed).deliver!
     end

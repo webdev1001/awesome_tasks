@@ -1,6 +1,6 @@
 - content_for(:header_title) { _("Invoice %{invoice_no}", invoice_no: @invoice.invoice_no) }
 - if can? :edit, @invoice
-  - content_for(:header_right) { link_to _("Edit"), [:edit, @invoice], class: ["mobile-button", "mobile-button-small"] }
+  - content_for(:header_right) { link_to _("Edit"), [:edit, @invoice], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
   - tabs.tab id: "tab-details", icon: "/assets/icons/list.png", active: true

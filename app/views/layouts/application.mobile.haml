@@ -1,64 +1,30 @@
-!!! 5
-%html
-  %head
-    %title= yield(:header_title)
+- content_for :menu_items do
+  - if signed_in?
+    .menu_item= link_to _("Frontpage"), root_path
+  - if can? :index, Organization
+    .menu_item= link_to Organization.model_name.human(count: 2), organizations_path
+  - if can? :index, Project
+    .menu_item= link_to Project.model_name.human(count: 2), projects_path
+  - if can? :index, Task
+    .menu_item= link_to Task.model_name.human(count: 2), tasks_path
+  - if can? :index, User
+    .menu_item= link_to User.model_name.human(count: 2), users_path
+  - if can? :manage, Timelog
+    .menu_item= link_to Timelog.model_name.human(count: 2), timelogs_path
+  - if can? :admin, :admin
+    .menu_item= link_to _("Work-status"), workstatus_index_path
+  - if can? :index, InvoiceGroup
+    .menu_item= link_to InvoiceGroup.model_name.human(count: 2), invoice_groups_path
+  - if can? :index, Invoice
+    .menu_item= link_to Invoice.model_name.human(count: 2), invoices_path
+  - if can? :index, UploadedFile
+    .menu_item= link_to UploadedFile.model_name.human(count: 2), uploaded_files_path
+  .menu_item= link_to _("Change language"), new_locale_path
+  .menu_item= link_to _("Your profile"), profile_index_path
+  .menu_item= link_to _("Log out"), destroy_user_session_path, method: :delete
 
-    = stylesheet_link_tag "application_mobile", media: "all"
-    = javascript_include_tag "application_mobile"
-    = csrf_meta_tags
+- content_for :head do
+  = stylesheet_link_tag "application_mobile"
+  = javascript_include_tag "application_mobile"
 
-    %meta{name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"}
-  %body{class: ["controller_#{controller_name}", "action_#{action_name}"]}
-    - if flash.any?
-      .mobile-flash-messages
-        - flash.each do |key, val|
-          .mobile-flash{class: "mobile-flash-#{key}"}
-            = val
-            = link_to _("OK"), "#", class: ["mobile-button", "mobile-flash-ok"]
-
-    .mobile-left-menu{rowspan: 3}
-      .mobile-left-menu-content
-        - if signed_in?
-          .menu_item= link_to _("Frontpage"), root_path
-          - if can? :index, Organization
-            .menu_item= link_to Organization.model_name.human(count: 2), organizations_path
-          - if can? :index, Project
-            .menu_item= link_to Project.model_name.human(count: 2), projects_path
-          - if can? :index, Task
-            .menu_item= link_to Task.model_name.human(count: 2), tasks_path
-          - if can? :index, User
-            .menu_item= link_to User.model_name.human(count: 2), users_path
-          - if can? :manage, Timelog
-            .menu_item= link_to Timelog.model_name.human(count: 2), timelogs_path
-          - if can? :admin, :admin
-            .menu_item= link_to _("Work-status"), workstatus_index_path
-          - if can? :index, InvoiceGroup
-            .menu_item= link_to InvoiceGroup.model_name.human(count: 2), invoice_groups_path
-          - if can? :index, Invoice
-            .menu_item= link_to Invoice.model_name.human(count: 2), invoices_path
-          - if can? :index, UploadedFile
-            .menu_item= link_to UploadedFile.model_name.human(count: 2), uploaded_files_path
-          .menu_item= link_to _("Change language"), new_locale_path
-          .menu_item= link_to _("Your profile"), profile_index_path
-          .menu_item= link_to _("Log out"), destroy_user_session_path, method: :delete
-        - else signed_in?
-          .menu_item
-            = link_to _("Sign in"), new_user_session_path
-
-    %table.main{cellspacing: 0, cellpadding: 0}
-      %tbody
-        %tr
-          %td.main_header
-            %table.header{cellspacing: 0, cellpadding: 0}
-              %td.header_left
-                .mobile-menu-button
-                  .mobile-menu-button-icon
-                = content_for(:header_left)
-
-              %td.header_title= yield(:header_title)
-              %td.header_right
-                = content_for(:header_right)
-        %tr
-          %td.main_content
-            .content
-              = yield
+= render "layouts/light_mobile_basic_layout"

@@ -1,6 +1,6 @@
 - content_for(:header_title) { _("Show user: %{name}", name: @user.name) }
 - if can? :edit, @user
-  - content_for(:header_right) { link_to _("Edit"), ["edit", @user], class: ["mobile-button", "mobile-button-small"] }
+  - content_for(:header_right) { link_to _("Edit"), ["edit", @user], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
   - tabs.tab id: "tab-information", icon: "/assets/icons/list.png", active: true
@@ -29,10 +29,10 @@
   %h2= Task.model_name.human(count: 2)
   = simple_search_form_for @ransack, @ransack_params, url: user_path(@user, anchor: "mobile-tab-tab-tasks") do |f|
     = f.input :name_cont
-    = f.input :state_eq_any, as: :check_boxes, collection: Task.translated_states.invert
+    = f.input :state_eq_any, collection: Task.translated_states.invert
     = f.input :project_name_cont
     = f.input :project_organization_name_cont
-    = f.submit _("Search"), class: ["mobile-button", "mobile-button-primary"]
+    = f.submit _("Search"), class: "mobile-button-primary"
 
   %table.mobile-table.list
     %thead
@@ -72,8 +72,8 @@
           %tr
             %td= user_role.translated_role
             %td
-              = link_to _("Edit"), [:edit, user_role], class: ["mobile-button", "mobile-button-small"]
-              = link_to _("Remove"), user_role, method: :delete, data: {confirm: _("Are you sure?")}, class: ["mobile-button", "mobile-button-danger", "mobile-button-small"]
+              = link_to _("Edit"), [:edit, user_role], class: "mobile-button-mini"
+              = link_to _("Remove"), user_role, method: :delete, data: {confirm: _("Are you sure?")}, class: ["mobile-button-danger", "mobile-button-mini"]
         - unless @user.user_roles.any?
           %tr
             %td.error{colspan: 2}= _("No results.")
