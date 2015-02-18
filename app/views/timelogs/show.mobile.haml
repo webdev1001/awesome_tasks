@@ -1,6 +1,6 @@
 - content_for(:header_title) { _("Show timelog %{id}", id: @timelog.id) }
 - if can? :edit, @timelog
-  - content_for(:header_right) { link_to _("Edit"), [:edit, @timelog], class: ["mobile-button", "mobile-button-small"] }
+  - content_for(:header_right) { link_to _("Edit"), [:edit, @timelog], class: "mobile-button-header" }
 
 %table.mobile-table.form
   %tbody

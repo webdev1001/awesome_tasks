@@ -1,5 +1,5 @@
 - if can?(:destroy, project) && !project.new_record?
-  - content_for(:header_right) { link_to _("Delete"), project_path(project), method: :delete, class: ["mobile-button", "mobile-button-small", "mobile-button-danger"], data: {confirm: _("Are you sure?")} }
+  - content_for(:header_right) { link_to _("Delete"), project_path(project), method: :delete, class: ["mobile-button-header", "mobile-button-danger"], data: {confirm: _("Are you sure?")} }
 
 = simple_form_for project do |f|
   = f.input :name
@@ -9,4 +9,4 @@
   = f.input :price_per_hour_transport, input_html: {data: {autonumeric: true}}
   = f.input :organization_id, collection: Organization.order(:name), label: Project.human_attribute_name(:organization)
   = f.cktext_area :description
-  = f.submit _("Save"), class: ["mobile-button", "mobile-button-primary"]
+  = f.submit _("Save"), class: "mobile-button-primary"

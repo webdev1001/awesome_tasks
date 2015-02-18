@@ -1,11 +1,11 @@
 - content_for(:header_title) { _("Search for organizations") }
-- content_for(:header_right) { link_to _("Add new"), new_organization_path, class: ["mobile-button", "mobile-button-small"] }
+- content_for(:header_right) { link_to _("Add new"), new_organization_path, class: "mobile-button-header" }
 
 = simple_search_form_for @ransack, @ransack_params do |f|
   = f.input :name_cont
   = f.input :customer_eq, collection: form_boolean_collection
   = f.input :creditor_eq, collection: form_boolean_collection
-  = f.submit _("Search"), class: ["mobile-button", "mobile-button-primary"]
+  = f.submit _("Search"), class: "mobile-button-primary"
 
 %table.mobile-table.list
   %thead

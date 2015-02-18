@@ -1,4 +1,5 @@
-- content_for(:header_title){ _("Show task: %{task_name}", task_name: @task.name) }
+- content_for(:header_title) { _("Show task: %{task_name}", task_name: @task.name) }
+- content_for(:header_right) { link_to _("Edit"), [:edit, @task], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
   - tabs.tab icon: "/assets/icons/list.png", id: "tab-details", active: true
@@ -9,8 +10,6 @@
   - tabs.tab icon: "/assets/icons/camera.png", label: @task.uploaded_files.count, id: "tab-uploaded-files"
 
 .mobile-tab#tab-details
-  = link_to _("Edit"), [:edit, @task], class: "mobile-button"
-
   %table.mobile-table.form
     %tbody
       %tr
@@ -96,7 +95,7 @@
           %td= link_to_user task_assigned_user.user_assigned_by
 
     - if can? :destroy, task_assigned_user
-      = link_to _("Unassign"), task_assigned_user, method: :delete, data: {confirm: _("Are you sure?")}, class: ["mobile-button", "mobile-button-danger"]
+      = link_to _("Unassign"), task_assigned_user, method: :delete, data: {confirm: _("Are you sure?")}, class: "mobile-button-danger"
 
 #tab-timelogs
   = link_to _("Add new"), new_timelog_path(timelog: {task_id: @task.id}), class: "mobile-button" if can? :new, Timelog
