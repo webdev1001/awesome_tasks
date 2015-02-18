@@ -22,7 +22,7 @@ class TaskChecksController < ApplicationController
       if request.xhr?
         render nothing: true
       else
-        redirect_to @task_check.task
+        redirect_to task_path(@task_check.task, anchor: "mobile-tab-tab-checks")
       end
     else
       render text: @task_check.errors.full_messages.join(". ")
@@ -45,7 +45,7 @@ class TaskChecksController < ApplicationController
       if request.xhr?
         render nothing: true
       else
-        redirect_to @task_check.task
+        redirect_to task_path(@task_check.task, anchor: "mobile-tab-tab-checks")
       end
     else
       render text: @task_check.errors.full_messages.join(". ")
@@ -58,7 +58,7 @@ class TaskChecksController < ApplicationController
     if request.xhr?
       render nothing: true
     else
-      redirect_to @task_check.task
+      redirect_to task_path(@task_check.task, anchor: "mobile-tab-tab-checks")
     end
   end
 

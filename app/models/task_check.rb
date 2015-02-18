@@ -14,18 +14,19 @@ class TaskCheck < ActiveRecord::Base
 
   scope :checked, -> { where(checked: true) }
 
-  attr_accessor :user_assigner
-
 private
 
   def email_user_assigned_if_changed
     return unless user_assigned_id_changed?
-    delay.send_notification_assigned_email
+
+    user = user_assigned
+    user = User.where(id: user_assigned_id_was).first unless user
+
+    delay.send_notification_assigned_email(user)
   end
 
-  def send_notification_assigned_email
-    user_that_assigned = user_assigner || user_added
-    TaskChecksMailer.notification_assigned(self, user_that_assigned).deliver!
+  def send_notification_assigned_email(user)
+    TaskChecksMailer.notification_assigned(self, user).deliver!
   end
 
   def email_users_if_checked_changed

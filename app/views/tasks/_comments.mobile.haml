@@ -1,0 +1,18 @@
+= link_to _("Add new"), new_comment_path(comment: {resource_type: "Task", resource_id: @task.id}), class: "mobile-button"
+
+- @task.comments.each do |comment|
+  %table.mobile-table.form
+    %tbody
+      %tr
+        %td= User.model_name.human
+        %td= link_to_user comment.user
+      %tr
+        %td= Comment.human_attribute_name(:created_at)
+        %td= l(comment.created_at, format: :short)
+      %tr
+        %td{colspan: 2}
+          = comment.comment.html_safe
+      - if can? :edit, comment
+        %tr
+          %td{colspan: 2}
+            = link_to _("Edit"), [:edit, comment]
