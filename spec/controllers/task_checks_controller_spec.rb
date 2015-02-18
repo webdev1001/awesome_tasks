@@ -71,7 +71,7 @@ describe TaskChecksController do
         mail.in_reply_to.should eq task.first_email_id
 
         from_email = Rails.application.config.action_mailer.default_options[:from]
-        mail.header["From"].to_s.should eq "#{user_admin.name} <#{from_email}>"
+        mail.header["From"].to_s.should eq from_email
       end
     end
 

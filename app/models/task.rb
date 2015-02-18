@@ -102,6 +102,11 @@ class Task < ActiveRecord::Base
     Digest::MD5.hexdigest("<awesome-tasks-task-#{id}-#{created_at}>")
   end
 
+  def url
+    settings = YAML.load_file("#{Rails.root}/config/awesome_tasks.yml")
+    return "#{settings[:domain_url]}/tasks/#{id}"
+  end
+
 private
 
   def set_priority
