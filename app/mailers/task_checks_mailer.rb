@@ -1,10 +1,9 @@
 class TaskChecksMailer < ActionMailer::Base
   helper :task
 
-  def notification(task_check, user, task_url, user_changed)
+  def notification_checked(task_check, user)
     @task_check = task_check
     @task = @task_check.task
-    @task_url = task_url
     @user = user
 
     I18n.with_locale @user.locale! do
@@ -17,12 +16,17 @@ class TaskChecksMailer < ActionMailer::Base
       subject = "[#{@task.project.name}] "
       subject << "'#{@task_check.name}' #{subject_text}"
 
-      mail(
+      mail_args = {
         to: user.email,
-        from: "#{user_changed.name} <#{from_email}>",
         subject: subject,
         in_reply_to: @task.first_email_id
-      )
+      }
+
+      if @task_check.user_checked
+        mail_args[:from] = "#{@task_check.user_checked.name} <#{from_email}>"
+      end
+
+      mail(mail_args)
     end
   end
 

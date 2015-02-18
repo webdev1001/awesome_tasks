@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203093133) do
+ActiveRecord::Schema.define(version: 20150217131451) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -86,9 +86,11 @@ ActiveRecord::Schema.define(version: 20150203093133) do
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "timelog_id"
   end
 
   add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
+  add_index "invoice_lines", ["timelog_id"], name: "index_invoice_lines_on_timelog_id", using: :btree
 
   create_table "invoices", force: true do |t|
     t.date     "date"
@@ -210,11 +212,15 @@ ActiveRecord::Schema.define(version: 20150203093133) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_assigned_id"
+    t.integer  "user_checked_id"
+    t.integer  "user_assigner_id"
   end
 
   add_index "task_checks", ["task_id"], name: "index_task_checks_on_task_id", using: :btree
   add_index "task_checks", ["user_added_id"], name: "index_task_checks_on_user_added_id", using: :btree
   add_index "task_checks", ["user_assigned_id"], name: "index_task_checks_on_user_assigned_id", using: :btree
+  add_index "task_checks", ["user_assigner_id"], name: "index_task_checks_on_user_assigner_id", using: :btree
+  add_index "task_checks", ["user_checked_id"], name: "index_task_checks_on_user_checked_id", using: :btree
 
   create_table "tasks", force: true do |t|
     t.integer  "project_id"

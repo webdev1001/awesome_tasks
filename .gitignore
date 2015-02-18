@@ -20,3 +20,4 @@
 public/ckeditor_assets/pictures/*
 
 config/deploy/production.rb
+/config/awesome_tasks.yml
