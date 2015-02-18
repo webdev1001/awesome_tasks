@@ -5,6 +5,8 @@ class TaskAssignedUsersController < ApplicationController
   end
 
   def create
+    @task_assigned_user.user_assigned_by = current_user
+
     if @task_assigned_user.save
       redirect_to task_path(@task_assigned_user.task, anchor: "mobile-tab-tab-assigned-users")
     else
