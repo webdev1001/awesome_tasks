@@ -30,10 +30,11 @@ class TaskChecksMailer < ActionMailer::Base
     end
   end
 
-  def notification_assigned(task_check, user_assigner)
+  def notification_assigned(task_check, user_assigned)
+    user_assigner = task_check.user_assigner || task_check.user_added
     @task_check = task_check
     @task = @task_check.task
-    @user = @task_check.user_assigned
+    @user = user_assigned
 
     I18n.with_locale @user.locale! do
       subject = "[#{@task.project.name}] "

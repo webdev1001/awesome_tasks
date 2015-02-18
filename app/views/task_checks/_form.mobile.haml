@@ -2,6 +2,7 @@
   = f.input :name, autofocus: true
   = f.input :description
   = f.association :user_assigned, collection: current_user.visible_users.order(:name)
+  = f.input :checked
   = f.submit _("Save"), class: "mobile-button-primary"
 
   - if can?(:destroy, task_check) && !task_check.new_record?

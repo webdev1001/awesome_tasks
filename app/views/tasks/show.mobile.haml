@@ -39,94 +39,16 @@
       .error= _("No description has been written for this task.")
 
 #tab-checks
-  = link_to _("Add new"), new_task_task_check_path(@task), class: "mobile-button"
-
-  - @task.task_checks.each do |task_check|
-    %table.mobile-table.list
-      %tbody
-        %tr
-          %td= TaskCheck.human_attribute_name(:name)
-          %td= task_check.name
-        %tr
-          %td= TaskCheck.human_attribute_name(:checked)
-          %td= task_check.checked? ? _("Yes") : _("No")
-        %tr
-          %td= TaskCheck.human_attribute_name(:user_assigned)
-          %td= link_to_user task_check.user_assigned
-        - if task_check.description?
-          %tr
-            %td{colspan: 2}= simple_format task_check.description, {}, wrapper_tag: "div"
-        - if can? :edit, task_check
-          %tr
-            %td{colspan: 2}
-              = link_to _("Edit"), ["edit", @task, task_check]
+  = render "checks"
 
 #tab-comments
-  = link_to _("Add new"), new_comment_path(comment: {resource_type: "Task", resource_id: @task.id}), class: "mobile-button"
-
-  - @task.comments.each do |comment|
-    %table.mobile-table.form
-      %tbody
-        %tr
-          %td= User.model_name.human
-          %td= link_to_user comment.user
-        %tr
-          %td= Comment.human_attribute_name(:created_at)
-          %td= l(comment.created_at, format: :short)
-        %tr
-          %td{colspan: 2}
-            = comment.comment.html_safe
-        - if can? :edit, comment
-          %tr
-            %td{colspan: 2}
-              = link_to _("Edit"), [:edit, comment]
+  = render "comments"
 
 #tab-assigned-users
-  = link_to _("Add new"), new_task_assigned_user_path(task_assigned_user: {task_id: @task.id}), class: "mobile-button"
-
-  - @task.task_assigned_users.each do |task_assigned_user|
-    %table.mobile-table.list
-      %tbody
-        %tr
-          %td= TaskAssignedUser.human_attribute_name(:user)
-          %td= link_to_user task_assigned_user.user
-        %tr
-          %td= TaskAssignedUser.human_attribute_name(:user_assigned_by)
-          %td= link_to_user task_assigned_user.user_assigned_by
-
-    - if can? :destroy, task_assigned_user
-      = link_to _("Unassign"), task_assigned_user, method: :delete, data: {confirm: _("Are you sure?")}, class: "mobile-button-danger"
+  = render "assigned_users"
 
 #tab-timelogs
-  = link_to _("Add new"), new_timelog_path(timelog: {task_id: @task.id}), class: "mobile-button" if can? :new, Timelog
-
-  - @task.timelogs.each do |timelog|
-    %table.mobile-table.form
-      %tbody
-        %tr
-          %td= Timelog.human_attribute_name(:date)
-          %td= l(timelog.date, format: :short)
-        %tr
-          %td= Timelog.human_attribute_name(:user)
-          %td= link_to_user timelog.user
-        %tr
-          %td= Timelog.human_attribute_name(:time)
-          %td= format_number timelog.hours, precision: 1
-        - if timelog.hours_transport && timelog.hours_transport.to_i > 0
-          %tr
-            %td= Timelog.human_attribute_name(:time_transport)
-            %td= format_number timelog.hours_transport, precision: 1
-        %tr
-          %td= Timelog.human_attribute_name(:invoiced)
-          %td= timelog.invoiced? ? _("Yes") : _("No")
-        %tr
-          %td= Timelog.human_attribute_name(:comment)
-          %td= simple_format timelog.comment, {}, wrapper_tag: "div"
-
-    = link_to _("Edit"), [:edit, timelog], class: "mobile-button" if can? :edit, timelog
-
-  - unless @task.timelogs.any?
-    .error= _("No timelogs were found.")
+  = render "timelogs"
 
 #tab-uploaded-files
   = render "/uploaded_files/list_for_resource", resource: @task

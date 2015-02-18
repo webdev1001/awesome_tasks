@@ -21,8 +21,11 @@ describe TaskChecksController do
 
     it "#create" do
       post :create, task_id: task.id, task_check: valid_attributes
-      response.should redirect_to task
+      response.should redirect_to task_path(task, anchor: "mobile-tab-tab-checks")
       task.assigned_users.should include user_assigned
+
+      last_assign = TaskCheck.last
+      last_assign.user_assigner.should eq user_admin
 
       mail = ActionMailer::Base.deliveries.first
       mail.in_reply_to.should eq task.first_email_id
@@ -36,13 +39,13 @@ describe TaskChecksController do
     context "#update" do
       it "#update" do
         patch :update, id: task_check.id, task_id: task.id, task_check: valid_attributes
-        response.should redirect_to task
+        response.should redirect_to task_path(task, anchor: "mobile-tab-tab-checks")
       end
 
       it "sends email when being checked" do
         task_check.checked?.should eq false
         patch :update, id: task_check.id, task_id: task.id, task_check: {checked: 1}
-        response.should redirect_to task
+        response.should redirect_to task_path(task, anchor: "mobile-tab-tab-checks")
         task_check.reload
         task_check.checked?.should eq true
         ActionMailer::Base.deliveries.length.should eq task.notify_emails.length
@@ -60,7 +63,7 @@ describe TaskChecksController do
         task_check.update_column(:checked, true)
         task_check.checked?.should eq true
         patch :update, id: task_check.id, task_id: task.id, task_check: {checked: 0}
-        response.should redirect_to task
+        response.should redirect_to task_path(task, anchor: "mobile-tab-tab-checks")
         task_check.reload
         task_check.checked?.should eq false
         ActionMailer::Base.deliveries.length.should eq task.notify_emails.length
@@ -77,7 +80,7 @@ describe TaskChecksController do
 
     it "#destroy" do
       delete :destroy, id: task_check.id, task_id: task.id
-      response.should redirect_to task
+      response.should redirect_to task_path(task, anchor: "mobile-tab-tab-checks")
     end
   end
 end
