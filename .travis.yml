@@ -11,6 +11,7 @@ cache:
 before_script:
   - mysql -e 'create database myapp_test;'
   - cp config/database_travis.yml config/database.yml
+  - cp cnfig/awesome_tasks.travis.yml config/awesome_tasks.yml
   - RAILS_ENV=test bundle exec rake db:migrate
 
 addons:
