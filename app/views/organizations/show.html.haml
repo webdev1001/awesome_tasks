@@ -25,7 +25,7 @@
           %td= @organization.__send__(column)
       %tr
         %td= Organization.human_attribute_name(:payment_info)
-        %td= simple_format @organization.payment_info
+        %td= simple_format_default_args @organization.payment_info
 
 %br
 

@@ -76,7 +76,7 @@
               %td= format_number invoice.amount_total
 
         %h2= Organization.human_attribute_name(:payment_info)
-        .payment_info= simple_format invoice.creditor.payment_info
+        .payment_info= simple_format_default_args invoice.creditor.payment_info
 
 %h2= InvoiceLine.model_name.human(count: 2)
 %table.invoice_lines

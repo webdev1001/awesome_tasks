@@ -37,4 +37,8 @@ module ApplicationHelper
       _("False") => 0
     }
   end
+
+  def simple_format_default_args(text)
+    simple_format text, nil, wrapper_tag: :div
+  end
 end

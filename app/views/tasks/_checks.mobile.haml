@@ -22,7 +22,7 @@
           %td= link_to_user task_check.user_assigner
       - if task_check.description?
         %tr
-          %td{colspan: 2}= simple_format task_check.description, {}, wrapper_tag: "div"
+          %td{colspan: 2}= simple_format_default_args task_check.description
       - if can? :edit, task_check
         %tr
           %td{colspan: 2}
