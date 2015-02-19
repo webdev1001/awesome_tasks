@@ -30,7 +30,7 @@
         %td{style: "width: 60px;"}= format_number dbt.hours_total, precision: 1
         %td.nowrap{style: "width: 90px;"}= l(tlog.date)
         %td{style: "width: 130px;"}= link_to_user tlog.user
-        %td= simple_format tlog.comment
+        %td= simple_format_default_args tlog.comment
         - if can? :view_invoiced, tlog
           %td= tlog.invoiced? ? _("Yes") : _("No")
         - if can? :destroy, tlog

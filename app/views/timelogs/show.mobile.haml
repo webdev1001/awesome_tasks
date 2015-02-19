@@ -39,4 +39,4 @@
       %td= l(@timelog.invoiced_at, format: :long) if @timelog.invoiced_at?
     %tr
       %td= Timelog.human_attribute_name(:comment)
-      %td= simple_format @timelog.comment, wrapper_tag: "div"
+      %td= simple_format_default_args @timelog.comment, wrapper_tag: "div"

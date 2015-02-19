@@ -21,7 +21,7 @@
         %td= timelog.invoiced? ? _("Yes") : _("No")
       %tr
         %td= Timelog.human_attribute_name(:comment)
-        %td= simple_format timelog.comment, {}, wrapper_tag: "div"
+        %td= simple_format_default_args timelog.comment
 
   = link_to _("Edit"), [:edit, timelog], class: "mobile-button" if can? :edit, timelog
 

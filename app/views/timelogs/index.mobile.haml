@@ -79,7 +79,7 @@
                 = "/"
                 = format_number dbt_transport.hours_total, percision: 2
               %td.nowrap= link_to_user tlog.user
-              %td= simple_format tlog.comment
+              %td= simple_format_default_args tlog.comment
         - unless @timelogs_sorted.empty?
           %tr
             %td{colspan: 3, style: "padding-top: 15px; text-align: right;"}
