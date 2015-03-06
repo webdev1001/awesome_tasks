@@ -9,6 +9,7 @@
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :id_eq, autofocus: true
     = f.input :organization_name_cont
+    = f.input :creditor_name_cont
     = f.input :state_eq_any, as: :check_boxes, collection: translated_invoice_states
     = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
     = f.input :date_gteq, as: :string, label: _("Date from")
