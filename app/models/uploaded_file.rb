@@ -5,7 +5,7 @@ class UploadedFile < ActiveRecord::Base
   validates_presence_of :user, :resource, :title, :file
 
   has_attached_file :file
-  validates_attachment_content_type :file, content_type: /\A(image\/.*|application\/(pdf|zip|x-zip|x-zip-compressed))\Z/
+  validates_attachment_content_type :file, content_type: /\A(image\/.*|application|text\/(x-extension-eml|html|plain|pdf|zip|x-zip|x-zip-compressed))\Z/
 
   before_validation :set_title_to_filename_if_blank
 
