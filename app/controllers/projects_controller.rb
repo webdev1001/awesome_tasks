@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
     @ransack = Project.ransack(@ransack_params)
     @projects = @ransack.result
     @projects = @projects.order(:name) unless params[:s]
-    @projects = @projects.paginate(page: params[:p], per_page: 40)
+    @projects = @projects.paginate(page: params[:page], per_page: 40)
   end
 
   def new

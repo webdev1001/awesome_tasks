@@ -6,7 +6,7 @@ class InvoicesController < ApplicationController
     @ransack = Invoice.ransack(@ransack_params)
     @invoices = @ransack.result
     @invoices = @invoices.order(:date).reverse_order unless @ransack_params[:s]
-    @invoices = @invoices.paginate(page: params[:p], per_page: 40)
+    @invoices = @invoices.paginate(page: params[:page], per_page: 40)
   end
 
   def new
