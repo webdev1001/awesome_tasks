@@ -1,8 +1,8 @@
 require "spec_helper"
 
 describe InvoiceGroupsController do
-  let(:user_admin){ create :user_admin }
-  let(:invoice_group){ create :invoice_group }
+  let(:user_admin) { create :user_admin }
+  let(:invoice_group) { create :invoice_group }
 
   render_views
 

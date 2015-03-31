@@ -6,14 +6,15 @@ class Invoice < ActiveRecord::Base
   tracked owner: Proc.new{ |controller, model| controller.try(:current_user) }
 
   belongs_to :creditor, class_name: "Organization"
-  belongs_to :invoice_group
   belongs_to :organization
   belongs_to :user
 
   has_many :invoice_lines, dependent: :destroy
+  has_many :invoice_group_links, dependent: :destroy
+  has_many :invoice_groups, through: :invoice_group_links
   has_many :uploaded_files, as: :resource, dependent: :destroy
 
-  validates_presence_of :user, :date, :invoice_group, :invoice_type
+  validates_presence_of :user, :date, :invoice_type
 
   scope :debit, ->{ where(invoice_type: "debit") }
   scope :credit, ->{ where(invoice_type: "credit") }

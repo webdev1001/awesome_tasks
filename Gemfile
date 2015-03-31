@@ -44,7 +44,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 
 # Used for migrate script (the old database to Rails)
-gem 'mysql'
+gem 'mysql', require: false
 gem 'active-record-transactioner', '0.0.5'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
