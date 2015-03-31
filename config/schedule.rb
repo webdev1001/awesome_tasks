@@ -22,9 +22,9 @@
 job_type :envcommand, 'cd :path && RAILS_ENV=:environment bin/bundle exec :task'
 
 every :reboot do
-  envcommand "bin/delayed_job restart"
+  envcommand "bin/delayed_job restart > /dev/null"
 end
 
 every 1.hour do
-  envcommand "bin/delayed_job restart"
+  envcommand "bin/delayed_job restart > /dev/null"
 end
