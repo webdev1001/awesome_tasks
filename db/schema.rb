@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217131451) do
+ActiveRecord::Schema.define(version: 20150331032040) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 20150217131451) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "invoice_group_links", force: true do |t|
+    t.integer  "invoice_id"
+    t.integer  "invoice_group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoice_group_links", ["invoice_group_id"], name: "index_invoice_group_links_on_invoice_group_id", using: :btree
+  add_index "invoice_group_links", ["invoice_id"], name: "index_invoice_group_links_on_invoice_id", using: :btree
+
   create_table "invoice_groups", force: true do |t|
     t.string "name"
   end
@@ -93,23 +103,23 @@ ActiveRecord::Schema.define(version: 20150217131451) do
   add_index "invoice_lines", ["timelog_id"], name: "index_invoice_lines_on_timelog_id", using: :btree
 
   create_table "invoices", force: true do |t|
+    t.string   "title"
     t.date     "date"
     t.string   "invoice_no"
     t.string   "invoice_type"
-    t.decimal  "amount",           precision: 10, scale: 2
+    t.decimal  "amount",          precision: 10, scale: 2
     t.integer  "organization_id"
     t.integer  "user_id"
     t.date     "payment_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creditor_id"
-    t.integer  "invoice_group_id"
     t.boolean  "no_vat"
     t.string   "state"
   end
 
   add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
-  add_index "invoices", ["invoice_group_id"], name: "index_invoices_on_invoice_group_id", using: :btree
+  add_index "invoices", ["invoice_no"], name: "index_invoices_on_invoice_no", using: :btree
   add_index "invoices", ["organization_id"], name: "index_invoices_on_organization_id", using: :btree
   add_index "invoices", ["state"], name: "index_invoices_on_state", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree

@@ -19,9 +19,6 @@
         %td.tdt= Invoice.human_attribute_name(:id)
         %td.align-right= @invoice.id
       %tr
-        %td.tdt= Invoice.human_attribute_name(:invoice_group)
-        %td.align-right= link_to_invoice_group @invoice.invoice_group
-      %tr
         %td.tdt= Invoice.human_attribute_name(:invoice_no)
         %td.align-right= @invoice.invoice_no
       %tr
@@ -57,6 +54,21 @@
       %tr
         %td.tdt= Invoice.human_attribute_name(:user)
         %td.align-right= link_to_user @invoice.user
+
+%br
+
+= design_box InvoiceGroup.model_name.human(count: 2), 600 do
+  %table.list
+    %thead
+      %tr
+        %th= InvoiceGroup.human_attribute_name(:name)
+    %tbody
+      - @invoice.invoice_groups.each do |invoice_group|
+        %tr
+          %td= link_to_invoice_group invoice_group
+      - if @invoice.invoice_groups.empty?
+        %tr
+          %td.error= _("No invoice groups were found for this invoice.")
 
 %br
 
