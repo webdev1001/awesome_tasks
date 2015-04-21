@@ -14,6 +14,8 @@
     = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
     = f.input :date_gteq, as: :string, label: _("Date from")
     = f.input :date_lteq, as: :string, label: _("Date to")
+    = f.input :invoice_groups_id_eq_any, label: Invoice.human_attribute_name(:invoice_groups), as: :check_boxes, collection: InvoiceGroup.order(:name)
+
     = f.submit _("Filter")
 
 %br
@@ -24,6 +26,7 @@
       %tr
         %th= sort_link @ransack, :id
         %th= sort_link @ransack, :invoice_no
+        %th= sort_link @ransack, :invoice_groups_name, Invoice.human_attribute_name(:invoice_groups)
         %th= sort_link @ransack, :state
         %th= sort_link @ransack, :invoice_type
         %th= sort_link @ransack, :organization_name, Invoice.human_attribute_name(:organization)
@@ -36,6 +39,7 @@
         %tr
           %td= link_to_invoice invoice, title: invoice.id
           %td= link_to_invoice invoice, title: invoice.invoice_no if invoice.invoice_no?
+          %td= invoice.invoice_groups.map { |invoice_group| link_to_invoice_group(invoice_group) }.join(", ").html_safe
           %td= translated_invoice_state invoice
           %td= invoice.translated_invoice_type
           %td= link_to_organization invoice.organization

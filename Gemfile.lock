@@ -136,7 +136,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     json (1.8.1-java)
-    knjrbfw (0.0.112)
+    knjrbfw (0.0.113)
       datet
       http2
       php4r
@@ -322,7 +322,7 @@ DEPENDENCIES
   jdbc-mysql
   jquery-migrate-rails
   jquery-rails
-  knjrbfw (>= 0.0.112)
+  knjrbfw (>= 0.0.113)
   light_mobile (~> 0.0.7)
   mysql
   mysql2
