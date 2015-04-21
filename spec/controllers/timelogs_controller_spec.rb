@@ -27,7 +27,7 @@ describe TimelogsController do
   end
 
   it "#update" do
-    patch :update, task_id: task.id, id: timelog.id, timelog: {description: Forgery(:lorem_ipsum).words(5) }
+    patch :update, task_id: task.id, id: timelog.id, timelog: {comment: Forgery::LoremIpsum.words(5) }
     response.should redirect_to task
   end
 
