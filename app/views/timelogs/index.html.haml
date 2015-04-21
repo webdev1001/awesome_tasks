@@ -3,7 +3,7 @@
 = design_box _("Enter criteria"), 800 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = simple_fields_for :options do |f_opts|
-      = f_opts.input :substract_from_each_transport_distance, required: false, input_html: {value: params[:options][:substract_from_each_transport_distance]}
+      = f_opts.input :substract_from_each_transport_distance, required: false, input_html: {value: params[:options].try(:[], :substract_from_each_transport_distance)}
 
     = f.input :date_gteq, label: _("Date from"), as: :string, input_html: {value: @date_from.out(time: false)}
     = f.input :date_lteq, label: _("Date to"), as: :string, input_html: {value: @date_to.out(time: false)}
@@ -35,7 +35,7 @@
         %tr
           %td.tdd{colspan: 2}
             = _("Total km's of transport used in all the timelogs found.")
-        - if params[:options][:substract_from_each_transport_distance].present?
+        - if params[:options] && params[:options][:substract_from_each_transport_distance].present?
           %tr
             %td.tdt= _("Timelogs with transport length")
             %td= format_number @timelogs.with_transport_length.count, precision: 1
