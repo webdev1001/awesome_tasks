@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.9'
-gem 'mysql2'
+gem 'activerecord-jdbc-adapter', platform: :jruby
+gem 'mysql2', platform: :ruby
 gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -30,7 +31,7 @@ gem 'whenever', require: false
 gem 'acts-as-taggable-on'
 gem 'state_machine'
 gem 'public_activity'
-gem 'light_mobile', '0.0.7'
+gem 'light_mobile', '~> 0.0.7'
 
 # For handeling internationalized amount formats.
 gem 'autonumeric-rails'
@@ -44,7 +45,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 
 # Used for migrate script (the old database to Rails)
-gem 'mysql', require: false
+gem 'mysql', platform: :ruby, require: false
 gem 'active-record-transactioner', '0.0.5'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
