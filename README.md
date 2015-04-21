@@ -1,6 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/kaspernj/awesome_tasks.png)](https://codeclimate.com/github/kaspernj/awesome_tasks)
 [![Test Coverage](https://codeclimate.com/github/kaspernj/awesome_tasks/coverage.png)](https://codeclimate.com/github/kaspernj/awesome_tasks)
-[![Build Status](https://travis-ci.org/kaspernj/awesome_tasks.svg?branch=master)](https://travis-ci.org/kaspernj/awesome_tasks)
+[![Build Status](https://api.shippable.com/projects/540e7b993479c5ea8f9ec1fd/badge?branchName=master)](https://app.shippable.com/projects/540e7b993479c5ea8f9ec1fd/builds/latest)
 
 # Awesome Tasks
 
