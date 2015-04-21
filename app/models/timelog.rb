@@ -7,7 +7,8 @@ class Timelog < ActiveRecord::Base
 
   validates_presence_of :task, :user
 
-  scope :not_invoiced, ->{ where("timelogs.invoiced IS NULL OR timelogs.invoiced = 0") }
+  scope :not_invoiced, -> { where("timelogs.invoiced IS NULL OR timelogs.invoiced = 0") }
+  scope :with_transport_length, -> { where("timelogs.transport_length > 0") }
 
   def hours
     Baza::Dbtime.new(time.strftime("%H:%M:%S")).hours_total if time

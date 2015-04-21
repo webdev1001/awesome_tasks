@@ -1,7 +1,10 @@
 - content_for(:header_title){ _("Timelogs") }
 
-= design_box _("Enter criteria"), 460 do
+= design_box _("Enter criteria"), 800 do
   = simple_search_form_for @ransack, @ransack_params do |f|
+    = simple_fields_for :options do |f_opts|
+      = f_opts.input :substract_from_each_transport_distance, required: false, input_html: {value: params[:options][:substract_from_each_transport_distance]}
+
     = f.input :date_gteq, label: _("Date from"), as: :string, input_html: {value: @date_from.out(time: false)}
     = f.input :date_lteq, label: _("Date to"), as: :string, input_html: {value: @date_to.out(time: false)}
     = f.input :user_id_eq_any, as: :check_boxes, label: User.model_name.human, collection: current_user.users_with_access_to.order(:name), include_blank: true
@@ -32,6 +35,13 @@
         %tr
           %td.tdd{colspan: 2}
             = _("Total km's of transport used in all the timelogs found.")
+        - if params[:options][:substract_from_each_transport_distance].present?
+          %tr
+            %td.tdt= _("Timelogs with transport length")
+            %td= format_number @timelogs.with_transport_length.count, precision: 1
+          %tr
+            %td.tdt= _("Transport with substraction")
+            %td= format_number @timelogs.sum(:transport_length) - (@timelogs.with_transport_length.count * params[:options][:substract_from_each_transport_distance].to_f), precision: 1
 
   %br
 
