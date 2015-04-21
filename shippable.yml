@@ -1,0 +1,15 @@
+language: ruby
+cache: bundler
+archive: true
+rvm:
+  - ruby 1.9.3-head
+  - ruby-2.1.2
+  - jruby-head
+script:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS shippa;'
+  - cp config/database.shippable.yml config/database.yml
+  - cp config/awesome_tasks.shippable.yml config/awesome_tasks.yml
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - CODECLIMATE_REPO_TOKEN=6ce9528867413dd59d35477770932ca5dd37de1688c07a1f46458fc645df3fac bundle exec rspec
+notifications:
+   email: false
