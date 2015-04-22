@@ -9,6 +9,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :organization
   belongs_to :user
 
+  has_many :account_lines, dependent: :restrict_with_error
   has_many :invoice_lines, dependent: :destroy
   has_many :invoice_group_links, dependent: :destroy
   has_many :invoice_groups, through: :invoice_group_links

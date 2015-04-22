@@ -37,7 +37,7 @@ class AccountLinesController < ApplicationController
 
   def update
     if @account_line.update_attributes(account_line_params)
-      redirect_to account_line_url(@account_line)
+      redirect_to account_account_line_url(@account, @account_line)
     else
       render :new
     end

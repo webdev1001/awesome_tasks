@@ -3,6 +3,7 @@ require "spec_helper"
 describe AccountsController do
   let(:account) { create :account }
   let(:user_admin) { create :user_admin }
+  let(:valid_params) { {name: "Test name"} }
 
   render_views
 
@@ -42,7 +43,7 @@ describe AccountsController do
   end
 
   it "#update" do
-    put :update, id: account.id
+    put :update, id: account.id, account: valid_params
     expect(response).to redirect_to account_url(account)
   end
 

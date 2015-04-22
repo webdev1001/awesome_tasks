@@ -4,6 +4,7 @@ describe AccountLinesController do
   let(:account) { create :account }
   let(:account_line) { create :account_line, account: account }
   let(:user_admin) { create :user_admin }
+  let(:valid_params) { {amount: 100.50, text: "test"} }
 
   render_views
 
@@ -34,7 +35,7 @@ describe AccountLinesController do
     created_account_line = assigns(:account_line)
     expect(created_account_line).to be_valid
 
-    expect(response).to redirect_to account_account_line_url(created_account_line)
+    expect(response).to redirect_to account_account_line_url(account, created_account_line)
   end
 
   it "#edit" do
@@ -44,7 +45,7 @@ describe AccountLinesController do
 
   it "#update" do
     put :update, account_id: account.id, id: account_line.id, account_line: valid_params
-    expect(response).to redirect_to account_account_line_url(account_line)
+    expect(response).to redirect_to account_account_line_url(account, account_line)
   end
 
   it "#destroy" do
