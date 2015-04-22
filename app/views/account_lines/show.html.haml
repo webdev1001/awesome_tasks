@@ -1,5 +1,10 @@
 - content_for(:header_title) { _("Show account-line %{id}", id: @account_line.id) }
 
+- if can? :edit, @account_line
+  = link_to _("Edit"), edit_account_account_line_path(@account, @account_line), class: "button"
+  %br
+  %br
+
 = design_box _("Details"), 800 do
   %table.form
     %tbody
@@ -10,8 +15,8 @@
         %td= AccountLine.human_attribute_name(:text)
         %td= @account_line.text
       %tr
-        %td= AccountLine.human_attribute_name(:rent_at)
-        %td= l(@account_line.rent_at, format: :long)
+        %td= AccountLine.human_attribute_name(:interest_at)
+        %td= l(@account_line.interest_at, format: :long)
       %tr
         %td= AccountLine.human_attribute_name(:booked_at)
         %td= l(@account_line.booked_at, format: :long)

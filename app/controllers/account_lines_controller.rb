@@ -12,7 +12,7 @@ class AccountLinesController < ApplicationController
     end
 
     @account_lines = @ransack.result
-    @account_lines = @account_lines.order(:rent_at).reverse_order unless params[:s]
+    @account_lines = @account_lines.order(:interest_at).reverse_order unless params[:s]
     @account_lines = @account_lines.page(params[:page])
   end
 

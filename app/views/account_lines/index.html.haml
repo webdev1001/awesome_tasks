@@ -20,16 +20,18 @@
     %thead
       %tr
         %th= sort_link @ransack, :text
-        %th= sort_link @ransack, :rent_at
-        %th= sort_link @ransack, :amount
+        %th= sort_link @ransack, :interest_at
+        %th.align-right= sort_link @ransack, :amount
     %tbody
       - @account_lines.each do |account_line|
         %tr
           %td= link_to_account_line account_line
-          %td= l(account_line.rent_at, format: :short)
-          %td= format_number account_line.amount
+          %td= l(account_line.interest_at, format: :short)
+          %td.align-right= format_number account_line.amount
       - if @account_lines.empty?
         %tr
           %td{colspan: 3}= _("No account-lines were found.")
+
+%br
 
 = will_paginate @account_lines
