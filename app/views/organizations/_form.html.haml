@@ -1,4 +1,4 @@
-= design_box _("Enter details"), 700 do
+= design_box t("enter_details"), 700 do
   = simple_form_for organization do |f|
     = f.input :name
     = f.input :email
@@ -24,7 +24,7 @@
     %br
 
     - unless organization.new_record?
-      = link_to _("Show"), organization_path(organization), class: "button"
-      = link_to _("Delete"), organization_path(organization), class: "button", method: :delete, data: {confirm: _("Are you sure?")}
+      = link_to t("show"), organization_path(organization), class: "button"
+      = link_to t("delete"), organization_path(organization), class: "button", method: :delete, data: {confirm: t("are_you_sure")}
 
-    = f.submit _("Save")
+    = f.submit t("save")

@@ -1,6 +1,6 @@
 - content_for(:header_title) { _("Show invoice line %{id}", id: @invoice_line.id) }
 - if can? :edit, @invoice_line
-  - content_for(:header_right) { link_to _("Edit"), [:edit, @invoice_line.invoice, @invoice_line], class: "mobile-button-header" }
+  - content_for(:header_right) { link_to t("edit"), [:edit, @invoice_line.invoice, @invoice_line], class: "mobile-button-header" }
 
 %table.mobile-table.form
   %tbody

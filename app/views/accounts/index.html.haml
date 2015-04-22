@@ -7,15 +7,15 @@
   %br
   %br
 
-= design_box _("Filter"), 500 do
+= design_box t("filter"), 500 do
   = simple_search_form_for @ransack, @ransack_values do |f|
     = f.input :name_cont
-    = f.submit _("Filter")
+    = f.submit t("filter")
 
 %br
 %br
 
-= design_box _("Results"), 800 do
+= design_box t("results"), 800 do
   %table.list
     %thead
       %tr

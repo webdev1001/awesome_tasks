@@ -1,12 +1,12 @@
 - content_for(:header_title){ _("Show invoice-group: %{name}", name: @invoice_group.name) }
 
 - if can? :edit, @invoice_group
-  = design_box _("Actions"), 350 do
-    = link_to _("Edit"), [:edit, @invoice_group], class: "button"
+  = design_box t("actions"), 350 do
+    = link_to t("edit"), [:edit, @invoice_group], class: "button"
 
 %br
 
-= design_box _("Details"), 500 do
+= design_box t("details"), 500 do
   %table.form
     %tbody
       %tr

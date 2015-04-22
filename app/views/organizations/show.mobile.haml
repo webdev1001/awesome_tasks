@@ -1,5 +1,5 @@
 - content_for(:header_title) { _("Show organization: %{name}", name: @organization.name) }
-- content_for(:header_right) { link_to _("Edit"), [:edit, @organization], class: "mobile-button-header" }
+- content_for(:header_right) { link_to t("edit"), [:edit, @organization], class: "mobile-button-header" }
 
 %table.mobile-table.form
   %tbody
@@ -8,10 +8,10 @@
       %td= mail_to @organization.email if @organization.email?
     %tr
       %td= Organization.human_attribute_name(:customer)
-      %td= @organization.customer? ? _("Yes") : _("No")
+      %td= @organization.customer? ? t("yes") : t("no")
     %tr
       %td= Organization.human_attribute_name(:creditor)
-      %td= @organization.creditor? ? _("Yes") : _("No")
+      %td= @organization.creditor? ? t("yes") : t("no")
 
     - [:name, :vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
       %tr

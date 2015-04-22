@@ -1,25 +1,25 @@
-= design_box _("Enter details"), 480 do
+= design_box t("enter_details"), 480 do
   = simple_form_for user, data: form_data, html: {autocomplete: "off"} do |f|
     = f.input :username
     = f.input :encrypted_password, as: :hidden
-    = f.input :password, hint: _("Only write a password here if you whish to change it.")
+    = f.input :password, hint: t(".only_write_a_password_here_if_you_whish_to_change_it")
     = f.input :name
     = f.input :email
     = f.input :active
 
     - unless user.new_record?
-      = link_to _("Log in as"), log_in_as_user_path(user), method: :post, class: "button", data: {confirm: _("Are you sure?")}
-      = link_to _("Show"), user_path(user), class: "button"
-      = link_to _("Delete"), user_path(user), method: :delete, class: "button", data: {confirm: _("Are you sure?")}
+      = link_to t(".log_in_as"), log_in_as_user_path(user), method: :post, class: "button", data: {confirm: t("are_you_sure")}
+      = link_to t("show"), user_path(user), class: "button"
+      = link_to t("delete"), user_path(user), method: :delete, class: "button", data: {confirm: t("are_you_sure")}
 
-    = f.submit _("Save")
+    = f.submit t("save")
 
 - unless user.new_record?
   %br
 
-  = design_box _("Permissions"), 350 do
+  = design_box t(".permissions"), 350 do
     %div{style: "padding-bottom: 15px;"}
-      = link_to _("Add rank"), "#", class: ["button", "add_rank_button"]
+      = link_to t(".add_rank"), "#", class: ["button", "add_rank_button"]
 
     #divpermissions
       = render "roles", user: user

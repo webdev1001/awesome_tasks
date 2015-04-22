@@ -1,6 +1,6 @@
 - content_for(:header_title) { _("Show account import") }
 
-= design_box _("Details"), 500 do
+= design_box t("details"), 500 do
   %table.form
     %tbody
       %tr
@@ -15,7 +15,7 @@
 
 = simple_form_for [:update_columns, @account, @account_import], method: :post do |f|
   = f.submit _("Update columns")
-  = link_to _("Execute"), execute_account_account_import_path(@account, @account_import), method: :post, class: "button", data: {confirm: _("Are you sure?")}
+  = link_to _("Execute"), execute_account_account_import_path(@account, @account_import), method: :post, class: "button", data: {confirm: t("are_you_sure")}
 
   %br
   %br

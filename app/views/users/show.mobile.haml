@@ -1,6 +1,6 @@
-- content_for(:header_title) { _("Show user: %{name}", name: @user.name) }
+- content_for(:header_title) { t(".show_user", name: @user.name) }
 - if can? :edit, @user
-  - content_for(:header_right) { link_to _("Edit"), ["edit", @user], class: "mobile-button-header" }
+  - content_for(:header_right) { link_to t("edit"), ["edit", @user], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
   - tabs.tab id: "tab-information", icon: "/assets/icons/list.png", active: true
@@ -9,7 +9,7 @@
     - tabs.tab id: "tab-roles", icon: "/assets/icons/list.png", label: @user.user_roles.count
 
 #tab-information
-  %h2= _("Details")
+  %h2= t("details")
   %table.mobile-table.form
     %tbody
       %tr
@@ -23,7 +23,7 @@
         %td= mail_to @user.email
       %tr
         %td= User.human_attribute_name(:active)
-        %td= @user.active? ? _("Yes") : _("No")
+        %td= @user.active? ? t("yes") : t("no")
 
 #tab-tasks
   %h2= Task.model_name.human(count: 2)
@@ -32,7 +32,7 @@
     = f.input :state_eq_any, collection: Task.translated_states.invert
     = f.input :project_name_cont
     = f.input :project_organization_name_cont
-    = f.submit _("Search"), class: "mobile-button-primary"
+    = f.submit t("search"), class: "mobile-button-primary"
 
   %table.mobile-table.list
     %thead
@@ -52,7 +52,7 @@
           %td= link_to_project task.project
       - if count <= 0
         %tr
-          %td.error{colspan: 3}= _("No tasks were found for this user.")
+          %td.error{colspan: 3}= t(".no_tasks_were_found_for_this_user")
 
   %br
   = will_paginate @tasks
@@ -60,20 +60,20 @@
 - if can?(:new, UserRole)
   #tab-roles
     %h2= UserRole.model_name.human(count: 2)
-    = link_to _("Add new"), new_user_role_path(user_role: {user_id: @user.id}), class: "mobile-button"
+    = link_to t("add_new"), new_user_role_path(user_role: {user_id: @user.id}), class: "mobile-button"
 
     %table.mobile-table.list
       %thead
         %tr
           %th= UserRole.human_attribute_name(:role)
-          %th= _("Actions")
+          %th= t("actions")
       %tbody
         - @user.user_roles.each do |user_role|
           %tr
             %td= user_role.translated_role
             %td
-              = link_to _("Edit"), [:edit, user_role], class: "mobile-button-mini"
-              = link_to _("Remove"), user_role, method: :delete, data: {confirm: _("Are you sure?")}, class: ["mobile-button-danger", "mobile-button-mini"]
+              = link_to t("edit"), [:edit, user_role], class: "mobile-button-mini"
+              = link_to t("remove"), user_role, method: :delete, data: {confirm: t("are_you_sure")}, class: ["mobile-button-danger", "mobile-button-mini"]
         - unless @user.user_roles.any?
           %tr
-            %td.error{colspan: 2}= _("No results.")
+            %td.error{colspan: 2}= t("no_results")

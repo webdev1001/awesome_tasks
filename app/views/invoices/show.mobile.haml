@@ -1,6 +1,6 @@
 - content_for(:header_title) { _("Invoice %{invoice_no}", invoice_no: @invoice.invoice_no) }
 - if can? :edit, @invoice
-  - content_for(:header_right) { link_to _("Edit"), [:edit, @invoice], class: "mobile-button-header" }
+  - content_for(:header_right) { link_to t("edit"), [:edit, @invoice], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
   - tabs.tab id: "tab-details", icon: "/assets/icons/list.png", active: true
@@ -9,7 +9,7 @@
   - tabs.tab id: "tab-actions", icon: "/assets/icons/edit.png"
 
 #tab-details
-  %h2= _("Details")
+  %h2= t("details")
   %table.mobile-table.form
     %tbody
       %tr
@@ -61,7 +61,7 @@
 
 #tab-lines
   %h2= InvoiceLine.model_name.human(count: 2)
-  = link_to _("Add new"), new_invoice_invoice_line_path(@invoice), class: "mobile-button"
+  = link_to t("add_new"), new_invoice_invoice_line_path(@invoice), class: "mobile-button"
 
   %table.mobile-table.list
     %thead
@@ -82,10 +82,10 @@
           %td.error{colspan: 4}= _("No lines were found.")
 
 #tab-actions
-  %h2= _("Actions")
+  %h2= t("actions")
 
   - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
     = link_to _("PDF"), ["pdf", @invoice], class: "mobile-button" if can? :pdf, @invoice
-    = link_to _("Finish"), finish_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: _("Are you sure?")} if @invoice.can_finish?
-    = link_to _("Register as sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: _("Are you sure?")} if @invoice.can_register_as_sent?
-    = link_to _("Register as paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: _("Are you sure?")} if @invoice.can_register_as_paid?
+    = link_to _("Finish"), finish_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_finish?
+    = link_to _("Register as sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_sent?
+    = link_to _("Register as paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_paid?

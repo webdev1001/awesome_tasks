@@ -1,11 +1,11 @@
 - content_for(:header_title) { _("Show account-line %{id}", id: @account_line.id) }
 
 - if can? :edit, @account_line
-  = link_to _("Edit"), edit_account_account_line_path(@account, @account_line), class: "button"
+  = link_to t("edit"), edit_account_account_line_path(@account, @account_line), class: "button"
   %br
   %br
 
-= design_box _("Details"), 800 do
+= design_box t("details"), 800 do
   %table.form
     %tbody
       %tr

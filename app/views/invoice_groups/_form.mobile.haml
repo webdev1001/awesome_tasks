@@ -1,6 +1,6 @@
 = simple_form_for invoice_group do |f|
   = f.input :name, autofocus: true
-  = f.submit _("Save"), class: "mobile-button-primary"
+  = f.submit t("save"), class: "mobile-button-primary"
 
   - if can?(:destroy, invoice_group) && !invoice_group.new_record?
-    = link_to _("Delete"), invoice_group, class: "mobile-button-danger", method: :delete, data: {confirm: _("Are you sure?")}
+    = link_to t("delete"), invoice_group, class: "mobile-button-danger", method: :delete, data: {confirm: t("are_you_sure")}

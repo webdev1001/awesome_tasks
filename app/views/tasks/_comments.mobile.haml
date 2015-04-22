@@ -1,4 +1,4 @@
-= link_to _("Add new"), new_comment_path(comment: {resource_type: "Task", resource_id: @task.id}), class: "mobile-button"
+= link_to t("add_new"), new_comment_path(comment: {resource_type: "Task", resource_id: @task.id}), class: "mobile-button"
 
 - @task.comments.each do |comment|
   %table.mobile-table.form
@@ -15,4 +15,4 @@
       - if can? :edit, comment
         %tr
           %td{colspan: 2}
-            = link_to _("Edit"), [:edit, comment]
+            = link_to t("edit"), [:edit, comment]

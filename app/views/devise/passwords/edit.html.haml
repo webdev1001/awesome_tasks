@@ -1,6 +1,6 @@
 - content_for(:header_title){ _("Change your password") }
 
-= design_box _("Enter details"), 650 do
+= design_box t("enter_details"), 650 do
   = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :put} do |f|
     = f.error_notification
     = f.input :reset_password_token, as: :hidden

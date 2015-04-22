@@ -1,10 +1,10 @@
 - content_for(:header_title) { InvoiceGroup.model_name.human(count: 2) }
 - if can? :new, InvoiceGroup
-  - content_for(:header_right) { link_to _("Add new"), new_invoice_group_path, class: "mobile-button-header" }
+  - content_for(:header_right) { link_to t("add_new"), new_invoice_group_path, class: "mobile-button-header" }
 
 = simple_search_form_for @ransack, @ransack_params do |f|
   = f.input :name_cont
-  = f.submit _("Filter"), class: "mobile-button-primary"
+  = f.submit t("filter"), class: "mobile-button-primary"
 
 %table.mobile-table.list
   %thead

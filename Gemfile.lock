@@ -38,9 +38,16 @@ GEM
       rails (>= 4.0.0)
       string-cases
     arel (4.0.2)
-    array_enumerator (0.0.3)
+    array_enumerator (0.0.7)
     autonumeric-rails (1.9.25.0)
       jquery-rails (>= 2.0.2)
+    awesome_translations (0.0.5)
+      array_enumerator (~> 0.0.7)
+      haml
+      jquery-rails
+      rails (>= 3.1.2)
+      sass-rails
+      string-cases
     baza (0.0.13)
       array_enumerator
       datet
@@ -302,6 +309,7 @@ DEPENDENCIES
   acts-as-taggable-on
   agent_helpers
   autonumeric-rails
+  awesome_translations (~> 0.0.5)
   baza
   cancancan
   capistrano

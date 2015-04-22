@@ -1,15 +1,15 @@
-- content_for(:header_title){ _("Frontpage") }
+- content_for(:header_title){ t(".frontpage") }
 
 = design_box Task.model_name.human(count: 2) do
   %div{style: "padding-bottom: 15px;"}
-    = link_to _("Add new"), new_task_path, class: "button"
+    = link_to t("add_new"), new_task_path, class: "button"
 
-  %table.list.task-list{data: {close_msg: _("Closed the task."), create_comment_path: comments_path}}
+  %table.list.task-list{data: {close_msg: t(".closed_the_task"), create_comment_path: comments_path}}
     %thead
       %tr
         %th{colspan: 2}= sort_link @ransack, :name, Task.model_name.human
         %th= sort_link @ransack, :project_name, Project.model_name.human
-        %th= _("Progress")
+        %th= t(".progress")
         %th= sort_link @ransack, :priority
         %th= sort_link @ransack, :user_name
         %th= sort_link @ransack, :created_at
@@ -37,4 +37,4 @@
       - if no_tasks?
         %tr
           %td.error{colspan: 8}
-            = _("No tasks were found.")
+            = t(".no_tasks_were_found")

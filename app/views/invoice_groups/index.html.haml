@@ -1,14 +1,14 @@
 - content_for(:header_title){ InvoiceGroup.model_name.human(count: 2) }
 
 - if can? :new, InvoiceGroup
-  = link_to _("Add new"), new_invoice_group_path, class: "button"
+  = link_to t("add_new"), new_invoice_group_path, class: "button"
   %br
   %br
 
-= design_box _("Filter"), 450 do
+= design_box t("filter"), 450 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :name_cont
-    = f.submit _("Filter")
+    = f.submit t("filter")
 
 %br
 

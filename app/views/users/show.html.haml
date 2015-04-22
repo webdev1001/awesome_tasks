@@ -1,8 +1,8 @@
 - content_for(:header_title){ sprintf(_("Show user: %s."), @user.name) }
 
 - if can?(:edit, @user)
-  = design_box _("Actions"), 450 do
-    = link_to _("Edit"), ["edit", @user], class: "button"
+  = design_box t("actions"), 450 do
+    = link_to t("edit"), ["edit", @user], class: "button"
   %br
 
 = design_box _("Information"), 450 do
@@ -22,16 +22,16 @@
 %br
 
 .tasks-filter-button-container{style: "display: #{params[:q] ? "none" : "block"}"}
-  = link_to _("Filter"), "#", class: ["button", "tasks-filter-button"]
+  = link_to t("filter"), "#", class: ["button", "tasks-filter-button"]
 
 .tasks-filter{style: "display: #{params[:q] ? "block" : "none"}"}
-  = design_box _("Filter"), 550 do
+  = design_box t("filter"), 550 do
     = simple_search_form_for @ransack, @ransack_params do |f|
       = f.input :name_cont
       = f.input :state_eq_any, as: :check_boxes, collection: Task.translated_states.invert
       = f.input :project_name_cont
       = f.input :project_organization_name_cont
-      = f.submit _("Search")
+      = f.submit t("search")
       = link_to _("Hide filter"), "#", class: ["button", "tasks-hide-filter-button"]
   %br
 

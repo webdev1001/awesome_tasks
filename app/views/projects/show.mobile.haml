@@ -1,5 +1,5 @@
 - content_for(:header_title) { sprintf(_("Show project: %s."), @project.name) }
-- content_for(:header_right) { link_to _("Edit"), edit_project_path(@project), class: "mobile-button-header" if can?(:admin, :admin) }
+- content_for(:header_right) { link_to t("edit"), edit_project_path(@project), class: "mobile-button-header" if can?(:admin, :admin) }
 
 = mobile_tabs do |tabs|
   - tabs.tab id: "tab-details", icon: "/assets/icons/list.png", active: true
@@ -38,7 +38,7 @@
                 %td= l(@project.deadline_at.to_date)
 
 #tab-users
-  = link_to _("Add new"), new_user_project_link_path(user_project_link: {project_id: @project.id}), class: "mobile-button"
+  = link_to t("add_new"), new_user_project_link_path(user_project_link: {project_id: @project.id}), class: "mobile-button"
   = render "assigned_users", project: @project
 
 #tab-autoassigned-users

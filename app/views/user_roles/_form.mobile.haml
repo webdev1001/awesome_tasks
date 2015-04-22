@@ -1,4 +1,4 @@
 = simple_form_for user_role do |f|
   = f.input :user_id, as: :hidden
   = f.input :role, collection: UserRole.translated_roles
-  = f.submit _("Save"), class: "mobile-button-primary"
+  = f.submit t("save"), class: "mobile-button-primary"

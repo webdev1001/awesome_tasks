@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
   helper_method :available_locales
   def available_locales
     {
-      "da" => _("Danish"),
-      "en" => _("English")
+      "da" => t(".danish"),
+      "en" => t(".english")
     }
   end
 

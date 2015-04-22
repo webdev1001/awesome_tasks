@@ -1,12 +1,12 @@
 - content_for(:header_title){ _("Show organization: %{name}", name: @organization.name) }
 
-= design_box _("Actions"), 350 do
+= design_box t("actions"), 350 do
   = link_to _("Edit organization"), edit_organization_path(@organization), class: "button"
   = link_to _("Add project"), new_project_path(project: {organization_id: @organization.id}), class: "button"
 
 %br
 
-= design_box _("Details"), 500 do
+= design_box t("details"), 500 do
   %table.form
     %tbody
       %tr
@@ -14,10 +14,10 @@
         %td= mail_to @organization.email if @organization.email?
       %tr
         %td= Organization.human_attribute_name(:customer)
-        %td= @organization.customer? ? _("Yes") : _("No")
+        %td= @organization.customer? ? t("yes") : t("no")
       %tr
         %td= Organization.human_attribute_name(:creditor)
-        %td= @organization.creditor? ? _("Yes") : _("No")
+        %td= @organization.creditor? ? t("yes") : t("no")
 
       - [:name, :vat_no, :delivery_address, :delivery_zip_code, :delivery_city, :delivery_country, :invoice_address, :invoice_zip_code, :invoice_city, :invoice_country].each do |column|
         %tr

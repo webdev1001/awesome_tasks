@@ -1,6 +1,6 @@
 - content_for(:header_title) { _("Show timelog %{id}", id: @timelog.id) }
 - if can? :edit, @timelog
-  - content_for(:header_right) { link_to _("Edit"), [:edit, @timelog], class: "mobile-button-header" }
+  - content_for(:header_right) { link_to t("edit"), [:edit, @timelog], class: "mobile-button-header" }
 
 %table.mobile-table.form
   %tbody
@@ -33,7 +33,7 @@
       %td= @timelog.transport_length
     %tr
       %td= Timelog.human_attribute_name(:invoiced)
-      %td= @timelog.invoiced? ? _("Yes") : _("No")
+      %td= @timelog.invoiced? ? t("yes") : t("no")
     %tr
       %td= Timelog.human_attribute_name(:invoiced_at)
       %td= l(@timelog.invoiced_at, format: :long) if @timelog.invoiced_at?

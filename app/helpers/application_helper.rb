@@ -6,8 +6,8 @@ module ApplicationHelper
 
   def knjrbfw_opts(query, args = {})
     list = {}
-    list[""] = _("Choose:") if args[:choose]
-    list[""] = _("All") if args[:all]
+    list[""] = t("choose") if args[:choose]
+    list[""] = t("all") if args[:all]
 
     query.each do |model|
       list[model.id] = model.name
@@ -32,9 +32,9 @@ module ApplicationHelper
 
   def form_boolean_collection
     {
-      _("All") => nil,
-      _("True") => 1,
-      _("False") => 0
+      t("all") => nil,
+      t("true") => 1,
+      t("false") => 0
     }
   end
 

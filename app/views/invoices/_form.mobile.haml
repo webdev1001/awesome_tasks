@@ -9,5 +9,5 @@
   = f.input :invoice_type, collection: Invoice.translated_invoice_types
   = f.input :amount, input_html: {data: {autonumeric: true}}
   = f.input :no_vat
-  = f.submit _("Save"), class: "mobile-button-primary"
-  = link_to _("Delete"), invoice_path(invoice), class: "mobile-button-danger", method: :delete, data: {confirm: _("Are you sure?")} if can?(:destroy, invoice) && !invoice.new_record?
+  = f.submit t("save"), class: "mobile-button-primary"
+  = link_to t("delete"), invoice_path(invoice), class: "mobile-button-danger", method: :delete, data: {confirm: t("are_you_sure")} if can?(:destroy, invoice) && !invoice.new_record?

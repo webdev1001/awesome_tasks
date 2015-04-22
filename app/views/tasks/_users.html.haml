@@ -2,13 +2,13 @@
   %thead
     %tr
       %th= User.model_name.human
-      %th= _("Actions")
+      %th= t(".actions")
   %tbody
     - users.each do |link|
       %tr
         %td= link_to_user link.user
-        %td= link_to _("Remove"), "#", class: "remove_user", data: {link_id: link.id, confirm_msg: _("Are you sure?")}
+        %td= link_to t(".remove"), "#", class: "remove_user", data: {link_id: link.id, confirm_msg: t(".are_you_sure")}
     - if users.none?
       %tr
         %td.error{colspan: 2}
-          = _("No users has been assigned to this task.")
+          = t(".no_users_has_been_assigned_to_this_task")

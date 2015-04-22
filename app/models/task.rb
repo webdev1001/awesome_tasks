@@ -28,10 +28,10 @@ class Task < ActiveRecord::Base
 
   def self.translated_task_types
     return {
-      feature: _("Feature"),
-      bug: _("Bug report"),
-      question: _("Question"),
-      other: _("Other")
+      feature: t(".feature"),
+      bug: t(".bug_report"),
+      question: t(".question"),
+      other: t(".other")
     }
   end
 
@@ -45,11 +45,11 @@ class Task < ActiveRecord::Base
 
   def self.translated_states
     return {
-      open: _("Open"),
-      confirmed: _("Confirmed"),
-      waiting: _("Waiting"),
-      inactive: _("Inactive"),
-      closed: _("Closed")
+      open: t(".open"),
+      confirmed: t(".confirmed"),
+      waiting: t(".waiting"),
+      inactive: t(".inactive"),
+      closed: t(".closed")
     }
   end
 

@@ -1,7 +1,7 @@
 - content_for(:header_title){ _("Sign in") }
 
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  = design_box _("Enter details"), 550 do
+  = design_box t("enter_details"), 550 do
     = f.input :email, required: false, autofocus: true
     = f.input :password, required: false, label: _("Password")
     = f.input :remember_me, as: :boolean, label: _("Remember me") if devise_mapping.rememberable?

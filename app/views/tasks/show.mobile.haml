@@ -1,5 +1,5 @@
 - content_for(:header_title) { _("Show task: %{task_name}", task_name: @task.name) }
-- content_for(:header_right) { link_to _("Edit"), [:edit, @task], class: "mobile-button-header" }
+- content_for(:header_right) { link_to t("edit"), [:edit, @task], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
   - tabs.tab icon: "/assets/icons/list.png", id: "tab-details", active: true

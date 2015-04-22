@@ -2,8 +2,8 @@
   = f.input :title, autofocus: true
   = f.input :quantity, input_html: {data: {autonumeric: true}}
   = f.input :amount, input_html: {data: {autonumeric: true}}
-  = f.submit _("Save"), class: "mobile-button-primary"
+  = f.submit t("save"), class: "mobile-button-primary"
 
   - if can?(:destroy, invoice_line) && !invoice_line.new_record?
-    = link_to _("Delete"), [invoice_line.invoice, invoice_line], method: :delete, data: {confirm: _("Are you sure?")}, class: "mobile-button-danger"
+    = link_to t("delete"), [invoice_line.invoice, invoice_line], method: :delete, data: {confirm: t("are_you_sure")}, class: "mobile-button-danger"
 
