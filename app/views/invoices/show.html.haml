@@ -54,6 +54,9 @@
       %tr
         %td.tdt= Invoice.human_attribute_name(:user)
         %td.align-right= link_to_user @invoice.user
+      %tr
+        %td.tdt= _("Reconciled?")
+        %td.align-right= @invoice.reconciled? ? _("Yes") : _("No")
 
 %br
 
@@ -73,6 +76,48 @@
 %br
 
 = render "/uploaded_files/list_for_resource", resource: @invoice
+
+%br
+
+- if !@invoice.reconciled?
+  = design_box _("Reconcile invoice"), 700 do
+    %p
+      = _("This invoice is not reconciled.")
+      = _("You can reconcile it by choosing a matching account-line below.")
+
+    %table.list
+      %thead
+        %tr
+          %th= AccountLine.human_attribute_name(:text)
+          %th= AccountLine.human_attribute_name(:booked_at)
+          %th.align-right= AccountLine.human_attribute_name(:amount)
+      %tbody
+        - @matching_account_lines.each do |account_line|
+          %tr
+            %td= link_to account_line.text, account_account_line_path(account_line.account, account_line, account_line: {invoice_id: @invoice.id}, back_url: invoice_path(@invoice)), method: :put, data: {confirm: _("Are you sure?")}
+            %td= l(account_line.booked_at, format: :short)
+            %td.align-right= format_number account_line.amount
+        - if @matching_account_lines.empty?
+          %tr
+            %td{colspan: 3}= _("No matching account-lines.")
+%br
+
+= design_box AccountLine.model_name.human(count: 2), 700 do
+  %table.list
+    %thead
+      %tr
+        %th= AccountLine.human_attribute_name(:text)
+        %th= AccountLine.human_attribute_name(:booked_at)
+        %th.align-right= AccountLine.human_attribute_name(:amount)
+    %tbody
+      - @invoice.account_lines.each do |account_line|
+        %tr
+          %td= link_to_account_line account_line
+          %td= l(account_line.booked_at, format: :short)
+          %td.align-right= format_number account_line.amount
+      - if @invoice.account_lines.empty?
+        %tr
+          %td{colspan: 3}= _("No account-lines has been attached to this invoice.")
 
 %br
 

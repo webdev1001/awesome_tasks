@@ -37,7 +37,7 @@ class AccountLinesController < ApplicationController
 
   def update
     if @account_line.update_attributes(account_line_params)
-      redirect_to account_account_line_url(@account, @account_line)
+      redirect_to params[:back_url] || account_account_line_url(@account, @account_line)
     else
       render :new
     end
@@ -55,7 +55,7 @@ class AccountLinesController < ApplicationController
 private
 
   def account_line_params
-    params.require(:account_line).permit(:text, :rent_at, :booked_at, :amount)
+    params.require(:account_line).permit(:text, :rent_at, :booked_at, :amount, :invoice_id)
   end
 
   def set_account

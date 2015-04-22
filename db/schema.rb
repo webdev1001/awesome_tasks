@@ -145,13 +145,12 @@ ActiveRecord::Schema.define(version: 20150422093044) do
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "timelog_id"
   end
 
   add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
-  add_index "invoice_lines", ["timelog_id"], name: "index_invoice_lines_on_timelog_id", using: :btree
 
   create_table "invoices", force: true do |t|
+    t.string   "title"
     t.date     "date"
     t.string   "invoice_no"
     t.string   "invoice_type"
@@ -167,6 +166,7 @@ ActiveRecord::Schema.define(version: 20150422093044) do
   end
 
   add_index "invoices", ["creditor_id"], name: "index_invoices_on_creditor_id", using: :btree
+  add_index "invoices", ["invoice_no"], name: "index_invoices_on_invoice_no", using: :btree
   add_index "invoices", ["organization_id"], name: "index_invoices_on_organization_id", using: :btree
   add_index "invoices", ["state"], name: "index_invoices_on_state", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree

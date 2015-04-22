@@ -29,7 +29,17 @@ class AccountImportsController < ApplicationController
   end
 
   def update
-    if @account_import.update_attributes(account_import_params)
+    @account_import.assign_attributes(account_import_params)
+
+    if account_import_params[:uploaded_file_attributes][:file].present?
+      @account_import.uploaded_file.user = current_user
+      @account_import.uploaded_file.resource = @account_import
+    end
+
+    if @account_import.save
+      # Delete previous uploaded files that is no longer attached.
+      UploadedFile.where(resource: @account_import).where("uploaded_files.id != ?", @account_import.uploaded_file.id).destroy_all
+
       redirect_to account_account_import_url(@account, @account_import)
     else
       render :edit
@@ -76,7 +86,7 @@ private
 
   def set_account
     @account = Account.find(params[:account_id])
-    @account_import.account = @account unless @account_import.account.present?
+    @account_import.account = @account if @account_import && !@account_import.account
   end
 
   helper_method :rows

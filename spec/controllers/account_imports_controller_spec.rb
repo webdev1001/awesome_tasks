@@ -4,6 +4,11 @@ describe AccountImportsController do
   let(:user_admin) { create :user_admin }
   let(:account) { create :account }
   let(:account_import) { create :account_import, account: account }
+  let(:valid_attributes) { {
+    uploaded_file_attributes: {
+      file: fixture_file_upload(Rails.root.join("spec", "images", "kaspernj.jpg"), "image/jpeg")
+    }
+  } }
 
   render_views
 
@@ -33,7 +38,7 @@ describe AccountImportsController do
 
     created_account_import = assigns(:account_import)
 
-    expect(response).to redirect_to account_account_import_url(created_account_import)
+    expect(response).to redirect_to account_account_import_url(account, created_account_import)
   end
 
   it "#edit" do
@@ -42,8 +47,15 @@ describe AccountImportsController do
   end
 
   it "#update" do
+    uploaded_file = account_import.uploaded_file
     put :update, account_id: account.id, id: account_import.id, account_import: valid_attributes
-    expect(response).to redirect_to account_account_import_url(account_import)
+
+    updated_account_import = assigns(:account_import)
+    expect(updated_account_import).to be_valid
+
+    expect { uploaded_file.reload }.to raise_error(ActiveRecord::RecordNotFound)
+
+    expect(response).to redirect_to account_account_import_url(account, account_import)
   end
 
   it "#destroy" do

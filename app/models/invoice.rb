@@ -131,6 +131,14 @@ class Invoice < ActiveRecord::Base
     amount.to_f + amount_vat
   end
 
+  def reconciled_amount
+    account_lines.sum(:amount)
+  end
+
+  def reconciled?
+    amount_total == reconciled_amount
+  end
+
 private
 
   def before_validation_set_price_if_not_given

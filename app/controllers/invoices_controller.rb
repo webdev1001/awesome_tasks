@@ -38,6 +38,7 @@ class InvoicesController < ApplicationController
   end
 
   def show
+    @matching_account_lines = AccountLine.without_invoice.where(amount: @invoice.amount_total)
   end
 
   def destroy

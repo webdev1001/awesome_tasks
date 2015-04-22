@@ -25,7 +25,7 @@ gem 'ransack'
 gem 'haml-rails'
 gem 'baza'
 gem 'email_validator'
-gem 'rails_imager', '0.0.25'
+gem 'rails_imager', '0.0.27'
 gem 'will_paginate'
 gem 'agent_helpers'
 gem 'whenever', require: false
