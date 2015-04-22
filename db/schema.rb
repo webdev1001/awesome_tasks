@@ -11,7 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331032040) do
+ActiveRecord::Schema.define(version: 20150422093044) do
+
+  create_table "account_import_columns", force: true do |t|
+    t.integer  "account_import_id"
+    t.integer  "column_no"
+    t.string   "column_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "account_import_columns", ["account_import_id"], name: "index_account_import_columns_on_account_import_id", using: :btree
+
+  create_table "account_imports", force: true do |t|
+    t.integer  "account_id"
+    t.string   "state"
+    t.string   "file_encoding"
+    t.string   "separator"
+    t.string   "amount_format"
+    t.datetime "executed_at"
+    t.datetime "finished_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "account_imports", ["account_id"], name: "index_account_imports_on_account_id", using: :btree
+
+  create_table "account_lines", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "account_import_id"
+    t.integer  "invoice_id"
+    t.string   "text"
+    t.datetime "interest_at"
+    t.datetime "booked_at"
+    t.float    "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "account_lines", ["account_id"], name: "index_account_lines_on_account_id", using: :btree
+  add_index "account_lines", ["account_import_id"], name: "index_account_lines_on_account_import_id", using: :btree
+  add_index "account_lines", ["amount"], name: "index_account_lines_on_amount", using: :btree
+  add_index "account_lines", ["booked_at"], name: "index_account_lines_on_booked_at", using: :btree
+  add_index "account_lines", ["interest_at"], name: "index_account_lines_on_interest_at", using: :btree
+  add_index "account_lines", ["invoice_id"], name: "index_account_lines_on_invoice_id", using: :btree
+
+  create_table "accounts", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -96,11 +145,9 @@ ActiveRecord::Schema.define(version: 20150331032040) do
     t.integer  "invoice_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "timelog_id"
   end
 
   add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
-  add_index "invoice_lines", ["timelog_id"], name: "index_invoice_lines_on_timelog_id", using: :btree
 
   create_table "invoices", force: true do |t|
     t.string   "title"

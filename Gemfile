@@ -25,7 +25,7 @@ gem 'ransack'
 gem 'haml-rails'
 gem 'baza'
 gem 'email_validator'
-gem 'rails_imager', '0.0.25'
+gem 'rails_imager', '0.0.27'
 gem 'will_paginate'
 gem 'agent_helpers'
 gem 'whenever', require: false
@@ -35,6 +35,7 @@ gem 'public_activity'
 gem 'light_mobile', '~> 0.0.7'
 gem 'rmagick', platform: :ruby
 gem 'rmagick4j', platform: :jruby
+gem 'csv_lazy', '~> 0.0.9'
 
 # For handeling internationalized amount formats.
 gem 'autonumeric-rails'

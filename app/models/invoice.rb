@@ -3,12 +3,13 @@ class Invoice < ActiveRecord::Base
 
   # Track changes.
   include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.try(:current_user) }
+  tracked owner: proc { |controller, model| controller.try(:current_user) }
 
   belongs_to :creditor, class_name: "Organization"
   belongs_to :organization
   belongs_to :user
 
+  has_many :account_lines, dependent: :restrict_with_error
   has_many :invoice_lines, dependent: :destroy
   has_many :invoice_group_links, dependent: :destroy
   has_many :invoice_groups, through: :invoice_group_links
@@ -16,9 +17,9 @@ class Invoice < ActiveRecord::Base
 
   validates_presence_of :user, :date, :invoice_type
 
-  scope :debit, ->{ where(invoice_type: "debit") }
-  scope :credit, ->{ where(invoice_type: "credit") }
-  scope :purchase, ->{ where(invoice_type: "purchase") }
+  scope :debit, -> { where(invoice_type: "debit") }
+  scope :credit, -> { where(invoice_type: "credit") }
+  scope :purchase, -> { where(invoice_type: "purchase") }
 
   before_validation :before_validation_set_price_if_not_given
 
@@ -127,7 +128,25 @@ class Invoice < ActiveRecord::Base
   end
 
   def amount_total
-    amount.to_f + amount_vat
+    amount.to_f + amount_vat.to_f
+  end
+
+  def amount_total_for_account
+    if invoice_type == "purchase" || invoice_type == "credit"
+      -amount_total
+    elsif invoice_type == "debit"
+      amount_total
+    else
+      raise "Invalid invoice-type: #{invoice_type}"
+    end
+  end
+
+  def reconciled_amount
+    account_lines.sum(:amount)
+  end
+
+  def reconciled?
+    amount_total_for_account == reconciled_amount
   end
 
 private

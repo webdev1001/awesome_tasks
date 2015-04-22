@@ -1,0 +1,20 @@
+- content_for(:header_title) { _("Show account: %{name}", name: @account.name) }
+
+= link_to AccountLine.model_name.human(count: 2), account_account_lines_path(@account), class: "button"
+= link_to _("Import"), new_account_account_import_path(@account), class: "button"
+
+%br
+%br
+
+= design_box _("Details"), 600 do
+  %table.form
+    %tbody
+      %tr
+        %td= Account.human_attribute_name(:name)
+        %td= @account.name
+      %tr
+        %td= Account.human_attribute_name(:created_at)
+        %td= l(@account.created_at, format: :long)
+      %tr
+        %td= Account.human_attribute_name(:updated_at)
+        %td= l(@account.updated_at, format: :long)

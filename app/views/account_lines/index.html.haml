@@ -1,0 +1,40 @@
+- content_for(:header_title) { AccountLine.model_name.human(count: 2) }
+
+- if @account && can?(:new, AccountLine)
+  = design_box _("Actions"), 350 do
+    = link_to _("New account-line"), new_account_account_line_path(@account), class: "button"
+    = link_to _("Account"), account_path(@account), class: "button" if @account
+
+  %br
+  %br
+
+= design_box _("Filter"), 350 do
+  = simple_search_form_for @ransack, @ransack_values do |f|
+    = f.input :text_cont
+    = f.submit _("Filter")
+
+%br
+%br
+
+= design_box _("Results"), 800 do
+  %table.list
+    %thead
+      %tr
+        %th= sort_link @ransack, :text
+        %th= sort_link @ransack, :interest_at
+        %th= sort_link @ransack, :invoice_id, AccountLine.human_attribute_name(:invoice)
+        %th.align-right= sort_link @ransack, :amount
+    %tbody
+      - @account_lines.each do |account_line|
+        %tr
+          %td= link_to_account_line account_line
+          %td= l(account_line.interest_at, format: :short)
+          %td= link_to_invoice account_line.invoice if account_line.invoice
+          %td.align-right= format_number account_line.amount
+      - if @account_lines.empty?
+        %tr
+          %td{colspan: 3}= _("No account-lines were found.")
+
+%br
+
+= will_paginate @account_lines

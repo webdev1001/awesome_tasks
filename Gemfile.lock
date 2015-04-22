@@ -80,6 +80,8 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorize (0.7.3)
+    csv_lazy (0.0.9)
+      string-strtr
     daemons (1.1.9)
     datet (0.0.25)
     delayed_job (4.0.2)
@@ -195,7 +197,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.13)
       sprockets-rails (~> 2.0)
-    rails_imager (0.0.25)
+    rails_imager (0.0.27)
       datet (~> 0.0.25)
       knjrbfw (~> 0.0.112)
       rails (>= 4.0.0)
@@ -308,6 +310,7 @@ DEPENDENCIES
   ckeditor
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
+  csv_lazy (~> 0.0.9)
   daemons
   datet
   delayed_job_active_record
@@ -332,7 +335,7 @@ DEPENDENCIES
   pry
   public_activity
   rails (= 4.0.13)
-  rails_imager (= 0.0.25)
+  rails_imager (= 0.0.27)
   ransack
   rmagick
   rmagick4j

@@ -3,6 +3,17 @@ AwesomeTasks::Application.routes.draw do
   mount RailsImager::Engine => "/rails_imager"
   devise_for :users, encryptor: :md5
 
+  resources :accounts do
+    resources :account_imports do
+      post :update_columns, on: :member
+      post :execute, on: :member
+    end
+
+    resources :account_lines
+  end
+
+  resources :account_lines, only: :index
+
   resources :comments, except: [:show, :index]
   resources :invoices do
     get :pdf, on: :member
