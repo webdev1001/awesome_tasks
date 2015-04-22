@@ -1,0 +1,26 @@
+- content_for(:header_title) { _("Show account-line %{id}", id: @account_line.id) }
+
+= design_box _("Details"), 800 do
+  %table.form
+    %tbody
+      %tr
+        %td= AccountLine.human_attribute_name(:account)
+        %td= link_to_account @account_line.account
+      %tr
+        %td= AccountLine.human_attribute_name(:text)
+        %td= @account_line.text
+      %tr
+        %td= AccountLine.human_attribute_name(:rent_at)
+        %td= l(@account_line.rent_at, format: :long)
+      %tr
+        %td= AccountLine.human_attribute_name(:booked_at)
+        %td= l(@account_line.booked_at, format: :long)
+      %tr
+        %td= AccountLine.human_attribute_name(:amount)
+        %td= format_number @account_line.amount
+      %tr
+        %td= AccountLine.human_attribute_name(:created_at)
+        %td= l(@account_line.created_at, format: :long)
+      %tr
+        %td= AccountLine.human_attribute_name(:updated_at)
+        %td= l(@account_line.updated_at, format: :long)

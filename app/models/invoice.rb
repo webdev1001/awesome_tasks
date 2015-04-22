@@ -3,7 +3,7 @@ class Invoice < ActiveRecord::Base
 
   # Track changes.
   include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.try(:current_user) }
+  tracked owner: proc { |controller, model| controller.try(:current_user) }
 
   belongs_to :creditor, class_name: "Organization"
   belongs_to :organization
@@ -16,9 +16,9 @@ class Invoice < ActiveRecord::Base
 
   validates_presence_of :user, :date, :invoice_type
 
-  scope :debit, ->{ where(invoice_type: "debit") }
-  scope :credit, ->{ where(invoice_type: "credit") }
-  scope :purchase, ->{ where(invoice_type: "purchase") }
+  scope :debit, -> { where(invoice_type: "debit") }
+  scope :credit, -> { where(invoice_type: "credit") }
+  scope :purchase, -> { where(invoice_type: "purchase") }
 
   before_validation :before_validation_set_price_if_not_given
 

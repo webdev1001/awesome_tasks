@@ -1,0 +1,3 @@
+- content_for(:header_title) { _("Edit account line %{id}", id: @account_line.id) }
+
+= render "form", account: @account, account_line: @account_line

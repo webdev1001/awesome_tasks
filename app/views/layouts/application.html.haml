@@ -45,6 +45,7 @@
                 = link_to _("Work-status"), workstatus_index_path if can? :admin, :admin
                 = link_to InvoiceGroup.model_name.human(count: 2), invoice_groups_path if can? :index, InvoiceGroup
                 = link_to Invoice.model_name.human(count: 2), invoices_path if can? :index, Invoice
+                = link_to Account.model_name.human(count: 2), accounts_path if can? :index, Account
                 = link_to UploadedFile.model_name.human(count: 2), uploaded_files_path if can? :index, UploadedFile
                 = link_to _("Your profile"), profile_index_path if signed_in?
                 = link_to _("Log out"), destroy_user_session_path, method: :delete if signed_in?

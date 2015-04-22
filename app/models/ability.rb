@@ -28,6 +28,8 @@ private
 
   def administrator
     can :admin, :admin
+    can :manage, Account
+    can :manage, AccountLine
     can :manage, Comment
     can :manage, Organization
     can :manage, Comment

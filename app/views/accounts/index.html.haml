@@ -1,0 +1,31 @@
+- content_for(:header_title) { Account.model_name.human(count: 2) }
+
+- if can? :new, Account
+  = design_box _("Options"), 350 do
+    = link_to _("New account"), new_account_path, class: "button" if can? :new, Account
+
+  %br
+  %br
+
+= design_box _("Filter"), 500 do
+  = simple_search_form_for @ransack, @ransack_values do |f|
+    = f.input :name_cont
+    = f.submit _("Filter")
+
+%br
+%br
+
+= design_box _("Results"), 800 do
+  %table.list
+    %thead
+      %tr
+        %th= sort_link @ransack, :name
+    %tbody
+      - @accounts.each do |account|
+        %tr
+          %td= link_to_account account
+      - if @accounts.empty?
+        %tr
+          %td{colspan: 1}= _("No accounts were found.")
+
+= will_paginate @accounts

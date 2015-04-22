@@ -1,0 +1,4 @@
+= design_box _("Enter details"), 500 do
+  = simple_form_for account do |f|
+    = f.input :name, autofocus: true
+    = f.submit _("Save"), class: "btn"
