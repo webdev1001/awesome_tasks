@@ -35,7 +35,7 @@ gem 'public_activity'
 gem 'light_mobile', '~> 0.0.7'
 gem 'rmagick', platform: :ruby
 gem 'rmagick4j', platform: :jruby
-gem 'csv_lazy', path: "/home/kaspernj/Dev/Ruby/csv_lazy"
+gem 'csv_lazy', '~> 0.0.9'
 
 # For handeling internationalized amount formats.
 gem 'autonumeric-rails'

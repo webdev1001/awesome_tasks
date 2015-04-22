@@ -1,9 +1,3 @@
-PATH
-  remote: /home/kaspernj/Dev/Ruby/csv_lazy
-  specs:
-    csv_lazy (0.0.8)
-      string-strtr
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -86,6 +80,8 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorize (0.7.3)
+    csv_lazy (0.0.9)
+      string-strtr
     daemons (1.1.9)
     datet (0.0.25)
     delayed_job (4.0.2)
@@ -314,7 +310,7 @@ DEPENDENCIES
   ckeditor
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
-  csv_lazy!
+  csv_lazy (~> 0.0.9)
   daemons
   datet
   delayed_job_active_record

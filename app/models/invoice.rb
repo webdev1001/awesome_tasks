@@ -128,7 +128,17 @@ class Invoice < ActiveRecord::Base
   end
 
   def amount_total
-    amount.to_f + amount_vat
+    amount.to_f + amount_vat.to_f
+  end
+
+  def amount_total_for_account
+    if invoice_type == "purchase" || invoice_type == "credit"
+      -amount_total
+    elsif invoice_type == "debit"
+      amount_total
+    else
+      raise "Invalid invoice-type: #{invoice_type}"
+    end
   end
 
   def reconciled_amount
@@ -136,7 +146,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def reconciled?
-    amount_total == reconciled_amount
+    amount_total_for_account == reconciled_amount
   end
 
 private
