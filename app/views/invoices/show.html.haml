@@ -79,7 +79,7 @@
 
 %br
 
-- if !@invoice.reconciled?
+- unless @invoice.reconciled?
   = design_box _("Reconcile invoice"), 700 do
     %p
       = _("This invoice is not reconciled.")
