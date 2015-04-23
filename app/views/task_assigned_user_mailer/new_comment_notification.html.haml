@@ -2,13 +2,11 @@
 %br
 %br
 
-= t(".a_new_comment_has_been_written_to_the_task"), @task.name)
+= t(".a_new_comment_has_been_written_to_the_task", task_name: @task.name)
 %br
 %br
 
-%b
-  = t(".author")
-  \:
+%b= "#{t(".author")}:"
 %br
 
 = @author.name
@@ -17,7 +15,7 @@
 
 %b= Task.model_name.human
 %br
-%a{href: @task_url}= @task_url
+= link_to @task_url, @task_url
 %br
 %br
 

@@ -1,4 +1,4 @@
-- content_for(:header_title){ t(".show_project"), name: @project.name) }
+- content_for(:header_title){ t(".show_project", name: @project.name) }
 
 %table.project_table{data: {project_id: @project.id, assigned_users_path: assigned_users_project_path(@project)}}
   %tr

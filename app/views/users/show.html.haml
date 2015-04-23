@@ -1,4 +1,4 @@
-- content_for(:header_title){ t(".show_user"), name: @user.name) }
+- content_for(:header_title){ t(".show_user", name: @user.name) }
 
 - if can?(:edit, @user)
   = design_box t("actions"), 450 do

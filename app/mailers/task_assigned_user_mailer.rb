@@ -9,7 +9,7 @@ class TaskAssignedUserMailer < ActionMailer::Base
 
     I18n.with_locale @user.locale! do
       subject = "[#{@task.project.name}] "
-      subject << t(".you_have_been_assigned_to"), task_assigned_user.task.name)
+      subject << t(".you_have_been_assigned_to", task_name: task_assigned_user.task.name)
       mail(to: @user.email, subject: subject, message_id: @task.first_email_id)
     end
   end
@@ -22,7 +22,7 @@ class TaskAssignedUserMailer < ActionMailer::Base
     @task_url = task_url
 
     I18n.with_locale user.locale! do
-      subject = "[#{@task.project.name}] #{t(".task_id_and_name"), id: @task.id, name: @task.name)} - "
+      subject = "[#{@task.project.name}] #{t(".task_id_and_name", id: @task.id, name: @task.name)} - "
       subject << t(".new_comment_from_author", author_name: @author.name)
 
       mail(
