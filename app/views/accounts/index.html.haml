@@ -2,7 +2,7 @@
 
 - if can? :new, Account
   = design_box t("options"), 350 do
-    = link_to _("New account"), new_account_path, class: "button" if can? :new, Account
+    = link_to t(".new_account"), new_account_path, class: "button" if can? :new, Account
 
   %br
   %br

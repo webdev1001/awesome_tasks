@@ -22,7 +22,7 @@ class TaskAssignedUserMailer < ActionMailer::Base
     @task_url = task_url
 
     I18n.with_locale user.locale! do
-      subject = "[#{@task.project.name}] #{sprintf(_("Task #%1$s: %2$s"), @task.id, @task.name)} - "
+      subject = "[#{@task.project.name}] #{t(".task_id_and_name"), id: @task.id, name: @task.name)} - "
       subject << t(".new_comment_from_author", author_name: @author.name)
 
       mail(

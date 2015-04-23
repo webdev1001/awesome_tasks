@@ -1,7 +1,7 @@
 - content_for(:header_title){ t(".invoice_with_number", invoice_no: @invoice.invoice_no) }
 
 - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
-  = design_box _("Manage"), 600 do
+  = design_box t(".manage"), 600 do
     = link_to t("edit"), edit_invoice_path(@invoice), class: "button" if can? :edit, @invoice
     = link_to t("delete"), @invoice, class: "button", method: :delete, data: {confirm: t("are_you_sure")} if can? :destory, @invoice
     = link_to t(".pdf"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice

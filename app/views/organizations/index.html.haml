@@ -1,4 +1,4 @@
-- content_for(:header_title){ _("Search for organizations") }
+- content_for(:header_title){ t(".search_for_organizations") }
 
 = design_box t("enter_criteria"), 350 do
   = simple_search_form_for @ransack, @ransack_params do |f|

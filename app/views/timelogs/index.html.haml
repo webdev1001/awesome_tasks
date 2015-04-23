@@ -115,4 +115,4 @@
         - unless @timelogs_sorted.empty?
           %tr
             %td{colspan: 3, style: "padding-top: 15px; text-align: right;"}
-              = link_to t(".mark_timelogs_as_invoiced"), "#", class: ["button", "mark_timelogs_as_invoiced"], data: {url: mark_invoiced_timelogs_path, success_msg: _('All timelogs was marked as invoiced.'), confirm_msg: t(".are_you_sure_you_want_to_mark_all_the_found_timelogs_as_invoiced")}
+              = link_to t(".mark_timelogs_as_invoiced"), "#", class: ["button", "mark_timelogs_as_invoiced"], data: {url: mark_invoiced_timelogs_path, success_msg: t(".all_timelogs_was_marked_as_invoiced"), confirm_msg: t(".are_you_sure_you_want_to_mark_all_the_found_timelogs_as_invoiced")}

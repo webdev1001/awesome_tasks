@@ -10,7 +10,7 @@
 
     - unless project.new_record?
       .added_by
-        = _("Added by %{user_link}", user_link: link_to_user(project.user_added)).html_safe
+        = t(".added_by_user_link", user_link: link_to_user(project.user_added)).html_safe
 
       = link_to t("show"), project_path(project), class: "button"
       = link_to t(".add_task"), new_task_path(task: {project_id: project.id}), class: "button"

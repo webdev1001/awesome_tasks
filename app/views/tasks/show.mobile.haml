@@ -25,7 +25,7 @@
         %td.tdt= Project.model_name.human
         %td= link_to_project(@task.project) if @task.project
       %tr
-        %td.tdt= _("Author")
+        %td.tdt= t(".author")
         %td= link_to_user(@task.user) if @task.user
       %tr
         %td.tdt= Task.human_attribute_name(:priority)
