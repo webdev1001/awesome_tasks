@@ -11,4 +11,4 @@
         %td= link_to_user task_assigned_user.user_assigned_by
 
   - if can? :destroy, task_assigned_user
-    = link_to _("Unassign"), task_assigned_user, method: :delete, data: {confirm: t("are_you_sure")}, class: "mobile-button-danger"
+    = link_to t(".unassign"), task_assigned_user, method: :delete, data: {confirm: t("are_you_sure")}, class: "mobile-button-danger"

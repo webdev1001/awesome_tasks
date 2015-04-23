@@ -6,8 +6,8 @@ class UserRole < ActiveRecord::Base
 
   def self.translated_roles
     {
-      _("Administrator") => "administrator",
-      _("Organization administrator") => "organization_administrator"
+      t(".administrator") => "administrator",
+      t(".organization_administrator") => "organization_administrator"
     }
   end
 
@@ -22,6 +22,6 @@ class UserRole < ActiveRecord::Base
 private
 
   def validate_role
-    errors.add(:role, _("is not allowed: %{role}", role: role)) unless UserRole.translated_roles.values.include?(role.to_s)
+    errors.add(:role, t(".is_not_allowed_role", role: role)) unless UserRole.translated_roles.values.include?(role.to_s)
   end
 end

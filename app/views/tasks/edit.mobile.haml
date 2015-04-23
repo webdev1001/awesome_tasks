@@ -1,2 +1,2 @@
-- content_for(:header_title){ _("Edit task: %{task_name}", task_name: @task.name) }
+- content_for(:header_title){ t(".edit_task_task_name", task_name: @task.name) }
 = render "form", task: @task

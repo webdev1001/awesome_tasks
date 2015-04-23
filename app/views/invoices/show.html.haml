@@ -1,14 +1,14 @@
-- content_for(:header_title){ _("Invoice %{invoice_no}", invoice_no: @invoice.invoice_no) }
+- content_for(:header_title){ t(".invoice_with_number", invoice_no: @invoice.invoice_no) }
 
 - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
   = design_box _("Manage"), 600 do
     = link_to t("edit"), edit_invoice_path(@invoice), class: "button" if can? :edit, @invoice
     = link_to t("delete"), @invoice, class: "button", method: :delete, data: {confirm: t("are_you_sure")} if can? :destory, @invoice
-    = link_to _("PDF"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice
+    = link_to t(".pdf"), ["pdf", @invoice], class: "button" if can? :pdf, @invoice
 
-    = link_to _("Finish"), finish_invoice_path(@invoice), method: :post, class: "button", data: {confirm: t("are_you_sure")} if @invoice.can_finish?
-    = link_to _("Register as sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_sent?
-    = link_to _("Register as paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_paid?
+    = link_to t(".finish"), finish_invoice_path(@invoice), method: :post, class: "button", data: {confirm: t("are_you_sure")} if @invoice.can_finish?
+    = link_to t(".register_as_sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_sent?
+    = link_to t(".register_as_paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_paid?
 
 %br
 
@@ -38,12 +38,12 @@
         %td.align-right.nowrap= format_number @invoice.amount
       %tr
         %td.tdt= Invoice.human_attribute_name(:no_vat)
-        %td.align-right= @invoice.no_vat? ? _("True") : _("False")
+        %td.align-right= @invoice.no_vat? ? t("true") : t("false")
       %tr
-        %td.tdt= _("Vat")
+        %td.tdt= t("vat")
         %td.align-right.nowrap= format_number @invoice.amount_vat
       %tr
-        %td.tdt= _("Total")
+        %td.tdt= t("total")
         %td.align-right.nowrap= format_number @invoice.amount_total
       %tr
         %td.tdt= Invoice.human_attribute_name(:organization)
@@ -55,7 +55,7 @@
         %td.tdt= Invoice.human_attribute_name(:user)
         %td.align-right= link_to_user @invoice.user
       %tr
-        %td.tdt= _("Reconciled?")
+        %td.tdt= t(".reconciled_question_mark")
         %td.align-right= @invoice.reconciled? ? t("yes") : t("no")
 
 %br
@@ -71,7 +71,7 @@
           %td= link_to_invoice_group invoice_group
       - if @invoice.invoice_groups.empty?
         %tr
-          %td.error= _("No invoice groups were found for this invoice.")
+          %td.error= t(".no_invoice_groups_were_found_for_this_invoice")
 
 %br
 
@@ -80,10 +80,10 @@
 %br
 
 - unless @invoice.reconciled?
-  = design_box _("Reconcile invoice"), 700 do
+  = design_box t(".reconcile_invoice"), 700 do
     %p
-      = _("This invoice is not reconciled.")
-      = _("You can reconcile it by choosing a matching account-line below.")
+      = t(".this_invoice_is_not_reconciled")
+      = t(".you_can_reconcile_it_by_choosing_a_matching_account_line_below")
 
     %table.list
       %thead
@@ -99,7 +99,7 @@
             %td.align-right= format_number account_line.amount
         - if @matching_account_lines.empty?
           %tr
-            %td{colspan: 3}= _("No matching account-lines.")
+            %td{colspan: 3}= t(".no_matching_account_lines")
 %br
 
 = design_box AccountLine.model_name.human(count: 2), 700 do
@@ -117,12 +117,12 @@
           %td.align-right= format_number account_line.amount
       - if @invoice.account_lines.empty?
         %tr
-          %td{colspan: 3}= _("No account-lines has been attached to this invoice.")
+          %td{colspan: 3}= t(".no_account_lines_has_been_attached_to_this_invoice")
 
 %br
 
 = design_box InvoiceLine.model_name.human(count: 2), 700 do
-  = link_to _("Add new invoice-line"), new_invoice_invoice_line_path(@invoice), class: "button"
+  = link_to t(".add_new_invoice_line"), new_invoice_invoice_line_path(@invoice), class: "button"
   %br
   %br
 
@@ -132,7 +132,7 @@
         %th= InvoiceLine.human_attribute_name(:title)
         %th.align-right= InvoiceLine.human_attribute_name(:quantity)
         %th.align-right= InvoiceLine.human_attribute_name(:amount)
-        %th.align-right= _("Total")
+        %th.align-right= t("total")
         %th= t("actions")
     %tbody
       - @invoice.invoice_lines.each do |line|
@@ -146,4 +146,4 @@
             = link_to t("delete"), [@invoice, line], method: :delete, data: {confirm: t("are_you_sure")} if can? :destroy, line
       - if @invoice.invoice_lines.none?
         %tr
-          %td.error{colspan: 3}= _("No lines were found.")
+          %td.error{colspan: 3}= t(".no_lines_were_found")

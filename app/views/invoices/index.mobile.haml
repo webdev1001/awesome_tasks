@@ -1,7 +1,7 @@
 - content_for(:header_title){ Invoice.model_name.human(count: 2) }
 
 - if can? :new, Invoice
-  - content_for(:header_right) { link_to _("New"), new_invoice_path, class: "mobile-button-header" }
+  - content_for(:header_right) { link_to t("new"), new_invoice_path, class: "mobile-button-header" }
 
 = simple_search_form_for @ransack, @ransack_params do |f|
   = f.input :id_eq, autofocus: true

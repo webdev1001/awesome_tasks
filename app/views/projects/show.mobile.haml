@@ -1,4 +1,4 @@
-- content_for(:header_title) { sprintf(_("Show project: %s."), @project.name) }
+- content_for(:header_title) { t(".show_project_with_name"), name: @project.name) }
 - content_for(:header_right) { link_to t("edit"), edit_project_path(@project), class: "mobile-button-header" if can?(:admin, :admin) }
 
 = mobile_tabs do |tabs|
@@ -11,7 +11,7 @@
   %table.project_table{data: {project_id: @project.id, assigned_users_path: assigned_users_project_path(@project)}}
     %tr
       %td{style: "vertical-align: top;"}
-        %h2= _("Information")
+        %h2= t(".information")
         %table.mobile-table.form
           %tbody
             %tr
@@ -21,7 +21,7 @@
               %td.tdt= Project.human_attribute_name(:state)
               %td= @project.translated_state
             %tr
-              %td.tdt= _("Added by")
+              %td.tdt= t(".added_by")
               %td= link_to_user(@project.user_added)
             %tr
               %td.tdt= Project.human_attribute_name(:created_at)
@@ -34,7 +34,7 @@
               %td= format_number @project.price_per_hour_transport
             - if @project.deadline_at
               %tr
-                %td.tdt= _("Deadline")
+                %td.tdt= t(".deadline")
                 %td= l(@project.deadline_at.to_date)
 
 #tab-users
@@ -42,7 +42,7 @@
   = render "assigned_users", project: @project
 
 #tab-autoassigned-users
-  = link_to _("Add autoassigned user"), new_project_project_autoassigned_user_path(@project), class: "mobile-button" if can? :new, ProjectAutoassignedUser
+  = link_to t(".add_autoassigned_user"), new_project_project_autoassigned_user_path(@project), class: "mobile-button" if can? :new, ProjectAutoassignedUser
   = render "autoassigned_users", project: @project
 
 #tab-tasks
@@ -51,7 +51,7 @@
       %thead
         %tr
           %th= sort_link @ransack, :name, Task.model_name.human
-          %th= sort_link @ransack, :user_name, _("Author")
+          %th= sort_link @ransack, :user_name, t(".author")
           %th= sort_link @ransack, :state
       %tbody
         - count = 0
@@ -65,7 +65,7 @@
         - if count <= 0
           %tr
             %td.error{colspan: 2}
-              = _("No tasks were found.")
+              = t(".no_tasks_were_found")
 
   %br
   = will_paginate @tasks

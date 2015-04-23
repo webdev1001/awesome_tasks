@@ -1,26 +1,26 @@
-= _("Hello %{user_name}", user_name: @user.name)
-%br/
-%br/
+= t(".hello_user_name", user_name: @user.name)
+%br
+%br
 
-= sprintf(_("A new comment has been written to the task '%s'."), @task.name)
-%br/
-%br/
+= t(".a_new_comment_has_been_written_to_the_task"), @task.name)
+%br
+%br
 
 %b
-  = _("Author")
+  = t(".author")
   \:
-%br/
+%br
 
 = @author.name
-%br/
-%br/
+%br
+%br
 
 %b= Task.model_name.human
-%br/
+%br
 %a{href: @task_url}= @task_url
-%br/
-%br/
+%br
+%br
 
 %b= Comment.model_name.human
-%br/
+%br
 = @comment.comment.html_safe

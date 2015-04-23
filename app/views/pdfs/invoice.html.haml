@@ -69,10 +69,10 @@
               %td= Invoice.human_attribute_name(:amount)
               %td= format_number invoice.amount
             %tr
-              %td= _("Vat")
+              %td= t("vat")
               %td= format_number invoice.amount_vat
             %tr
-              %td= _("Total")
+              %td= t("total")
               %td= format_number invoice.amount_total
 
         %h2= Organization.human_attribute_name(:payment_info)
@@ -85,7 +85,7 @@
       %th= InvoiceLine.human_attribute_name(:title)
       %th.align-right= InvoiceLine.human_attribute_name(:quantity)
       %th.align-right= InvoiceLine.human_attribute_name(:amount)
-      %th.align-right= _("Total")
+      %th.align-right= t("total")
   %tbody
     - invoice.invoice_lines.each do |invoice_line|
       %tr
@@ -97,11 +97,11 @@
 %table.totals
   %tbody
     %tr
-      %td= _("Amount")
+      %td= t("amount")
       %td.align-right= format_number invoice.amount
     %tr
-      %td= _("Vat")
+      %td= t("vat")
       %td.align-right= format_number invoice.amount_vat
     %tr.total
-      %td= _("Total")
+      %td= t("total")
       %td.align-right= format_number invoice.amount_total

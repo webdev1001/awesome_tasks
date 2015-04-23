@@ -37,7 +37,7 @@
     %td{style: "vertical-align: top; padding-left: 15px;"}
       = design_box User.model_name.human(count: 2), 350 do
         %div{style: "padding-bottom: 15px;"}
-          = link_to t(".assign_user"), "#", class: ["button", "assign-user-button"], data: {title: _("Assign user"), url: search_users_path(ajaxsearch: true, jscallback: :project_show_assign_user_choose, not_in_project_id: @project.id)}
+          = link_to t(".assign_user"), "#", class: ["button", "assign-user-button"], data: {title: t(".assign_user"), url: search_users_path(ajaxsearch: true, jscallback: :project_show_assign_user_choose, not_in_project_id: @project.id)}
         #divassignedusers
           = render "assigned_users", project: @project
 

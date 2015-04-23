@@ -50,23 +50,23 @@
 
 %br
 
-= design_box _("Overview"), 450 do
+= design_box t(".overview"), 450 do
   %table.form
     %tbody
       %tr
-        %td.tdt= _("Hours")
+        %td.tdt= t(".hours")
         %td.tdr= format_number @earned, precision: 2
       %tr
-        %td.tdt= _("Transport")
+        %td.tdt= t(".transport")
         %td.tdr= format_number @earned_transport, precision: 2
       %tr
-        %td.tdt= _("Total earned")
+        %td.tdt= t(".total_earned")
         %td.tdr= format_number @earned_total, precision: 2
       %tr
-        %td.tdt= _("Tax") + " (40%)"
+        %td.tdt= t(".tax") + " (40%)"
         %td.tdr= format_number @earned_total - @tax_40.to_f, precision: 2
       %tr
-        %td.tdt= _("Total transport")
+        %td.tdt= t(".total_transport")
         %td.tdr= format_number @transport_length, precision: 0
 
 %br
@@ -76,9 +76,9 @@
     %thead
       %tr
         %th= Project.model_name.human
-        %th.tdr= _("Hours")
-        %th.tdr= _("Transport")
-        %th.tdr= _("Earned")
+        %th.tdr= t(".hours")
+        %th.tdr= t(".transport")
+        %th.tdr= t(".earned")
     %tbody
       - @timelogs.group("projects.id").order("projects.name").each do |timelog|
         - timelogs_project = @timelogs.where("projects.id = ?", timelog.task.try(:project))

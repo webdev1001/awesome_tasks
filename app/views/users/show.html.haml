@@ -1,23 +1,23 @@
-- content_for(:header_title){ sprintf(_("Show user: %s."), @user.name) }
+- content_for(:header_title){ t(".show_user"), name: @user.name) }
 
 - if can?(:edit, @user)
   = design_box t("actions"), 450 do
     = link_to t("edit"), ["edit", @user], class: "button"
   %br
 
-= design_box _("Information"), 450 do
+= design_box t(".information"), 450 do
   %table.form
     %tbody
       %tr
         %td.tdt= User.human_attribute_name(:name)
         %td= @user.name
       %tr
-        %td.tdd{colspan: 2}= _("The real name of the user.")
+        %td.tdd{colspan: 2}= t(".the_real_name_of_the_user")
       %tr
         %td.tdt= User.human_attribute_name(:email)
         %td= mail_to @user.email
       %tr
-        %td.tdd{colspan: 2}= _("The email of the user.")
+        %td.tdd{colspan: 2}= t(".the_email_of_the_user")
 
 %br
 
@@ -32,7 +32,7 @@
       = f.input :project_name_cont
       = f.input :project_organization_name_cont
       = f.submit t("search")
-      = link_to _("Hide filter"), "#", class: ["button", "tasks-hide-filter-button"]
+      = link_to t(".hide_filter"), "#", class: ["button", "tasks-hide-filter-button"]
   %br
 
 = design_box Task.model_name.human(count: 2), 1200 do
@@ -40,7 +40,7 @@
     %thead
       %tr
         %th= sort_link @ransack, :name, Task.model_name.human
-        %th= _("Progress")
+        %th= t(".progress")
         %th= sort_link @ransack, :state
         %th= sort_link @ransack, :created_at
         %th= sort_link @ransack, :project_name, Project.model_name.human
@@ -60,7 +60,7 @@
           %td= link_to_organization task.project.organization
       - if count <= 0
         %tr
-          %td.error{colspan: 2}= _("No tasks were found for this user.")
+          %td.error{colspan: 2}= t(".no_tasks_were_found_for_this_user")
 
 %br
 = will_paginate @tasks

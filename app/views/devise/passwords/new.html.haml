@@ -1,10 +1,11 @@
-- content_for(:header_title){ _("Forgot your password?") }
+- content_for(:header_title) { t(".forgot_your_password") }
 
 = design_box t("enter_details"), 450 do
   = simple_form_for resource, as: resource_name, url: password_path(resource_name) do |f|
     = f.error_notification
     = f.input :email, required: true, autofocus: true
-    = f.button :submit, _("Send me reset password instructions")
+    = f.button :submit, t(".send_me_reset_password_instructions")
 
 %br
+
 = render "devise/shared/links"

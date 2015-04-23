@@ -1,4 +1,4 @@
-- content_for(:header_title) { _("Show organization: %{name}", name: @organization.name) }
+- content_for(:header_title) { t(".show_organization_with_name", name: @organization.name) }
 - content_for(:header_right) { link_to t("edit"), [:edit, @organization], class: "mobile-button-header" }
 
 %table.mobile-table.form
@@ -35,4 +35,4 @@
     - if @organization.projects.none?
       %tr
         %td.error{colspan: 1}
-          = _("No projects has been added for this organization.")
+          = t(".no_projects_has_been_added_for_this_organization")

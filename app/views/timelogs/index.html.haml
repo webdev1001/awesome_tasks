@@ -56,7 +56,7 @@
           %th= Project.model_name.human
           %th= Organization.model_name.human
           %th= Timelog.human_attribute_name(:invoiced)
-          %th= "#{Timelog.human_attribute_name(:time)} / #{_("Transport")}"
+          %th= "#{Timelog.human_attribute_name(:time)} / #{t(".transport")}"
           %th= Timelog.human_attribute_name(:transport_length)
       %tbody
         - @timelogs.includes(:user, task: {project: :organization}).find_each do |tlog|

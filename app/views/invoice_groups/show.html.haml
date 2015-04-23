@@ -1,4 +1,4 @@
-- content_for(:header_title){ _("Show invoice-group: %{name}", name: @invoice_group.name) }
+- content_for(:header_title){ t(".show_invoice_group", name: @invoice_group.name) }
 
 - if can? :edit, @invoice_group
   = design_box t("actions"), 350 do
@@ -17,7 +17,7 @@
 
 = design_box Invoice.model_name.human(count: 2), 500 do
   - if can? :new, Invoice
-    = link_to _("Add invoice"), new_invoice_path(invoice: {invoice_group_id: @invoice_group.id}), class: "button"
+    = link_to t(".add_invoice"), new_invoice_path(invoice: {invoice_group_id: @invoice_group.id}), class: "button"
     %br
     %br
 
@@ -33,7 +33,7 @@
           %td= format_number invoice.amount
       - if @invoices.none?
         %tr
-          %td.error{colspan: 2}= _("No invoices has been added for this group.")
+          %td.error{colspan: 2}= t(".no_invoices_has_been_added_for_this_group")
 
 %br
 

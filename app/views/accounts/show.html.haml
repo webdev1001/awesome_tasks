@@ -1,7 +1,7 @@
-- content_for(:header_title) { _("Show account: %{name}", name: @account.name) }
+- content_for(:header_title) { t(".show_account_with_name", name: @account.name) }
 
 = link_to AccountLine.model_name.human(count: 2), account_account_lines_path(@account), class: "button"
-= link_to _("Import"), new_account_account_import_path(@account), class: "button"
+= link_to t(".import"), new_account_account_import_path(@account), class: "button"
 
 %br
 %br

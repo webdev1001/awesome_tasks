@@ -22,7 +22,7 @@
       - unless @projects.any?
         %tr
           %td.error{colspan: 2}
-            = _("No projects were found.")
+            = t(".no_projects_were_found")
 
 %br
 = will_paginate @projects

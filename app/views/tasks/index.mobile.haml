@@ -1,4 +1,4 @@
-- content_for(:header_title){ _("Search for tasks") }
+- content_for(:header_title){ t(".search_for_tasks") }
 - if can? :new, Task
   - content_for(:header_right) { link_to t("add_new"), new_task_path, class: "mobile-button-header" }
 
@@ -28,7 +28,7 @@
     - unless @tasks.any?
       %tr
         %td.error{colspan: 3}
-          =_("No tasks were found.")
+          = t(".no_tasks_were_found")
 
 %br
 

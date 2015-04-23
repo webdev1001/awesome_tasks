@@ -21,7 +21,7 @@
       - @invoice_groups.each do |invoice_group|
         %tr
           %td= link_to_invoice_group invoice_group
-      - if @invoice_groups.none?
+      - if @invoice_groups.empty?
         %tr
           %td.error{colspan: 1}
-            = _("No groups were found.")
+            = t(".no_groups_were_found")

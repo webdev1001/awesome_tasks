@@ -1,4 +1,4 @@
-- content_for(:header_title) { _("Show task: %{task_name}", task_name: @task.name) }
+- content_for(:header_title) { t(".show_task_task_name", task_name: @task.name) }
 - content_for(:header_right) { link_to t("edit"), [:edit, @task], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
@@ -36,7 +36,7 @@
     - if @task.description?
       = UserReferences.new(text: @task.description).unparse_user_references(html: true).html_safe
     - else
-      .error= _("No description has been written for this task.")
+      .error= t(".no_description_has_been_written_for_this_task")
 
 #tab-checks
   = render "checks"

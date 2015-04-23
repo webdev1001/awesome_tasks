@@ -90,7 +90,7 @@ class Task < ActiveRecord::Base
   end
 
   def name_force
-    name.presence || "[#{_("task %{task_id}", task_id: id)}]"
+    name.presence || "[#{t(".task_with_id", task_id: id)}]"
   end
 
   def progress
@@ -103,7 +103,7 @@ class Task < ActiveRecord::Base
   end
 
   def url
-    settings = YAML.load_file("#{Rails.root}/config/awesome_tasks.yml")
+    settings = YAML.load_file(Rails.root.join("config", "awesome_tasks.yml"))
     return "#{settings[:domain_url]}/tasks/#{id}"
   end
 

@@ -2,8 +2,8 @@
 
 - if @account && can?(:new, AccountLine)
   = design_box t("actions"), 350 do
-    = link_to _("New account-line"), new_account_account_line_path(@account), class: "button"
-    = link_to _("Account"), account_path(@account), class: "button" if @account
+    = link_to t(".new_account_line"), new_account_account_line_path(@account), class: "button"
+    = link_to t(".account"), account_path(@account), class: "button" if @account
 
   %br
   %br
@@ -33,7 +33,7 @@
           %td.align-right= format_number account_line.amount
       - if @account_lines.empty?
         %tr
-          %td{colspan: 3}= _("No account-lines were found.")
+          %td{colspan: 3}= t(".no_account_lines_were_found")
 
 %br
 

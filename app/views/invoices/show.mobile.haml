@@ -1,4 +1,4 @@
-- content_for(:header_title) { _("Invoice %{invoice_no}", invoice_no: @invoice.invoice_no) }
+- content_for(:header_title) { t(".invoice_with_no", invoice_no: @invoice.invoice_no) }
 - if can? :edit, @invoice
   - content_for(:header_right) { link_to t("edit"), [:edit, @invoice], class: "mobile-button-header" }
 
@@ -38,12 +38,12 @@
         %td.align-right.nowrap= format_number @invoice.amount
       %tr
         %td.tdt= Invoice.human_attribute_name(:no_vat)
-        %td.align-right= @invoice.no_vat? ? _("True") : _("False")
+        %td.align-right= @invoice.no_vat? ? t("true") : t("false")
       %tr
-        %td.tdt= _("Vat")
+        %td.tdt= t("vat")
         %td.align-right.nowrap= format_number @invoice.amount_vat
       %tr
-        %td.tdt= _("Total")
+        %td.tdt= t("total")
         %td.align-right.nowrap= format_number @invoice.amount_total
       %tr
         %td.tdt= Invoice.human_attribute_name(:organization)
@@ -69,7 +69,7 @@
         %th= InvoiceLine.human_attribute_name(:title)
         %th.align-right= InvoiceLine.human_attribute_name(:quantity)
         %th.align-right= InvoiceLine.human_attribute_name(:amount)
-        %th.align-right= _("Total")
+        %th.align-right= t("total")
     %tbody
       - @invoice.invoice_lines.each do |line|
         %tr
@@ -79,13 +79,13 @@
           %td.align-right= format_number line.amount_total, precision: 0
       - if @invoice.invoice_lines.none?
         %tr
-          %td.error{colspan: 4}= _("No lines were found.")
+          %td.error{colspan: 4}= t(".no_lines_were_found")
 
 #tab-actions
   %h2= t("actions")
 
   - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
-    = link_to _("PDF"), ["pdf", @invoice], class: "mobile-button" if can? :pdf, @invoice
-    = link_to _("Finish"), finish_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_finish?
-    = link_to _("Register as sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_sent?
-    = link_to _("Register as paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_paid?
+    = link_to t(".pdf"), ["pdf", @invoice], class: "mobile-button" if can? :pdf, @invoice
+    = link_to t(".finish"), finish_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_finish?
+    = link_to t(".register_as_sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_sent?
+    = link_to t(".register_as_paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_paid?

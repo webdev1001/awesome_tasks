@@ -1,4 +1,4 @@
-- content_for(:header_title) { _("Show account-line %{id}", id: @account_line.id) }
+- content_for(:header_title) { t(".show_account_line_with_id", id: @account_line.id) }
 
 - if can? :edit, @account_line
   = link_to t("edit"), edit_account_account_line_path(@account, @account_line), class: "button"

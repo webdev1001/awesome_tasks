@@ -1,4 +1,4 @@
-= _("Hello %{user_name}", user_name: @user.name)
+= t(".hello_user_name", user_name: @user.name)
 %br
 %br
 
@@ -9,4 +9,4 @@
 %br
 %br
 
-= _("You have been assigned to a check for the mentionen task: %{check_name}", check_name: @task_check.name)
+= t(".you_have_been_assigned_to_a_check_for_the_mentionen_task", check_name: @task_check.name)
