@@ -1,0 +1,13 @@
+---
+en:
+  account_lines:
+    index:
+      new_account_line: New account-line
+      account: Account
+      no_account_lines_were_found: No account-lines was found.
+    edit:
+      edit_account_line_with_id: Edit account-line %{id}
+    new:
+      new_account_line: New account-line
+    show:
+      show_account_line_with_id: New account-line %{id}

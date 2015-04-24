@@ -1,0 +1,9 @@
+---
+da:
+  timelogs:
+    new:
+      new_timelog: Ny tidslog
+    edit:
+      edit_timelog: Rediger tidslog
+    show:
+      show_timelog_with_id: Vis tidslog %{id}

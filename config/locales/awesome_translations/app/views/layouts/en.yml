@@ -1,0 +1,14 @@
+---
+en:
+  layouts:
+    application:
+      close: Close
+      edit_comment: Edit comment
+      new_comment: New comment
+      edit_timelog: Edit timelog
+      frontpage: Frontpage
+      edit_task_check: Edit task-check
+      work_status: Work status
+      your_profile: Your profile
+      sign_out: Sign out
+      sign_in: Sign in

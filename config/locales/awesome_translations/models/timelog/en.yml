@@ -1,0 +1,26 @@
+---
+en:
+  activerecord:
+    models:
+      timelog:
+        one: Timelog
+        other: Timelogs
+    attributes:
+      timelog:
+        id: ID
+        task_id: Task ID
+        user_id: User ID
+        date: Date
+        time: Time
+        time_transport: Transport time
+        transport_length: Transport length
+        comment: Comment
+        invoiced: Invoiced
+        invoiced_at: Invoiced at
+        invoiced_by_user_id: Invoiced by user ID
+        created_at: Created at
+        updated_at: Updated at
+        task: Task
+        user: User
+        project: Project
+        organization: Organisation

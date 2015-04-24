@@ -1,0 +1,21 @@
+---
+da:
+  activerecord:
+    models:
+      user:
+        one: Bruger
+        other: Brugere
+    attributes:
+      user:
+        id: ID
+        name: Navn
+        username: Brugernavn
+        encrypted_password: Krypteret adgangskode
+        email: Email
+        locale: Sprog
+        active: Aktiv
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        first_name: Fornavn
+        last_name: Efternavn
+        tasks: Opgaver

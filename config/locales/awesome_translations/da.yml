@@ -1,0 +1,30 @@
+---
+da:
+  choose: Vælg
+  all: Alle
+  'true': Sand
+  'false': Falsk
+  enter_details: Indtast detaljer
+  save: Gem
+  details: Detaljer
+  are_you_sure: Er du sikker?
+  actions: Muligheder
+  filter: Filter
+  results: Resultater
+  edit: Rediger
+  options: Muligheder
+  add_new: Tilføj ny
+  delete: Slet
+  show: Vis
+  enter_criteria: Indtast kriterier
+  date_from: Fra dato
+  date_to: Til dato
+  new: Ny
+  vat: Moms
+  total: Total
+  'yes': Ja
+  'no': Nej
+  search: Søg
+  amount: Beløb
+  remove: Fjern
+  no_results: Ingen resultater

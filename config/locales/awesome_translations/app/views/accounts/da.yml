@@ -1,0 +1,13 @@
+---
+da:
+  accounts:
+    index:
+      new_account: Ny konto
+      no_accounts_were_found: Der blev ikke fundet nogle konti
+    edit:
+      edit_account_with_name: 'Rediger konto: %{name}'
+    new:
+      new_account: Ny konto
+    show:
+      show_account_with_name: 'Vis konto: %{name}'
+      import: Import

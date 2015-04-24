@@ -1,0 +1,7 @@
+---
+en:
+  devise:
+    shared:
+      links:
+        sign_in: Sign in
+        forgot_your_password: Forgot password

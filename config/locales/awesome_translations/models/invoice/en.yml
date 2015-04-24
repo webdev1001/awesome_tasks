@@ -1,0 +1,31 @@
+---
+en:
+  activerecord:
+    models:
+      invoice:
+        one: Invoice
+        other: Invoices
+    attributes:
+      invoice:
+        id: ID
+        title: Title
+        date: Date
+        invoice_no: Invoice number
+        invoice_type: Invoice type
+        amount: Amount
+        organization_id: Organisation ID
+        user_id: User ID
+        payment_at: Payment at
+        created_at: Created at
+        updated_at: Updated at
+        creditor_id: Creditor ID
+        no_vat: No vat
+        state: State
+        activities: Activities
+        creditor: Creditor
+        organization: Organisation
+        user: User
+        account_lines: Account-lines
+        invoice_lines: Invoice-lines
+        invoice_groups: Invoice-groups
+        uploaded_files: Uploaded files

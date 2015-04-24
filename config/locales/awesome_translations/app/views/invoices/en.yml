@@ -1,0 +1,19 @@
+---
+en:
+  invoices:
+    show:
+      invoice_with_number: Invoice %{invoice_no}
+      pdf: PDF
+      finish: Finish
+      register_as_sent: Register as sent
+    index:
+      new_invoice: New invoice
+      vat: Vat
+      no_invoices_could_be_found: No invoices were found
+      totals: Totals
+      amount: Amount
+      total: Total
+    edit:
+      edit_invoice_with_id: Edit invoice %{id}
+    new:
+      new_invoice: New invoice

@@ -1,0 +1,19 @@
+---
+da:
+  invoices:
+    show:
+      invoice_with_number: Faktura %{invoice_no}
+      pdf: PDF
+      finish: Færdiggør
+      register_as_sent: Registrer som sendt
+    index:
+      new_invoice: Ny faktura
+      vat: Moms
+      no_invoices_could_be_found: Der blev ikke fundet nogle faktura
+      totals: Totaler
+      amount: Beløb
+      total: Total
+    edit:
+      edit_invoice_with_id: Rediger faktura %{id}
+    new:
+      new_invoice: Ny faktura

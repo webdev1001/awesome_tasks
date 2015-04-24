@@ -1,0 +1,18 @@
+---
+en:
+  activerecord:
+    models:
+      invoice_line:
+        one: Invoice line
+        other: Invoice lines
+    attributes:
+      invoice_line:
+        id: ID
+        title: Title
+        amount: Amount
+        quantity: Quantity
+        invoice_id: Invoice ID
+        created_at: Created at
+        updated_at: Updated at
+        activities: Activities
+        invoice: Invoice

@@ -1,0 +1,7 @@
+---
+da:
+  devise:
+    shared:
+      links:
+        sign_in: Log ind
+        forgot_your_password: Glemt adgangskode

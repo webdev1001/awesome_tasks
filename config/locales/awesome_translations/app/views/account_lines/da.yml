@@ -1,0 +1,13 @@
+---
+da:
+  account_lines:
+    index:
+      new_account_line: Ny kontolinje
+      account: Konto
+      no_account_lines_were_found: Der blev ikke fundet nogle kontolinjer
+    edit:
+      edit_account_line_with_id: Rediger kontolinje %{id}
+    new:
+      new_account_line: Ny kontolinje
+    show:
+      show_account_line_with_id: Vis kontolinje %{id}

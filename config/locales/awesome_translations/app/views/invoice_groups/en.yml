@@ -1,0 +1,12 @@
+---
+en:
+  invoice_groups:
+    show:
+      show_invoice_group: Show invoice group
+      add_invoice: Add invoice
+    new:
+      new_invoice_group: New invoice-group
+    edit:
+      edit_invoice_group: Edit invoice-group
+    index:
+      no_groups_were_found: No groups were found

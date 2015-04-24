@@ -1,0 +1,45 @@
+---
+en:
+  tasks:
+    index:
+      search_for_tasks: Search for tasks
+      no_tasks_were_found: No tasks were found
+    timelogs:
+      hours: Hours
+      date: Date
+      invoiced: Invoiced
+      do_you_want_to_delete_this_timelog: Do you want to delete this timelog?
+      no_timelogs_were_found: No timelogs were found
+    new:
+      add_new_task: Add new task
+      new_task: New task
+    show:
+      show_task_task_name: 'Show task: %{task_name}'
+      author: Author
+      no_description_has_been_written_for_this_task: No description has been written
+        for this task
+      show_task: 'Show task: %{task_name}'
+      edit_task: Edit task
+      remove_from_list: Remove from list
+      add_to_list: Add to list
+      assigned_users: Assigned users
+      assign_user_to_task: Tildel bruger til opgave
+      checklist: Checklist
+    form:
+      browser: Browser
+      version: Version
+      operating_system: Operating system
+      insert_browser_and_os: Insert browser og OS
+    comments:
+      do_you_want_to_delete_this_comment: Du you want to delete this comment?
+      no_comments_were_found_for_this_task: No comments were found for this task
+    assigned_users:
+      unassign: Unassign
+    users:
+      no_users_has_been_assigned_to_this_task: No users has been assigned to this
+        task
+    edit:
+      edit_task_task_name: 'Edit task: %{task_name}'
+      edit_task: 'Edit task: %{task_name}'
+    checks:
+      no_checks_has_been_added_for_this_task: No checks has been added for this task

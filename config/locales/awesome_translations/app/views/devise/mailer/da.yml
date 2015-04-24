@@ -1,0 +1,8 @@
+---
+da:
+  devise:
+    mailer:
+      reset_password_instructions:
+        hello_email: Hej %{email}
+        someone_has_requested_a_link_to_change_your_password: Nogle har bedt om at
+          ændre din adgangskode.

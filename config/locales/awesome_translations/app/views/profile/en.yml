@@ -1,0 +1,9 @@
+---
+en:
+  profile:
+    index:
+      your_profile: Your profile
+      password: Password
+      you_can_enter_a_new_password_to_change_it: You can enter a new password to change
+        it
+      no_tasks_has_been_added_to_your_list: No tasks has been added to your list

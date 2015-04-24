@@ -77,9 +77,9 @@ class Invoice < ActiveRecord::Base
 
   def filename
     if invoice_no.present?
-      filename_str = t("invoice_with_invoice_no", invoice_no: invoice_no)
+      filename_str = "#{Invoice.model_name.human} #{invoice_no}"
     else
-      filename_str = t(".invoice_with_id", id: id)
+      filename_str = "#{Invoice.model_name.human} ID #{id}"
     end
 
     filename_str << ".pdf"

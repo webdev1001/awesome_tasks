@@ -1,0 +1,19 @@
+---
+da:
+  activerecord:
+    models:
+      account_line:
+        one: Kontolinje
+        other: Kontolinjer
+    attributes:
+      account_line:
+        id: ID
+        account_id: Konto ID
+        account_import_id: Kontoimport ID
+        invoice_id: Faktura ID
+        text: Tekst
+        amount: Beløb
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        account: Konto
+        invoice: Faktura

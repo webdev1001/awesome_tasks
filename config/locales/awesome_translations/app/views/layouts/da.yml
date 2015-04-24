@@ -1,0 +1,14 @@
+---
+da:
+  layouts:
+    application:
+      close: Luk
+      edit_comment: Rediger kommentar
+      new_comment: Ny kommentar
+      edit_timelog: Rediger tidslog
+      frontpage: Forside
+      edit_task_check: Rediger opgavecheck
+      work_status: Arbejdsstatus
+      your_profile: Din profil
+      sign_out: Log ud
+      sign_in: Log ind

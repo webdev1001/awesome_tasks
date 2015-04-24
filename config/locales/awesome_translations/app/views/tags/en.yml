@@ -1,0 +1,6 @@
+---
+en:
+  tags:
+    show_for_resource:
+      tags: Tags
+      tag: Tag

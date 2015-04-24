@@ -1,0 +1,32 @@
+---
+en:
+  projects:
+    assigned_users:
+      do_you_want_to_remove_this_user_from_the_project: Do you want to remove this
+        user from the project?
+      no_users_were_found: No users were found
+    show:
+      show_project: 'Show project: %{name}'
+      edit_project: Edit project
+      add_task: Add task
+      information: Information
+      added_by: Added by
+      deadline: Deadline
+      author: Author
+      date: Date
+      no_tasks_were_found: No tasks were found
+      show_project_with_name: 'Show project: %{name}'
+      add_autoassigned_user: Add auto-assigned user
+    index:
+      search_for_project: Search for project
+      no_projects_were_found: No projects were found
+    autoassigned_users:
+      no_users_have_been_autoassigned_yet: No users have been auto-assigned yet
+    form:
+      added_by_user_link: Added by user-link
+      add_task: Add task
+      do_you_want_to_delete_this_project: Du you want to delete this project?
+    edit:
+      edit_project: Edit project
+    new:
+      new_project: New project

@@ -1,0 +1,8 @@
+---
+da:
+  frontpage:
+    index:
+      frontpage: Forside
+      closed_the_task: Lukked opgaven
+      no_tasks_were_found: Der blev ikke fundet nogle opgaver
+      progress: Fremskridt

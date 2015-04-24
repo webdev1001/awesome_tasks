@@ -1,0 +1,8 @@
+---
+en:
+  frontpage:
+    index:
+      frontpage: Frontpage
+      closed_the_task: Closed the task
+      no_tasks_were_found: No tasks were found
+      progress: Progress

@@ -1,0 +1,21 @@
+---
+en:
+  activerecord:
+    models:
+      user:
+        one: User
+        other: Users
+    attributes:
+      user:
+        id: ID
+        name: Name
+        username: Username
+        encrypted_password: Encrypted password
+        email: Email
+        locale: Locale
+        active: Active
+        created_at: Created at
+        updated_at: Updated at
+        first_name: First name
+        last_name: Last name
+        tasks: Tasks

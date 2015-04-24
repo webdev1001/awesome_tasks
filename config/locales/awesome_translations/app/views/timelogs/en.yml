@@ -1,0 +1,9 @@
+---
+en:
+  timelogs:
+    new:
+      new_timelog: New timelog
+    edit:
+      edit_timelog: Edit timelog
+    show:
+      show_timelog_with_id: Show timelog %{id}

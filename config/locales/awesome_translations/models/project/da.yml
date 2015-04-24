@@ -1,0 +1,25 @@
+---
+da:
+  activerecord:
+    models:
+      project:
+        one: Projekt
+        other: Projekter
+    attributes:
+      project:
+        id: ID
+        organization_id: Organisation ID
+        user_added_id: Bruger tilføjet ID
+        name: Navn
+        state: Status
+        description: Beskrivelse
+        deadline_at: Deadline d.
+        price_per_hour: Pris per time
+        price_per_hour_transport: Pris per time transport
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        user_added: Bruger der tilføjede
+        organization: Organisation
+        tasks: Opgaver
+        users: Brugere
+        autoassigned_users: Autotildelte brugere

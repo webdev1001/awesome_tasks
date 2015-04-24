@@ -1,0 +1,12 @@
+---
+da:
+  devise:
+    passwords:
+      edit:
+        change_your_password: Lav dit kodeord om
+        new_password: Ny adgangskode
+        confirm_your_new_password: Bekræft din nye adgangskode
+        change_my_password: Lav dit kodeord om
+      new:
+        forgot_your_password: Glemt din adgangskode?
+        send_me_reset_password_instructions: Send mig instruktioner til glemt adgangskode

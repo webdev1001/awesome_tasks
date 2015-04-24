@@ -1,0 +1,12 @@
+---
+da:
+  invoice_groups:
+    show:
+      show_invoice_group: Vis fakturagruppe
+      add_invoice: Tilføj faktura
+    new:
+      new_invoice_group: Ny fakturagruppe
+    edit:
+      edit_invoice_group: Rediger fakturagruppe
+    index:
+      no_groups_were_found: Der blev ikke fundet nogle gruppe

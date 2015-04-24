@@ -1,0 +1,21 @@
+---
+en:
+  activerecord:
+    models:
+      account_import:
+        one: Account import
+        other: Account imports
+    attributes:
+      account_import:
+        id: ID
+        account_id: Account ID
+        state: State
+        file_encoding: File encoding
+        amount_format: Amount format
+        executed_at: Executed at
+        finished_at: Finished at
+        created_at: Created at
+        updated_at: Updated at
+        account: Account
+        uploaded_file: Uploaded file
+        account_import_columns: Account-import columns

@@ -1,0 +1,25 @@
+---
+da:
+  activerecord:
+    models:
+      task:
+        one: Opgave
+        other: Opgaver
+    attributes:
+      task:
+        id: ID
+        project_id: Projekt ID
+        user_id: Bruger ID
+        name: Navn
+        description: Beskrivelse
+        task_type: Opgavetype
+        state: Status
+        priority: Prioritet
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        tags: Tags
+        timelogs: Tidslogs
+        uploaded_files: Uploadede filer
+        comments: Kommentarer
+        project: Projekter
+        user: Bruger

@@ -1,0 +1,7 @@
+---
+da:
+  user_roles:
+    new:
+      new_role: Ny rolle
+    edit:
+      edit_role: Rediger rolle

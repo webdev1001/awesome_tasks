@@ -1,0 +1,47 @@
+---
+da:
+  tasks:
+    index:
+      search_for_tasks: Søg efter opgaver
+      no_tasks_were_found: Der blev ikke fundet nogle opgaver
+    timelogs:
+      hours: Timer
+      date: Dato
+      invoiced: Faktureret
+      do_you_want_to_delete_this_timelog: Vil du slettte denne tidslog?
+      no_timelogs_were_found: Der blev ikke fundet nogle tidslogs
+    new:
+      add_new_task: Tilføj ny opgave
+      new_task: Ny opgave
+    show:
+      show_task_task_name: 'Vis opgave: %{taks_name}'
+      author: Forfatter
+      no_description_has_been_written_for_this_task: Der er ikke skrevet en beskrivelse
+        for denne opgave
+      show_task: 'Vis opgave: %{task_name}'
+      edit_task: Rediger opgave
+      remove_from_list: Fjern fra liste
+      add_to_list: Tilføj til liste
+      assigned_users: Tildelte brugere
+      assign_user_to_task: Tildel bruger til opgave
+      checklist: Tjekliste
+    form:
+      browser: Browser
+      version: Version
+      operating_system: Operativsystem
+      insert_browser_and_os: Indsæt browser og OS
+    comments:
+      do_you_want_to_delete_this_comment: Vil du slette denne kommentar?
+      no_comments_were_found_for_this_task: Der blev ikke fundet nogle kommentarer
+        for denne opgave
+    assigned_users:
+      unassign: Fjern tildeling
+    users:
+      no_users_has_been_assigned_to_this_task: Der er ikke blevet tildelt nogle brugere
+        til denne opgave
+    edit:
+      edit_task_task_name: 'Rediger opgave: %{task_name}'
+      edit_task: 'Rediger opgave: %{task_name}'
+    checks:
+      no_checks_has_been_added_for_this_task: Der er ikke tilføjet nogle checks til
+        denne opgave

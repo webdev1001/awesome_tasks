@@ -1,0 +1,13 @@
+---
+en:
+  activerecord:
+    models:
+      invoice_group:
+        one: Invoice group
+        other: Invoice groups
+    attributes:
+      invoice_group:
+        id: ID
+        name: Name
+        invoice_group_links: Invoice-group links
+        invoices: Invoices
