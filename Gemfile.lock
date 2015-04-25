@@ -41,7 +41,7 @@ GEM
     array_enumerator (0.0.7)
     autonumeric-rails (1.9.25.0)
       jquery-rails (>= 2.0.2)
-    awesome_translations (0.0.5)
+    awesome_translations (0.0.6)
       array_enumerator (~> 0.0.7)
       haml
       jquery-rails
@@ -309,7 +309,7 @@ DEPENDENCIES
   acts-as-taggable-on
   agent_helpers
   autonumeric-rails
-  awesome_translations (~> 0.0.5)
+  awesome_translations (~> 0.0.6)
   baza
   cancancan
   capistrano

@@ -6,6 +6,21 @@ da:
       pdf: PDF
       finish: Færdiggør
       register_as_sent: Registrer som sendt
+      no_lines_were_found: Der blev ikke fundet nogle linjer
+      manage: Admin
+      register_as_paid: Registrer som betalt
+      reconciled_question_mark: Afstemt?
+      no_invoice_groups_were_found_for_this_invoice: Der blev ikke fundet nogle fakturagrupper
+        for denne faktura
+      reconcile_invoice: Afstem faktura
+      this_invoice_is_not_reconciled: Denne faktura er ikke afstemt
+      you_can_reconcile_it_by_choosing_a_matching_account_line_below: Du kan afstemme
+        den ved at vælge en kontolinje neden under
+      no_matching_account_lines: Ingen matchende kontolinjer
+      no_account_lines_has_been_attached_to_this_invoice: Der er ikke blevet tilføjet
+        nogle kontolinjer for denne faktura
+      invoice_with_no: Faktura %{invoice_no}
+      add_new_invoice_line: Tilføj ny fakturalinje
     index:
       new_invoice: Ny faktura
       vat: Moms

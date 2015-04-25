@@ -4,6 +4,8 @@ da:
     show:
       show_invoice_group: Vis fakturagruppe
       add_invoice: Tilføj faktura
+      no_invoices_has_been_added_for_this_group: Der er ikke tilføjet nogle fakturaer
+        til denne gruppe
     new:
       new_invoice_group: Ny fakturagruppe
     edit:

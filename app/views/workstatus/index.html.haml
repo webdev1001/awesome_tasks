@@ -2,8 +2,8 @@
 
 = design_box t("filter"), 550 do
   = simple_search_form_for @ransack, @ransack_params do |f|
-    = f.input :date_gteq, label: t(".date_from"), as: :string, input_html: {value: @date_from.strftime("%Y-%m-%d")}
-    = f.input :date_lteq, label: t(".date_to"), as: :string, input_html: {value: @date_to.strftime("%Y-%m-%d")}
+    = f.input :date_gteq, label: t("date_from"), as: :string, input_html: {value: @date_from.strftime("%Y-%m-%d")}
+    = f.input :date_lteq, label: t("date_to"), as: :string, input_html: {value: @date_to.strftime("%Y-%m-%d")}
     = f.input :task_project_id_eq_any, as: :check_boxes, collection: Project.all.order(:name), label: Project.model_name.human(count: 2)
     = f.submit t("search")
 

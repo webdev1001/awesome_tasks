@@ -4,6 +4,8 @@ en:
     index:
       search_for_tasks: Search for tasks
       no_tasks_were_found: No tasks were found
+      progress: Progress
+      author: Author
     timelogs:
       hours: Hours
       date: Date
@@ -25,6 +27,14 @@ en:
       assigned_users: Assigned users
       assign_user_to_task: Tildel bruger til opgave
       checklist: Checklist
+      the_current_status_of_the_task: The current status of the task
+      the_type_of_task_this_is: The type of task this is
+      the_date_this_task_was_added: The date the task was added
+      the_project_this_task_is_created_under: The project this task is created under
+      the_user_that_created_this_task: The user who created this task
+      the_priority_of_the_task_10_most_important_1_least: Priority of the task. 10
+        for most important and 1 for least
+      add_new_check: Add new check
     form:
       browser: Browser
       version: Version

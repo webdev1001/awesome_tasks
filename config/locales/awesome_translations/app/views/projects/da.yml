@@ -17,6 +17,9 @@ da:
       no_tasks_were_found: Der blev ikke fundet nogle opgaver
       show_project_with_name: 'Vis project: %{name}'
       add_autoassigned_user: Tilføj autotildelt bruger
+      assign_user: Tildel bruger
+      autoassigned_users: Autotildelte brugere
+      progress: Fremgang
     index:
       search_for_project: Søg efter projekt
       no_projects_were_found: Der blev ikke fundet nogle projekter

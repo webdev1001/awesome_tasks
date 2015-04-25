@@ -5,3 +5,10 @@ da:
       links:
         sign_in: Log ind
         forgot_your_password: Glemt adgangskode
+        sign_up: Opret bruger
+        forgot_your_password_question_mark: Glemt din adgangskode?
+        didnt_receive_confirmation_instructions?: Har du ikke modtaget bekræftelsesinstruktioner?
+        Didn't receive unlock instructions?: Har du ikke modtaget låst-op-instruktioner?
+        sign_in_with_provider: Log ind med udbyder
+        didnt_receive_confirmation_instructions: Har du ikke modtaget bekræftelsesinstruktioner?
+        didnt_receive_unlock_instructions: Har du ikke mådtaget lås-op-instruktioner?

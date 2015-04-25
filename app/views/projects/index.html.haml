@@ -1,6 +1,6 @@
 - content_for(:header_title){ t(".search_for_project") }
 
-= design_box t(".enter_criteria"), 350 do
+= design_box t("enter_criteria"), 350 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :name_cont
     = link_to t("add_new"), new_project_path, class: "button"

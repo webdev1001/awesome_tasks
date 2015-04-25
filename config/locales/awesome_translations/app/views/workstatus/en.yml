@@ -1,0 +1,16 @@
+---
+en:
+  workstatus:
+    index:
+      work_status: Work-status
+      date: Date
+      hours: Hours
+      hours_driving: Hours driven
+      earned: Earned
+      driving_earned: Earned on driving
+      driving_length: Driving length
+      overview: Overview
+      transport: Transport
+      total_earned: Total earned
+      tax: Tax
+      total_transport: Total transport

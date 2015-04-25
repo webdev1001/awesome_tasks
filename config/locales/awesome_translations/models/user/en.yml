@@ -19,3 +19,17 @@ en:
         first_name: First name
         last_name: Last name
         tasks: Tasks
+        remember_created_at: Remember created at
+        sign_in_count: Sign-in count
+        current_sign_in_at: Current time signed in
+        last_sign_in_at: Last time signed in
+        current_sign_in_ip: Current IP signed in from
+        last_sign_in_ip: Last IP signed in from
+        task_assigned_users: Assigned tasks
+        assigned_task_checks: Assigned checks
+        user_project_links: Member of projects
+        projects: Projects
+        project_autoassigned_users: Auto-assigned to projects
+        user_roles: User roles
+        user_task_list_links: Task-list links
+        organizations: Organisations

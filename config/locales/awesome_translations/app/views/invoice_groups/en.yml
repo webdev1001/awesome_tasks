@@ -4,6 +4,8 @@ en:
     show:
       show_invoice_group: Show invoice group
       add_invoice: Add invoice
+      no_invoices_has_been_added_for_this_group: No invoices has been added for this
+        group
     new:
       new_invoice_group: New invoice-group
     edit:

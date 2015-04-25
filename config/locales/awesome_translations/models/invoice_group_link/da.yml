@@ -1,0 +1,16 @@
+---
+da:
+  activerecord:
+    models:
+      invoice_group_link:
+        one: Fakturagruppe link
+        other: Fakturagruppe links
+    attributes:
+      invoice_group_link:
+        id: ID
+        invoice_id: Faktura ID
+        invoice_group_id: Fakturagruppe ID
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        invoice: Faktura
+        invoice_group: Fakturagruppe

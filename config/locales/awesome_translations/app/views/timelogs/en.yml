@@ -7,3 +7,26 @@ en:
       edit_timelog: Edit timelog
     show:
       show_timelog_with_id: Show timelog %{id}
+    index:
+      hours: Hours
+      if_you_want_to_find_timelogs_from_specific_projects: If you want to find timelogs
+        from specific projects.
+      if_you_only_want_to_view_invoiced_uninvoiced_or_all_timelogs: If you only want
+        to find invoiced- or uninvoiced timelogs
+      sum: Sum
+      total_hours: Total hours
+      the_total_amount_of_hours_of_all_the_found_time_logs_first_hours_used_then_time_used_on_transport: The
+        total amount of hours of all found timelogs
+      total_transport: Total transport
+      total_length_of_transport_used_in_all_the_timelogs_found: Total length of transport
+        in all found timelogs
+      timelogs_with_transport_length: Timelogs with transport-length
+      transport_with_substraction: Timelogs with subsctraction
+      transport: Transport
+      no_timelogs_were_found: No timelogs were found
+      organization_message: Organisation message
+      mark_timelogs_as_invoiced: Mark timelogs as invoiced
+      all_timelogs_was_marked_as_invoiced: All timelogs were marked as invoiced
+      are_you_sure_you_want_to_mark_all_the_found_timelogs_as_invoiced: Do you want
+        to mark all found timelogs as invoiced?
+      description: Description

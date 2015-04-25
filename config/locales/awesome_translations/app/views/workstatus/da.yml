@@ -1,0 +1,16 @@
+---
+da:
+  workstatus:
+    index:
+      work_status: Arbejdsstatus
+      date: Dato
+      hours: Timer
+      hours_driving: Timer kørt
+      earned: Tjent
+      driving_earned: Tjent på kørsel
+      driving_length: Kørselslængde
+      overview: Overblik
+      transport: Transport
+      total_earned: Totalt tjent
+      tax: Skat
+      total_transport: Total transport

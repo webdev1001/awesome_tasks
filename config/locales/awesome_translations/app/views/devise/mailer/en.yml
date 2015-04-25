@@ -6,3 +6,9 @@ en:
         hello_email: Hello %{email}
         someone_has_requested_a_link_to_change_your_password: Someone has requested
           a link to change your password.
+        you_can_do_this_through_the_link_below: You can do this through the link below
+        change_my_password: Change my password
+        if_you_didnt_request_this_please_ignore_this_email: If you didn't request,
+          then please ignore this email
+        your_password_wont_change_until_you_access_the_link_above_and_create_a_new_one: You
+          password won't change until you access the link above and create a new one

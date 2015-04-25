@@ -17,6 +17,9 @@ en:
       no_tasks_were_found: No tasks were found
       show_project_with_name: 'Show project: %{name}'
       add_autoassigned_user: Add auto-assigned user
+      assign_user: Assign user
+      autoassigned_users: Auto-assigned users
+      progress: Progress
     index:
       search_for_project: Search for project
       no_projects_were_found: No projects were found

@@ -6,3 +6,10 @@ da:
         hello_email: Hej %{email}
         someone_has_requested_a_link_to_change_your_password: Nogle har bedt om at
           ændre din adgangskode.
+        you_can_do_this_through_the_link_below: Du kan gøre dette gennem linket neden
+          under
+        change_my_password: Lav min adgangskode om
+        if_you_didnt_request_this_please_ignore_this_email: Ignorer denne mail, hvis
+          du ikke har bedt om den
+        your_password_wont_change_until_you_access_the_link_above_and_create_a_new_one: Din
+          adgangskode vil ikke ændres, før du bruger linket og laver en ny

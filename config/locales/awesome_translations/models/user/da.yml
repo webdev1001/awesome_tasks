@@ -19,3 +19,17 @@ da:
         first_name: Fornavn
         last_name: Efternavn
         tasks: Opgaver
+        remember_created_at: Husk log-ind oprettet d.
+        sign_in_count: Log-ind optælling
+        current_sign_in_at: Nuværende tidspunkt logget ind
+        last_sign_in_at: Sidste gang logget ind
+        current_sign_in_ip: Nuværende log-ind IP
+        last_sign_in_ip: Sidste log-ind IP
+        task_assigned_users: Tildelte opgaver
+        assigned_task_checks: Tildelte tjeks
+        user_project_links: Medlem af projekter
+        projects: Projekter
+        project_autoassigned_users: Autotildelt til projekter
+        user_roles: Brugerroller
+        user_task_list_links: Opgaveliste links
+        organizations: Organisationer

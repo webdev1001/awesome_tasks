@@ -1,0 +1,25 @@
+---
+da:
+  activerecord:
+    models:
+      task_check:
+        one: Opgavetjek
+        other: Opgavetjeks
+    attributes:
+      task_check:
+        id: ID
+        task_id: Opgave ID
+        user_added_id: Bruger der tilføjede ID
+        name: Navn
+        description: Beskrivelse
+        checked: Tjekket
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        user_assigned_id: Bruger der er tildelt ID
+        user_checked_id: Bruger der tjekkede ID
+        user_assigner_id: Bruger der tildelte ID
+        task: Opgave
+        user_added: Bruger der tilføjede
+        user_assigned: Bruger der er tildelt
+        user_assigner: Bruger der tildelte
+        user_checked: Bruger der tjekkede

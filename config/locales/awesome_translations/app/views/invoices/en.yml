@@ -6,6 +6,21 @@ en:
       pdf: PDF
       finish: Finish
       register_as_sent: Register as sent
+      no_lines_were_found: No lines were found
+      manage: Manage
+      register_as_paid: Register as paid
+      reconciled_question_mark: Reconciled?
+      no_invoice_groups_were_found_for_this_invoice: No invoice-groups were found
+        for this invoice
+      reconcile_invoice: Reconcile invoice
+      this_invoice_is_not_reconciled: This invoice isn't reconciled
+      you_can_reconcile_it_by_choosing_a_matching_account_line_below: You can reconcile
+        it by choosing a matching account-line below
+      no_matching_account_lines: No matching account-lines
+      no_account_lines_has_been_attached_to_this_invoice: No account-lines has been
+        attached to this invoice
+      invoice_with_no: Invoice %{invoice_no}
+      add_new_invoice_line: Add new invoice-line
     index:
       new_invoice: New invoice
       vat: Vat
