@@ -56,7 +56,7 @@
         %br
         = design_box Task.human_attribute_name(:description) do
           - unless @task.description?
-            .error= t.(".no_description_has_been_written_for_this_task")
+            .error= t(".no_description_has_been_written_for_this_task")
           - else
             = UserReferences.new(text: @task.description).unparse_user_references(html: true).html_safe
       %td{style: "vertical-align: top; padding-left: 15px;"}
