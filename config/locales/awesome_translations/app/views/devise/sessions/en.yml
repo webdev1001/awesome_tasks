@@ -1,0 +1,8 @@
+---
+en:
+  devise:
+    sessions:
+      new:
+        sign_in: Sign in
+        password: Password
+        remember_me: Remember me

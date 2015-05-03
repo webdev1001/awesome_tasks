@@ -1,0 +1,25 @@
+---
+en:
+  activerecord:
+    models:
+      project:
+        one: Project
+        other: Projects
+    attributes:
+      project:
+        id: ID
+        organization_id: Organisation ID
+        user_added_id: User added ID
+        name: Name
+        state: State
+        description: Description
+        deadline_at: Deadline at
+        price_per_hour: Price per hour
+        price_per_hour_transport: Price per hour transport
+        created_at: Created at
+        updated_at: Updated at
+        user_added: User that added
+        organization: Organisation
+        tasks: Tasks
+        users: Users
+        autoassigned_users: Auto-assigned users

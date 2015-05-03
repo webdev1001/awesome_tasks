@@ -1,0 +1,10 @@
+---
+da:
+  invoice_lines:
+    edit:
+      edit_invoice_line_with_id: Rediger fakturalinje %{id}
+    new:
+      new_invoice_line: Ny fakturalinje
+    show:
+      show_invoice_line_with_id: Vis fakturalinje %{id}
+      total_amount: Totalbeløb

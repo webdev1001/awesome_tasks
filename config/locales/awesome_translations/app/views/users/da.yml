@@ -1,0 +1,34 @@
+---
+da:
+  users:
+    show:
+      show_user: 'Vis bruger: %{name}'
+      information: Information
+      hide_filter: Skjul filter
+      no_tasks_were_found_for_this_user: Der blev ikke fundet nogle opgaver for denne
+        bruger
+      the_real_name_of_the_user: Brugerens rigtige navn
+      the_email_of_the_user: Brugerens email
+      progress: Fremskridt
+    roles:
+      rank: Rang
+      do_you_want_to_remove_this_role: Vil du fjerne denne rolle?
+      no_roles_has_been_added_to_this_user: Der er ikke tildelt nogle roller til denne
+        bruger
+    form:
+      only_write_a_password_here_if_you_whish_to_change_it: Skriv kun en adgangskode
+        her, hvis du gerne vil ændre adgangskode
+      log_in_as: Log ind som
+      permissions: Tilladelser
+      add_rank: Tilføj rang
+    index_form:
+      please_search: Søg venligst
+    edit:
+      edit_user: Rediger bruger
+    new:
+      new_user: Ny bruger
+    index:
+      search_for_users: Søg efter brugere
+      no_users_were_found: Der blev ikke fundet nogle brugere
+    index_results:
+      no_users_were_found: Der blev ikke fundet nogle brugere

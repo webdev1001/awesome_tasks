@@ -36,9 +36,9 @@ describe CommentsController do
 
       mail = ActionMailer::Base.deliveries.select{ |mail| mail.to.include?(user.email) }.first
       mail.subject.should include "Ny kommentar fra: #{admin.name}"
-      mail.body.should include "<a href='#{task_url(task)}'>"
-      mail.body.should include "Kommentar"
-      mail.body.should include "Hej #{user.name}"
+      mail.body.to_s.should include "<a href=\"#{task_url(task)}\">"
+      mail.body.to_s.should include "Kommentar"
+      mail.body.to_s.should include "Hej #{user.name}"
       mail.in_reply_to.should eq task.first_email_id
 
       from_email = Rails.application.config.action_mailer.default_options[:from]

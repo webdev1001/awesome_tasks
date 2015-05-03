@@ -1,0 +1,17 @@
+---
+da:
+  organizations:
+    index:
+      search_for_organizations: Søg efter organisationer
+      add_new_organization: Tilføj ny organisation
+      no_organizations_were_found: Der blev ikke fundet nogle organisationer
+    show:
+      show_organization_with_name: 'Vis organisation: %{name}'
+      no_projects_has_been_added_for_this_organization: Der er ikke tilføjet nogle
+        projekter for denne organisation
+      edit_organization: Rediger organisation
+      add_project: Tilføj projekt
+    new:
+      add_new_organization: Tilføj ny organisation
+    edit:
+      edit_organization: Rediger organisation

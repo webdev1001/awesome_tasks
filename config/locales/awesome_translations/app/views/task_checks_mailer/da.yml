@@ -1,0 +1,13 @@
+---
+da:
+  task_checks_mailer:
+    notification_assigned:
+      hello_user_name: Hej %{user_name}
+      you_have_been_assigned_to_a_check_for_the_mentionen_task: Du er blevet tildelt
+        et tjek på den nævnte opgave
+    notification_checked:
+      hello_user_name: Hej %{user_name}
+      task_check_name_has_been_marked_as_not_complete: Opgavecheck %{task_check_name}
+        er blevet markeret som ikke færdigt
+      task_check_name_has_been_completed: Opgavecheck %{task_check_name} er blevet
+        markeret som færdig

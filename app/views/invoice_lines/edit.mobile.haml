@@ -1,2 +1,2 @@
-- content_for(:header_title){ _("Edit invoice-line %{id}", id: @invoice_line.id) }
+- content_for(:header_title){ t(".edit_invoice_line_with_id", id: @invoice_line.id) }
 = render "form", invoice_line: @invoice_line

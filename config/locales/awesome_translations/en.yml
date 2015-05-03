@@ -1,0 +1,30 @@
+---
+en:
+  choose: Choose
+  all: All
+  'true': 'True'
+  'false': 'False'
+  enter_details: Enter details
+  save: Save
+  details: Details
+  are_you_sure: Are you sure?
+  actions: Actions
+  filter: Filter
+  results: Results
+  edit: Edit
+  options: Options
+  add_new: Add new
+  delete: Delete
+  show: Show
+  enter_criteria: Enter criteria
+  date_from: From date
+  date_to: To date
+  new: New
+  vat: Vat
+  total: Total
+  'yes': 'Yes'
+  'no': 'No'
+  search: Search
+  amount: Amount
+  remove: Remove
+  no_results: No results

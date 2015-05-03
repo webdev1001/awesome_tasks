@@ -1,0 +1,1 @@
+AwesomeTranslations.load_object_extensions

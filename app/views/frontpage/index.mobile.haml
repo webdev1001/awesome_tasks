@@ -1,5 +1,5 @@
-- content_for(:header_title) { _("Frontpage") }
-- content_for(:header_right) { link_to _("Add task"), new_task_path, class: "mobile-button-header" }
+- content_for(:header_title) { t(".frontpage") }
+- content_for(:header_right) { link_to t(".add_task"), new_task_path, class: "mobile-button-header" }
 
 %table.mobile-table.list
   %thead
@@ -13,4 +13,4 @@
         %td.nowrap= link_to_project data[:task].project
     - if no_tasks?
       %tr
-        %td.error{colspan: 2}= _("No tasks were found.")
+        %td.error{colspan: 2}= t(".no_tasks_were_found")

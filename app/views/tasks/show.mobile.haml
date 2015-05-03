@@ -1,5 +1,5 @@
-- content_for(:header_title) { _("Show task: %{task_name}", task_name: @task.name) }
-- content_for(:header_right) { link_to _("Edit"), [:edit, @task], class: "mobile-button-header" }
+- content_for(:header_title) { t(".show_task_task_name", task_name: @task.name) }
+- content_for(:header_right) { link_to t("edit"), [:edit, @task], class: "mobile-button-header" }
 
 = mobile_tabs do |tabs|
   - tabs.tab icon: "/assets/icons/list.png", id: "tab-details", active: true
@@ -25,7 +25,7 @@
         %td.tdt= Project.model_name.human
         %td= link_to_project(@task.project) if @task.project
       %tr
-        %td.tdt= _("Author")
+        %td.tdt= t(".author")
         %td= link_to_user(@task.user) if @task.user
       %tr
         %td.tdt= Task.human_attribute_name(:priority)
@@ -36,7 +36,7 @@
     - if @task.description?
       = UserReferences.new(text: @task.description).unparse_user_references(html: true).html_safe
     - else
-      .error= _("No description has been written for this task.")
+      .error= t(".no_description_has_been_written_for_this_task")
 
 #tab-checks
   = render "checks"

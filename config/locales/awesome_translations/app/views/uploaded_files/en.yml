@@ -1,0 +1,13 @@
+---
+en:
+  uploaded_files:
+    show:
+      show_uploaded_file_title: 'Show uploaded file: %{title}'
+    edit:
+      edit_file: 'Edit file: %{title}'
+    new:
+      new_file: New file
+    list_for_resource:
+      no_files_has_been_uploaded: No files has been uploaded
+    index:
+      no_uploaded_files_were_found: No uploaded files were found

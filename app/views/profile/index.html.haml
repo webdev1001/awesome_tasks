@@ -1,22 +1,22 @@
-- content_for(:header_title){ _("Your profile") }
+- content_for(:header_title){ t(".your_profile") }
 
-= design_box _("Enter details"), 600 do
+= design_box t("enter_details"), 600 do
   = simple_form_for current_user, url: profile_update_path, html: {autocomplete: "off"} do |f|
     = hidden_field_tag "passwd_md5", ""
 
     = f.input :name, autofocus: true
-    = f.input :email, hint: _("The email that you want notifications and stuff sent to.")
+    = f.input :email, hint: t(".the_email_that_you_want_notifications_and_stuff_sent_to")
 
     .input.password
-      = label_tag _("Password")
+      = label_tag t(".password")
       = password_field_tag "texpasswd", "", autocomplete: "off"
-      %span.hint= _("You can enter a new password to change it.")
+      %span.hint= t(".you_can_enter_a_new_password_to_change_it")
 
-    = f.submit _("Save")
+    = f.submit t("save")
 
 %br
 
-= design_box _("Task-list"), 600 do
+= design_box t(".task_list"), 600 do
   %table.list
     %thead
       %tr
@@ -30,7 +30,7 @@
       - if @tasks.none?
         %tr
           %td.error{colspan: 2}
-            = _("No tasks has been added to your list.")
+            = t(".no_tasks_has_been_added_to_your_list")
 
 %br
 = will_paginate @tasks

@@ -1,0 +1,16 @@
+---
+en:
+  activerecord:
+    models:
+      account_import_column:
+        one: Account-import column
+        other: Account-import columns
+    attributes:
+      account_import_column:
+        id: ID
+        account_import_id: Account-import ID
+        column_no: Column number
+        column_type: Column type
+        created_at: Created at
+        updated_at: Updated at
+        account_import: Account-import

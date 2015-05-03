@@ -1,0 +1,18 @@
+---
+da:
+  activerecord:
+    models:
+      invoice_line:
+        one: Fakturalinje
+        other: Fakturalinjer
+    attributes:
+      invoice_line:
+        id: ID
+        title: Titel
+        amount: Beløb
+        quantity: Antal
+        invoice_id: Faktura ID
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        activities: Aktiviteter
+        invoice: Faktura

@@ -3,7 +3,7 @@
   = f.input :description
   = f.association :user_assigned, collection: current_user.visible_users.order(:name)
   = f.input :checked
-  = f.submit _("Save"), class: "mobile-button-primary"
+  = f.submit t("save"), class: "mobile-button-primary"
 
   - if can?(:destroy, task_check) && !task_check.new_record?
-    = link_to _("Delete"), [task_check.task, task_check], method: :delete, class: "mobile-button-danger", data: {confirm: _("Are you sure?")}
+    = link_to t("delete"), [task_check.task, task_check], method: :delete, class: "mobile-button-danger", data: {confirm: t("are_you_sure")}

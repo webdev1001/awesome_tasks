@@ -3,9 +3,9 @@ module InvoiceHelper
     if args[:title].present?
       title = args[:title]
     elsif invoice.invoice_no?
-      title = _("Invoice %{invoice_no}", invoice_no: invoice.invoice_no)
+      title = t(".Invoice", invoice_no: invoice.invoice_no)
     else
-      title = _("Invoice with ID %{id}", id: invoice.id)
+      title = T(".invoice_withid", id: invoice.id)
     end
 
     if can? :show, invoice
@@ -17,10 +17,10 @@ module InvoiceHelper
 
   def translated_invoice_states
     {
-      _("Draft") => :draft,
-      _("Finished") => :finished,
-      _("Sent") => :sent,
-      _("Paid") => :paid
+      t(".draft") => :draft,
+      t(".finished") => :finished,
+      t(".sent") => :sent,
+      t(".paid") => :paid
     }
   end
 

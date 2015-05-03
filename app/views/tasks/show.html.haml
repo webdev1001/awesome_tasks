@@ -1,16 +1,17 @@
-- content_for(:header_title){ _("Show task: %{task_name}", task_name: @task.name) }
+- content_for(:header_title){ t(".show_task", task_name: @task.name) }
 
 .task_show{data: {comments_task_path: comments_task_path(@task), timelogs_task_path: timelogs_task_path(@task), users_task_path: users_task_path(@task), assign_user_task_path: assign_user_task_path(@task), checks_task_path: checks_task_path(@task)}}
 
 %div{style: "padding-bottom: 15px;"}
-  %input{onclick: "location.href='#{edit_task_path(@task)}';", type: "button", value: _("Edit task")}/
+  = link_to t(".edit_task"), edit_task_path(@task), class: "button"
+
   - if link = current_user.user_task_list_links.where(task_id: @task).first
-    = link_to _("Remove from list"), "#", class: ["button", "remove_from_list"], data: {link_id: link.id, confirm_msg: _("Are you sure?")}
+    = link_to t(".remove_from_list"), "#", class: ["button", "remove_from_list"], data: {link_id: link.id, confirm_msg: t("are_you_sure")}
   - else
-    = link_to _("Add to list"), "#", class: ["button", "add_to_list"], data: {task_id: @task.id}
+    = link_to t(".add_to_list"), "#", class: ["button", "add_to_list"], data: {task_id: @task.id}
 
 %div{style: "padding-bottom: 15px;"}
-  %table{cellpadding: "0", cellspacing: "0", style: "width: 100%;"}
+  %table{cellpadding: 0, cellspacing: 0, style: "width: 100%;"}
     %tr
       %td{style: "vertical-align: top; width: 60%;"}
         = design_box Task.model_name.human do
@@ -21,54 +22,54 @@
                 %td= @task.translated_state
               %tr
                 %td.tdd{colspan: 2}
-                  = _("The current status of the task.")
+                  = t(".the_current_status_of_the_task")
               %tr
                 %td.tdt= Task.human_attribute_name(:task_type)
                 %td= @task.translated_task_type
               %tr
                 %td.tdd{colspan: 2}
-                  = _("The type of task this is.")
+                  = t(".the_type_of_task_this_is")
               %tr
                 %td.tdt= Task.human_attribute_name(:created_at)
                 %td= l(@task.created_at, format: :long) if @task.created_at
               %tr
                 %td.tdd{colspan: 2}
-                  = _("The date this task was added.")
+                  = t(".the_date_this_task_was_added")
               %tr
                 %td.tdt= Project.model_name.human
                 %td= link_to_project(@task.project) if @task.project
               %tr
                 %td.tdd{colspan: 2}
-                  = _("The project this task is created under.")
+                  = t(".the_project_this_task_is_created_under")
               %tr
-                %td.tdt= _("Author")
+                %td.tdt= t(".author")
                 %td= link_to_user(@task.user) if @task.user
               %tr
                 %td.tdd{colspan: 2}
-                  = _("The user that created this task.")
+                  = t(".the_user_that_created_this_task")
               %tr
                 %td.tdt= Task.human_attribute_name(:priority)
                 %td= @task.priority
               %tr
                 %td.tdd{colspan: 2}
-                  = _("The priority of the task. 10 as most important and 1 as least important.")
+                  = t(".the_priority_of_the_task_10_most_important_1_least")
         %br
         = design_box Task.human_attribute_name(:description) do
           - unless @task.description?
-            .error= _("No description has been written for this task.")
+            .error= t.(".no_description_has_been_written_for_this_task")
           - else
             = UserReferences.new(text: @task.description).unparse_user_references(html: true).html_safe
       %td{style: "vertical-align: top; padding-left: 15px;"}
-        = design_box _("Assigned users") do
+        = design_box t(".assigned_users") do
           %div{style: "padding-bottom: 10px;"}
-            = link_to _("Assign user to task"), "#", class: ["button", "assign_user_to_task"], data: {title: _("Assign user to task"), url: search_users_path(ajaxsearch: true, not_in_task_id: @task.id, jscallback: "task_show_assign_user_choose")}
+            = link_to t(".assign_user_to_task"), "#", class: ["button", "assign_user_to_task"], data: {title: t(".assign_user_to_task"), url: search_users_path(ajaxsearch: true, not_in_task_id: @task.id, jscallback: "task_show_assign_user_choose")}
           #divusers= render "users", users: @users, task: @task
 
         %br
 
-        = design_box _("Checklist") do
+        = design_box t(".checklist") do
           %div{style: "padding-bottom: 15px;"}
-            = link_to _("Add new check"), "#", class: ["button", "add_new_check"], data: {title: _("Add new check"), url: new_task_task_check_path(task_id: @task.id)}
+            = link_to t(".add_new_check"), "#", class: ["button", "add_new_check"], data: {title: t(".add_new_check"), url: new_task_task_check_path(task_id: @task.id)}
           #divchecks= render "checks", checks: @checks, task: @task
 
         %br
@@ -82,13 +83,13 @@
 %div{style: "padding-bottom: 15px;"}
   = design_box Comment.model_name.human(count: 2) do
     %div{style: "padding-bottom: 15px;"}
-      %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: _("Add new")}/
+      %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: t("add_new")}
     #divcomments
       = render "comments", comments: @comments, task: @task
     %div
-      %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: _("Add new")}/
+      %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: t("add_new")}
 = design_box Timelog.model_name.human(count: 2) do
   %div{style: "padding-bottom: 15px;"}
-    %input{onclick: "timelog_add('#{@task.id}');", type: "button", value: _("Add new")}/
+    %input{onclick: "timelog_add('#{@task.id}');", type: "button", value: t("add_new")}
   #divtimelogs
     = render "timelogs", timelogs: @timelogs, task: @task

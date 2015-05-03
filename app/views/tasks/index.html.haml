@@ -1,6 +1,6 @@
-- content_for(:header_title){ _("Search for tasks") }
+- content_for(:header_title){ t(".search_for_tasks") }
 
-= design_box _("Enter criteria"), 550 do
+= design_box t("enter_criteria"), 550 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :name_cont
     = f.input :description_cont, as: :string
@@ -9,21 +9,21 @@
     = f.input :user_id_eq, collection: @users, include_blank: true, label: User.model_name.human
     = f.input :project_id_eq, collection: @projects, label: Project.model_name.human, include_blank: true
 
-    = link_to _("Add new"), new_task_path, class: "button"
-    = f.submit _("Search")
+    = link_to t("add_new"), new_task_path, class: "button"
+    = f.submit t("search")
 
 %br
 
-= design_box _("Results"), 1150 do
+= design_box t("results"), 1150 do
   %table.list.tasks-list
     %thead
       %tr
         %th= sort_link @ransack, :name
-        %th= _("Progress")
+        %th= t(".progress")
         %th= sort_link @ransack, :state
         %th= sort_link @ransack, :task_type
         %th= sort_link @ransack, :project_name, Project.model_name.human
-        %th= sort_link @ransack, :user_name, _("Author")
+        %th= sort_link @ransack, :user_name, t(".author")
     %tbody
       - @tasks.each do |task|
         - next unless can?(:show, task)
@@ -38,7 +38,7 @@
       - if @tasks.none?
         %tr
           %td{colspan: 6, class: "error"}
-            =_("No tasks were found.")
+            = t(".no_tasks_were_found")
 
 %br
 

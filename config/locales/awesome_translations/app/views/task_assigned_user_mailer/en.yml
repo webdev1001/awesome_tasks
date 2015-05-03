@@ -1,0 +1,13 @@
+---
+en:
+  task_assigned_user_mailer:
+    notification:
+      hello_user_name: Hello %{user_name}
+      task_name: Task name
+      task_author: Task author
+      assigned_by: Assigned by
+    new_comment_notification:
+      hello_user_name: Hello %{user_name}
+      a_new_comment_has_been_written_to_the_task: 'A new comment has been written
+        to the task: %{task_name}'
+      author: Author

@@ -1,0 +1,16 @@
+---
+en:
+  activerecord:
+    models:
+      invoice_group_link:
+        one: Invoice-group link
+        other: Invoice-group links
+    attributes:
+      invoice_group_link:
+        id: ID
+        invoice_id: Invoice ID
+        invoice_group_id: Invoice-group ID
+        created_at: Created at
+        updated_at: Updated at
+        invoice: Invoice
+        invoice_group: Invoice group

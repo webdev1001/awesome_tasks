@@ -1,0 +1,32 @@
+---
+en:
+  users:
+    show:
+      show_user: 'Show user: %{name}'
+      information: Information
+      hide_filter: Hide filter
+      no_tasks_were_found_for_this_user: No tasks were found for this user
+      the_real_name_of_the_user: The users real name
+      the_email_of_the_user: The email of the user
+      progress: Progress
+    roles:
+      rank: Rank
+      do_you_want_to_remove_this_role: Do you want to remove this role?
+      no_roles_has_been_added_to_this_user: No roles has been added to this user
+    form:
+      only_write_a_password_here_if_you_whish_to_change_it: Only write a password
+        here, if you wish to change it
+      log_in_as: Sign in as
+      permissions: Permissions
+      add_rank: Add rank
+    index_form:
+      please_search: Please search
+    edit:
+      edit_user: Edit user
+    new:
+      new_user: New user
+    index:
+      search_for_users: Search for users
+      no_users_were_found: No users were found
+    index_results:
+      no_users_were_found: No users were found

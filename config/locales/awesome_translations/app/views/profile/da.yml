@@ -1,0 +1,13 @@
+---
+da:
+  profile:
+    index:
+      your_profile: Din profil
+      password: Adgangskode
+      you_can_enter_a_new_password_to_change_it: Du kan indtaste en ny adgangskode
+        for at ændre den
+      no_tasks_has_been_added_to_your_list: Der er ikke tilføjet nogle opgaver til
+        din liste
+      the_email_that_you_want_notifications_and_stuff_sent_to: Emailen du vil modtage
+        notifikationer på
+      task_list: Opgaveliste

@@ -1,10 +1,10 @@
-= design_box _("Details"), 500 do
+= design_box t("details"), 500 do
   = simple_form_for uploaded_file do |f|
     = f.input :resource_type, as: :hidden
     = f.input :resource_id, as: :hidden
     = f.input :title, autofocus: true, required: false
     = f.input :file, required: false
-    = f.submit _("Save")
+    = f.submit t("save")
 
     - if can?(:destroy, uploaded_file) && !uploaded_file.new_record?
-      = link_to _("Delete"), uploaded_file, class: "button", method: :delete, data: {confirm: _("Are you sure?")}
+      = link_to t("delete"), uploaded_file, class: "button", method: :delete, data: {confirm: t("are_you_sure")}

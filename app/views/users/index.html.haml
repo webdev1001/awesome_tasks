@@ -1,4 +1,4 @@
-- content_for(:header_title){ _("Search for users") }
+- content_for(:header_title){ t(".search_for_users") }
 
 - if !params[:q] || params[:ajaxsearch] != "true"
   = render "index_form", ransack: @ransack, ransack_params: @ransack_params

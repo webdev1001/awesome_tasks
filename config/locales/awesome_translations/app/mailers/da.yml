@@ -1,0 +1,26 @@
+---
+da:
+  mailers:
+    task_checks_mailer:
+      completed: Færdig
+      not_completed: Ikke færdig
+      assigned_to_check_with_name: 'Tildelt til tjek: %{check_name}'
+    task_assigned_user_mailer:
+      you_have_been_assigned_to: Du er blevet tildelt til opgaven %{task_name}
+      task_id_and_name: 'Opgave #%{id}: %{name}'
+      new_comment_from_author: Ny kommentar fra %{author_name}
+  task_assigned_user_mailer:
+    you_have_been_assigned_to: Du er blevet tildelt til %{task_name}
+    task_id_and_name: 'Opgave #%{id}: %{name}'
+    new_comment_from_author: Ny kommentar fra %{author_name}
+    notification:
+      you_have_been_assigned_to: Du er blevet tildelt til %{task_name}
+    new_comment_notification:
+      task_id_and_name: 'Opgave #%{id}: %{name}'
+      new_comment_from_author: 'Ny kommentar fra: %{author_name}'
+  task_checks_mailer:
+    notification_checked:
+      completed: færdig
+      not_completed: ikke færdig
+    notification_assigned:
+      assigned_to_check_with_name: 'Tildelt til tjek: %{check_name}'

@@ -1,7 +1,7 @@
 - content_for(:header_title){ Invoice.model_name.human(count: 2) }
 
 - if can? :new, Invoice
-  - content_for(:header_right) { link_to _("New"), new_invoice_path, class: "mobile-button-header" }
+  - content_for(:header_right) { link_to t("new"), new_invoice_path, class: "mobile-button-header" }
 
 = simple_search_form_for @ransack, @ransack_params do |f|
   = f.input :id_eq, autofocus: true
@@ -9,9 +9,9 @@
   = f.input :creditor_name_cont
   = f.input :state_eq_any, collection: translated_invoice_states, include_blank: true
   = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
-  = f.input :date_gteq, as: :string, label: _("Date from")
-  = f.input :date_lteq, as: :string, label: _("Date to")
-  = f.submit _("Filter"), class: "mobile-button-primary"
+  = f.input :date_gteq, as: :string, label: t("date_from")
+  = f.input :date_lteq, as: :string, label: t("date_to")
+  = f.submit t("filter"), class: "mobile-button-primary"
 
 %table.mobile-table.list
   %thead
@@ -34,7 +34,7 @@
     - if @invoices.none?
       %tr
         %td.error{colspan: 4}
-          = _("No invoices could be found.")
+          = t(".no_invoices_could_be_found")
 
 %br
 %br
@@ -44,15 +44,15 @@
 %br
 %br
 
-%h2= _("Totals")
+%h2= t(".totals")
 %table.mobile-table.form
   %tbody
     %tr
-      %td.tdt= _("Amount")
+      %td.tdt= t(".amount")
       %td.align-right.nowrap= format_number @invoices.sum(:amount)
     %tr
-      %td.tdt= _("Vat")
+      %td.tdt= t(".vat")
       %td.align-right.nowrap= format_number @invoices.sum(:amount) * 0.25
     %tr
-      %td.tdt= _("Total")
+      %td.tdt= t(".total")
       %td.align-right.nowrap= format_number @invoices.sum(:amount) * 1.25

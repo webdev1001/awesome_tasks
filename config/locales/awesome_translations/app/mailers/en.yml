@@ -1,0 +1,14 @@
+---
+en:
+  task_assigned_user_mailer:
+    notification:
+      you_have_been_assigned_to: You have been assigned to %{task_name}
+    new_comment_notification:
+      task_id_and_name: 'Task #%{id}: %{name}'
+      new_comment_from_author: 'New comment from: %{author_name}'
+  task_checks_mailer:
+    notification_checked:
+      completed: completed
+      not_completed: not completed
+    notification_assigned:
+      assigned_to_check_with_name: 'Assigned to check: %{check_name}'

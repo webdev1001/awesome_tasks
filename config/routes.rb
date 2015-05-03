@@ -1,4 +1,5 @@
 AwesomeTasks::Application.routes.draw do
+  mount AwesomeTranslations::Engine => "/awesome_translations" if Rails.env.development?
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsImager::Engine => "/rails_imager"
   devise_for :users, encryptor: :md5

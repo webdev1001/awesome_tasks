@@ -1,4 +1,4 @@
-= design_box _("Enter details"), 800 do
+= design_box t("enter_details"), 800 do
   = simple_form_for project do |f|
     = f.input :name
     = f.input :state, collection: Project.translated_states
@@ -10,10 +10,10 @@
 
     - unless project.new_record?
       .added_by
-        = _("Added by %{user_link}", user_link: link_to_user(project.user_added)).html_safe
+        = t(".added_by_user_link", user_link: link_to_user(project.user_added)).html_safe
 
-      = link_to _("Show"), project_path(project), class: "button"
-      = link_to _("Add task"), new_task_path(task: {project_id: project.id}), class: "button"
-      = link_to _("Delete"), project_path(project), method: :delete, class: "button", data: {confirm: _("Do you want to delete this project?")}
+      = link_to t("show"), project_path(project), class: "button"
+      = link_to t(".add_task"), new_task_path(task: {project_id: project.id}), class: "button"
+      = link_to t("delete"), project_path(project), method: :delete, class: "button", data: {confirm: t(".do_you_want_to_delete_this_project")}
 
-    = f.submit _("Save")
+    = f.submit t("save")

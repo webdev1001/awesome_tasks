@@ -51,9 +51,9 @@ class Invoice < ActiveRecord::Base
 
   def self.translated_invoice_types
     return {
-      _("Debit") => "debit",
-      _("Credit") => "credit",
-      _("Purchase") => "purchase"
+      t(".debit") => "debit",
+      t(".credit") => "credit",
+      t(".purchase") => "purchase"
     }
   end
 
@@ -77,9 +77,9 @@ class Invoice < ActiveRecord::Base
 
   def filename
     if invoice_no.present?
-      filename_str = _("Invoice %{invoice_no}", invoice_no: invoice_no)
+      filename_str = "#{Invoice.model_name.human} #{invoice_no}"
     else
-      filename_str = _("Invoice ID %{id}", id: id)
+      filename_str = "#{Invoice.model_name.human} ID #{id}"
     end
 
     filename_str << ".pdf"
@@ -91,10 +91,10 @@ class Invoice < ActiveRecord::Base
   end
 
   def to_pdf
-    raise _("No invoice number has been set.") unless invoice_no.present?
-    raise _("No invoice-date has been set.") unless date.present?
-    raise _("No payment-date has been set.") unless payment_at.present?
-    raise _("No creditor has been set.") unless creditor
+    raise t(".no_invoice_number_has_been_set") unless invoice_no.present?
+    raise t(".no_invoice_date_has_been_set") unless date.present?
+    raise t(".no_payment_date_has_been_set") unless payment_at.present?
+    raise t(".no_creditor_has_been_set") unless creditor
 
     html = render_pdf_to_string
 

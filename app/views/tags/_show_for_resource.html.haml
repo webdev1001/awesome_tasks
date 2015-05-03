@@ -1,10 +1,10 @@
 .tags-show-for-resource
-  = design_box _("Tags") do
+  = design_box t(".tags") do
     = simple_form_for :tag, url: tags_path do |f|
       = f.input :resource_type, as: :hidden, input_html: {value: resource.class.name}
       = f.input :resource_id, as: :hidden, input_html: {value: resource.id}
-      = f.input :name, label: _("Tag"), required: false
-      = f.submit _("Save")
+      = f.input :name, label: t(".tag"), required: false
+      = f.submit t("save")
 
     %br
     %br
@@ -12,4 +12,4 @@
     - resource.tag_list.sort.each do |tag|
       .tag-element
         = tag
-        = link_to "X", tag_path(tag, resource_type: resource.class.name, resource_id: resource.id), method: :delete, data: {confirm: _("Are you sure?")}
+        = link_to "X", tag_path(tag, resource_type: resource.class.name, resource_id: resource.id), method: :delete, data: {confirm: t("are_you_sure")}

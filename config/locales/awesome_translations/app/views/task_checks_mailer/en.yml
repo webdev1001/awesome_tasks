@@ -1,0 +1,12 @@
+---
+en:
+  task_checks_mailer:
+    notification_assigned:
+      hello_user_name: Hello %{user_name}
+      you_have_been_assigned_to_a_check_for_the_mentionen_task: You have been assigned
+        to a check for the mentioned task
+    notification_checked:
+      hello_user_name: Hello %{user_name}
+      task_check_name_has_been_marked_as_not_complete: Task check %{task_check_name}
+        has been marked as not complete
+      task_check_name_has_been_completed: Task check %{task_check_name} has been completed

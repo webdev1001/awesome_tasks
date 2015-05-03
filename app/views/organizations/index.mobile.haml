@@ -1,11 +1,11 @@
-- content_for(:header_title) { _("Search for organizations") }
-- content_for(:header_right) { link_to _("Add new"), new_organization_path, class: "mobile-button-header" }
+- content_for(:header_title) { t(".search_for_organizations") }
+- content_for(:header_right) { link_to t("add_new"), new_organization_path, class: "mobile-button-header" }
 
 = simple_search_form_for @ransack, @ransack_params do |f|
   = f.input :name_cont
   = f.input :customer_eq, collection: form_boolean_collection
   = f.input :creditor_eq, collection: form_boolean_collection
-  = f.submit _("Search"), class: "mobile-button-primary"
+  = f.submit t("search"), class: "mobile-button-primary"
 
 %table.mobile-table.list
   %thead
@@ -20,7 +20,7 @@
     - if @organizations.none?
       %tr
         %td{colspan: 1, class: "error"}
-          = _("No organizations were found.")
+          = t(".no_organizations_were_found")
 
 %br
 

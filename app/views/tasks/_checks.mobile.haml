@@ -1,4 +1,4 @@
-= link_to _("Add new"), new_task_task_check_path(@task), class: "mobile-button"
+= link_to t("add_new"), new_task_task_check_path(@task), class: "mobile-button"
 
 - @task.task_checks.each do |task_check|
   %table.mobile-table.form
@@ -8,7 +8,7 @@
         %td= task_check.name
       %tr
         %td= TaskCheck.human_attribute_name(:checked)
-        %td= task_check.checked? ? _("Yes") : _("No")
+        %td= task_check.checked? ? t("yes") : t("no")
       - if task_check.user_checked
         %tr
           %td= TaskCheck.human_attribute_name(:user_checked)
@@ -26,4 +26,4 @@
       - if can? :edit, task_check
         %tr
           %td{colspan: 2}
-            = link_to _("Edit"), [:edit, @task, task_check]
+            = link_to t("edit"), [:edit, @task, task_check]

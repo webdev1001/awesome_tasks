@@ -1,0 +1,13 @@
+---
+en:
+  account_imports:
+    edit:
+      edit_account_import: Edit account-import
+    new:
+      new_account_import: New account-import
+    show:
+      show_account_import: Show account-import
+      update_columns: Update columns
+      execute: Execute
+      columns: Columns
+      column: Column

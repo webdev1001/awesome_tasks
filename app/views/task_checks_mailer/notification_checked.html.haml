@@ -1,4 +1,4 @@
-= _("Hello %{user_name}", user_name: @user.name)
+= t(".hello_user_name", user_name: @user.name)
 %br
 %br
 
@@ -9,6 +9,6 @@
 %br
 
 - if @task_check.checked?
-  = _("%{task_check_name} has been completed.", task_check_name: @task_check.name)
+  = t(".task_check_name_has_been_completed", task_check_name: @task_check.name)
 - else
-  = _("%{task_check_name} has been marked as not complete.", task_check_name: @task_check.name)
+  = t(".task_check_name_has_been_marked_as_not_complete", task_check_name: @task_check.name)

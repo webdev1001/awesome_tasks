@@ -1,6 +1,6 @@
 module UserHelper
   def link_to_user(user)
-    return "[#{_("no user")}]" unless user
+    return "[#{t(".no_user")}]" unless user
 
     name_str = user.name
     if name_str.blank?
@@ -8,7 +8,7 @@ module UserHelper
     end
 
     if name_str.blank?
-      name_str = "[#{_("no name")}]"
+      name_str = "[#{t(".no_name")}]"
     end
 
     if can? :show, user

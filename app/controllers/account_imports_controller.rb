@@ -74,7 +74,7 @@ class AccountImportsController < ApplicationController
 
   def execute
     result = @account_import.execute
-    flash[:notice] = _("%{count} lines was imported.", count: result[:count])
+    flash[:notice] = t(".lines_was_imported", count: result[:count])
     redirect_to account_account_import_url(@account, @account_import)
   end
 

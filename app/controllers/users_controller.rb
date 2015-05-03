@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       user_id: @user.id,
       roles_user_path: roles_user_path(@user),
       new_user_role_path: new_user_role_path(user_id: @user.id),
-      add_rank_text: _("Add rank"),
+      add_rank_text: t(".add_rank"),
       new_role_path: new_user_role_path(user_role: {user_id: @user.id})
     }
   end

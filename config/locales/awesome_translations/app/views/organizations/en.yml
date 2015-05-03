@@ -1,0 +1,17 @@
+---
+en:
+  organizations:
+    index:
+      search_for_organizations: Search for organisations
+      add_new_organization: Add new organisation
+      no_organizations_were_found: No organisations were found
+    show:
+      show_organization_with_name: 'Show organisation: %{name}'
+      no_projects_has_been_added_for_this_organization: No projects has been added
+        for this organisation
+      edit_organization: Edit organisation
+      add_project: Add project
+    new:
+      add_new_organization: Add new organisation
+    edit:
+      edit_organization: Edit organisation

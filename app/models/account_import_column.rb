@@ -5,10 +5,10 @@ class AccountImportColumn < ActiveRecord::Base
 
   def self.column_types
     {
-      _("Amount") => "amount",
-      _("Text") => "text",
-      _("Interest at") => "interest_at",
-      _("Booked at") => "booked_at"
+      t(".amount") => "amount",
+      t(".text") => "text",
+      t(".interest_at") => "interest_at",
+      t(".booked_at") => "booked_at"
     }
   end
 end

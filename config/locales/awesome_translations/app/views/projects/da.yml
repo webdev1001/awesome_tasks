@@ -1,0 +1,36 @@
+---
+da:
+  projects:
+    assigned_users:
+      do_you_want_to_remove_this_user_from_the_project: Vil du fjerne brugeren fra
+        projektet?
+      no_users_were_found: Der blev ikke fundet nogle brugere
+    show:
+      show_project: 'Vis project: %{name}'
+      edit_project: Rediger projekt
+      add_task: Tilføj opgave
+      information: Information
+      added_by: Tilføjet af
+      deadline: Deadline
+      author: Forfatter
+      date: Dato
+      no_tasks_were_found: Der blev ikke fundet nogle opgaver
+      show_project_with_name: 'Vis project: %{name}'
+      add_autoassigned_user: Tilføj autotildelt bruger
+      assign_user: Tildel bruger
+      autoassigned_users: Autotildelte brugere
+      progress: Fremgang
+    index:
+      search_for_project: Søg efter projekt
+      no_projects_were_found: Der blev ikke fundet nogle projekter
+    autoassigned_users:
+      no_users_have_been_autoassigned_yet: Der er ikke blevet autotildelt nogle brugere
+        endnu
+    form:
+      added_by_user_link: Tilføjet af brugerlink
+      add_task: Tilføj opgave
+      do_you_want_to_delete_this_project: Vil du slette dette projekt?
+    edit:
+      edit_project: Rediger projekt
+    new:
+      new_project: Nyt projekt

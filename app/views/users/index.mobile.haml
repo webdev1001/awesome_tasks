@@ -1,11 +1,11 @@
-- content_for(:header_title) { _("Search for users") }
+- content_for(:header_title) { t(".search_for_users") }
 - if can? :new, User
-  - content_for(:header_right) { link_to _("Add new"), new_user_path, class: "mobile-button-header" }
+  - content_for(:header_right) { link_to t("add_new"), new_user_path, class: "mobile-button-header" }
 
 = simple_search_form_for @ransack, @ransack_params do |f|
   = f.input :name_cont
   = f.input :email_cont
-  = f.submit _("Search"), class: "mobile-button-primary"
+  = f.submit t("search"), class: "mobile-button-primary"
 
 %table.mobile-table.list
   %thead
@@ -24,4 +24,4 @@
     - if count <= 0
       %tr
         %td.error{colspan: 1}
-          =_("No users were found.")
+          = t(".no_users_were_found")

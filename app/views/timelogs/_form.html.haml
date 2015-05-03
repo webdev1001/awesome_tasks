@@ -1,4 +1,4 @@
-= design_box _("Enter details") do
+= design_box t("enter_details") do
   = simple_form_for timelog, remote: true do |f|
     = f.input :task_id, collection: Task.order(:id), include_blank: true
     = f.input :time
@@ -7,4 +7,4 @@
     = f.input :date
     = f.input :invoiced
     = f.input :comment
-    = f.submit _("Save")
+    = f.submit t("save")

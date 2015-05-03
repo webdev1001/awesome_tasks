@@ -1,13 +1,13 @@
 %table.list
   %thead
     %tr
-      %th= _("User")
-      %th= _("Actions")
+      %th= User.model_name.human
+      %th= t("actions")
   %tbody
     - project.project_autoassigned_users.each do |project_autoassigned_user|
       %tr
         %td= link_to_user project_autoassigned_user.user
-        %td= link_to _("Remove"), project_project_autoassigned_user_path(project, project_autoassigned_user), method: :delete, remote: true, class: "remove_autoassigned_user_path", data: {confirm: _("Are you sure?")}
+        %td= link_to t("remove"), project_project_autoassigned_user_path(project, project_autoassigned_user), method: :delete, remote: true, class: "remove_autoassigned_user_path", data: {confirm: t("are_you_sure")}
     - if project.project_autoassigned_users.none?
       %tr
-        %td.error{colspan: 2}= _("No users have been autoassigned yet.")
+        %td.error{colspan: 2}= t(".no_users_have_been_autoassigned_yet")

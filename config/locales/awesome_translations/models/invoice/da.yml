@@ -1,0 +1,31 @@
+---
+da:
+  activerecord:
+    models:
+      invoice:
+        one: Faktura
+        other: Fakturaer
+    attributes:
+      invoice:
+        id: ID
+        title: Titel
+        date: Dato
+        invoice_no: Fakturanummer
+        invoice_type: Fakturatype
+        amount: Beløb
+        organization_id: Organisation ID
+        user_id: Bruger ID
+        payment_at: Betaling d.
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        creditor_id: Kreditor ID
+        no_vat: Ingen moms
+        state: Status
+        activities: Aktiviteter
+        creditor: Kreditor
+        organization: Organisation
+        user: Bruger
+        account_lines: Kontolinjer
+        invoice_lines: Fakturalinjer
+        invoice_groups: Fakturagrupper
+        uploaded_files: Uploadede filer

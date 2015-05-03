@@ -8,9 +8,9 @@ class TaskChecksMailer < ActionMailer::Base
 
     I18n.with_locale @user.locale! do
       if @task_check.checked?
-        subject_text = _("completed")
+        subject_text = t(".completed")
       else
-        subject_text = _("not completed")
+        subject_text = t(".not_completed")
       end
 
       subject = "[#{@task.project.name}] "
@@ -38,7 +38,7 @@ class TaskChecksMailer < ActionMailer::Base
 
     I18n.with_locale @user.locale! do
       subject = "[#{@task.project.name}] "
-      subject << _("Assigned to check: %{check_name}", check_name: @task_check.name)
+      subject << t(".assigned_to_check_with_name", check_name: @task_check.name)
 
       mail(
         to: @user.email,

@@ -20,9 +20,9 @@ class AccountImport < ActiveRecord::Base
 
   def self.translated_states
     {
-      _("New") => "new",
-      _("Executing") => "executing",
-      _("Finished") => "finished"
+      t(".new") => "new",
+      t(".executing") => "executing",
+      t(".finished") => "finished"
     }
   end
 

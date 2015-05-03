@@ -1,51 +1,51 @@
-- content_for(:header_title){ _("Timelogs") }
+- content_for(:header_title){ Timelog.model_name.human(count: 2) }
 
-= design_box _("Enter criteria"), 800 do
+= design_box t("enter_criteria"), 800 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = simple_fields_for :options do |f_opts|
       = f_opts.input :substract_from_each_transport_distance, required: false, input_html: {value: params[:options].try(:[], :substract_from_each_transport_distance)}
 
-    = f.input :date_gteq, label: _("Date from"), as: :string, input_html: {value: @date_from.out(time: false)}
-    = f.input :date_lteq, label: _("Date to"), as: :string, input_html: {value: @date_to.out(time: false)}
+    = f.input :date_gteq, label: t("date_from"), as: :string, input_html: {value: @date_from.out(time: false)}
+    = f.input :date_lteq, label: t("date_to"), as: :string, input_html: {value: @date_to.out(time: false)}
     = f.input :user_id_eq_any, as: :check_boxes, label: User.model_name.human, collection: current_user.users_with_access_to.order(:name), include_blank: true
-    = f.input :task_project_id_eq_any, as: :check_boxes, label: Project.model_name.human, hint: _("If you want to find timelogs from specific projects."), collection: current_user.visible_projects.order(:name), include_blank: true
+    = f.input :task_project_id_eq_any, as: :check_boxes, label: Project.model_name.human, hint: t(".if_you_want_to_find_timelogs_from_specific_projects"), collection: current_user.visible_projects.order(:name), include_blank: true
     = f.input :comment_cont, as: :string
     = simple_fields_for Timelog.new do |t_f|
-      = t_f.input :invoiced, collection: @invoiced_collection, selected: params[:timelog].try(:[], :invoiced), hint: _("If you only want to view invoiced, uninvoiced or all timelogs.")
-    = f.submit _("Search")
+      = t_f.input :invoiced, collection: @invoiced_collection, selected: params[:timelog].try(:[], :invoiced), hint: t(".if_you_only_want_to_view_invoiced_uninvoiced_or_all_timelogs")
+    = f.submit t("search")
 
 - if @ransack_params.any?
   %br
 
-  = design_box _("Sum"), 350 do
+  = design_box t(".sum"), 350 do
     %table.form
       %tbody
         %tr
-          %td.tdt= _("Total hours")
+          %td.tdt= t(".total_hours")
           %td
             = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time)").to_f / 3600, precision: 1
             = " / "
             = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time_transport)").to_f / 3600, precision: 1
         %tr
           %td.tdd{colspan: 2}
-            = _("The total amount of hours of all the found time-logs (first hours used then time used on transport).")
+            = t(".the_total_amount_of_hours_of_all_the_found_time_logs_first_hours_used_then_time_used_on_transport")
         %tr
-          %td.tdt= _("Total transport")
+          %td.tdt= t(".total_transport")
           %td= format_number @timelogs.sum(:transport_length), precision: 1
         %tr
           %td.tdd{colspan: 2}
-            = _("Total km's of transport used in all the timelogs found.")
+            = t(".total_length_of_transport_used_in_all_the_timelogs_found")
         - if params[:options] && params[:options][:substract_from_each_transport_distance].present?
           %tr
-            %td.tdt= _("Timelogs with transport length")
+            %td.tdt= t(".timelogs_with_transport_length")
             %td= format_number @timelogs.with_transport_length.count, precision: 1
           %tr
-            %td.tdt= _("Transport with substraction")
+            %td.tdt= t(".transport_with_substraction")
             %td= format_number @timelogs.sum(:transport_length) - (@timelogs.with_transport_length.count * params[:options][:substract_from_each_transport_distance].to_f), precision: 1
 
   %br
 
-  = design_box _("Results") do
+  = design_box t("results") do
     %table.form
       %thead
         %tr
@@ -56,7 +56,7 @@
           %th= Project.model_name.human
           %th= Organization.model_name.human
           %th= Timelog.human_attribute_name(:invoiced)
-          %th= "#{Timelog.human_attribute_name(:time)} / #{_("Transport")}"
+          %th= "#{Timelog.human_attribute_name(:time)} / #{t(".transport")}"
           %th= Timelog.human_attribute_name(:transport_length)
       %tbody
         - @timelogs.includes(:user, task: {project: :organization}).find_each do |tlog|
@@ -71,7 +71,7 @@
             %td= link_to_task tlog.task
             %td= link_to_project tlog.task.project if tlog.task
             %td= link_to_organization tlog.task.project.organization if tlog.task
-            %td= tlog.invoiced? ? _("Yes") : _("No")
+            %td= tlog.invoiced? ? t("yes") : t("no")
             %td
               = format_number dbt.hours_total, precision: 1
               = "/"
@@ -80,17 +80,17 @@
         - if @timelogs.none?
           %tr
             %td.error{colspan: 1}
-              = _("No timelogs were found.")
+              = t(".no_timelogs_were_found")
 
   %br
 
-  = design_box _("Organization message") do
+  = design_box t(".organization_message") do
     %table#table_organization_message.list
       %thead
         %tr
-          %th= "#{_("Date")} / #{_("Hours")}"
-          %th= _("User")
-          %th= _("Description")
+          %th= "#{Timelog.human_attribute_name(:date)} / #{t(".hours")}"
+          %th= User.model_name.human
+          %th= Timelog.human_attribute_name(:description)
       %tbody
         - @timelogs_sorted.each do |task, tlogs_arr|
           %tr
@@ -115,4 +115,4 @@
         - unless @timelogs_sorted.empty?
           %tr
             %td{colspan: 3, style: "padding-top: 15px; text-align: right;"}
-              = link_to _("Mark timelogs as invoiced"), "#", class: ["button", "mark_timelogs_as_invoiced"], data: {url: mark_invoiced_timelogs_path, success_msg: _('All timelogs was marked as invoiced.'), confirm_msg: _("Are you sure you want to mark all the found timelogs as invoiced?")}
+              = link_to t(".mark_timelogs_as_invoiced"), "#", class: ["button", "mark_timelogs_as_invoiced"], data: {url: mark_invoiced_timelogs_path, success_msg: t(".all_timelogs_was_marked_as_invoiced"), confirm_msg: t(".are_you_sure_you_want_to_mark_all_the_found_timelogs_as_invoiced")}

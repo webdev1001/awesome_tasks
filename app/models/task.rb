@@ -28,10 +28,10 @@ class Task < ActiveRecord::Base
 
   def self.translated_task_types
     return {
-      feature: _("Feature"),
-      bug: _("Bug report"),
-      question: _("Question"),
-      other: _("Other")
+      feature: t(".feature"),
+      bug: t(".bug_report"),
+      question: t(".question"),
+      other: t(".other")
     }
   end
 
@@ -45,11 +45,11 @@ class Task < ActiveRecord::Base
 
   def self.translated_states
     return {
-      open: _("Open"),
-      confirmed: _("Confirmed"),
-      waiting: _("Waiting"),
-      inactive: _("Inactive"),
-      closed: _("Closed")
+      open: t(".open"),
+      confirmed: t(".confirmed"),
+      waiting: t(".waiting"),
+      inactive: t(".inactive"),
+      closed: t(".closed")
     }
   end
 
@@ -90,7 +90,7 @@ class Task < ActiveRecord::Base
   end
 
   def name_force
-    name.presence || "[#{_("task %{task_id}", task_id: id)}]"
+    name.presence || "[#{t(".task_with_id", task_id: id)}]"
   end
 
   def progress
@@ -103,7 +103,7 @@ class Task < ActiveRecord::Base
   end
 
   def url
-    settings = YAML.load_file("#{Rails.root}/config/awesome_tasks.yml")
+    settings = YAML.load_file(Rails.root.join("config", "awesome_tasks.yml"))
     return "#{settings[:domain_url]}/tasks/#{id}"
   end
 

@@ -1,0 +1,35 @@
+---
+da:
+  models:
+    task:
+      feature: Feature
+      bug_report: Fejlrapport
+      question: Spørgsmål
+      other: Andet
+      open: "Åben"
+      confirmed: Bekræftet
+      waiting: Venter
+      inactive: Inaktiv
+      closed: Lukket
+      task_with_id: Opgave %{task_id}
+    account_import:
+      new: Ny
+      executing: Kører
+      finished: Færdig
+    account_import_column:
+      amount: Beløb
+      text: Tekst
+      interest_at: Rente d.
+      booked_at: Booked d.
+    invoice:
+      debit: Debit
+      credit: Kredit
+      purchase: Køb
+      no_invoice_number_has_been_set: Fakturanummer er ikke blevet sat
+      no_invoice_date_has_been_set: Fakturadato er ikke blevet sat
+      no_payment_date_has_been_set: Betalingsdato er ikke blevet sat
+      no_creditor_has_been_set: Der er ikke sat en kreditor
+    project:
+      active: Aktiv
+      inactive: Inaktiv
+      finished: Færdig

@@ -1,0 +1,19 @@
+---
+en:
+  activerecord:
+    models:
+      account_line:
+        one: Account line
+        other: Account lines
+    attributes:
+      account_line:
+        id: ID
+        account_id: Account ID
+        account_import_id: Account import ID
+        invoice_id: Invoice ID
+        text: Text
+        amount: Amount
+        created_at: Created at
+        updated_at: Updated at
+        account: Account
+        invoice: Invoice

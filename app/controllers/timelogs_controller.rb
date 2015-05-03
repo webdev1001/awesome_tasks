@@ -6,9 +6,9 @@ class TimelogsController < ApplicationController
     @ransack = Timelog.ransack(@ransack_params)
 
     @invoiced_collection = {
-      _("All") => "",
-      _("Only invoiced") => "only_invoiced",
-      _("Only un-invoiced") => "only_not_invoiced"
+      t(".all") => "",
+      t(".only_invoiced") => "only_invoiced",
+      t(".only_uninvoiced") => "only_not_invoiced"
     }
 
     @timelogs_sorted = {}
@@ -43,7 +43,7 @@ class TimelogsController < ApplicationController
       end
     else
       if request.xhr?
-        render text: _("Could not save: %{errors}", errors: @timelog.errors.full_messages.join(". "))
+        render text: t(".could_not_save", errors: @timelog.errors.full_messages.join(". "))
       else
         flash[:error] = @timelog.errors.full_messages.join(". ")
         render :new
@@ -66,7 +66,7 @@ class TimelogsController < ApplicationController
       end
     else
       if request.xhr?
-        render text: _("Could not save: %{errors}", errors: @timelog.errors.full_messages.join(". "))
+        render text: t(".could_not_save", errors: @timelog.errors.full_messages.join(". "))
       else
         render :edit
       end
@@ -104,14 +104,14 @@ private
       begin
         @date_from = Datet.in(@ransack_params[:date_gteq])
       rescue
-        flash[:warning] = (_("Invalid date-from."))
+        flash[:warning] = t(".invalid_date_from")
         redirect_to :back
       end
 
       begin
         @date_to = Datet.in(@ransack_params[:date_lteq])
       rescue
-        flash[:warning] = (_("Invalid date-to."))
+        flash[:warning] = t(".invalid_date_to")
         redirect_to :back
       end
     else

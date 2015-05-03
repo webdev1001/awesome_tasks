@@ -1,0 +1,25 @@
+---
+en:
+  activerecord:
+    models:
+      task_check:
+        one: Task-check
+        other: Task-checks
+    attributes:
+      task_check:
+        id: ID
+        task_id: Task ID
+        user_added_id: User that added ID
+        name: Name
+        description: Description
+        checked: Checked
+        created_at: Created at
+        updated_at: Updated at
+        user_assigned_id: User that is assigned ID
+        user_checked_id: User that checked ID
+        user_assigner_id: User that assigned ID
+        task: Task
+        user_added: User that added
+        user_assigned: User that is assigned
+        user_assigner: User that assigned
+        user_checked: User that checked

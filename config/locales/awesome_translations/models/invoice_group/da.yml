@@ -1,0 +1,13 @@
+---
+da:
+  activerecord:
+    models:
+      invoice_group:
+        one: Fakturagruppe
+        other: Fakturagrupper
+    attributes:
+      invoice_group:
+        id: ID
+        name: Navn
+        invoice_group_links: Fakturagruppe links
+        invoices: Fakturaer

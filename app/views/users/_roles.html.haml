@@ -1,14 +1,14 @@
 %table.list
   %thead
     %tr
-      %th= _("Rank")
-      %th= _("Actions")
+      %th= t(".rank")
+      %th= t("actions")
   %tbody
     - user.user_roles.each do |role|
       %tr
         %td= role.translated_role
-        %td= link_to _("Remove"), user_role_path(role), method: :delete, remote: true, class: "destroy_user_role", data: {confirm: _("Do you want to remove this role?")}
+        %td= link_to t("remove"), user_role_path(role), method: :delete, remote: true, class: "destroy_user_role", data: {confirm: t(".do_you_want_to_remove_this_role")}
     - if user.user_roles.none?
       %tr
         %td.error{colspan: 2}
-          = _("No roles has been added to this user.")
+          = t(".no_roles_has_been_added_to_this_user")

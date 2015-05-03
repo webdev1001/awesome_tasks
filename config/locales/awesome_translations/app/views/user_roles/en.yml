@@ -1,0 +1,7 @@
+---
+en:
+  user_roles:
+    new:
+      new_role: New role
+    edit:
+      edit_role: Edit role

@@ -6,4 +6,4 @@
   - if comment.resource.is_a?(Task) && comment.new_record?
     = simple_fields_for resource do |f_task|
       = f_task.input :state, collection: Task.translated_states.invert, selected: comment.resource.state.to_s
-  = f.submit _("Save"), class: "mobile-button-primary"
+  = f.submit t("save"), class: "mobile-button-primary"

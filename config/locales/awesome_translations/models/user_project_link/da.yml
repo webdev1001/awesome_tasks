@@ -1,0 +1,16 @@
+---
+da:
+  activerecord:
+    models:
+      user_project_link:
+        one: Brugerprojekt link
+        other: Brugerprojekt links
+    attributes:
+      user_project_link:
+        id: ID
+        user_id: Bruger ID
+        project_id: Projekt ID
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        project: Projekt
+        user: Bruger

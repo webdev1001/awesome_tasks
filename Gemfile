@@ -36,6 +36,7 @@ gem 'light_mobile', '~> 0.0.7'
 gem 'rmagick', platform: :ruby
 gem 'rmagick4j', platform: :jruby
 gem 'csv_lazy', '~> 0.0.9'
+gem 'awesome_translations', '~> 0.0.6'
 
 # For handeling internationalized amount formats.
 gem 'autonumeric-rails'
