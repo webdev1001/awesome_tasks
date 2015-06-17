@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save && @resource.save
-        @resource.send_notify_new_comment(@comment, task_url(@resource)) if @resource.is_a?(Task)
+        @resource.send_notify_new_comment(@comment, task_url(@resource)).deliver_later! if @resource.is_a?(Task)
 
         format.html { redirect_to @comment.resource }
         format.json { render json: {success: true} }
