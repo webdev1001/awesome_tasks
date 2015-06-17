@@ -3,6 +3,7 @@ module ApplicationHelper
   include RailsImager::ImagesHelper
   include AgentHelpers::DetectorHelper
   include LightMobile::TabsHelper
+  include AwesomeTranslations::ApplicationHelper
 
   def knjrbfw_opts(query, args = {})
     list = {}
@@ -40,5 +41,12 @@ module ApplicationHelper
 
   def simple_format_default_args(text)
     simple_format text, nil, wrapper_tag: :div
+  end
+
+  def available_locales
+    {
+      "da" => helper_t(".danish"),
+      "en" => helper_t(".english")
+    }
   end
 end

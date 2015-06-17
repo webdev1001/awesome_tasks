@@ -28,5 +28,8 @@ module AwesomeTasks
 
     # Autoload lib/ folder including all subdirectories
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    config.active_job.queue_adapter = :delayed_job if Rails.env.production?
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

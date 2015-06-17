@@ -57,6 +57,18 @@ class Invoice < ActiveRecord::Base
     }
   end
 
+  def name
+    text = "#{Invoice.model_name.human}"
+
+    if invoice_no.present?
+      text << " #{invoice_no}"
+    else
+      text << t('.with_id', id: id)
+    end
+
+    return text
+  end
+
   def translated_invoice_type
     Invoice.translated_invoice_types.each do |title, type_i|
       return title if type_i == invoice_type.to_s

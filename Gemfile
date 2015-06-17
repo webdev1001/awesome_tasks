@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.13'
+gem 'rails', '4.2.2'
 gem 'mysql2', platform: :ruby
 gem 'activerecord-jdbc-adapter', platform: :jruby
 gem 'jdbc-mysql', platform: :jruby
@@ -11,8 +11,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'devise-encryptable'
 gem 'simple_form'
-gem 'simple_form_ransack', '>= 0.0.6'
-gem 'gettext_simple_rails', '>= 0.0.14'
+gem 'simple_form_ransack', '~> 0.0.7'
 gem 'php4r'
 gem 'knjrbfw', '>= 0.0.113'
 gem 'activerecord-session_store'
@@ -27,16 +26,16 @@ gem 'baza'
 gem 'email_validator'
 gem 'rails_imager', '0.0.27'
 gem 'will_paginate'
-gem 'agent_helpers'
+gem 'agent_helpers', '~> 0.0.4'
 gem 'whenever', require: false
 gem 'acts-as-taggable-on'
-gem 'state_machine'
+gem 'state_machines-activerecord'
 gem 'public_activity'
-gem 'light_mobile', '~> 0.0.7'
+gem 'light_mobile', '~> 0.0.9'
 gem 'rmagick', platform: :ruby
 gem 'rmagick4j', platform: :jruby
 gem 'csv_lazy', '~> 0.0.9'
-gem 'awesome_translations', '~> 0.0.6'
+gem 'awesome_translations', '~> 0.0.18'
 
 # For handeling internationalized amount formats.
 gem 'autonumeric-rails'

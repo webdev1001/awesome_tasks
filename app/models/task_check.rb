@@ -26,7 +26,7 @@ private
   end
 
   def send_notification_assigned_email(user)
-    TaskChecksMailer.notification_assigned(self, user).deliver!
+    TaskChecksMailer.notification_assigned(self, user).deliver_later!
   end
 
   def email_users_if_checked_changed
@@ -36,7 +36,7 @@ private
 
   def send_notification_checked_email
     task.notify_emails.each do |data|
-      TaskChecksMailer.notification_checked(self, data[:user]).deliver!
+      TaskChecksMailer.notification_checked(self, data[:user]).deliver_later!
     end
   end
 

@@ -1,1 +1,1 @@
-AwesomeTranslations.load_object_extensions
+ActiveRecord::Base.include AwesomeTranslations::TranslateFunctionality

@@ -64,7 +64,7 @@ class Task < ActiveRecord::Base
   #Sends a notification about a newly added comment to a task.
   def send_notify_new_comment(comment, task_url)
     notify_emails.each do |data|
-      TaskAssignedUserMailer.new_comment_notification(comment, data[:user], task_url).deliver!
+      TaskAssignedUserMailer.new_comment_notification(comment, data[:user], task_url).deliver_later!
     end
   end
 

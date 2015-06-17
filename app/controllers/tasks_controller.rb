@@ -29,7 +29,7 @@ class TasksController < ApplicationController
     if @task.save
       # Mail auto-assigned users
       @task.task_assigned_users.each do |task_assigned_user|
-        TaskAssignedUserMailer.delay.notification(task_assigned_user, task_url(@task))
+        TaskAssignedUserMailer.notification(task_assigned_user.id, task_url(@task)).deliver_later!
       end
 
       redirect_to task_path(@task)
@@ -88,7 +88,7 @@ class TasksController < ApplicationController
     )
 
     assigned_user.save!
-    assigned_user.delay.send_notify(task_url(@task))
+    assigned_user.send_notify(task_url(@task))
 
     render json: {success: true}
   end

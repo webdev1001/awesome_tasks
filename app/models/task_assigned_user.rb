@@ -8,6 +8,6 @@ class TaskAssignedUser < ActiveRecord::Base
 
   def send_notify(url)
     return false unless user.email?
-    TaskAssignedUserMailer.notification(id, url).deliver!
+    TaskAssignedUserMailer.notification(id, url).deliver_later!
   end
 end

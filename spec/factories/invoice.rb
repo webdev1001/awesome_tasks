@@ -6,6 +6,7 @@ FactoryGirl.define do
     invoice_type "debit"
     invoice_no 123
     payment_at "2014-06-24"
+    state 'draft'
 
     association :organization, factory: :organization
     association :creditor, factory: :organization
