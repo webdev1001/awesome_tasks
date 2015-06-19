@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.2.1'
+lock '3.4.0'
 
 set :application, 'awesome_tasks'
 set :repo_url, 'https://github.com/kaspernj/awesome_tasks.git'
@@ -33,6 +33,7 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/sys
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+set :rvm_ruby_version, '2.1.2'
 
 set :whenever_roles,        ->{ :db }
 set :whenever_command,      ->{ [:bundle, :exec, :whenever] }
