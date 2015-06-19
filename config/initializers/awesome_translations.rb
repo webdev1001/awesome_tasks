@@ -1,1 +1,1 @@
-ActiveRecord::Base.include AwesomeTranslations::TranslateFunctionality
+ActiveRecord::Base.__send__(:include, AwesomeTranslations::TranslateFunctionality)
