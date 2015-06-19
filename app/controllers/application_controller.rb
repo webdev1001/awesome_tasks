@@ -24,14 +24,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :available_locales
-  def available_locales
-    {
-      "da" => t(".danish"),
-      "en" => t(".english")
-    }
-  end
-
   def destroy_model model
     models_path = StringCases.camel_to_snake(model.class.name).pluralize
 

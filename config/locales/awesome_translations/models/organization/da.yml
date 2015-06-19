@@ -26,4 +26,4 @@ da:
         creditor: Kreditor
         projects: Projekter
         invoices: Fakturaer
-        credit_invoices: Kreditnotaer
+        creditor_invoices: Kreditorfakturaer

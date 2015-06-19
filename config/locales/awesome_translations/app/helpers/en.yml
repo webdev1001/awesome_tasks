@@ -9,6 +9,8 @@ en:
       finished: Finished
       sent: Sent
       paid: Paid
+      invoice: Invoice %{invoice_no}
+      invoice_withid: Invoice with ID %{id}
     organization_helper:
       no_organization: no organisation
     project_helper:
@@ -20,3 +22,6 @@ en:
       file_with_id: File %{id}
     task_helper:
       no_task: no task
+    application_helper:
+      danish: Danish
+      english: English

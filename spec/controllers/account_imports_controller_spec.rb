@@ -37,6 +37,7 @@ describe AccountImportsController do
     post :create, account_id: account.id, account_import: valid_attributes
 
     created_account_import = assigns(:account_import)
+    expect(created_account_import).to be_valid
 
     expect(response).to redirect_to account_account_import_url(account, created_account_import)
   end
