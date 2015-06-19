@@ -20,7 +20,7 @@ set :repo_url, 'https://github.com/kaspernj/awesome_tasks.git'
 # set :log_level, :debug
 
 # Default value for :pty is false
-# set :pty, true
+set :pty, true
 
 # Default value for :linked_files is []
 set :linked_files, %w{config/database.yml config/smtp.yml config/smtp_defaults.yml config/smtp_default_url_options.yml}
@@ -33,7 +33,7 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/sys
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-set :rvm_ruby_version, '2.1.2'
+# set :rvm_ruby_version, '2.1.2'
 
 set :whenever_roles,        ->{ :db }
 set :whenever_command,      ->{ [:bundle, :exec, :whenever] }
