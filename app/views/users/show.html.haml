@@ -48,9 +48,6 @@
     %tbody
       - count = 0
       - @tasks.each do |task|
-        - next if !can?(:show, task)
-        - count += 1
-
         %tr
           %td= link_to_task task
           %td= render "/tasks/progress", task: task
@@ -58,9 +55,24 @@
           %td= l(task.created_at, format: :long) if task.created_at
           %td= link_to_project task.project
           %td= link_to_organization task.project.organization
-      - if count <= 0
+      - if @tasks.empty?
         %tr
           %td.error{colspan: 2}= t(".no_tasks_were_found_for_this_user")
+
+%br
+
+= design_box Project.model_name.human(count: 2), 1200 do
+  %table.list
+    %thead
+      %tr
+        %th= Project.human_attribute_name(:name)
+    %tbody
+      - @user.projects.each do |project|
+        %tr
+          %td= link_to_project project
+      - if @user.projects.empty?
+        %tr
+          %td{colspan: 1}= t('no_results')
 
 %br
 = will_paginate @tasks

@@ -125,6 +125,7 @@ private
 
   def set_timelogs
     @timelogs = @ransack.result.order(:date)
+    @timelogs = @timelogs.accessible_by(current_ability)
 
     # Invoiced is given in a special way.
     if params[:timelog].try(:[], :invoiced) == "only_invoiced"

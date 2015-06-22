@@ -4,7 +4,9 @@ class InvoicesController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = Invoice.ransack(@ransack_params)
+
     @invoices = @ransack.result
+    @invoices = @invoices.accessible_by(current_ability)
     @invoices = @invoices.includes(:creditor, :invoice_groups, :organization)
     @invoices = @invoices.order(:date).reverse_order unless @ransack_params[:s]
     @invoices = @invoices.paginate(page: params[:page], per_page: 40)

@@ -2,7 +2,9 @@ class WorkstatusController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = Timelog.ransack(@ransack_params)
+
     @timelogs = @ransack.result.includes(task: :project)
+    @timelogs = @timelogs.accessible_by(current_ability)
 
     set_dates
     calculate_totals

@@ -3,13 +3,13 @@
 %table.project_table{data: {project_id: @project.id, assigned_users_path: assigned_users_project_path(@project)}}
   %tr
     %td{style: "vertical-align: top;"}
-      = design_box t("actions"), 350 do
+      = design_box t("actions"), 500 do
         = link_to t(".edit_project"), edit_project_path(@project), class: "button" if can?(:admin, :admin)
         = link_to t(".add_task"), new_task_path(task: {project_id: @project.id}), class: "button"
 
       %br
 
-      = design_box t(".information"), 350 do
+      = design_box t(".information"), 500 do
         %table.form
           %tbody
             %tr

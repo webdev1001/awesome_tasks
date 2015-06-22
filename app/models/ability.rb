@@ -22,6 +22,10 @@ class Ability
 
 private
 
+  def project_ids
+    @project_ids ||= @current_user.projects.map(&:id)
+  end
+
   def administrator
     can :admin, :admin
     can :manage, Account
@@ -62,6 +66,8 @@ private
   end
 
   def task_access
+    can [:index, :show], Project, user_project_links: {user_id: @current_user.id}
+
     can :manage, TaskCheck do |task_check|
       if task_check.task
         can? :show, task_check.task
@@ -69,6 +75,7 @@ private
         true
       end
     end
+
     can :manage, TaskAssignedUser do |task_assigned_user|
       if task_assigned_user.task
         can? :edit, task_assigned_user.task
@@ -76,6 +83,7 @@ private
         true
       end
     end
+
     can :create, UserTaskListLink
     can [:edit, :update, :destroy], UserTaskListLink do |user_task_list_link|
       user_task_list_link.user_id = @current_user.id
@@ -87,6 +95,8 @@ private
     can [:index, :edit, :update, :show, :checks, :users, :comments, :timelogs, :assign_user], Task, task_assigned_users: {task_id: @current_user.assigned_tasks.select(:id).map(&:id)}
 
     can [:index, :show], UploadedFile, resource_type: 'Task', resource_id: Task.joins(:task_assigned_users).accessible_by(self)
+
+    can [:index, :show], User, projects: {id: @current_user.projects}
   end
 
   def users_access

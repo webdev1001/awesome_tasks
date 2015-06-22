@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @ransack = User.ransack(@ransack_params)
 
     @users = @ransack.result.order(:name)
+    @users = @users.accessible_by(current_ability)
     @users = @users.where("users.id IN (?)", current_user.users_with_access_to.map(&:id))
 
     not_in_task_query
@@ -45,7 +46,10 @@ class UsersController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = User.ransack(@ransack_params)
-    @users = @ransack.result.order(:name)
+
+    @users = @ransack.result
+    @users = @users.accessible_by(current_ability)
+    @users = @users.order(:name) unless @ransack_params[:s].present?
   end
 
   def create

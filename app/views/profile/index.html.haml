@@ -27,10 +27,25 @@
         %tr
           %td= link_to_task task
           %td= link_to_project task.project
-      - if @tasks.none?
+      - if @tasks.empty?
         %tr
           %td.error{colspan: 2}
             = t(".no_tasks_has_been_added_to_your_list")
+
+%br
+
+= design_box Project.model_name.human(count: 2), 1200 do
+  %table.list
+    %thead
+      %tr
+        %th= Project.human_attribute_name(:name)
+    %tbody
+      - current_user.projects.each do |project|
+        %tr
+          %td= link_to_project project
+      - if current_user.projects.empty?
+        %tr
+          %td{colspan: 1}= t('no_results')
 
 %br
 = will_paginate @tasks

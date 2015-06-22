@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
 
     @accounts = @ransack.result
     @accounts = @accounts.page(params[:page])
+    @accounts = @accounts.accessible_by(current_ability)
     @accounts = @accounts.order(:id) unless params[:s]
   end
 

@@ -4,8 +4,10 @@ class ProjectsController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = Project.ransack(@ransack_params)
+
     @projects = @ransack.result
-    @projects = @projects.order(:name) unless params[:s]
+    @projects = @projects.accessible_by(current_ability)
+    @projects = @projects.order(:name) unless @ransack_params[:s]
     @projects = @projects.paginate(page: params[:page], per_page: 40)
   end
 
@@ -41,6 +43,7 @@ class ProjectsController < ApplicationController
 
     @tasks = @ransack.result
     @tasks = @tasks.order("tasks.created_at DESC, tasks.name") unless @ransack_values[:s]
+    @tasks = @tasks.accessible_by(current_ability)
     @tasks = @tasks.paginate(page: params[:page], per_page: 40)
   end
 

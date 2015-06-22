@@ -3,6 +3,7 @@ class AccountImportsController < ApplicationController
   before_filter :set_account
 
   def index
+    @account_imports = AccountImport.accessible_by(current_ability)
   end
 
   def show
