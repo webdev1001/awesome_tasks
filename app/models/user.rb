@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :tasks, dependent: :restrict_with_exception
   has_many :task_assigned_users, dependent: :destroy
+  has_many :assigned_tasks, through: :task_assigned_users, source: :task
   has_many :assigned_task_checks, foreign_key: "user_assigned_id", class_name: "TaskCheck", dependent: :nullify
   has_many :user_project_links, dependent: :destroy
   has_many :projects, through: :user_project_links, dependent: :destroy

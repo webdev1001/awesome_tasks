@@ -9,7 +9,7 @@
 
     = link_to t(".insert_browser_and_os"), "#", class: ["button", "button-insert-browser-and-os"]
     - unless task.new_record?
-      = link_to t("show"), task_path(task), class: "button"
-      = link_to t("delete"), task_path(task), method: :delete, class: "button", data: {confirm: t("are_you_sure")}
+      = link_to t("show"), task_path(task), class: "button" if can? :show, task
+      = link_to t("delete"), task_path(task), method: :delete, class: "button", data: {confirm: t("are_you_sure")} if can? :destroy, task
 
     = f.submit t("save")

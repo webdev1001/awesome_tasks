@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @ransack = @user.tasks.ransack(@ransack_params)
 
     @tasks = @ransack.result.includes(project: :organization)
+    @tasks = @tasks.accessible_by(current_ability)
     @tasks = @tasks.order(:created_at).reverse_order unless @ransack_params[:s]
     @tasks = @tasks.paginate(page: params[:page])
   end

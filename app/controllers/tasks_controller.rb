@@ -6,14 +6,16 @@ class TasksController < ApplicationController
     if can? :manage, User
       @users = User.all.order(:name)
     else
-      @users = current_user.users_list
+      @users = current_user.visible_users
     end
 
     @projects = current_user.visible_projects.order(:name)
 
     @ransack_params = params[:q] || {}
     @ransack = Task.ransack(@ransack_params)
+
     @tasks = @ransack.result.includes(:user, :project).order(:name)
+    @tasks = @tasks.accessible_by(current_ability)
     @tasks = @tasks.paginate(page: params[:page], per_page: 40)
   end
 
