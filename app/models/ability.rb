@@ -82,7 +82,7 @@ private
     end
 
     can [:new, :create], Task
-    can [:index, :edit, :update, :show, :checks, :users, :comments, :timelogs, :assign_user], Task, user_id: @current_user.id
+    can [:index, :edit, :update, :show, :checks, :users, :comments, :timelogs, :assign_user, :destroy], Task, user_id: @current_user.id
     can [:index, :edit, :update, :show, :checks, :users, :comments, :timelogs, :assign_user], Task, project_id: @current_user.projects.select(:id).map(&:id)
     can [:index, :edit, :update, :show, :checks, :users, :comments, :timelogs, :assign_user], Task, task_assigned_users: {task_id: @current_user.assigned_tasks.select(:id).map(&:id)}
 
