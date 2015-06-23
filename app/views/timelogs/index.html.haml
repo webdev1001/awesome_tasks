@@ -3,7 +3,7 @@
 = design_box t("enter_criteria"), 800 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = simple_fields_for :options do |f_opts|
-      = f_opts.input :substract_from_each_transport_distance, required: false, input_html: {value: params[:options].try(:[], :substract_from_each_transport_distance)}
+      = f_opts.input :substract_from_each_transport_distance, required: false, label: t('.substract_from_each_transport_distance'), input_html: {value: params[:options].try(:[], :substract_from_each_transport_distance)}
 
     = f.input :date_gteq, label: t("date_from"), as: :string, input_html: {value: @date_from.out(time: false)}
     = f.input :date_lteq, label: t("date_to"), as: :string, input_html: {value: @date_to.out(time: false)}

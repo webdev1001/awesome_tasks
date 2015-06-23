@@ -34,3 +34,7 @@ da:
       active: Aktiv
       inactive: Inaktiv
       finished: Færdig
+    user_role:
+      administrator: Administrator
+      organization_administrator: Organisationsadministrator
+      is_not_allowed_role: er ikke tilladt

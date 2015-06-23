@@ -1,0 +1,5 @@
+---
+en:
+  account_imports:
+    execute:
+      lines_was_imported: "%{count} lines was imported"

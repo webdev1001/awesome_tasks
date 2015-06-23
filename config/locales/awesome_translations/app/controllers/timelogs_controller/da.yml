@@ -1,0 +1,14 @@
+---
+da:
+  timelogs:
+    index:
+      all: Alle
+      only_invoiced: Kun fakturerede
+      only_uninvoiced: Kun ikke fakturerede
+    create:
+      could_not_save: 'Kunne ikke gemme: %{errors}'
+    update:
+      could_not_save: 'Kunne ikke gemme: %{errors}'
+    set_dates:
+      invalid_date_from: Ugyldig fra-dato
+      invalid_date_to: Ugyldig til-dato

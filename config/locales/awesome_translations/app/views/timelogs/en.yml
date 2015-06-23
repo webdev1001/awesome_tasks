@@ -30,3 +30,4 @@ en:
       are_you_sure_you_want_to_mark_all_the_found_timelogs_as_invoiced: Do you want
         to mark all found timelogs as invoiced?
       description: Description
+      substract_from_each_transport_distance: Substract from each transport distance

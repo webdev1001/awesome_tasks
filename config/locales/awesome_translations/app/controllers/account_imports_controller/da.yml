@@ -1,0 +1,5 @@
+---
+da:
+  account_imports:
+    execute:
+      lines_was_imported: "%{count} linjer blev importeret"

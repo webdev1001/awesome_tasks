@@ -1,0 +1,14 @@
+---
+en:
+  timelogs:
+    index:
+      all: All
+      only_invoiced: Only invoiced
+      only_uninvoiced: Only uninvoiced
+    create:
+      could_not_save: 'Could not save: %{errors}'
+    update:
+      could_not_save: 'Could not save: %{errors}'
+    set_dates:
+      invalid_date_from: Invalid from date
+      invalid_date_to: Invalid to date

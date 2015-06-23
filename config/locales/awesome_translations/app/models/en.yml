@@ -34,3 +34,7 @@ en:
       active: Active
       inactive: Inactive
       finished: Finished
+    user_role:
+      administrator: Administrator
+      organization_administrator: Organization administrator
+      is_not_allowed_role: is not allowed

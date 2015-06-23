@@ -30,3 +30,4 @@ da:
       are_you_sure_you_want_to_mark_all_the_found_timelogs_as_invoiced: Vil du markere
         alle fundne tidslogs som faktureret?
       description: Beskrivelse
+      substract_from_each_transport_distance: Træk fra hver transportlængde
