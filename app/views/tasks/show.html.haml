@@ -2,7 +2,7 @@
 
 .task_show{data: {comments_task_path: comments_task_path(@task), timelogs_task_path: timelogs_task_path(@task), users_task_path: users_task_path(@task), assign_user_task_path: assign_user_task_path(@task), checks_task_path: checks_task_path(@task)}}
 
-%div{style: "padding-bottom: 15px;"}
+.bottom-padding
   = link_to t(".edit_task"), edit_task_path(@task), class: "button"
 
   - if link = current_user.user_task_list_links.where(task_id: @task).first
@@ -10,7 +10,7 @@
   - else
     = link_to t(".add_to_list"), "#", class: ["button", "add_to_list"], data: {task_id: @task.id}
 
-%div{style: "padding-bottom: 15px;"}
+.bottom-padding
   %table{cellpadding: 0, cellspacing: 0, style: "width: 100%;"}
     %tr
       %td{style: "vertical-align: top; width: 60%;"}
@@ -68,7 +68,7 @@
         %br
 
         = design_box t(".checklist") do
-          %div{style: "padding-bottom: 15px;"}
+          .bottom-padding
             = link_to t(".add_new_check"), "#", class: ["button", "add_new_check"], data: {title: t(".add_new_check"), url: new_task_task_check_path(task_id: @task.id)}
           #divchecks= render "checks", checks: @checks, task: @task
 
@@ -80,16 +80,16 @@
 
         = render "/tags/show_for_resource", resource: @task
   %div{style: "clear: both;"}
-%div{style: "padding-bottom: 15px;"}
+.bottom-padding
   = design_box Comment.model_name.human(count: 2) do
-    %div{style: "padding-bottom: 15px;"}
-      %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: t("add_new")}
+    .bottom-padding
+      = button_tag t('add_new'), class: ['button', 'add-new-comment-button'], data: {task_id: @task.id}
     #divcomments
       = render "comments", comments: @comments, task: @task
     %div
-      %input{onclick: "comment_new('Task', #{@task.id})", type: "button", value: t("add_new")}
+      = button_tag t('add_new'), class: ['button', 'add-new-comment-button'], data: {task_id: @task.id}
 = design_box Timelog.model_name.human(count: 2) do
-  %div{style: "padding-bottom: 15px;"}
+  .bottom-padding
     %input{onclick: "timelog_add('#{@task.id}');", type: "button", value: t("add_new")}
   #divtimelogs
     = render "timelogs", timelogs: @timelogs, task: @task

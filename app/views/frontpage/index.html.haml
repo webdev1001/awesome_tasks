@@ -1,7 +1,7 @@
 - content_for(:header_title){ t(".frontpage") }
 
 = design_box Task.model_name.human(count: 2) do
-  %div{style: "padding-bottom: 15px;"}
+  .bottom-padding
     = link_to t("add_new"), new_task_path, class: "button"
 
   %table.list.task-list{data: {close_msg: t(".closed_the_task"), create_comment_path: comments_path}}

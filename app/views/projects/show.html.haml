@@ -36,7 +36,7 @@
                 %td= l(@project.deadline_at.to_date)
     %td{style: "vertical-align: top; padding-left: 15px;"}
       = design_box User.model_name.human(count: 2), 350 do
-        %div{style: "padding-bottom: 15px;"}
+        .bottom-padding
           = link_to t(".assign_user"), "#", class: ["button", "assign-user-button"], data: {title: t(".assign_user"), url: search_users_path(ajaxsearch: true, jscallback: :project_show_assign_user_choose, not_in_project_id: @project.id)}
         #divassignedusers
           = render "assigned_users", project: @project
@@ -44,7 +44,7 @@
       %br
 
       = design_box t(".autoassigned_users"), 350 do
-        %div{style: "padding-bottom: 15px;"}
+        .bottom-padding
           = link_to t(".add_autoassigned_user"), new_project_project_autoassigned_user_path(@project), class: "button"
         = render "autoassigned_users", project: @project
 
