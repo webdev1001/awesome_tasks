@@ -116,7 +116,7 @@ describe TasksController do
       expect(response).to be_success
     end
 
-    it 'renders mobile version' do
+    it 'renders show as mobile version' do
       get :show, id: task_access.id, mobile: 1
       expect(response).to be_success
       controller.formats.should eq [:mobile]
@@ -166,8 +166,8 @@ describe TasksController do
       expect(response).to be_success
     end
 
-    it 'renders mobile version' do
-      get :edit, id: task_access.id
+    it 'renders edit as mobile version' do
+      get :edit, id: task_access.id, mobile: 1
       expect(response).to be_success
     end
 
