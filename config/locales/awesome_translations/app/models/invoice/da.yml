@@ -1,0 +1,13 @@
+---
+da:
+  models:
+    invoice:
+      debit: Debit
+      credit: Kredit
+      purchase: Køb
+      with_id: med ID %{id}
+      no_invoice_number_has_been_set: Fakturanummer er ikke blevet sat
+      no_invoice_date_has_been_set: Fakturadato er ikke blevet sat
+      no_payment_date_has_been_set: Betalingsdato er ikke blevet sat
+      no_creditor_has_been_set: Der er ikke sat en kreditor
+      transport: Transport

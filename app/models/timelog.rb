@@ -1,6 +1,10 @@
 class Timelog < ActiveRecord::Base
   belongs_to :task
   belongs_to :user
+  belongs_to :invoiced_by_user, class_name: "User"
+
+  has_one :project, through: :task
+  has_many :invoice_lines, dependent: :restrict_with_error
 
   has_one :project, through: :task
   has_one :organization, through: :project

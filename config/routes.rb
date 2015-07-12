@@ -17,11 +17,14 @@ AwesomeTasks::Application.routes.draw do
 
   resources :comments, except: [:show, :index]
   resources :invoices do
-    get :pdf, on: :member
+    member do
+      get :pdf
 
-    post :finish, on: :member
-    post :register_as_sent, on: :member
-    post :register_as_paid, on: :member
+      post :finish
+      post :register_as_sent
+      post :register_as_paid
+      post :add_uninvoiced_timelogs
+    end
 
     resources :invoice_lines, except: [:index]
   end

@@ -145,9 +145,11 @@ ActiveRecord::Schema.define(version: 20150617102336) do
     t.integer  "invoice_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "timelog_id", limit: 4
   end
 
   add_index "invoice_lines", ["invoice_id"], name: "index_invoice_lines_on_invoice_id", using: :btree
+  add_index "invoice_lines", ["timelog_id"], name: "index_invoice_lines_on_timelog_id", using: :btree
 
   create_table "invoices", force: :cascade do |t|
     t.string   "title",           limit: 255
