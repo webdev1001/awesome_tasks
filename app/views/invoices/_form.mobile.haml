@@ -1,5 +1,5 @@
 = simple_form_for invoice do |f|
-  = f.input :invoice_group_id, autofocus: true, collection: InvoiceGroup.all, label: Invoice.human_attribute_name(:invoice_group)
+  = f.association :invoice_groups, as: :check_boxes, collection: InvoiceGroup.all, label: InvoiceGroup.model_name.human(count: 2)
   = f.input :invoice_no
   = f.input :state, collection: translated_invoice_states
   = f.input :date

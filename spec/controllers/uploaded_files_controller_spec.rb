@@ -14,12 +14,22 @@ describe UploadedFilesController do
 
     it "#show" do
       get :show, id: uploaded_file.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders show as mobile' do
+      get :show, id: uploaded_file.id, mobile: 1
+      expect(response).to be_success
     end
 
     it "#new" do
       get :new
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders new as mobile' do
+      get :new, mobile: 1
+      expect(response).to be_success
     end
 
     describe "#create" do
@@ -42,7 +52,12 @@ describe UploadedFilesController do
 
     it "#edit" do
       get :edit, id: uploaded_file.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders edit as mobile' do
+      get :edit, id: uploaded_file.id, mobile: 1
+      expect(response).to be_success
     end
 
     it "#update" do
@@ -58,8 +73,15 @@ describe UploadedFilesController do
     it "#index" do
       uploaded_file
       get :index
-      response.should be_success
+      expect(response).to be_success
       assigns(:uploaded_files).should include uploaded_file
+    end
+
+    it 'renders index as mobile' do
+      uploaded_file
+      get :index, mobile: 1
+      expect(response).to be_success
+      expect(assigns(:uploaded_files)).to eq [uploaded_file]
     end
   end
 end

@@ -13,12 +13,12 @@ describe InvoiceGroupsController do
 
     it "#index" do
       get :index
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "#new" do
       get :new
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "#create" do
@@ -30,7 +30,7 @@ describe InvoiceGroupsController do
 
     it "#edit" do
       get :edit, id: invoice_group.id
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "#update" do

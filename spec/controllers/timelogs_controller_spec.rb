@@ -11,14 +11,38 @@ describe TimelogsController do
     sign_in admin
   end
 
+  it '#index' do
+    timelog
+    get :index
+    expect(response).to be_success
+    expect(assigns(:timelogs)).to eq [timelog]
+  end
+
+  it 'renders index as mobile' do
+    timelog
+    get :index, mobile: 1
+    expect(response).to be_success
+    expect(assigns(:timelogs)).to eq [timelog]
+  end
+
   it "#new" do
     get :new, task_id: task.id
-    response.should be_success
+    expect(response).to be_success
+  end
+
+  it 'renders new as mobile' do
+    get :new, task_id: task.id, mobile: 1
+    expect(response).to be_success
   end
 
   it "#edit" do
     get :edit, task_id: task.id, id: timelog.id
-    response.should be_success
+    expect(response).to be_success
+  end
+
+  it 'renders edit as mobile' do
+    get :edit, task_id: task.id, id: timelog.id, mobile: 1
+    expect(response).to be_success
   end
 
   it "#destroy" do

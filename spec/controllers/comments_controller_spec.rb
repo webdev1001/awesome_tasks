@@ -49,12 +49,12 @@ describe CommentsController do
   it "#new" do
     sign_in task.user
     get :new, comment: {resource_type: "Task", resource_id: task.id}
-    response.should be_success
+    expect(response).to be_success
   end
 
   it "#edit" do
     sign_in task.user
     get :edit, id: comment.id
-    response.should be_success
+    expect(response).to be_success
   end
 end
