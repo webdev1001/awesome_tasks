@@ -5,9 +5,9 @@ gem 'rails', '4.2.2'
 gem 'mysql2', platform: :ruby
 gem 'activerecord-jdbc-adapter', platform: :jruby
 gem 'jdbc-mysql', platform: :jruby
-gem 'sass-rails', '~> 4.0.2'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
+gem 'sass-rails', '~> 4.0.5'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'jquery-rails', '~> 4.0.4'
 gem 'devise'
 gem 'devise-encryptable'
 gem 'simple_form'
@@ -31,7 +31,7 @@ gem 'whenever', require: false
 gem 'acts-as-taggable-on'
 gem 'state_machines-activerecord'
 gem 'public_activity'
-gem 'light_mobile', '~> 0.0.9'
+gem 'light_mobile', '~> 0.0.10'
 gem 'rmagick', platform: :ruby
 gem 'rmagick4j', platform: :jruby
 gem 'csv_lazy', '~> 0.0.9'

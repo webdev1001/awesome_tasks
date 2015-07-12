@@ -15,7 +15,7 @@ describe InvoiceLinesController do
 
     it "#new" do
       get :new, invoice_id: invoice.id
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "#create" do
@@ -25,7 +25,7 @@ describe InvoiceLinesController do
 
     it "#edit" do
       get :edit, invoice_id: invoice.id, id: invoice_line.id
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "#update" do

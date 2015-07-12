@@ -10,6 +10,26 @@ describe TasksController do
 
   render_views
 
+  context '#index' do
+    before do
+      sign_in admin
+    end
+
+    it 'renders html version' do
+      task
+      get :index
+      expect(assigns(:tasks)).to eq [task]
+      expect(response).to be_success
+    end
+
+    it 'renders mobile version' do
+      task
+      get :index, mobile: 1
+      expect(assigns(:tasks)).to eq [task]
+      expect(response).to be_success
+    end
+  end
+
   context "auto assigns users" do
     it "assigns users automatically" do
       sign_in admin
@@ -93,7 +113,13 @@ describe TasksController do
 
     it "shows tasks that the user have access to" do
       get :show, id: task_access.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders show as mobile version' do
+      get :show, id: task_access.id, mobile: 1
+      expect(response).to be_success
+      controller.formats.should eq [:mobile]
     end
 
     it "doesnt show tasks that the user doesnt have access to" do
@@ -106,22 +132,22 @@ describe TasksController do
 
     it "#checks" do
       get :checks, id: task_assigned.id
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "#users" do
       get :users, id: task_assigned.id
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "#comments" do
       get :comments, id: task_assigned.id
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "#timelogs" do
       get :timelogs, id: task_assigned.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -137,13 +163,18 @@ describe TasksController do
 
     it "can edit own tasks" do
       get :edit, id: task_access.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders edit as mobile version' do
+      get :edit, id: task_access.id, mobile: 1
+      expect(response).to be_success
     end
 
     it "can edit assigned tasks" do
       task_no_access.assigned_users << user
       get :edit, id: task_no_access.id
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "cannot edit other tasks" do

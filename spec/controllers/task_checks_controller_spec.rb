@@ -16,7 +16,12 @@ describe TaskChecksController do
 
     it "#new" do
       get :new, task_id: task.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders new as mobile' do
+      get :new, task_id: task.id, mobile: 1
+      expect(response).to be_success
     end
 
     it "#create" do
@@ -33,7 +38,12 @@ describe TaskChecksController do
 
     it "#edit" do
       get :edit, id: task_check.id, task_id: task.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders edit as mobile' do
+      get :edit, id: task_check.id, task_id: task.id, mobile: 1
+      expect(response).to be_success
     end
 
     context "#update" do

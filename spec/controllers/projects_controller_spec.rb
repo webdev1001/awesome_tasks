@@ -22,18 +22,47 @@ describe ProjectsController do
     end
 
     it "#index" do
+      project
       get :index
-      response.should be_success
+      expect(response).to be_success
+      expect(assigns(:projects)).to eq [project]
+    end
+
+    it 'renders index as mobile' do
+      project
+      get :index, mobile: 1
+      expect(response).to be_success
+      expect(assigns(:projects)).to eq [project]
     end
 
     it "#show" do
       get :show, id: project.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders show as mobile' do
+      get :show, id: project.id, mobile: 1
+      expect(response).to be_success
+    end
+
+    it '#new' do
+      get :new
+      expect(response).to be_success
+    end
+
+    it 'renders new as mobile' do
+      get :new, mobile: 1
+      expect(response).to be_success
     end
 
     it "#edit" do
       get :edit, id: project.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders edit as mobile' do
+      get :edit, id: project.id, mobile: 1
+      expect(response).to be_success
     end
 
     it "#destroy" do
@@ -58,7 +87,7 @@ describe ProjectsController do
 
     it "#assigned_users" do
       get :assigned_users, id: project.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 end

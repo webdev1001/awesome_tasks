@@ -23,7 +23,7 @@ describe UsersController do
     it "shouldnt include admin but user from same project" do
       sign_in user
       get :search, ajaxsearch: true, not_in_task_id: task.id, jscallback: "task_show_assign_user_choose"
-      response.should be_success
+      expect(response).to be_success
       assigns(:users).should_not include admin
       assigns(:users).should include user_same_project
       assigns(:users).should_not include user_assigned
@@ -32,7 +32,7 @@ describe UsersController do
     it "shouldnt show users from a given project" do
       sign_in user
       get :search, ajaxsearch: true, not_in_project_id: project.id, jscallback: "something"
-      response.should be_success
+      expect(response).to be_success
       assigns(:users).should_not include user_assigned
     end
   end
@@ -40,7 +40,13 @@ describe UsersController do
   it "#show" do
     sign_in user
     get :show, id: user.id
-    response.should be_success
+    expect(response).to be_success
+  end
+
+  it 'renders show as mobile' do
+    sign_in user
+    get :show, id: user.id, mobile: 1
+    expect(response).to be_success
   end
 
   context "when signed in as admin" do
@@ -65,8 +71,17 @@ describe UsersController do
     end
 
     it "#index" do
-      get :index
-      response.should be_success
+      user
+      get :index, q: {s: 'id asc'}
+      expect(response).to be_success
+      expect(assigns(:users)).to eq [user, admin]
+    end
+
+    it 'renders index as mobile' do
+      user
+      get :index, q: {s: 'id asc'}, mobile: 1
+      expect(response).to be_success
+      expect(assigns(:users)).to eq [user, admin]
     end
 
     it "#destroy" do
@@ -76,7 +91,12 @@ describe UsersController do
 
     it "#edit" do
       get :edit, id: user.id
-      response.should be_success
+      expect(response).to be_success
+    end
+
+    it 'renders edit as mobile' do
+      get :edit, id: user.id, mobile: 1
+      expect(response).to be_success
     end
 
     it "#update" do
@@ -88,7 +108,7 @@ describe UsersController do
 
     it "#roles" do
       get :roles, id: user.id
-      response.should be_success
+      expect(response).to be_success
     end
   end
 end

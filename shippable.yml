@@ -3,7 +3,7 @@ cache: bundler
 archive: true
 rvm:
   - ruby-2.1.2
-  - jruby-head
+  - # jruby-1.7.13 - AR-JDBC not compatible with ActiveRecord 4.2 yet
 script:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS shippa;'
   - cp config/database.shippable.yml config/database.yml

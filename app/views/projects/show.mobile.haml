@@ -1,4 +1,4 @@
-- content_for(:header_title) { t(".show_project_with_name"), name: @project.name) }
+- content_for(:header_title) { t(".show_project_with_name", name: @project.name) }
 - content_for(:header_right) { link_to t("edit"), edit_project_path(@project), class: "mobile-button-header" if can?(:admin, :admin) }
 
 = mobile_tabs do |tabs|

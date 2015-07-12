@@ -15,9 +15,10 @@
       %tr
         %td.tdt= Invoice.human_attribute_name(:id)
         %td.align-right= @invoice.id
-      %tr
-        %td.tdt= Invoice.human_attribute_name(:invoice_group)
-        %td.align-right= link_to_invoice_group @invoice.invoice_group
+      - @invoice.invoice_groups.each do |invoice_group|
+        %tr
+          %td.tdt= InvoiceGroup.model_name.human
+          %td.align-right= link_to_invoice_group @invoice.invoice_group
       %tr
         %td.tdt= Invoice.human_attribute_name(:invoice_no)
         %td.align-right= @invoice.invoice_no

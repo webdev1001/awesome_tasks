@@ -16,13 +16,26 @@ describe InvoicesController do
 
   it "#show" do
     get :show, id: invoice.id
-    response.should be_success
+    expect(response).to be_success
+  end
+
+  it 'renders show as mobile' do
+    get :show, id: invoice.id, mobile: 1
+    expect(response).to be_success
   end
 
   it "#index" do
     invoice
     get :index
-    response.should be_success
+    expect(response).to be_success
+    expect(assigns(:invoices)).to eq [invoice]
+  end
+
+  it 'renders index as mobile' do
+    invoice
+    get :index, mobile: 1
+    expect(response).to be_success
+    expect(assigns(:invoices)).to eq [invoice]
   end
 
   it "#destroy" do
@@ -33,7 +46,12 @@ describe InvoicesController do
 
   it "#edit" do
     get :edit, id: invoice.id
-    response.should be_success
+    expect(response).to be_success
+  end
+
+  it 'renders edit as mobile' do
+    get :edit, id: invoice.id, mobile: 1
+    expect(response).to be_success
   end
 
   it "#update" do
@@ -48,7 +66,12 @@ describe InvoicesController do
 
   it "#new" do
     get :new
-    response.should be_success
+    expect(response).to be_success
+  end
+
+  it 'renders new as mobile' do
+    get :new, mobile: 1
+    expect(response).to be_success
   end
 
   it "#create" do
@@ -65,7 +88,7 @@ describe InvoicesController do
     request.env["HTTP_REFERER"] = root_url
     get :pdf, id: invoice.id
     controller.flash.to_a.should eq []
-    response.should be_success
+    expect(response).to be_success
     response.headers["Content-Type"].should eq "application/pdf"
     response.headers["Content-Disposition"].should eq "inline; filename=\"Invoice #{invoice.invoice_no}.pdf\""
   end

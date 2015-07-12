@@ -10,6 +10,6 @@ describe WorkstatusController do
 
   it "#index" do
     get :index
-    response.should be_success
+    expect(response).to be_success
   end
 end
