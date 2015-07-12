@@ -1,18 +1,19 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.9'
-gem 'mysql2'
+gem 'rails', '4.2.2'
+gem 'mysql2', platform: :ruby
+gem 'activerecord-jdbc-adapter', platform: :jruby
+gem 'jdbc-mysql', platform: :jruby
 gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'devise-encryptable'
 gem 'simple_form'
-gem 'simple_form_ransack', '>= 0.0.6'
-gem 'gettext_simple_rails', '>= 0.0.14'
+gem 'simple_form_ransack', '~> 0.0.7'
 gem 'php4r'
-gem 'knjrbfw', '>= 0.0.110'
+gem 'knjrbfw', '>= 0.0.113'
 gem 'activerecord-session_store'
 gem 'cancancan'
 gem 'paperclip'
@@ -23,13 +24,18 @@ gem 'ransack'
 gem 'haml-rails'
 gem 'baza'
 gem 'email_validator'
-gem 'rails_imager'
+gem 'rails_imager', '0.0.27'
 gem 'will_paginate'
-gem 'agent_helpers'
+gem 'agent_helpers', '~> 0.0.4'
 gem 'whenever', require: false
 gem 'acts-as-taggable-on'
-gem 'state_machine'
+gem 'state_machines-activerecord'
 gem 'public_activity'
+gem 'light_mobile', '~> 0.0.9'
+gem 'rmagick', platform: :ruby
+gem 'rmagick4j', platform: :jruby
+gem 'csv_lazy', '~> 0.0.9'
+gem 'awesome_translations', '~> 0.0.20'
 
 # For handeling internationalized amount formats.
 gem 'autonumeric-rails'
@@ -43,7 +49,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 
 # Used for migrate script (the old database to Rails)
-gem 'mysql'
+gem 'mysql', platform: :ruby, require: false
 gem 'active-record-transactioner', '0.0.5'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -63,6 +69,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
+  #gem 'capistrano-rvm'
   gem 'pry'
 end
 

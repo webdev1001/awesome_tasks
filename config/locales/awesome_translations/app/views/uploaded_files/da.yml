@@ -1,0 +1,13 @@
+---
+da:
+  uploaded_files:
+    show:
+      show_uploaded_file_title: 'Vis uploadet fil: %{title}'
+    edit:
+      edit_file: 'Rediger fil: %{title}'
+    new:
+      new_file: Ny fil
+    list_for_resource:
+      no_files_has_been_uploaded: Der er ikke blevet uploadet nogle filter
+    index:
+      no_uploaded_files_were_found: Der blev ikke fundet nogle uploadede filter

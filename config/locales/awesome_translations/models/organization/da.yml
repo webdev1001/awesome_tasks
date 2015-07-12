@@ -1,0 +1,29 @@
+---
+da:
+  activerecord:
+    models:
+      organization:
+        one: Organisation
+        other: Organisationer
+    attributes:
+      organization:
+        id: ID
+        name: Navn
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        email: Email
+        vat_no: CVR nummer
+        payment_info: Betalingsinformation
+        delivery_address: Leveringsadresse
+        delivery_zip_code: Leveringspostnummer
+        delivery_city: Leveringsby
+        delivery_country: Leveringsland
+        invoice_address: Fakturaadresse
+        invoice_zip_code: Fakturapostnummer
+        invoice_city: Fakturaby
+        invoice_country: Fakturaland
+        customer: Kunde
+        creditor: Kreditor
+        projects: Projekter
+        invoices: Fakturaer
+        creditor_invoices: Kreditorfakturaer

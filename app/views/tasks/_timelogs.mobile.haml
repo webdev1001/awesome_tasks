@@ -1,0 +1,29 @@
+= link_to t("add_new"), new_timelog_path(timelog: {task_id: @task.id}), class: "mobile-button" if can? :new, Timelog
+
+- @task.timelogs.each do |timelog|
+  %table.mobile-table.form
+    %tbody
+      %tr
+        %td= Timelog.human_attribute_name(:date)
+        %td= l(timelog.date, format: :short)
+      %tr
+        %td= Timelog.human_attribute_name(:user)
+        %td= link_to_user timelog.user
+      %tr
+        %td= Timelog.human_attribute_name(:time)
+        %td= format_number timelog.hours, precision: 1
+      - if timelog.hours_transport && timelog.hours_transport.to_i > 0
+        %tr
+          %td= Timelog.human_attribute_name(:time_transport)
+          %td= format_number timelog.hours_transport, precision: 1
+      %tr
+        %td= Timelog.human_attribute_name(:invoiced)
+        %td= timelog.invoiced? ? t("yes") : t("no")
+      %tr
+        %td= Timelog.human_attribute_name(:comment)
+        %td= simple_format_default_args timelog.comment
+
+  = link_to t("edit"), [:edit, timelog], class: "mobile-button" if can? :edit, timelog
+
+- unless @task.timelogs.any?
+  .error= t(".no_timelogs_were_found")

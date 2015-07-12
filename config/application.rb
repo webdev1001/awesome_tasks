@@ -22,11 +22,14 @@ module AwesomeTasks
     config.time_zone = 'Copenhagen'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     config.i18n.default_locale = :en
     config.i18n.available_locales = [:da, :en]
 
     # Autoload lib/ folder including all subdirectories
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    config.active_job.queue_adapter = :delayed_job if Rails.env.production?
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

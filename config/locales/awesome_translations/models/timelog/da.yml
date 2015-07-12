@@ -1,0 +1,26 @@
+---
+da:
+  activerecord:
+    models:
+      timelog:
+        one: Tidslog
+        other: Tidslogs
+    attributes:
+      timelog:
+        id: ID
+        task_id: Opgave ID
+        user_id: Bruger ID
+        date: Dato
+        time: Tid
+        time_transport: Transporttid
+        transport_length: Transportlængde
+        comment: Kommentar
+        invoiced: Faktureret
+        invoiced_at: Faktureret d.
+        invoiced_by_user_id: Faktureret af bruger ID
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        task: Opgave
+        user: Bruger
+        project: Projekt
+        organization: Organisation

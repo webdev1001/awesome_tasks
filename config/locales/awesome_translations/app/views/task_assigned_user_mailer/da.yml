@@ -1,0 +1,13 @@
+---
+da:
+  task_assigned_user_mailer:
+    notification:
+      hello_user_name: Hej %{user_name}
+      task_name: Opgavenavn
+      task_author: Opgaveforfatter
+      assigned_by: Tildelt af
+    new_comment_notification:
+      hello_user_name: Hej %{user_name}
+      a_new_comment_has_been_written_to_the_task: 'En ny kommentar er blevet skrevet
+        til opgaven: %{task_name}'
+      author: Forfatter

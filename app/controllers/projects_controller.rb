@@ -4,9 +4,11 @@ class ProjectsController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = Project.ransack(@ransack_params)
+
     @projects = @ransack.result
-    @projects = @projects.order(:name) unless params[:s]
-    @projects = @projects.paginate(page: params[:p], per_page: 40)
+    @projects = @projects.accessible_by(current_ability)
+    @projects = @projects.order(:name) unless @ransack_params[:s]
+    @projects = @projects.paginate(page: params[:page], per_page: 40)
   end
 
   def new
@@ -41,6 +43,7 @@ class ProjectsController < ApplicationController
 
     @tasks = @ransack.result
     @tasks = @tasks.order("tasks.created_at DESC, tasks.name") unless @ransack_values[:s]
+    @tasks = @tasks.accessible_by(current_ability)
     @tasks = @tasks.paginate(page: params[:page], per_page: 40)
   end
 
@@ -60,6 +63,6 @@ class ProjectsController < ApplicationController
 private
 
   def project_params
-    params.require(:project).permit(:name, :description, :organization_id, :deadline_at, :price_per_hour, :price_per_hour_transport)
+    params.require(:project).permit(:name, :state, :description, :organization_id, :deadline_at, :price_per_hour, :price_per_hour_transport)
   end
 end

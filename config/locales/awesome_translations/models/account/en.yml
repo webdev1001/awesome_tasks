@@ -1,0 +1,14 @@
+---
+en:
+  activerecord:
+    models:
+      account:
+        one: Account
+        other: Accounts
+    attributes:
+      account:
+        id: ID
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
+        account_lines: Account-lines

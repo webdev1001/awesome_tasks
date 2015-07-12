@@ -1,0 +1,16 @@
+- content_for(:header_title) { t(".frontpage") }
+- content_for(:header_right) { link_to t(".add_task"), new_task_path, class: "mobile-button-header" }
+
+%table.mobile-table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :name, Task.model_name.human
+      %th= sort_link @ransack, :project_name, Project.model_name.human
+  %tbody
+    - each_task do |data|
+      %tr
+        %td= link_to_task data[:task]
+        %td.nowrap= link_to_project data[:task].project
+    - if no_tasks?
+      %tr
+        %td.error{colspan: 2}= t(".no_tasks_were_found")

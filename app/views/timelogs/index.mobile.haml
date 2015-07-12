@@ -1,0 +1,86 @@
+- content_for(:header_title){ Timelog.model_name.human(count: 2) }
+
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :date_gteq, label: t("date_from"), as: :string, input_html: {value: @date_from.out(time: false)}
+  = f.input :date_lteq, label: t("date_to"), as: :string, input_html: {value: @date_to.out(time: false)}
+  = f.input :user_id_eq_any, label: User.model_name.human, collection: current_user.users_with_access_to.order(:name), include_blank: true
+  = f.input :task_project_id_eq_any, label: Project.model_name.human, hint: t(".if_you_want_to_find_timelogs_from_specific_projects"), collection: current_user.visible_projects.order(:name), include_blank: true
+  = f.input :comment_cont, as: :string
+  = simple_fields_for Timelog.new do |t_f|
+    = t_f.input :invoiced, collection: @invoiced_collection, selected: params[:timelog].try(:[], :invoiced), hint: t(".if_you_only_want_to_view_invoiced_uninvoiced_or_all_timelogs")
+  = f.submit t("search"), class: "mobile-button-primary"
+
+- if @ransack_params.any?
+  %h2= t(".sum")
+  %table.mobile-table.form
+    %tbody
+      %tr
+        %td= t(".total_hours")
+        %td
+          = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time)").to_f / 3600, precision: 1
+          = " / "
+          = format_number @timelogs.sum("TIME_TO_SEC(timelogs.time_transport)").to_f / 3600, precision: 1
+      %tr
+        %td= t(".total_transport")
+        %td= format_number @timelogs.sum(:transport_length), precision: 1
+
+  %br
+
+  %h2= t("results")
+  %table.mobile-table.list
+    %thead
+      %tr
+        %th= Timelog.model_name.human
+        %th= User.model_name.human
+        %th= Timelog.human_attribute_name(:date)
+        %th= Task.model_name.human
+        %th= Project.model_name.human
+    %tbody
+      - @timelogs.includes(:user, task: {project: :organization}).find_each do |tlog|
+        - @timelogs_sorted[tlog.task] = [] unless @timelogs_sorted.has_key?(tlog.task)
+        - @timelogs_sorted[tlog.task] << tlog
+        %tr
+          %td= link_to_timelog tlog
+          %td= link_to_user tlog.user
+          %td= l(tlog.date)
+          %td= link_to_task tlog.task
+          %td= link_to_project tlog.task.project if tlog.task
+      - if @timelogs.none?
+        %tr
+          %td.error{colspan: 1}
+            = t(".no_timelogs_were_found")
+
+  %br
+
+  = design_box t(".organization_message") do
+    %table#table_organization_message.list
+      %thead
+        %tr
+          %th= "#{Timelog.human_attribute_name(:date)} / #{t(".hours")}"
+          %th= User.model_name.human
+          %th= t(".description")
+      %tbody
+        - @timelogs_sorted.each do |task, tlogs_arr|
+          %tr
+            %td.tdt{colspan: 3, style: "padding-top: 10px;"}= link_to_task task
+
+          - tlogs_arr.each do |tlog|
+            - dbt = Baza::Dbtime.new(time_as_string(tlog.time))
+            - dbt_transport = Baza::Dbtime.new(time_as_string(tlog.time_transport))
+            %tr
+              %td{colspan: 3}
+                %hr{color: "#cfcfcf", size: 1}/
+            %tr
+              %td{style: "text-align: center;"}
+                %input{name: "timelogs_#{tlog.id}", type: "hidden", value: 1}/
+                = l(tlog.date)
+                %br
+                = format_number dbt.hours_total, precision: 2
+                = "/"
+                = format_number dbt_transport.hours_total, percision: 2
+              %td.nowrap= link_to_user tlog.user
+              %td= simple_format_default_args tlog.comment
+        - unless @timelogs_sorted.empty?
+          %tr
+            %td{colspan: 3, style: "padding-top: 15px; text-align: right;"}
+              = link_to t(".mark_timelogs_as_invoiced"), "#", class: ["button", "mark_timelogs_as_invoiced"], data: {url: mark_invoiced_timelogs_path, success_msg: t(".all_timelogs_was_marked_as_invoiced"), confirm_msg: t(".are_you_sure_you_want_to_mark_all_the_found_timelogs_as_invoiced")}

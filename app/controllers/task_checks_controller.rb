@@ -3,10 +3,15 @@ class TaskChecksController < ApplicationController
   before_filter :set_task
 
   def new
-    render :new, layout: false
+    if request.xhr?
+      render :new, layout: false
+    end
   end
 
   def create
+    set_user_checked_if_checked
+    set_user_assigner_if_assigned
+
     @task_check.user_added = current_user
 
     if @task_check.save
@@ -14,24 +19,34 @@ class TaskChecksController < ApplicationController
         @task.assigned_users << @task_check.user_assigned
       end
 
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to task_path(@task_check.task, anchor: "mobile-tab-tab-checks")
+      end
     else
       render text: @task_check.errors.full_messages.join(". ")
     end
   end
 
   def edit
-    render :edit, layout: false
+    if request.xhr?
+      render :edit, layout: false
+    end
   end
 
   def update
     @task_check.assign_attributes(task_check_params)
-    @task_check.user_assigner = current_user
-    do_send_notifications = true if @task_check.checked_changed?
+
+    set_user_checked_if_checked
+    set_user_assigner_if_assigned
 
     if @task_check.save
-      @task_check.delay.send_notifications(task_url(@task), current_user) if do_send_notifications
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to task_path(@task_check.task, anchor: "mobile-tab-tab-checks")
+      end
     else
       render text: @task_check.errors.full_messages.join(". ")
     end
@@ -39,7 +54,12 @@ class TaskChecksController < ApplicationController
 
   def destroy
     @task_check.destroy!
-    render nothing: true
+
+    if request.xhr?
+      render nothing: true
+    else
+      redirect_to task_path(@task_check.task, anchor: "mobile-tab-tab-checks")
+    end
   end
 
 private
@@ -51,5 +71,17 @@ private
 
   def task_check_params
     params.require(:task_check).permit(:name, :description, :checked, :user_assigned_id)
+  end
+
+  def set_user_checked_if_checked
+    if @task_check.checked_changed? && @task_check.checked?
+      @task_check.user_checked = current_user
+    end
+  end
+
+  def set_user_assigner_if_assigned
+    if @task_check.user_assigned_id_changed? && @task_check.user_assigned
+      @task_check.user_assigner = current_user
+    end
   end
 end

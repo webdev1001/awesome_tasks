@@ -1,9 +1,12 @@
 require "spec_helper"
 
 describe InvoicesController do
-  let(:invoice){ create :invoice }
-  let(:invoice_group){ create :invoice_group }
-  let(:admin){ create :user_admin }
+  let(:invoice) { create :invoice }
+  let(:admin) { create :user_admin }
+  let(:invoice_group_1) { create :invoice_group }
+  let(:invoice_group_2) { create :invoice_group }
+  let(:invoice_group_3) { create :invoice_group }
+  let(:valid_params) { {invoice_no: "123456", date: "2014-06-17", invoice_type: "debit", invoice_group_ids: [invoice_group_1.id, invoice_group_3.id]} }
 
   before do
     sign_in admin
@@ -16,7 +19,7 @@ describe InvoicesController do
     response.should be_success
   end
 
-  it "#edit" do
+  it "#index" do
     invoice
     get :index
     response.should be_success
@@ -34,14 +37,28 @@ describe InvoicesController do
   end
 
   it "#update" do
-    post :update, id: invoice.id, invoice: {title: "Test"}
-    assigns(:invoice).valid?.should eq true
-    response.should redirect_to(invoice_url(invoice))
+    post :update, id: invoice.id, invoice: valid_params
+
+    updated_invoice = assigns(:invoice)
+    updated_invoice.should be_valid
+    updated_invoice.invoice_groups.should eq [invoice_group_1, invoice_group_3]
+
+    response.should redirect_to invoice_url(updated_invoice)
   end
 
   it "#new" do
-    post :create, invoice: {title: "Test"}
+    get :new
     response.should be_success
+  end
+
+  it "#create" do
+    post :create, invoice: valid_params
+
+    created_invoice = assigns(:invoice)
+    created_invoice.should be_valid
+    created_invoice.invoice_groups.should eq [invoice_group_1, invoice_group_3]
+
+    response.should redirect_to invoice_url(created_invoice)
   end
 
   it "#pdf" do

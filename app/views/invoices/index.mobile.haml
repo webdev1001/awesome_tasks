@@ -1,0 +1,58 @@
+- content_for(:header_title){ Invoice.model_name.human(count: 2) }
+
+- if can? :new, Invoice
+  - content_for(:header_right) { link_to t("new"), new_invoice_path, class: "mobile-button-header" }
+
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :id_eq, autofocus: true
+  = f.input :organization_name_cont
+  = f.input :creditor_name_cont
+  = f.input :state_eq_any, collection: translated_invoice_states, include_blank: true
+  = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
+  = f.input :date_gteq, as: :string, label: t("date_from")
+  = f.input :date_lteq, as: :string, label: t("date_to")
+  = f.submit t("filter"), class: "mobile-button-primary"
+
+%table.mobile-table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :invoice_no
+      %th= sort_link @ransack, :organization_name, Organization.model_name.human
+      %th= sort_link @ransack, :date
+      %th.align-right= sort_link @ransack, :amount
+  %tbody
+    - @invoices.each do |invoice|
+      %tr
+        %td= link_to_invoice invoice, title: invoice.invoice_no.presence || "[#{invoice.id}]"
+        %td
+          - if invoice.invoice_type == "debit"
+            = link_to_organization invoice.organization
+          - else
+            = link_to_organization invoice.creditor
+        %td= l(invoice.date, format: :long)
+        %td.align-right.nowrap= format_number invoice.amount, precision: 0
+    - if @invoices.none?
+      %tr
+        %td.error{colspan: 4}
+          = t(".no_invoices_could_be_found")
+
+%br
+%br
+
+= will_paginate @invoices
+
+%br
+%br
+
+%h2= t(".totals")
+%table.mobile-table.form
+  %tbody
+    %tr
+      %td.tdt= t(".amount")
+      %td.align-right.nowrap= format_number @invoices.sum(:amount)
+    %tr
+      %td.tdt= t(".vat")
+      %td.align-right.nowrap= format_number @invoices.sum(:amount) * 0.25
+    %tr
+      %td.tdt= t(".total")
+      %td.align-right.nowrap= format_number @invoices.sum(:amount) * 1.25

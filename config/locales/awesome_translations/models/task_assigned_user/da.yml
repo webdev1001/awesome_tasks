@@ -1,0 +1,18 @@
+---
+da:
+  activerecord:
+    models:
+      task_assigned_user:
+        one: Opgavetildelt bruger
+        other: Opgavetildelte brugere
+    attributes:
+      task_assigned_user:
+        id: ID
+        task_id: Opgave ID
+        user_id: Bruger ID
+        user_assigned_by_id: Bruger tildelt af ID
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        task: Opgave
+        user: Bruger
+        user_assigned_by: Bruger tildelt af

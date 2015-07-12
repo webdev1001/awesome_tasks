@@ -1,0 +1,23 @@
+%table.list
+  %thead
+    %tr
+      %th= Invoice.human_attribute_name(:invoice_no)
+      %th= Invoice.human_attribute_name(:date)
+      %th= Invoice.human_attribute_name(:payment_at)
+      %th= Invoice.human_attribute_name(:organization)
+      %th= Invoice.human_attribute_name(:creditor)
+      %th= Invoice.human_attribute_name(:state)
+      %th= Invoice.human_attribute_name(:amount)
+  %tbody
+    - invoices.includes(:organization, :creditor).each do |invoice|
+      %tr
+        %td= link_to_invoice invoice
+        %td= l(invoice.date, format: :long)
+        %td= l(invoice.payment_at, format: :long) if invoice.payment_at?
+        %td= link_to_organization invoice.organization
+        %td= link_to_organization invoice.creditor
+        %td= translated_invoice_state(invoice)
+        %td= number_to_currency invoice.amount, unit: ''
+    - if invoices.empty?
+      %tr
+        %td.error{colspan: 7}= t('no_results')

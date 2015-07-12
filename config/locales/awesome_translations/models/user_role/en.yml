@@ -1,0 +1,15 @@
+---
+en:
+  activerecord:
+    models:
+      user_role:
+        one: User role
+        other: User roles
+    attributes:
+      user_role:
+        id: ID
+        user_id: User ID
+        role: Role
+        created_at: Created at
+        updated_at: Updated at
+        user: User

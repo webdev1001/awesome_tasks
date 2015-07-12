@@ -1,0 +1,35 @@
+- content_for(:header_title){ t(".search_for_tasks") }
+- if can? :new, Task
+  - content_for(:header_right) { link_to t("add_new"), new_task_path, class: "mobile-button-header" }
+
+= simple_search_form_for @ransack, @ransack_params do |f|
+  = f.input :name_cont
+  = f.input :description_cont, as: :string
+  = f.input :state_eq, collection: Task.translated_states.invert, include_blank: true
+  = f.input :task_type_eq, collection: Task.translated_task_types.invert, include_blank: true
+  = f.input :user_id_eq, collection: @users, include_blank: true, label: User.model_name.human
+  = f.input :project_id_eq, collection: @projects, label: Project.model_name.human, include_blank: true
+  = f.submit t("search"), class: "mobile-button-primary"
+
+%table.mobile-table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :name
+      %th= sort_link @ransack, :state
+      %th= sort_link @ransack, :project_name, Project.model_name.human
+  %tbody
+    - @tasks.each do |task|
+      - next unless can?(:show, task)
+      %tr
+        %td= link_to_task task
+        %td= task.translated_state
+        %td= link_to_project task.project
+
+    - unless @tasks.any?
+      %tr
+        %td.error{colspan: 3}
+          = t(".no_tasks_were_found")
+
+%br
+
+= will_paginate @tasks

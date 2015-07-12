@@ -1,0 +1,12 @@
+- if can?(:destroy, project) && !project.new_record?
+  - content_for(:header_right) { link_to t("delete"), project_path(project), method: :delete, class: ["mobile-button-header", "mobile-button-danger"], data: {confirm: t("are_you_sure")} }
+
+= simple_form_for project do |f|
+  = f.input :name
+  = f.input :state, collection: Project.translated_states
+  = f.input :deadline_at
+  = f.input :price_per_hour, input_html: {data: {autonumeric: true}}
+  = f.input :price_per_hour_transport, input_html: {data: {autonumeric: true}}
+  = f.input :organization_id, collection: Organization.order(:name), label: Project.human_attribute_name(:organization)
+  = f.cktext_area :description
+  = f.submit t("save"), class: "mobile-button-primary"

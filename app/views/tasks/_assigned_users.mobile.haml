@@ -1,0 +1,14 @@
+= link_to t("add_new"), new_task_assigned_user_path(task_assigned_user: {task_id: @task.id}), class: "mobile-button"
+
+- @task.task_assigned_users.each do |task_assigned_user|
+  %table.mobile-table.form
+    %tbody
+      %tr
+        %td= TaskAssignedUser.human_attribute_name(:user)
+        %td= link_to_user task_assigned_user.user
+      %tr
+        %td= TaskAssignedUser.human_attribute_name(:user_assigned_by)
+        %td= link_to_user task_assigned_user.user_assigned_by
+
+  - if can? :destroy, task_assigned_user
+    = link_to t(".unassign"), task_assigned_user, method: :delete, data: {confirm: t("are_you_sure")}, class: "mobile-button-danger"

@@ -1,0 +1,13 @@
+---
+en:
+  models:
+    invoice:
+      debit: Debit
+      credit: Credit
+      purchase: Purchase
+      with_id: with ID %{id}
+      no_invoice_number_has_been_set: No invoice-number has been set
+      no_invoice_date_has_been_set: No invoice-date has been set
+      no_payment_date_has_been_set: No payment-date has been set
+      no_creditor_has_been_set: No creditor has been set
+      transport: Transport

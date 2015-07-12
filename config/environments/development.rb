@@ -23,7 +23,7 @@ AwesomeTasks::Application.configure do
   config.active_record.migration_error = :page_load
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = YAML.load(File.read("#{Rails.root}/config/smtp.yml")).symbolize_keys!
+  config.action_mailer.smtp_settings = YAML.load(File.read(Rails.root.join("config", "smtp.yml"))).symbolize_keys!
   config.action_mailer.default_options = {
     from: "development@awesometasks.kaspernj.org"
   }

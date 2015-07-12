@@ -1,0 +1,4 @@
+= simple_form_for user_project_link do |f|
+  = f.association :project
+  = f.association :user
+  = f.submit t("save"), class: "mobile-button-primary"

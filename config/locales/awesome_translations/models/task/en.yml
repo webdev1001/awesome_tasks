@@ -1,0 +1,25 @@
+---
+en:
+  activerecord:
+    models:
+      task:
+        one: Task
+        other: Tasks
+    attributes:
+      task:
+        id: ID
+        project_id: Project ID
+        user_id: User ID
+        name: Name
+        description: Description
+        task_type: Task type
+        state: State
+        priority: Priority
+        created_at: Created at
+        updated_at: Updated at
+        tags: Tags
+        timelogs: Timelogs
+        uploaded_files: Uploaded files
+        comments: Comments
+        project: Projects
+        user: User

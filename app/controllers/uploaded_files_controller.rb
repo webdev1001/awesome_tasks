@@ -45,7 +45,9 @@ class UploadedFilesController < ApplicationController
   def index
     @values = params[:q] || {}
     @ransack = UploadedFile.ransack(@values)
+
     @uploaded_files = @ransack.result
+    @uploaded_files = @uploaded_files.accessible_by(current_ability)
     @uploaded_files = @uploaded_files.paginate(page: params[:page], per_page: 40)
   end
 

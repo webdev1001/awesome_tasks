@@ -1,15 +1,15 @@
-- content_for(:header_title){ _("Uploaded files") }
+- content_for(:header_title){ UploadedFile.model_name.human(count: 2) }
 
-= design_box _("Enter criteria"), 450 do
+= design_box t("enter_criteria"), 450 do
   = simple_search_form_for @ransack, @values do |f|
     = f.input :id_eq, autofocus: true
     = f.input :file_file_name_cont
-    = f.submit _("Filter")
+    = f.submit t("filter")
 
 %br
 %br
 
-= design_box _("Results"), 800 do
+= design_box t("results"), 800 do
   %table.list
     %thead
       %tr
@@ -26,8 +26,8 @@
           %td= l(uploaded_file.created_at, format: :long)
       - if @uploaded_files.none?
         %tr
-          %td.error{colspan: 2}= _("No uploaded files were found.")
+          %td.error{colspan: 2}= t(".no_uploaded_files_were_found")
 
 %br
 
-= will_paginate @tasks
+= will_paginate @uploaded_files

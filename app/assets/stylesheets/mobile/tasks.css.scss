@@ -1,0 +1,11 @@
+body.controller_tasks.action_show {
+  #tab-timelogs table tbody tr {
+    td:first-child {
+     white-space: nowrap;
+    }
+
+    td:last-child {
+      width: 100%;
+    }
+  }
+}

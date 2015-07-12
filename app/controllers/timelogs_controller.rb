@@ -6,9 +6,9 @@ class TimelogsController < ApplicationController
     @ransack = Timelog.ransack(@ransack_params)
 
     @invoiced_collection = {
-      _("All") => "",
-      _("Only invoiced") => "only_invoiced",
-      _("Only un-invoiced") => "only_not_invoiced"
+      t(".all") => "",
+      t(".only_invoiced") => "only_invoiced",
+      t(".only_uninvoiced") => "only_not_invoiced"
     }
 
     @timelogs_sorted = {}
@@ -26,7 +26,9 @@ class TimelogsController < ApplicationController
     @timelog.user = current_user
     @timelog.assign_attributes(timelog_params) if params[:timelog]
 
-    render :new, layout: false
+    if request.xhr?
+      render :new, layout: false
+    end
   end
 
   def create
@@ -34,27 +36,54 @@ class TimelogsController < ApplicationController
     @timelog.user = current_user
 
     if @timelog.save
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to @timelog.task
+      end
     else
-      render text: _("Could not save: %{errors}", errors: @timelog.errors.full_messages.join(". "))
+      if request.xhr?
+        render text: t(".could_not_save", errors: @timelog.errors.full_messages.join(". "))
+      else
+        flash[:error] = @timelog.errors.full_messages.join(". ")
+        render :new
+      end
     end
   end
 
   def edit
-    render :edit, layout: false
+    if request.xhr?
+      render :edit, layout: false
+    end
   end
 
   def update
     if @timelog.update_attributes(timelog_params)
-      render nothing: true
+      if request.xhr?
+        render nothing: true
+      else
+        redirect_to @timelog.task
+      end
     else
-      render text: _("Could not save: %{errors}", errors: @timelog.errors.full_messages.join(". "))
+      if request.xhr?
+        render text: t(".could_not_save", errors: @timelog.errors.full_messages.join(". "))
+      else
+        render :edit
+      end
     end
+  end
+
+  def show
   end
 
   def destroy
     @timelog.destroy!
-    render nothing: true
+
+    if request.xhr?
+      render nothing: true
+    else
+      redirect_to @timelog.task
+    end
   end
 
   def mark_invoiced
@@ -75,14 +104,14 @@ private
       begin
         @date_from = Datet.in(@ransack_params[:date_gteq])
       rescue
-        flash[:warning] = (_("Invalid date-from."))
+        flash[:warning] = t(".invalid_date_from")
         redirect_to :back
       end
 
       begin
         @date_to = Datet.in(@ransack_params[:date_lteq])
       rescue
-        flash[:warning] = (_("Invalid date-to."))
+        flash[:warning] = t(".invalid_date_to")
         redirect_to :back
       end
     else
@@ -96,6 +125,7 @@ private
 
   def set_timelogs
     @timelogs = @ransack.result.order(:date)
+    @timelogs = @timelogs.accessible_by(current_ability)
 
     # Invoiced is given in a special way.
     if params[:timelog].try(:[], :invoiced) == "only_invoiced"

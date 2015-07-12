@@ -1,0 +1,29 @@
+= link_to t("add_new"), new_task_task_check_path(@task), class: "mobile-button"
+
+- @task.task_checks.each do |task_check|
+  %table.mobile-table.form
+    %tbody
+      %tr
+        %td= TaskCheck.human_attribute_name(:name)
+        %td= task_check.name
+      %tr
+        %td= TaskCheck.human_attribute_name(:checked)
+        %td= task_check.checked? ? t("yes") : t("no")
+      - if task_check.user_checked
+        %tr
+          %td= TaskCheck.human_attribute_name(:user_checked)
+          %td= link_to_user task_check.user_checked
+      %tr
+        %td= TaskCheck.human_attribute_name(:user_assigned)
+        %td= link_to_user task_check.user_assigned
+      - if task_check.user_assigner
+        %tr
+          %td= TaskCheck.human_attribute_name(:user_assigner)
+          %td= link_to_user task_check.user_assigner
+      - if task_check.description?
+        %tr
+          %td{colspan: 2}= simple_format_default_args task_check.description
+      - if can? :edit, task_check
+        %tr
+          %td{colspan: 2}
+            = link_to t("edit"), [:edit, @task, task_check]

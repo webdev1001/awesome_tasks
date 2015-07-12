@@ -1,0 +1,11 @@
+= simple_form_for task do |f|
+  = f.input :name
+  = f.association :project, collection: current_user.visible_projects.order(:name)
+  = f.input :task_type, collection: Task.translated_task_types.invert
+  = f.input :state, collection: Task.translated_states.invert
+  = f.input :priority, collection: 1..10
+  = f.input :description
+  = f.submit t("save"), class: "mobile-button-primary"
+
+  - if can?(:destroy, task) && !task.new_record?
+    = link_to t("delete"), task, method: :delete, class: "mobile-button-danger", data: {confirm: t("are_you_sure")}

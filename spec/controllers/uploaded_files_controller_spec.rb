@@ -22,12 +22,22 @@ describe UploadedFilesController do
       response.should be_success
     end
 
-    it "#create" do
-      post :create, uploaded_file: {resource_type: "Invoice", resource_id: invoice.id, title: "Test", file: fixture_file_upload(Rails.root.join("spec/images/kaspernj.jpg"), "image/jpeg")}
-      controller.flash.to_a.should eq []
-      new_uploaded_file = UploadedFile.last
-      new_uploaded_file.should_not eq nil
-      response.should redirect_to invoice_url(invoice)
+    describe "#create" do
+      it "accepts jpeg files" do
+        post :create, uploaded_file: {resource_type: "Invoice", resource_id: invoice.id, title: "Test", file: fixture_file_upload(Rails.root.join("spec", "images", "kaspernj.jpg"), "image/jpeg")}
+        controller.flash.to_a.should eq []
+        new_uploaded_file = UploadedFile.last
+        new_uploaded_file.should_not eq nil
+        response.should redirect_to invoice
+      end
+
+      it "accepts pdf files" do
+        post :create, uploaded_file: {resource_type: "Invoice", resource_id: invoice.id, title: "Test", file: fixture_file_upload(Rails.root.join("spec", "images", "test.pdf"), "application/pdf")}
+        controller.flash.to_a.should eq []
+        new_uploaded_file = UploadedFile.last
+        new_uploaded_file.should_not eq nil
+        response.should redirect_to invoice
+      end
     end
 
     it "#edit" do

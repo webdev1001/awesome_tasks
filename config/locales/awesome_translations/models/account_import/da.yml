@@ -1,0 +1,21 @@
+---
+da:
+  activerecord:
+    models:
+      account_import:
+        one: Kontoimport
+        other: Kontoimporter
+    attributes:
+      account_import:
+        id: ID
+        account_id: Konto ID
+        state: Status
+        file_encoding: Filenkodning
+        amount_format: Beløbsformat
+        executed_at: Eksekveret d.
+        finished_at: Færdiggjort d.
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        account: Konto
+        uploaded_file: Uploadet fil
+        account_import_columns: Kontoimport kolonner

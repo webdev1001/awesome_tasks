@@ -1,10 +1,12 @@
-- content_for(:header_title){ _("Search for project") }
+- content_for(:header_title){ t('.search_for_project') }
 
-= design_box _("Enter criteria"), 350 do
+= design_box t('enter_criteria'), 350 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :name_cont
-    = link_to _("Add new"), new_project_path, class: "button"
-    = f.submit _("Search")
+    = link_to t('add_new'), new_project_path, class: 'button' if can?(:new, Project)
+    = f.submit t('search')
+
+%br
 
 = design_box Project.model_name.human(count: 2), 600 do
   %table.form
@@ -19,10 +21,10 @@
           %td= link_to_project project
           %td= project.translated_state
           %td= l(project.created_at, format: :long)
-      - unless @projects.any?
+      - if @projects.empty?
         %tr
-          %td.error{colspan: 2}
-            = _("No projects were found.")
+          %td.error{colspan: 3}
+            = t('.no_projects_were_found')
 
 %br
 = will_paginate @projects

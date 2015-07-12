@@ -16,11 +16,11 @@ describe Invoice do
     let(:invoice_without_invoice_no) { create :invoice, invoice_no: nil }
 
     it "uses invoice_no when present" do
-      invoice_with_invoice_no.filename.should eq "Invoice 123.pdf"
+      I18n.with_locale(:en) { invoice_with_invoice_no.filename.should eq "Invoice 123.pdf" }
     end
 
     it "uses id otherwise" do
-      invoice_without_invoice_no.filename.should eq "Invoice ID #{invoice_without_invoice_no.id}.pdf"
+      I18n.with_locale(:en) { invoice_without_invoice_no.filename.should eq "Invoice ID #{invoice_without_invoice_no.id}.pdf" }
     end
   end
 

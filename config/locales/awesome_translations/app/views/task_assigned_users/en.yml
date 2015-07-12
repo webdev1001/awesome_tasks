@@ -1,0 +1,5 @@
+---
+en:
+  task_assigned_users:
+    new:
+      assign_user: Assign user

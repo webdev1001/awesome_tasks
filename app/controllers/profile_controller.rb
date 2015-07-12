@@ -2,7 +2,9 @@ class ProfileController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = current_user.tasks.ransack(@ransack_params)
+
     @tasks = @ransack.result.paginate(page: params[:page], per_page: 30)
+    @tasks = @tasks.accessible_by(current_ability)
     @tasks = @tasks.order(:name) unless params[:s]
   end
 

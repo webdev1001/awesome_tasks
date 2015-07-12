@@ -1,0 +1,33 @@
+---
+da:
+  timelogs:
+    new:
+      new_timelog: Ny tidslog
+    edit:
+      edit_timelog: Rediger tidslog
+    show:
+      show_timelog_with_id: Vis tidslog %{id}
+    index:
+      hours: Timer
+      if_you_want_to_find_timelogs_from_specific_projects: Hvis du vi finde tidslogs
+        fra specifikke projekter
+      if_you_only_want_to_view_invoiced_uninvoiced_or_all_timelogs: Hvis du kun vil
+        finde fakturerede- eller ikke-fakturerede tidslogs
+      sum: Sum
+      total_hours: Totale timer
+      the_total_amount_of_hours_of_all_the_found_time_logs_first_hours_used_then_time_used_on_transport: Den
+        totale mængde tid af alle fundne tidslogs
+      total_transport: Total transport
+      total_length_of_transport_used_in_all_the_timelogs_found: Total længde transport
+        af alle fundne tidslogs
+      timelogs_with_transport_length: Tidslogs med transportlængde
+      transport_with_substraction: Tidslogs med fratrækning
+      transport: Transport
+      no_timelogs_were_found: Der blev ikke fundet nogle tidslogs
+      organization_message: Organisationsbesked
+      mark_timelogs_as_invoiced: Marker alle tidslogs som faktureret
+      all_timelogs_was_marked_as_invoiced: Alle tidslogs blev markeret som faktureret
+      are_you_sure_you_want_to_mark_all_the_found_timelogs_as_invoiced: Vil du markere
+        alle fundne tidslogs som faktureret?
+      description: Beskrivelse
+      substract_from_each_transport_distance: Træk fra hver transportlængde

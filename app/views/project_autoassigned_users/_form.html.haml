@@ -1,4 +1,4 @@
-= design_box _("Enter details"), 400 do
+= design_box t("enter_details"), 400 do
   = simple_form_for [project_autoassigned_user.project, project_autoassigned_user] do |f|
     = f.input :user_id, collection: users_collection, label: User.model_name.human, autofocus: true
-    = f.submit _("Save")
+    = f.submit t("save")

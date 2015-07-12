@@ -1,0 +1,37 @@
+- content_for(:header_title) { t(".show_account_import") }
+
+= design_box t("details"), 500 do
+  %table.form
+    %tbody
+      %tr
+        %td= AccountImport.human_attribute_name(:account)
+        %td= link_to_account @account_import.account
+      %tr
+        %td= AccountImport.human_attribute_name(:state)
+        %td= @account_import.translated_state
+
+%br
+%br
+
+= simple_form_for [:update_columns, @account, @account_import], method: :post do |f|
+  = f.submit t(".update_columns")
+  = link_to t(".execute"), execute_account_account_import_path(@account, @account_import), method: :post, class: "button", data: {confirm: t("are_you_sure")}
+
+  %br
+  %br
+
+  = design_box t(".columns") do
+    %table.list
+      %thead
+        %tr
+          - @account_import.columns_count.times do |count|
+            %th= "#{t(".column")} #{count + 1}"
+      %tbody
+        %tr
+          - @account_import.columns_count.times do |count|
+            %td
+              = select_tag "column_type[#{count}]", options_for_select({"" => ""}.merge(AccountImportColumn.column_types), selected_column_for_no(count))
+        - rows do |row|
+          %tr
+            - row.each do |content|
+              %td= content

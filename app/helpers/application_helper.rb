@@ -2,11 +2,13 @@ module ApplicationHelper
   include SimpleFormRansackHelper
   include RailsImager::ImagesHelper
   include AgentHelpers::DetectorHelper
+  include LightMobile::TabsHelper
+  include AwesomeTranslations::ApplicationHelper
 
   def knjrbfw_opts(query, args = {})
     list = {}
-    list[""] = _("Choose:") if args[:choose]
-    list[""] = _("All") if args[:all]
+    list[""] = t("choose") if args[:choose]
+    list[""] = t("all") if args[:all]
 
     query.each do |model|
       list[model.id] = model.name
@@ -31,8 +33,20 @@ module ApplicationHelper
 
   def form_boolean_collection
     {
-      _("All") => nil,
-      _("True") => 1
+      t("all") => nil,
+      t("true") => 1,
+      t("false") => 0
+    }
+  end
+
+  def simple_format_default_args(text)
+    simple_format text, nil, wrapper_tag: :div
+  end
+
+  def available_locales
+    {
+      "da" => helper_t(".danish"),
+      "en" => helper_t(".english")
     }
   end
 end

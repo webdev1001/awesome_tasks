@@ -1,0 +1,24 @@
+- content_for(:header_title){ UploadedFile.model_name.human(count: 2) }
+
+= simple_search_form_for @ransack, @values do |f|
+  = f.input :file_file_name_cont
+  = f.submit t("filter"), class: "mobile-button-primary"
+
+%table.mobile-table.list
+  %thead
+    %tr
+      %th= sort_link @ransack, :file_file_name
+      %th= t("actions")
+  %tbody
+    - @uploaded_files.each do |uploaded_file|
+      %tr
+        %td= link_to_uploaded_file uploaded_file
+        %td
+          - if can? :edit, uploaded_file
+            = link_to t("edit"), [:edit, uploaded_file], class: "mobile-button-mini"
+    - unless @uploaded_files.any?
+      %tr
+        %td.error{colspan: 1}= t(".no_uploaded_files_were_found")
+
+%br
+= will_paginate @uploaded_files

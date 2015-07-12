@@ -1,7 +1,19 @@
 AwesomeTasks::Application.routes.draw do
+  mount AwesomeTranslations::Engine => "/awesome_translations" if Rails.env.development?
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsImager::Engine => "/rails_imager"
   devise_for :users, encryptor: :md5
+
+  resources :accounts do
+    resources :account_imports do
+      post :update_columns, on: :member
+      post :execute, on: :member
+    end
+
+    resources :account_lines
+  end
+
+  resources :account_lines, only: :index
 
   resources :comments, except: [:show, :index]
   resources :invoices do
@@ -14,7 +26,7 @@ AwesomeTasks::Application.routes.draw do
       post :add_uninvoiced_timelogs
     end
 
-    resources :invoice_lines, except: [:show, :index]
+    resources :invoice_lines, except: [:index]
   end
 
   resources :invoice_groups
@@ -40,7 +52,7 @@ AwesomeTasks::Application.routes.draw do
     resources :task_checks, except: [:show, :index]
   end
 
-  resources :task_assigned_users, only: [:destroy]
+  resources :task_assigned_users, only: [:new, :create, :destroy]
   resources :organizations
 
   resources :projects do
@@ -59,14 +71,12 @@ AwesomeTasks::Application.routes.draw do
     get :index
   end
 
-  namespace :locales do
-    post :set
-  end
+  resources :locales, only: [:new, :create]
 
-  resources :user_project_links, only: [:destroy]
+  resources :user_project_links, only: [:new, :create, :destroy]
   resources :user_task_list_links, only: [:create, :destroy]
 
-  resources :timelogs, except: [:show] do
+  resources :timelogs do
     post :mark_invoiced, on: :collection
   end
 

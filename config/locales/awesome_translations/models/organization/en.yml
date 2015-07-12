@@ -1,0 +1,29 @@
+---
+en:
+  activerecord:
+    models:
+      organization:
+        one: Organisation
+        other: Organisations
+    attributes:
+      organization:
+        id: ID
+        name: Name
+        created_at: Created at
+        updated_at: Updated at
+        email: Email
+        vat_no: VAT number
+        payment_info: Payment information
+        delivery_address: Delivery address
+        delivery_zip_code: Delivery ZIP code
+        delivery_city: Delivery city
+        delivery_country: Delivery country
+        invoice_address: Invoice address
+        invoice_zip_code: Invoice ZIP code
+        invoice_city: Invoice city
+        invoice_country: Invoice country
+        customer: Customer
+        creditor: Creditor
+        projects: Projects
+        invoices: Invoices
+        creditor_invoices: Creditor invoices

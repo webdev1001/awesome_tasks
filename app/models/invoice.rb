@@ -3,21 +3,23 @@ class Invoice < ActiveRecord::Base
 
   # Track changes.
   include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.try(:current_user) }
+  tracked owner: proc { |controller, model| controller.try(:current_user) }
 
   belongs_to :creditor, class_name: "Organization"
-  belongs_to :invoice_group
   belongs_to :organization
   belongs_to :user
 
+  has_many :account_lines, dependent: :restrict_with_error
   has_many :invoice_lines, dependent: :destroy
+  has_many :invoice_group_links, dependent: :destroy
+  has_many :invoice_groups, through: :invoice_group_links
   has_many :uploaded_files, as: :resource, dependent: :destroy
 
-  validates_presence_of :user, :date, :invoice_group, :invoice_type
+  validates_presence_of :user, :date, :invoice_type
 
-  scope :debit, ->{ where(invoice_type: "debit") }
-  scope :credit, ->{ where(invoice_type: "credit") }
-  scope :purchase, ->{ where(invoice_type: "purchase") }
+  scope :debit, -> { where(invoice_type: "debit") }
+  scope :credit, -> { where(invoice_type: "credit") }
+  scope :purchase, -> { where(invoice_type: "purchase") }
 
   before_validation :before_validation_set_price_if_not_given
 
@@ -49,10 +51,22 @@ class Invoice < ActiveRecord::Base
 
   def self.translated_invoice_types
     return {
-      _("Debit") => "debit",
-      _("Credit") => "credit",
-      _("Purchase") => "purchase"
+      t(".debit") => "debit",
+      t(".credit") => "credit",
+      t(".purchase") => "purchase"
     }
+  end
+
+  def name
+    text = "#{Invoice.model_name.human}"
+
+    if invoice_no.present?
+      text << " #{invoice_no}"
+    else
+      text << t('.with_id', id: id)
+    end
+
+    return text
   end
 
   def translated_invoice_type
@@ -75,9 +89,9 @@ class Invoice < ActiveRecord::Base
 
   def filename
     if invoice_no.present?
-      filename_str = _("Invoice %{invoice_no}", invoice_no: invoice_no)
+      filename_str = "#{Invoice.model_name.human} #{invoice_no}"
     else
-      filename_str = _("Invoice ID %{id}", id: id)
+      filename_str = "#{Invoice.model_name.human} ID #{id}"
     end
 
     filename_str << ".pdf"
@@ -89,10 +103,10 @@ class Invoice < ActiveRecord::Base
   end
 
   def to_pdf
-    raise _("No invoice number has been set.") unless invoice_no.present?
-    raise _("No invoice-date has been set.") unless date.present?
-    raise _("No payment-date has been set.") unless payment_at.present?
-    raise _("No creditor has been set.") unless creditor
+    raise t(".no_invoice_number_has_been_set") unless invoice_no.present?
+    raise t(".no_invoice_date_has_been_set") unless date.present?
+    raise t(".no_payment_date_has_been_set") unless payment_at.present?
+    raise t(".no_creditor_has_been_set") unless creditor
 
     html = render_pdf_to_string
 
@@ -126,7 +140,25 @@ class Invoice < ActiveRecord::Base
   end
 
   def amount_total
-    amount.to_f + amount_vat
+    amount.to_f + amount_vat.to_f
+  end
+
+  def amount_total_for_account
+    if invoice_type == "purchase" || invoice_type == "credit"
+      -amount_total
+    elsif invoice_type == "debit"
+      amount_total
+    else
+      raise "Invalid invoice-type: #{invoice_type}"
+    end
+  end
+
+  def reconciled_amount
+    account_lines.sum(:amount)
+  end
+
+  def reconciled?
+    amount_total_for_account == reconciled_amount
   end
 
   def add_uninvoiced_timelogs_for_user(user)
@@ -152,7 +184,7 @@ class Invoice < ActiveRecord::Base
 
       if time_transport.total_secs > 0 && timelog.project.price_per_hour_transport > 0
         invoice_line = invoice_lines.create!(
-          title: "[task:#{timelog.task_id}] - [timelog:#{timelog.id}]: #{_("Transport")}",
+          title: "[task:#{timelog.task_id}] - [timelog:#{timelog.id}]: #{t(".transport")}",
           quantity: time_transport.hours_total,
           amount: timelog.project.price_per_hour_transport,
           timelog: timelog

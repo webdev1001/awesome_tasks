@@ -3,7 +3,7 @@
     %tr
       %th= TaskCheck.human_attribute_name(:title)
       %th= TaskCheck.human_attribute_name(:user_assigned)
-      %th= _("Actions")
+      %th= t("actions")
   %tbody
     - checks.each do |check|
       %tr
@@ -12,12 +12,12 @@
           = label_tag dom_id(check), check.name
         %td= link_to_user(check.user_assigned)
         %td
-          = link_to _("Edit"), "#", class: "task_check_edit", data: {task_id: task.id, task_check_id: check.id}
-          = link_to _("Delete"), "#", class: "task_check_delete", data: {task_id: task.id, task_check_id: check.id, confirm_msg: _("Are you sure?")}
+          = link_to t("edit"), "#", class: "task_check_edit", data: {task_id: task.id, task_check_id: check.id}
+          = link_to t("delete"), "#", class: "task_check_delete", data: {task_id: task.id, task_check_id: check.id, confirm_msg: t("are_you_sure")}
       - if check.description.present?
         %tr
           %td.tdd{colspan: 3}= Php4r.nl2br(check.description).html_safe
 
     - if checks.none?
       %tr
-        %td.error{colspan: 3}=_("No checks has been added for this task.")
+        %td.error{colspan: 3}= t(".no_checks_has_been_added_for_this_task")

@@ -1,0 +1,27 @@
+---
+da:
+  helpers:
+    invoice_group_helper:
+      no_invoice_group: Ingen fakturagruppe
+    invoice_helper:
+      Invoice: Faktura %{invoice_no}
+      draft: Udkast
+      finished: Færdig
+      sent: Sendt
+      paid: Betalt
+      invoice: Faktura %{invoice_no}
+      invoice_withid: Faktura med ID %{id}
+    organization_helper:
+      no_organization: ingen organisation
+    project_helper:
+      no_project: intet projekt
+    user_helper:
+      no_user: ingen bruger
+      no_name: intet navn
+    uploaded_file_helper:
+      file_with_id: Fil %{id}
+    task_helper:
+      no_task: ingen opgave
+    application_helper:
+      danish: Dansk
+      english: Engelsk

@@ -1,6 +1,6 @@
 module TaskHelper
   def link_to_task(task, args = {})
-    return "[#{_("no task")}]" unless task
+    return "[#{helper_t(".no_task")}]" unless task
 
     if args[:url]
       url = task_url(task)

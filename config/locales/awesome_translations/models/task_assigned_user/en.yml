@@ -1,0 +1,18 @@
+---
+en:
+  activerecord:
+    models:
+      task_assigned_user:
+        one: Task-assigned user
+        other: Task-assigned users
+    attributes:
+      task_assigned_user:
+        id: ID
+        task_id: Task ID
+        user_id: User ID
+        user_assigned_by_id: User assigned by ID
+        created_at: Created at
+        updated_at: Updated at
+        task: Task
+        user: User
+        user_assigned_by: User assigned by

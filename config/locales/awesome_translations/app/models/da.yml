@@ -1,0 +1,31 @@
+---
+da:
+  models:
+    task:
+      feature: Feature
+      bug_report: Fejlrapport
+      question: Spørgsmål
+      other: Andet
+      open: "Åben"
+      confirmed: Bekræftet
+      waiting: Venter
+      inactive: Inaktiv
+      closed: Lukket
+      task_with_id: Opgave %{task_id}
+    account_import:
+      new: Ny
+      executing: Kører
+      finished: Færdig
+    account_import_column:
+      amount: Beløb
+      text: Tekst
+      interest_at: Rente d.
+      booked_at: Booked d.
+    project:
+      active: Aktiv
+      inactive: Inaktiv
+      finished: Færdig
+    user_role:
+      administrator: Administrator
+      organization_administrator: Organisationsadministrator
+      is_not_allowed_role: er ikke tilladt

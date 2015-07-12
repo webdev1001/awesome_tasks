@@ -7,7 +7,7 @@ module UploadedFileHelper
     elsif uploaded_file.file_file_name?
       title = uploaded_file.file_file_name
     else
-      title = _("File %{id}", id: uploaded_file.id)
+      title = helper_t(".file_with_id", id: uploaded_file.id)
     end
 
     return link_to title, uploaded_file.file.url

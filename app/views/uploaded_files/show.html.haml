@@ -1,11 +1,11 @@
-- content_for(:header_title){ _("Show uploaded file %{title}", title: @uploaded_file.title) }
+- content_for(:header_title){ t(".show_uploaded_file_title", title: @uploaded_file.title) }
 
 - if can? :edit, @uploaded_file
-  = link_to _("Edit"), ["edit", @uploaded_file], class: "button"
+  = link_to t("edit"), ["edit", @uploaded_file], class: "button"
   %br
   %br
 
-= design_box _("Details"), 500 do
+= design_box t("details"), 500 do
   %table.form
     %tbody
       - [:id, :title].each do |column|

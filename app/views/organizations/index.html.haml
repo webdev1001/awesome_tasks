@@ -1,16 +1,16 @@
-- content_for(:header_title){ _("Search for organizations") }
+- content_for(:header_title){ t(".search_for_organizations") }
 
-= design_box _("Enter criteria"), 350 do
+= design_box t("enter_criteria"), 350 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :name_cont
     = f.input :customer_eq, collection: form_boolean_collection
     = f.input :creditor_eq, collection: form_boolean_collection
-    = link_to _("Add new organization"), new_organization_path, class: "button"
-    = f.submit _("Search")
+    = link_to t(".add_new_organization"), new_organization_path, class: "button"
+    = f.submit t("search")
 
 %br
 
-= design_box _("Results"), 500 do
+= design_box t("results"), 500 do
   %table.list
     %thead
       %tr
@@ -24,7 +24,7 @@
       - if @organizations.none?
         %tr
           %td{colspan: 1, class: "error"}
-            = _("No organizations were found.")
+            = t(".no_organizations_were_found")
 
 %br
 

@@ -4,9 +4,12 @@ class InvoicesController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = Invoice.ransack(@ransack_params)
+
     @invoices = @ransack.result
-    @invoices = @invoices.order(:id).reverse_order unless @ransack_params[:s]
-    @invoices = @invoices.paginate(page: params[:p], per_page: 40)
+    @invoices = @invoices.accessible_by(current_ability)
+    @invoices = @invoices.includes(:creditor, :invoice_groups, :organization)
+    @invoices = @invoices.order(:date).reverse_order unless @ransack_params[:s]
+    @invoices = @invoices.paginate(page: params[:page], per_page: 40)
   end
 
   def new
@@ -37,6 +40,7 @@ class InvoicesController < ApplicationController
   end
 
   def show
+    @matching_account_lines = AccountLine.without_invoice.where(amount: @invoice.amount_total_for_account)
   end
 
   def destroy
@@ -84,6 +88,6 @@ class InvoicesController < ApplicationController
 private
 
   def invoice_params
-    params.require(:invoice).permit(:invoice_group_id, :invoice_no, :state, :date, :payment_at, :organization_id, :creditor_id, :invoice_type, :amount, :no_vat)
+    params.require(:invoice).permit(:invoice_no, :state, :date, :payment_at, :organization_id, :creditor_id, :invoice_type, :amount, :no_vat, invoice_group_ids: [])
   end
 end

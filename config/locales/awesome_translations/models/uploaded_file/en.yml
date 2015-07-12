@@ -1,0 +1,23 @@
+---
+en:
+  activerecord:
+    models:
+      uploaded_file:
+        one: Uploaded file
+        other: Uploaded files
+    attributes:
+      uploaded_file:
+        id: ID
+        title: Title
+        resource_type: Resource type
+        resource_id: Resource ID
+        user_id: User ID
+        created_at: Created at
+        updated_at: Updated at
+        file_file_name: The file's name
+        file_content_type: The file's content-type
+        file_file_size: The file's size
+        file_updated_at: The file's update-time
+        file: File
+        user: User
+        resource: Resource

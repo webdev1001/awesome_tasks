@@ -1,9 +1,18 @@
 require "spec_helper"
 
 describe ProjectsController do
-  let(:project){ create :project, organization: organization }
-  let(:organization){ create :organization }
-  let(:user_admin){ create :user_admin }
+  let(:project) { create :project, organization: organization }
+  let(:organization) { create :organization }
+  let(:user_admin) { create :user_admin }
+  let(:valid_attributes) { {
+    name: "Test project",
+    organization_id: organization.id,
+    state: "active",
+    deadline_at: 7.days.from_now.strftime("%Y-%m-%d"),
+    price_per_hour: 200,
+    price_per_hour_transport: 150,
+    description: Forgery::LoremIpsum.words(20, random: true)
+  } }
 
   render_views
 
@@ -33,18 +42,18 @@ describe ProjectsController do
     end
 
     it "#create" do
-      post :create, project: {name: "Test project", organization_id: organization.id}
-      controller.flash.to_a.should eq []
+      post :create, project: valid_attributes
+      flash.to_a.should eq []
       latest_project = Project.last
       latest_project.name.should eq "Test project"
       response.should redirect_to(latest_project)
     end
 
     it "#update" do
-      patch :update, id: project.id, project: {name: "Test new name"}
+      patch :update, id: project.id, project: valid_attributes
       response.should redirect_to(project)
-      controller.flash.to_a.should eq []
-      project.reload.name.should eq "Test new name"
+      flash.to_a.should eq []
+      project.reload.name.should eq "Test project"
     end
 
     it "#assigned_users" do

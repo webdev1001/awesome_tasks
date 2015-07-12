@@ -1,7 +1,6 @@
-= design_box _("Enter details"), 600 do
+= design_box t("enter_details"), 600 do
   = simple_form_for invoice do |f|
-    = f.input :invoice_group_id, autofocus: true, collection: InvoiceGroup.all, label: Invoice.human_attribute_name(:invoice_group)
-    = f.input :invoice_no
+    = f.input :invoice_no, autofocus: true
     = f.input :state, collection: translated_invoice_states
     = f.input :date
     = f.input :payment_at
@@ -10,8 +9,9 @@
     = f.input :invoice_type, collection: Invoice.translated_invoice_types
     = f.input :amount, input_html: {data: {autonumeric: true}}
     = f.input :no_vat
-    = f.submit _("Save")
+    = f.association :invoice_groups, as: :check_boxes, collection: InvoiceGroup.all, label: InvoiceGroup.model_name.human(count: 2)
+    = f.submit t("save")
 
     - unless invoice.new_record?
-      = link_to _("Show"), invoice_path(invoice), class: "button" if can? :show, invoice
-      = link_to _("Delete"), invoice_path(invoice), class: "button", method: :delete, data: {confirm: _("Are you sure?")} if can? :destroy, invoice
+      = link_to t("show"), invoice_path(invoice), class: "button" if can? :show, invoice
+      = link_to t("delete"), invoice_path(invoice), class: "button", method: :delete, data: {confirm: t("are_you_sure")} if can? :destroy, invoice

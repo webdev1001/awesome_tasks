@@ -1,0 +1,13 @@
+---
+da:
+  account_imports:
+    edit:
+      edit_account_import: Rediger kontoimport
+    new:
+      new_account_import: Ny kontoimport
+    show:
+      show_account_import: Vis kontoimport
+      update_columns: Opdater kolonner
+      execute: Eksekver
+      columns: Kolonner
+      column: Kolonne

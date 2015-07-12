@@ -28,10 +28,10 @@ class Task < ActiveRecord::Base
 
   def self.translated_task_types
     return {
-      feature: _("Feature"),
-      bug: _("Bug report"),
-      question: _("Question"),
-      other: _("Other")
+      feature: t(".feature"),
+      bug: t(".bug_report"),
+      question: t(".question"),
+      other: t(".other")
     }
   end
 
@@ -45,11 +45,11 @@ class Task < ActiveRecord::Base
 
   def self.translated_states
     return {
-      open: _("Open"),
-      confirmed: _("Confirmed"),
-      waiting: _("Waiting"),
-      inactive: _("Inactive"),
-      closed: _("Closed")
+      open: t(".open"),
+      confirmed: t(".confirmed"),
+      waiting: t(".waiting"),
+      inactive: t(".inactive"),
+      closed: t(".closed")
     }
   end
 
@@ -64,7 +64,7 @@ class Task < ActiveRecord::Base
   #Sends a notification about a newly added comment to a task.
   def send_notify_new_comment(comment, task_url)
     notify_emails.each do |data|
-      TaskAssignedUserMailer.new_comment_notification(comment, data[:user], task_url).deliver!
+      TaskAssignedUserMailer.new_comment_notification(comment, data[:user], task_url).deliver_later!
     end
   end
 
@@ -90,7 +90,7 @@ class Task < ActiveRecord::Base
   end
 
   def name_force
-    name.presence || "[#{_("task %{task_id}", task_id: id)}]"
+    name.presence || "[#{t(".task_with_id", task_id: id)}]"
   end
 
   def progress
@@ -100,6 +100,11 @@ class Task < ActiveRecord::Base
 
   def first_email_id
     Digest::MD5.hexdigest("<awesome-tasks-task-#{id}-#{created_at}>")
+  end
+
+  def url
+    settings = YAML.load_file(Rails.root.join("config", "awesome_tasks.yml"))
+    return "#{settings[:domain_url]}/tasks/#{id}"
   end
 
 private

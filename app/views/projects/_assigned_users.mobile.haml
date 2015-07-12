@@ -1,0 +1,16 @@
+%table.mobile-table.list
+  %thead
+    %tr
+      %th= User.model_name.human
+      - if can?(:admin, :admin)
+        %th= t("actions")
+  %tbody
+    - project.user_project_links.joins(:user).order("users.name").each do |link|
+      %tr
+        %td= link_to_user link.user
+        %td
+          = link_to t("remove"), link, method: :delete, data: {confirm: t("are_you_sure")}, class: ["mobile-button-mini", "mobile-button-danger"]
+    - if project.users.none?
+      %tr
+        %td.error{colspan: 2}
+          = t(".no_users_were_found")

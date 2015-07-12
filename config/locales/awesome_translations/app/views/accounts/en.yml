@@ -1,0 +1,13 @@
+---
+en:
+  accounts:
+    index:
+      new_account: New account
+      no_accounts_were_found: No accounts was found
+    edit:
+      edit_account_with_name: 'Edit account: %{name}'
+    new:
+      new_account: New account
+    show:
+      show_account_with_name: 'New account: %{name}'
+      import: Import

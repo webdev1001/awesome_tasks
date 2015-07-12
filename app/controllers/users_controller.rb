@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @ransack = User.ransack(@ransack_params)
 
     @users = @ransack.result.order(:name)
+    @users = @users.accessible_by(current_ability)
     @users = @users.where("users.id IN (?)", current_user.users_with_access_to.map(&:id))
 
     not_in_task_query
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
     @ransack = @user.tasks.ransack(@ransack_params)
 
     @tasks = @ransack.result.includes(project: :organization)
+    @tasks = @tasks.accessible_by(current_ability)
     @tasks = @tasks.order(:created_at).reverse_order unless @ransack_params[:s]
     @tasks = @tasks.paginate(page: params[:page])
   end
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
       user_id: @user.id,
       roles_user_path: roles_user_path(@user),
       new_user_role_path: new_user_role_path(user_id: @user.id),
-      add_rank_text: _("Add rank"),
+      add_rank_text: t(".add_rank"),
       new_role_path: new_user_role_path(user_role: {user_id: @user.id})
     }
   end
@@ -44,7 +46,10 @@ class UsersController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = User.ransack(@ransack_params)
-    @users = @ransack.result.order(:name)
+
+    @users = @ransack.result
+    @users = @users.accessible_by(current_ability)
+    @users = @users.order(:name) unless @ransack_params[:s].present?
   end
 
   def create

@@ -1,39 +1,44 @@
 class TaskChecksMailer < ActionMailer::Base
   helper :task
 
-  def notification(task_check, user, task_url, user_changed)
+  def notification_checked(task_check, user)
     @task_check = task_check
     @task = @task_check.task
-    @task_url = task_url
     @user = user
 
     I18n.with_locale @user.locale! do
       if @task_check.checked?
-        subject_text = _("completed")
+        subject_text = t(".completed")
       else
-        subject_text = _("not completed")
+        subject_text = t(".not_completed")
       end
 
       subject = "[#{@task.project.name}] "
       subject << "'#{@task_check.name}' #{subject_text}"
 
-      mail(
+      mail_args = {
         to: user.email,
-        from: "#{user_changed.name} <#{from_email}>",
         subject: subject,
         in_reply_to: @task.first_email_id
-      )
+      }
+
+      if @task_check.user_checked
+        mail_args[:from] = "#{@task_check.user_checked.name} <#{from_email}>"
+      end
+
+      mail(mail_args)
     end
   end
 
-  def notification_assigned(task_check, user_assigner)
+  def notification_assigned(task_check, user_assigned)
+    user_assigner = task_check.user_assigner || task_check.user_added
     @task_check = task_check
     @task = @task_check.task
-    @user = @task_check.user_assigned
+    @user = user_assigned
 
     I18n.with_locale @user.locale! do
       subject = "[#{@task.project.name}] "
-      subject << _("Assigned to check: %{check_name}", check_name: @task_check.name)
+      subject << t(".assigned_to_check_with_name", check_name: @task_check.name)
 
       mail(
         to: @user.email,

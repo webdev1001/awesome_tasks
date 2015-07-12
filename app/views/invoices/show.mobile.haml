@@ -1,0 +1,91 @@
+- content_for(:header_title) { t(".invoice_with_no", invoice_no: @invoice.invoice_no) }
+- if can? :edit, @invoice
+  - content_for(:header_right) { link_to t("edit"), [:edit, @invoice], class: "mobile-button-header" }
+
+= mobile_tabs do |tabs|
+  - tabs.tab id: "tab-details", icon: "/assets/icons/list.png", active: true
+  - tabs.tab id: "tab-lines", icon: "/assets/icons/list.png", label: @invoice.invoice_lines.count
+  - tabs.tab id: "tab-uploaded-files", icon: "/assets/icons/camera.png", label: @invoice.uploaded_files.count
+  - tabs.tab id: "tab-actions", icon: "/assets/icons/edit.png"
+
+#tab-details
+  %h2= t("details")
+  %table.mobile-table.form
+    %tbody
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:id)
+        %td.align-right= @invoice.id
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:invoice_group)
+        %td.align-right= link_to_invoice_group @invoice.invoice_group
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:invoice_no)
+        %td.align-right= @invoice.invoice_no
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:state)
+        %td.align-right= translated_invoice_state @invoice
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:date)
+        %td.align-right= l(@invoice.date, format: :long) if @invoice.date
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:payment_at)
+        %td.align-right= l(@invoice.payment_at, format: :long) if @invoice.payment_at
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:invoice_type)
+        %td.align-right= @invoice.translated_invoice_type
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:amount)
+        %td.align-right.nowrap= format_number @invoice.amount
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:no_vat)
+        %td.align-right= @invoice.no_vat? ? t("true") : t("false")
+      %tr
+        %td.tdt= t("vat")
+        %td.align-right.nowrap= format_number @invoice.amount_vat
+      %tr
+        %td.tdt= t("total")
+        %td.align-right.nowrap= format_number @invoice.amount_total
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:organization)
+        %td.align-right= link_to_organization @invoice.organization
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:creditor)
+        %td.align-right= link_to_organization @invoice.creditor
+      %tr
+        %td.tdt= Invoice.human_attribute_name(:user)
+        %td.align-right= link_to_user @invoice.user
+
+#tab-uploaded-files
+  %h2= UploadedFile.model_name.human(count: 2)
+  = render "/uploaded_files/list_for_resource", resource: @invoice
+
+#tab-lines
+  %h2= InvoiceLine.model_name.human(count: 2)
+  = link_to t("add_new"), new_invoice_invoice_line_path(@invoice), class: "mobile-button"
+
+  %table.mobile-table.list
+    %thead
+      %tr
+        %th= InvoiceLine.human_attribute_name(:title)
+        %th.align-right= InvoiceLine.human_attribute_name(:quantity)
+        %th.align-right= InvoiceLine.human_attribute_name(:amount)
+        %th.align-right= t("total")
+    %tbody
+      - @invoice.invoice_lines.each do |line|
+        %tr
+          %td= link_to line.title.truncate(30), [@invoice, line]
+          %td.align-right= format_number line.quantity, precision: 1
+          %td.align-right= format_number line.amount, precision: 0
+          %td.align-right= format_number line.amount_total, precision: 0
+      - if @invoice.invoice_lines.none?
+        %tr
+          %td.error{colspan: 4}= t(".no_lines_were_found")
+
+#tab-actions
+  %h2= t("actions")
+
+  - if can?(:edit, @invoice) || can?(:destroy, @invoice) || can?(:pdf, @invoice)
+    = link_to t(".pdf"), ["pdf", @invoice], class: "mobile-button" if can? :pdf, @invoice
+    = link_to t(".finish"), finish_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_finish?
+    = link_to t(".register_as_sent"), register_as_sent_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_sent?
+    = link_to t(".register_as_paid"), register_as_paid_invoice_path(@invoice), method: :post, class: "mobile-button", data: {confirm: t("are_you_sure")} if @invoice.can_register_as_paid?

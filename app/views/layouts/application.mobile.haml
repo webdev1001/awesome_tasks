@@ -1,0 +1,30 @@
+- content_for :menu_items do
+  - if signed_in?
+    .menu_item= link_to t(".frontpage"), root_path
+  - if can? :index, Organization
+    .menu_item= link_to Organization.model_name.human(count: 2), organizations_path
+  - if can? :index, Project
+    .menu_item= link_to Project.model_name.human(count: 2), projects_path
+  - if can? :index, Task
+    .menu_item= link_to Task.model_name.human(count: 2), tasks_path
+  - if can? :index, User
+    .menu_item= link_to User.model_name.human(count: 2), users_path
+  - if can? :manage, Timelog
+    .menu_item= link_to Timelog.model_name.human(count: 2), timelogs_path
+  - if can? :admin, :admin
+    .menu_item= link_to t(".work_status"), workstatus_index_path
+  - if can? :index, InvoiceGroup
+    .menu_item= link_to InvoiceGroup.model_name.human(count: 2), invoice_groups_path
+  - if can? :index, Invoice
+    .menu_item= link_to Invoice.model_name.human(count: 2), invoices_path
+  - if can? :index, UploadedFile
+    .menu_item= link_to UploadedFile.model_name.human(count: 2), uploaded_files_path
+  .menu_item= link_to t(".change_language"), new_locale_path
+  .menu_item= link_to t(".your_profile"), profile_index_path
+  .menu_item= link_to t(".sign_out"), destroy_user_session_path, method: :delete
+
+- content_for :head do
+  = stylesheet_link_tag "application_mobile"
+  = javascript_include_tag "application_mobile"
+
+= render "layouts/light_mobile_basic_layout"

@@ -1,6 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/kaspernj/awesome_tasks.png)](https://codeclimate.com/github/kaspernj/awesome_tasks)
 [![Test Coverage](https://codeclimate.com/github/kaspernj/awesome_tasks/coverage.png)](https://codeclimate.com/github/kaspernj/awesome_tasks)
-[![Build Status](https://travis-ci.org/kaspernj/awesome_tasks.svg?branch=master)](https://travis-ci.org/kaspernj/awesome_tasks)
+[![Build Status](https://api.shippable.com/projects/540e7b993479c5ea8f9ec1fd/badge?branchName=master)](https://app.shippable.com/projects/540e7b993479c5ea8f9ec1fd/builds/latest)
 
 # Awesome Tasks
 
@@ -13,7 +13,7 @@ Also supports organization access, so organizations can write comments and feedb
 Written in Ruby on Rails.
 
 ## Contributing to Awesome Tasks
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
@@ -25,3 +25,5 @@ Written in Ruby on Rails.
 ## Copyright
 
 Copyright (c) 2011 Kasper Johansen. See LICENSE.txt for further details.
+
+Icons from https://www.iconfinder.com/icons/103169

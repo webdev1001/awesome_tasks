@@ -1,0 +1,40 @@
+- content_for(:header_title){ t(".your_profile") }
+
+= mobile_tabs do |tabs|
+  - tabs.tab id: "tab-details", icon: "/assets/icons/edit.png", active: true
+  - tabs.tab id: "tab-tasks", icon: "/assets/icons/check.png", label: current_user.tasks.count
+
+#tab-details
+  %h2= t("details")
+  = simple_form_for current_user, url: profile_update_path, html: {autocomplete: "off"} do |f|
+    = hidden_field_tag "passwd_md5", ""
+
+    = f.input :name, autofocus: true
+    = f.input :email, hint: t(".the_email_that_you_want_notifications_and_stuff_sent_to")
+
+    .input.password
+      = label_tag t(".password")
+      = password_field_tag "texpasswd", "", autocomplete: "off", class: ["password"]
+      - #%span.hint= t(".you_can_enter_a_new_password_to_change_it")
+
+    = f.submit t("save"), class: "mobile-button-primary"
+
+#tab-tasks
+  %h2= Task.model_name.human(count: 2)
+  %table.mobile-table.list
+    %thead
+      %tr
+        %th= sort_link @ransack, :name
+        %th= sort_link @ransack, :project_name, Project.model_name.human
+    %tbody
+      - @tasks.each do |task|
+        %tr
+          %td= link_to_task task
+          %td= link_to_project task.project
+      - if @tasks.none?
+        %tr
+          %td.error{colspan: 2}
+            = t(".no_tasks_has_been_added_to_your_list")
+
+  %br
+  = will_paginate @tasks

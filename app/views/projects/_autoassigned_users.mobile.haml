@@ -1,0 +1,13 @@
+%table.mobile-table.list
+  %thead
+    %tr
+      %th= User.model_name.human
+      %th= t("actions")
+  %tbody
+    - project.project_autoassigned_users.each do |project_autoassigned_user|
+      %tr
+        %td= link_to_user project_autoassigned_user.user
+        %td= link_to t("remove"), project_project_autoassigned_user_path(project, project_autoassigned_user), method: :delete, data: {confirm: t("are_you_sure")}, class: ["mobile-button-mini", "mobile-button-danger"]
+    - if project.project_autoassigned_users.none?
+      %tr
+        %td.error{colspan: 2}= t(".no_users_have_been_autoassigned_yet")

@@ -1,0 +1,54 @@
+- content_for(:header_title) { t(".show_task_task_name", task_name: @task.name) }
+- content_for(:header_right) { link_to t("edit"), [:edit, @task], class: "mobile-button-header" }
+
+= mobile_tabs do |tabs|
+  - tabs.tab icon: "/assets/icons/list.png", id: "tab-details", active: true
+  - tabs.tab icon: "/assets/icons/comments.png", label: @task.comments.count, id: "tab-comments"
+  - tabs.tab icon: "/assets/icons/user.png", label: @task.assigned_users.count, id: "tab-assigned-users"
+  - tabs.tab icon: "/assets/icons/check.png", label: @task.task_checks.count, id: "tab-checks"
+  - tabs.tab icon: "/assets/icons/time.png", label: @task.timelogs.count, id: "tab-timelogs"
+  - tabs.tab icon: "/assets/icons/camera.png", label: @task.uploaded_files.count, id: "tab-uploaded-files"
+
+.mobile-tab#tab-details
+  %table.mobile-table.form
+    %tbody
+      %tr
+        %td.tdt= Task.human_attribute_name(:state)
+        %td= @task.translated_state
+      %tr
+        %td.tdt= Task.human_attribute_name(:task_type)
+        %td= @task.translated_task_type
+      %tr
+        %td.tdt= Task.human_attribute_name(:created_at)
+        %td= l(@task.created_at, format: :long) if @task.created_at
+      %tr
+        %td.tdt= Project.model_name.human
+        %td= link_to_project(@task.project) if @task.project
+      %tr
+        %td.tdt= t(".author")
+        %td= link_to_user(@task.user) if @task.user
+      %tr
+        %td.tdt= Task.human_attribute_name(:priority)
+        %td= @task.priority
+
+  %h2= Task.human_attribute_name(:description)
+  .description
+    - if @task.description?
+      = UserReferences.new(text: @task.description).unparse_user_references(html: true).html_safe
+    - else
+      .error= t(".no_description_has_been_written_for_this_task")
+
+#tab-checks
+  = render "checks"
+
+#tab-comments
+  = render "comments"
+
+#tab-assigned-users
+  = render "assigned_users"
+
+#tab-timelogs
+  = render "timelogs"
+
+#tab-uploaded-files
+  = render "/uploaded_files/list_for_resource", resource: @task

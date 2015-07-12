@@ -2,13 +2,12 @@ class FrontpageController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
 
-    @ransack = Task
-      .related_to_user(current_user)
-      .not_closed
-      .ransack(@ransack_params)
+    @ransack = Task.ransack(@ransack_params)
 
-    @tasks = @ransack.result.includes(:project, :user)
-    @tasks = @tasks.order("projects.name, tasks.name") unless params[:q]
+    @tasks = @ransack.result.not_closed
+    @tasks = @tasks.includes(:project, :user)
+    @tasks = @tasks.accessible_by(current_ability, :show)
+    @tasks = @tasks.joins(:project).order("projects.name, tasks.name") unless params[:q]
   end
 
 private

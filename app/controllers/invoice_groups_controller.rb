@@ -6,6 +6,7 @@ class InvoiceGroupsController < ApplicationController
     @ransack = InvoiceGroup.ransack(@ransack_params)
 
     @invoice_groups = @ransack.result
+    @invoice_groups = @invoice_groups.accessible_by(current_ability)
     @invoice_groups = @invoice_groups.order(:name) unless @ransack_params[:s]
   end
 
@@ -14,6 +15,7 @@ class InvoiceGroupsController < ApplicationController
     @ransack = @invoice_group.invoices.ransack(@ransack_values)
 
     @invoices = @ransack.result.paginate(page: params[:page], per_page: 30)
+    @invoices = @invoices.accessible_by(current_ability)
     @invoices = @invoices.order("invoices.id").reverse_order unless @ransack_values[:s]
   end
 

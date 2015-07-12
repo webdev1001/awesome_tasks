@@ -1,0 +1,19 @@
+---
+da:
+  activerecord:
+    models:
+      comment:
+        one: Kommentar
+        other: Kommentarer
+    attributes:
+      comment:
+        id: ID
+        id_per_resource: ID per resource
+        resource_type: Resourcetype
+        resource_id: Resource ID
+        user_id: Bruger ID
+        comment: Kommentar
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        user: Bruger
+        resource: Resource

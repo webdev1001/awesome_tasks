@@ -1,0 +1,10 @@
+---
+en:
+  invoice_lines:
+    edit:
+      edit_invoice_line_with_id: Edit invoice line %{id}
+    new:
+      new_invoice_line: New invoice-line
+    show:
+      show_invoice_line_with_id: Show invoice-line %{id}
+      total_amount: Total amount

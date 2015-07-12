@@ -1,0 +1,31 @@
+---
+en:
+  models:
+    task:
+      feature: Feature
+      bug_report: Bug-report
+      question: Question
+      other: Other
+      open: Open
+      confirmed: Confirmed
+      waiting: Waiting
+      inactive: Inactive
+      closed: Closed
+      task_with_id: Task %{task_id}
+    account_import:
+      new: New
+      executing: Executing
+      finished: Finished
+    account_import_column:
+      amount: Amount
+      text: Text
+      interest_at: Interest at
+      booked_at: Booked at
+    project:
+      active: Active
+      inactive: Inactive
+      finished: Finished
+    user_role:
+      administrator: Administrator
+      organization_administrator: Organization administrator
+      is_not_allowed_role: is not allowed

@@ -1,0 +1,14 @@
+= t(".hello_user_name", user_name: @user.name)
+%br
+%br
+
+%b= Task.model_name.human
+%br
+= link_to @task.url, @task.url
+%br
+%br
+
+- if @task_check.checked?
+  = t(".task_check_name_has_been_completed", task_check_name: @task_check.name)
+- else
+  = t(".task_check_name_has_been_marked_as_not_complete", task_check_name: @task_check.name)

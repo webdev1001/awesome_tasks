@@ -1,0 +1,14 @@
+---
+da:
+  activerecord:
+    models:
+      account:
+        one: Konto
+        other: Konti
+    attributes:
+      account:
+        id: ID
+        name: Navn
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        account_lines: Kontolinjer

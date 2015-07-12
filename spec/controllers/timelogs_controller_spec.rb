@@ -13,22 +13,22 @@ describe TimelogsController do
 
   it "#new" do
     get :new, task_id: task.id
-    response.code.should eq "200"
+    response.should be_success
   end
 
   it "#edit" do
     get :edit, task_id: task.id, id: timelog.id
-    response.code.should eq "200"
+    response.should be_success
   end
 
   it "#destroy" do
     delete :destroy, task_id: task.id, id: timelog.id
-    response.code.should eq "200"
+    response.should redirect_to task
   end
 
   it "#update" do
-    patch :update, task_id: task.id, id: timelog.id, timelog: {description: Forgery(:lorem_ipsum).words(5) }
-    response.code.should eq "200"
+    patch :update, task_id: task.id, id: timelog.id, timelog: {comment: Forgery::LoremIpsum.words(5) }
+    response.should redirect_to task
   end
 
   context "#index" do

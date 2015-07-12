@@ -1,0 +1,27 @@
+---
+en:
+  helpers:
+    invoice_group_helper:
+      no_invoice_group: No invoice-group
+    invoice_helper:
+      Invoice: Invoice %{invoice_no}
+      draft: Draft
+      finished: Finished
+      sent: Sent
+      paid: Paid
+      invoice: Invoice %{invoice_no}
+      invoice_withid: Invoice with ID %{id}
+    organization_helper:
+      no_organization: no organisation
+    project_helper:
+      no_project: no project
+    user_helper:
+      no_user: no user
+      no_name: no name
+    uploaded_file_helper:
+      file_with_id: File %{id}
+    task_helper:
+      no_task: no task
+    application_helper:
+      danish: Danish
+      english: English

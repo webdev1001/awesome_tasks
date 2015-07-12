@@ -2,74 +2,74 @@ form.simple_form {
   div.input {
     margin-bottom: 12px;
   }
-  
+
   label {
     width: 18%;
     display: inline-block;
     font-weight: bold;
-    
+
     &.boolean {
       width: 80%;
     }
-    
+
     &.text {
       width: 80%;
     }
   }
-  
+
   input[type=text], input[type=number], input[type=email], input[type=password] {
     width: 78%;
   }
-  
+
   select {
     width: 80%;
   }
-  
+
   select[multiple=multiple] {
     width: 100%;
   }
-  
+
   .input.datetime, .input.date, .input.time {
     select[id*=_3i] {
       width: 50px;
     }
-    
+
     select[id*=_2i] {
       width: 110px;
     }
-    
+
     select[id*=_1i] {
       width: 68px;
     }
-    
+
     select[id*=_4i] {
       width: 50px;
     }
-    
+
     select[id*=_5i] {
       width: 50px;
     }
   }
-  
+
   .input.check_boxes {
     max-height: 130px;
     overflow-y: scroll;
-    
-    .checkbox {
+
+    span.checkbox {
       display: block;
       width: 100%;
-    }
-    
-    label.collection_check_boxes {
-      width: 80%;
+
+      label {
+        width: 80%;
+      }
     }
   }
-  
+
   textarea {
     width: 100%;
     height: 120px;
   }
-  
+
   span.hint {
     color: grey;
     display: block;

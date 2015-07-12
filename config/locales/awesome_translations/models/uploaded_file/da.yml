@@ -1,0 +1,23 @@
+---
+da:
+  activerecord:
+    models:
+      uploaded_file:
+        one: Uploadet fil
+        other: Uploadede filer
+    attributes:
+      uploaded_file:
+        id: ID
+        title: Titel
+        resource_type: Resourcetype
+        resource_id: Resource ID
+        user_id: Bruger ID
+        created_at: Oprettet d.
+        updated_at: Opdateret d.
+        file_file_name: Filens navn
+        file_content_type: Filens indholdstype
+        file_file_size: Filens størrelse
+        file_updated_at: Filens opdateringstidspunkt
+        file: Fil
+        user: Bruger
+        resource: Resource

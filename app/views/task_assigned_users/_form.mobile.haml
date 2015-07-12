@@ -1,0 +1,4 @@
+= simple_form_for @task_assigned_user do |f|
+  = f.association :task
+  = f.association :user
+  = f.submit t("save"), class: "mobile-button-primary"

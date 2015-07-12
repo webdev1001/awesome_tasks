@@ -1,0 +1,71 @@
+- content_for(:header_title) { t(".show_project_with_name"), name: @project.name) }
+- content_for(:header_right) { link_to t("edit"), edit_project_path(@project), class: "mobile-button-header" if can?(:admin, :admin) }
+
+= mobile_tabs do |tabs|
+  - tabs.tab id: "tab-details", icon: "/assets/icons/list.png", active: true
+  - tabs.tab id: "tab-users", icon: "/assets/icons/user.png", label: @project.users.count
+  - tabs.tab id: "tab-autoassigned-users", icon: "/assets/icons/user.png", label: @project.autoassigned_users.count
+  - tabs.tab id: "tab-tasks", icon: "/assets/icons/list.png", label: @project.tasks.count
+
+#tab-details
+  %table.project_table{data: {project_id: @project.id, assigned_users_path: assigned_users_project_path(@project)}}
+    %tr
+      %td{style: "vertical-align: top;"}
+        %h2= t(".information")
+        %table.mobile-table.form
+          %tbody
+            %tr
+              %td.tdt= Project.human_attribute_name(:organization)
+              %td= link_to_organization @project.organization
+            %tr
+              %td.tdt= Project.human_attribute_name(:state)
+              %td= @project.translated_state
+            %tr
+              %td.tdt= t(".added_by")
+              %td= link_to_user(@project.user_added)
+            %tr
+              %td.tdt= Project.human_attribute_name(:created_at)
+              %td= (@project.created_at ? l(@project.created_at, format: :long) : "")
+            %tr
+              %td.tdt= Project.human_attribute_name(:price_per_hour)
+              %td= format_number @project.price_per_hour
+            %tr
+              %td.tdt= Project.human_attribute_name(:price_per_hour_transport)
+              %td= format_number @project.price_per_hour_transport
+            - if @project.deadline_at
+              %tr
+                %td.tdt= t(".deadline")
+                %td= l(@project.deadline_at.to_date)
+
+#tab-users
+  = link_to t("add_new"), new_user_project_link_path(user_project_link: {project_id: @project.id}), class: "mobile-button"
+  = render "assigned_users", project: @project
+
+#tab-autoassigned-users
+  = link_to t(".add_autoassigned_user"), new_project_project_autoassigned_user_path(@project), class: "mobile-button" if can? :new, ProjectAutoassignedUser
+  = render "autoassigned_users", project: @project
+
+#tab-tasks
+  = design_box Task.model_name.human(count: 2) do
+    %table.mobile-table.list
+      %thead
+        %tr
+          %th= sort_link @ransack, :name, Task.model_name.human
+          %th= sort_link @ransack, :user_name, t(".author")
+          %th= sort_link @ransack, :state
+      %tbody
+        - count = 0
+        - @tasks.each do |task|
+          - next unless can?(:show, task)
+          - count += 1
+          %tr
+            %td= link_to_task task
+            %td= link_to_user task.user
+            %td= task.translated_state
+        - if count <= 0
+          %tr
+            %td.error{colspan: 2}
+              = t(".no_tasks_were_found")
+
+  %br
+  = will_paginate @tasks

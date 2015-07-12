@@ -1,22 +1,22 @@
-= _("Hello %{user_name}", user_name: @user.name)
+= t(".hello_user_name", user_name: @user.name)
 %br
 %br
 
-%b= _("Task name")
+%b= t(".task_name")
 %br
 = @task.name
 %br
 %br
 
 - if @task.user
-  %b= _("Task author")
+  %b= t(".task_author")
   %br
   = @task.user.name
   %br
   %br
 
 - if @user_assigned_by
-  %b= _("Assigned by")
+  %b= t(".assigned_by")
   %br
   = @user_assigned_by.name
   %br

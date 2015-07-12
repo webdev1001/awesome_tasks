@@ -1,19 +1,22 @@
 - content_for(:header_title){ Invoice.model_name.human(count: 2) }
 
 - if can? :new, Invoice
-  = link_to _("New invoice"), new_invoice_path, class: "button"
+  = link_to t(".new_invoice"), new_invoice_path, class: "button"
   %br
   %br
 
-= design_box _("Enter criteria"), 550 do
+= design_box t("enter_criteria"), 550 do
   = simple_search_form_for @ransack, @ransack_params do |f|
     = f.input :id_eq, autofocus: true
     = f.input :organization_name_cont
+    = f.input :creditor_name_cont
     = f.input :state_eq_any, as: :check_boxes, collection: translated_invoice_states
     = f.input :invoice_type_eq, collection: Invoice.translated_invoice_types, include_blank: true
-    = f.input :date_gteq, as: :string, label: _("Date from")
-    = f.input :date_lteq, as: :string, label: _("Date to")
-    = f.submit _("Filter")
+    = f.input :date_gteq, as: :string, label: t("date_from")
+    = f.input :date_lteq, as: :string, label: t("date_to")
+    = f.input :invoice_groups_id_eq_any, label: Invoice.human_attribute_name(:invoice_groups), as: :check_boxes, collection: InvoiceGroup.order(:name)
+
+    = f.submit t("filter")
 
 %br
 
@@ -23,18 +26,20 @@
       %tr
         %th= sort_link @ransack, :id
         %th= sort_link @ransack, :invoice_no
+        %th= sort_link @ransack, :invoice_groups_name, Invoice.human_attribute_name(:invoice_groups)
         %th= sort_link @ransack, :state
         %th= sort_link @ransack, :invoice_type
         %th= sort_link @ransack, :organization_name, Invoice.human_attribute_name(:organization)
         %th= sort_link @ransack, :creditor_name, Invoice.human_attribute_name(:creditor)
         %th= sort_link @ransack, :date
         %th.align-right= sort_link @ransack, :amount
-        %th.align-right= _("Vat")
+        %th.align-right= t(".vat")
     %tbody
       - @invoices.each do |invoice|
         %tr
           %td= link_to_invoice invoice, title: invoice.id
           %td= link_to_invoice invoice, title: invoice.invoice_no if invoice.invoice_no?
+          %td= invoice.invoice_groups.map { |invoice_group| link_to_invoice_group(invoice_group) }.join(", ").html_safe
           %td= translated_invoice_state invoice
           %td= invoice.translated_invoice_type
           %td= link_to_organization invoice.organization
@@ -45,7 +50,7 @@
       - if @invoices.none?
         %tr
           %td.error{colspan: 4}
-            = _("No invoices could be found.")
+            = t(".no_invoices_could_be_found")
 
 %br
 %br
@@ -55,15 +60,15 @@
 %br
 %br
 
-= design_box _("Totals"), 400 do
+= design_box t(".totals"), 400 do
   %table.form
     %tbody
       %tr
-        %td.tdt= _("Amount")
+        %td.tdt= t(".amount")
         %td.align-right.nowrap= format_number @invoices.sum(:amount)
       %tr
-        %td.tdt= _("Vat")
+        %td.tdt= t(".vat")
         %td.align-right.nowrap= format_number @invoices.sum(:amount) * 0.25
       %tr
-        %td.tdt= _("Total")
+        %td.tdt= t(".total")
         %td.align-right.nowrap= format_number @invoices.sum(:amount) * 1.25

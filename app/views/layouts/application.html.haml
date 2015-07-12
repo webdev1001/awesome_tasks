@@ -13,11 +13,11 @@
       }
 
       var locale_strings = {
-        "close": "#{_('Close')}",
-        "comment_edit_title": "#{_('Edit comment')}",
-        "comment_new_title": "#{_('New comment')}",
-        "timelog_edit_title": "#{_('Edit timelog')}",
-        "task_check_edit_title": "#{_('Edit task-check')}",
+        "close": "#{t('.close')}",
+        "comment_edit_title": "#{t('.edit_comment')}",
+        "comment_new_title": "#{t('.new_comment')}",
+        "timelog_edit_title": "#{t('.edit_timelog')}",
+        "task_check_edit_title": "#{t('.edit_task_check')}",
         "number_format_delimiter": "#{I18n.t("number.format.delimiter")}",
         "number_format_separator": "#{I18n.t("number.format.separator")}"
       }
@@ -36,19 +36,20 @@
           %td.main_body
             .main_menu_outer
               .main_menu_inner
-                = link_to _("Frontpage"), root_path if signed_in?
+                = link_to t(".frontpage"), root_path if signed_in?
                 = link_to Organization.model_name.human(count: 2), organizations_path if can? :index, Organization
                 = link_to Project.model_name.human(count: 2), projects_path if can? :index, Project
                 = link_to Task.model_name.human(count: 2), tasks_path if can? :index, Task
                 = link_to User.model_name.human(count: 2), users_path if can? :index, User
                 = link_to Timelog.model_name.human(count: 2), timelogs_path if can? :manage, Timelog
-                = link_to _("Work-status"), workstatus_index_path if can? :admin, :admin
+                = link_to t(".work_status"), workstatus_index_path if can? :admin, :admin
                 = link_to InvoiceGroup.model_name.human(count: 2), invoice_groups_path if can? :index, InvoiceGroup
                 = link_to Invoice.model_name.human(count: 2), invoices_path if can? :index, Invoice
+                = link_to Account.model_name.human(count: 2), accounts_path if can? :index, Account
                 = link_to UploadedFile.model_name.human(count: 2), uploaded_files_path if can? :index, UploadedFile
-                = link_to _("Your profile"), profile_index_path if signed_in?
-                = link_to _("Log out"), destroy_user_session_path, method: :delete if signed_in?
-                = link_to _("Log in"), new_user_session_path unless signed_in?
+                = link_to t(".your_profile"), profile_index_path if signed_in?
+                = link_to t(".sign_out"), destroy_user_session_path, method: :delete if signed_in?
+                = link_to t(".sign_in"), new_user_session_path unless signed_in?
             .main_content
               %h1= yield(:header_title)
 

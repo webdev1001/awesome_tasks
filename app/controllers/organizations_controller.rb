@@ -4,7 +4,9 @@ class OrganizationsController < ApplicationController
   def index
     @ransack_params = params[:q] || {}
     @ransack = Organization.ransack(@ransack_params)
+
     @organizations = @ransack.result.paginate(page: params[:page], per_page: 30)
+    @organizations = @organizations.accessible_by(current_ability)
     @organizations = @organizations.order(:name) unless @ransack_params[:s]
   end
 

@@ -1,0 +1,19 @@
+table.list {
+  width: 100%;
+}
+
+table.form {
+  width: 100%;
+
+  tbody tr td:first-child{
+    width: 130px;
+  }
+}
+
+.align-right {
+  text-align: right;
+}
+
+.nowrap {
+  white-space: nowrap;
+}

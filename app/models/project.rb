@@ -26,9 +26,9 @@ class Project < ActiveRecord::Base
 
   def self.translated_states
     return {
-      _("Active") => "active",
-      _("Inactive") => "inactive",
-      _("Finished") => "finished"
+      t(".active") => "active",
+      t(".inactive") => "inactive",
+      t(".finished") => "finished"
     }
   end
 

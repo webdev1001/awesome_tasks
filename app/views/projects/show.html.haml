@@ -1,15 +1,15 @@
-- content_for(:header_title){ sprintf(_("Show project: %s."), @project.name) }
+- content_for(:header_title){ t(".show_project", name: @project.name) }
 
 %table.project_table{data: {project_id: @project.id, assigned_users_path: assigned_users_project_path(@project)}}
   %tr
     %td{style: "vertical-align: top;"}
-      = design_box _("Actions"), 350 do
-        = link_to _("Edit project"), edit_project_path(@project), class: "button" if can?(:admin, :admin)
-        = link_to _("Add task"), new_task_path(task: {project_id: @project.id}), class: "button"
+      = design_box t("actions"), 500 do
+        = link_to t(".edit_project"), edit_project_path(@project), class: "button" if can?(:admin, :admin)
+        = link_to t(".add_task"), new_task_path(task: {project_id: @project.id}), class: "button"
 
       %br
 
-      = design_box _("Information"), 350 do
+      = design_box t(".information"), 500 do
         %table.form
           %tbody
             %tr
@@ -19,7 +19,7 @@
               %td.tdt= Project.human_attribute_name(:state)
               %td= @project.translated_state
             %tr
-              %td.tdt= _("Added by")
+              %td.tdt= t(".added_by")
               %td= link_to_user(@project.user_added)
             %tr
               %td.tdt= Project.human_attribute_name(:created_at)
@@ -32,20 +32,20 @@
               %td= format_number @project.price_per_hour_transport
             - if @project.deadline_at
               %tr
-                %td.tdt= _("Deadline")
+                %td.tdt= t(".deadline")
                 %td= l(@project.deadline_at.to_date)
     %td{style: "vertical-align: top; padding-left: 15px;"}
       = design_box User.model_name.human(count: 2), 350 do
         %div{style: "padding-bottom: 15px;"}
-          = link_to _("Assign user"), "#", class: ["button", "assign-user-button"], data: {title: _("Assign user"), url: search_users_path(ajaxsearch: true, jscallback: :project_show_assign_user_choose, not_in_project_id: @project.id)}
+          = link_to t(".assign_user"), "#", class: ["button", "assign-user-button"], data: {title: t(".assign_user"), url: search_users_path(ajaxsearch: true, jscallback: :project_show_assign_user_choose, not_in_project_id: @project.id)}
         #divassignedusers
           = render "assigned_users", project: @project
 
       %br
 
-      = design_box _("Autoassigned users"), 350 do
+      = design_box t(".autoassigned_users"), 350 do
         %div{style: "padding-bottom: 15px;"}
-          = link_to _("Add autoassigned user"), new_project_project_autoassigned_user_path(@project), class: "button"
+          = link_to t(".add_autoassigned_user"), new_project_project_autoassigned_user_path(@project), class: "button"
         = render "autoassigned_users", project: @project
 
 %br
@@ -55,10 +55,10 @@
     %thead
       %tr
         %th= sort_link @ransack, :name, Task.model_name.human
-        %th= _("Progress")
-        %th= sort_link @ransack, :user_name, _("Author")
+        %th= t(".progress")
+        %th= sort_link @ransack, :user_name, t(".author")
         %th= sort_link @ransack, :state
-        %th= sort_link @ransack, :created_at, _("Date")
+        %th= sort_link @ransack, :created_at, t(".date")
     %tbody
       - count = 0
       - @tasks.each do |task|
@@ -73,7 +73,7 @@
       - if count <= 0
         %tr
           %td.error{colspan: 2}
-            = _("No tasks were found.")
+            = t(".no_tasks_were_found")
 
 %br
 = will_paginate @tasks

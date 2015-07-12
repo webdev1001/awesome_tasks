@@ -1,12 +1,12 @@
 require "spec_helper"
 
 describe TasksController do
-  let!(:admin){ create :user_admin }
-  let!(:task){ create :task, user: admin }
-  let(:task_user){ create :task, user: user }
-  let(:third_user){ create :user }
-  let(:user){ create :user }
-  let(:project){ create :project }
+  let!(:admin) { create :user_admin }
+  let!(:task) { create :task, user: admin }
+  let(:task_user) { create :task, user: user }
+  let(:third_user) { create :user }
+  let(:user) { create :user }
+  let(:project) { create :project }
 
   render_views
 
@@ -170,16 +170,14 @@ describe TasksController do
 
     it "cannot assign protected attributes" do
       sign_in admin
-      patch :update, id: task.id, task: {user_id: user.id}
-      task.reload
-      task.user.should eq admin
+      expect { patch :update, id: task.id, task: {user_id: user.id} }.to raise_error(ActionController::UnpermittedParameters)
     end
   end
 
   context "#create" do
     it "adds with attributes" do
       sign_in admin
-      post :create, task: {name: "test name", user_id: user.id, project_id: project.id, task_type: "feature", priority: 1, description: "test"}
+      post :create, task: {name: "test name", project_id: project.id, task_type: "feature", priority: 1, description: "test"}
       assigns(:task).errors.to_a.should eq []
       task = Task.last
       response.should redirect_to(task)
