@@ -62,7 +62,7 @@
         %tr
           %td.main_side_left
           %td.main_bottom
-            %div{style: "padding-bottom: 15px;"}
+            .bottom-padding
               Language:
               = select_tag :bottom_locale, options_for_select(available_locales.invert, I18n.locale.to_s)
           %td.main_side_right

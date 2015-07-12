@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
         format.json { render json: {success: true} }
       else
         format.html { render text: errors.join(". ") }
-        format.json { render json: {success: false, errors: errors.join(". ")} }
+        format.json { render json: {success: false, errors: errors.join(". ")}, status: :internal_server_error }
       end
     end
   end

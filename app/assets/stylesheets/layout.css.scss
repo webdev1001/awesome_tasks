@@ -168,7 +168,7 @@ input, select, textarea{
   padding: 4px;
 }
 
-input[type=button], input[type=submit], input.button, a.button {
+input[type=button], input[type=submit], input.button, a.button, button {
   border: 1px solid #989898;
   background: url("/gfx/button_bg.png") 0 0 repeat-x;
   font-size: 12px;
@@ -208,4 +208,8 @@ input.input_text, input.input_password, select.input_select, textarea.input_text
 
 .flash-notice {
   background-color: #e0ffde;
+}
+
+.bottom-padding {
+  padding-bottom: 15px;
 }
