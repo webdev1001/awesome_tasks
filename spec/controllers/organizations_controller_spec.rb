@@ -29,7 +29,7 @@ describe OrganizationsController do
 
   it 'renders index as mobile' do
     organization
-    get :index
+    get :index, mobile: 1
     expect(response).to be_success
     expect(assigns(:organizations)).to eq [organization]
   end
