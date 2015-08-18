@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.3'
 gem 'mysql2', platform: :ruby
 gem 'activerecord-jdbc-adapter', platform: :jruby
 gem 'jdbc-mysql', platform: :jruby
@@ -24,14 +24,14 @@ gem 'ransack'
 gem 'haml-rails'
 gem 'baza'
 gem 'email_validator'
-gem 'rails_imager', '0.0.27'
+gem 'rails_imager', '0.0.29'
 gem 'will_paginate'
-gem 'agent_helpers', '~> 0.0.4'
+gem 'agent_helpers', '~> 0.0.5'
 gem 'whenever', require: false
 gem 'acts-as-taggable-on'
 gem 'state_machines-activerecord'
 gem 'public_activity'
-gem 'light_mobile', '~> 0.0.10'
+gem 'light_mobile', '~> 0.0.11'
 gem 'rmagick', platform: :ruby
 gem 'rmagick4j', platform: :jruby
 gem 'csv_lazy', '~> 0.0.9'
