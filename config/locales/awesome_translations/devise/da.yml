@@ -1,0 +1,31 @@
+---
+da:
+  devise:
+    confirmations:
+      confirmed: Dine email adresse er blevet bekræftet.
+    failure:
+      already_authenticated: Du er allerede logget ind.
+      inactive: Din konto er ikke aktiv endnu.
+      locked: Din konto er låst.
+      timeout: Din session er udløbet. Log venligst ind igen.
+      unauthenticated: Du skal logge ind for at fortsætte.
+      unconfirmed: Du skal bekræfte din email for at fortsætte.
+      not_found_in_database: Ugyldig %{authentication_keys} eller adgangskode.
+    mailer:
+      confirmation_instructions: {}
+      reset_password_instructions: {}
+      unlock_instructions: {}
+    omniauth_callbacks: {}
+    passwords: {}
+    registrations:
+      signed_up: Velkommen! Du er blevet skrevet op.
+    sessions:
+      signed_in: Du er blevet logget ind.
+      signed_out: Du er blevet logget ud.
+      already_signed_out: Du er blevet logget ud.
+    unlocks: {}
+  errors:
+    messages:
+      not_found: ikke fundet
+      not_locked: var ikke låst
+      not_saved: {}
