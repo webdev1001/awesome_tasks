@@ -84,7 +84,7 @@ private
     comment_str = comment_params[:comment].to_s
 
     if @resource.state_changed?
-      comment_str << "<div style=\"padding-top: 15px; padding-bottom: 15px;\">#{t(".changed_the_task_status", state: @resource.translated_state)}</div>"
+      comment_str << "<div style=\"padding-top: 15px; padding-bottom: 15px;\">#{controller_t(".changed_the_task_status", state: @resource.translated_state)}</div>"
     end
 
     comment_str = UserReferences.new(text: comment_str).parse_user_references

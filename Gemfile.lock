@@ -52,7 +52,7 @@ GEM
     array_enumerator (0.0.7)
     autonumeric-rails (1.9.37)
       jquery-rails (>= 2.0.2)
-    awesome_translations (0.0.20)
+    awesome_translations (0.0.24)
       array_enumerator (~> 0.0.7)
       rails (>= 3.0.0, < 5.0.0)
       string-cases
@@ -352,7 +352,7 @@ DEPENDENCIES
   acts-as-taggable-on
   agent_helpers (~> 0.0.4)
   autonumeric-rails
-  awesome_translations (~> 0.0.20)
+  awesome_translations (~> 0.0.24)
   baza
   cancancan
   capistrano

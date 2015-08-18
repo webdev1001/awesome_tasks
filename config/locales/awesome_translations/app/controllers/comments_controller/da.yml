@@ -1,5 +1,4 @@
 ---
 da:
   comments:
-    comment_with_changed_state_and_references:
-      changed_the_task_status: "Ændrede opgavestatus til: %{state}"
+    changed_the_task_status: "Ændrede opgavestatus til: %{state}"

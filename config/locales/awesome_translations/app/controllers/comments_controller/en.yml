@@ -1,5 +1,4 @@
 ---
 en:
   comments:
-    comment_with_changed_state_and_references:
-      changed_the_task_status: 'Changed the task status to: %{state}'
+    changed_the_task_status: 'Changed the task status to: %{state}'
