@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 20150617102336) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creditor_id",     limit: 4
-    t.boolean  "no_vat",          limit: 1
+    t.boolean  "no_vat"
     t.string   "state",           limit: 255
   end
 
@@ -188,8 +188,8 @@ ActiveRecord::Schema.define(version: 20150617102336) do
     t.string   "invoice_zip_code",  limit: 255
     t.string   "invoice_city",      limit: 255
     t.string   "invoice_country",   limit: 255
-    t.boolean  "customer",          limit: 1
-    t.boolean  "creditor",          limit: 1
+    t.boolean  "customer"
+    t.boolean  "creditor"
   end
 
   add_index "organizations", ["creditor"], name: "index_organizations_on_creditor", using: :btree
@@ -268,7 +268,7 @@ ActiveRecord::Schema.define(version: 20150617102336) do
     t.integer  "user_added_id",    limit: 4
     t.string   "name",             limit: 255
     t.text     "description",      limit: 65535
-    t.boolean  "checked",          limit: 1
+    t.boolean  "checked"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_assigned_id", limit: 4
@@ -305,7 +305,7 @@ ActiveRecord::Schema.define(version: 20150617102336) do
     t.time     "time_transport"
     t.integer  "transport_length",    limit: 4
     t.text     "comment",             limit: 65535
-    t.boolean  "invoiced",            limit: 1
+    t.boolean  "invoiced"
     t.datetime "invoiced_at"
     t.integer  "invoiced_by_user_id", limit: 4
     t.datetime "created_at"
@@ -367,7 +367,7 @@ ActiveRecord::Schema.define(version: 20150617102336) do
     t.string   "encrypted_password",     limit: 255
     t.string   "email",                  limit: 255
     t.string   "locale",                 limit: 255
-    t.boolean  "active",                 limit: 1
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name",             limit: 255
