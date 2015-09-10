@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  # To automatically set owner on PublicActivity-tracked models.
-  include PublicActivity::StoreController
+  include AwesomeTranslations::ControllerTranslateFunctionality
+  include PublicActivity::StoreController # To automatically set owner on PublicActivity-tracked models.
   include LightMobile::DynamicRenderer
 
   # Prevent CSRF attacks by raising an exception.

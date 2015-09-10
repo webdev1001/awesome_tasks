@@ -44,6 +44,15 @@ describe CommentsController do
       from_email = Rails.application.config.action_mailer.default_options[:from]
       mail.header["From"].to_s.should eq "#{admin.name} <#{from_email}>"
     end
+
+    it "changes the resource state" do
+      sign_in admin
+      post :create, task: {state: "closed"}, comment: {resource_type: "Task", resource_id: task.id, comment: "Test comment"}
+
+      expect(response).to redirect_to task_url(task)
+      task.reload
+      expect(task.state).to eq "closed"
+    end
   end
 
   it "#new" do
