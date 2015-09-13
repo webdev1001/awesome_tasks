@@ -15,26 +15,6 @@ en:
     new:
       add_new_task: Add new task
       new_task: New task
-    show:
-      show_task_task_name: 'Show task: %{task_name}'
-      author: Author
-      no_description_has_been_written_for_this_task: No description has been written
-        for this task
-      show_task: 'Show task: %{task_name}'
-      edit_task: Edit task
-      remove_from_list: Remove from list
-      add_to_list: Add to list
-      assigned_users: Assigned users
-      assign_user_to_task: Tildel bruger til opgave
-      checklist: Checklist
-      the_current_status_of_the_task: The current status of the task
-      the_type_of_task_this_is: The type of task this is
-      the_date_this_task_was_added: The date the task was added
-      the_project_this_task_is_created_under: The project this task is created under
-      the_user_that_created_this_task: The user who created this task
-      the_priority_of_the_task_10_most_important_1_least: Priority of the task. 10
-        for most important and 1 for least
-      add_new_check: Add new check
     form:
       browser: Browser
       version: Version

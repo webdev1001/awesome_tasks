@@ -15,26 +15,6 @@ da:
     new:
       add_new_task: Tilføj ny opgave
       new_task: Ny opgave
-    show:
-      show_task_task_name: 'Vis opgave: %{taks_name}'
-      author: Forfatter
-      no_description_has_been_written_for_this_task: Der er ikke skrevet en beskrivelse
-        for denne opgave
-      show_task: 'Vis opgave: %{task_name}'
-      edit_task: Rediger opgave
-      remove_from_list: Fjern fra liste
-      add_to_list: Tilføj til liste
-      assigned_users: Tildelte brugere
-      assign_user_to_task: Tildel bruger til opgave
-      checklist: Tjekliste
-      the_current_status_of_the_task: Den nuværende status på opgaven
-      the_type_of_task_this_is: Opgavens type
-      the_date_this_task_was_added: Dato opgaven blev tilføjet
-      the_project_this_task_is_created_under: Projektet som opgaven er oprettet under
-      the_user_that_created_this_task: Brugeren der oprettede opgaven
-      the_priority_of_the_task_10_most_important_1_least: Prioriteten for opgaven.
-        10 for mest vigtig og 1 for mindst
-      add_new_check: Tilføj nyt tjek
     form:
       browser: Browser
       version: Version
